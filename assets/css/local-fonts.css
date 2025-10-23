@@ -1,0 +1,40 @@
+/* Local Google Fonts */
+
+/* ---- https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700 ---- */
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 400;
+  src: url(assets/fonts/pxiGyp8kv8JHgFVrJJLedw.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 500;
+  src: url(assets/fonts/pxiDyp8kv8JHgFVrJJLmg1hlEA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 700;
+  src: url(assets/fonts/pxiDyp8kv8JHgFVrJJLmy15lEA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url(assets/fonts/pxiEyp8kv8JHgFVrFJA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  src: url(assets/fonts/pxiByp8kv8JHgFVrLGT9V1s.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  src: url(assets/fonts/pxiByp8kv8JHgFVrLCz7V1s.ttf) format('truetype');
+}
+

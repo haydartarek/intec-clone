@@ -1,0 +1,503 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Schrijf je in voor een opleiding bij INTEC Brussel. Leer alles over het selectieproces, de stappen richting je traject en het formulier voor voorinschrijving."
+    />
+    <title>Inschrijven | INTEC Brussel</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <link rel="stylesheet" href="assets/css/local-fonts.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+   <script src="assets/js/i18n/nl.js"></script>
+<script src="assets/js/i18n/en.js"></script>
+<script src="assets/js/main.js" defer></script>
+  </head>
+
+  <body class="page--inschrijven">
+    <a class="skip-link" href="#main-content">Ga naar hoofdinhoud</a>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="container site-header__inner">
+          <a class="brand" href="index.html" aria-label="INTEC Brussel">
+            <img
+              src="assets/img/logo+intec+brusselZWART1.png"
+              alt="INTEC Brussel logo"
+              data-critical="true"
+              decoding="async"
+              loading="eager"
+            />
+          </a>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-controls="primary-navigation"
+            aria-expanded="false"
+            data-nav-toggle="#primary-navigation"
+          >
+            <span class="sr-only" data-i18n="nav.toggle">Menu openen</span>
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <path
+                d="M4 6h16M4 12h16M4 18h16"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+          <nav class="primary-nav" aria-label="Hoofdmenu">
+            <ul class="nav-links" id="primary-navigation" role="list">
+              <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+              <li><a href="index.html#opleidingen" data-i18n="nav.training">Opleidingen</a></li>
+              <li><a href="inschrijven.html" aria-current="page" data-i18n="nav.register">Inschrijven</a></li>
+              <li><a href="overons.html" data-i18n="nav.about">Over ons</a></li>
+              <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+              <li><a href="cvdb/index.html" data-i18n="nav.partners">Toegang Partners</a></li>
+            </ul>
+          </nav>
+          <div class="site-header__actions">
+            <div class="language-switch" role="group" aria-label="Taalkeuze" data-i18n-aria-label="nav.languageGroup">
+              <button type="button" data-lang-select data-lang="nl">NL</button>
+              <button type="button" data-lang-select data-lang="en">EN</button>
+            </div>
+            <a class="button" href="digipunt.html" data-i18n="nav.digipunt">Digipunt</a>
+          </div>
+        </div>
+      </header>
+
+      <main id="main-content" tabindex="-1">
+        <section class="about-hero register-hero hero--with-form">
+          <div class="container about-hero__layout hero__grid">
+            <div class="about-hero__content hero__content register-hero__content">
+              <span class="section-label" data-i18n="register.label">Inschrijven</span>
+              <h1 class="about-hero__title" data-i18n="register.title">Start je traject met een intakegesprek</h1>
+              <p class="about-hero__lead" data-i18n="register.intro">
+                Elke opleiding start met een intake. Tijdens dit gesprek onderzoeken we samen jouw motivatie,
+                beschikbaarheid, digitale vaardigheden en taalniveau. Dankzij deze screening kan je traject meteen op
+                maat van jouw noden starten.
+              </p>
+              <div class="about-hero__chips">
+                <span data-i18n="register.hero.chip1">Gratis VDAB-traject</span>
+                <span data-i18n="register.hero.chip2">Intake binnen 3 werkdagen</span>
+                <span data-i18n="register.hero.chip3">Coaching &amp; taalondersteuning</span>
+              </div>
+              <div class="about-hero__cta hero__actions">
+                <a class="button" href="#registration-form" data-i18n="register.hero.ctaPrimary">Start voorinschrijving</a>
+                <a class="button button--ghost" href="#intake-proces" data-i18n="register.hero.ctaSecondary">
+                  Bekijk stappen
+                </a>
+              </div>
+              <div class="info-banner register-hero__info">
+                <strong data-i18n="register.stepsTitle">Selectie- en intakeprocedure</strong>
+                <ul class="badge-list">
+                  <li data-i18n="register.steps.info">Infosessie over het aanbod en de VDAB-voorwaarden</li>
+                  <li data-i18n="register.steps.workshop">Workshop rond digitale basisvaardigheden</li>
+                  <li data-i18n="register.steps.logic">Logische redeneer- en taaltest</li>
+                  <li data-i18n="register.steps.motivation">Motivatiegesprek met trajectcoach</li>
+                </ul>
+                <p data-i18n="register.stepsNote">
+                  Je kan je ook inschrijven voor enkel de infosessie. Inschrijven kan tot maximaal zes maanden voor de
+                  startdatum van een opleiding.
+                </p>
+              </div>
+            </div>
+            <div class="about-hero__card register-hero__card">
+              <h3 data-i18n="register.formTitle">Voorinschrijving</h3>
+              <p class="register-hero__note" data-i18n="register.formNote">
+                Vul het formulier in en ontvang binnen drie werkdagen een bevestiging met het voorstel voor je
+                infosessie en assessment. We bewaren je gegevens confidentieel volgens de GDPR-richtlijnen.
+              </p>
+              <form id="registration-form" class="register-form">
+                <div class="form-grid form-grid--single">
+                  <label>
+                    <span data-i18n="register.fields.fullName">Volledige naam</span>
+                    <input
+                      type="text"
+                      name="full-name"
+                      required
+                      autocomplete="name"
+                      data-i18n-placeholder="register.placeholders.fullName"
+                    />
+                  </label>
+                  <label>
+                    <span data-i18n="register.fields.gender">Geslacht</span>
+                    <select name="gender" required>
+                      <option value="" data-i18n="register.options.choose">Maak een keuze</option>
+                      <option value="M" data-i18n="register.options.male">M</option>
+                      <option value="V" data-i18n="register.options.female">V</option>
+                      <option value="X" data-i18n="register.options.x">X</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span data-i18n="register.fields.email">E-mailadres</span>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      autocomplete="email"
+                      data-i18n-placeholder="register.placeholders.email"
+                    />
+                  </label>
+                  <label>
+                    <span data-i18n="register.fields.phone">Telefoonnummer</span>
+                    <input
+                      type="tel"
+                      name="phone"
+                      required
+                      autocomplete="tel"
+                      data-i18n-placeholder="register.placeholders.phone"
+                    />
+                  </label>
+                  <label class="form-control--full">
+                    <span data-i18n="register.fields.national">Rijksregisternummer</span>
+                    <input
+                      type="text"
+                      name="national-number"
+                      required
+                      inputmode="numeric"
+                      data-i18n-placeholder="register.placeholders.national"
+                    />
+                  </label>
+                  <label>
+                    <span data-i18n="register.fields.address">Straat en huisnummer</span>
+                    <input
+                      type="text"
+                      name="address"
+                      required
+                      autocomplete="address-line1"
+                      data-i18n-placeholder="register.placeholders.address"
+                    />
+                  </label>
+                  <label>
+                    <span data-i18n="register.fields.postcode">Postcode</span>
+                    <input
+                      type="text"
+                      name="postcode"
+                      required
+                      inputmode="numeric"
+                      data-i18n-placeholder="register.placeholders.postcode"
+                    />
+                  </label>
+                  <label>
+                    <span data-i18n="register.fields.city">Gemeente / Stad</span>
+                    <input
+                      type="text"
+                      name="city"
+                      required
+                      autocomplete="address-level2"
+                      data-i18n-placeholder="register.placeholders.city"
+                    />
+                  </label>
+                  <label class="form-control--full">
+                    <span data-i18n="register.fields.course">Opleiding</span>
+                    <select name="course" required>
+                      <option value="" data-i18n="register.options.chooseCourse">Kies een opleiding</option>
+                      <option value="pc-netwerk" data-i18n="register.options.coursePc">PC en Netwerktechnicus</option>
+                      <option value="python" data-i18n="register.options.coursePython">Netwerkbeheerder met Python</option>
+                      <option value="systeembeheerder" data-i18n="register.options.courseSystems">Systeembeheerder</option>
+                      <option value="cyber" data-i18n="register.options.courseCyber">Cyber Security Engineer</option>
+                      <option value="infosessie" data-i18n="register.options.courseInfo">Alleen infosessie</option>
+                    </select>
+                  </label>
+                  <label class="form-control--full">
+                    <span data-i18n="register.fields.message">Extra informatie (optioneel)</span>
+                    <textarea
+                      name="message"
+                      rows="4"
+                      data-i18n-placeholder="register.placeholders.message"
+                    ></textarea>
+                  </label>
+                </div>
+                <button class="button" type="submit" data-i18n="register.submit">Verstuur inschrijving</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <section class="section intake-steps" id="intake-proces">
+          <div class="container">
+            <div class="section-heading">
+              <span class="section-label" data-i18n="register.timeline.label">Intakeproces</span>
+              <h2 class="section-title" data-i18n="register.timeline.title">Zo verloopt je intake stap voor stap</h2>
+              <p class="section-lead" data-i18n="register.timeline.lead">
+                We combineren digitale opvolging met persoonlijke coaching. Zo weet je exact wat er gebeurt vanaf je
+                voorinschrijving tot je effectief in de klas zit.
+              </p>
+            </div>
+            <ul class="timeline timeline--four">
+              <li>
+                <div class="timeline__content">
+                  <strong data-i18n="register.timeline.step1.title">Digitale voorinschrijving</strong>
+                  <span data-i18n="register.timeline.step1.body">
+                    Je vult het formulier in, kiest je interesse en geeft je beschikbaarheid door. We checken meteen je
+                    VDAB-inschrijving en bezorgen je een bevestiging.
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="timeline__content">
+                  <strong data-i18n="register.timeline.step2.title">Infosessie &amp; kennismaking</strong>
+                  <span data-i18n="register.timeline.step2.body">
+                    Je krijgt een uitnodiging voor een infosessie op campus of online. We overlopen het aanbod, stage
+                    kansen en jouw vragen zodat je goed geÃ¯nformeerd beslist.
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="timeline__content">
+                  <strong data-i18n="register.timeline.step3.title">Assessment moment</strong>
+                  <span data-i18n="register.timeline.step3.body">
+                    Tijdens de vaardigheidstest en taalcheck ontdekken we waar je vandaag staat. Dit helpt ons om de juiste
+                    ondersteuning te voorzien tijdens het traject.
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="timeline__content">
+                  <strong data-i18n="register.timeline.step4.title">Persoonlijk trajectplan</strong>
+                  <span data-i18n="register.timeline.step4.body">
+                    Je trajectcoach bespreekt je motivatie en planning. Je ontvangt een voorstel met startdatum, eventuele
+                    voorbereidingsmodules en coaching op maat.
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section tips-section">
+          <div class="container">
+            <div class="section-heading">
+              <span class="section-label" data-i18n="register.tips.label">Voorbereiding</span>
+              <h2 class="section-title" data-i18n="register.tips.title">Dit vragen we tijdens het intakegesprek</h2>
+              <p class="section-lead" data-i18n="register.tips.lead">
+                De intake is geen examen, wel een verkennend gesprek. Met een goede voorbereiding kunnen we meteen samen de
+                juiste stappen zetten.
+              </p>
+            </div>
+            <div class="tips-grid">
+              <article class="tip-card">
+                <h3 data-i18n="register.tips.tip1.title">VDAB-voorwaarden in orde</h3>
+                <p data-i18n="register.tips.tip1.body">
+                  Zorg dat je als werkzoekende geregistreerd bent bij VDAB en dat je consulent op de hoogte is van je
+                  interesse voor het traject.
+                </p>
+              </article>
+              <article class="tip-card">
+                <h3 data-i18n="register.tips.tip2.title">Recente documenten</h3>
+                <p data-i18n="register.tips.tip2.body">
+                  Breng een up-to-date cv, je identiteitskaart en eventuele attesten van vorige opleidingen of werkervaring
+                  mee naar de intake.
+                </p>
+              </article>
+              <article class="tip-card">
+                <h3 data-i18n="register.tips.tip3.title">Beschikbaarheid en motivatie</h3>
+                <p data-i18n="register.tips.tip3.body">
+                  We plannen voltijdse trajecten. Denk op voorhand na over kinderopvang, vervoer en andere afspraken zodat
+                  we samen een haalbare planning maken.
+                </p>
+              </article>
+              <article class="tip-card tip-card--highlight">
+                <h3 data-i18n="register.tips.tip4.title">Tip van onze trajectcoaches</h3>
+                <p data-i18n="register.tips.tip4.body">
+                  Kom een kwartier vroeger en noteer je vragen op voorhand. Digicoaches zijn aanwezig om je te helpen met het
+                  formulier of digitale tools wanneer dat nodig is.
+                </p>
+                <ul>
+                  <li data-i18n="register.tips.tip5.title">VDAB-doorverwijzing</li>
+                  <li data-i18n="register.tips.tip5.body">Digicoach ter plaatse</li>
+                  <li data-i18n="register.tips.tip5.body">Taalondersteuning NL/EN</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--surface">
+          <div class="container">
+            <div class="section-heading">
+              <span class="section-label" data-i18n="register.label">Inschrijven</span>
+              <h2 class="section-title" data-i18n="register.confirmation.title">Wat gebeurt er na je inschrijving?</h2>
+            </div>
+            <div class="two-column">
+              <div class="highlight-box">
+                <p data-i18n="register.confirmation.step1">
+                  Je ontvangt per e-mail een bevestiging met de uitnodiging voor de eerstvolgende infosessie en workshop.
+                </p>
+                <p data-i18n="register.confirmation.step2">
+                  Na de tests plannen we een motivatiegesprek waar we samen je persoonlijk opleidingsplan opstellen.
+                </p>
+                <p data-i18n="register.confirmation.step3">
+                  Past de startdatum niet? We bekijken alternatieven of begeleiden je richting het Digipunt voor extra
+                  voorbereiding.
+                </p>
+              </div>
+              <div class="contact-panel">
+                <strong data-i18n="register.contact.title">Heb je vragen over het proces?</strong>
+                <p data-i18n="register.contact.body" data-i18n-allow-html="true">
+                  Contacteer onze trajectcoaches via <a href="mailto:inschrijvingen@intecbrussel.be">inschrijvingen@intecbrussel.be</a>
+                  of bel 02/411 29 07 (maandag tot vrijdag, 9:00 - 12:00 en 13:00 - 16:00).
+                </p>
+                <a class="button button--ghost" href="contact.html" data-i18n="register.contact.cta">
+                  Neem contact op
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section faq-section" id="veelgestelde-vragen">
+          <div class="container">
+            <div class="section-heading">
+              <span class="section-label" data-i18n="register.faq.label">Veelgestelde vragen</span>
+              <h2 class="section-title" data-i18n="register.faq.title">Praktische antwoorden voor je intake</h2>
+              <p class="section-lead" data-i18n="register.faq.lead">
+                Met deze tips kom je goed voorbereid naar je intakegesprek. Heb je toch nog vragen? Laat het ons weten,
+                we helpen je graag verder.
+              </p>
+            </div>
+            <div class="faq-grid">
+              <article class="faq-item">
+                <h3 data-i18n="register.faq.prep.title">Voor je intake</h3>
+                <div class="faq-item__body">
+                  <details open data-i18n-details="register.faq.prep.q1">
+                    <summary data-i18n="register.faq.prep.q1.title">Wat als ik nog geen VDAB-account heb?</summary>
+                    <p data-i18n="register.faq.prep.q1.body">
+                      Registreren kan via VDAB of na een doorverwijzing van Actiris. Vermeld het bij je inschrijving; we
+                      helpen je met de juiste stappen en formulieren.
+                    </p>
+                  </details>
+                  <details data-i18n-details="register.faq.prep.q2">
+                    <summary data-i18n="register.faq.prep.q2.title">Kan ik de opleiding combineren met werk?</summary>
+                    <p data-i18n="register.faq.prep.q2.body">
+                      Onze trajecten zijn voltijds en intensief. Bespreek je situatie met je trajectcoach; samen zoeken we
+                      naar oplossingen rond opvang, mobiliteit or een voorbereid traject.
+                    </p>
+                  </details>
+                  <details data-i18n-details="register.faq.prep.q3">
+                    <summary data-i18n="register.faq.prep.q3.title">Is mijn taalniveau voldoende?</summary>
+                    <p data-i18n="register.faq.prep.q3.body">
+                      We mikken op niveau B1 Nederlands of Engels. Tijdens de intake testen we dit en koppelen we je aan
+                      taalondersteuning wanneer dat nodig is.
+                    </p>
+                  </details>
+                </div>
+              </article>
+              <article class="faq-item">
+                <h3 data-i18n="register.faq.support.title">Ondersteuning tijdens je traject</h3>
+                <p data-i18n="register.faq.support.body">
+                  Je staat er nooit alleen voor. We combineren digitale tools met persoonlijke begeleiding zodat je vlot
+                  doorstroomt naar stage en werk.
+                </p>
+                <ul>
+                  <li data-i18n="register.faq.support.badge1">Trajectcoaches</li>
+                  <li data-i18n="register.faq.support.badge2">Loopbaanbegeleiding</li>
+                  <li data-i18n="register.faq.support.badge3">Digicoaches</li>
+                  <li data-i18n="register.faq.support.badge4">Taalcoaching</li>
+                </ul>
+                <p data-i18n="register.faq.support.note">
+                  Extra hulp nodig? Vermeld het in je formulier. We plannen graag een bijkomend gesprek of verwijzen je naar
+                  het Digipunt voor voorbereidende sessies.
+                </p>
+              </article>
+              <article class="faq-item">
+                <h3 data-i18n="register.faq.contact.title">Twijfel je nog?</h3>
+                <p data-i18n="register.faq.contact.body">
+                  Neem contact op en vertel ons waarmee we kunnen helpen. We bekijken samen welke opleiding, timing en
+                  ondersteuning het best bij jouw situatie aansluiten.
+                </p>
+                <div class="cta-stack">
+                  <a class="button" href="contact.html" data-i18n="register.faq.contact.ctaPrimary">Plan een kennismaking</a>
+                  <a class="button button--ghost" href="digipunt.html" data-i18n="register.faq.contact.ctaSecondary">
+                    Bezoek het Digipunt
+                  </a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section cta-band cta-band--minimal cta-band--highlight">
+          <div class="cta-band__inner container">
+            <div class="cta-band__content">
+              <span class="cta-band__eyebrow" data-i18n="register.cta.eyebrow">Klaar om te starten?</span>
+              <h2 data-i18n="register.cta.title">Ontdek welke opleiding bij jou past</h2>
+              <p data-i18n="register.cta.body">
+                Bekijk het overzicht van onze erkende VDAB-opleidingen en kies het traject dat aansluit bij jouw ambities.
+                We begeleiden je van eerste intake tot duurzame tewerkstelling.
+              </p>
+            </div>
+            <div class="cta-band__actions">
+              <a class="button" href="index.html#opleidingen" data-i18n="register.cta.primary">Bekijk het aanbod</a>
+              <a class="button button--ghost" href="contact.html" data-i18n="register.cta.secondary">Bespreek met een coach</a>
+            </div>
+          </div>
+        </section>
+        <section class="section cta-band cta-band--minimal">
+          <div class="cta-band__inner container">
+            <div class="cta-band__content">
+              <span class="cta-band__eyebrow" data-i18n="about.cta.eyebrow">Samen bouwen</span>
+              <h2 data-i18n="about.cta.title">Wil je mee het verschil maken voor talent in Brussel?</h2>
+              <p data-i18n="about.cta.body">
+                Neem contact op en ontdek hoe we kunnen samenwerken rond trajecten, stages of coaching.
+              </p>
+            </div>
+            <div class="cta-band__actions">
+              <a class="button" href="contact.html" data-i18n="about.cta.primary">Contacteer ons team</a>
+              <a class="button button--ghost" href="index.html#opleidingen" data-i18n="about.cta.secondary">Ontdek opleidingen</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__grid">
+            <div class="footer__column">
+              <a class="brand" href="index.html">
+                <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" />
+              </a>
+              <p data-i18n="footer.mission">
+                INTEC Brussel bouwt aan een inclusieve digitale samenleving via opleidingen, coaching en partnerschappen
+                met werkgevers die klaar zijn voor morgen.
+              </p>
+            </div>
+            <div class="footer__column">
+              <h3 data-i18n="footer.contactTitle">Contact</h3>
+              <ul>
+                <li data-i18n="footer.address" data-i18n-allow-html="true">
+                  Rouppeplein 16<br />1000 Brussel
+                </li>
+                <li><a href="tel:+3224112907">02/411 29 07</a></li>
+                <li><a href="mailto:info@intecbrussel.be">info@intecbrussel.be</a></li>
+                <li><a href="mailto:pr@intecbrussel.be">pr@intecbrussel.be</a></li>
+              </ul>
+            </div>
+            <div class="footer__column">
+              <h3 data-i18n="footer.companyTitle">Bedrijfsinfo</h3>
+              <ul>
+                <li data-i18n="footer.companyNumber">Ondernemingsnummer: 0476.094.416</li>
+                <li data-i18n="footer.siteNumber">Vestigingsnummer: 2.108.890.046</li>
+                <li data-i18n="footer.socialNumber">RSZ: 10/945-31-54801</li>
+              </ul>
+            </div>
+            <div class="footer__column">
+              <h3 data-i18n="footer.followTitle">Volg ons</h3>
+              <ul>
+                <li><a href="https://www.linkedin.com/groups/3973164/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+                <li><a href="https://www.facebook.com/intecbrussel.be" target="_blank" rel="noreferrer">Facebook</a></li>
+                <li><a href="https://x.com/INTEC_BRUSSEL" target="_blank" rel="noreferrer">X</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer__meta">
+            <span>&copy; <span id="year">2025</span> INTEC Brussel.</span>
+            <span data-i18n="footer.accreditation">Erkend door VDAB, Actiris en ESF.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

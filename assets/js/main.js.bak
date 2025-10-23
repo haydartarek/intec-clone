@@ -1,0 +1,1781 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const defaultLanguage = "nl";
+  const translations = {
+    nl: {
+      "nav.brand": "INTEC Brussel",
+      "nav.toggle": "Menu openen",
+      "nav.home": "Home",
+      "nav.training": "Opleidingen",
+      "nav.register": "Inschrijven",
+      "nav.about": "Over ons",
+      "nav.contact": "Contact",
+      "nav.partners": "Toegang Partners",
+      "nav.digipunt": "Digipunt",
+      "nav.languageGroup": "Taalkeuze",
+
+      "home.hero.eyebrow": "Erkende VDAB-opleidingen",
+      "home.hero.title": "Ontdek ons huidig aanbod aan erkende VDAB-opleidingen",
+      "home.hero.lead":
+        "INTEC Brussel begeleidt je naar een duurzame job in IT met trajecten die technische vaardigheden, taalondersteuning en coaching combineren. We bouwen bruggen tussen talent en werkgevers die geloven in diversiteit.",
+      "home.hero.ctaPrimary": "Bekijk opleidingen",
+      "home.hero.ctaSecondary": "Plan intake",
+      "home.hero.caption":
+        "Campuslabs, hybride lessen en coaches uit het werkveld helpen je om elke stap te beheersen.",
+
+      "home.courses.label": "Opleidingen",
+      "home.courses.title": "Trajecten die je loopbaan versnellen",
+      "home.courses.lead":
+        "Onze erkende VDAB-programma's richten zich op het bouwen van toekomstgerichte IT-competenties. Je leert in kleine groepen, met digicoaches en taalondersteuning binnen handbereik.",
+      "home.courses.pc.title": "PC en Netwerktechnicus",
+      "home.courses.pc.body":
+        "Bouw expertise op in hardware-installaties, serverbeheer en het oplossen van netwerkstoringen voor kmo's en grotere organisaties.",
+      "home.courses.pc.date1": "Startdata: 7 oktober 2025",
+      "home.courses.pc.date2": "Aanvullende instroom: 13 januari 2026",
+      "home.courses.pc.cta": "Meer info",
+      "home.courses.python.title": "Netwerkbeheerder met Python",
+      "home.courses.python.body":
+        "Combineer netwerkarchitectuur, automatisering en Python-scripting om infrastructuren te monitoren en te beheren met maximale efficientie.",
+      "home.courses.python.date1": "Startdatum: 18 november 2025",
+      "home.courses.python.cta": "Meer info",
+      "home.courses.systems.title": "Systeembeheerder",
+      "home.courses.systems.body":
+        "Leer Windows- en Linux-servers beheren, virtualisatieplatformen uitrollen en cloudresources veilig configureren.",
+      "home.courses.systems.date1": "Startdata: 14 oktober 2025",
+      "home.courses.systems.date2": "Instroom taaltraject: 10 februari 2026",
+      "home.courses.systems.cta": "Meer info",
+      "home.courses.cyber.title": "Cyber Security Engineer",
+      "home.courses.cyber.body":
+        "Beveilig netwerken, voer ethische hacks uit en interpreteer digitale sporen om cyberaanvallen te voorkomen en incidenten te beperken.",
+      "home.courses.cyber.date1": "Startdatum: 3 maart 2026",
+      "home.courses.cyber.cta": "Meer info",
+
+      "home.stats.price": "Prijs opleidingen: 0 EUR",
+      "home.stats.priceDetail": "Volledig gesubsidieerde trajecten voor werkzoekenden.",
+      "home.stats.partners": "100+ partners",
+      "home.stats.partnersDetail": "Werkgevers in consultancy, overheid en zorg.",
+      "home.stats.diversity": "Diversiteitslabel",
+      "home.stats.diversityDetail": "Inclusieve selectie en taalondersteuning.",
+      "home.stats.digicoach": "Digicoach",
+      "home.stats.digicoachDetail": "Individuele begeleiding rond digitale vaardigheden.",
+      "home.stats.language": "Taalcoaching",
+      "home.stats.languageDetail": "Nederlandse en Engelse ondersteuning tijdens je traject.",
+
+      "counter.label": "Impact",
+      "counter.title": "Onze impact in cijfers",
+      "counter.lead":
+        "Achter elke opleiding schuilt jaren expertise, gemotiveerde cursisten en partners die klaarstaan met stages en jobs. Deze indicatoren geven een beeld van wat je mag verwachten.",
+      "counter.experience": "Jaren Ervaring",
+      "counter.alumni": "Afgestudeerde Studenten",
+      "counter.employment": "Werkgelegenheid na opleiding",
+      "counter.internship": "Stageplaats Succes",
+
+      "home.partners.label": "Partners",
+      "home.partners.title": "Samenwerking met bedrijven, overheden en non-profits",
+      "home.partners.lead":
+        "Meer dan twintig jaar ervaring levert een sterk netwerk op van werkgevers, organisaties en maatwerkbedrijven die inzetten op digitale vaardigheden en inclusieve teams.",
+      "home.partnerCallout.title": "INOPTEC+: uw betrouwbare IT-supportpartner",
+      "home.partnerCallout.body":
+        "Onze interne IT-supportcel verzorgt helpdeskdiensten, microlearning en onsite interventies voor organisaties die hun digitale transformatie versterken. Vraag een kennismakingsgesprek aan.",
+      "home.partnerCallout.cta": "Neem contact op",
+
+      "support.hero.eyebrow": "Opleiding",
+      "support.hero.title": "PC en Netwerktechnicus",
+      "support.hero.lead":
+        "Bouw je toekomst in ICT-support met een hands-on traject dat hardware, netwerken en klantgerichte service verenigt. Je leert storingen analyseren, systemen beveiligen en gebruikers professioneel begeleiden.",
+      "support.hero.ctaPrimary": "Plan je intake",
+      "support.hero.ctaSecondary": "Bekijk programma",
+      "support.hero.caption":
+        "Leren in kleine groepen, moderne labs en coaching door experten uit het werkveld.",
+      "support.hero.metaTitle": "Volgende startmomenten",
+      "support.hero.metaDates": "9 maart 2026 (inschrijvingen open)",
+      "support.hero.metaNote":
+        "Schrijf je in tot zes maanden voor de start. Infosessies en assessments helpen je bepalen of dit traject bij je past.",
+      "support.overview.label": "Wat je leert",
+      "support.overview.title": "Een brede basis in IT-support",
+      "support.overview.text1":
+        "Je groeit uit tot het eerste aanspreekpunt voor werkplekken, servers en gebruikers. Je combineert troubleshooting met proactieve monitoring en documentatie volgens ITIL-standaarden.",
+      "support.overview.text2":
+        "Naast techniek werken we aan communicatie, service skills en werkplekorganisatie. Zo kan je helder rapporteren, prioriteiten stellen en teams ondersteunen in hybride omgevingen.",
+      "support.overview.listTitle": "Tijdens de opleiding",
+      "support.overview.list1": "70% praktijklabs rond hardware, netwerken en security",
+      "support.overview.list2": "Stage bij een partnerbedrijf of social-profitorganisatie",
+      "support.overview.list3": "Begeleiding door digicoaches en taalondersteuning",
+      "support.overview.list4": "Softskills: klantcommunicatie, teamwork en planning",
+      "support.modules.label": "Programma",
+      "support.modules.title": "Modules & vakgebieden",
+      "support.modules.lead":
+        "Een combinatie van fundamenten en specialisaties maakt je klaar voor helpdesk, onsite support of technisch beheer bij kmo's, overheden en integratoren.",
+      "support.modules.deviceTitle": "Werkplek & hardware",
+      "support.modules.deviceBody":
+        "Assemblage, imaging, onderhoud en troubleshooting van pc's, laptops en randapparatuur. Je werkt met diagnostische tools en volgt best practices voor lifecyclemanagement.",
+      "support.modules.networkTitle": "Netwerken & cloud",
+      "support.modules.networkBody":
+        "LAN/WAN-basics, Wi-Fi, routing & switching, introductie tot Azure en M365-beheer. Je leert configureren, monitoren en incidenten oplossen.",
+      "support.modules.osTitle": "Besturingssystemen",
+      "support.modules.osBody":
+        "Windows 11, Windows Server en Linux-basics. Automatisering met PowerShell, rechtenbeheer en veilige configuraties.",
+      "support.modules.securityTitle": "Security & service",
+      "support.modules.securityBody":
+        "Endpointbescherming, back-up, disaster recovery en documentatie. Werk met ITIL-processen, SLA's en servicedesk-tools.",
+      "support.journey.label": "Traject",
+      "support.journey.title": "Van intake tot eerste job",
+      "support.journey.step1Title": "Intake & fundamentals",
+      "support.journey.step1Body":
+        "Infosessie, assessments en taalcheck. Je start met werkplekfundamenten, veiligheid en servicedeskflow.",
+      "support.journey.step2Title": "Deep dive labs",
+      "support.journey.step2Body":
+        "Projectmatig werken rond netwerken, virtualisatie en scripts. Coaching op troubleshooting en klantencontact.",
+      "support.journey.step3Title": "Stage & certificatie",
+      "support.journey.step3Body":
+        "6 tot 8 weken stage. We bereiden je voor op certificaten zoals CompTIA ITF+ of Microsoft Fundamentals.",
+      "support.journey.step4Title": "Jobcoaching",
+      "support.journey.step4Body":
+        "CV en interviewcoaching, matching met partners en nazorg in het eerste jaar op de werkvloer.",
+      "program.info.label": "Praktisch",
+      "program.info.generalTitle": "Algemene informatie over deze opleiding",
+      "program.info.item1": "Prijs: Gratis",
+      "program.info.item2": "Taal: Nederlands",
+      "program.info.item3": "Voorkennis: Niet verplicht",
+      "program.info.item4": "Duur opleidingen: 1 jaar",
+      "program.info.item5": "Elke dag van 8u30 tot 17u (lessen starten om 9u)",
+      "program.info.note":
+        "Heb je specifieke behoeften om te kunnen deelnemen aan de selectie of opleiding? Bijvoorbeeld omwille van een fysieke beperking. Laat het ons weten.",
+      "program.info.locationTitle": "Locatie",
+      "program.info.locationBody":
+        "Campus Rouppeplein 16, 1000 Brussel. Deze locatie is zeer goed bereikbaar met het openbaar vervoer.",
+      "program.info.benefitsTitle": "Voordelen",
+      "program.info.benefit1": "Tijdens de opleiding worden je vervoerskosten volledig terugbetaald.",
+      "program.info.benefit2": "De kosten voor kinder- of buitenschoolse opvang worden terugbetaald.",
+      "program.info.benefit3":
+        "Tijdens de opleiding blijf je wettelijk in orde met je werkloosheidsvergoeding en andere uitkeringen.",
+      "support.cta.title": "Klaar om als PC en Netwerktechnicus te starten?",
+      "support.cta.body":
+        "Plan je intake en ontdek hoe we jouw leerpad personaliseren. Onze coaches staan klaar om al je vragen te beantwoorden.",
+      "support.cta.primary": "Plan intake",
+      "support.cta.secondary": "Stel een vraag",
+      "program.cta.eyebrow": "Volgende stap",
+
+      "python.hero.eyebrow": "Opleiding",
+      "python.hero.title": "Netwerkbeheerder met Python",
+      "python.hero.lead":
+        "Leer bedrijfsnetwerken ontwerpen en beheren terwijl je workflows automatiseert met Python. Deze opleiding combineert infrastructuur, cloud en scripting om je klaar te stomen voor moderne netwerkomgevingen.",
+      "python.hero.ctaPrimary": "Plan je intake",
+      "python.hero.ctaSecondary": "Bekijk programma",
+      "python.hero.caption":
+        "Combineer netwerklabs met automatiseringsoefeningen in Python en DevOps-tools.",
+      "python.hero.metaTitle": "Startmoment",
+      "python.hero.metaDates": "18 november 2025",
+      "python.hero.metaNote":
+        "Inschrijven kan tot zes maanden voor de start. Na de intake volg je een voorbereidende sprint met Python-basics.",
+      "python.overview.label": "Wat je leert",
+      "python.overview.title": "Netwerken automatiseren van A tot Z",
+      "python.overview.text1":
+        "Je verdiept je in routing, switching, firewalling en wireless. Met Python ontwikkel je scripts die configuraties beheren, monitoring automatiseren en API's aanspreken.",
+      "python.overview.text2":
+        "We koppelen infrastructuurbeheer aan DevOps-principes: versiebeheer, CI/CD voor netwerkcode en documentatie. Zo lever je snel en veilig veranderingen op.",
+      "python.overview.listTitle": "Tijdens de opleiding",
+      "python.overview.list1": "Netwerkdesign labs met Cisco- en open source-omgevingen",
+      "python.overview.list2": "Python-sprints met automatisering, REST API's en data parsing",
+      "python.overview.list3": "Introducties tot cloud networking (Azure, AWS) en containerisatie",
+      "python.overview.list4": "Stageopdracht met focus op netwerkbeheer of NetDevOps",
+      "python.modules.label": "Programma",
+      "python.modules.title": "Modules & specialisaties",
+      "python.modules.lead":
+        "Je combineert netwerkfundamenten met automatisering en security. Elke module eindigt met een labcase die je vaardigheden test.",
+      "python.modules.networkTitle": "Enterpriseworking",
+      "python.modules.networkBody":
+        "Routing & switching, VLAN's, QoS en wireless design. Implementatie volgens Cisco- en openstandaarden.",
+      "python.modules.pythonTitle": "Python & automatisering",
+      "python.modules.pythonBody":
+        "Python fundamentals, objectgeorienteerd programmeren, API's, Ansible en scripting voor configuratiebeheer.",
+      "python.modules.cloudTitle": "Cloud & observability",
+      "python.modules.cloudBody":
+        "Networking in Azure en AWS, IaC met Terraform, loganalyse en monitoring met tools zoals Grafana en Prometheus.",
+      "python.modules.securityTitle": "Security & automation ops",
+      "python.modules.securityBody":
+        "Zero trust, firewall policies, automatisering van compliance-checks en incident response workflows.",
+      "python.journey.label": "Traject",
+      "python.journey.title": "Jouw leerroute",
+      "python.journey.step1Title": "Intake & fundamentals",
+      "python.journey.step1Body":
+        "Screening van netwerk- en taalniveau, onboarding in Python basics en netwerkconcepten.",
+      "python.journey.step2Title": "Netwerkexpertise",
+      "python.journey.step2Body":
+        "Configuratie en troubleshooting in fysieke en virtuele labs, inclusief Cisco Packet Tracer en GNS3.",
+      "python.journey.step3Title": "Automatisering",
+      "python.journey.step3Body":
+        "Python- en Ansible-projecten, DevOps-workflows en integratie met monitoringplatformen.",
+      "python.journey.step4Title": "Stage & certificatie",
+      "python.journey.step4Body":
+        "Stage van 8 weken, voorbereiding op Cisco CCNA, DevNet Associate of PCEP-certificaten en intensieve jobcoaching.",
+      "python.cta.title": "Maak het verschil met netwerken & Python",
+      "python.cta.body":
+        "Boek je intake en ontdek hoe dit traject je voorbereidt op functies als network engineer, NetDevOps of cloud operations specialist.",
+      "python.cta.primary": "Plan intake",
+      "python.cta.secondary": "Stel een vraag",
+
+      "system.hero.eyebrow": "Opleiding",
+      "system.hero.title": "Systeembeheerder",
+      "system.hero.lead":
+        "Beheer hybride infrastructuren met vertrouwen. Deze opleiding combineert Windows, Linux, virtualisatie, cloud en automatisering zodat je elke omgeving kan ontwerpen, beheren en beveiligen.",
+      "system.hero.ctaPrimary": "Plan je intake",
+      "system.hero.ctaSecondary": "Bekijk programma",
+      "system.hero.caption":
+        "Werk in enterprise labs met Windows, Linux, VMware, Hyper-V en cloudplatformen.",
+      "system.hero.metaTitle": "Startmomenten",
+      "system.hero.metaDates": "14 oktober 2025 / 10 februari 2026",
+      "system.hero.metaNote":
+        "Kies je instroom op basis van je niveau. Je intake bepaalt welke modules je eerst volgt.",
+      "system.overview.label": "Wat je leert",
+      "system.overview.title": "Volledige controle over infrastructuur",
+      "system.overview.text1":
+        "Je bouwt expertise op in het beheren van servers, storage, netwerken en identity. Windows Server, Linux, Active Directory, PowerShell en Bash hebben geen geheimen meer.",
+      "system.overview.text2":
+        "Automatisering en monitoring zijn rode draden. Je schrijft scripts, gebruikt configuration management en werkt met tools als Azure, VMware, Proxmox en Ansible.",
+      "system.overview.listTitle": "Tijdens de opleiding",
+      "system.overview.list1": "Hands-on labs rond Windows, Linux, virtualisatie en storage",
+      "system.overview.list2": "Projecten met Office 365, Azure AD, Intune en hybrid cloud",
+      "system.overview.list3": "Focus op security, back-up en business continuity",
+      "system.overview.list4": "Stageopdracht bij een van onze infrastructuurpartners",
+      "system.modules.label": "Programma",
+      "system.modules.title": "Modules & expertises",
+      "system.modules.lead":
+        "Elke module combineert theorie met labcases zodat je na afloop productiesystemen kan beheren.",
+      "system.modules.windowsTitle": "Windows & Microsoft 365",
+      "system.modules.windowsBody":
+        "Active Directory, Group Policy, Intune, Exchange Online en Teams. Automatisering met PowerShell en endpoints beheren met modern management.",
+      "system.modules.linuxTitle": "Linux & open source",
+      "system.modules.linuxBody":
+        "Linux serverbeheer, shell scripting, services, containerisatie en monitoring met open source tooling.",
+      "system.modules.virtualizationTitle": "Virtualisatie & cloud",
+      "system.modules.virtualizationBody":
+        "VMware, Hyper-V, Proxmox, Azure infrastructuur, IaC en back-up oplossingen voor hybride omgevingen.",
+      "system.modules.securityTitle": "Security & automation",
+      "system.modules.securityBody":
+        "Hardening, patchmanagement, incident response, SIEM-intro en automatisering met Ansible en PowerShell DSC.",
+      "system.journey.label": "Traject",
+      "system.journey.title": "Je groei in vier fases",
+      "system.journey.step1Title": "Intake & fundamenten",
+      "system.journey.step1Body":
+        "Taal- en logische tests, kennismakingsproject en herhaling van basisnetwerken en OS-beheer.",
+      "system.journey.step2Title": "Server & platformbeheer",
+      "system.journey.step2Body":
+        "Geavanceerde configuraties, automatisering en monitoring in labs met realistische scenario's.",
+      "system.journey.step3Title": "Cloud & security",
+      "system.journey.step3Body":
+        "Hybride architecturen, identity, governance en security-by-design. Voorbereiding op certificaten zoals Microsoft AZ-104.",
+      "system.journey.step4Title": "Stage & jobcoaching",
+      "system.journey.step4Body":
+        "Stage van 8 weken, portfolio-opbouw, sollicitatietraining en matching met werkgevers.",
+      "system.cta.title": "Word spilfiguur in elke IT-infrastructuur",
+      "system.cta.body":
+        "Plan je intake en zet de stap naar een carriere als systeembeheerder, cloud engineer of platform specialist.",
+      "system.cta.primary": "Plan intake",
+      "system.cta.secondary": "Stel een vraag",
+
+      "security.hero.eyebrow": "Opleiding",
+      "security.hero.title": "Cyber Security Engineer",
+      "security.hero.lead":
+        "Leer cyberaanvallen detecteren, stoppen en voorkomen. Je combineert ethical hacking met beveiligingsarchitectuur, monitoring en incident response voor netwerken, servers en cloud.",
+      "security.hero.ctaPrimary": "Plan je intake",
+      "security.hero.ctaSecondary": "Bekijk programma",
+      "security.hero.caption":
+        "Werk met SOC-tools, SIEM, forensics en red-teamplatformen onder begeleiding van experts.",
+      "security.hero.metaTitle": "Startmoment",
+      "security.hero.metaDates": "3 maart 2026",
+      "security.hero.metaNote":
+        "Intake omvat een security mindset-check, logische testen en kennismaking met basisnetwerken.",
+      "security.overview.label": "Wat je leert",
+      "security.overview.title": "Verdedig elke laag van de organisatie",
+      "security.overview.text1":
+        "Je analyseert kwetsbaarheden, voert pentests uit en bouwt verdedigingsmechanismen. We koppelen blue team, red team en governance zodat je end-to-end beveiligt.",
+      "security.overview.text2":
+        "Je leert securityprogramma's opzetten die rekening houden met mensen, processen en technologie. We werken met frameworks zoals NIST, CIS en ISO 27001.",
+      "security.overview.listTitle": "Tijdens de opleiding",
+      "security.overview.list1": "Labs rond netwerk-, endpoint- en cloudbeveiliging",
+      "security.overview.list2": "Threat hunting in een gesimuleerde Security Operations Center",
+      "security.overview.list3": "Incident response oefeningen met forensics en rapportering",
+      "security.overview.list4": "Stage bij bedrijven, overheid of SOC-partners",
+      "security.modules.label": "Programma",
+      "security.modules.title": "Modules & labs",
+      "security.modules.lead":
+        "Elk onderdeel combineert theorie met scenario's in het lab. Je werkt met actuele tools, frameworks en casefiles.",
+      "security.modules.networkTitle": "Netwerk & endpoint security",
+      "security.modules.networkBody":
+        "Firewalls, IDS/IPS, secure configuration, zero trust, endpoint hardening en patchbeheer.",
+      "security.modules.siemaTitle": "SOC & threat detection",
+      "security.modules.siemaBody":
+        "SIEM, loganalyse, threat hunting, MITRE ATT&CK, automatisering met SOAR-playbooks en reporting.",
+      "security.modules.offensiveTitle": "Ethical hacking & forensics",
+      "security.modules.offensiveBody":
+        "Pentesting, exploit development, red teaming, forensic imaging en malware-analyse.",
+      "security.modules.governanceTitle": "Governance & cloud security",
+      "security.modules.governanceBody":
+        "NIST, CIS controls, ISO 27001, risicoanalyse, cloud security posture en compliance management.",
+      "security.journey.label": "Traject",
+      "security.journey.title": "Van basis tot security specialist",
+      "security.journey.step1Title": "Intake & fundamentals",
+      "security.journey.step1Body":
+        "Screening, refresh netwerken en operating systems, introductie tot security mindset en tooling.",
+      "security.journey.step2Title": "Blue team labs",
+      "security.journey.step2Body":
+        "Monitoring, detection, incident handling en rapportering binnen een gesimuleerde SOC.",
+      "security.journey.step3Title": "Red team & forensics",
+      "security.journey.step3Body":
+        "Pentesting, exploitatie, reverse engineering en forensisch onderzoek met echte casussen.",
+      "security.journey.step4Title": "Stage & certificatie",
+      "security.journey.step4Body":
+        "Stage van 8 weken, coaching richting certificaten zoals CompTIA Security+, Cisco CCST of EC-Council, en intensieve jobmatching.",
+      "security.cta.title": "Bescherm organisaties tegen digitale dreigingen",
+      "security.cta.body":
+        "Boek je intake en ontdek hoe jij het verschil maakt als cyber security engineer, SOC-analist of incident responder.",
+      "security.cta.primary": "Plan intake",
+      "security.cta.secondary": "Stel een vraag",
+
+      "footer.mission":
+        "INTEC Brussel bouwt aan een inclusieve digitale samenleving via opleidingen, coaching en partnerschappen met werkgevers die klaar zijn voor morgen.",
+      "footer.contactTitle": "Contact",
+      "footer.address": "Rouppeplein 16<br />1000 Brussel",
+      "footer.companyTitle": "Bedrijfsinfo",
+      "footer.companyNumber": "Ondernemingsnummer: 0476.094.416",
+      "footer.siteNumber": "Vestigingsnummer: 2.108.890.046",
+      "footer.socialNumber": "RSZ: 10/945-31-54801",
+      "footer.followTitle": "Volg ons",
+      "footer.accreditation": "Erkend door VDAB, Actiris en ESF.",
+
+      "register.label": "Inschrijven",
+      "register.title": "Start je traject met een intakegesprek",
+      "register.intro":
+        "Elke opleiding start met een intake. Tijdens dit gesprek onderzoeken we samen jouw motivatie, beschikbaarheid, digitale vaardigheden en taalniveau. Dankzij deze screening kan je traject meteen op maat van jouw noden starten.",
+      "register.hero.chip1": "Gratis VDAB-traject",
+      "register.hero.chip2": "Intake binnen 3 werkdagen",
+      "register.hero.chip3": "Coaching & taalondersteuning",
+      "register.hero.ctaPrimary": "Start voorinschrijving",
+      "register.hero.ctaSecondary": "Bekijk stappen",
+      "register.stepsTitle": "Selectie- en intakeprocedure",
+      "register.steps.info": "Infosessie over het aanbod en de VDAB-voorwaarden",
+      "register.steps.workshop": "Workshop rond digitale basisvaardigheden",
+      "register.steps.logic": "Logische redeneer- en taaltest",
+      "register.steps.motivation": "Motivatiegesprek met trajectcoach",
+      "register.stepsNote":
+        "Je kan je ook inschrijven voor enkel de infosessie. Inschrijven kan tot maximaal zes maanden voor de startdatum van een opleiding.",
+      "register.formTitle": "Voorinschrijving",
+      "register.formNote":
+        "Vul het formulier in en ontvang binnen drie werkdagen een bevestiging met het voorstel voor je infosessie en assessment. We bewaren je gegevens confidentieel volgens de GDPR-richtlijnen.",
+      "register.fields.fullName": "Volledige naam",
+      "register.fields.gender": "Geslacht",
+      "register.fields.email": "E-mailadres",
+      "register.fields.phone": "Telefoonnummer",
+      "register.fields.national": "Rijksregisternummer",
+      "register.fields.address": "Straat en huisnummer",
+      "register.fields.postcode": "Postcode",
+      "register.fields.city": "Gemeente / Stad",
+      "register.fields.course": "Opleiding",
+      "register.fields.message": "Extra informatie (optioneel)",
+      "register.placeholders.fullName": "Voor- en achternaam",
+      "register.placeholders.email": "naam@voorbeeld.be",
+      "register.placeholders.phone": "Gsm- of telefoonnummer",
+      "register.placeholders.national": "11 cijfers, zonder spaties",
+      "register.placeholders.address": "Straatnaam en huisnummer",
+      "register.placeholders.postcode": "Postcode",
+      "register.placeholders.city": "Gemeente of stad",
+      "register.placeholders.message": "Je vraag of motivatie (optioneel)",
+      "register.options.choose": "Maak een keuze",
+      "register.options.male": "M",
+      "register.options.female": "V",
+      "register.options.x": "X",
+      "register.options.chooseCourse": "Kies een opleiding",
+      "register.options.coursePc": "PC en Netwerktechnicus",
+      "register.options.coursePython": "Netwerkbeheerder met Python",
+      "register.options.courseSystems": "Systeembeheerder",
+      "register.options.courseCyber": "Cyber Security Engineer",
+      "register.options.courseInfo": "Alleen infosessie",
+      "register.submit": "Verstuur inschrijving",
+      "register.confirmation.title": "Wat gebeurt er na je inschrijving?",
+      "register.confirmation.step1":
+        "Je ontvangt per e-mail een bevestiging met de uitnodiging voor de eerstvolgende infosessie en workshop.",
+      "register.confirmation.step2":
+        "Na de tests plannen we een motivatiegesprek waar we samen je persoonlijk opleidingsplan opstellen.",
+      "register.confirmation.step3":
+        "Past de startdatum niet? We bekijken alternatieven of begeleiden je richting het Digipunt voor extra voorbereiding.",
+      "register.contact.title": "Heb je vragen over het proces?",
+      "register.contact.body":
+        "Contacteer onze trajectcoaches via <a href=\"mailto:inschrijvingen@intecbrussel.be\">inschrijvingen@intecbrussel.be</a> of bel 02/411 29 07 (maandag tot vrijdag, 9:00 - 12:00 en 13:00 - 16:00).",
+      "register.contact.cta": "Neem contact op",
+      "register.faq.label": "Frequently Asked Questions",
+      "register.faq.title": "Practical answers before your intake",
+      "register.faq.lead":
+        "These tips help you prepare for your intake interview. Still have questions? Let us know – we’re happy to support you.",
+      "register.faq.prep.title": "Before your intake",
+      "register.faq.prep.q1.title": "What if I don’t have a VDAB account yet?",
+      "register.faq.prep.q1.body":
+        "Register via VDAB or after a referral from Actiris. Mention it in your form; we’ll guide you through the right steps and paperwork.",
+      "register.faq.prep.q2.title": "Can I combine the programme with work?",
+      "register.faq.prep.q2.body":
+        "Our programmes are full time and intensive. Discuss your situation with your coach; together we explore solutions for childcare, transport or a preparatory pathway.",
+      "register.faq.prep.q3.title": "Is my language level sufficient?",
+      "register.faq.prep.q3.body":
+        "We aim for B1 Dutch or English. During the intake we assess this and offer tailored language support when needed.",
+      "register.faq.support.title": "Support during your journey",
+      "register.faq.support.body":
+        "You’re never on your own. We combine digital tools with personal coaching so you progress smoothly towards internships and a job.",
+      "register.faq.support.badge1": "Career coaches",
+      "register.faq.support.badge2": "Career guidance",
+      "register.faq.support.badge3": "Digital coaches",
+      "register.faq.support.badge4": "Language coaching",
+      "register.faq.support.note":
+        "Need extra help? Mention it in your form. We’re happy to schedule an additional meeting or refer you to the Digipoint for preparatory sessions.",
+      "register.faq.contact.title": "Still unsure?",
+      "register.faq.contact.body":
+        "Reach out and tell us how we can help. Together we’ll decide which programme, timing and support fit your situation best.",
+      "register.faq.contact.ctaPrimary": "Schedule a call",
+      "register.faq.contact.ctaSecondary": "Visit the Digipoint",
+      "register.cta.eyebrow": "Ready to start?",
+      "register.cta.title": "Discover which programme fits you",
+      "register.cta.body":
+        "Review our VDAB-recognised programmes and choose the path that matches your ambitions. We support you from the first intake to long-term employment.",
+      "register.cta.primary": "View all programmes",
+      "register.cta.secondary": "Talk to a coach",
+      "register.faq.label": "Veelgestelde vragen",
+      "register.faq.title": "Praktische antwoorden voor je intake",
+      "register.faq.lead":
+        "Met deze tips kom je goed voorbereid naar je intakegesprek. Heb je toch nog vragen? Laat het ons weten, we helpen je graag verder.",
+      "register.faq.prep.title": "Voor je intake",
+      "register.faq.prep.q1.title": "Wat als ik nog geen VDAB-account heb?",
+      "register.faq.prep.q1.body":
+        "Registreren kan via VDAB of na een doorverwijzing van Actiris. Vermeld het bij je inschrijving; we helpen je met de juiste stappen en formulieren.",
+      "register.faq.prep.q2.title": "Kan ik de opleiding combineren met werk?",
+      "register.faq.prep.q2.body":
+        "Onze trajecten zijn voltijds en intensief. Bespreek je situatie met je trajectcoach; samen zoeken we naar oplossingen rond opvang, mobiliteit of een voorbereid traject.",
+      "register.faq.prep.q3.title": "Is mijn taalniveau voldoende?",
+      "register.faq.prep.q3.body":
+        "We mikken op niveau B1 Nederlands of Engels. Tijdens de intake testen we dit en koppelen we je aan taalondersteuning wanneer dat nodig is.",
+      "register.faq.support.title": "Ondersteuning tijdens je traject",
+      "register.faq.support.body":
+        "Je staat er nooit alleen voor. We combineren digitale tools met persoonlijke begeleiding zodat je vlot doorstroomt naar stage en werk.",
+      "register.faq.support.badge1": "Trajectcoaches",
+      "register.faq.support.badge2": "Loopbaanbegeleiding",
+      "register.faq.support.badge3": "Digicoaches",
+      "register.faq.support.badge4": "Taalcoaching",
+      "register.faq.support.note":
+        "Extra hulp nodig? Vermeld het in je formulier. We plannen graag een bijkomend gesprek of verwijzen je naar het Digipunt voor voorbereidende sessies.",
+      "register.faq.contact.title": "Twijfel je nog?",
+      "register.faq.contact.body":
+        "Neem contact op en vertel ons waarmee we je kunnen helpen. We bekijken samen welke opleiding, timing en ondersteuning het best bij jouw situatie aansluiten.",
+      "register.faq.contact.ctaPrimary": "Plan een kennismaking",
+      "register.faq.contact.ctaSecondary": "Bezoek het Digipunt",
+      "register.cta.eyebrow": "Klaar om te starten?",
+      "register.cta.title": "Ontdek welke opleiding bij jou past",
+      "register.cta.body":
+        "Bekijk het overzicht van onze erkende VDAB-opleidingen en kies het traject dat aansluit bij jouw ambities. We begeleiden je van eerste intake tot duurzame tewerkstelling.",
+      "register.cta.primary": "Bekijk het aanbod",
+      "register.cta.secondary": "Bespreek met een coach",
+
+      "about.label": "Over INTEC",
+      "about.missionTitle": "Missie &amp; Visie",
+      "about.missionIntro":
+        "We bouwen aan een samenleving waarin iedereen ten volle kan deelnemen aan de digitale wereld. Ongeacht achtergrond, leeftijd, gender of opleidingsniveau zetten we talent centraal en verlagen we de drempels naar kwaliteitsvolle jobs.",
+      "about.missionDetail":
+        "Onze trajecten combineren technische expertise met taalcoaching, soft skills en duurzame begeleiding. Zo slaan we bruggen tussen werkzoekenden, werkgevers en de brede samenleving. Inclusie, gelijke kansen en toekomstgerichte vaardigheden vormen de leidraad van alles wat we doen.",
+      "about.hero.title": "Missie & Visie",
+      "about.hero.lead":
+        "We bouwen aan een samenleving waarin iedereen kan meedoen in de digitale wereld. Talent staat centraal, ongeacht achtergrond of leeftijd. We verlagen drempels naar duurzame jobs en versterken digitale vaardigheden bij elke stap.",
+      "about.hero.chip1": "Inclusieve opleidingen",
+      "about.hero.chip2": "Digitaal en toekomstgericht",
+      "about.hero.chip3": "Taalcoaching & support",
+      "about.hero.primary": "Ontdek opleidingen",
+      "about.hero.secondary": "Plan kennismaking",
+      "about.values.label": "Impact",
+      "about.values.title": "Waar we elke dag voor gaan",
+      "about.values.lead":
+        "Elke opleiding en elk traject vertrekt vanuit dezelfde bouwstenen: mensgericht, duurzaam en digitaal. Samen met onze partners zorgen we ervoor dat talent kan groeien en organisaties klaar zijn voor morgen.",
+      "about.values.card1Title": "Toegang voor iedereen",
+      "about.values.card1Body":
+        "Van taalondersteuning tot digicoaches: we zorgen dat elk talent kan instromen en doorstromen.",
+      "about.values.card2Title": "Sterke partnerschappen",
+      "about.values.card2Body":
+        "We werken samen met bedrijven, overheden en non-profits om impact te maken in Brussel en Vlaanderen.",
+      "about.values.card3Title": "Innovatie met mensen",
+      "about.values.card3Body":
+        "Technologie is geen doel op zich: we koppelen digitale knowhow aan soft skills en coaching.",
+      "about.values.card4Title": "Duurzame jobs",
+      "about.values.card4Body":
+        "We begeleiden alumni tot een jaar na afstuderen en investeren in duurzame tewerkstelling.",
+      "about.valuesTitle": "Onze waarden",
+      "about.values.quality": "Kwaliteit en continue verbetering in programma's en coaching.",
+      "about.values.respect": "Respect, openheid en transparantie in elke samenwerking.",
+      "about.values.teamwork": "Teamwork en een groeimindset over disciplines heen.",
+      "about.values.innovation": "Innovatie met aandacht voor mens en maatschappij.",
+      "about.buttons.report": "Jaarverslag",
+      "about.buttons.team": "Het Team",
+      "about.workTitle": "Werken bij INTEC Brussel?",
+      "about.workIntro":
+        "Sluit je aan bij een divers en geengageerd team dat mensen vooruit helpt via opleiding en coaching. We werken interdisciplinair en zetten sterk in op gelijke kansen en levenslang leren.",
+      "about.workDetail":
+        "Trainers, trajectbegeleiders, digicoaches en ondersteunende profielen delen kennis, ontwerpen leerlijnen en begeleiden cursisten naar duurzame tewerkstelling.",
+      "about.workCta": "Bekijk vacatures",
+      "about.experienceTitle": "Ervaring sinds 2001",
+      "about.experienceIntro":
+        "Meer dan twintig jaar geleden startten we als opleidingspartner van VDAB. Vandaag begeleiden we werkzoekenden, starters en professionals naar digitale en technische beroepen.",
+      "about.experienceDetail":
+        "Onze trajecten focussen op hard skills, soft skills en duurzame werkplekken. Alumni vinden hun weg naar consultancy, zorginstellingen, overheden en startups. We investeren in langlopende partnerschappen zodat talent blijft groeien.",
+      "about.journey.label": "Onze aanpak",
+      "about.journey.title": "Van talent tot duurzame tewerkstelling",
+      "about.journey.step1Title": "1. Instroom & selectie",
+      "about.journey.step1Body":
+        "We starten met infosessies, assessments en taalchecks zodat elke cursist in het juiste traject belandt.",
+      "about.journey.step2Title": "2. Leertraject & coaching",
+      "about.journey.step2Body":
+        "Intensieve modules, taalondersteuning en loopbaanbegeleiding gaan hand in hand. We werken in kleine groepen met veel praktijk.",
+      "about.journey.step3Title": "3. Stage & alumni",
+      "about.journey.step3Body":
+        "We koppelen cursisten aan partners, volgen hen op tot een jaar na instroom en blijven investeren in verdere groei.",
+      "about.cta.eyebrow": "Samen bouwen",
+      "about.cta.title": "Wil je mee het verschil maken voor talent in Brussel?",
+      "about.cta.body":
+        "Neem contact op en ontdek hoe we kunnen samenwerken rond trajecten, stages of coaching.",
+      "about.cta.primary": "Contacteer ons team",
+      "about.cta.secondary": "Ontdek opleidingen",
+
+      "team.meta.title": "Wie zijn we | INTEC Brussel",
+      "team.meta.description":
+        "Ontdek wie wij zijn bij INTEC Brussel: ontmoet de teams achter onze opleidingen, leer over onze partners en samenwerking met werkgevers en ontdek de kracht van ons netwerk.",
+      "team.label": "Wie zijn we",
+      "team.hero.title": "Raad van bestuur & team",
+      "team.hero.lead":
+        "Achter elke opleiding staat een betrokken raad van bestuur en een team dat dagelijks inzet op begeleiding, coaching en technische expertise. Maak kennis met de mensen die INTEC Brussel vormgeven.",
+      "team.hero.chip1": "Raad van bestuur",
+      "team.hero.chip2": "Administratie & coaching",
+      "team.hero.chip3": "Instructeurs & techniek",
+      "team.hero.ctaPrimary": "Bekijk het team",
+      "team.hero.ctaSecondary": "Neem contact op",
+
+      "team.board.title": "Raad van bestuur",
+      "team.board.frans": "Frans De Keyser \u2013 Voorzitter",
+      "team.board.guido": "Guido De Grefte \u2013 Penningmeester",
+      "team.board.bart": "Bart Jaeken \u2013 Bestuurder",
+      "team.board.frederik": "Frederik Roelens \u2013 Bestuurder",
+      "team.board.cedric": "C\u00E9dric van Garsse \u2013 Bestuurder",
+
+      "team.values.label": "Het team",
+      "team.values.title": "Samen sterk voor digitale inclusie",
+      "team.values.lead":
+        "Ons team bestaat uit ervaren collega's die administratie, coaching, instructie en technische ondersteuning combineren. Hieronder vind je een overzicht van de groepen die elke dag voor cursisten klaarstaan.",
+      "team.values.admin.title": "Administratie",
+      "team.values.admin.body": "Sana B.<br />Sango C.",
+      "team.values.coaching.title": "Tewerkstelling & taalcoaching",
+      "team.values.coaching.body": "Fadwa E.<br />Aynur D.<br />Teodora M.<br />Manal E.<br />Hanae Z.",
+      "team.values.instructors.title": "Instructeurs",
+      "team.values.instructors.body":
+        "Omar M.<br />Denys L.<br />Hilal D.<br />Sean D.L.<br />Lawrence B.<br />Ziba H.<br />Sona G.<br />Enock M.A.<br />Tijl S.<br />Sander D.G.",
+      "team.values.it.title": "IT-Technicus INOPTEC+",
+      "team.values.it.body": "Erwin S.<br />Thomas T.<br />Yewondwossen S.<br />Aboubacar D.<br />Janan J.<br />Tetiana Y.",
+
+      "team.stories.leaders.title": "Teamleiders & co\u00F6rdinatie",
+      "team.stories.leaders.body1":
+        "Teamleiders:<br />Sana B. \u2013 Administratie<br />Erwin S. \u2013 INOPTEC+<br />Omar M. \u2013 Instructeurs<br />Teodora M. \u2013 Tewerkstelling & taalcoaching",
+      "team.stories.leaders.body2": "Personeelsverantwoordelijke:<br />Sajid Y.<br />Sana B.",
+      "team.stories.leaders.body3": "Algemeen co\u00F6rdinator:<br />Ruud Marks",
+      "team.stories.support.title": "Ondersteunende diensten",
+      "team.stories.support.body1": "Stafmedewerker:<br />Noor W.",
+      "team.stories.support.body2": "Digicoach:<br />Sabrina C.",
+      "team.stories.support.body3":
+        "Samen zorgen zij voor opvolging, administratie, digitale ondersteuning en een warme ontvangst van elke cursist.",
+
+      "team.approach.title": "Hoe raad en team samenwerken",
+      "team.approach.step1Title": "Strategie & bestuur",
+      "team.approach.step1Body":
+        "De raad van bestuur bepaalt de strategische koers en waakt over onze missie. Zij ondersteunen het team met advies, netwerken en kwaliteitsbewaking.",
+      "team.approach.step2Title": "Co\u00F6rdinatie & teamleiders",
+      "team.approach.step2Body":
+        "Teamleiders zorgen voor dagelijkse opvolging, personeelsbeleid en afstemming tussen administratie, instructeurs en coaches. Het management vertaalt de bestuurslijnen naar acties.",
+      "team.approach.step3Title": "Uitvoering & begeleiding",
+      "team.approach.step3Body":
+        "Instructeurs, coaches en technici begeleiden cursisten op de werkvloer en in het opleidingscentrum. Ze leveren maatwerk met ondersteuning van digicoach en staf.",
+
+      "team.cta.eyebrow": "Sluit je aan",
+      "team.cta.title": "Wil je mee bouwen aan ons team?",
+      "team.cta.body":
+        "We staan open voor nieuwe partners, vrijwilligers en toekomstige collega's. Neem contact op voor meer informatie over samenwerking, gastlessen of openstaande vacatures.",
+      "team.cta.primary": "Plan een kennismaking",
+      "team.cta.secondary": "Ontdek opleidingen",
+
+      "vacancies.meta.title": "Vacatures bij INTEC Brussel | INTEC Brussel",
+      "vacancies.meta.description":
+        "Ontdek de vacatures bij INTEC Brussel en solliciteer voor functies in coaching, administratie, IT-training en ondersteuning.",
+      "vacancies.label": "Vacatures",
+      "vacancies.hero.title": "Vacatures bij INTEC Brussel",
+      "vacancies.hero.lead":
+        "Werk mee aan onze missie om talent te ontwikkelen en te begeleiden naar duurzame IT-jobs. We zoeken collega's die impact willen maken.",
+      "vacancies.hero.chip1": "Impactvolle teams",
+      "vacancies.hero.chip2": "Lerende organisatie",
+      "vacancies.hero.chip3": "Hybride samenwerken",
+      "vacancies.hero.cardTitle": "Je toekomst bij INTEC",
+      "vacancies.hero.perk1": "Betrokken teams die talent laten groeien.",
+      "vacancies.hero.perk2": "Ruimte voor opleiding, coaching en innovatie.",
+      "vacancies.hero.perk3": "Flexibele werkplekken in Brussel en daarbuiten.",
+      "vacancies.hero.ctaLinkedIn": "Volg ons op LinkedIn",
+      "vacancies.hero.ctaContact": "Neem contact op",
+      "vacancies.section.title": "Onze openstaande vacatures",
+      "vacancies.section.lead":
+        "Hier vind je een overzicht van alle actuele vacatures bij INTEC Brussel. Solliciteer online of neem contact op voor meer informatie.",
+      "vacancies.empty":
+        "Er zijn momenteel geen openstaande vacatures. Kom binnenkort terug of volg ons op LinkedIn voor updates.",
+      "vacancies.error": "Vacatures konden niet geladen worden. Probeer later opnieuw.",
+      "vacancies.loading": "Vacatures worden geladen...",
+      "vacancies.card.team": "Team",
+      "vacancies.card.location": "Locatie",
+      "vacancies.card.posted": "Gepost op",
+      "vacancies.card.postedUnknown": "Datum onbekend",
+      "vacancies.card.button": "Bekijk vacature",
+      "vacancies.cta.eyebrow": "Blijf op de hoogte",
+      "vacancies.cta.title": "Geen geschikte vacature gevonden?",
+      "vacancies.cta.body":
+        "Volg ons op LinkedIn of stuur een spontane sollicitatie naar ons HR-team. We leren je graag kennen.",
+      "vacancies.cta.primary": "Terug naar Home",
+      "vacancies.cta.secondary": "Volg ons op LinkedIn",
+
+      "contact.label": "Contact",
+      "contact.title": "We helpen je graag verder",
+      "contact.intro":
+        "Heb je vragen over onze opleidingen, wil je samenwerken of plan je een bedrijfsbezoek? Stuur ons een bericht via het formulier of neem rechtstreeks contact op met een van onze medewerkers.",
+      "contact.form.name": "Naam",
+      "contact.form.email": "E-mailadres",
+      "contact.form.message": "Bericht",
+      "contact.form.submit": "Verstuur bericht",
+      "contact.placeholders.name": "Voor- en achternaam",
+      "contact.placeholders.email": "naam@voorbeeld.be",
+      "contact.placeholders.message": "Waarmee kunnen we je helpen?",
+      "contact.peopleTitle": "Contactpersonen",
+      "contact.general.title": "Algemene info",
+      "contact.general.body": "info@intecbrussel.be<br />02/411 29 07",
+      "contact.pr.title": "Pers &amp; communicatie",
+      "contact.pr.body": "pr@intecbrussel.be",
+      "contact.stage.title": "Stages &amp; werkplekleren",
+      "contact.stage.body": "stage@intecbrussel.be",
+      "contact.openingTitle": "Openingstijden campus",
+      "contact.openingHours": "Maandag - Vrijdag, 9:00 - 16:00",
+      "contact.phoneHours": "Telefonisch bereikbaar 9:00 - 12:00 en 13:00 - 16:00",
+      "contact.addressTitle": "Bezoek ons",
+      "contact.addressBody": "INTEC Brussel<br />Rouppeplein 16<br />1000 Brussel",
+      "contact.access":
+        "Op 5 minuten wandelen van station Brussel-Centraal. Bereikbaar met metro lijnen 1 en 5 (halte De Brouckere) en tram 3, 4 (halte Anneessens).",
+      "contact.mapCta": "Route plannen",
+
+      "digipunt.label": "Digipunt",
+      "digipunt.title": "Digitale hulp op maat in Muntpunt",
+      "digipunt.intro":
+        "Het Digipunt van INTEC Brussel in de Muntpunt-bibliotheek ondersteunt iedereen die zich digitaal achterop voelt of gewoon vaardiger wil worden met smartphone, tablet of computer.",
+      "digipunt.coach":
+        "Onze digicoaches beantwoorden jouw vragen, helpen je stap voor stap verder en stellen samen een leerplan op zodat je zelfstandig kan oefenen.",
+      "digipunt.servicesTitle": "Wat kan je bij ons leren?",
+      "digipunt.services.phones": "Apps, instellingen en accounts op smartphone of tablet",
+      "digipunt.services.laptops": "Laptopbasics, bestanden beheren en veilig surfen",
+      "digipunt.services.online": "Online diensten zoals afspraken maken, bankieren en shoppen",
+      "digipunt.services.safety": "Onlinesecurity en bescherming tegen phishing",
+      "digipunt.workshops":
+        "We organiseren gratis workshops en persoonlijke coachingtrajecten. Alles is kosteloos en toegankelijk zonder afspraak tijdens de openingsuren.",
+      "digipunt.hoursTitle": "Openingsuren &amp; locatie",
+      "digipunt.location": "Digipunt INTEC<br />Muntpunt bibliotheek, 3e verdieping<br />Munt 6, 1000 Brussel",
+      "digipunt.hours.tue": "Dinsdag: 14:00 - 18:00 (vrije inloop)",
+      "digipunt.hours.wed": "Woensdag &amp; donderdag: 14:00 - 17:00",
+      "digipunt.hours.fri": "Vrijdag: 14:00 - 17:00",
+      "digipunt.contactTitle": "Contact",
+      "digipunt.contactDetails": "digipunt@intecbrussel.be<br />+32 474 93 17 46",
+      "digipunt.CTAtext":
+        "Wil je meer weten of een groepssessie aanvragen? Stuur ons een mail of bel en we bekijken samen de mogelijkheden.",
+      "digipunt.moreInfo": "Meer info",
+
+      "partners.label": "Partner toegang",
+      "partners.title": "Beveiligd partnerportaal",
+      "partners.intro":
+        "Deze omgeving is uitsluitend toegankelijk voor partners met een validatiecontract. Onrechtmatige toegang wordt gelogd.",
+      "partners.username": "Gebruikersnaam",
+      "partners.password": "Wachtwoord",
+      "partners.submit": "Aanmelden",
+      "partners.support":
+        "Wachtwoord vergeten of geen toegang? Contacteer je accountmanager via partners@intecbrussel.be.",
+      "partners.placeholders.username": "Partner-ID of e-mailadres",
+      "partners.placeholders.password": "Wachtwoord",
+
+      "form.required.default": "Dit veld is verplicht.",
+      "form.required.name": "Noteer je volledige naam.",
+      "form.required.email": "Vul je e-mailadres in.",
+      "form.required.phone": "Vul je telefoonnummer in.",
+      "form.required.course": "Selecteer een opleiding.",
+      "form.required.gender": "Geef je geslacht aan.",
+      "form.required.national": "Vul je rijksregisternummer in.",
+      "form.required.address": "Vul je straat en huisnummer in.",
+      "form.required.postcode": "Vul je postcode in.",
+      "form.required.city": "Vul je gemeente of stad in.",
+      "form.required.message": "Schrijf je bericht.",
+      "form.required.username": "Gebruikersnaam is verplicht.",
+      "form.required.password": "Wachtwoord is verplicht.",
+      "form.error.email": "Controleer je e-mailadres.",
+    },
+    en: {
+      "nav.brand": "INTEC Brussels",
+      "nav.toggle": "Open menu",
+      "nav.home": "Home",
+      "nav.training": "Programmes",
+      "nav.register": "Enrol",
+      "nav.about": "About",
+      "nav.contact": "Contact",
+      "nav.partners": "Partner Access",
+      "nav.digipunt": "Digipunt",
+      "nav.languageGroup": "Language selection",
+
+      "home.hero.eyebrow": "Accredited VDAB programmes",
+      "home.hero.title": "Discover our current range of accredited VDAB programmes",
+      "home.hero.lead":
+        "INTEC Brussels guides you towards a sustainable IT career with programmes that combine technical skills, language support and coaching. We build bridges between talent and employers who embrace diversity.",
+      "home.hero.ctaPrimary": "View programmes",
+      "home.hero.ctaSecondary": "Book an intake",
+      "home.hero.caption":
+        "Campus labs, blended learning and industry coaches help you master every step of the journey.",
+
+      "home.courses.label": "Programmes",
+      "home.courses.title": "Tracks that accelerate your career",
+      "home.courses.lead":
+        "Our accredited VDAB programmes focus on future-proof IT skills. You learn in small groups with digicoaches and language support available at every moment.",
+      "home.courses.pc.title": "PC & Network Technician",
+      "home.courses.pc.body":
+        "Build expertise in hardware installations, server management and troubleshooting network incidents for SMEs and large organisations.",
+      "home.courses.pc.date1": "Start dates: 7 October 2025",
+      "home.courses.pc.date2": "Additional intake: 13 January 2026",
+      "home.courses.pc.cta": "Programme details",
+      "home.courses.python.title": "Network Administrator with Python",
+      "home.courses.python.body":
+        "Combine network architecture, automation and Python scripting to monitor and manage infrastructures with maximum efficiency.",
+      "home.courses.python.date1": "Start date: 18 November 2025",
+      "home.courses.python.cta": "Programme details",
+      "home.courses.systems.title": "System Administrator",
+      "home.courses.systems.body":
+        "Learn to manage Windows and Linux servers, deploy virtualisation platforms and configure cloud resources securely.",
+      "home.courses.systems.date1": "Start dates: 14 October 2025",
+      "home.courses.systems.date2": "Language pathway intake: 10 February 2026",
+      "home.courses.systems.cta": "Programme details",
+      "home.courses.cyber.title": "Cyber Security Engineer",
+      "home.courses.cyber.body":
+        "Secure networks, run ethical hacking exercises and analyse digital traces to prevent attacks and limit incidents.",
+      "home.courses.cyber.date1": "Start date: 3 March 2026",
+      "home.courses.cyber.cta": "Programme details",
+
+      "home.stats.price": "Tuition fee: EUR 0",
+      "home.stats.priceDetail": "Fully subsidised programmes for job seekers.",
+      "home.stats.partners": "100+ partners",
+      "home.stats.partnersDetail": "Employers in consultancy, public sector and care.",
+      "home.stats.diversity": "Diversity label",
+      "home.stats.diversityDetail": "Inclusive selection with language support.",
+      "home.stats.digicoach": "Digicoach",
+      "home.stats.digicoachDetail": "One-to-one guidance for digital skills.",
+      "home.stats.language": "Language coaching",
+      "home.stats.languageDetail": "Dutch and English support throughout your journey.",
+
+      "counter.label": "Impact",
+      "counter.title": "Our impact in numbers",
+      "counter.lead":
+        "Behind every programme stands years of expertise, motivated learners and partner companies offering internships and jobs. These indicators show what you can expect.",
+      "counter.experience": "Years of experience",
+      "counter.alumni": "Graduated learners",
+      "counter.employment": "Employment after training",
+      "counter.internship": "Internship placement success",
+
+      "home.partners.label": "Partners",
+      "home.partners.title": "Collaboration with companies, authorities and non-profits",
+      "home.partners.lead":
+        "More than twenty years of experience resulted in a strong network of employers and social partners that invest in digital skills and inclusive teams.",
+      "home.partnerCallout.title": "INOPTEC+: your reliable IT support partner",
+      "home.partnerCallout.body":
+        "Our in-house IT support cell provides helpdesk services, microlearning and onsite interventions for organisations that want to strengthen their digital transformation. Request an introduction meeting.",
+      "home.partnerCallout.cta": "Contact us",
+
+      "support.hero.eyebrow": "Programme",
+      "support.hero.title": "PC & Network Technician",
+      "support.hero.lead":
+        "Build your future in ICT support with a hands-on track that blends hardware, networking and customer-facing skills. Learn to analyse incidents, secure systems and guide users professionally.",
+      "support.hero.ctaPrimary": "Book your intake",
+      "support.hero.ctaSecondary": "View programme",
+      "support.hero.caption":
+        "Learn in small groups with modern labs and coaching from industry experts.",
+      "support.hero.metaTitle": "Upcoming start dates",
+      "support.hero.metaDates": "9 March 2026 (registrations open)",
+      "support.hero.metaNote":
+        "Register up to six months before the start. Info sessions and assessments help determine if this path fits you.",
+      "support.overview.label": "What you learn",
+      "support.overview.title": "A solid base in IT support",
+      "support.overview.text1":
+        "You become the first point of contact for workstations, servers and users. Combine troubleshooting with proactive monitoring and documentation following ITIL standards.",
+      "support.overview.text2":
+        "Beyond technology we focus on communication, service skills and workplace organisation, enabling you to report clearly, prioritise tasks and support teams in hybrid environments.",
+      "support.overview.listTitle": "During the programme",
+      "support.overview.list1": "70% practical labs covering hardware, networking and security",
+      "support.overview.list2": "Internship with a partner company or social-profit organisation",
+      "support.overview.list3": "Coaching by digicoaches plus language support",
+      "support.overview.list4": "Soft skills: customer communication, teamwork and planning",
+      "support.modules.label": "Curriculum",
+      "support.modules.title": "Modules & subject areas",
+      "support.modules.lead":
+        "A mix of fundamentals and specialisations prepares you for helpdesk, onsite support or technical operations within SMEs, public sector and integrators.",
+      "support.modules.deviceTitle": "Workplace & hardware",
+      "support.modules.deviceBody":
+        "Assembly, imaging, maintenance and troubleshooting of PCs, laptops and peripherals. Work with diagnostic tools and lifecycle best practices.",
+      "support.modules.networkTitle": "Networking & cloud",
+      "support.modules.networkBody":
+        "LAN/WAN basics, Wi-Fi, routing & switching, introduction to Azure and M365 administration. Configure, monitor and resolve incidents.",
+      "support.modules.osTitle": "Operating systems",
+      "support.modules.osBody":
+        "Windows 11, Windows Server and Linux basics. Automation with PowerShell, access management and secure configurations.",
+      "support.modules.securityTitle": "Security & service",
+      "support.modules.securityBody":
+        "Endpoint protection, backup, disaster recovery and documentation. Work with ITIL processes, SLAs and service desk tooling.",
+      "support.journey.label": "Journey",
+      "support.journey.title": "From intake to your first job",
+      "support.journey.step1Title": "Intake & fundamentals",
+      "support.journey.step1Body":
+        "Info session, assessments and language check. You start with workplace fundamentals, safety and service desk flow.",
+      "support.journey.step2Title": "Deep dive labs",
+      "support.journey.step2Body":
+        "Project-based labs on networking, virtualisation and scripting. Coaching on troubleshooting and customer communication.",
+      "support.journey.step3Title": "Internship & certification",
+      "support.journey.step3Body":
+        "6 to 8 week internship. Prepare for certificates such as CompTIA ITF+ or Microsoft Fundamentals.",
+      "support.journey.step4Title": "Career coaching",
+      "support.journey.step4Body":
+        "CV and interview coaching, partner matching and follow-up during your first year on the job.",
+      "program.info.label": "Practical",
+      "program.info.generalTitle": "General information about this programme",
+      "program.info.item1": "Tuition: Free",
+      "program.info.item2": "Language: Dutch",
+      "program.info.item3": "Prerequisites: None required",
+      "program.info.item4": "Programme duration: 1 year",
+      "program.info.item5": "Classes: Monday to Friday, 08:30 - 17:00 (start at 09:00)",
+      "program.info.note":
+        "Do you have specific needs to participate in the selection or programme? For example because of a physical limitation. Let us know.",
+      "program.info.locationTitle": "Location",
+      "program.info.locationBody":
+        "Campus Rouppeplein 16, 1000 Brussels. This venue is easily accessible by public transport.",
+      "program.info.benefitsTitle": "Benefits",
+      "program.info.benefit1": "Travel costs are reimbursed during the programme.",
+      "program.info.benefit2": "Childcare or after-school care costs are reimbursed.",
+      "program.info.benefit3":
+        "You remain legally covered for unemployment benefits and other allowances throughout the programme.",
+      "support.cta.title": "Ready to launch as a PC & Network Technician?",
+      "support.cta.body":
+        "Book your intake and discover how we personalise your learning path. Our coaches are ready to answer your questions.",
+      "support.cta.primary": "Book intake",
+      "support.cta.secondary": "Ask a question",
+      "program.cta.eyebrow": "Next step",
+
+      "python.hero.eyebrow": "Programme",
+      "python.hero.title": "Network Administrator with Python",
+      "python.hero.lead":
+        "Learn to design and operate enterprise networks while automating workflows with Python. This track combines infrastructure, cloud and scripting to prepare you for modern network environments.",
+      "python.hero.ctaPrimary": "Book your intake",
+      "python.hero.ctaSecondary": "View programme",
+      "python.hero.caption":
+        "Bring together networking labs with Python automation and DevOps tooling.",
+      "python.hero.metaTitle": "Start date",
+      "python.hero.metaDates": "18 November 2025",
+      "python.hero.metaNote":
+        "Register up to six months before the start. After the intake you follow a preparatory sprint with Python essentials.",
+      "python.overview.label": "What you learn",
+      "python.overview.title": "Automating networks end-to-end",
+      "python.overview.text1":
+        "Deep dive into routing, switching, firewalls and wireless. Use Python to build scripts that manage configurations, automate monitoring and call APIs.",
+      "python.overview.text2":
+        "We link infrastructure operations with DevOps practices: version control, CI/CD for network code and thorough documentation to deliver changes safely.",
+      "python.overview.listTitle": "During the programme",
+      "python.overview.list1": "Network design labs with Cisco and open source environments",
+      "python.overview.list2": "Python sprints covering automation, REST APIs and data parsing",
+      "python.overview.list3": "Introductions to cloud networking (Azure, AWS) and containerisation",
+      "python.overview.list4": "Internship project focused on network operations or NetDevOps",
+      "python.modules.label": "Curriculum",
+      "python.modules.title": "Modules & specialisations",
+      "python.modules.lead":
+        "Combine networking fundamentals with automation and security. Each module ends with a lab case to validate your skills.",
+      "python.modules.networkTitle": "Enterprise networking",
+      "python.modules.networkBody":
+        "Routing & switching, VLANs, QoS and wireless design. Implementation using Cisco and open standards.",
+      "python.modules.pythonTitle": "Python & automation",
+      "python.modules.pythonBody":
+        "Python fundamentals, object-oriented programming, APIs, Ansible and scripting for configuration management.",
+      "python.modules.cloudTitle": "Cloud & observability",
+      "python.modules.cloudBody":
+        "Networking in Azure and AWS, IaC with Terraform, log analysis and monitoring with Grafana and Prometheus.",
+      "python.modules.securityTitle": "Security & automation ops",
+      "python.modules.securityBody":
+        "Zero trust, firewall policies, automated compliance checks and incident response workflows.",
+      "python.journey.label": "Journey",
+      "python.journey.title": "Your learning path",
+      "python.journey.step1Title": "Intake & fundamentals",
+      "python.journey.step1Body":
+        "Network and language screening plus onboarding into Python fundamentals and core concepts.",
+      "python.journey.step2Title": "Network expertise",
+      "python.journey.step2Body":
+        "Configuration and troubleshooting in physical and virtual labs including Cisco Packet Tracer and GNS3.",
+      "python.journey.step3Title": "Automation",
+      "python.journey.step3Body":
+        "Python and Ansible projects, DevOps workflows and integration with monitoring platforms.",
+      "python.journey.step4Title": "Internship & certification",
+      "python.journey.step4Body":
+        "Eight week internship, preparation for Cisco CCNA, DevNet Associate or PCEP certifications and intensive career coaching.",
+      "python.cta.title": "Shape the future with networking & Python",
+      "python.cta.body":
+        "Book your intake and discover how this track prepares you for roles such as network engineer, NetDevOps or cloud operations specialist.",
+      "python.cta.primary": "Book intake",
+      "python.cta.secondary": "Ask a question",
+
+      "system.hero.eyebrow": "Programme",
+      "system.hero.title": "System Administrator",
+      "system.hero.lead":
+        "Manage hybrid infrastructures with confidence. This programme combines Windows, Linux, virtualisation, cloud and automation so you can design, run and secure any environment.",
+      "system.hero.ctaPrimary": "Book your intake",
+      "system.hero.ctaSecondary": "View programme",
+      "system.hero.caption":
+        "Work in enterprise labs featuring Windows, Linux, VMware, Hyper-V and cloud platforms.",
+      "system.hero.metaTitle": "Start dates",
+      "system.hero.metaDates": "14 October 2025 / 10 February 2026",
+      "system.hero.metaNote":
+        "Choose your intake path based on your experience. The intake determines which modules you start with.",
+      "system.overview.label": "What you learn",
+      "system.overview.title": "Full control over infrastructure",
+      "system.overview.text1":
+        "Gain expertise in managing servers, storage, networking and identity. Windows Server, Linux, Active Directory, PowerShell and Bash become second nature.",
+      "system.overview.text2":
+        "Automation and monitoring are central. Write scripts, use configuration management and work with Azure, VMware, Proxmox and Ansible.",
+      "system.overview.listTitle": "During the programme",
+      "system.overview.list1": "Hands-on labs on Windows, Linux, virtualisation and storage",
+      "system.overview.list2": "Projects involving Microsoft 365, Azure AD, Intune and hybrid cloud",
+      "system.overview.list3": "Focus on security, backup and business continuity",
+      "system.overview.list4": "Internship project with one of our infrastructure partners",
+      "system.modules.label": "Curriculum",
+      "system.modules.title": "Modules & expertise areas",
+      "system.modules.lead":
+        "Each module blends theory with lab cases so you can manage production systems afterwards.",
+      "system.modules.windowsTitle": "Windows & Microsoft 365",
+      "system.modules.windowsBody":
+        "Active Directory, Group Policy, Intune, Exchange Online and Teams. Automate with PowerShell and manage endpoints using modern management.",
+      "system.modules.linuxTitle": "Linux & open source",
+      "system.modules.linuxBody":
+        "Linux server management, shell scripting, services, containerisation and monitoring with open-source tooling.",
+      "system.modules.virtualizationTitle": "Virtualisation & cloud",
+      "system.modules.virtualizationBody":
+        "VMware, Hyper-V, Proxmox, Azure infrastructure, IaC and backup solutions for hybrid environments.",
+      "system.modules.securityTitle": "Security & automation",
+      "system.modules.securityBody":
+        "Hardening, patch management, incident response, SIEM introduction and automation with Ansible and PowerShell DSC.",
+      "system.journey.label": "Journey",
+      "system.journey.title": "Your growth in four phases",
+      "system.journey.step1Title": "Intake & fundamentals",
+      "system.journey.step1Body":
+        "Language and logic assessments, introductory project and refresh of core networking and OS administration.",
+      "system.journey.step2Title": "Server & platform operations",
+      "system.journey.step2Body":
+        "Advanced configurations, automation and monitoring in labs with real-world scenarios.",
+      "system.journey.step3Title": "Cloud & security",
+      "system.journey.step3Body":
+        "Hybrid architectures, identity, governance and security by design. Preparation for certifications such as Microsoft AZ-104.",
+      "system.journey.step4Title": "Internship & career coaching",
+      "system.journey.step4Body":
+        "Eight-week internship, portfolio building, interview training and employer matching.",
+      "system.cta.title": "Become the backbone of every IT infrastructure",
+      "system.cta.body":
+        "Book your intake and take the step toward roles such as system administrator, cloud engineer or platform specialist.",
+      "system.cta.primary": "Book intake",
+      "system.cta.secondary": "Ask a question",
+
+      "security.hero.eyebrow": "Programme",
+      "security.hero.title": "Cyber Security Engineer",
+      "security.hero.lead":
+        "Learn to detect, stop and prevent cyber attacks. Combine ethical hacking with security architecture, monitoring and incident response for networks, servers and cloud.",
+      "security.hero.ctaPrimary": "Book your intake",
+      "security.hero.ctaSecondary": "View programme",
+      "security.hero.caption":
+        "Work with SOC tooling, SIEM, forensics and red-team platforms guided by experts.",
+      "security.hero.metaTitle": "Start date",
+      "security.hero.metaDates": "3 March 2026",
+      "security.hero.metaNote":
+        "Intake includes a security mindset check, logic tests and a refresh of core networking.",
+      "security.overview.label": "What you learn",
+      "security.overview.title": "Defend every layer of the organisation",
+      "security.overview.text1":
+        "Analyse vulnerabilities, perform pentests and build defensive mechanisms. We blend blue team, red team and governance so you secure end-to-end.",
+      "security.overview.text2":
+        "Build security programmes that cover people, process and technology. Work with frameworks such as NIST, CIS and ISO 27001.",
+      "security.overview.listTitle": "During the programme",
+      "security.overview.list1": "Labs covering network, endpoint and cloud security",
+      "security.overview.list2": "Threat hunting inside a simulated Security Operations Center",
+      "security.overview.list3": "Incident response exercises with forensics and reporting",
+      "security.overview.list4": "Internship at companies, public sector or SOC partners",
+      "security.modules.label": "Curriculum",
+      "security.modules.title": "Modules & labs",
+      "security.modules.lead":
+        "Each block mixes theory with lab scenarios. You work with up-to-date tools, frameworks and case files.",
+      "security.modules.networkTitle": "Network & endpoint security",
+      "security.modules.networkBody":
+        "Firewalls, IDS/IPS, secure configuration, zero trust, endpoint hardening and patch management.",
+      "security.modules.siemaTitle": "SOC & threat detection",
+      "security.modules.siemaBody":
+        "SIEM, log analytics, threat hunting, MITRE ATT&CK, automation with SOAR playbooks and reporting.",
+      "security.modules.offensiveTitle": "Ethical hacking & forensics",
+      "security.modules.offensiveBody":
+        "Pentesting, exploit development, red teaming, forensic imaging and malware analysis.",
+      "security.modules.governanceTitle": "Governance & cloud security",
+      "security.modules.governanceBody":
+        "NIST, CIS controls, ISO 27001, risk analysis, cloud security posture and compliance management.",
+      "security.journey.label": "Journey",
+      "security.journey.title": "From fundamentals to security specialist",
+      "security.journey.step1Title": "Intake & fundamentals",
+      "security.journey.step1Body":
+        "Screening, refresh of networking and operating systems, introduction to the security mindset and tooling.",
+      "security.journey.step2Title": "Blue team labs",
+      "security.journey.step2Body":
+        "Monitoring, detection, incident handling and reporting inside a simulated SOC.",
+      "security.journey.step3Title": "Red team & forensics",
+      "security.journey.step3Body":
+        "Pentesting, exploitation, reverse engineering and forensic investigations using real case studies.",
+      "security.journey.step4Title": "Internship & certification",
+      "security.journey.step4Body":
+        "Eight-week internship, coaching towards certifications such as CompTIA Security+, Cisco CCST or EC-Council, plus intensive job matching.",
+      "security.cta.title": "Protect organisations from digital threats",
+      "security.cta.body":
+        "Book your intake and discover how you can make the difference as a cyber security engineer, SOC analyst or incident responder.",
+      "security.cta.primary": "Book intake",
+      "security.cta.secondary": "Ask a question",
+
+      "footer.mission":
+        "INTEC Brussels builds an inclusive digital society through training, coaching and partnerships with employers who are ready for tomorrow.",
+      "footer.contactTitle": "Contact",
+      "footer.address": "Rouppeplein 16<br />1000 Brussels",
+      "footer.companyTitle": "Company info",
+      "footer.companyNumber": "Company number: 0476.094.416",
+      "footer.siteNumber": "Establishment number: 2.108.890.046",
+      "footer.socialNumber": "NSSO: 10/945-31-54801",
+      "footer.followTitle": "Follow us",
+      "footer.accreditation": "Accredited by VDAB, Actiris and ESF.",
+
+      "register.label": "Enrol",
+      "register.title": "Start your journey with an intake interview",
+      "register.intro":
+        "Every programme starts with an intake. Together we explore your motivation, availability, digital skills and language level so your learning path is tailored from day one.",
+      "register.hero.chip1": "Fully funded VDAB programme",
+      "register.hero.chip2": "Intake within three working days",
+      "register.hero.chip3": "Coaching & language support",
+      "register.hero.ctaPrimary": "Start pre-registration",
+      "register.hero.ctaSecondary": "View steps",
+      "register.stepsTitle": "Selection and intake procedure",
+      "register.steps.info": "Information session on the offer and VDAB conditions",
+      "register.steps.workshop": "Workshop on essential digital skills",
+      "register.steps.logic": "Logical reasoning and language assessment",
+      "register.steps.motivation": "Motivation interview with your coach",
+      "register.stepsNote":
+        "You can also register for the information session only. Registration is possible up to six months before the start date of a programme.",
+      "register.formTitle": "Pre-registration",
+      "register.formNote":
+        "Fill in the form and you will receive a confirmation within three working days with a proposal for your info session and assessments. Your data is processed confidentially in line with GDPR.",
+      "register.fields.fullName": "Full name",
+      "register.fields.gender": "Gender",
+      "register.fields.email": "Email address",
+      "register.fields.phone": "Phone number",
+      "register.fields.national": "National register number",
+      "register.fields.address": "Street and house number",
+      "register.fields.postcode": "Postcode",
+      "register.fields.city": "City / Municipality",
+      "register.fields.course": "Programme",
+      "register.fields.message": "Additional details (optional)",
+      "register.placeholders.fullName": "First and last name",
+      "register.placeholders.email": "name@example.com",
+      "register.placeholders.phone": "Mobile or phone number",
+      "register.placeholders.national": "11 digits, no separators",
+      "register.placeholders.address": "Street name and house number",
+      "register.placeholders.postcode": "Postcode",
+      "register.placeholders.city": "City or municipality",
+      "register.placeholders.message": "Your question or motivation (optional)",
+      "register.options.choose": "Select an option",
+      "register.options.male": "M",
+      "register.options.female": "V (F)",
+      "register.options.x": "X",
+      "register.options.chooseCourse": "Select a programme",
+      "register.options.coursePc": "PC & Network Technician",
+      "register.options.coursePython": "Network Administrator with Python",
+      "register.options.courseSystems": "System Administrator",
+      "register.options.courseCyber": "Cyber Security Engineer",
+      "register.options.courseInfo": "Information session only",
+      "register.submit": "Submit enrolment",
+      "register.confirmation.title": "What happens after you enrol?",
+      "register.confirmation.step1":
+        "You receive a confirmation email with the invitation for the next info session and workshop.",
+      "register.confirmation.step2":
+        "After the assessments we plan a motivation interview to define your personalised learning plan.",
+      "register.confirmation.step3":
+        "Can't make the proposed start date? We look for alternatives or guide you to the Digipunt for extra preparation.",
+      "register.contact.title": "Questions about the process?",
+      "register.contact.body":
+        "Contact our career coaches via <a href=\"mailto:inschrijvingen@intecbrussel.be\">inschrijvingen@intecbrussel.be</a> or call +32 2 411 29 07 (Monday to Friday, 09:00 - 12:00 and 13:00 - 16:00).",
+      "register.contact.cta": "Get in touch",
+
+      "about.label": "About INTEC",
+      "about.missionTitle": "Mission &amp; Vision",
+      "about.missionIntro":
+        "We work towards a society where everyone can fully participate in the digital world. Regardless of background, age, gender or education we focus on talent and lower the barriers to quality jobs.",
+      "about.missionDetail":
+        "Our programmes combine technical expertise with language coaching, soft skills and sustainable follow-up. We connect job seekers, employers and society at large with inclusion and future skills as our compass.",
+      "about.hero.title": "Mission & Vision",
+      "about.hero.lead":
+        "We build a society where everyone can be part of the digital world. Talent is central regardless of background or age. We lower barriers to sustainable jobs and strengthen digital skills at every step.",
+      "about.hero.chip1": "Inclusive programmes",
+      "about.hero.chip2": "Digital and future-proof",
+      "about.hero.chip3": "Language coaching & support",
+      "about.hero.primary": "Explore programmes",
+      "about.hero.secondary": "Schedule an introduction",
+      "about.values.label": "Impact",
+      "about.values.title": "What drives us every day",
+      "about.values.lead":
+        "Each programme and track is built on the same foundations: people-focused, sustainable and digital. Together with our partners we help talent grow and make organisations future-ready.",
+      "about.values.card1Title": "Access for everyone",
+      "about.values.card1Body":
+        "From language support to digicoaches: we ensure every talent can join and progress.",
+      "about.values.card2Title": "Strong partnerships",
+      "about.values.card2Body":
+        "We work with companies, public services and non-profits to create impact in Brussels and Flanders.",
+      "about.values.card3Title": "Innovation with people",
+      "about.values.card3Body":
+        "Technology is not a goal by itself: we combine digital know-how with soft skills and coaching.",
+      "about.values.card4Title": "Sustainable careers",
+      "about.values.card4Body":
+        "We support alumni up to one year after graduation and invest in long-term employment.",
+      "about.valuesTitle": "Our values",
+      "about.values.quality": "Quality and continuous improvement in programmes and coaching.",
+      "about.values.respect": "Respect, openness and transparency in every collaboration.",
+      "about.values.teamwork": "Teamwork and a growth mindset across disciplines.",
+      "about.values.innovation": "Innovation with attention for people and society.",
+      "about.buttons.report": "Annual report",
+      "about.buttons.team": "Meet the team",
+      "about.workTitle": "Working at INTEC Brussels?",
+      "about.workIntro":
+        "Join a diverse and committed team that empowers people through training and coaching. We collaborate across disciplines and invest in equal opportunities and lifelong learning.",
+      "about.workDetail":
+        "Trainers, coaches, digicoaches and support profiles share knowledge, design learning paths and guide participants towards sustainable employment.",
+      "about.workCta": "See vacancies",
+      "about.experienceTitle": "Experience since 2001",
+      "about.experienceIntro":
+        "Over twenty years ago we started as a VDAB training partner. Today we support job seekers, starters and professionals into digital and technical careers.",
+      "about.experienceDetail":
+        "Our programmes balance hard skills, soft skills and long-term employment. Alumni find their place in consultancy, healthcare, public services and startups. We invest in lasting partnerships so talent keeps growing.",
+      "about.journey.label": "Our approach",
+      "about.journey.title": "From talent to sustainable employment",
+      "about.journey.step1Title": "1. Intake & selection",
+      "about.journey.step1Body":
+        "We begin with info sessions, assessments and language checks to make sure each participant joins the right track.",
+      "about.journey.step2Title": "2. Learning & coaching",
+      "about.journey.step2Body":
+        "Intensive modules, language support and career coaching go hand in hand. We teach in small groups with plenty of practice.",
+      "about.journey.step3Title": "3. Internship & alumni",
+      "about.journey.step3Body":
+        "We connect learners to partners, follow them up for a year after graduation and continue investing in their growth.",
+      "about.cta.eyebrow": "Build together",
+      "about.cta.title": "Want to make a difference for talent in Brussels?",
+      "about.cta.body":
+        "Get in touch to explore how we can collaborate on programmes, internships or coaching.",
+      "about.cta.primary": "Contact our team",
+      "about.cta.secondary": "Explore programmes",
+
+      "team.meta.title": "Who we are | INTEC Brussel",
+      "team.meta.description":
+        "Discover who we are at INTEC Brussel: meet the teams behind our programmes, explore our partnerships with employers and uncover the strength of our network.",
+      "team.label": "Who we are",
+      "team.hero.title": "Board and team",
+      "team.hero.lead":
+        "Behind every programme stands a dedicated board of directors and a team committed to guidance, coaching and technical expertise. Meet the people that shape INTEC Brussels.",
+      "team.hero.chip1": "Board of directors",
+      "team.hero.chip2": "Administration & coaching",
+      "team.hero.chip3": "Instructors & technicians",
+      "team.hero.ctaPrimary": "View the team",
+      "team.hero.ctaSecondary": "Get in touch",
+
+      "team.board.title": "Board of directors",
+      "team.board.frans": "Frans De Keyser \u2013 Chair",
+      "team.board.guido": "Guido De Grefte \u2013 Treasurer",
+      "team.board.bart": "Bart Jaeken \u2013 Board member",
+      "team.board.frederik": "Frederik Roelens \u2013 Board member",
+      "team.board.cedric": "C\u00E9dric van Garsse \u2013 Board member",
+
+      "team.values.label": "The team",
+      "team.values.title": "Stronger together for digital inclusion",
+      "team.values.lead":
+        "Our team is made up of experienced colleagues covering administration, coaching, instruction and technical support. Below you can see the groups that stand by our learners every day.",
+      "team.values.admin.title": "Administration",
+      "team.values.admin.body": "Sana B.<br />Sango C.",
+      "team.values.coaching.title": "Employment & language coaching",
+      "team.values.coaching.body": "Fadwa E.<br />Aynur D.<br />Teodora M.<br />Manal E.<br />Hanae Z.",
+      "team.values.instructors.title": "Instructors",
+      "team.values.instructors.body":
+        "Omar M.<br />Denys L.<br />Hilal D.<br />Sean D.L.<br />Lawrence B.<br />Ziba H.<br />Sona G.<br />Enock M.A.<br />Tijl S.<br />Sander D.G.",
+      "team.values.it.title": "IT technicians INOPTEC+",
+      "team.values.it.body": "Erwin S.<br />Thomas T.<br />Yewondwossen S.<br />Aboubacar D.<br />Janan J.<br />Tetiana Y.",
+
+      "team.stories.leaders.title": "Team leads & coordination",
+      "team.stories.leaders.body1":
+        "Team leads:<br />Sana B. \u2013 Administration<br />Erwin S. \u2013 INOPTEC+<br />Omar M. \u2013 Instructors<br />Teodora M. \u2013 Employment & language coaching",
+      "team.stories.leaders.body2": "HR managers:<br />Sajid Y.<br />Sana B.",
+      "team.stories.leaders.body3": "General coordinator:<br />Ruud Marks",
+      "team.stories.support.title": "Support services",
+      "team.stories.support.body1": "Staff member:<br />Noor W.",
+      "team.stories.support.body2": "Digicoach:<br />Sabrina C.",
+      "team.stories.support.body3":
+        "Together they provide follow-up, administration, digital support and a warm welcome for every learner.",
+
+      "team.approach.title": "How board and team work together",
+      "team.approach.step1Title": "Strategy & governance",
+      "team.approach.step1Body":
+        "The board defines the strategic direction and safeguards our mission. They support the team with advice, networks and quality assurance.",
+      "team.approach.step2Title": "Coordination & team leads",
+      "team.approach.step2Body":
+        "Team leads handle daily follow-up, HR and alignment between administration, instructors and coaches. Management translates board decisions into action.",
+      "team.approach.step3Title": "Delivery & coaching",
+      "team.approach.step3Body":
+        "Instructors, coaches and technicians guide learners on the work floor and in the training centre, providing tailored support together with the digicoach and staff.",
+
+      "team.cta.eyebrow": "Join us",
+      "team.cta.title": "Want to help build our team?",
+      "team.cta.body":
+        "We welcome new partners, volunteers and future colleagues. Contact us to learn more about collaborating, giving guest lectures or open vacancies.",
+      "team.cta.primary": "Schedule a meeting",
+      "team.cta.secondary": "Explore programmes",
+
+      "vacancies.meta.title": "Jobs at INTEC Brussel | INTEC Brussel",
+      "vacancies.meta.description":
+        "Explore open jobs at INTEC Brussel and apply for roles in coaching, administration, IT training and support.",
+      "vacancies.label": "Vacancies",
+      "vacancies.hero.title": "Vacancies at INTEC Brussel",
+      "vacancies.hero.lead":
+        "Join our mission to develop talent and guide people towards sustainable IT careers. We are looking for colleagues who want to create impact.",
+      "vacancies.hero.chip1": "Impactful teams",
+      "vacancies.hero.chip2": "Learning organisation",
+      "vacancies.hero.chip3": "Hybrid collaboration",
+      "vacancies.hero.cardTitle": "Your future at INTEC",
+      "vacancies.hero.perk1": "Work with engaged teams that help talent grow.",
+      "vacancies.hero.perk2": "Plenty of room for training, coaching and innovation.",
+      "vacancies.hero.perk3": "Flexible workplaces in Brussels and beyond.",
+      "vacancies.hero.ctaLinkedIn": "Follow us on LinkedIn",
+      "vacancies.hero.ctaContact": "Get in touch",
+      "vacancies.section.title": "Current job openings",
+      "vacancies.section.lead":
+        "Browse all current vacancies at INTEC Brussel. Apply online or contact us for additional information.",
+      "vacancies.empty":
+        "No open vacancies at the moment. Check back soon or follow us on LinkedIn for updates.",
+      "vacancies.error": "Unable to load vacancies. Please try again later.",
+      "vacancies.loading": "Loading vacancies...",
+      "vacancies.card.team": "Team",
+      "vacancies.card.location": "Location",
+      "vacancies.card.posted": "Posted on",
+      "vacancies.card.postedUnknown": "Date unknown",
+      "vacancies.card.button": "View vacancy",
+      "vacancies.cta.eyebrow": "Stay notified",
+      "vacancies.cta.title": "Didn't find a matching role?",
+      "vacancies.cta.body":
+        "Follow us on LinkedIn or reach out to our HR team to submit an open application.",
+      "vacancies.cta.primary": "Back to Home",
+      "vacancies.cta.secondary": "Follow us on LinkedIn",
+
+      "contact.label": "Contact",
+      "contact.title": "We are happy to help",
+      "contact.intro":
+        "Questions about our programmes, looking to collaborate or plan a company visit? Send us a message via the form or reach out directly to one of our colleagues.",
+      "contact.form.name": "Name",
+      "contact.form.email": "Email address",
+      "contact.form.message": "Message",
+      "contact.form.submit": "Send message",
+      "contact.placeholders.name": "First and last name",
+      "contact.placeholders.email": "name@example.com",
+      "contact.placeholders.message": "How can we support you?",
+      "contact.peopleTitle": "Contact persons",
+      "contact.general.title": "General info",
+      "contact.general.body": "info@intecbrussel.be<br />+32 2 411 29 07",
+      "contact.pr.title": "Press &amp; communications",
+      "contact.pr.body": "pr@intecbrussel.be",
+      "contact.stage.title": "Internships &amp; work-based learning",
+      "contact.stage.body": "stage@intecbrussel.be",
+      "contact.openingTitle": "Campus opening hours",
+      "contact.openingHours": "Monday - Friday, 09:00 - 16:00",
+      "contact.phoneHours": "Phone support 09:00 - 12:00 and 13:00 - 16:00",
+      "contact.addressTitle": "Visit us",
+      "contact.addressBody": "INTEC Brussels<br />Rouppeplein 16<br />1000 Brussels",
+      "contact.access":
+        "Five minutes on foot from Brussels Central station. Reachable via metro lines 1 and 5 (De Brouckere) and tram 3, 4 (Anneessens).",
+      "contact.mapCta": "Plan your route",
+
+      "digipunt.label": "Digipunt",
+      "digipunt.title": "Tailored digital support at Muntpunt",
+      "digipunt.intro":
+        "The INTEC Brussels Digipunt in the Muntpunt library supports anyone who feels left behind digitally or wants to become more confident with smartphones, tablets or computers.",
+      "digipunt.coach":
+        "Our digicoaches answer your questions, guide you step by step and create a learning plan so you can practise independently.",
+      "digipunt.servicesTitle": "What can you learn with us?",
+      "digipunt.services.phones": "Apps, settings and accounts on smartphone or tablet",
+      "digipunt.services.laptops": "Laptop basics, managing files and staying safe online",
+      "digipunt.services.online": "Online services such as booking appointments, banking and shopping",
+      "digipunt.services.safety": "Online safety and protection against phishing",
+      "digipunt.workshops":
+        "We organise free workshops and personalised coaching tracks. Everything is free of charge and open without appointment during opening hours.",
+      "digipunt.hoursTitle": "Opening hours &amp; location",
+      "digipunt.location": "Digipunt INTEC<br />Muntpunt library, 3rd floor<br />Munt 6, 1000 Brussels",
+      "digipunt.hours.tue": "Tuesday: 14:00 - 18:00 (walk-in)",
+      "digipunt.hours.wed": "Wednesday &amp; Thursday: 14:00 - 17:00",
+      "digipunt.hours.fri": "Friday: 14:00 - 17:00",
+      "digipunt.contactTitle": "Contact",
+      "digipunt.contactDetails": "digipunt@intecbrussel.be<br />+32 474 93 17 46",
+      "digipunt.CTAtext":
+        "Want to know more or request a group session? Send us an e-mail or call us and we will look at the options together.",
+      "digipunt.moreInfo": "More info",
+
+      "partners.label": "Partner access",
+      "partners.title": "Secure partner portal",
+      "partners.intro":
+        "This environment is strictly available to partners with a validation agreement. Unauthorised access is logged.",
+      "partners.username": "Username",
+      "partners.password": "Password",
+      "partners.submit": "Sign in",
+      "partners.support":
+        "Forgot your password or no access? Contact your account manager via partners@intecbrussel.be.",
+      "partners.placeholders.username": "Partner ID or email address",
+      "partners.placeholders.password": "Password",
+
+      "form.required.default": "This field is required.",
+      "form.required.name": "Please enter your name.",
+      "form.required.email": "Please enter your email address.",
+      "form.required.phone": "Please enter your phone number.",
+      "form.required.course": "Please select a programme.",
+      "form.required.gender": "Please choose your gender.",
+      "form.required.national": "Please enter your national register number.",
+      "form.required.address": "Please enter your street and house number.",
+      "form.required.postcode": "Please enter your postcode.",
+      "form.required.city": "Please enter your city or municipality.",
+      "form.required.message": "Please type your message.",
+      "form.required.username": "Username is required.",
+      "form.required.password": "Password is required.",
+      "form.error.email": "Please double-check your email address.",
+    },
+  };
+
+  const localeMap = {
+    nl: "nl-BE",
+    en: "en-GB",
+  };
+
+  const counterState = {
+    elements: [],
+    observer: null,
+  };
+
+  let currentLanguage =
+    localStorage.getItem("intec-language") || defaultLanguage;
+
+  const registeredForms = [];
+
+  const getTranslation = (lang, key) =>
+    (translations[lang] && translations[lang][key]) ||
+    (translations[defaultLanguage] && translations[defaultLanguage][key]) ||
+    "";
+
+  const translate = (key, fallback = "") =>
+    getTranslation(currentLanguage, key) || fallback;
+
+  window.__translate = (key, fallback = "") => translate(key, fallback);
+  window.__getCurrentLanguage = () => currentLanguage;
+
+  const formatCounterValue = (value, element) => {
+    const locale =
+      localeMap[currentLanguage] ||
+      localeMap[defaultLanguage] ||
+      "nl-BE";
+    const decimals = Math.max(
+      0,
+      parseInt(element?.dataset.decimals || "0", 10)
+    );
+    const prefix = element?.dataset.prefix || "";
+    const suffix = element?.dataset.suffix || "";
+    const formatter = new Intl.NumberFormat(locale, {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals,
+    });
+    return `${prefix}${formatter.format(value)}${suffix}`;
+  };
+
+  const updateCountersLocale = () => {
+    if (!counterState.elements.length) {
+      return;
+    }
+    counterState.elements.forEach((element) => {
+      if (element.dataset.counterComplete === "true") {
+        const target = parseFloat(element.dataset.target || "0");
+        element.textContent = formatCounterValue(target, element);
+      } else {
+        element.textContent = formatCounterValue(0, element);
+      }
+    });
+  };
+
+  const animateCounter = (element) => {
+    if (!element || element.dataset.counterStarted === "true") {
+      return;
+    }
+    element.dataset.counterStarted = "true";
+
+    const target = parseFloat(element.dataset.target || "0");
+    if (Number.isNaN(target)) {
+      element.dataset.counterComplete = "true";
+      return;
+    }
+
+    const duration = Math.max(
+      0,
+      parseInt(element.dataset.duration || "2000", 10)
+    );
+    const decimals = Math.max(
+      0,
+      parseInt(element.dataset.decimals || "0", 10)
+    );
+
+    const start = performance.now();
+
+    const step = (now) => {
+      const progress =
+        duration === 0 ? 1 : Math.min((now - start) / duration, 1);
+
+      let currentValue;
+      if (progress === 1) {
+        currentValue = target;
+      } else if (decimals > 0) {
+        currentValue = parseFloat((target * progress).toFixed(decimals));
+      } else {
+        currentValue = Math.floor(target * progress);
+      }
+
+      element.textContent = formatCounterValue(currentValue, element);
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        element.textContent = formatCounterValue(target, element);
+        element.dataset.counterComplete = "true";
+        if (counterState.observer) {
+          counterState.observer.unobserve(element);
+        }
+      }
+    };
+
+    requestAnimationFrame(step);
+  };
+
+  const setupCounters = () => {
+    const elements = Array.from(document.querySelectorAll("[data-counter]"));
+    if (!elements.length) {
+      return;
+    }
+
+    counterState.elements = elements;
+
+    if (!counterState.observer) {
+      counterState.observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.4,
+          rootMargin: "0px 0px -15% 0px",
+        }
+      );
+    }
+
+    elements.forEach((element) => {
+      if (element.dataset.counterBound !== "true") {
+        counterState.observer.observe(element);
+        element.dataset.counterBound = "true";
+      }
+      if (element.dataset.counterComplete !== "true") {
+        element.dataset.counterStarted = "false";
+      }
+    });
+
+    updateCountersLocale();
+  };
+
+  const applyTranslations = () => {
+    document.querySelectorAll("[data-i18n]").forEach((node) => {
+      const key = node.getAttribute("data-i18n");
+      if (!key) return;
+
+      const allowHtml = node.dataset.i18nAllowHtml === "true";
+      const value = translate(key);
+      if (!value) return;
+
+      if (allowHtml) {
+        node.innerHTML = value;
+      } else {
+        node.textContent = value;
+      }
+    });
+
+    document.querySelectorAll("[data-i18n-placeholder]").forEach((node) => {
+      const key = node.getAttribute("data-i18n-placeholder");
+      if (!key) return;
+      const value = translate(key);
+      if (value) {
+        node.setAttribute("placeholder", value);
+      }
+    });
+
+    document.querySelectorAll("[data-i18n-content]").forEach((node) => {
+      const key = node.getAttribute("data-i18n-content");
+      if (!key) return;
+      const value = translate(key);
+      if (value) {
+        node.setAttribute("content", value);
+      }
+    });
+
+    document.querySelectorAll("[data-i18n-aria-label]").forEach((node) => {
+      const key = node.getAttribute("data-i18n-aria-label");
+      if (!key) return;
+      const value = translate(key);
+      if (value) {
+        node.setAttribute("aria-label", value);
+      }
+    });
+
+    registeredForms.forEach(({ refreshErrors }) => refreshErrors());
+    updateCountersLocale();
+  };
+
+  const updateLanguageButtons = () => {
+    document.querySelectorAll("[data-lang-select]").forEach((button) => {
+      const { lang } = button.dataset;
+      const isActive = lang === currentLanguage;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
+    });
+  };
+
+  const setLanguage = (lang) => {
+    if (!translations[lang]) {
+      lang = defaultLanguage;
+    }
+    currentLanguage = lang;
+    localStorage.setItem("intec-language", currentLanguage);
+    document.documentElement.setAttribute("data-language", currentLanguage);
+    updateLanguageButtons();
+    applyTranslations();
+    window.dispatchEvent(
+      new CustomEvent("intecLanguageChanged", {
+        detail: { language: currentLanguage },
+      })
+    );
+  };
+
+  document
+    .querySelectorAll("[data-lang-select]")
+    .forEach((button) =>
+      button.addEventListener("click", () => setLanguage(button.dataset.lang))
+    );
+
+  const toggles = document.querySelectorAll("[data-nav-toggle]");
+  toggles.forEach((toggle) => {
+    const targetSelector = toggle.getAttribute("data-nav-toggle");
+    const target = document.querySelector(targetSelector);
+    if (!target) return;
+
+    toggle.addEventListener("click", () => {
+      target.classList.toggle("is-open");
+      const isOpen = target.classList.contains("is-open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+    });
+  });
+
+  const emailPattern =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const setupCustomValidation = (form, { requiredKeys = {}, validators = {} }) => {
+    if (!form) return;
+    form.setAttribute("novalidate", "");
+
+    const fields = Array.from(
+      form.querySelectorAll("input, select, textarea")
+    );
+
+    const ensureErrorNode = (field) => {
+      const label = field.closest("label");
+      if (!label) return null;
+      let errorNode = label.querySelector(".form-error");
+      if (!errorNode) {
+        errorNode = document.createElement("span");
+        errorNode.className = "form-error";
+        label.append(errorNode);
+      }
+      return errorNode;
+    };
+
+    const showError = (field, message) => {
+      const errorNode = ensureErrorNode(field);
+      if (!errorNode) return;
+      errorNode.textContent = message;
+      field.setAttribute("aria-invalid", "true");
+      const label = field.closest("label");
+      if (label) {
+        label.classList.add("has-error");
+      }
+    };
+
+    const clearError = (field) => {
+      const label = field.closest("label");
+      if (!label) return;
+      const errorNode = label.querySelector(".form-error");
+      if (errorNode) {
+        errorNode.textContent = "";
+      }
+      field.removeAttribute("aria-invalid");
+      label.classList.remove("has-error");
+    };
+
+    const validateField = (field, force = false) => {
+      const label = field.closest("label");
+      if (!label) return true;
+
+      const value =
+        field.tagName === "SELECT" ? field.value : field.value.trim();
+
+      const key = field.name || field.id;
+      const isRequired = field.hasAttribute("required");
+      let message = "";
+
+      if (isRequired && !value) {
+        const requiredKey = requiredKeys[key] || "form.required.default";
+        message = translate(requiredKey, "Dit veld is verplicht.");
+      } else if (validators[key]) {
+        message = validators[key](value, field) || "";
+      }
+
+      if (message) {
+        showError(field, message);
+        return false;
+      }
+
+      if (force || label.classList.contains("has-error")) {
+        clearError(field);
+      }
+      return true;
+    };
+
+    const markTouched = (field) => {
+      field.dataset.touched = "true";
+    };
+
+    fields.forEach((field) => {
+      const eventName = field.tagName === "SELECT" ? "change" : "input";
+      field.addEventListener(eventName, () => {
+        if (field.dataset.touched === "true") {
+          validateField(field, true);
+        }
+      });
+      field.addEventListener("blur", () => {
+        markTouched(field);
+        validateField(field, true);
+      });
+    });
+
+    form.addEventListener("submit", (event) => {
+      let isValid = true;
+      fields.forEach((field) => {
+        const fieldValid = validateField(field, true);
+        if (!fieldValid) {
+          isValid = false;
+        }
+      });
+      if (!isValid) {
+        event.preventDefault();
+        const firstInvalid = fields.find((field) =>
+          field.matches("[aria-invalid='true']")
+        );
+        if (firstInvalid) {
+          firstInvalid.focus({ preventScroll: false });
+        }
+      }
+    });
+
+    registeredForms.push({
+      refreshErrors: () => {
+        fields.forEach((field) => {
+          if (
+            field.dataset.touched === "true" ||
+            field.closest("label")?.classList.contains("has-error")
+          ) {
+            validateField(field, true);
+          }
+        });
+      },
+    });
+  };
+
+  setupCustomValidation(document.querySelector("#registration-form"), {
+    requiredKeys: {
+      "full-name": "form.required.name",
+      gender: "form.required.gender",
+      email: "form.required.email",
+      phone: "form.required.phone",
+      "national-number": "form.required.national",
+      address: "form.required.address",
+      postcode: "form.required.postcode",
+      city: "form.required.city",
+      course: "form.required.course",
+    },
+    validators: {
+      email: (value) =>
+        !value || emailPattern.test(value)
+          ? ""
+          : translate("form.error.email", "Controleer je e-mailadres."),
+    },
+  });
+
+  setupCustomValidation(document.querySelector("#contact-form"), {
+    requiredKeys: {
+      name: "form.required.name",
+      email: "form.required.email",
+      message: "form.required.message",
+    },
+    validators: {
+      email: (value) =>
+        !value || emailPattern.test(value)
+          ? ""
+          : translate("form.error.email", "Controleer je e-mailadres."),
+    },
+  });
+
+  setupCustomValidation(document.querySelector("#partner-login-form"), {
+    requiredKeys: {
+      username: "form.required.username",
+      password: "form.required.password",
+    },
+  });
+
+  setupCounters();
+
+  const yearNode = document.getElementById("year");
+  if (yearNode) {
+    yearNode.textContent = new Date().getFullYear();
+  }
+
+  setLanguage(currentLanguage);
+});
+
+
+
+
+
+
+
+

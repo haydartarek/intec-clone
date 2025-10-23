@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Beveiligde toegang tot het partnerplatform van INTEC Brussel."
+    />
+    <title>Partnerlogin | INTEC Brussel</title>
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico" />
+    <link rel="stylesheet" href="../assets/css/local-fonts.css" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <script src="../assets/js/i18n/nl.js"></script>
+<script src="../assets/js/i18n/en.js"></script>
+<script src="../assets/js/main.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+  <div class="container">
+    <div class="site-header__inner">
+      
+      <!-- Logo / Brand -->
+      <a class="brand" href="../index.html" aria-label="INTEC Brussel">
+        <img 
+          src="../assets/img/logo+intec+brusselZWART1.png" 
+          alt="INTEC Brussel logo" 
+          width="200" 
+          height="auto"
+          decoding="async" 
+          loading="eager"
+        />
+      </a>
+
+      <!-- Primary Navigation -->
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <ul class="nav-links" id="primary-navigation">
+          <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="../index.html#opleidingen" data-i18n="nav.training">Opleidingen</a></li>
+          <li><a href="../inschrijven.html" data-i18n="nav.register">Inschrijven</a></li>
+          <li><a href="../overons.html" data-i18n="nav.about">Over ons</a></li>
+          <li><a href="../contact.html" data-i18n="nav.contact">Contact</a></li>
+          <li><a href="../cvdb/index.html" aria-current="page" data-i18n="nav.partners">Toegang Partners</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions: Language + Digipoint + Mobile Toggle -->
+      <div class="site-header__actions">
+        
+        <!-- Language Switcher -->
+        <div 
+          class="language-switch" 
+          role="group" 
+          aria-label="Taalkeuze"
+          data-i18n-aria-label="nav.languageGroup"
+        >
+          <button 
+            type="button" 
+            class="is-active" 
+            data-lang-select 
+            data-lang="nl"
+            aria-current="true"
+          >
+            NL
+          </button>
+          <button 
+            type="button" 
+            data-lang-select 
+            data-lang="en"
+          >
+            EN
+          </button>
+        </div>
+
+        <!-- Digipoint Button -->
+        <a class="button" href="../digipunt.html" data-i18n="nav.digipunt">
+          Digipunt
+        </a>
+
+        <!-- Mobile Navigation Toggle -->
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-controls="primary-navigation"
+          aria-expanded="false"
+          data-nav-toggle="#primary-navigation"
+        >
+          <span class="sr-only" data-i18n="nav.toggle">Menu openen</span>
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none">
+            <path
+              d="M4 6h16M4 12h16M4 18h16"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+</header>
+
+      <main>
+        <section class="section section--surface">
+          <div class="container">
+            <div class="login-card">
+              <div class="rich-text">
+                <span class="section-label" data-i18n="partners.label">Partner toegang</span>
+                <h1 class="section-title" data-i18n="partners.title">Beveiligd partnerportaal</h1>
+                <p data-i18n="partners.intro">
+                  Deze omgeving is uitsluitend toegankelijk voor partners met een validatiecontract. Onrechtmatige
+                  toegang wordt gelogd.
+                </p>
+              </div>
+              <form id="partner-login-form">
+                <label>
+                  <span data-i18n="partners.username">Gebruikersnaam</span>
+                  <input
+                    type="text"
+                    name="username"
+                    required
+                    autocomplete="username"
+                    data-i18n-placeholder="partners.placeholders.username"
+                  />
+                </label>
+                <label>
+                  <span data-i18n="partners.password">Wachtwoord</span>
+                  <input
+                    type="password"
+                    name="password"
+                    required
+                    autocomplete="current-password"
+                    data-i18n-placeholder="partners.placeholders.password"
+                  />
+                </label>
+                <button class="button" type="submit" data-i18n="partners.submit">Aanmelden</button>
+              </form>
+              <p class="form-note" data-i18n="partners.support">
+                Wachtwoord vergeten of geen toegang? Contacteer je accountmanager via partners@intecbrussel.be.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__grid">
+            <div class="footer__column">
+              <a class="brand" href="../index.html">
+                <img src="../assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" loading="lazy" decoding="async" />
+                
+              </a>
+              <p data-i18n="footer.mission">
+                INTEC Brussel bouwt aan een inclusieve digitale samenleving via opleidingen, coaching en partnerschappen
+                met werkgevers die klaar zijn voor morgen.
+              </p>
+            </div>
+            <div class="footer__column">
+              <h3 data-i18n="footer.contactTitle">Contact</h3>
+              <ul>
+                <li data-i18n="footer.address" data-i18n-allow-html="true">
+                  Rouppeplein 16<br />1000 Brussel
+                </li>
+                <li><a href="tel:+3224112907">02/411 29 07</a></li>
+                <li><a href="mailto:info@intecbrussel.be">info@intecbrussel.be</a></li>
+                <li><a href="mailto:pr@intecbrussel.be">pr@intecbrussel.be</a></li>
+              </ul>
+            </div>
+            <div class="footer__column">
+              <h3 data-i18n="footer.companyTitle">Bedrijfsinfo</h3>
+              <ul>
+                <li data-i18n="footer.companyNumber">Ondernemingsnummer: 0476.094.416</li>
+                <li data-i18n="footer.siteNumber">Vestigingsnummer: 2.108.890.046</li>
+                <li data-i18n="footer.socialNumber">RSZ: 10/945-31-54801</li>
+              </ul>
+            </div>
+            <div class="footer__column">
+              <h3 data-i18n="footer.followTitle">Volg ons</h3>
+              <ul>
+                <li><a href="https://www.linkedin.com/company/intec-brussel" target="_blank" rel="noreferrer">LinkedIn</a></li>
+                <li><a href="https://www.facebook.com/IntecBrussel" target="_blank" rel="noreferrer">Facebook</a></li>
+                <li><a href="https://www.youtube.com/@intecbrussel" target="_blank" rel="noreferrer">YouTube</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer__meta">
+            <span>&copy; <span id="year">2025</span> INTEC Brussel.</span>
+            <span data-i18n="footer.accreditation">Erkend door VDAB, Actiris en ESF.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

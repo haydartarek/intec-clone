@@ -1,0 +1,395 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Ontdek de vacatures bij INTEC Brussel en solliciteer voor functies in coaching, administratie, IT-training en ondersteuning."
+      data-i18n-content="vacancies.meta.description"
+    />
+    <title data-i18n="vacancies.meta.title">Vacatures bij INTEC Brussel | INTEC Brussel</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <link rel="stylesheet" href="assets/css/local-fonts.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="page--vacatures">
+    <a class="skip-link" href="#main-content">Ga naar hoofdinhoud</a>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="container site-header__inner">
+          <a class="brand" href="index.html" aria-label="INTEC Brussel">
+            <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" />
+          </a>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-controls="primary-navigation"
+            aria-expanded="false"
+            data-nav-toggle="#primary-navigation"
+          >
+            <span class="sr-only" data-i18n="nav.toggle">Menu openen</span>
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <path
+                d="M4 6h16M4 12h16M4 18h16"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+          <nav class="primary-nav" aria-label="Hoofdmenu">
+            <ul class="nav-links" id="primary-navigation" role="list">
+              <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+              <li><a href="index.html#opleidingen" data-i18n="nav.training">Opleidingen</a></li>
+              <li><a href="inschrijven.html" data-i18n="nav.register">Inschrijven</a></li>
+              <li><a href="overons.html" data-i18n="nav.about">Over ons</a></li>
+              <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+              <li><a href="cvdb/index.html" data-i18n="nav.partners">Toegang Partners</a></li>
+            </ul>
+          </nav>
+          <div class="site-header__actions">
+            <div
+              class="language-switch"
+              role="group"
+              aria-label="Taalkeuze"
+              data-i18n-aria-label="nav.languageGroup"
+            >
+              <button type="button" data-lang-select data-lang="nl">NL</button>
+              <button type="button" data-lang-select data-lang="en">EN</button>
+            </div>
+            <a class="button" href="digipunt.html" data-i18n="nav.digipunt">Digipunt</a>
+          </div>
+        </div>
+      </header>
+
+      <main id="main-content" tabindex="-1">
+        <section class="about-hero">
+          <div class="container about-hero__layout">
+            <div class="about-hero__content">
+              <span class="section-label" data-i18n="vacancies.label">Vacatures</span>
+              <h1 class="about-hero__title" data-i18n="vacancies.hero.title">Vacatures bij INTEC Brussel</h1>
+              <p class="about-hero__lead" data-i18n="vacancies.hero.lead">
+                Werk mee aan onze missie om talent te ontwikkelen en te begeleiden naar duurzame IT-jobs. We zoeken
+                collega's die impact willen maken.
+              </p>
+              <div class="about-hero__chips">
+                <span data-i18n="vacancies.hero.chip1">Impactvolle teams</span>
+                <span data-i18n="vacancies.hero.chip2">Lerende organisatie</span>
+                <span data-i18n="vacancies.hero.chip3">Hybride samenwerken</span>
+              </div>
+            </div>
+            <div class="about-hero__card card card--strong card--decorated">
+              <strong data-i18n="vacancies.hero.cardTitle">Je toekomst bij INTEC</strong>
+              <ul class="about-pill-list">
+                <li data-i18n="vacancies.hero.perk1">Betrokken teams die talent laten groeien.</li>
+                <li data-i18n="vacancies.hero.perk2">Ruimte voor opleiding, coaching en innovatie.</li>
+                <li data-i18n="vacancies.hero.perk3">Flexibele werkplekken in Brussel en daarbuiten.</li>
+              </ul>
+              <div class="cta-stack">
+                <a
+                  class="button button--ghost"
+                  href="https://www.linkedin.com/groups/3973164/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  data-i18n="vacancies.hero.ctaLinkedIn"
+                >
+                  Volg ons op LinkedIn
+                </a>
+                <a class="button button--ghost" href="contact.html" data-i18n="vacancies.hero.ctaContact">
+                  Neem contact op
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--surface vacatures">
+          <div class="container">
+            <div class="section-heading">
+              <span class="section-label" data-i18n="vacancies.label">Vacatures</span>
+              <h2 class="section-title" data-i18n="vacancies.section.title">Onze openstaande vacatures</h2>
+              <p class="section-lead" data-i18n="vacancies.section.lead">
+                Hier vind je een overzicht van alle actuele vacatures bij INTEC Brussel. Solliciteer online of neem contact
+                op voor meer informatie.
+              </p>
+            </div>
+            <div
+              id="vacatures-placeholder"
+              class="vacatures-placeholder"
+              role="status"
+              aria-live="polite"
+              data-empty-message="Er zijn momenteel geen openstaande vacatures. Kom binnenkort terug of volg ons op LinkedIn voor updates."
+              data-loading-message="Vacatures worden geladen..."
+              data-error-message="Vacatures konden niet geladen worden. Probeer later opnieuw."
+              data-posted-unknown="Datum onbekend"
+              data-team-label="Team"
+              data-location-label="Locatie"
+              data-posted-label="Gepost op"
+              data-button-label="Bekijk vacature"
+              data-i18n="vacancies.loading"
+            >
+              Vacatures worden geladen...
+            </div>
+            <div class="about-values__grid vacatures__grid" id="vacatures-grid" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <section class="section cta-band cta-band--minimal cta-band--highlight">
+          <div class="cta-band__inner container">
+            <div class="cta-band__content">
+              <span class="cta-band__eyebrow" data-i18n="vacancies.cta.eyebrow">Blijf op de hoogte</span>
+              <h2 data-i18n="vacancies.cta.title">Geen geschikte vacature gevonden?</h2>
+              <p data-i18n="vacancies.cta.body">
+                Volg ons op LinkedIn of stuur een spontane sollicitatie naar ons HR-team. We leren je graag kennen.
+              </p>
+            </div>
+            <div class="cta-band__actions">
+              <a class="button" href="mailto:hr@intecbrussel.be" data-i18n="vacancies.cta.primary">Mail ons je cv</a>
+              <a
+                class="button button--ghost"
+                href="https://www.linkedin.com/groups/3973164/"
+                target="_blank"
+                rel="noreferrer noopener"
+                data-i18n="vacancies.cta.secondary"
+              >
+                Volg ons op LinkedIn
+              </a>
+            </div>
+          </div>
+        </section>
+
+                        <section class="section cta-band cta-band--minimal">
+          <div class="cta-band__inner container">
+            <div class="cta-band__content">
+              <span class="cta-band__eyebrow" data-i18n="about.cta.eyebrow">Samen bouwen</span>
+              <h2 data-i18n="about.cta.title">Wil je mee het verschil maken voor talent in Brussel?</h2>
+              <p data-i18n="about.cta.body">
+                Neem contact op en ontdek hoe we kunnen samenwerken rond trajecten, stages of coaching.
+              </p>
+            </div>
+            <div class="cta-band__actions">
+              <a class="button" href="contact.html" data-i18n="about.cta.primary">Contacteer ons team</a>
+              <a class="button button--ghost" href="index.html#opleidingen" data-i18n="about.cta.secondary">Ontdek opleidingen</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__grid">
+            <div class="footer__column">
+              <a class="brand" href="index.html">
+                <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" />
+              </a>
+              <p data-i18n="footer.mission">
+                INTEC Brussel bouwt aan een inclusieve digitale samenleving via opleidingen, coaching en partnerschappen
+                met werkgevers die klaar zijn voor morgen.
+              </p>
+            </div>
+            <div class="footer__column">
+              <h3 data-i18n="footer.contactTitle">Contact</h3>
+              <ul>
+                <li data-i18n="footer.address" data-i18n-allow-html="true">
+                  Rouppeplein 16<br />1000 Brussel
+                </li>
+                <li><a href="tel:+3224112907">02/411 29 07</a></li>
+                <li><a href="mailto:info@intecbrussel.be">info@intecbrussel.be</a></li>
+                <li><a href="mailto:pr@intecbrussel.be">pr@intecbrussel.be</a></li>
+              </ul>
+            </div>
+            <div class="footer__column">
+              <h3 data-i18n="footer.companyTitle">Bedrijfsinfo</h3>
+              <ul>
+                <li data-i18n="footer.companyNumber">Ondernemingsnummer: 0476.094.416</li>
+                <li data-i18n="footer.siteNumber">Vestigingsnummer: 2.108.890.046</li>
+                <li data-i18n="footer.socialNumber">RSZ: 10/945-31-54801</li>
+              </ul>
+            </div>
+            <div class="footer__column">
+              <h3 data-i18n="footer.followTitle">Volg ons</h3>
+              <ul>
+                <li>
+                  <a href="https://www.linkedin.com/groups/3973164/" target="_blank" rel="noreferrer">LinkedIn</a>
+                </li>
+                <li>
+                  <a href="https://www.facebook.com/intecbrussel.be" target="_blank" rel="noreferrer">Facebook</a>
+                </li>
+                <li><a href="https://x.com/INTEC_BRUSSEL" target="_blank" rel="noreferrer">X</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer__meta">
+            <span>&copy; <span id="year">2025</span> INTEC Brussel.</span>
+            <span data-i18n="footer.accreditation">Erkend door VDAB, Actiris en ESF.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const placeholder = document.getElementById("vacatures-placeholder");
+        const grid = document.getElementById("vacatures-grid");
+        let jobs = [];
+        let loadError = false;
+
+        const getFallback = (key) => placeholder.dataset[key] || "";
+
+        const getLanguage = () =>
+          (window.__getCurrentLanguage && window.__getCurrentLanguage()) ||
+          document.documentElement.getAttribute("data-language") ||
+          document.documentElement.lang ||
+          "nl";
+
+        const t = (key, fallback) =>
+          (window.__translate && window.__translate(key, fallback)) || fallback;
+
+        const formatDate = (value) => {
+          if (!value) {
+            return t("vacancies.card.postedUnknown", getFallback("postedUnknown"));
+          }
+          try {
+            const lang = getLanguage() === "en" ? "en-GB" : "nl-BE";
+            return new Intl.DateTimeFormat(lang, { dateStyle: "long" }).format(new Date(value));
+          } catch (error) {
+            return value;
+          }
+        };
+
+        const renderJobs = () => {
+          if (loadError) {
+            placeholder.hidden = false;
+            placeholder.textContent = t("vacancies.error", getFallback("errorMessage"));
+            grid.innerHTML = "";
+            return;
+          }
+
+          if (!jobs.length) {
+            placeholder.hidden = false;
+            placeholder.textContent = t("vacancies.empty", getFallback("emptyMessage"));
+            grid.innerHTML = "";
+            return;
+          }
+
+          placeholder.hidden = true;
+          grid.innerHTML = "";
+
+          jobs.forEach((job) => {
+            const card = document.createElement("article");
+            card.className = "card card--interactive card--decorated vacatures-card";
+
+            const chip = document.createElement("span");
+            chip.className = "vacatures-card__chip";
+            chip.textContent = job.team || t("vacancies.card.team", getFallback("teamLabel"));
+            card.appendChild(chip);
+
+            const title = document.createElement("h3");
+            title.textContent = job.title || "";
+            card.appendChild(title);
+
+            if (job.description) {
+              const description = document.createElement("p");
+              description.textContent = job.description;
+              card.appendChild(description);
+            }
+
+            const meta = document.createElement("ul");
+            meta.className = "vacatures-card__meta";
+
+            const addMetaItem = (labelKey, fallback, value) => {
+              if (!value) return;
+              const li = document.createElement("li");
+              const strong = document.createElement("strong");
+              strong.textContent = `${t(labelKey, fallback)}:`;
+              li.appendChild(strong);
+              const span = document.createElement("span");
+              span.textContent = value;
+              li.appendChild(span);
+              meta.appendChild(li);
+            };
+
+            addMetaItem("vacancies.card.team", getFallback("teamLabel"), job.team);
+            addMetaItem("vacancies.card.location", getFallback("locationLabel"), job.location);
+            addMetaItem(
+              "vacancies.card.posted",
+              getFallback("postedLabel"),
+              formatDate(job.posted)
+            );
+
+            if (meta.children.length) {
+              card.appendChild(meta);
+            }
+
+            const footer = document.createElement("div");
+            footer.className = "vacatures-card__footer";
+
+            const button = document.createElement("a");
+            button.className = "button";
+            button.textContent = t("vacancies.card.button", getFallback("buttonLabel"));
+            const applyUrl = (job.applyUrl || "").trim();
+            button.href = applyUrl || "mailto:hr@intecbrussel.be";
+            if (applyUrl.startsWith("http")) {
+              button.target = "_blank";
+              button.rel = "noreferrer noopener";
+            }
+
+            footer.appendChild(button);
+            card.appendChild(footer);
+            grid.appendChild(card);
+          });
+        };
+
+        const loadJobs = async () => {
+          placeholder.hidden = false;
+          placeholder.textContent = t("vacancies.loading", getFallback("loadingMessage"));
+          try {
+            const response = await fetch("data/jobs.json", { cache: "no-cache" });
+            if (!response.ok) {
+              throw new Error("Failed to load jobs");
+            }
+            const data = await response.json();
+            jobs = Array.isArray(data) ? data : [];
+            loadError = false;
+          } catch (error) {
+            jobs = [];
+            loadError = true;
+          }
+          renderJobs();
+        };
+
+        loadJobs();
+
+        window.addEventListener("intecLanguageChanged", renderJobs);
+      });
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
