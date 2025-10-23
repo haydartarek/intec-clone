@@ -179,38 +179,29 @@ document.addEventListener("DOMContentLoaded", function () {
     requestAnimationFrame(step);
   }
 
-  /**
-   * Setup smooth scrolling for anchor links
-   */
-  function setupSmoothScroll() {
-    document.querySelectorAll('a[href*="#"]').forEach((anchor) => {
-      anchor.addEventListener("click", (e) => {
-        const href = anchor.getAttribute("href");
+
+function setupSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      const hash = anchor.getAttribute("href");
+      const target = document.querySelector(hash);
+      
+      if (target) {
+        e.preventDefault();
+        const offset = getHeaderOffset();
+        const targetY = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        smoothScrollTo(targetY);
         
-        // Skip if not a hash link or external link
-        if (!href || !href.includes("#")) return;
+        // Update URL without page jump
+        history.replaceState(null, "", hash);
         
-        // Extract hash from full URL or relative path
-        const hash = href.includes("#") ? "#" + href.split("#")[1] : href;
-        if (!hash || hash === "#") return;
-        
-        const target = document.querySelector(hash);
-        if (target) {
-          e.preventDefault();
-          const offset = getHeaderOffset();
-          const targetY = target.getBoundingClientRect().top + window.pageYOffset - offset;
-          smoothScrollTo(targetY);
-          
-          // Update URL without page jump
-          history.replaceState(null, "", hash);
-          
-          // Set focus for accessibility
-          target.setAttribute("tabindex", "-1");
-          target.focus({ preventScroll: true });
-        }
-      });
+        // Set focus for accessibility
+        target.setAttribute("tabindex", "-1");
+        target.focus({ preventScroll: true });
+      }
     });
-  }
+  });
+}
 
   // =============================
   // Sticky Header with Hide/Show

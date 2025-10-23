@@ -89,16 +89,34 @@ html {
 }
 
 body {
-  margin: 0;
-  padding: 0;
   font-family: var(--font-sans);
   color: var(--color-text);
-  background: var(--color-bg);
   line-height: var(--leading-normal);
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  background: var(--gradient-shell);
+
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+main, .hero--with-form {
+  margin-top: 0;
+  padding-top: 0; /* أو جرّب قيمة أصغر بدل الصفر */
+}
+
+main, .hero--with-form, .page--inschrijven {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
 
 img {
   max-width: 100%;
@@ -165,13 +183,13 @@ ul, ol {
 
 /* Layout Containers */
 .container {
-  width: min(100%, var(--max-width));
-  margin-inline: auto;
-  padding-inline: clamp(1.5rem, 4vw, 3rem);
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding-inline: clamp(1rem, 4vw, 2rem);
 }
 
 .page-shell {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -190,7 +208,7 @@ main {
 main > section,
 .page-shell main > section {
   margin-bottom: 0;
-  padding-block: var(--space-section);
+  padding-block: var(--space-section) !important;
 }
 
 main > section + section {
@@ -200,6 +218,7 @@ main > section + section {
 .section--surface,
 main > section:nth-of-type(odd):not(.hero):not([class*="--"]) {
   background: var(--color-surface);
+  
 }
 
 
@@ -324,18 +343,17 @@ p {
 /* Header & Navigation */
 .site-header {
   position: sticky;
+  min-height: 100%;
+  z-index: 1000;
+  margin: 0;
+  padding: 0;
   top: 0;
-  z-index: 50;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(14px);
-  border-bottom: var(--border-width) solid rgba(212, 231, 230, 0.35);
-  box-shadow: var(--shadow-card);
-  transition: var(--transition-base);
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(15, 130, 138, 0.12);
+  box-shadow: var(--shadow-sm);
 }
 
-.site-header .container {
-  padding-inline: clamp(1.5rem, 4vw, 3rem);
-}
 
 .site-header__inner {
   display: grid;
@@ -343,7 +361,6 @@ p {
   align-items: center;
   gap: var(--space-lg);
   min-height: 80px;
-  padding-block: var(--space-sm);
 }
 
 .brand {
@@ -367,7 +384,6 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(0.75rem, 1.5vw, 1.5rem);
   list-style: none;
   padding: 0;
   margin: 0;
@@ -673,7 +689,6 @@ color: var(--color-primary-dark);
   grid-template-columns: repeat(2, 1fr);
 }
 
-.about-values__grid,
 .counter-grid,
 .program-info-grid,
 .contact-details {
@@ -781,7 +796,6 @@ color: var(--color-primary-dark);
 .two-column,
 .timeline--four {
   line-height: var(--leading-relaxed);
-  color: var(--color-text-muted);
   font-size: var(--text-body);
 }
 
@@ -1262,6 +1276,9 @@ textarea:valid:not(:placeholder-shown) {
   box-shadow: inset 0 0 80px rgba(15, 130, 138, 0.08);
 }
 
+
+
+
 .about-hero__layout {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
@@ -1340,27 +1357,17 @@ textarea:valid:not(:placeholder-shown) {
   gap: var(--gap-cards);
   align-items: stretch;
   max-width: 1200px;
-  padding: var(--space-card);
-  border-radius: var(--radius-md);
 }
 
 
-/* الكروت الفردية داخل الشبكة */
-
-.about-values__grid > *:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
-}
 
 
 .about-values__grid > article {
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card) !important;
   padding: var(--space-card);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
   text-align: left;
   display: block; /* مهم لإزالة أي تعارض */
-  background: var(--color-surface);
   border: var(--border-width) solid var(--border-color);
   min-width: 100%;
 }
@@ -1409,7 +1416,6 @@ textarea:valid:not(:placeholder-shown) {
   background: var(--color-surface) !important;
   border-radius: var(--radius-md) !important;
   border: var(--border-width) solid var(--border-color) !important;
-  box-shadow: var(--shadow-card) !important;
   padding: var(--space-card) !important;
 }
 
@@ -1419,13 +1425,11 @@ textarea:valid:not(:placeholder-shown) {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background: var(--color-surface);
   border-radius: var(--radius-md);
   padding: var(--space-card);
-  box-shadow: var(--shadow-sm);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
-  background-color: #c03737 !important;
 }
+
 
 
 .about-columns__grid:hover {
@@ -1449,7 +1453,6 @@ textarea:valid:not(:placeholder-shown) {
   color: var(--color-primary-dark) !important;
   font-weight: 700 !important;
   margin-bottom: var(--space-md) !important;
-  box-shadow: var(--shadow-sm) !important;
 }
 
 /* ============ 4. Text content ============ */
@@ -1711,6 +1714,7 @@ textarea:valid:not(:placeholder-shown) {
   color: inherit;
 }
 
+
 /* Registration Page */
 .page--inschrijven main > .section:nth-of-type(odd) {
   background: var(--color-surface);
@@ -1758,52 +1762,38 @@ textarea:valid:not(:placeholder-shown) {
   gap: var(--gap-elements);
 }
 
+/* Intakeproces*/
+
+
 .page--inschrijven .timeline--four {
- display: grid;
+  display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--gap-cards);
   justify-content: center;
   align-items: stretch;
-
-  /* ✨ الخلفية الزجاجية حسب النظام */
-  background: color-mix(in srgb, var(--color-surface) 60%, transparent);
-  backdrop-filter: blur(10px) saturate(160%);
   -webkit-backdrop-filter: blur(10px) saturate(160%);
-  border: var(--border-width) solid var(--border-color);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-
-  /* فراغ من الجوانب */
-  padding: var(--space-card);
-  margin-inline: 0;  /* ← يضيف فراغ أفقي */
-  margin-block: var(--space-xl);    /* ← فراغ عمودي إضافي */
-
-  max-width: var(--max-width);
-  width: 100%;
   transition: box-shadow var(--transition-base), transform var(--transition-base);
   position: relative;
   z-index: 1;
 }
+
 
 /* البطاقات الفردية */
 .page--inschrijven .timeline--four .timeline__item {
   background: var(--color-surface);
   border: var(--border-width) solid var(--border-color-strong);
   border-radius: var(--radius-md);
-  padding: var(--space-card);
-  box-shadow: var(--shadow-sm);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
-
 }
 
 
 .page--inschrijven .timeline--four .timeline__item {
-  background: var(--color-surface);
   border: var(--border-width) solid var(--border-color-strong);
   border-radius: var(--radius-md);
   padding: var(--space-card);
-  box-shadow: var(--shadow-sm);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
+  
 }
 
 
@@ -1814,10 +1804,10 @@ textarea:valid:not(:placeholder-shown) {
 
 .page--inschrijven {
   background: var(--gradient-shell);
+  padding-inline: 0; /* ← إزالة الفراغ من الجانبين */
   padding-block: var(--space-section);
-  display: flex;
-  justify-content: center;
-  padding-inline: var(--space-2xl); /* ✅ أضف هذا */
+  width: 100%;
+  margin: 0;
 }
 
 
@@ -1828,7 +1818,7 @@ textarea:valid:not(:placeholder-shown) {
   left: 7%;
   right: 7%;
   height: 3px;
-  background: linear-gradient(90deg, transparent, rgba(15, 130, 138, 0.25) 10%, rgba(15, 130, 138, 0.25) 90%, transparent);
+  background: var(--color-accent);
   z-index: 0;
 }
 
@@ -2061,6 +2051,12 @@ textarea:valid:not(:placeholder-shown) {
   border-bottom: 2px solid rgba(255, 255, 255, 0.15);
 }
 
+.footer__column p {
+  color: #ffffff;
+  line-height: var(--leading-relaxed);
+  font-weight: 450;
+}
+
 .footer__column ul {
   display: grid;
   gap: var(--space-sm);
@@ -2234,6 +2230,13 @@ textarea:valid:not(:placeholder-shown) {
 
   .timeline {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  .page--inschrijven .container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-lg);
   }
 
   .timeline--four,
@@ -2476,6 +2479,9 @@ textarea:valid:not(:placeholder-shown) {
 
   body {
     font-size: 12pt;
+      min-height: 100vh;
+  background: var(--color-bg);
+  overflow-x: hidden;
   }
 
   .section {
