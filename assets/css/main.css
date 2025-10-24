@@ -950,8 +950,7 @@ p {
 .counter-grid,
 .program-info-grid,
 .vacatures__grid,
-.contact-details,
-.tips-grid {
+.contact-details {
   display: grid;
   gap: clamp(2rem, 3.5vw, 3rem);
   align-items: stretch;
@@ -970,8 +969,7 @@ p {
 .counter-grid,
 .program-info-grid,
 .vacatures__grid,
-.contact-details,
-.tips-grid:hover {
+.contact-details:hover {
     transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
 
@@ -999,9 +997,27 @@ p {
 }
 
 .tips-grid {
-  grid-template-columns: repeat(2, 1fr);
-  max-width: 900px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 2rem);
+  max-width: 1160px;
   margin-inline: auto;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* Mobile: Stack all cards vertically */
+@media (max-width: 768px) {
+  .tips-grid {
+    grid-template-columns: 1fr;
+    gap: clamp(1.25rem, 2.5vw, 1.5rem);
+  }
+  
+  .tip-card--large,
+  .tip-card--small {
+    grid-column: 1;
+  }
 }
 
 
@@ -3262,73 +3278,64 @@ textarea::placeholder {
   background: var(--color-surface, #f8fafb);
 }
 
-/* Remove decorative ::before element */
-.tip-card::before {
-  display: none;
+/* Asymmetric Grid Layout: 1 large (2/3) + 1 small (1/3) + 2 equal (50/50) */
+.tip-card--large {
+  grid-column: 1 / 3;
 }
 
-/* Clean, Simple Card Design */
+.tip-card--small {
+  grid-column: 3 / 4;
+}
+
+/* Clean, Minimalist Card Design */
 .tip-card {
   display: flex;
   flex-direction: column;
   gap: clamp(0.875rem, 1.5vw, 1rem);
   padding: clamp(1.5rem, 3vw, 2rem);
-  background: white;
-  border: 1px solid rgba(37, 189, 183, 0.15);
-  border-radius: var(--radius-md, 12px);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--radius-md);
   min-height: auto;
-  transition: all 0.3s ease;
+  transition: all var(--transition-base);
   position: relative;
-  overflow: visible;
+  box-shadow: var(--shadow-sm);
 }
 
 .tip-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(15, 130, 138, 0.1);
-  border-color: rgba(37, 189, 183, 0.25);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-color-strong);
 }
 
-/* Icon at the top */
-.tip-card__icon {
-  font-size: 2rem;
-  line-height: 1;
-  margin-bottom: 0.25rem;
-}
-
-.tip-card__icon--highlight {
-  font-size: 2.25rem;
-}
-
-/* Third tip-card takes full width */
-.tip-card:nth-child(3) {
-  grid-column: 1 / -1;
-  max-width: 100%;
-}
-
+/* Checkmark styling - simple and aligned with title */
 .tip-card h3 {
   font-size: clamp(1rem, 1.75vw, 1.25rem);
   margin: 0;
-  line-height: 1.3;
+  line-height: var(--leading-snug);
   font-weight: 700;
   letter-spacing: -0.01em;
   text-align: left;
-  color: var(--color-primary-dark, #0d7377);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tip-card h3 .checkmark {
+  color: var(--color-accent);
+  font-size: 0.875em;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
 .tip-card p {
   font-size: clamp(0.875rem, 1.25vw, 0.9375rem);
-  line-height: 1.65;
-  color: #556273;
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
   font-weight: 400;
   text-align: left;
   margin: 0;
-}
-
-.tip-card h3,
-.tip-card p,
-.tip-card ul {
-  position: relative;
-  z-index: 1;
 }
 
 .tip-card ul {
@@ -3349,7 +3356,7 @@ textarea::placeholder {
   position: relative;
   text-align: left;
   direction: ltr;
-  color: #556273;
+  color: var(--color-text-muted);
 }
 
 .tip-card ul li::before {
@@ -3361,32 +3368,30 @@ textarea::placeholder {
   height: 20px;
   min-width: 20px;
   border-radius: 50%;
-  background: var(--color-primary);
+  background: var(--color-accent);
   color: white;
   font-size: 0.75rem;
   font-weight: 700;
   margin-top: 0.125rem;
 }
 
-/* Special styling for highlighted tip card - Light teal background */
+/* Special styling for highlighted tip card */
 .tip-card--highlight {
-  background: linear-gradient(135deg, rgba(100, 230, 220, 0.08), rgba(37, 189, 183, 0.05));
-  border-color: rgba(37, 189, 183, 0.25);
-  position: relative;
-  overflow: visible;
-}
-
-.tip-card--highlight::before {
-  display: none;
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
 }
 
 .tip-card--highlight h3 {
   color: var(--color-primary);
 }
 
+.tip-card--highlight h3 .checkmark {
+  color: var(--color-primary);
+}
+
 .tip-card--highlight:hover {
   border-color: var(--color-primary);
-  box-shadow: 0 6px 20px rgba(15, 130, 138, 0.15);
+  box-shadow: var(--shadow-lg);
 }
 
 .faq-section {
