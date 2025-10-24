@@ -4528,6 +4528,18 @@ textarea:focus-visible {
 .program-highlight__intro {
   display: grid;
   gap: var(--space-lg);
+  text-align: left;
+}
+
+/* Override section-heading alignment inside program-highlight */
+.program-highlight__intro .section-heading {
+  text-align: left;
+  justify-items: start;
+  margin-inline: 0;
+}
+
+.program-highlight__intro .section-label {
+  margin-inline: 0;
 }
 
 .program-highlight__title {
@@ -4535,6 +4547,7 @@ textarea:focus-visible {
   color: var(--color-primary-dark);
   line-height: var(--leading-tight);
   margin: 0;
+  text-align: left;
 }
 
 .program-highlight__lead {
