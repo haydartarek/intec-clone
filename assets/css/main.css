@@ -3259,26 +3259,44 @@ textarea::placeholder {
 /* Tips & FAQ */
 .tips-section {
   padding-block: var(--space-section);
-  background: radial-gradient(circle at 20% 80%, rgba(37, 189, 183, 0.05), transparent),
-    var(--gradient-shell);
+  background: var(--color-surface, #f8fafb);
 }
 
+/* Remove decorative ::before element */
 .tip-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(circle at center, rgba(37, 189, 183, 0.08), transparent 70%);
-  border-radius: 50%;
-  transform: translate(40%, -40%);
+  display: none;
 }
 
+/* Clean, Simple Card Design */
 .tip-card {
-  padding: clamp(1.25rem, 2.5vw, 1.75rem);
-  gap: clamp(0.75rem, 1.5vw, 1rem);
-  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.875rem, 1.5vw, 1rem);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background: white;
+  border: 1px solid rgba(37, 189, 183, 0.15);
+  border-radius: var(--radius-md, 12px);
+  min-height: auto;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: visible;
+}
+
+.tip-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(15, 130, 138, 0.1);
+  border-color: rgba(37, 189, 183, 0.25);
+}
+
+/* Icon at the top */
+.tip-card__icon {
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.tip-card__icon--highlight {
+  font-size: 2.25rem;
 }
 
 /* Third tip-card takes full width */
@@ -3288,16 +3306,13 @@ textarea::placeholder {
 }
 
 .tip-card h3 {
-  font-size: clamp(1.0625rem, 1.9vw, 1.375rem);
-  margin: 0 0 clamp(0.5rem, 1vw, 0.75rem) 0;
+  font-size: clamp(1rem, 1.75vw, 1.25rem);
+  margin: 0;
   line-height: 1.3;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   text-align: left;
-  justify-content: flex-start;
+  color: var(--color-primary-dark, #0d7377);
 }
 
 .tip-card p {
@@ -3306,6 +3321,7 @@ textarea::placeholder {
   color: #556273;
   font-weight: 400;
   text-align: left;
+  margin: 0;
 }
 
 .tip-card h3,
@@ -3316,9 +3332,10 @@ textarea::placeholder {
 }
 
 .tip-card ul {
-  padding-right: 0;
-  padding-left: 0;
-  display: grid;
+  padding: 0;
+  margin: 0.5rem 0 0 0;
+  display: flex;
+  flex-direction: column;
   gap: clamp(0.5rem, 1vw, 0.625rem);
   list-style: none;
   font-size: clamp(0.8125rem, 1.15vw, 0.875rem);
@@ -3329,10 +3346,10 @@ textarea::placeholder {
   display: flex;
   align-items: flex-start;
   gap: 0.625rem;
-  padding-right: 0.5rem;
   position: relative;
   text-align: left;
   direction: ltr;
+  color: #556273;
 }
 
 .tip-card ul li::before {
@@ -3344,36 +3361,32 @@ textarea::placeholder {
   height: 20px;
   min-width: 20px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #25BDB7, #0F828A);
+  background: var(--color-primary);
   color: white;
   font-size: 0.75rem;
   font-weight: 700;
   margin-top: 0.125rem;
-  box-shadow: 0 2px 6px rgba(37, 189, 183, 0.25);
 }
 
-/* Special styling for highlighted tip card */
+/* Special styling for highlighted tip card - Light teal background */
 .tip-card--highlight {
-  background: linear-gradient(135deg, rgba(37, 189, 183, 0.04), rgba(15, 130, 138, 0.06));
-  border: 1.5px solid rgba(37, 189, 183, 0.2);
+  background: linear-gradient(135deg, rgba(100, 230, 220, 0.08), rgba(37, 189, 183, 0.05));
+  border-color: rgba(37, 189, 183, 0.25);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .tip-card--highlight::before {
-  background: radial-gradient(circle at center, rgba(37, 189, 183, 0.12), transparent 70%);
+  display: none;
 }
 
 .tip-card--highlight h3 {
-  color: #0F828A;
-  font-weight: 800;
+  color: var(--color-primary);
 }
 
 .tip-card--highlight:hover {
-  border-color: rgba(37, 189, 183, 0.4);
-  box-shadow: 
-    0 12px 32px rgba(15, 130, 138, 0.12),
-    0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-primary);
+  box-shadow: 0 6px 20px rgba(15, 130, 138, 0.15);
 }
 
 .faq-section {
