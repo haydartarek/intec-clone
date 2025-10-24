@@ -1235,30 +1235,30 @@ p {
 
 /* Program timeline with asymmetric grid layout */
 .timeline--program {
-  grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+  grid-template-columns: 2fr 1fr; /* Asymmetric: first card larger (like LambdaTest) */
   grid-auto-rows: minmax(280px, auto);
   gap: clamp(1.5rem, 3vw, 2rem);
 }
 
-/* First card - left column, first row */
+/* First card - large (2fr width), first row */
 .timeline--program li:nth-child(1) {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
 }
 
-/* Second card - right column, first row */
+/* Second card - small (1fr width), first row */
 .timeline--program li:nth-child(2) {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
 }
 
-/* Third card - left column, second row */
+/* Third card - half width, second row */
 .timeline--program li:nth-child(3) {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
 }
 
-/* Fourth card - right column, second row */
+/* Fourth card - half width, second row */
 .timeline--program li:nth-child(4) {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
@@ -1288,14 +1288,14 @@ p {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Remove featured gradient - all cards same white background */
+/* Featured first card with subtle gradient background */
 .timeline--program li:nth-child(1) .timeline__content {
-  background: white;
+  background: linear-gradient(135deg, rgba(37, 189, 183, 0.08), rgba(100, 230, 220, 0.04));
 }
 
-/* All titles same size */
+/* Larger title for featured first card */
 .timeline--program li:nth-child(1) .timeline__content strong {
-  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
 }
 
 /* Circular numbered badge */
@@ -4577,31 +4577,31 @@ textarea:focus-visible {
 /* ==================== PROGRAM MODULES GRID ==================== */
 .program-modules-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+  grid-template-columns: 2fr 1fr; /* Asymmetric: first card larger (like LambdaTest) */
   grid-auto-rows: minmax(280px, auto);
   gap: clamp(1.5rem, 3vw, 2rem);
   margin-top: var(--space-xl);
 }
 
-/* First card - left column, first row */
+/* First card - large (2fr width), first row */
 .program-module:nth-child(1) {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
 }
 
-/* Second card - right column, first row */
+/* Second card - small (1fr width), first row */
 .program-module:nth-child(2) {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
 }
 
-/* Third card - left column, second row */
+/* Third card - half width, second row */
 .program-module:nth-child(3) {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
 }
 
-/* Fourth card - right column, second row */
+/* Fourth card - half width, second row */
 .program-module:nth-child(4) {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
@@ -4623,9 +4623,14 @@ textarea:focus-visible {
   overflow: hidden;
 }
 
-/* Remove gradient - all cards same white background */
+/* Featured first card with subtle gradient */
 .program-module:nth-child(1) {
-  background: white;
+  background: linear-gradient(135deg, rgba(37, 189, 183, 0.08), rgba(100, 230, 220, 0.04));
+}
+
+/* Larger title for featured first card */
+.program-module:nth-child(1) .program-module__title {
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
 }
 
 .program-module::before {
@@ -4678,14 +4683,7 @@ textarea:focus-visible {
 /* Responsive adjustments for modules */
 @media (max-width: 992px) {
   .program-modules-grid {
-    grid-template-columns: 1fr 1fr; /* Keep 2 columns on tablet */
-  }
-  
-  .program-module:nth-child(1),
-  .program-module:nth-child(2),
-  .program-module:nth-child(3),
-  .program-module:nth-child(4) {
-    grid-column: auto; /* Reset to auto for 2-column layout */
+    grid-template-columns: 2fr 1fr; /* Keep asymmetric layout on tablet */
   }
 }
 
@@ -5290,15 +5288,8 @@ textarea:focus-visible {
 /* Tablet responsive for program timeline only */
 @media (min-width: 769px) and (max-width: 992px) {
   .timeline--program {
-    grid-template-columns: 1fr 1fr; /* Keep 2 columns on tablet */
+    grid-template-columns: 2fr 1fr; /* Keep asymmetric layout on tablet */
     gap: clamp(1.25rem, 2.5vw, 1.5rem);
-  }
-  
-  .timeline--program li:nth-child(1),
-  .timeline--program li:nth-child(2),
-  .timeline--program li:nth-child(3),
-  .timeline--program li:nth-child(4) {
-    grid-column: auto; /* Reset to auto for 2-column layout */
   }
 }
 
