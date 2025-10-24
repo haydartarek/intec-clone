@@ -10,13 +10,14 @@
     <title>Inschrijven | INTEC Brussel</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <link rel="stylesheet" href="assets/css/local-fonts.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/main.css?v=20251024k" />
    <script src="assets/js/i18n/nl.js"></script>
 <script src="assets/js/i18n/en.js"></script>
 <script src="assets/js/main.js" defer></script>
+<script src="assets/js/3d-cards.js" defer></script>
   </head>
 
-  <body class="page--inschrijven">
+  <body class="main-content page--inschrijven">
     <a class="skip-link" href="#main-content">Ga naar hoofdinhoud</a>
     <div class="page-shell">
       <header class="site-header">
@@ -68,24 +69,30 @@
       </header>
 
       <main id="main-content" tabindex="-1">
-        <section class="about-hero register-hero hero--with-form">
-          <div class="container about-hero__layout hero__grid">
-            <div class="about-hero__content hero__content register-hero__content">
-              <span class="section-label" data-i18n="register.label">Inschrijven</span>
-              <h1 class="about-hero__title" data-i18n="register.title">Start je traject met een intakegesprek</h1>
-              <p class="about-hero__lead" data-i18n="register.intro">
+        <section class="hero">
+          <div class="container hero__grid">
+            <div class="hero__content">
+              <span class="hero__eyebrow" data-i18n="register.label">Inschrijven</span>
+              <h1 class="hero__title" data-i18n="register.title">Start je traject met een intakegesprek</h1>
+              <p class="hero__description" data-i18n="register.intro">
                 Elke opleiding start met een intake. Tijdens dit gesprek onderzoeken we samen jouw motivatie,
                 beschikbaarheid, digitale vaardigheden en taalniveau. Dankzij deze screening kan je traject meteen op
                 maat van jouw noden starten.
               </p>
-              <div class="about-hero__chips">
-                <span data-i18n="register.hero.chip1">Gratis VDAB-traject</span>
-                <span data-i18n="register.hero.chip2">Intake binnen 3 werkdagen</span>
-                <span data-i18n="register.hero.chip3">Coaching &amp; taalondersteuning</span>
-              </div>
-              <div class="about-hero__cta hero__actions">
-                <a class="button" href="#registration-form" data-i18n="register.hero.ctaPrimary">Start voorinschrijving</a>
+              <div class="hero__actions">
+                <a class="button" href="#registration-form" data-i18n="register.hero.ctaPrimary">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="12" y1="18" x2="12" y2="12"></line>
+                    <line x1="9" y1="15" x2="15" y2="15"></line>
+                  </svg>
+                  Start voorinschrijving
+                </a>
                 <a class="button button--ghost" href="#intake-proces" data-i18n="register.hero.ctaSecondary">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
                   Bekijk stappen
                 </a>
               </div>
@@ -103,13 +110,14 @@
                 </p>
               </div>
             </div>
-            <div class="about-hero__card register-hero__card">
+            <div class="hero__visual">
+              <div class="hero-card">
               <h3 data-i18n="register.formTitle">Voorinschrijving</h3>
               <p class="register-hero__note" data-i18n="register.formNote">
                 Vul het formulier in en ontvang binnen drie werkdagen een bevestiging met het voorstel voor je
                 infosessie en assessment. We bewaren je gegevens confidentieel volgens de GDPR-richtlijnen.
               </p>
-              <form id="registration-form" class="register-form">
+              <form id="registration-form" class="register-form" novalidate>
                 <div class="form-grid form-grid--single">
                   <label>
                     <span data-i18n="register.fields.fullName">Volledige naam</span>
@@ -210,13 +218,20 @@
                     ></textarea>
                   </label>
                 </div>
-                <button class="button" type="submit" data-i18n="register.submit">Verstuur inschrijving</button>
+                <button class="button" type="submit" data-i18n="register.submit">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                  Verstuur inschrijving
+                </button>
               </form>
+              </div>
             </div>
           </div>
         </section>
 
-        <section class="section intake-steps" id="intake-proces">
+        <section class="section" id="intake-proces">
           <div class="container">
             <div class="section-heading">
               <span class="section-label" data-i18n="register.timeline.label">Intakeproces</span>
@@ -267,7 +282,7 @@
           </div>
         </section>
 
-        <section class="section tips-section">
+        <section class="section">
           <div class="container">
             <div class="section-heading">
               <span class="section-label" data-i18n="register.tips.label">Voorbereiding</span>
@@ -315,7 +330,7 @@
           </div>
         </section>
 
-        <section class="section section--surface">
+        <section class="section">
           <div class="container">
             <div class="section-heading">
               <span class="section-label" data-i18n="register.label">Inschrijven</span>
@@ -341,6 +356,10 @@
                   of bel 02/411 29 07 (maandag tot vrijdag, 9:00 - 12:00 en 13:00 - 16:00).
                 </p>
                 <a class="button button--ghost" href="contact.html" data-i18n="register.contact.cta">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
                   Neem contact op
                 </a>
               </div>
@@ -348,7 +367,7 @@
           </div>
         </section>
 
-        <section class="section faq-section" id="veelgestelde-vragen">
+        <section class="section" id="veelgestelde-vragen">
           <div class="container">
             <div class="section-heading">
               <span class="section-label" data-i18n="register.faq.label">Veelgestelde vragen</span>
@@ -409,8 +428,24 @@
                   ondersteuning het best bij jouw situatie aansluiten.
                 </p>
                 <div class="cta-stack">
-                  <a class="button" href="contact.html" data-i18n="register.faq.contact.ctaPrimary">Plan een kennismaking</a>
+                  <a class="button" href="contact.html" data-i18n="register.faq.contact.ctaPrimary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                      <line x1="16" y1="2" x2="16" y2="6"></line>
+                      <line x1="8" y1="2" x2="8" y2="6"></line>
+                      <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    Plan een kennismaking
+                  </a>
                   <a class="button button--ghost" href="digipunt.html" data-i18n="register.faq.contact.ctaSecondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                      <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
+                      <polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
+                      <polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
+                      <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                      <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
                     Bezoek het Digipunt
                   </a>
                 </div>
@@ -419,7 +454,7 @@
           </div>
         </section>
 
-        <section class="section cta-band cta-band--minimal cta-band--highlight">
+        <section class="section cta-band cta-band--register">
           <div class="cta-band__inner container">
             <div class="cta-band__content">
               <span class="cta-band__eyebrow" data-i18n="register.cta.eyebrow">Klaar om te starten?</span>
@@ -428,25 +463,21 @@
                 Bekijk het overzicht van onze erkende VDAB-opleidingen en kies het traject dat aansluit bij jouw ambities.
                 We begeleiden je van eerste intake tot duurzame tewerkstelling.
               </p>
-            </div>
-            <div class="cta-band__actions">
-              <a class="button" href="index.html#opleidingen" data-i18n="register.cta.primary">Bekijk het aanbod</a>
-              <a class="button button--ghost" href="contact.html" data-i18n="register.cta.secondary">Bespreek met een coach</a>
-            </div>
-          </div>
-        </section>
-        <section class="section cta-band cta-band--minimal">
-          <div class="cta-band__inner container">
-            <div class="cta-band__content">
-              <span class="cta-band__eyebrow" data-i18n="about.cta.eyebrow">Samen bouwen</span>
-              <h2 data-i18n="about.cta.title">Wil je mee het verschil maken voor talent in Brussel?</h2>
-              <p data-i18n="about.cta.body">
-                Neem contact op en ontdek hoe we kunnen samenwerken rond trajecten, stages of coaching.
-              </p>
-            </div>
-            <div class="cta-band__actions">
-              <a class="button" href="contact.html" data-i18n="about.cta.primary">Contacteer ons team</a>
-              <a class="button button--ghost" href="index.html#opleidingen" data-i18n="about.cta.secondary">Ontdek opleidingen</a>
+              <div class="cta-band__actions">
+                <a class="button" href="index.html#opleidingen" data-i18n="register.cta.primary">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                  </svg>
+                  Bekijk het aanbod
+                </a>
+                <a class="button button--ghost" href="contact.html" data-i18n="register.cta.secondary">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                  Bespreek met een coach
+                </a>
+              </div>
             </div>
           </div>
         </section>

@@ -16,7 +16,7 @@
     <script src="assets/js/i18n/en.js"></script>
 
   </head>
-  <body>
+  <body class="main-content">
     <a class="skip-link" href="#main-content">Ga naar hoofdinhoud</a>
     <div class="page-shell">
       <header class="site-header">
@@ -331,17 +331,17 @@
         </section>
 
         <section id="partners" class="section partners-section">
+          <div class="section-heading">
+            <span class="section-label" data-i18n="home.partners.label">Partners</span>
+            <h2 class="section-title" data-i18n="home.partners.title">
+              Samenwerking met bedrijven, overheden en non-profits
+            </h2>
+            <p class="section-lead section-description" data-i18n="home.partners.lead">
+              Meer dan twintig jaar ervaring levert een sterk netwerk op van werkgevers, organisaties en
+              maatwerkbedrijven die inzetten op digitale vaardigheden en inclusieve teams.
+            </p>
+          </div>
           <div class="container">
-            <div class="section-heading">
-              <span class="section-label" data-i18n="home.partners.label">Partners</span>
-              <h2 class="section-title" data-i18n="home.partners.title">
-                Samenwerking met bedrijven, overheden en non-profits
-              </h2>
-                <p class="section-lead section-description" data-i18n="home.partners.lead">
-                  Meer dan twintig jaar ervaring levert een sterk netwerk op van werkgevers, organisaties en
-                  maatwerkbedrijven die inzetten op digitale vaardigheden en inclusieve teams.
-                </p>
-              </div>
               <div
                 class="partner-carousel"
                 data-partner-carousel
@@ -497,6 +497,9 @@
             </div>
             <div class="cta-band__actions">
               <a class="button" href="https://inoptecplus.be/" target="_blank" rel="noopener noreferrer" data-i18n="home.partnerCallout.cta">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
                 Neem contact op
               </a>
             </div>
@@ -513,8 +516,20 @@
               </p>
             </div>
             <div class="cta-band__actions">
-              <a class="button" href="contact.html" data-i18n="about.cta.primary">Contacteer ons team</a>
-              <a class="button button--ghost" href="index.html#opleidingen" data-i18n="about.cta.secondary">Ontdek opleidingen</a>
+              <a class="button" href="contact.html" data-i18n="about.cta.primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Contacteer ons team
+              </a>
+              <a class="button button--ghost" href="index.html#opleidingen" data-i18n="about.cta.secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+                Ontdek opleidingen
+              </a>
             </div>
           </div>
         </section>
@@ -569,5 +584,12 @@
         </div>
       </footer>
     </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="رجوع للأعلى">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
   </body>
 </html>

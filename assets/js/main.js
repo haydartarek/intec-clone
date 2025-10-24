@@ -419,53 +419,225 @@ function setupSmoothScroll() {
   // Form Validation
   // =============================
   
+  // =============================
+  // Form Validation with Smart Real-Time Logic
+  // =============================
+  
   function setupValidation(form) {
     if (!form) return;
     
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phonePattern = /^[\d\s\+\-\(\)]+$/;
+    // Validation patterns and rules
+    const validationRules = {
+      'full-name': {
+        required: true,
+        minLength: 5,
+        maxLength: 25,
+        pattern: /^[A-Za-zÀ-ÿ' -]{2,}\s[A-Za-zÀ-ÿ' -]{2,}$/,
+        errorKey: 'register.validation.fullName',
+        minErrorKey: 'register.validation.fullNameMin'
+      },
+      'gender': {
+        required: true,
+        errorKey: 'register.validation.gender'
+      },
+      'email': {
+        required: true,
+        minLength: 6,
+        maxLength: 50,
+        pattern: /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/,
+        errorKey: 'register.validation.email'
+      },
+      'phone': {
+        required: true,
+        pattern: /^0\d{8,9}$/,
+        numbersOnly: true,
+        errorKey: 'register.validation.phone',
+        numbersErrorKey: 'register.validation.phoneNumbers'
+      },
+      'national-number': {
+        required: true,
+        exactLength: 11,
+        numbersOnly: true,
+        pattern: /^\d{11}$/,
+        errorKey: 'register.validation.national'
+      },
+      'address': {
+        required: true,
+        minLength: 5,
+        maxLength: 40,
+        errorKey: 'register.validation.address'
+      },
+      'postcode': {
+        required: true,
+        exactLength: 4,
+        pattern: /^[1-9][0-9]{3}$/,
+        errorKey: 'register.validation.postcode'
+      },
+      'city': {
+        required: true,
+        minLength: 2,
+        maxLength: 30,
+        pattern: /^[A-Za-zÀ-ÿ' -]{2,30}$/,
+        errorKey: 'register.validation.city'
+      },
+      'course': {
+        required: true,
+        errorKey: 'register.validation.course'
+      },
+      'message': {
+        required: false,
+        maxLength: 500,
+        errorKey: 'register.validation.messageLength'
+      }
+    };
 
+    // Add error message elements to all fields
+    form.querySelectorAll("input, select, textarea").forEach((input) => {
+      const existingError = input.parentNode.querySelector('.form-error');
+      if (!existingError) {
+        const errorMsg = document.createElement('div');
+        errorMsg.className = 'form-error';
+        input.parentNode.appendChild(errorMsg);
+      }
+    });
+
+    // Enforce max length on input
+    function enforceMaxLength(input, maxLength) {
+      if (input.value.length > maxLength) {
+        input.value = input.value.substring(0, maxLength);
+      }
+    }
+
+    // Validation function with smart error detection
+    function validateField(input, realTime = false) {
+      const value = input.value.trim();
+      const rawValue = input.value; // Keep spaces for length check
+      const name = input.name;
+      const rules = validationRules[name];
+      
+      if (!rules) return { isValid: true, errorKey: null };
+
+      let isValid = true;
+      let errorKey = null;
+
+      // Required check
+      if (rules.required && !value) {
+        isValid = false;
+        errorKey = rules.errorKey;
+        return { isValid, errorKey };
+      }
+
+      // Skip validation if field is optional and empty
+      if (!rules.required && !value) {
+        return { isValid: true, errorKey: null };
+      }
+
+      // Check for numbers only fields
+      if (rules.numbersOnly && value && !/^\d+$/.test(value.replace(/[\s.-]/g, ''))) {
+        isValid = false;
+        errorKey = rules.numbersErrorKey || rules.errorKey;
+        return { isValid, errorKey };
+      }
+
+      // Min length check
+      if (rules.minLength && rawValue.length < rules.minLength) {
+        isValid = false;
+        errorKey = rules.minErrorKey || rules.errorKey;
+        return { isValid, errorKey };
+      }
+
+      // Exact length check
+      if (rules.exactLength && value.replace(/[\s.-]/g, '').length !== rules.exactLength) {
+        isValid = false;
+        errorKey = rules.errorKey;
+        return { isValid, errorKey };
+      }
+
+      // Pattern validation
+      if (rules.pattern && value) {
+        const cleanValue = name === 'phone' || name === 'national-number' 
+          ? value.replace(/[\s.-]/g, '') 
+          : value;
+        
+        if (!rules.pattern.test(cleanValue)) {
+          isValid = false;
+          errorKey = rules.errorKey;
+          return { isValid, errorKey };
+        }
+      }
+
+      // Select field validation
+      if (input.tagName === 'SELECT' && (!value || value === '')) {
+        isValid = false;
+        errorKey = rules.errorKey;
+        return { isValid, errorKey };
+      }
+
+      return { isValid, errorKey };
+    }
+
+    // Show error message
+    function showError(input, errorKey) {
+      if (!errorKey) return;
+      
+      input.classList.add("has-error");
+      const errorMsg = input.parentNode.querySelector('.form-error');
+      if (errorMsg) {
+        errorMsg.setAttribute('data-i18n', errorKey);
+        const dict = window.i18n?.[currentLanguage] || {};
+        errorMsg.textContent = dict[errorKey] || errorKey;
+        errorMsg.style.display = 'block';
+      }
+    }
+
+    // Hide error message
+    function hideError(input) {
+      input.classList.remove("has-error");
+      const errorMsg = input.parentNode.querySelector('.form-error');
+      if (errorMsg) {
+        errorMsg.style.display = 'none';
+        errorMsg.textContent = '';
+      }
+    }
+
+    // Form submit handler
     form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      
       let valid = true;
       let firstError = null;
 
-      // Clear previous errors
+      // Hide success message if visible
+      const successMsg = form.querySelector('.form-success');
+      if (successMsg) {
+        successMsg.classList.remove('is-visible');
+      }
+
+      // Clear all previous errors
       form.querySelectorAll(".has-error").forEach((el) => {
         el.classList.remove("has-error");
       });
+      form.querySelectorAll(".form-error").forEach((el) => {
+        el.style.display = 'none';
+      });
 
-      // Validate required fields
-      form.querySelectorAll("input[required], select[required], textarea[required]").forEach((input) => {
-        const value = input.value.trim();
-        let isValid = true;
-
-        // Check if empty
-        if (!value) {
-          isValid = false;
-        }
-        // Email validation
-        else if (input.type === "email" && !emailPattern.test(value)) {
-          isValid = false;
-        }
-        // Phone validation
-        else if (input.type === "tel" && !phonePattern.test(value)) {
-          isValid = false;
-        }
-        // Select validation
-        else if (input.tagName === "SELECT" && value === "") {
-          isValid = false;
+      // Validate all fields
+      const fieldsToValidate = form.querySelectorAll("input, select, textarea");
+      fieldsToValidate.forEach((input) => {
+        // Skip optional empty message field
+        if (input.name === 'message' && !input.value.trim() && !input.hasAttribute('required')) {
+          return;
         }
 
-        if (!isValid) {
-          input.classList.add("has-error");
+        const validation = validateField(input);
+        if (!validation.isValid) {
+          showError(input, validation.errorKey);
           valid = false;
           if (!firstError) firstError = input;
         }
       });
 
       if (!valid) {
-        e.preventDefault();
-        
         // Focus first error field
         if (firstError) {
           firstError.focus();
@@ -473,16 +645,99 @@ function setupSmoothScroll() {
         }
         
         console.warn("⚠️ Form validation failed");
+      } else {
+        // Form is valid - show success message
+        console.log("✅ Form validated successfully");
+        
+        // Create or show success message
+        let successMsg = form.querySelector('.form-success');
+        if (!successMsg) {
+          successMsg = document.createElement('div');
+          successMsg.className = 'form-success';
+          successMsg.innerHTML = `
+            <div class="form-success__title" data-i18n="register.success.title">Bedankt voor uw voorinschrijving!</div>
+            <p class="form-success__message" data-i18n="register.success.message">U ontvangt binnen drie werkdagen een bevestiging per e-mail.</p>
+          `;
+          
+          // Insert after submit button
+          const submitBtn = form.querySelector('button[type="submit"]');
+          if (submitBtn) {
+            submitBtn.parentNode.insertBefore(successMsg, submitBtn.nextSibling);
+          } else {
+            form.appendChild(successMsg);
+          }
+        }
+        
+        // Translate success message
+        const dict = window.i18n?.[currentLanguage] || {};
+        const titleEl = successMsg.querySelector('[data-i18n="register.success.title"]');
+        const msgEl = successMsg.querySelector('[data-i18n="register.success.message"]');
+        
+        if (titleEl) titleEl.textContent = dict['register.success.title'] || titleEl.textContent;
+        if (msgEl) msgEl.textContent = dict['register.success.message'] || msgEl.textContent;
+        
+        // Show success message
+        successMsg.classList.add('is-visible');
+        
+        // Scroll to success message
+        successMsg.scrollIntoView({ behavior: "smooth", block: "center" });
+        
+        // Reset form after 5 seconds
+        setTimeout(() => {
+          form.reset();
+          successMsg.classList.remove('is-visible');
+        }, 5000);
       }
     });
 
-    // Real-time validation on blur
+    // Real-time validation on input (auto-hide warnings)
     form.querySelectorAll("input, select, textarea").forEach((input) => {
-      input.addEventListener("blur", () => {
-        if (input.value.trim()) {
-          input.classList.remove("has-error");
+      const name = input.name;
+      const rules = validationRules[name];
+      
+      // Max length enforcement
+      if (rules && rules.maxLength) {
+        input.addEventListener("input", () => {
+          enforceMaxLength(input, rules.maxLength);
+        });
+      }
+
+      // Real-time validation on input
+      input.addEventListener("input", () => {
+        const validation = validateField(input, true);
+        
+        if (validation.isValid) {
+          // Auto-hide warning when field becomes valid
+          hideError(input);
+        } else if (input.value.trim() || input.hasAttribute('required')) {
+          // Show error only if user started typing or field is required
+          showError(input, validation.errorKey);
         }
       });
+
+      // Validation on blur
+      input.addEventListener("blur", () => {
+        const validation = validateField(input, false);
+        
+        if (!validation.isValid && (input.value.trim() || input.hasAttribute('required'))) {
+          showError(input, validation.errorKey);
+        } else if (validation.isValid) {
+          hideError(input);
+        }
+      });
+
+      // For select fields - immediate validation on change
+      if (input.tagName === 'SELECT') {
+        input.addEventListener("change", () => {
+          const validation = validateField(input, true);
+          
+          if (validation.isValid) {
+            hideError(input);
+          } else {
+            showError(input, validation.errorKey);
+          }
+        });
+      }
     });
   }
 
@@ -818,7 +1073,46 @@ if (navToggle) {
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.site-header__inner')) {
       navLinks.classList.remove('is-open');
-      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-expanded', false);
+    }
+  });
+}
+
+// =============================
+// Back to Top Button
+// =============================
+const backToTopBtn = document.getElementById('backToTop');
+
+if (backToTopBtn) {
+  // Show/hide button on scroll
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopBtn.classList.add('is-visible');
+    } else {
+      backToTopBtn.classList.remove('is-visible');
+    }
+  });
+
+  // Scroll to top on click
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
+// =============================
+// Sticky Header Effect
+// =============================
+const siteHeader = document.querySelector('.site-header');
+
+if (siteHeader) {
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 50) {
+      siteHeader.classList.add('scrolled');
+    } else {
+      siteHeader.classList.remove('scrolled');
     }
   });
 }

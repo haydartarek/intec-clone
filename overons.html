@@ -10,12 +10,12 @@
     <title>Over ons | INTEC Brussel</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <link rel="stylesheet" href="assets/css/local-fonts.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/main.css?v=20251024n" />
        <script src="assets/js/i18n/nl.js"></script>
 <script src="assets/js/i18n/en.js"></script>
 <script src="assets/js/main.js" defer></script>
   </head>
-  <body class="page--overons">
+  <body class="main-content">
     <a class="skip-link" href="#main-content">Ga naar hoofdinhoud</a>
     <div class="page-shell">
       <header class="site-header">
@@ -66,27 +66,37 @@
         </div>
       </header>
       <main id="main-content" tabindex="-1">
-        <section class="about-hero">
-          <div class="container about-hero__layout">
-            <div class="about-hero__content">
-              <span class="section-label" data-i18n="about.label">Over INTEC</span>
-              <h1 class="about-hero__title" data-i18n="about.hero.title">Missie &amp; Visie</h1>
-              <p class="about-hero__lead" data-i18n="about.hero.lead">
+        <section class="hero">
+          <div class="container hero__grid">
+            <div class="hero__content">
+              <span class="hero__eyebrow" data-i18n="about.label">Over INTEC</span>
+              <h1 class="hero__title" data-i18n="about.hero.title">Missie &amp; Visie</h1>
+              <p class="hero__description" data-i18n="about.hero.lead">
                 We bouwen aan een samenleving waarin iedereen kan meedoen in de digitale wereld. Talent staat centraal,
                 ongeacht achtergrond of leeftijd. We verlagen drempels naar duurzame jobs en versterken digitale
                 vaardigheden bij elke stap.
               </p>
-              <div class="about-hero__chips">
-                <span data-i18n="about.hero.chip1">Inclusieve opleidingen</span>
-                <span data-i18n="about.hero.chip2">Digitaal en toekomstgericht</span>
-                <span data-i18n="about.hero.chip3">Taalcoaching &amp; support</span>
-              </div>
-              <div class="about-hero__cta">
-                <a class="button" href="index.html#opleidingen" data-i18n="about.hero.primary">Ontdek opleidingen</a>
-                <a class="button button--ghost" href="contact.html" data-i18n="about.hero.secondary">Plan kennismaking</a>
+              <div class="hero__actions">
+                <a class="button" href="index.html#opleidingen" data-i18n="about.hero.primary">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                  </svg>
+                  Ontdek opleidingen
+                </a>
+                <a class="button button--ghost" href="contact.html" data-i18n="about.hero.secondary">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  Plan kennismaking
+                </a>
               </div>
             </div>
-            <div class="about-hero__card card card--strong card--decorated">
+            <div class="hero__visual">
+              <div class="hero-card">
               <strong data-i18n="about.valuesTitle">Onze waarden</strong>
               <ul class="about-pill-list">
                 <li data-i18n="about.values.quality">Kwaliteit en continue verbetering in programma's en coaching.</li>
@@ -102,15 +112,31 @@
                   rel="noreferrer noopener"
                   data-i18n="about.buttons.report"
                 >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
                   Jaarverslag
                 </a>
-                <a class="button button--ghost" href="wiezijnwe.html" data-i18n="about.buttons.team">Het Team</a>
+                <a class="button button--ghost" href="wiezijnwe.html" data-i18n="about.buttons.team">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                  Het Team
+                </a>
+              </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="section intake-steps about-values">
+        <section class="section">
           <div class="container">
             <div class="section-heading">
               <span class="section-label" data-i18n="about.values.label">Impact</span>
@@ -120,44 +146,52 @@
                 Samen met onze partners zorgen we ervoor dat talent kan groeien en organisaties klaar zijn voor morgen.
               </p>
             </div>
-            <div class="about-values__grid">
-              <article class="about-card card card--interactive card--decorated">
-                <span class="about-card__icon">01</span>
-                <h3 data-i18n="about.values.card1Title">Toegang voor iedereen</h3>
-                <p data-i18n="about.values.card1Body">
-                  Van taalondersteuning tot digicoaches: we zorgen dat elk talent kan instromen en doorstromen.
-                </p>
-              </article>
-              <article class="about-card card card--interactive card--decorated">
-                <span class="about-card__icon">02</span>
-                <h3 data-i18n="about.values.card2Title">Sterke partnerschappen</h3>
-                <p data-i18n="about.values.card2Body">
-                  We werken samen met bedrijven, overheden en non-profits om impact te maken in Brussel en Vlaanderen.
-                </p>
-              </article>
-              <article class="about-card card card--interactive card--decorated">
-                <span class="about-card__icon">03</span>
-                <h3 data-i18n="about.values.card3Title">Innovatie met mensen</h3>
-                <p data-i18n="about.values.card3Body">
-                  Technologie is geen doel op zich: we koppelen digitale knowhow aan soft skills en coaching.
-                </p>
-              </article>
-              <article class="about-card card card--interactive card--decorated">
-                <span class="about-card__icon">04</span>
-                <h3 data-i18n="about.values.card4Title">Duurzame jobs</h3>
-                <p data-i18n="about.values.card4Body">
-                  We begeleiden alumni tot een jaar na afstuderen en investeren in duurzame tewerkstelling.
-                </p>
-              </article>
-            </div>
+            <ul class="timeline timeline--four">
+              <li>
+                <div class="timeline__content">
+                  <strong data-i18n="about.values.card1Title">Toegang voor iedereen</strong>
+                  <span data-i18n="about.values.card1Body">
+                    Van taalondersteuning tot digicoaches: we zorgen dat elk talent kan instromen en doorstromen.
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="timeline__content">
+                  <strong data-i18n="about.values.card2Title">Sterke partnerschappen</strong>
+                  <span data-i18n="about.values.card2Body">
+                    We werken samen met bedrijven, overheden en non-profits om impact te maken in Brussel en Vlaanderen.
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="timeline__content">
+                  <strong data-i18n="about.values.card3Title">Innovatie met mensen</strong>
+                  <span data-i18n="about.values.card3Body">
+                    Technologie is geen doel op zich: we koppelen digitale knowhow aan soft skills en coaching.
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="timeline__content">
+                  <strong data-i18n="about.values.card4Title">Duurzame jobs</strong>
+                  <span data-i18n="about.values.card4Body">
+                    We begeleiden alumni tot een jaar na afstuderen en investeren in duurzame tewerkstelling.
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </section>
 
-        <section class="section section--surface about-columns">
+        <section class="section">
           <div class="container">
-            <div class="about-columns__grid">
-              <div class="about-columns__card card card--strong">
-                <h2 data-i18n="about.workTitle">Werken bij INTEC Brussel?</h2>
+            <div class="section-heading">
+              <span class="section-label">Werken &amp; Groeien</span>
+              <h2 class="section-title">Bouw mee aan de toekomst</h2>
+            </div>
+            <div class="tips-grid">
+              <article class="tip-card">
+                <h3 data-i18n="about.workTitle">Werken bij INTEC Brussel?</h3>
                 <p data-i18n="about.workIntro">
                   Sluit je aan bij een divers en geengageerd team dat mensen vooruit helpt via opleiding en coaching. We
                   werken interdisciplinair en zetten sterk in op gelijke kansen en levenslang leren.
@@ -166,10 +200,22 @@
                   Trainers, trajectbegeleiders, digicoaches en ondersteunende profielen delen kennis, ontwerpen leerlijnen
                   en begeleiden cursisten naar duurzame tewerkstelling.
                 </p>
-                <a class="button" href="vacatures.html" data-i18n="about.workCta">Bekijk vacatures</a>
-              </div>
-              <div class="about-columns__card about-columns__card--accent card card--strong card--decorated">
-                <h2 data-i18n="about.experienceTitle">Ervaring sinds 2001</h2>
+                <p data-i18n="about.workExtra1">
+                  Bij INTEC Brussel werk je in een moderne campus in hartje Brussel, met toegang tot de nieuwste technologieën en tools voor digitale educatie.
+                </p>
+                <p data-i18n="about.workExtra2">
+                  We investeren in jouw groei: van onboarding tot doorlopende professionalisering, je ontwikkelt je samen met een gemotiveerd team.
+                </p>
+                <a class="button" href="vacatures.html" data-i18n="about.workCta">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                  </svg>
+                  Bekijk vacatures
+                </a>
+              </article>
+              <article class="tip-card">
+                <h3 data-i18n="about.experienceTitle">Ervaring sinds 2001</h3>
                 <p data-i18n="about.experienceIntro">
                   Meer dan twintig jaar geleden startten we als opleidingspartner van VDAB. Vandaag begeleiden we
                   werkzoekenden, starters en professionals naar digitale en technische beroepen.
@@ -179,49 +225,67 @@
                   consultancy, zorginstellingen, overheden en startups. We investeren in langlopende partnerschappen zodat
                   talent blijft groeien.
                 </p>
-              </div>
+                <p data-i18n="about.experienceExtra1">
+                  INTEC Brussel speelt een sleutelrol in de digitale inclusie van Brussel en omstreken, met opleidingen erkend door VDAB, Actiris en ESF.
+                </p>
+                <p data-i18n="about.experienceExtra2">
+                  Jaarlijks helpen we honderden mensen hun digitale carrière te starten, met een sterke focus op persoonlijke begeleiding en praktijkervaring.
+                </p>
+              </article>
             </div>
           </div>
         </section>
 
-        <section class="section section--surface about-journey">
+        <section class="section">
           <div class="container">
             <div class="section-heading">
               <span class="section-label" data-i18n="about.journey.label">Onze aanpak</span>
               <h2 class="section-title" data-i18n="about.journey.title">Van talent tot duurzame tewerkstelling</h2>
             </div>
-            <ul class="timeline timeline--plain">
-              <li>
-                <div class="timeline__content">
-                  <strong data-i18n="about.journey.step1Title">1. Instroom &amp; selectie</strong>
-                  <span data-i18n="about.journey.step1Body">
-                    We starten met infosessies, assessments en taalchecks zodat elke cursist in het juiste traject belandt.
-                  </span>
-                </div>
-              </li>
-              <li>
-                <div class="timeline__content">
-                  <strong data-i18n="about.journey.step2Title">2. Leertraject &amp; coaching</strong>
-                  <span data-i18n="about.journey.step2Body">
-                    Intensieve modules, taalondersteuning en loopbaanbegeleiding gaan hand in hand. We werken in kleine
-                    groepen met veel praktijk.
-                  </span>
-                </div>
-              </li>
-              <li>
-                <div class="timeline__content">
-                  <strong data-i18n="about.journey.step3Title">3. Stage &amp; alumni</strong>
-                  <span data-i18n="about.journey.step3Body">
-                    We koppelen cursisten aan partners, volgen hen op tot een jaar na instroom en blijven investeren in
-                    verdere groei.
-                  </span>
-                </div>
-              </li>
-            </ul>
+            <div class="tips-grid">
+              <article class="tip-card">
+                <h3 data-i18n="about.journey.step1Title">Instroom &amp; selectie</h3>
+                <p data-i18n="about.journey.step1Body">
+                  We starten met infosessies, assessments en taalchecks zodat elke cursist in het juiste traject belandt.
+                </p>
+                <p data-i18n="about.journey.step1Extra1">
+                  Bij INTEC Brussel krijg je een grondige intake met persoonlijke matching op basis van je talenten, ambities en voorkennis.
+                </p>
+                <p data-i18n="about.journey.step1Extra2">
+                  Onze ervaren trajectcoaches staan klaar om je te helpen met administratieve stappen en VDAB-formaliteiten voor een vlotte start.
+                </p>
+              </article>
+              <article class="tip-card">
+                <h3 data-i18n="about.journey.step2Title">Leertraject &amp; coaching</h3>
+                <p data-i18n="about.journey.step2Body">
+                  Intensieve modules, taalondersteuning en loopbaanbegeleiding gaan hand in hand. We werken in kleine
+                  groepen met veel praktijk.
+                </p>
+                <p data-i18n="about.journey.step2Extra1">
+                  INTEC Brussel biedt moderne leslokalen, eigen labomgeving en hands-on training met actuele technologieën uit het werkveld.
+                </p>
+                <p data-i18n="about.journey.step2Extra2">
+                  Digicoaches en taalconsulenten ondersteunen je doorheen het hele traject, zodat niemand achterblijft en iedereen succesvol kan afstuderen.
+                </p>
+              </article>
+              <article class="tip-card">
+                <h3 data-i18n="about.journey.step3Title">Stage &amp; alumni</h3>
+                <p data-i18n="about.journey.step3Body">
+                  We koppelen cursisten aan partners, volgen hen op tot een jaar na instroom en blijven investeren in
+                  verdere groei.
+                </p>
+                <p data-i18n="about.journey.step3Extra1">
+                  INTEC Brussel werkt samen met tientallen bedrijven in Brussel en Vlaanderen voor stageplekken, netwerkevents en jobmatching.
+                </p>
+                <p data-i18n="about.journey.step3Extra2">
+                  Ook na je opleiding blijf je welkom: we organiseren alumni-sessies, bijscholingen en bieden loopbaanbegeleiding tot 12 maanden na afstuderen.
+                </p>
+              </article>
+            </div>
           </div>
         </section>
 
-        <section class="section cta-band cta-band--minimal cta-band--highlight">
+        <section class="section cta-band">
           <div class="cta-band__inner container">
             <div class="cta-band__content">
               <span class="cta-band__eyebrow" data-i18n="about.cta.eyebrow">Samen bouwen</span>
@@ -231,8 +295,20 @@
               </p>
             </div>
             <div class="cta-band__actions">
-              <a class="button" href="contact.html" data-i18n="about.cta.primary">Contacteer ons team</a>
-              <a class="button button--ghost" href="index.html#opleidingen" data-i18n="about.cta.secondary">Ontdek opleidingen</a>
+              <a class="button" href="contact.html" data-i18n="about.cta.primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Contacteer ons team
+              </a>
+              <a class="button button--ghost" href="index.html#opleidingen" data-i18n="about.cta.secondary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+                Ontdek opleidingen
+              </a>
             </div>
           </div>
         </section>
@@ -286,5 +362,6 @@
         </div>
       </footer>
     </div>
+    <script src="assets/js/3d-cards.js"></script>
   </body>
 </html>
