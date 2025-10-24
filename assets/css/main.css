@@ -4536,10 +4536,18 @@ textarea:focus-visible {
   text-align: left;
   justify-items: start;
   margin-inline: 0;
+  max-width: none;
 }
 
 .program-highlight__intro .section-label {
   margin-inline: 0;
+  align-self: start;
+}
+
+.program-highlight__intro .section-heading p,
+.program-highlight__intro .section-heading .program-highlight__lead {
+  text-align: left;
+  max-width: none;
 }
 
 .program-highlight__title {
