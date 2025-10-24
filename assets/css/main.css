@@ -985,8 +985,12 @@ p {
 }
 
 .counter-grid,
-.program-info-grid,
 .contact-details {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Program info grid - default 4 columns for non-program pages */
+.program-info-grid {
   grid-template-columns: repeat(4, 1fr);
 }
 
@@ -1407,36 +1411,33 @@ p {
   margin-bottom: 0;
 }
 
+/* Clean minimal list style for program info */
 .highlight-box .grid-list {
-  display: grid;
-  gap: var(--space-md);
-  grid-auto-rows: 1fr;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .highlight-box .grid-list li {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-lg);
-  border-radius: var(--radius-md);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(246, 249, 255, 0.85));
-  box-shadow: var(--shadow-sm);
-  border: var(--border-width) solid var(--border-color);
-  font-weight: 600;
-  min-height: 100px;
+  display: block;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  font-weight: 400;
+  font-size: var(--text-body-sm, 0.95rem);
+  line-height: 1.6;
+  color: var(--color-text);
+  min-height: auto;
 }
 
+/* Remove all bullet points and icons */
 .highlight-box .grid-list li::before {
-  content: "";
-  width: 12px;
-  height: 12px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  box-shadow: 0 4px 10px rgba(15, 130, 138, 0.25);
+  display: none;
+  content: none;
 }
 
 /* Forms */
@@ -2322,9 +2323,11 @@ textarea:valid:not(:placeholder-shown) {
   border-color: rgba(37, 189, 183, 0.5);
 }
 
+/* Clean program info grid list */
 .program-info-grid .grid-list {
-  display: grid;
-  gap: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -2332,22 +2335,16 @@ textarea:valid:not(:placeholder-shown) {
 
 .program-info-grid .grid-list li {
   position: relative;
-  padding-left: 1.5rem;
-  color: var(--color-text-muted);
-  font-size: var(--text-body);
-  line-height: var(--leading-relaxed);
+  padding-left: 0;
+  color: var(--color-text);
+  font-size: var(--text-body-sm, 0.95rem);
+  line-height: 1.6;
 }
 
+/* Remove all bullets */
 .program-info-grid .grid-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.65rem;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  box-shadow: 0 2px 6px rgba(15, 130, 138, 0.25);
+  display: none;
+  content: none;
 }
 
 .page--program .stats-bar {
@@ -4287,11 +4284,11 @@ p, span, div, h1, h2, h3, h4, h5, h6 {
 .bg-surface { background: var(--color-surface) !important; }
 .bg-shell { background: var(--gradient-shell) !important; }
 
-/* Component Fixes */
+/* Component Fixes - Clean list display */
 .highlight-box .grid-list,
 .program-info-grid .grid-list {
-  display: grid;
-  grid-auto-rows: 1fr;
+  display: flex;
+  flex-direction: column;
 }
 
 h2, h3, h4 {
@@ -5057,13 +5054,13 @@ textarea:focus-visible {
 .page--program-python .program-info-grid,
 .page--program-sysadmin .program-info-grid,
 .page--program-security .program-info-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr; /* Asymmetric: first card larger */
-  gap: clamp(1.5rem, 3vw, 2rem);
-  background: transparent;
-  padding: 0;
-  box-shadow: none;
-  margin-bottom: 0;
+  display: grid !important;
+  grid-template-columns: 2fr 1fr 1fr !important; /* Asymmetric: first card larger */
+  gap: clamp(1.5rem, 3vw, 2rem) !important;
+  background: transparent !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  margin-bottom: 0 !important;
 }
 
 .page--program-support .highlight-box,
@@ -5071,12 +5068,12 @@ textarea:focus-visible {
 .page--program-sysadmin .highlight-box,
 .page--program-security .highlight-box {
   position: relative;
-  background: white;
+  background: transparent;
   border: none;
-  border-radius: clamp(12px, 1.5vw, 16px);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
-  padding: clamp(2rem, 3.5vw, 2.5rem);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 0;
+  box-shadow: none;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  transition: none;
 }
 
 .page--program-support .highlight-box::after,
@@ -5090,16 +5087,16 @@ textarea:focus-visible {
 .page--program-python .highlight-box:hover,
 .page--program-sysadmin .highlight-box:hover,
 .page--program-security .highlight-box:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 8px 32px rgba(37, 189, 183, 0.12);
+  transform: none;
+  box-shadow: none;
 }
 
-/* Featured first card with subtle gradient */
+/* Remove featured gradient - clean transparent background for all */
 .page--program-support .highlight-box:nth-child(1),
 .page--program-python .highlight-box:nth-child(1),
 .page--program-sysadmin .highlight-box:nth-child(1),
 .page--program-security .highlight-box:nth-child(1) {
-  background: linear-gradient(135deg, rgba(37, 189, 183, 0.08), rgba(100, 230, 220, 0.04));
+  background: transparent;
 }
 
 .page--program-support .highlight-box:hover::after,
@@ -5109,27 +5106,37 @@ textarea:focus-visible {
   transform: translate(30%, 30%) scale(1.2);
 }
 
-/* Improved Card Dividers */
+/* Clean headings - minimal style */
 .page--program-support .highlight-box h3,
 .page--program-python .highlight-box h3,
 .page--program-sysadmin .highlight-box h3,
 .page--program-security .highlight-box h3 {
   position: relative;
-  padding-bottom: var(--space-md);
-  margin-bottom: var(--space-lg);
+  padding-bottom: 0;
+  margin-bottom: 1rem;
+  font-size: var(--text-h4, 1.25rem);
+  font-weight: 700;
+  color: var(--color-primary-dark);
 }
 
+/* Remove decorative underlines */
+.page--program-support .highlight-box h3::after,
 .page--program-python .highlight-box h3::after,
 .page--program-sysadmin .highlight-box h3::after,
 .page--program-security .highlight-box h3::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-  border-radius: 2px;
+  display: none;
+  content: none;
+}
+
+/* Clean paragraph styling */
+.page--program-support .highlight-box p,
+.page--program-python .highlight-box p,
+.page--program-sysadmin .highlight-box p,
+.page--program-security .highlight-box p {
+  font-size: var(--text-body-sm, 0.95rem);
+  line-height: 1.6;
+  color: var(--color-text);
+  margin: 0;
 }
 
 /* Hero Card Enhancement */
@@ -5301,7 +5308,15 @@ textarea:focus-visible {
   .page--program-python .program-info-grid,
   .page--program-sysadmin .program-info-grid,
   .page--program-security .program-info-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: var(--space-lg) !important;
+  }
+  
+  .page--program-support .highlight-box,
+  .page--program-python .highlight-box,
+  .page--program-sysadmin .highlight-box,
+  .page--program-security .highlight-box {
+    padding: var(--space-lg) 0 !important;
   }
 }
 
