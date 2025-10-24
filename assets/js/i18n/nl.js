@@ -2,6 +2,31 @@
 window.i18n = window.i18n || {};
 window.i18n.nl = {
   // -----------------------------
+  // DIGIPUNT PAGE
+  // -----------------------------
+  "digipunt.meta.title": "Digipunt | INTEC Brussel",
+  "digipunt.meta.description": "Digipunt INTEC Brussel helpt iedereen die digitale ondersteuning zoekt. Ontdek onze gratis workshops, coaching en openingsuren in Muntpunt.",
+  "digipunt.title": "DIGIPUNT INTEC",
+  "digipunt.intro1": "Het Digipunt van INTEC Brussel in de Muntpunt-bibliotheek ondersteunt iedereen die zich digitaal achterop voelt of gewoon vaardiger wil worden met smartphone, tablet of computer.",
+  "digipunt.intro2": "Onze digicoaches beantwoorden jouw vragen, helpen je stap voor stap verder en stellen samen een leerplan op zodat je zelfstandig kan oefenen.",
+  "digipunt.what.title": "Wat kan je er doen?",
+  "digipunt.what.intro": "We organiseren gratis workshops en persoonlijke coachingtrajecten. Alles is kosteloos en toegankelijk zonder afspraak tijdens de openingsuren.",
+  "digipunt.what.list1": "Apps, instellingen en accounts op smartphone of tablet",
+  "digipunt.what.list2": "Laptopbasics, bestanden beheren en veilig surfen",
+  "digipunt.what.list3": "Online diensten zoals afspraken maken, bankieren en shoppen",
+  "digipunt.what.list4": "Onlinesecurity en bescherming tegen phishing",
+  "digipunt.where.title": "Waar en wanneer?",
+  "digipunt.where.address": "Digipunt INTEC<br />Muntpunt bibliotheek, 3e verdieping<br />Munt 6, 1000 Brussel",
+  "digipunt.where.hours1": "Dinsdag: 14:00 - 18:00 (vrije inloop)",
+  "digipunt.where.hours2": "Woensdag & donderdag: 14:00 - 17:00",
+  "digipunt.where.hours3": "Vrijdag: 14:00 - 17:00",
+  "digipunt.contact.title": "Contact",
+  "digipunt.contact.email": "digipunt@intecbrussel.be",
+  "digipunt.contact.phone": "+32 474 93 17 46",
+  "digipunt.contact.info": "Wil je meer weten of een groepssessie aanvragen? Stuur ons een mail of bel en we bekijken samen de mogelijkheden.",
+  "digipunt.more": "MEER INFO",
+
+  // -----------------------------
   // META (Home page meta info)
   // -----------------------------
   "home.meta.title": "INTEC Brussel | Erkende VDAB-opleidingen in IT",

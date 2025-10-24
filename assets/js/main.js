@@ -125,8 +125,18 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("[data-lang-select]").forEach((btn) => {
       const lang = btn.dataset.lang;
       const active = lang === currentLanguage;
+      
+      // Update visual state
       btn.classList.toggle("is-active", active);
+      
+      // Update ARIA attributes for accessibility
       btn.setAttribute("aria-pressed", active);
+      btn.setAttribute("aria-current", active ? "true" : "false");
+      
+      // Log for debugging
+      if (active) {
+        console.log(`✅ Active language button: ${lang.toUpperCase()}`);
+      }
     });
   }
 

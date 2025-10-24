@@ -2,6 +2,31 @@
 window.i18n = window.i18n || {};
 window.i18n.en = {
   // -----------------------------
+  // DIGIPUNT PAGE
+  // -----------------------------
+  "digipunt.meta.title": "Digipoint | INTEC Brussels",
+  "digipunt.meta.description": "Digipoint INTEC Brussels helps everyone who seeks digital support. Discover our free workshops, coaching and opening hours at Muntpunt.",
+  "digipunt.title": "DIGIPOINT INTEC",
+  "digipunt.intro1": "The Digipoint of INTEC Brussels at Muntpunt library supports everyone who feels digitally behind or simply wants to become more skilled with smartphones, tablets or computers.",
+  "digipunt.intro2": "Our digital coaches answer your questions, help you step by step and create a learning plan together so you can practice independently.",
+  "digipunt.what.title": "What can you do there?",
+  "digipunt.what.intro": "We organize free workshops and personal coaching sessions. Everything is free and accessible without appointment during opening hours.",
+  "digipunt.what.list1": "Apps, settings and accounts on smartphones or tablets",
+  "digipunt.what.list2": "Laptop basics, file management and safe browsing",
+  "digipunt.what.list3": "Online services like making appointments, banking and shopping",
+  "digipunt.what.list4": "Online security and protection against phishing",
+  "digipunt.where.title": "Where and when?",
+  "digipunt.where.address": "Digipoint INTEC<br />Muntpunt library, 3rd floor<br />Munt 6, 1000 Brussels",
+  "digipunt.where.hours1": "Tuesday: 14:00 - 18:00 (walk-in)",
+  "digipunt.where.hours2": "Wednesday & Thursday: 14:00 - 17:00",
+  "digipunt.where.hours3": "Friday: 14:00 - 17:00",
+  "digipunt.contact.title": "Contact",
+  "digipunt.contact.email": "digipunt@intecbrussel.be",
+  "digipunt.contact.phone": "+32 474 93 17 46",
+  "digipunt.contact.info": "Want to know more or request a group session? Send us an email or call and we'll explore the possibilities together.",
+  "digipunt.more": "MORE INFO",
+
+  // -----------------------------
   // META (Home page meta info)
   // -----------------------------
   "home.meta.title": "INTEC Brussels | Recognized VDAB IT Training",
