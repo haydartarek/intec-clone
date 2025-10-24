@@ -339,28 +339,81 @@ function setupSmoothScroll() {
   function setupScrollAnimations() {
     ensureAnimationAttributes();
     
+    // Handle existing data-animate elements
     const elements = document.querySelectorAll("[data-animate]");
-    if (elements.length === 0) return;
+    if (elements.length > 0) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              // Unobserve after animation to improve performance
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { 
+          threshold: 0.15,
+          rootMargin: "0px 0px -50px 0px" // Trigger slightly before element enters viewport
+        }
+      );
+      
+      elements.forEach((el) => observer.observe(el));
+      console.log(`✅ Observing ${elements.length} elements for animations`);
+    }
     
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            // Unobserve after animation to improve performance
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { 
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px" // Trigger slightly before element enters viewport
-      }
-    );
+    // Handle new fade-up elements for python.html and other enhanced pages
+    const fadeUpElements = document.querySelectorAll(".fade-up");
+    if (fadeUpElements.length > 0) {
+      const fadeUpObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              // Unobserve after animation to improve performance
+              fadeUpObserver.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+          rootMargin: "0px 0px -80px 0px"
+        }
+      );
+      
+      fadeUpElements.forEach((el) => fadeUpObserver.observe(el));
+      console.log(`✅ Observing ${fadeUpElements.length} fade-up elements`);
+    }
     
-    elements.forEach((el) => observer.observe(el));
-    
-    console.log(`✅ Observing ${elements.length} elements for animations`);
+    // Setup floating CTA button visibility
+    const floatingCta = document.querySelector(".floating-cta");
+    if (floatingCta) {
+      let lastScrollY = 0;
+      let ticking = false;
+      
+      const updateFloatingCta = () => {
+        const scrollY = window.pageYOffset;
+        
+        // Show after scrolling 400px down
+        if (scrollY > 400) {
+          floatingCta.classList.add("is-visible");
+        } else {
+          floatingCta.classList.remove("is-visible");
+        }
+        
+        lastScrollY = scrollY;
+        ticking = false;
+      };
+      
+      window.addEventListener("scroll", () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateFloatingCta);
+          ticking = true;
+        }
+      });
+      
+      console.log("✅ Floating CTA button initialized");
+    }
   }
 
   // =============================

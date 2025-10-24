@@ -4255,6 +4255,394 @@ textarea:focus-visible {
   background: var(--color-primary-dark);
 }
 
+/* ==========================================================================
+   PYTHON.HTML & PROGRAM PAGES - UI/UX ENHANCEMENTS
+   ========================================================================== */
+
+/* Alternating Section Backgrounds for Better Visual Rhythm */
+.page--program-python .section:nth-of-type(odd):not(.hero) {
+  background: #f9fdfd;
+}
+
+.page--program-python .section:nth-of-type(even):not(.hero) {
+  background: #f3faf9;
+}
+
+/* Apply same styling to systeembeheerder and security pages */
+.page--program-sysadmin .section:nth-of-type(odd):not(.hero),
+.page--program-security .section:nth-of-type(odd):not(.hero) {
+  background: #f9fdfd;
+}
+
+.page--program-sysadmin .section:nth-of-type(even):not(.hero),
+.page--program-security .section:nth-of-type(even):not(.hero) {
+  background: #f3faf9;
+}
+
+/* Reduce Excessive White Space at Bottom of Sections */
+.page--program-python .section,
+.page--program-sysadmin .section,
+.page--program-security .section {
+  padding-block: clamp(3rem, 5vw, 4.5rem);
+}
+
+.page--program-python .section:last-of-type,
+.page--program-sysadmin .section:last-of-type,
+.page--program-security .section:last-of-type {
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+/* Program Highlight Section Styles */
+.program-highlight-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.program-highlight {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.program-highlight__intro {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.program-highlight__title {
+  font-size: var(--text-h2);
+  color: var(--color-primary-dark);
+  line-height: var(--leading-tight);
+  margin: 0;
+}
+
+.program-highlight__lead {
+  font-size: var(--text-body-lg);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+.program-highlight__features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--gap-cards);
+}
+
+/* Program Feature Cards with Icons */
+.program-feature {
+  display: flex;
+  gap: var(--space-lg);
+  padding: var(--space-card);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.program-feature::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform var(--transition-base);
+}
+
+.program-feature:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-color-strong);
+}
+
+.program-feature:hover::before {
+  transform: scaleY(1);
+}
+
+.program-feature__icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(37, 189, 183, 0.15), rgba(15, 130, 138, 0.2));
+  border-radius: var(--radius-sm);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  box-shadow: 0 4px 12px rgba(15, 130, 138, 0.12);
+}
+
+.program-feature__content {
+  display: grid;
+  gap: var(--space-sm);
+  flex: 1;
+}
+
+.program-feature__title {
+  font-size: var(--text-h4);
+  color: var(--color-primary-dark);
+  line-height: var(--leading-snug);
+  margin: 0;
+}
+
+.program-feature__description {
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* Section Title Icons */
+.section-heading .section-title::before {
+  font-size: 1.2em;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.section-heading[data-icon="⚙️"] .section-title::before {
+  content: "⚙️ ";
+}
+
+.section-heading[data-icon="📍"] .section-title::before {
+  content: "📍 ";
+}
+
+.section-heading[data-icon="🎯"] .section-title::before {
+  content: "🎯 ";
+}
+
+.section-heading[data-icon="📚"] .section-title::before {
+  content: "📚 ";
+}
+
+/* Enhanced Program Cards */
+.page--program-python .program-card,
+.page--program-sysadmin .program-card,
+.page--program-security .program-card {
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.page--program-python .program-card:hover,
+.page--program-sysadmin .program-card:hover,
+.page--program-security .program-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-primary);
+}
+
+/* Enhanced Timeline Items */
+.page--program-python .timeline__content,
+.page--program-sysadmin .timeline__content,
+.page--program-security .timeline__content {
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.page--program-python .timeline li:hover .timeline__content,
+.page--program-sysadmin .timeline li:hover .timeline__content,
+.page--program-security .timeline li:hover .timeline__content {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-primary);
+}
+
+/* Floating CTA Button */
+.floating-cta {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.9);
+  transition: all var(--transition-base);
+}
+
+.floating-cta.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.floating-cta .button {
+  padding: 1rem 1.75rem;
+  font-size: var(--text-body);
+  font-weight: 700;
+  box-shadow: var(--shadow-xl);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.floating-cta .button::after {
+  content: "→";
+  font-size: 1.25em;
+  transition: transform var(--transition-fast);
+}
+
+.floating-cta .button:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 40px rgba(15, 130, 138, 0.25);
+}
+
+.floating-cta .button:hover::after {
+  transform: translateX(4px);
+}
+
+/* Button Arrow Animation Enhancement */
+.page--program-python .button,
+.page--program-sysadmin .button,
+.page--program-security .button {
+  position: relative;
+  overflow: hidden;
+}
+
+.page--program-python .button::after,
+.page--program-sysadmin .button::after,
+.page--program-security .button::after {
+  content: "→";
+  position: relative;
+  display: inline-block;
+  margin-left: 0.5rem;
+  transition: transform var(--transition-fast);
+  font-size: 1.25em;
+}
+
+.page--program-python .button:hover::after,
+.page--program-sysadmin .button:hover::after,
+.page--program-security .button:hover::after {
+  transform: translateX(4px);
+  animation: arrowSlide 0.6s ease-in-out;
+}
+
+@keyframes arrowSlide {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+  100% { transform: translateX(4px); }
+}
+
+/* Scroll Animation Classes */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-up[data-delay="1"] {
+  transition-delay: 100ms;
+}
+
+.fade-up[data-delay="2"] {
+  transition-delay: 150ms;
+}
+
+.fade-up[data-delay="3"] {
+  transition-delay: 200ms;
+}
+
+.fade-up[data-delay="4"] {
+  transition-delay: 250ms;
+}
+
+/* Two Column Layout Enhancement (Locatie/Voordelen) */
+.page--program-python .program-info-grid,
+.page--program-sysadmin .program-info-grid,
+.page--program-security .program-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: var(--gap-cards);
+}
+
+.page--program-python .highlight-box,
+.page--program-sysadmin .highlight-box,
+.page--program-security .highlight-box {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(246, 249, 255, 0.95));
+  border: 1.5px solid rgba(37, 189, 183, 0.15);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.page--program-python .highlight-box::after,
+.page--program-sysadmin .highlight-box::after,
+.page--program-security .highlight-box::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle at center, rgba(37, 189, 183, 0.08), transparent 70%);
+  border-radius: 50%;
+  transform: translate(30%, 30%);
+  transition: transform var(--transition-base);
+}
+
+.page--program-python .highlight-box:hover,
+.page--program-sysadmin .highlight-box:hover,
+.page--program-security .highlight-box:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(37, 189, 183, 0.3);
+}
+
+.page--program-python .highlight-box:hover::after,
+.page--program-sysadmin .highlight-box:hover::after,
+.page--program-security .highlight-box:hover::after {
+  transform: translate(30%, 30%) scale(1.2);
+}
+
+/* Improved Card Dividers */
+.page--program-python .highlight-box h3,
+.page--program-sysadmin .highlight-box h3,
+.page--program-security .highlight-box h3 {
+  position: relative;
+  padding-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.page--program-python .highlight-box h3::after,
+.page--program-sysadmin .highlight-box h3::after,
+.page--program-security .highlight-box h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-radius: 2px;
+}
+
+/* Hero Card Enhancement */
+.page--program-python .hero-card,
+.page--program-sysadmin .hero-card,
+.page--program-security .hero-card {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.page--program-python .hero-card:hover,
+.page--program-sysadmin .hero-card:hover,
+.page--program-security .hero-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
 /* End of Stylesheet */
 
 /* Back to Top Button */
