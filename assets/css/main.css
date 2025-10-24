@@ -3,15 +3,18 @@
    ========================================================================== */
 
 :root {
-  /* Colors */
+  /* Colors - Enhanced contrast */
   --color-primary: #0f828a;
   --color-primary-dark: #0b5c61;
+  --color-primary-soft: rgba(15, 130, 138, 0.08);
   --color-accent: #25bdb7;
   --color-accent-soft: #e0f7f6;
   --color-text: #1a3e40;
   --color-text-muted: #2d4f52;
   --color-bg: #f4fbfb;
+  --color-bg-white: #ffffff;
   --color-surface: #ffffff;
+  --color-surface-alt: #f9fdfd;
   --color-border: #d4e7e6;
   
   /* Typography */
@@ -32,7 +35,7 @@
   --leading-normal: 1.5;
   --leading-relaxed: 1.65;
   
-  /* Spacing - Unified System */
+  /* Spacing - Enhanced Unified System */
   --space-xs: 0.5rem;
   --space-sm: 0.75rem;
   --space-md: 1rem;
@@ -40,11 +43,14 @@
   --space-xl: 2rem;
   --space-2xl: 3rem;
   --space-3xl: 4rem;
+  --space-4xl: 5rem;
   
-  --space-section: clamp(4rem, 7vw, 6rem);
-  --space-section-tight: clamp(3rem, 5vw, 4rem);
+  /* Consistent vertical rhythm between sections */
+  --space-section: clamp(5rem, 8vw, 7rem);
+  --space-section-tight: clamp(3.5rem, 6vw, 5rem);
+  --space-section-compact: clamp(2.5rem, 4vw, 3.5rem);
   --space-card: clamp(1.75rem, 3vw, 2.5rem);
-  --gap-cards: clamp(1.75rem, 3vw, 2.5rem);
+  --gap-cards: clamp(2rem, 3.5vw, 3rem);
   --gap-elements: clamp(1rem, 2vw, 1.5rem);
   
   /* Shadows */
@@ -204,24 +210,33 @@ main {
 }
 
 .section {
-  padding-block: clamp(4.5rem, 8vw, 7rem);
+  padding-block: var(--space-section);
   margin: 0;
 }
 
 main > section,
 .page-shell main > section {
   margin-bottom: 0;
-  padding-block: clamp(4.5rem, 8vw, 7rem) !important;
+  padding-block: var(--space-section) !important;
 }
 
 main > section + section {
   margin-top: 0;
 }
 
+/* Compact sections for tighter visual rhythm */
+.section--compact {
+  padding-block: var(--space-section-compact) !important;
+}
+
+/* Enhanced alternating section backgrounds for better visual rhythm */
 .section--surface,
 main > section:nth-of-type(odd):not(.hero):not([class*="--"]) {
-  background: var(--color-surface);
-  
+  background: var(--color-surface-alt);
+}
+
+main > section:nth-of-type(even):not(.hero) {
+  background: var(--color-bg-white);
 }
 
 
@@ -276,11 +291,26 @@ p {
 .section-heading h2,
 .section-heading .section-title,
 .section-title {
-  margin: 0;
+  margin: 0 0 1rem 0;
   font-size: clamp(2.2rem, 4.5vw, 2.8rem);
   color: var(--color-primary-dark);
   line-height: var(--leading-tight);
   font-weight: 800;
+  position: relative;
+  padding-bottom: 1.25rem;
+}
+
+/* Subtle divider under main titles for better visual hierarchy */
+.section-heading .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  border-radius: 2px;
 }
 
 .section-heading p,
@@ -295,38 +325,62 @@ p {
   word-spacing: normal;
 }
 
-/* Buttons */
+/* Buttons - Enhanced hierarchy */
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
-  font-weight: 600;
+  font-weight: 700;
   font-size: clamp(1rem, 1.6vw, 1.15rem) !important;
-  padding: 1rem 2.25rem !important;
+  padding: 1.125rem 2.5rem !important;
   border-radius: 36px;
-  min-height: 52px !important;
+  min-height: 54px !important;
   color: #ffffff;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-  box-shadow: var(--shadow-card);
+  background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+  box-shadow: 0 4px 14px rgba(37, 189, 183, 0.3);
   transition: var(--transition-base);
   border: 2px solid transparent;
   cursor: pointer;
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+  opacity: 0;
+  transition: var(--transition-fast);
+}
+
+.button:hover::before {
+  opacity: 1;
 }
 
 .button:hover,
 .button:focus-visible {
-  background: linear-gradient(135deg, var(--color-primary-dark), #094a4e);
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-4px) scale(1.02);
+  background: linear-gradient(135deg, #1dd1ca, var(--color-primary-dark));
+  box-shadow: 0 6px 20px rgba(37, 189, 183, 0.4);
+  transform: translateY(-3px) scale(1.02);
 }
 
+/* Secondary button - outline style for less important actions */
 .button--ghost {
-  background: transparent;
+  background: var(--color-bg-white);
   color: var(--color-primary);
   border: 2px solid var(--color-primary);
-  box-shadow: none;
+  box-shadow: 0 2px 8px rgba(15, 130, 138, 0.15);
+  font-weight: 600;
+}
+
+.button--ghost::before {
+  background: linear-gradient(135deg, var(--color-primary-soft), transparent);
 }
 
 .button--ghost:hover,
@@ -1349,13 +1403,13 @@ p {
 }
 
 /* ========================================
-   JOURNEY GRID - Modern Course Page Layout
+   JOURNEY GRID - Enhanced Modern Layout
    ======================================== */
 .journey-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1.5rem, 3vw, 2rem);
-  counter-reset: none; /* Remove counter */
+  gap: clamp(2rem, 3.5vw, 2.5rem);
+  counter-reset: none;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -1384,19 +1438,22 @@ p {
   grid-row: 2;
 }
 
-/* Journey card styling */
+/* Journey card styling - Enhanced depth */
 .journey-grid .journey-card {
   display: flex;
   flex-direction: column;
-  gap: clamp(1rem, 2vw, 1.25rem);
-  padding: clamp(2rem, 4vw, 2.5rem);
-  background: white;
+  gap: clamp(1.125rem, 2.25vw, 1.5rem);
+  padding: clamp(2.25rem, 4.5vw, 3rem);
+  background: var(--color-bg-white);
   border-radius: var(--radius-md, 12px);
-  border: 1px solid rgba(37, 189, 183, 0.1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.02);
+  border: 1.5px solid rgba(37, 189, 183, 0.12);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.05),
+    0 4px 12px rgba(15, 130, 138, 0.08),
+    0 8px 24px rgba(15, 130, 138, 0.04);
   position: relative;
-  min-height: 200px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 220px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* NO numeric badges - removed entirely */
@@ -1407,16 +1464,19 @@ p {
 
 /* Gradient accent on large card */
 .journey-grid li:nth-child(1) .journey-card {
-  background: linear-gradient(135deg, rgba(37, 189, 183, 0.06) 0%, white 50%);
-  border-color: rgba(37, 189, 183, 0.15);
-  min-height: 280px;
+  background: linear-gradient(135deg, rgba(37, 189, 183, 0.08) 0%, var(--color-bg-white) 60%);
+  border-color: rgba(37, 189, 183, 0.2);
+  min-height: 300px;
 }
 
-/* Hover effects */
+/* Enhanced hover effects */
 .journey-grid .journey-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 16px 48px rgba(37, 189, 183, 0.12);
-  border-color: var(--color-primary);
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    0 12px 32px rgba(15, 130, 138, 0.15),
+    0 24px 48px rgba(37, 189, 183, 0.1);
+  border-color: var(--color-accent);
 }
 
 /* Title styling */
@@ -5178,22 +5238,48 @@ textarea:focus-visible {
   transition-delay: 250ms;
 }
 
-/* Two Column Layout Enhancement (Locatie/Voordelen) */
-/* Desktop: NAV (left) | CONTENT (center large) | WIDGET (right) */
+/* Enhanced Program Info Grid - Better visual separation */
 .page--program-support .program-info-grid,
 .page--program-python .program-info-grid,
 .page--program-sysadmin .program-info-grid,
 .page--program-security .program-info-grid {
   display: grid !important;
-  grid-template-columns: 1fr 1fr 1fr !important; /* Equal width columns */
-  column-gap: clamp(3rem, 5vw, 4.5rem) !important; /* Increased horizontal spacing */
+  grid-template-columns: 1fr 1fr 1fr !important;
+  column-gap: clamp(2.5rem, 4vw, 3.5rem) !important;
   row-gap: clamp(2rem, 3vw, 2.5rem) !important;
-  background: #f9fdfd !important; /* Subtle background separation */
-  padding: clamp(3rem, 5vw, 4rem) !important;
-  border-radius: var(--radius-md) !important;
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
   box-shadow: none !important;
   margin-bottom: var(--space-xl) !important;
-  align-items: start !important; /* Baseline alignment */
+  align-items: stretch !important;
+}
+
+/* Enhanced highlight boxes with visual dividers */
+.page--program-support .highlight-box,
+.page--program-python .highlight-box,
+.page--program-sysadmin .highlight-box,
+.page--program-security .highlight-box {
+  padding: clamp(2rem, 3.5vw, 2.75rem);
+  background: var(--color-bg-white);
+  border: 1.5px solid rgba(37, 189, 183, 0.1);
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px rgba(15, 130, 138, 0.06), 0 4px 16px rgba(15, 130, 138, 0.04);
+  position: relative;
+}
+
+/* Add subtle vertical divider between columns (pseudo-element) */
+.page--program-support .highlight-box:not(:last-child)::after,
+.page--program-python .highlight-box:not(:last-child)::after,
+.page--program-sysadmin .highlight-box:not(:last-child)::after,
+.page--program-security .highlight-box:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: calc(-1.25rem - 0.75px);
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(37, 189, 183, 0.15) 20%, rgba(37, 189, 183, 0.15) 80%, transparent);
 }
 
 /* First box = NAV (left column) */
@@ -5203,7 +5289,6 @@ textarea:focus-visible {
 .page--program-security .highlight-box:nth-child(1) {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
-  flex: 1 1 30%;
 }
 
 /* Second box = CONTENT (center column) */
