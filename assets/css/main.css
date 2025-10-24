@@ -1411,11 +1411,11 @@ p {
   margin-bottom: 0;
 }
 
-/* Clean minimal list style for program info */
+/* Clean minimal list style with improved spacing */
 .highlight-box .grid-list {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.8rem; /* Increased spacing between items */
   list-style: none;
   padding: 0;
   margin: 0;
@@ -1427,11 +1427,17 @@ p {
   background: transparent;
   box-shadow: none;
   border: none;
-  font-weight: 400;
-  font-size: var(--text-body-sm, 0.95rem);
-  line-height: 1.6;
+  font-weight: 500; /* Medium weight for better hierarchy */
+  font-size: var(--text-body, 1rem);
+  line-height: 1.7; /* Improved readability */
   color: var(--color-text);
   min-height: auto;
+}
+
+/* Emphasize first item in each list */
+.highlight-box .grid-list li:first-child {
+  font-weight: 600;
+  color: var(--color-primary-dark);
 }
 
 /* Remove all bullet points and icons */
@@ -2323,11 +2329,11 @@ textarea:valid:not(:placeholder-shown) {
   border-color: rgba(37, 189, 183, 0.5);
 }
 
-/* Clean program info grid list */
+/* Clean program info grid list with improved spacing */
 .program-info-grid .grid-list {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.8rem; /* Better vertical spacing */
   list-style: none;
   padding: 0;
   margin: 0;
@@ -2337,8 +2343,15 @@ textarea:valid:not(:placeholder-shown) {
   position: relative;
   padding-left: 0;
   color: var(--color-text);
-  font-size: var(--text-body-sm, 0.95rem);
-  line-height: 1.6;
+  font-size: var(--text-body, 1rem);
+  line-height: 1.7; /* Improved readability */
+  font-weight: 500; /* Medium weight for hierarchy */
+}
+
+/* Emphasize first item */
+.program-info-grid .grid-list li:first-child {
+  font-weight: 600;
+  color: var(--color-primary-dark);
 }
 
 /* Remove all bullets */
@@ -3776,12 +3789,14 @@ textarea::placeholder {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
   
-  /* Keep NAV | CONTENT | WIDGET layout on tablet */
+  /* Keep 3-column layout on tablet with reduced gaps */
   .page--program-support .program-info-grid,
   .page--program-python .program-info-grid,
   .page--program-sysadmin .program-info-grid,
   .page--program-security .program-info-grid {
-    grid-template-columns: 180px 1fr 180px;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    column-gap: 2rem !important;
+    padding: clamp(2rem, 4vw, 3rem) !important;
   }
 
   .timeline {
@@ -5056,39 +5071,45 @@ textarea:focus-visible {
 .page--program-sysadmin .program-info-grid,
 .page--program-security .program-info-grid {
   display: grid !important;
-  grid-template-columns: 200px 1fr 200px !important; /* NAV | CONTENT | WIDGET */
-  gap: clamp(1.5rem, 3vw, 2rem) !important;
-  background: transparent !important;
-  padding: 0 !important;
+  grid-template-columns: 1fr 1fr 1fr !important; /* Equal width columns */
+  column-gap: clamp(3rem, 5vw, 4.5rem) !important; /* Increased horizontal spacing */
+  row-gap: clamp(2rem, 3vw, 2.5rem) !important;
+  background: #f9fdfd !important; /* Subtle background separation */
+  padding: clamp(3rem, 5vw, 4rem) !important;
+  border-radius: var(--radius-md) !important;
   box-shadow: none !important;
-  margin-bottom: 0 !important;
+  margin-bottom: var(--space-xl) !important;
+  align-items: start !important; /* Baseline alignment */
 }
 
-/* First box = NAV (left sidebar) */
+/* First box = NAV (left column) */
 .page--program-support .highlight-box:nth-child(1),
 .page--program-python .highlight-box:nth-child(1),
 .page--program-sysadmin .highlight-box:nth-child(1),
 .page--program-security .highlight-box:nth-child(1) {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
+  flex: 1 1 30%;
 }
 
-/* Second box = CONTENT (center wide) */
+/* Second box = CONTENT (center column) */
 .page--program-support .highlight-box:nth-child(2),
 .page--program-python .highlight-box:nth-child(2),
 .page--program-sysadmin .highlight-box:nth-child(2),
 .page--program-security .highlight-box:nth-child(2) {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
+  flex: 1 1 30%;
 }
 
-/* Third box = WIDGET (right sidebar) */
+/* Third box = WIDGET (right column) */
 .page--program-support .highlight-box:nth-child(3),
 .page--program-python .highlight-box:nth-child(3),
 .page--program-sysadmin .highlight-box:nth-child(3),
 .page--program-security .highlight-box:nth-child(3) {
   grid-column: 3 / 4;
   grid-row: 1 / 2;
+  flex: 1 1 30%;
 }
 
 .page--program-support .highlight-box,
@@ -5100,15 +5121,16 @@ textarea:focus-visible {
   border: none;
   border-radius: 0;
   box-shadow: none;
-  padding: clamp(1.5rem, 3vw, 2rem);
+  padding: 0;
   transition: none;
+  min-height: 100%; /* Equal visual height */
 }
 
 .page--program-support .highlight-box::after,
 .page--program-python .highlight-box::after,
 .page--program-sysadmin .highlight-box::after,
 .page--program-security .highlight-box::after {
-  display: none; /* Remove decorative gradient */
+  display: none;
 }
 
 .page--program-support .highlight-box:hover,
@@ -5119,14 +5141,6 @@ textarea:focus-visible {
   box-shadow: none;
 }
 
-/* Remove featured gradient - clean transparent background for all */
-.page--program-support .highlight-box:nth-child(1),
-.page--program-python .highlight-box:nth-child(1),
-.page--program-sysadmin .highlight-box:nth-child(1),
-.page--program-security .highlight-box:nth-child(1) {
-  background: transparent;
-}
-
 .page--program-support .highlight-box:hover::after,
 .page--program-python .highlight-box:hover::after,
 .page--program-sysadmin .highlight-box:hover::after,
@@ -5134,20 +5148,21 @@ textarea:focus-visible {
   transform: translate(30%, 30%) scale(1.2);
 }
 
-/* Clean headings - minimal style */
+/* Enhanced headings with visual hierarchy */
 .page--program-support .highlight-box h3,
 .page--program-python .highlight-box h3,
 .page--program-sysadmin .highlight-box h3,
 .page--program-security .highlight-box h3 {
   position: relative;
-  padding-bottom: 0;
-  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
   font-size: var(--text-h4, 1.25rem);
   font-weight: 700;
   color: var(--color-primary-dark);
+  border-bottom: 2px solid var(--color-primary);
 }
 
-/* Remove decorative underlines */
+/* Remove old decorative underlines */
 .page--program-support .highlight-box h3::after,
 .page--program-python .highlight-box h3::after,
 .page--program-sysadmin .highlight-box h3::after,
@@ -5156,15 +5171,22 @@ textarea:focus-visible {
   content: none;
 }
 
-/* Clean paragraph styling */
+/* Enhanced paragraph and list styling with better spacing */
 .page--program-support .highlight-box p,
 .page--program-python .highlight-box p,
 .page--program-sysadmin .highlight-box p,
 .page--program-security .highlight-box p {
-  font-size: var(--text-body-sm, 0.95rem);
-  line-height: 1.6;
+  font-size: var(--text-body, 1rem);
+  line-height: 1.7; /* Improved line spacing */
   color: var(--color-text);
-  margin: 0;
+  margin: 0 0 0.8rem 0; /* Spacing between paragraphs */
+}
+
+.page--program-support .highlight-box p:last-child,
+.page--program-python .highlight-box p:last-child,
+.page--program-sysadmin .highlight-box p:last-child,
+.page--program-security .highlight-box p:last-child {
+  margin-bottom: 0;
 }
 
 /* Hero Card Enhancement */
@@ -5337,7 +5359,9 @@ textarea:focus-visible {
   .page--program-sysadmin .program-info-grid,
   .page--program-security .program-info-grid {
     grid-template-columns: 1fr !important;
-    gap: var(--space-lg) !important;
+    gap: 2.5rem !important;
+    padding: var(--space-xl) var(--space-lg) !important;
+    background: #f9fdfd !important;
   }
   
   /* Mobile order: NAV (1st), WIDGET (2nd), CONTENT (3rd) */
@@ -5345,28 +5369,32 @@ textarea:focus-visible {
   .page--program-python .highlight-box:nth-child(1),
   .page--program-sysadmin .highlight-box:nth-child(1),
   .page--program-security .highlight-box:nth-child(1) {
-    order: 1; /* NAV first */
+    order: 1;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(37, 189, 183, 0.2);
   }
   
   .page--program-support .highlight-box:nth-child(2),
   .page--program-python .highlight-box:nth-child(2),
   .page--program-sysadmin .highlight-box:nth-child(2),
   .page--program-security .highlight-box:nth-child(2) {
-    order: 3; /* CONTENT last */
+    order: 3;
   }
   
   .page--program-support .highlight-box:nth-child(3),
   .page--program-python .highlight-box:nth-child(3),
   .page--program-sysadmin .highlight-box:nth-child(3),
   .page--program-security .highlight-box:nth-child(3) {
-    order: 2; /* WIDGET middle */
+    order: 2;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(37, 189, 183, 0.2);
   }
   
   .page--program-support .highlight-box,
   .page--program-python .highlight-box,
   .page--program-sysadmin .highlight-box,
   .page--program-security .highlight-box {
-    padding: var(--space-lg) 0 !important;
+    padding: 0 !important;
   }
 }
 
