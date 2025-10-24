@@ -3776,12 +3776,12 @@ textarea::placeholder {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
   
-  /* Keep asymmetric layout on tablet for program pages */
+  /* Keep NAV | CONTENT | WIDGET layout on tablet */
   .page--program-support .program-info-grid,
   .page--program-python .program-info-grid,
   .page--program-sysadmin .program-info-grid,
   .page--program-security .program-info-grid {
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 180px 1fr 180px;
   }
 
   .timeline {
@@ -5050,17 +5050,45 @@ textarea:focus-visible {
 }
 
 /* Two Column Layout Enhancement (Locatie/Voordelen) */
+/* Desktop: NAV (left) | CONTENT (center large) | WIDGET (right) */
 .page--program-support .program-info-grid,
 .page--program-python .program-info-grid,
 .page--program-sysadmin .program-info-grid,
 .page--program-security .program-info-grid {
   display: grid !important;
-  grid-template-columns: 2fr 1fr 1fr !important; /* Asymmetric: first card larger */
+  grid-template-columns: 200px 1fr 200px !important; /* NAV | CONTENT | WIDGET */
   gap: clamp(1.5rem, 3vw, 2rem) !important;
   background: transparent !important;
   padding: 0 !important;
   box-shadow: none !important;
   margin-bottom: 0 !important;
+}
+
+/* First box = NAV (left sidebar) */
+.page--program-support .highlight-box:nth-child(1),
+.page--program-python .highlight-box:nth-child(1),
+.page--program-sysadmin .highlight-box:nth-child(1),
+.page--program-security .highlight-box:nth-child(1) {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+/* Second box = CONTENT (center wide) */
+.page--program-support .highlight-box:nth-child(2),
+.page--program-python .highlight-box:nth-child(2),
+.page--program-sysadmin .highlight-box:nth-child(2),
+.page--program-security .highlight-box:nth-child(2) {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+/* Third box = WIDGET (right sidebar) */
+.page--program-support .highlight-box:nth-child(3),
+.page--program-python .highlight-box:nth-child(3),
+.page--program-sysadmin .highlight-box:nth-child(3),
+.page--program-security .highlight-box:nth-child(3) {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
 }
 
 .page--program-support .highlight-box,
@@ -5303,13 +5331,35 @@ textarea:focus-visible {
     grid-column: 1 / 2;
   }
   
-  /* Program info grid responsive */
+  /* Program info grid responsive - Mobile: NAV | WIDGET | CONTENT */
   .page--program-support .program-info-grid,
   .page--program-python .program-info-grid,
   .page--program-sysadmin .program-info-grid,
   .page--program-security .program-info-grid {
     grid-template-columns: 1fr !important;
     gap: var(--space-lg) !important;
+  }
+  
+  /* Mobile order: NAV (1st), WIDGET (2nd), CONTENT (3rd) */
+  .page--program-support .highlight-box:nth-child(1),
+  .page--program-python .highlight-box:nth-child(1),
+  .page--program-sysadmin .highlight-box:nth-child(1),
+  .page--program-security .highlight-box:nth-child(1) {
+    order: 1; /* NAV first */
+  }
+  
+  .page--program-support .highlight-box:nth-child(2),
+  .page--program-python .highlight-box:nth-child(2),
+  .page--program-sysadmin .highlight-box:nth-child(2),
+  .page--program-security .highlight-box:nth-child(2) {
+    order: 3; /* CONTENT last */
+  }
+  
+  .page--program-support .highlight-box:nth-child(3),
+  .page--program-python .highlight-box:nth-child(3),
+  .page--program-sysadmin .highlight-box:nth-child(3),
+  .page--program-security .highlight-box:nth-child(3) {
+    order: 2; /* WIDGET middle */
   }
   
   .page--program-support .highlight-box,
