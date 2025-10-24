@@ -357,26 +357,9 @@ p {
   position: relative;
 }
 
+/* Remove ::after arrow - SVG arrow is used in HTML instead */
 .button::after {
-  content: '';
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin-left: 8px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: transform var(--transition-base);
-  flex-shrink: 0;
-}
-
-.button--ghost::after {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230f828a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
-}
-
-.button:hover::after {
-  transform: translateX(4px);
+  display: none;
 }
 
 .button svg {
@@ -5149,52 +5132,22 @@ textarea:focus-visible {
   gap: 0.5rem;
 }
 
-.floating-cta .button::after {
-  content: "→";
-  font-size: 1.25em;
-  transition: transform var(--transition-fast);
-}
+/* Removed duplicate arrow - SVG arrow handles this */
 
 .floating-cta .button:hover {
   transform: translateY(-4px) scale(1.05);
   box-shadow: 0 12px 40px rgba(15, 130, 138, 0.25);
 }
 
-.floating-cta .button:hover::after {
-  transform: translateX(4px);
-}
-
-/* Button Arrow Animation Enhancement */
+/* Button Arrow Animation Enhancement - DISABLED (SVG arrows used instead) */
 .page--program-python .button,
 .page--program-sysadmin .button,
 .page--program-security .button {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
-.page--program-python .button::after,
-.page--program-sysadmin .button::after,
-.page--program-security .button::after {
-  content: "→";
-  position: relative;
-  display: inline-block;
-  margin-left: 0.5rem;
-  transition: transform var(--transition-fast);
-  font-size: 1.25em;
-}
-
-.page--program-python .button:hover::after,
-.page--program-sysadmin .button:hover::after,
-.page--program-security .button:hover::after {
-  transform: translateX(4px);
-  animation: arrowSlide 0.6s ease-in-out;
-}
-
-@keyframes arrowSlide {
-  0% { transform: translateX(0); }
-  50% { transform: translateX(6px); }
-  100% { transform: translateX(4px); }
-}
+/* Removed duplicate text arrow - SVG arrows handle this */
 
 /* Scroll Animation Classes */
 .fade-up {
