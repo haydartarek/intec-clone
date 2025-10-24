@@ -50,6 +50,20 @@ window.i18n.nl = {
   "program.info.benefit2": "De kosten voor kinder- of buitenschoolse opvang worden terugbetaald.",
   "program.info.benefit3": "Je ontvangt een vergoeding gedurende de gehele opleiding.",
 
+  // Program badges (Hero section - NEW)
+  "program.badge.free": "Gratis opleiding",
+  "program.badge.certified": "VDAB erkend",
+  "program.badge.internship": "Met stage",
+  "program.badge.coaching": "Jobcoaching",
+
+  // Program stats (Hero section - NEW)
+  "program.stats.duration": "12",
+  "program.stats.durationLabel": "Maanden",
+  "program.stats.employment": "85%",
+  "program.stats.employmentLabel": "Werkzekerheid",
+  "program.stats.practice": "70%",
+  "program.stats.practiceLabel": "Praktijk",
+
   // Program CTA (used in program pages)
   "program.cta.eyebrow": "Volgende stap",
 

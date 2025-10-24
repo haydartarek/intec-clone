@@ -50,6 +50,20 @@ window.i18n.en = {
   "program.info.benefit2": "Costs for childcare or after-school care are reimbursed.",
   "program.info.benefit3": "You receive an allowance throughout the entire course.",
 
+  // Program badges (Hero section - NEW)
+  "program.badge.free": "Free training",
+  "program.badge.certified": "VDAB certified",
+  "program.badge.internship": "With internship",
+  "program.badge.coaching": "Job coaching",
+
+  // Program stats (Hero section - NEW)
+  "program.stats.duration": "12",
+  "program.stats.durationLabel": "Months",
+  "program.stats.employment": "85%",
+  "program.stats.employmentLabel": "Employment rate",
+  "program.stats.practice": "70%",
+  "program.stats.practiceLabel": "Practical",
+
   // Program CTA (used in program pages)
   "program.cta.eyebrow": "Next step",
 
