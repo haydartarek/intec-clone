@@ -4545,8 +4545,9 @@ textarea:focus-visible {
 }
 
 .program-highlight__intro .section-heading p,
-.program-highlight__intro .section-heading .program-highlight__lead {
-  text-align: left;
+.program-highlight__intro .section-heading .program-highlight__lead,
+.program-highlight__intro .section-lead {
+  text-align: left !important;
   max-width: none;
 }
 
@@ -4563,7 +4564,7 @@ textarea:focus-visible {
   color: var(--color-text-muted);
   line-height: var(--leading-relaxed);
   margin: 0;
-  text-align: left;
+  text-align: left !important;
 }
 
 /* Features grid - 1 column within right column */
@@ -4675,6 +4676,7 @@ textarea:focus-visible {
   display: grid;
   gap: var(--space-sm);
   flex: 1;
+  text-align: left;
 }
 
 .program-feature__title {
@@ -4683,6 +4685,7 @@ textarea:focus-visible {
   line-height: var(--leading-snug);
   margin: 0;
   font-weight: 700;
+  text-align: left;
 }
 
 .program-feature__description {
@@ -4690,6 +4693,7 @@ textarea:focus-visible {
   color: var(--color-text-muted);
   line-height: var(--leading-relaxed);
   margin: 0;
+  text-align: left;
 }
 
 /* Section actions (buttons) - centered */
