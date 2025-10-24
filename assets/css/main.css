@@ -4510,18 +4510,24 @@ textarea:focus-visible {
   overflow: hidden;
 }
 
+/* Two-column layout for desktop */
 .program-highlight {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(2.5rem, 4vw, 3.5rem);
+  gap: clamp(2rem, 4vw, 3rem);
+  align-items: start;
+}
+
+@media (min-width: 992px) {
+  .program-highlight {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 5vw, 4rem);
+  }
 }
 
 .program-highlight__intro {
   display: grid;
   gap: var(--space-lg);
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
 }
 
 .program-highlight__title {
@@ -4539,20 +4545,11 @@ textarea:focus-visible {
   text-align: left;
 }
 
-/* Updated: 2x2 grid layout for features */
+/* Features grid - 1 column within right column */
 .program-highlight__features {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--gap-cards);
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-/* Desktop: 2 columns × 2 rows */
-@media (min-width: 768px) {
-  .program-highlight__features {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  gap: var(--space-lg);
 }
 
 /* Program Feature Cards with Icons */
@@ -4568,7 +4565,7 @@ textarea:focus-visible {
   transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
   position: relative;
   overflow: hidden;
-  min-height: 180px;
+  min-height: 140px;
   height: 100%;
 }
 
@@ -4679,9 +4676,24 @@ textarea:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-lg);
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin-top: var(--space-xl);
+}
+
+/* On mobile, stack buttons */
+@media (max-width: 991px) {
+  .section-actions {
+    justify-content: center;
+  }
+  
+  .program-highlight__intro {
+    text-align: center;
+  }
+  
+  .program-highlight__lead {
+    text-align: center;
+  }
 }
 
 /* Two-Column Content Layout */
