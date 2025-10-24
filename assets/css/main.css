@@ -700,20 +700,8 @@ p {
   flex-wrap: wrap;
   gap: var(--gap-elements);
   align-items: center;
-  margin-top: var(--space-lg); /* Slightly more spacing */
+  margin-top: var(--space-lg);
   justify-content: flex-start;
-  position: relative;
-}
-
-/* CTA hint text */
-.hero__actions::after {
-  content: attr(data-cta-hint);
-  display: block;
-  width: 100%;
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-  margin-top: 0.5rem;
-  font-style: italic;
 }
 
 .hero__visual {
@@ -2357,7 +2345,7 @@ textarea:valid:not(:placeholder-shown) {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Equal width for all 3 stats */
   gap: var(--space-lg);
-  margin-top: var(--space-xl);
+  margin-top: auto; /* Push to bottom to align with right cards */
   padding: var(--space-lg);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 252, 252, 0.6));
   border-radius: var(--radius-md);
@@ -2374,22 +2362,9 @@ textarea:valid:not(:placeholder-shown) {
   position: relative;
 }
 
-/* Add icons to stats */
+/* Remove all icons from stats */
 .hero__stat::before {
-  font-size: 1.5rem;
-  margin-bottom: var(--space-xs);
-}
-
-.hero__stat:nth-child(1)::before {
-  content: "⏱️"; /* Duration */
-}
-
-.hero__stat:nth-child(2)::before {
-  content: "💼"; /* Employment */
-}
-
-.hero__stat:nth-child(3)::before {
-  content: "🔧"; /* Practice */
+  display: none;
 }
 
 .hero__stat-value {
