@@ -3778,6 +3778,14 @@ textarea::placeholder {
   .program-info-grid {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
+  
+  /* Keep asymmetric layout on tablet for program pages */
+  .page--program-support .program-info-grid,
+  .page--program-python .program-info-grid,
+  .page--program-sysadmin .program-info-grid,
+  .page--program-security .program-info-grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
 
   .timeline {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -5045,47 +5053,56 @@ textarea:focus-visible {
 }
 
 /* Two Column Layout Enhancement (Locatie/Voordelen) */
+.page--program-support .program-info-grid,
 .page--program-python .program-info-grid,
 .page--program-sysadmin .program-info-grid,
 .page--program-security .program-info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
-  gap: var(--gap-cards);
+  grid-template-columns: 2fr 1fr 1fr; /* Asymmetric: first card larger */
+  gap: clamp(1.5rem, 3vw, 2rem);
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  margin-bottom: 0;
 }
 
+.page--program-support .highlight-box,
 .page--program-python .highlight-box,
 .page--program-sysadmin .highlight-box,
 .page--program-security .highlight-box {
   position: relative;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(246, 249, 255, 0.95));
-  border: 1.5px solid rgba(37, 189, 183, 0.15);
-  box-shadow: var(--shadow-md);
-  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  background: white;
+  border: none;
+  border-radius: clamp(12px, 1.5vw, 16px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+  padding: clamp(2rem, 3.5vw, 2.5rem);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.page--program-support .highlight-box::after,
 .page--program-python .highlight-box::after,
 .page--program-sysadmin .highlight-box::after,
 .page--program-security .highlight-box::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 100px;
-  height: 100px;
-  background: radial-gradient(circle at center, rgba(37, 189, 183, 0.08), transparent 70%);
-  border-radius: 50%;
-  transform: translate(30%, 30%);
-  transition: transform var(--transition-base);
+  display: none; /* Remove decorative gradient */
 }
 
+.page--program-support .highlight-box:hover,
 .page--program-python .highlight-box:hover,
 .page--program-sysadmin .highlight-box:hover,
 .page--program-security .highlight-box:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
-  border-color: rgba(37, 189, 183, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 8px 32px rgba(37, 189, 183, 0.12);
 }
 
+/* Featured first card with subtle gradient */
+.page--program-support .highlight-box:nth-child(1),
+.page--program-python .highlight-box:nth-child(1),
+.page--program-sysadmin .highlight-box:nth-child(1),
+.page--program-security .highlight-box:nth-child(1) {
+  background: linear-gradient(135deg, rgba(37, 189, 183, 0.08), rgba(100, 230, 220, 0.04));
+}
+
+.page--program-support .highlight-box:hover::after,
 .page--program-python .highlight-box:hover::after,
 .page--program-sysadmin .highlight-box:hover::after,
 .page--program-security .highlight-box:hover::after {
@@ -5093,6 +5110,7 @@ textarea:focus-visible {
 }
 
 /* Improved Card Dividers */
+.page--program-support .highlight-box h3,
 .page--program-python .highlight-box h3,
 .page--program-sysadmin .highlight-box h3,
 .page--program-security .highlight-box h3 {
@@ -5276,6 +5294,14 @@ textarea:focus-visible {
   .timeline--program li:nth-child(3),
   .timeline--program li:nth-child(4) {
     grid-column: 1 / 2;
+  }
+  
+  /* Program info grid responsive */
+  .page--program-support .program-info-grid,
+  .page--program-python .program-info-grid,
+  .page--program-sysadmin .program-info-grid,
+  .page--program-security .program-info-grid {
+    grid-template-columns: 1fr;
   }
 }
 
