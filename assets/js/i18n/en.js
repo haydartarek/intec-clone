@@ -37,6 +37,7 @@ window.i18n.en = {
   // Program info (general for all course pages)
   "program.info.label": "Practical Info",
   "program.info.generalTitle": "General information about this course",
+  "program.info.generalInfoTitle": "Practical Information",
   "program.info.item1": "Price: Free",
   "program.info.item2": "Language: Dutch",
   "program.info.item3": "Prerequisites: Not required",
@@ -49,6 +50,35 @@ window.i18n.en = {
   "program.info.benefit1": "During the course, your travel expenses are fully reimbursed.",
   "program.info.benefit2": "Costs for childcare or after-school care are reimbursed.",
   "program.info.benefit3": "You receive an allowance throughout the entire course.",
+
+  // Extra Info - Why choose this course?
+  "program.extra.label": "Extra Info",
+  "program.extra.title": "Why choose this course?",
+  "program.extra.subtitle": "Discover what makes this course unique and what career opportunities you'll have after completion.",
+  
+  // What makes this course unique?
+  "program.unique.icon": "🎓",
+  "program.unique.title": "What makes this course unique?",
+  "program.unique.subtitle": "A combination of theory, practice, and personal guidance",
+  "program.unique.feature1": "Practice-oriented labs with current hardware and software",
+  "program.unique.feature2": "Small groups for personal attention",
+  "program.unique.feature3": "Experienced instructors from the IT field",
+  "program.unique.feature4": "Focus on customer contact and communication skills",
+  "program.unique.feature5": "Regular assessments and progress meetings",
+  "program.unique.feature6": "Direct connections with potential employers",
+  "program.unique.description": "As a PC and Network Technician, you'll not only learn to install and maintain technical systems, but also how to support users and explain complex problems in an understandable way.",
+  
+  // Career opportunities
+  "program.career.icon": "💼",
+  "program.career.title": "Career Opportunities",
+  "program.career.subtitle": "Positions you'll qualify for after this course",
+  "program.career.job1": "IT Support Technician at small and medium-sized businesses",
+  "program.career.job2": "Help Desk Specialist for technical support",
+  "program.career.job3": "Junior System Administrator",
+  "program.career.job4": "Network Support Technician",
+  "program.career.job5": "Field Service Technician for on-site support",
+  "program.career.job6": "Technical Support Representative at IT companies",
+  "program.career.description": "The demand for qualified IT technicians remains high. Companies are looking for professionals who combine technical knowledge with customer-oriented thinking. This course gives you exactly that mix of hard and soft skills that employers value.",
 
   // Program badges (Hero section - NEW)
   "program.badge.free": "Free training",

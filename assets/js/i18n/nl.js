@@ -37,6 +37,7 @@ window.i18n.nl = {
   // Program info (algemeen voor alle opleidingspagina's)
   "program.info.label": "Praktisch",
   "program.info.generalTitle": "Algemene informatie over deze opleiding",
+  "program.info.generalInfoTitle": "Praktische info",
   "program.info.item1": "Prijs: Gratis",
   "program.info.item2": "Taal: Nederlands",
   "program.info.item3": "Voorkennis: Niet verplicht",
@@ -49,6 +50,35 @@ window.i18n.nl = {
   "program.info.benefit1": "Tijdens de opleiding worden je vervoerskosten volledig terugbetaald.",
   "program.info.benefit2": "De kosten voor kinder- of buitenschoolse opvang worden terugbetaald.",
   "program.info.benefit3": "Je ontvangt een vergoeding gedurende de gehele opleiding.",
+
+  // Extra Info - Waarom kiezen voor deze opleiding?
+  "program.extra.label": "Extra Info",
+  "program.extra.title": "Waarom kiezen voor deze opleiding?",
+  "program.extra.subtitle": "Ontdek wat deze opleiding uniek maakt en welke carrièremogelijkheden je krijgt na afloop.",
+  
+  // Wat maakt deze opleiding uniek?
+  "program.unique.icon": "🎓",
+  "program.unique.title": "Wat maakt deze opleiding uniek?",
+  "program.unique.subtitle": "Een combinatie van theorie, praktijk en persoonlijke begeleiding",
+  "program.unique.feature1": "Praktijkgerichte labs met actuele hard- en software",
+  "program.unique.feature2": "Kleinschalige groepen voor persoonlijke aandacht",
+  "program.unique.feature3": "Ervaren docenten vanuit het IT-werkveld",
+  "program.unique.feature4": "Focus op klantcontact en communicatievaardigheden",
+  "program.unique.feature5": "Regelmatige assessments en voortgangsgesprekken",
+  "program.unique.feature6": "Directe connecties met potentiële werkgevers",
+  "program.unique.description": "Als PC en Netwerktechnicus leer je niet alleen technische systemen installeren en onderhouden, maar ook hoe je gebruikers ondersteunt en complexe problemen op een begrijpelijke manier uitlegt.",
+  
+  // Carrièremogelijkheden
+  "program.career.icon": "💼",
+  "program.career.title": "Carrièremogelijkheden",
+  "program.career.subtitle": "Functies waarvoor je na deze opleiding in aanmerking komt",
+  "program.career.job1": "IT Support Technician bij kleine en middelgrote bedrijven",
+  "program.career.job2": "Help Desk Specialist voor technische ondersteuning",
+  "program.career.job3": "Junior System Administrator",
+  "program.career.job4": "Network Support Technician",
+  "program.career.job5": "Field Service Technician voor on-site support",
+  "program.career.job6": "Technical Support Representative bij IT-bedrijven",
+  "program.career.description": "De vraag naar gekwalificeerde IT-technici blijft hoog. Bedrijven zoeken professionals die technische kennis combineren met klantgericht denken. Deze opleiding geeft je precies die mix van hard en soft skills die werkgevers waarderen.",
 
   // Program badges (Hero section - NEW)
   "program.badge.free": "Gratis opleiding",
