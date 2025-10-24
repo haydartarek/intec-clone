@@ -5171,6 +5171,49 @@ textarea:focus-visible {
   content: none;
 }
 
+/* Info list styling - clean paragraphs with consistent spacing */
+.page--program-support .info-list,
+.page--program-python .info-list,
+.page--program-sysadmin .info-list,
+.page--program-security .info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.page--program-support .info-list p,
+.page--program-python .info-list p,
+.page--program-sysadmin .info-list p,
+.page--program-security .info-list p {
+  font-size: var(--text-body, 1rem);
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.page--program-support .info-list p:first-child,
+.page--program-python .info-list p:first-child,
+.page--program-sysadmin .info-list p:first-child,
+.page--program-security .info-list p:first-child {
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+/* Info note styling - subtle emphasis for important notes */
+.page--program-support .info-note,
+.page--program-python .info-note,
+.page--program-sysadmin .info-note,
+.page--program-security .info-note {
+  font-size: var(--text-sm, 0.9375rem);
+  line-height: 1.7;
+  color: var(--color-text-light, #6b7280);
+  margin: 0;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(37, 189, 183, 0.15);
+}
+
 /* Enhanced paragraph and list styling with better spacing */
 .page--program-support .highlight-box p,
 .page--program-python .highlight-box p,
