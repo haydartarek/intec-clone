@@ -2285,7 +2285,6 @@ textarea:valid:not(:placeholder-shown) {
 .hero__badge {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-xs);
   padding: var(--space-sm) var(--space-lg);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 252, 252, 0.9));
   border: 1.5px solid rgba(37, 189, 183, 0.3);
@@ -2298,91 +2297,10 @@ textarea:valid:not(:placeholder-shown) {
   white-space: nowrap;
 }
 
-/* Semantic icons for badges - using data attributes */
-.hero__badge[data-i18n="program.badge.free"]::before {
-  content: "✅";
-  font-size: 1.1em;
-}
-
-.hero__badge[data-i18n="program.badge.certified"]::before {
-  content: "🎓";
-  font-size: 1.1em;
-}
-
-.hero__badge[data-i18n="program.badge.internship"]::before {
-  content: "💼";
-  font-size: 1.1em;
-}
-
-.hero__badge[data-i18n="program.badge.coaching"]::before {
-  content: "🤝";
-  font-size: 1.1em;
-}
-
-/* Fallback for badges without specific icons */
-.hero__badge:not([data-i18n])::before {
-  content: "✓";
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  color: white;
-  border-radius: 50%;
-  font-size: 0.75rem;
-  font-weight: 800;
-}
-
 .hero__badge:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(15, 130, 138, 0.15);
   border-color: rgba(37, 189, 183, 0.5);
-}
-
-/* Hero Stats - NEW */
-.hero__stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Equal width for all 3 stats */
-  gap: var(--space-lg);
-  margin-top: auto; /* Push to bottom to align with right cards */
-  padding: var(--space-lg);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 252, 252, 0.6));
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(37, 189, 183, 0.15);
-}
-
-.hero__stat {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-  text-align: center;
-  align-items: center;
-  padding: var(--space-md);
-  position: relative;
-}
-
-/* Remove all icons from stats */
-.hero__stat::before {
-  display: none;
-}
-
-.hero__stat-value {
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1.2;
-}
-
-.hero__stat-label {
-  font-size: var(--text-body-sm);
-  color: var(--color-text-muted);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .program-info-grid .grid-list {
@@ -5296,21 +5214,6 @@ textarea:focus-visible {
     justify-content: center;
   }
   
-  .hero__stats {
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-sm);
-    padding: var(--space-md);
-    margin-top: var(--space-lg);
-  }
-  
-  .hero__stat-value {
-    font-size: 1.5rem;
-  }
-  
-  .hero__stat-label {
-    font-size: 0.7rem;
-  }
-  
   .hero-highlight {
     padding: var(--space-lg);
     margin-top: var(--space-md);
@@ -5324,12 +5227,6 @@ textarea:focus-visible {
 @media (max-width: 480px) {
   .hero__badges {
     grid-template-columns: 1fr;
-  }
-  
-  .hero__badge::before {
-    width: 16px;
-    height: 16px;
-    font-size: 0.65rem;
   }
 }
 
