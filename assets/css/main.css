@@ -4605,13 +4605,14 @@ textarea:focus-visible {
   display: grid;
   grid-template-columns: 1fr;
   gap: clamp(2rem, 4vw, 3rem);
-  align-items: start;
+  align-items: stretch; /* Equal height columns */
 }
 
 @media (min-width: 992px) {
   .program-highlight {
     grid-template-columns: 1fr 1fr;
     gap: clamp(3rem, 5vw, 4rem);
+    align-items: start;
   }
 }
 
@@ -4619,6 +4620,7 @@ textarea:focus-visible {
   display: grid;
   gap: var(--space-lg);
   text-align: left;
+  align-content: start;
 }
 
 /* Override section-heading alignment inside program-highlight */
@@ -4627,6 +4629,7 @@ textarea:focus-visible {
   justify-items: start;
   margin-inline: 0;
   max-width: none;
+  margin-bottom: 0;
 }
 
 .program-highlight__intro .section-label {
@@ -4661,15 +4664,16 @@ textarea:focus-visible {
 .program-highlight__features {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-lg);
+  gap: var(--space-md); /* Reduced from var(--space-lg) */
+  height: fit-content;
 }
 
-/* Program Feature Cards with Icons */
+/* Program Feature Cards with Icons - Horizontal Layout */
 .program-feature {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-  padding: var(--space-card);
+  flex-direction: row; /* Changed from column to row */
+  gap: clamp(1rem, 2vw, 1.25rem); /* Consistent icon-to-text spacing */
+  padding: clamp(1.25rem, 2.5vw, 1.75rem); /* Reduced padding by ~20% */
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(246, 252, 252, 0.95));
   border-radius: var(--radius-md);
   border: var(--border-width) solid var(--border-color);
@@ -4677,8 +4681,8 @@ textarea:focus-visible {
   transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
   position: relative;
   overflow: hidden;
-  min-height: 140px;
-  height: 100%;
+  min-height: auto; /* Remove fixed height */
+  align-items: center; /* Vertically center icon and text */
 }
 
 .program-feature::before {
@@ -4722,23 +4726,23 @@ textarea:focus-visible {
   transform: translate(20px, 20px);
 }
 
-/* Icon container - aligned top-left */
+/* Icon container - centered vertically with text */
 .program-feature__icon {
-  width: 56px;
-  height: 56px;
+  width: 48px; /* Slightly smaller */
+  height: 48px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   border-radius: var(--radius-md);
-  font-size: 1.75rem;
+  font-size: 1.5rem; /* Slightly smaller emoji */
   font-weight: 800;
   color: white;
   box-shadow: 0 6px 20px rgba(15, 130, 138, 0.25);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
   position: relative;
-  align-self: flex-start;
+  align-self: center; /* Ensure icon centers with text */
 }
 
 .program-feature__icon::before {
@@ -4763,25 +4767,27 @@ textarea:focus-visible {
 }
 
 .program-feature__content {
-  display: grid;
-  gap: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem; /* Tighter gap between title and description */
   flex: 1;
   text-align: left;
+  justify-content: center; /* Vertically center content */
 }
 
 .program-feature__title {
-  font-size: var(--text-h4);
+  font-size: clamp(1.05rem, 1.8vw, 1.15rem); /* Slightly smaller for compact layout */
   color: var(--color-primary-dark);
-  line-height: var(--leading-snug);
+  line-height: 1.3;
   margin: 0;
   font-weight: 700;
   text-align: left;
 }
 
 .program-feature__description {
-  font-size: var(--text-body);
+  font-size: clamp(0.9rem, 1.5vw, 0.95rem); /* Slightly smaller */
   color: var(--color-text-muted);
-  line-height: var(--leading-relaxed);
+  line-height: 1.5;
   margin: 0;
   text-align: left;
 }
@@ -4808,6 +4814,31 @@ textarea:focus-visible {
   
   .program-highlight__lead {
     text-align: center;
+  }
+  
+  .program-highlight__intro .section-heading {
+    text-align: center;
+    justify-items: center;
+  }
+  
+  .program-highlight__intro .section-label {
+    align-self: center;
+  }
+  
+  .program-highlight__intro .section-heading p,
+  .program-highlight__intro .section-lead {
+    text-align: center !important;
+  }
+  
+  /* Keep horizontal layout on mobile for better readability */
+  .program-feature {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .program-feature__icon {
+    margin-top: 0.25rem; /* Slight alignment adjustment */
   }
 }
 
