@@ -1,0 +1,75 @@
+/* ========================================
+   🎨 BUTTONS QUICK REFERENCE
+   ======================================== */
+
+/* 🎯 PRIMARY - الأزرار الأساسية (التسجيل، الإرسال، CTA) */
+.btn-primary
+.btn--primary
+.button-primary
+
+/* 🎨 ACCENT - الأزرار الثانوية (روابط بديلة أو مساعدة) */
+.btn-accent
+.btn--accent
+.button-accent
+
+/* ⭕ OUTLINE - الأزرار البيضاء ذات حدود (مثلاً "View courses") */
+.btn-outline
+.btn--outline
+.button-outline
+
+/* 💫 SOFT - الأزرار البيضاء الناعمة (مثل "Plan intake") */
+.btn-soft
+.btn--soft
+.button-soft
+
+/* 📐 SIZES */
+.btn-sm    /* Small */
+.btn-lg    /* Large */
+
+/* 🔄 STATES */
+:disabled
+:hover
+:active
+
+/* ========================================
+   💼 USE CASES
+   ======================================== */
+
+/* Hero Section */
+<a class="btn-primary btn-lg">سجل الآن</a>
+<a class="btn-outline btn-lg">تصفح البرامج</a>
+
+/* Course Cards */
+<a class="btn-soft">Plan Intake</a>
+<a class="btn-outline btn-sm">View Details</a>
+
+/* CTA Section */
+<a class="btn-primary btn-lg">ابدأ رحلتك</a>
+
+/* Forms */
+<button class="btn-primary">إرسال</button>
+<button class="btn-accent">حفظ</button>
+
+/* ========================================
+   🎨 COLORS
+   ======================================== */
+
+Primary:        #0f828a
+Primary Dark:   #0b5c61
+Accent:         #25bdb7
+Accent Soft:    #e0f7f6
+White:          #ffffff
+
+/* ========================================
+   ✅ DO's & ❌ DON'Ts
+   ======================================== */
+
+✅ DO:
+- استخدم btn-primary للإجراءات الحاسمة
+- استخدم btn-soft في الكروت
+- احترم التسلسل الهرمي
+
+❌ DON'T:
+- زر primary واحد فقط في كل قسم
+- لا تخلط الأنماط القديمة والجديدة
+- لا تستخدم ألوان خارج النظام

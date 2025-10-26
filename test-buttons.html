@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTEC 2025 Button System Test</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            padding: 3rem 1.5rem;
+            background: var(--color-bg);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .test-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid var(--color-accent-soft);
+        }
+        
+        .test-header h1 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-size: clamp(2rem, 5vw, 3rem);
+        }
+        
+        .test-header p {
+            color: var(--color-text-muted);
+            font-size: var(--text-body-lg);
+        }
+        
+        .test-section {
+            background: white;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-card);
+        }
+        
+        .test-section h2 {
+            margin-bottom: 1rem;
+            color: var(--color-text);
+            border-bottom: 2px solid var(--color-accent-soft);
+            padding-bottom: 0.75rem;
+            font-size: var(--text-h3);
+        }
+        
+        .test-section h3 {
+            margin: 2rem 0 1rem;
+            color: var(--color-primary);
+            font-size: var(--text-h4);
+        }
+        
+        .description {
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem;
+            line-height: var(--leading-relaxed);
+        }
+        
+        .button-grid {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .button-demo {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--color-surface-alt);
+            border-radius: var(--radius-sm);
+        }
+        
+        .button-demo-label {
+            font-size: var(--text-body-sm);
+            color: var(--color-text-muted);
+            font-weight: var(--weight-semibold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .color-reference {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .color-item {
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            text-align: center;
+        }
+        
+        .color-swatch {
+            width: 100%;
+            height: 60px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 0.5rem;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .color-name {
+            font-weight: var(--weight-semibold);
+            color: var(--color-text);
+            margin-bottom: 0.25rem;
+        }
+        
+        .color-value {
+            font-size: var(--text-body-sm);
+            color: var(--color-text-muted);
+            font-family: monospace;
+        }
+        
+        .state-demo {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--color-accent-soft);
+            border-radius: var(--radius-sm);
+            font-size: var(--text-body-sm);
+            color: var(--color-primary);
+            font-weight: var(--weight-medium);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 2rem 1rem;
+            }
+            
+            .test-section {
+                padding: 1.5rem;
+            }
+            
+            .button-grid {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-header">
+        <h1>🎨 INTEC 2025 Button System</h1>
+        <p>Enhanced for elegance, balance, and tactile interaction</p>
+    </div>
+
+    <!-- Primary Buttons -->
+    <div class="test-section">
+        <h2>🎯 Primary Buttons</h2>
+        <p class="description">
+            Main actions: Registration, Submit, Primary CTA<br>
+            <strong>Color:</strong> var(--color-primary) → var(--color-primary-dark)
+        </p>
+        
+        <h3>Default State</h3>
+        <div class="button-grid">
+            <button class="btn-primary">تسجيل الآن</button>
+            <button class="btn--primary">إرسال النموذج</button>
+            <a href="#" class="button-primary">ابدأ رحلتك</a>
+        </div>
+        
+        <h3>Sizes</h3>
+        <div class="button-grid">
+            <button class="btn-primary btn-sm">Small Button</button>
+            <button class="btn-primary">Normal Button</button>
+            <button class="btn-primary btn-lg">Large Button</button>
+        </div>
+        
+        <h3>States</h3>
+        <div class="button-demo">
+            <div class="button-demo-label">Hover Effect</div>
+            <div class="button-grid">
+                <button class="btn-primary">Hover me</button>
+                <span class="state-demo">translateY(-2px) + shadow-hover</span>
+            </div>
+        </div>
+        
+        <div class="button-grid">
+            <button class="btn-primary" disabled>Disabled State</button>
+            <button class="btn-primary btn--loading">Loading...</button>
+        </div>
+    </div>
+
+    <!-- Accent Buttons -->
+    <div class="test-section">
+        <h2>🎨 Accent Buttons</h2>
+        <p class="description">
+            Secondary actions: Alternative links, Help<br>
+            <strong>Color:</strong> var(--color-accent) → var(--color-primary)
+        </p>
+        
+        <h3>Default State</h3>
+        <div class="button-grid">
+            <button class="btn-accent">اعرف المزيد</button>
+            <button class="btn--accent">تواصل معنا</button>
+            <a href="#" class="button-accent">احجز موعد</a>
+        </div>
+        
+        <h3>Sizes</h3>
+        <div class="button-grid">
+            <button class="btn-accent btn-sm">Small</button>
+            <button class="btn-accent">Normal</button>
+            <button class="btn-accent btn-lg">Large</button>
+        </div>
+        
+        <h3>States</h3>
+        <div class="button-grid">
+            <button class="btn-accent" disabled>Disabled</button>
+            <button class="btn-accent btn--loading">Loading...</button>
+        </div>
+    </div>
+
+    <!-- Outline Buttons -->
+    <div class="test-section">
+        <h2>⭕ Outline Buttons</h2>
+        <p class="description">
+            Bordered buttons: Exploration, View courses<br>
+            <strong>Style:</strong> White background with primary border → Fills on hover
+        </p>
+        
+        <h3>Default State</h3>
+        <div class="button-grid">
+            <button class="btn-outline">View Courses</button>
+            <button class="btn--outline">عرض البرامج</button>
+            <a href="#" class="button-outline">تصفح الدورات</a>
+        </div>
+        
+        <h3>Sizes</h3>
+        <div class="button-grid">
+            <button class="btn-outline btn-sm">Small</button>
+            <button class="btn-outline">Normal</button>
+            <button class="btn-outline btn-lg">Large</button>
+        </div>
+        
+        <h3>States</h3>
+        <div class="button-grid">
+            <button class="btn-outline" disabled>Disabled</button>
+        </div>
+    </div>
+
+    <!-- Soft Buttons -->
+    <div class="test-section">
+        <h2>💫 Soft Buttons</h2>
+        <p class="description">
+            Gentle appearance: Plan intake, Cards<br>
+            <strong>Color:</strong> var(--color-accent-soft) → var(--color-accent)
+        </p>
+        
+        <h3>Default State</h3>
+        <div class="button-grid">
+            <button class="btn-soft">Plan Intake</button>
+            <button class="btn--soft">خطط دراستك</button>
+            <a href="#" class="button-soft">احجز استشارة</a>
+        </div>
+        
+        <h3>Sizes</h3>
+        <div class="button-grid">
+            <button class="btn-soft btn-sm">Small</button>
+            <button class="btn-soft">Normal</button>
+            <button class="btn-soft btn-lg">Large</button>
+        </div>
+        
+        <h3>States</h3>
+        <div class="button-grid">
+            <button class="btn-soft" disabled>Disabled</button>
+        </div>
+    </div>
+
+    <!-- Button Groups -->
+    <div class="test-section">
+        <h2>👥 Button Groups</h2>
+        
+        <h3>Horizontal Group</h3>
+        <div class="btn-group">
+            <button class="btn-primary">Primary Action</button>
+            <button class="btn-outline">Secondary</button>
+            <button class="btn-soft">Tertiary</button>
+        </div>
+        
+        <h3>Vertical Group</h3>
+        <div class="btn-group btn-group--vertical" style="max-width: 300px;">
+            <button class="btn-primary">Primary Action</button>
+            <button class="btn-outline">Secondary Action</button>
+            <button class="btn-soft">Tertiary Action</button>
+        </div>
+    </div>
+
+    <!-- Real Use Cases -->
+    <div class="test-section">
+        <h2>💼 Real Use Cases</h2>
+        
+        <div class="button-demo">
+            <div class="button-demo-label">Hero Section</div>
+            <div class="btn-group">
+                <button class="btn-primary btn-lg">سجل الآن</button>
+                <button class="btn-soft btn-lg">Plan Intake</button>
+            </div>
+        </div>
+        
+        <div class="button-demo">
+            <div class="button-demo-label">Course Card</div>
+            <div class="btn-group">
+                <button class="btn-soft">Plan Intake</button>
+                <button class="btn-outline btn-sm">View Details</button>
+            </div>
+        </div>
+        
+        <div class="button-demo">
+            <div class="button-demo-label">CTA Section</div>
+            <div class="btn-group">
+                <button class="btn-primary btn-lg">تواصل معنا الآن</button>
+                <button class="btn-outline btn-lg">تصفح البرامج</button>
+            </div>
+        </div>
+        
+        <div class="button-demo">
+            <div class="button-demo-label">Form Section</div>
+            <div class="btn-group">
+                <button class="btn-primary">إرسال الطلب</button>
+                <button class="btn-accent">حفظ كمسودة</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Color Reference -->
+    <div class="test-section">
+        <h2>🎨 Color Reference</h2>
+        <div class="color-reference">
+            <div class="color-item">
+                <div class="color-swatch" style="background: #0f828a;"></div>
+                <div class="color-name">Primary</div>
+                <div class="color-value">#0f828a</div>
+            </div>
+            <div class="color-item">
+                <div class="color-swatch" style="background: #0b5c61;"></div>
+                <div class="color-name">Primary Dark</div>
+                <div class="color-value">#0b5c61</div>
+            </div>
+            <div class="color-item">
+                <div class="color-swatch" style="background: #25bdb7;"></div>
+                <div class="color-name">Accent</div>
+                <div class="color-value">#25bdb7</div>
+            </div>
+            <div class="color-item">
+                <div class="color-swatch" style="background: #e0f7f6;"></div>
+                <div class="color-name">Accent Soft</div>
+                <div class="color-value">#e0f7f6</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Design Principles -->
+    <div class="test-section">
+        <h2>📐 Design Principles</h2>
+        <div style="display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+            <div class="button-demo">
+                <strong>✨ Elegant</strong>
+                <p style="margin: 0.5rem 0 0; color: var(--color-text-muted);">
+                    Soft shadows, smooth transitions, refined typography
+                </p>
+            </div>
+            <div class="button-demo">
+                <strong>⚖️ Balanced</strong>
+                <p style="margin: 0.5rem 0 0; color: var(--color-text-muted);">
+                    Optical alignment, proper spacing, touch-friendly targets
+                </p>
+            </div>
+            <div class="button-demo">
+                <strong>🤚 Tactile</strong>
+                <p style="margin: 0.5rem 0 0; color: var(--color-text-muted);">
+                    Clear hover states, press feedback, depth perception
+                </p>
+            </div>
+            <div class="button-demo">
+                <strong>♿ Accessible</strong>
+                <p style="margin: 0.5rem 0 0; color: var(--color-text-muted);">
+                    WCAG compliant, focus indicators, sufficient contrast
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            padding: 3rem;
+            background: var(--color-bg);
+        }
+        
+        .test-section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .test-section h2 {
+            margin-bottom: 1.5rem;
+            color: var(--color-text);
+            border-bottom: 2px solid var(--color-accent-soft);
+            padding-bottom: 0.5rem;
+        }
+        
+        .button-grid {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .button-demo {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .button-demo span {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+        
+        .color-box {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            vertical-align: middle;
+            margin-left: 0.5rem;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <h1 style="text-align: center; color: var(--color-primary); margin-bottom: 3rem;">
+            🎨 اختبار نظام الأزرار الموحد
+        </h1>
+
+        <!-- Primary Buttons -->
+        <div class="test-section">
+            <h2>🎯 Primary Buttons - الأزرار الأساسية</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--color-text-muted);">
+                للتسجيل، الإرسال، CTA الرئيسية
+                <span class="color-box" style="background: #0f828a;"></span>
+            </p>
+            
+            <div class="button-grid">
+                <button class="btn-primary">تسجيل الآن</button>
+                <button class="btn--primary">إرسال النموذج</button>
+                <a href="#" class="button-primary">ابدأ رحلتك</a>
+            </div>
+            
+            <div class="button-grid">
+                <button class="btn-primary btn-sm">زر صغير</button>
+                <button class="btn-primary">زر عادي</button>
+                <button class="btn-primary btn-lg">زر كبير</button>
+            </div>
+        </div>
+
+        <!-- Accent Buttons -->
+        <div class="test-section">
+            <h2>🎨 Accent Buttons - الأزرار الثانوية</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--color-text-muted);">
+                للروابط البديلة أو المساعدة
+                <span class="color-box" style="background: #25bdb7;"></span>
+            </p>
+            
+            <div class="button-grid">
+                <button class="btn-accent">اعرف المزيد</button>
+                <button class="btn--accent">تواصل معنا</button>
+                <a href="#" class="button-accent">احجز موعد</a>
+            </div>
+            
+            <div class="button-grid">
+                <button class="btn-accent btn-sm">زر صغير</button>
+                <button class="btn-accent">زر عادي</button>
+                <button class="btn-accent btn-lg">زر كبير</button>
+            </div>
+        </div>
+
+        <!-- Outline Buttons -->
+        <div class="test-section">
+            <h2>⭕ Outline Buttons - الأزرار ذات الحدود</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--color-text-muted);">
+                مثل "View courses" - خلفية شفافة مع حدود
+            </p>
+            
+            <div class="button-grid">
+                <button class="btn-outline">View Courses</button>
+                <button class="btn--outline">عرض البرامج</button>
+                <a href="#" class="button-outline">تصفح الدورات</a>
+            </div>
+            
+            <div class="button-grid">
+                <button class="btn-outline btn-sm">زر صغير</button>
+                <button class="btn-outline">زر عادي</button>
+                <button class="btn-outline btn-lg">زر كبير</button>
+            </div>
+        </div>
+
+        <!-- Soft Buttons -->
+        <div class="test-section">
+            <h2>💫 Soft Buttons - الأزرار الناعمة</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--color-text-muted);">
+                مثل "Plan intake" - خلفية فاتحة ناعمة
+                <span class="color-box" style="background: #e0f7f6;"></span>
+            </p>
+            
+            <div class="button-grid">
+                <button class="btn-soft">Plan Intake</button>
+                <button class="btn--soft">خطط دراستك</button>
+                <a href="#" class="button-soft">احجز استشارة</a>
+            </div>
+            
+            <div class="button-grid">
+                <button class="btn-soft btn-sm">زر صغير</button>
+                <button class="btn-soft">زر عادي</button>
+                <button class="btn-soft btn-lg">زر كبير</button>
+            </div>
+        </div>
+
+        <!-- Button States -->
+        <div class="test-section">
+            <h2>🔄 حالات الأزرار</h2>
+            
+            <div class="button-demo">
+                <span>Normal State</span>
+                <div class="button-grid">
+                    <button class="btn-primary">Primary</button>
+                    <button class="btn-accent">Accent</button>
+                    <button class="btn-outline">Outline</button>
+                    <button class="btn-soft">Soft</button>
+                </div>
+            </div>
+            
+            <div class="button-demo">
+                <span>Disabled State</span>
+                <div class="button-grid">
+                    <button class="btn-primary" disabled>Primary</button>
+                    <button class="btn-accent" disabled>Accent</button>
+                    <button class="btn-outline" disabled>Outline</button>
+                    <button class="btn-soft" disabled>Soft</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real Use Cases -->
+        <div class="test-section">
+            <h2>💼 حالات الاستخدام الفعلية</h2>
+            
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: var(--color-text); margin-bottom: 1rem;">Hero Section</h3>
+                <div class="button-grid">
+                    <button class="btn-primary btn-lg">سجل الآن</button>
+                    <button class="btn-outline btn-lg">تصفح البرامج</button>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: var(--color-text); margin-bottom: 1rem;">Course Card</h3>
+                <div class="button-grid">
+                    <button class="btn-soft">Plan Intake</button>
+                    <button class="btn-outline btn-sm">View Details</button>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: var(--color-text); margin-bottom: 1rem;">CTA Section</h3>
+                <div class="button-grid">
+                    <button class="btn-primary btn-lg">ابدأ رحلتك التعليمية</button>
+                </div>
+            </div>
+            
+            <div>
+                <h3 style="color: var(--color-text); margin-bottom: 1rem;">Form Section</h3>
+                <div class="button-grid">
+                    <button class="btn-primary">إرسال الطلب</button>
+                    <button class="btn-accent">حفظ كمسودة</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Color Reference -->
+        <div class="test-section">
+            <h2>🎨 مرجع الألوان</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div>
+                    <strong>Primary:</strong> #0f828a
+                    <div class="color-box" style="background: #0f828a; width: 100%; height: 50px; margin-top: 0.5rem;"></div>
+                </div>
+                <div>
+                    <strong>Primary Dark:</strong> #0b5c61
+                    <div class="color-box" style="background: #0b5c61; width: 100%; height: 50px; margin-top: 0.5rem;"></div>
+                </div>
+                <div>
+                    <strong>Accent:</strong> #25bdb7
+                    <div class="color-box" style="background: #25bdb7; width: 100%; height: 50px; margin-top: 0.5rem;"></div>
+                </div>
+                <div>
+                    <strong>Accent Soft:</strong> #e0f7f6
+                    <div class="color-box" style="background: #e0f7f6; width: 100%; height: 50px; margin-top: 0.5rem;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

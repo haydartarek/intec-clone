@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // =============================
   // Language Management
   // =============================
-  const defaultLanguage = "nl";
+  const defaultLanguage = "en";
   const savedLanguage = localStorage.getItem("intec-language") || defaultLanguage;
   let currentLanguage = savedLanguage;
   let languageLoadAttempts = 0;
@@ -148,6 +148,13 @@ document.addEventListener("DOMContentLoaded", function () {
       loadLanguage(newLang);
     });
   });
+
+  // Clear localStorage and reset to English if needed (for debugging)
+  window.resetLanguage = function() {
+    localStorage.removeItem("intec-language");
+    loadLanguage("en");
+    console.log("🔄 Language reset to English");
+  };
 
   // Load saved or default language on page load
   loadLanguage(currentLanguage);
@@ -809,230 +816,412 @@ function setupSmoothScroll() {
   setupValidation(document.querySelector("#contact-form"));
   setupValidation(document.querySelector("#partner-login-form"));
 
-  // Partner Carousel (smooth, infinite, gap-safe, touch-friendly)
-// =============================
-function initPartnerCarousel() {
-  const carousel = document.querySelector("[data-partner-carousel]");
-  if (!carousel) return;
-
-  const track = carousel.querySelector("[data-partner-track]");
-  const dotsContainer = carousel.querySelector(".partner-carousel__dots");
-  const prevButton = carousel.querySelector("[data-partner-prev]");
-  const nextButton = carousel.querySelector("[data-partner-next]");
-  const originalSlides = Array.from(track.querySelectorAll(".partner-carousel__slide"));
-  if (!originalSlides.length) return;
-
-  const REDUCED = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-
-  // 1) إنشاء كلونات للحواف لعمل حلقة سلسة
-  const firstClone = originalSlides[0].cloneNode(true);
-  const lastClone  = originalSlides[originalSlides.length - 1].cloneNode(true);
-  firstClone.classList.add("is-clone"); firstClone.setAttribute("aria-hidden", "true");
-  lastClone.classList.add("is-clone");  lastClone.setAttribute("aria-hidden", "true");
-  track.insertBefore(lastClone, originalSlides[0]);
-  track.appendChild(firstClone);
-
-  const slides = Array.from(track.querySelectorAll(".partner-carousel__slide"));
-  const REAL_COUNT = originalSlides.length;
-
-  // 2) إعدادات الحركة
-  const TRANSITION_MS = REDUCED ? 0 : 700;
-  const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
-  const HOLD_MS = REDUCED ? 2400 : 3000; // وقت البقاء على كل سلايد
-  let stepX = 0;              // المسافة الفعلية بين السلايدات (تشمل أي gap)
-  let currentIndex = 1;       // نبدأ بعد الكلون الخلفي مباشرةً
-  let isTransitioning = false;
-  let autoplayTimer = null;
-  let isPaused = false;
-
-  // 3) حساب خطوة التحريك من مواقع العناصر (يعالج وجود gap/margin)
-  function computeStep() {
-    if (slides.length < 2) {
-      stepX = carousel.getBoundingClientRect().width; // fallback
+  // =============================
+  // 🎠 Partner Carousel - 60fps, Zero Jitter, Full A11y
+  // =============================
+  function initPartnerCarousel() {
+    const carousel = document.querySelector("[data-carousel='partners']");
+    if (!carousel || carousel.__carouselInit) return; // Guard: prevent double init
+    
+    carousel.__carouselInit = true; // Mark as initialized
+    
+    const track = carousel.querySelector("[data-partner-track]");
+    const dotsContainer = carousel.querySelector(".partner-carousel__dots");
+    const prevBtn = carousel.querySelector("[data-partner-prev]");
+    const nextBtn = carousel.querySelector("[data-partner-next]");
+    const originalSlides = Array.from(track?.querySelectorAll(".partner-carousel__slide") || []);
+    
+    if (!track || !originalSlides.length) {
+      console.warn("⚠️ Partner carousel: missing track or slides");
       return;
     }
-    const a = slides[0].getBoundingClientRect();
-    const b = slides[1].getBoundingClientRect();
-    const diff = Math.round(b.left - a.left);
-    stepX = Math.abs(diff) || Math.round(a.width);
-  }
 
-  // 4) Helpers للحركة
-  function setTransition(on) {
-    track.style.transition = on && TRANSITION_MS > 0 ? `transform ${TRANSITION_MS}ms ${EASE}` : "none";
-    track.style.willChange = on ? "transform" : "auto";
-  }
-  function setTransformByIndex(idx) {
-    track.style.transform = `translate3d(${-idx * stepX}px, 0, 0)`;
-  }
+    // ═══════════════════════════════════════════
+    // STATE MACHINE: idle → animating → idle
+    // ═══════════════════════════════════════════
+    const STATE = {
+      IDLE: "idle",
+      ANIMATING: "animating",
+      DRAGGING: "dragging"
+    };
+    
+    let state = STATE.IDLE;
+    let currentIndex = 1; // Start after last clone
+    let stepX = 0;
+    let autoplayTimer = null;
+    let transitionEndTimer = null;
+    let resizeRAF = null;
 
-  const normalizeReal = (idx) => (idx === 0 ? REAL_COUNT - 1 : idx === REAL_COUNT + 1 ? 0 : idx - 1);
+    // ═══════════════════════════════════════════
+    // CONFIG: All from :root or computed
+    // ═══════════════════════════════════════════
+    const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const styles = getComputedStyle(document.documentElement);
+    const TRANSITION_MS = REDUCED_MOTION ? 0 : 600;
+    const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
+    const AUTOPLAY_MS = REDUCED_MOTION ? 0 : 4000;
+    const MIN_SWIPE_PX = 50;
+    const SWIPE_THRESHOLD = 0.2; // 20% of slide width
 
-  function setActive(idx) {
-    const real = normalizeReal(idx);
-    slides.forEach((s, i) => {
-      const on = i === idx;
-      s.classList.toggle("is-active", on);
-      s.setAttribute("aria-hidden", on ? "false" : "true");
-    });
-    if (dotsContainer) {
-      const dots = dotsContainer.querySelectorAll(".partner-carousel__dot");
-      dots.forEach((dot, i) => {
-        const on = i === real;
-        dot.classList.toggle("is-active", on);
-        dot.setAttribute("aria-current", on ? "true" : "false");
+    // ═══════════════════════════════════════════
+    // CLONE SLIDES for infinite loop
+    // ═══════════════════════════════════════════
+    const firstClone = originalSlides[0].cloneNode(true);
+    const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true);
+    
+    firstClone.classList.add("is-clone");
+    firstClone.setAttribute("aria-hidden", "true");
+    lastClone.classList.add("is-clone");
+    lastClone.setAttribute("aria-hidden", "true");
+    
+    track.insertBefore(lastClone, originalSlides[0]);
+    track.appendChild(firstClone);
+    
+    const allSlides = Array.from(track.querySelectorAll(".partner-carousel__slide"));
+    const REAL_COUNT = originalSlides.length;
+
+    // ═══════════════════════════════════════════
+    // CORE: Compute slide width + gap
+    // ═══════════════════════════════════════════
+    function computeStepX() {
+      if (allSlides.length < 2) {
+        stepX = carousel.offsetWidth;
+        return;
+      }
+      const rectA = allSlides[0].getBoundingClientRect();
+      const rectB = allSlides[1].getBoundingClientRect();
+      stepX = Math.abs(rectB.left - rectA.left) || rectA.width;
+    }
+
+    // ═══════════════════════════════════════════
+    // TRANSFORM: Only on X axis (no Y jitter!)
+    // ═══════════════════════════════════════════
+    function setTransform(index, withTransition = true) {
+      const x = -index * stepX;
+      track.style.transition = withTransition && TRANSITION_MS > 0 
+        ? `transform ${TRANSITION_MS}ms ${EASE}` 
+        : "none";
+      track.style.transform = `translate3d(${x}px, 0, 0)`;
+      track.style.willChange = withTransition ? "transform" : "auto";
+    }
+
+    // ═══════════════════════════════════════════
+    // ARIA + DOTS: Update UI state
+    // ═══════════════════════════════════════════
+    function updateUI() {
+      const realIndex = currentIndex === 0 ? REAL_COUNT - 1 
+                      : currentIndex === REAL_COUNT + 1 ? 0 
+                      : currentIndex - 1;
+
+      // Update slides
+      allSlides.forEach((slide, i) => {
+        const isActive = i === currentIndex;
+        slide.classList.toggle("is-active", isActive);
+        slide.setAttribute("aria-hidden", isActive ? "false" : "true");
+      });
+
+      // Update dots
+      if (dotsContainer) {
+        const dots = dotsContainer.querySelectorAll("[data-partner-dot]");
+        dots.forEach((dot, i) => {
+          const isActive = i === realIndex;
+          dot.classList.toggle("is-active", isActive);
+          dot.setAttribute("aria-current", isActive ? "true" : "false");
+        });
+      }
+
+      // Update buttons (disable during animation, enable at bounds)
+      const isAnimating = state === STATE.ANIMATING;
+      if (prevBtn) {
+        prevBtn.disabled = isAnimating;
+        prevBtn.setAttribute("aria-disabled", isAnimating ? "true" : "false");
+      }
+      if (nextBtn) {
+        nextBtn.disabled = isAnimating;
+        nextBtn.setAttribute("aria-disabled", isAnimating ? "true" : "false");
+      }
+    }
+
+    // ═══════════════════════════════════════════
+    // SNAP: Jump to real slide after clone
+    // ═══════════════════════════════════════════
+    function snapToReal() {
+      if (currentIndex === 0) {
+        currentIndex = REAL_COUNT;
+        setTransform(currentIndex, false);
+        void track.offsetHeight; // Force reflow
+      } else if (currentIndex === REAL_COUNT + 1) {
+        currentIndex = 1;
+        setTransform(currentIndex, false);
+        void track.offsetHeight;
+      }
+    }
+
+    // ═══════════════════════════════════════════
+    // NAVIGATE: Go to specific index
+    // ═══════════════════════════════════════════
+    function goToIndex(newIndex) {
+      if (state === STATE.ANIMATING) return;
+      
+      state = STATE.ANIMATING;
+      currentIndex = newIndex;
+      setTransform(currentIndex, true);
+      updateUI();
+
+      // Fallback timer in case transitionend doesn't fire
+      clearTimeout(transitionEndTimer);
+      if (TRANSITION_MS > 0) {
+        transitionEndTimer = setTimeout(() => {
+          state = STATE.IDLE;
+          snapToReal();
+          updateUI();
+        }, TRANSITION_MS + 100);
+      } else {
+        state = STATE.IDLE;
+        snapToReal();
+        updateUI();
+      }
+    }
+
+    const next = () => goToIndex(currentIndex + 1);
+    const prev = () => goToIndex(currentIndex - 1);
+    const goTo = (realIdx) => goToIndex(realIdx + 1); // +1 for clone offset
+
+    // ═══════════════════════════════════════════
+    // AUTOPLAY: Chain-based timing
+    // ═══════════════════════════════════════════
+    function startAutoplay() {
+      if (AUTOPLAY_MS === 0 || REDUCED_MOTION) return;
+      clearTimeout(autoplayTimer);
+      autoplayTimer = setTimeout(() => {
+        next();
+        startAutoplay();
+      }, AUTOPLAY_MS);
+    }
+
+    function stopAutoplay() {
+      clearTimeout(autoplayTimer);
+    }
+
+    function resumeAutoplay() {
+      startAutoplay();
+    }
+
+    // ═══════════════════════════════════════════
+    // EVENTS: Buttons
+    // ═══════════════════════════════════════════
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        stopAutoplay();
+        next();
+        resumeAutoplay();
       });
     }
-    if (prevButton) prevButton.disabled = isTransitioning;
-    if (nextButton) nextButton.disabled = isTransitioning;
-  }
 
-  // 5) حركة مع fallback لو ما جه transitionend
-  let transitionFallbackTimer = null;
-  function armTransitionFallback() {
-    clearTimeout(transitionFallbackTimer);
-    if (TRANSITION_MS === 0) { isTransitioning = false; return; }
-    transitionFallbackTimer = setTimeout(() => {
-      isTransitioning = false;
-      snapIfClone();
-      setActive(currentIndex);
-    }, TRANSITION_MS + 80);
-  }
-
-  function goTo(idx) {
-    if (isTransitioning) return;
-    isTransitioning = true;
-    currentIndex = idx;
-    setTransition(true);
-    setTransformByIndex(currentIndex);
-    setActive(currentIndex);
-    armTransitionFallback();
-  }
-  const next = () => goTo(currentIndex + 1);
-  const prev = () => goTo(currentIndex - 1);
-
-  function snapIfClone() {
-    // لو وقفنا على كلون، نقفز فوريًا لنظيره الحقيقي
-    if (currentIndex === 0) {
-      currentIndex = REAL_COUNT;
-      setTransition(false);
-      setTransformByIndex(currentIndex);
-      void track.offsetHeight; // reflow
-      setTransition(true);
-    } else if (currentIndex === REAL_COUNT + 1) {
-      currentIndex = 1;
-      setTransition(false);
-      setTransformByIndex(currentIndex);
-      void track.offsetHeight;
-      setTransition(true);
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        stopAutoplay();
+        prev();
+        resumeAutoplay();
+      });
     }
-  }
 
-  track.addEventListener("transitionend", () => {
-    clearTimeout(transitionFallbackTimer);
-    isTransitioning = false;
-    snapIfClone();
-    setActive(currentIndex);
-  });
-
-  // 6) الأزرار
-  if (nextButton) nextButton.addEventListener("click", () => { pauseAutoplay(); next(); resumeAutoplay(); });
-  if (prevButton) prevButton.addEventListener("click", () => { pauseAutoplay(); prev(); resumeAutoplay(); });
-
-  // 7) النقاط
-  if (dotsContainer) {
-    const dots = dotsContainer.querySelectorAll(".partner-carousel__dot");
-    dots.forEach((dot, i) => {
-      dot.addEventListener("click", () => {
-        const idx = i + 1; // بسبب الكلون قبل أول سلايد
-        if (idx !== currentIndex) {
-          pauseAutoplay();
+    // ═══════════════════════════════════════════
+    // EVENTS: Dots
+    // ═══════════════════════════════════════════
+    if (dotsContainer) {
+      dotsContainer.addEventListener("click", (e) => {
+        const dot = e.target.closest("[data-partner-dot]");
+        if (!dot) return;
+        
+        const idx = parseInt(dot.dataset.partnerDot, 10);
+        if (!isNaN(idx) && idx !== currentIndex - 1) {
+          stopAutoplay();
           goTo(idx);
           resumeAutoplay();
         }
-      }, { passive: true });
-    });
-  }
-
-  // 8) أوتوبلاي بسلسلة setTimeout (بدون انجراف)
-  function schedule() {
-    clearTimeout(autoplayTimer);
-    if (isPaused || REDUCED) return;
-    autoplayTimer = setTimeout(() => { next(); schedule(); }, HOLD_MS + TRANSITION_MS);
-  }
-  function pauseAutoplay() { isPaused = true; clearTimeout(autoplayTimer); }
-  function resumeAutoplay() { isPaused = false; schedule(); }
-
-  // 9) لمس/سحب سلس (بدون تعليق دائم لـ isTransitioning)
-  let startX = 0, deltaX = 0, isSwiping = false;
-  const MIN_PX = 60;
-  const RATIO = 0.18;
-  carousel.addEventListener("touchstart", (e) => {
-    pauseAutoplay();
-    const t = e.changedTouches[0];
-    startX = t.clientX;
-    deltaX = 0;
-    isSwiping = true;
-    setTransition(false); // drag بدون easing
-  }, { passive: true });
-
-  carousel.addEventListener("touchmove", (e) => {
-    if (!isSwiping) return;
-    const t = e.changedTouches[0];
-    deltaX = t.clientX - startX;
-    track.style.transform = `translate3d(${-(currentIndex * stepX - deltaX)}px, 0, 0)`;
-  }, { passive: true });
-
-  carousel.addEventListener("touchend", () => {
-    if (!isSwiping) return;
-    setTransition(true);
-    const moved = Math.abs(deltaX);
-    const passed = moved > Math.max(MIN_PX, stepX * RATIO);
-    if (passed) {
-      if (deltaX > 0) prev(); else next();
-    } else {
-      // ارتداد لطيف لموضعه الأصلي
-      setTransformByIndex(currentIndex);
-      armTransitionFallback();
+      });
     }
-    isSwiping = false;
-    deltaX = 0;
-    resumeAutoplay();
-  }, { passive: true });
 
-  // 10) إيقاف عند إخفاء التبويب، وإعادة التشغيل عند الرجوع
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) pauseAutoplay(); else resumeAutoplay();
-  });
+    // ═══════════════════════════════════════════
+    // EVENTS: Touch/Mouse Drag
+    // ═══════════════════════════════════════════
+    let dragStart = null;
+    let dragDelta = 0;
 
-  // 11) إعادة الحساب عند تغيير الحجم (أدقّ مع ResizeObserver)
-  function relayout() {
-    setTransition(false);
-    computeStep();
-    setTransformByIndex(currentIndex);
-    void track.offsetHeight;
-    setTransition(true);
+    function handleDragStart(clientX) {
+      if (state === STATE.ANIMATING) return;
+      stopAutoplay();
+      state = STATE.DRAGGING;
+      dragStart = clientX;
+      dragDelta = 0;
+      setTransform(currentIndex, false);
+    }
+
+    function handleDragMove(clientX) {
+      if (state !== STATE.DRAGGING || dragStart === null) return;
+      dragDelta = clientX - dragStart;
+      const x = -currentIndex * stepX + dragDelta;
+      track.style.transform = `translate3d(${x}px, 0, 0)`;
+    }
+
+    function handleDragEnd() {
+      if (state !== STATE.DRAGGING) return;
+      state = STATE.IDLE;
+      
+      const threshold = Math.max(MIN_SWIPE_PX, stepX * SWIPE_THRESHOLD);
+      const shouldChange = Math.abs(dragDelta) > threshold;
+
+      if (shouldChange) {
+        if (dragDelta > 0) prev();
+        else next();
+      } else {
+        setTransform(currentIndex, true);
+      }
+
+      dragStart = null;
+      dragDelta = 0;
+      resumeAutoplay();
+    }
+
+    // Touch events (passive for performance)
+    carousel.addEventListener("touchstart", (e) => {
+      handleDragStart(e.touches[0].clientX);
+    }, { passive: true });
+
+    carousel.addEventListener("touchmove", (e) => {
+      handleDragMove(e.touches[0].clientX);
+    }, { passive: true });
+
+    carousel.addEventListener("touchend", handleDragEnd, { passive: true });
+
+    // Mouse events
+    carousel.addEventListener("mousedown", (e) => {
+      e.preventDefault();
+      handleDragStart(e.clientX);
+      
+      const handleMouseMove = (moveEvent) => {
+        handleDragMove(moveEvent.clientX);
+      };
+      
+      const handleMouseUp = () => {
+        handleDragEnd();
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseup", handleMouseUp);
+      };
+      
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+    });
+
+    // ═══════════════════════════════════════════
+    // EVENTS: Keyboard (Accessibility)
+    // ═══════════════════════════════════════════
+    carousel.addEventListener("keydown", (e) => {
+      if (state === STATE.ANIMATING) return;
+      
+      switch (e.key) {
+        case "ArrowLeft":
+          e.preventDefault();
+          stopAutoplay();
+          prev();
+          resumeAutoplay();
+          break;
+        case "ArrowRight":
+          e.preventDefault();
+          stopAutoplay();
+          next();
+          resumeAutoplay();
+          break;
+        case "Home":
+          e.preventDefault();
+          stopAutoplay();
+          goTo(0);
+          resumeAutoplay();
+          break;
+        case "End":
+          e.preventDefault();
+          stopAutoplay();
+          goTo(REAL_COUNT - 1);
+          resumeAutoplay();
+          break;
+      }
+    });
+
+    // Make carousel focusable for keyboard
+    if (!carousel.hasAttribute("tabindex")) {
+      carousel.setAttribute("tabindex", "0");
+    }
+    carousel.setAttribute("role", "region");
+    carousel.setAttribute("aria-label", "Partner logos carousel");
+
+    // ═══════════════════════════════════════════
+    // EVENTS: TransitionEnd (clean state)
+    // ═══════════════════════════════════════════
+    track.addEventListener("transitionend", (e) => {
+      if (e.target !== track || e.propertyName !== "transform") return;
+      
+      clearTimeout(transitionEndTimer);
+      state = STATE.IDLE;
+      snapToReal();
+      updateUI();
+    });
+
+    // ═══════════════════════════════════════════
+    // EVENTS: Visibility (pause when hidden)
+    // ═══════════════════════════════════════════
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        stopAutoplay();
+      } else {
+        resumeAutoplay();
+      }
+    });
+
+    // Pause on hover
+    carousel.addEventListener("mouseenter", stopAutoplay);
+    carousel.addEventListener("mouseleave", resumeAutoplay);
+
+    // ═══════════════════════════════════════════
+    // EVENTS: Resize (debounced with RAF)
+    // ═══════════════════════════════════════════
+    function handleResize() {
+      if (resizeRAF) return; // Debounce with RAF
+      
+      resizeRAF = requestAnimationFrame(() => {
+        setTransform(currentIndex, false);
+        computeStepX();
+        setTransform(currentIndex, false);
+        void track.offsetHeight; // Force reflow
+        resizeRAF = null;
+      });
+    }
+
+    if (window.ResizeObserver) {
+      const ro = new ResizeObserver(handleResize);
+      ro.observe(carousel);
+      ro.observe(track);
+    } else {
+      let resizeTimer;
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(handleResize, 150);
+      });
+    }
+
+    // ═══════════════════════════════════════════
+    // INIT: Start the carousel
+    // ═══════════════════════════════════════════
+    computeStepX();
+    setTransform(currentIndex, false);
+    
+    requestAnimationFrame(() => {
+      updateUI();
+      if (!REDUCED_MOTION) startAutoplay();
+    });
+
+    console.log(`✅ Partner carousel initialized: ${REAL_COUNT} slides, stepX=${stepX}px, 60fps mode`);
   }
-  computeStep();
-  if ("ResizeObserver" in window) {
-    const ro = new ResizeObserver(() => relayout());
-    ro.observe(carousel);
-    ro.observe(track);
-  } else {
-    window.addEventListener("resize", relayout);
-  }
-
-  // 12) تهيئة البداية
-  setTransition(false);
-  setTransformByIndex(currentIndex);
-  requestAnimationFrame(() => {
-    setTransition(TRANSITION_MS > 0);
-    setActive(currentIndex);
-    if (!REDUCED) schedule();
-  });
-
-  console.log(`✅ Partner carousel ready · ${REAL_COUNT} slides · stepX=${stepX}px`);
-}
 
   // =============================
   // Details/Accordion Enhancement
@@ -1179,3 +1368,618 @@ if (siteHeader) {
     }
   });
 }
+
+// ============================================================================
+// SECTION BACKGROUND ALTERNATION SYSTEM
+// ============================================================================
+
+/**
+ * 🎨 نظام متقدم لتطبيق ألوان خلفية متناوبة على الأقسام
+ * يدعم تخصيص الألوان والاستثناءات مع تحسين الأداء
+ */
+(function initSectionBackgroundSystem() {
+  'use strict';
+  
+  // إعدادات النظام
+  const CONFIG = {
+    // الـ selectors الأساسية - تحديث لتشمل جميع الأقسام
+    mainSelector: 'section, .section',
+    
+    // الأقسام المستثناة من النظام
+    excludeClasses: [
+      'hero',
+      'section--hero', 
+      'cta-band',
+      'section--cta',
+      'footer',
+      'about-hero',
+      'contact-hero',
+      'team-hero',
+      'opleidingen-hero'
+    ],
+    
+    // استخدام classes بدلاً من inline styles (أفضل للأداء)
+    useClasses: true,
+    
+    // الـ classes المستخدمة
+    evenClass: 'section--surface',  // للأقسام الزوجية
+    oddClass: 'section--alt',       // للأقسام الفردية
+    
+    // Fallback inline styles (إذا لم نستخدم classes)
+    evenBackground: 'var(--color-bg-surface)',
+    oddBackground: 'var(--color-bg-section)',
+    
+    // تمكين/تعطيل الانتقالات السلسة
+    enableTransitions: true,
+    
+    // تمكين/تعطيل الـ debug logging
+    debug: false
+  };
+
+  /**
+   * التحقق من أن القسم مستثنى من النظام
+   * @param {Element} section - عنصر القسم
+   * @returns {boolean}
+   */
+  function isExcludedSection(section) {
+    return CONFIG.excludeClasses.some(className => 
+      section.classList.contains(className)
+    );
+  }
+
+  /**
+   * تطبيق الخلفية المناسبة على القسم
+   * @param {Element} section - عنصر القسم
+   * @param {number} visualIndex - الفهرس المرئي (بعد استثناء الأقسام الخاصة)
+   */
+  function applySectionBackground(section, visualIndex) {
+    // تخطي الأقسام المستثناة
+    if (isExcludedSection(section)) {
+      if (CONFIG.debug) {
+        console.log(`🚫 Skipping excluded section:`, section.className);
+      }
+      return;
+    }
+
+    const isEven = visualIndex % 2 === 0;
+    
+    if (CONFIG.useClasses) {
+      // إزالة الـ classes القديمة أولاً
+      section.classList.remove(CONFIG.evenClass, CONFIG.oddClass);
+      
+      // إضافة الـ class المناسب
+      const targetClass = isEven ? CONFIG.evenClass : CONFIG.oddClass;
+      section.classList.add(targetClass);
+      
+      if (CONFIG.debug) {
+        console.log(`✅ Applied class "${targetClass}" to section ${visualIndex}`);
+      }
+    } else {
+      // تطبيق inline style كـ fallback
+      const targetBackground = isEven ? CONFIG.evenBackground : CONFIG.oddBackground;
+      section.style.background = targetBackground;
+      
+      if (CONFIG.debug) {
+        console.log(`✅ Applied background "${targetBackground}" to section ${visualIndex}`);
+      }
+    }
+  }
+
+  /**
+   * تطبيق النظام على جميع الأقسام
+   */
+  function applySectionBackgrounds() {
+    const sections = document.querySelectorAll(CONFIG.mainSelector);
+    
+    if (sections.length === 0) {
+      if (CONFIG.debug) {
+        console.warn('⚠️ No sections found with selector:', CONFIG.mainSelector);
+      }
+      return;
+    }
+
+    let visualIndex = 0; // العداد المرئي (بعد استثناء الأقسام الخاصة)
+    let processedCount = 0;
+
+    sections.forEach((section, absoluteIndex) => {
+      if (isExcludedSection(section)) {
+        if (CONFIG.debug) {
+          console.log(`🚫 Section ${absoluteIndex} excluded:`, section.className);
+        }
+        return;
+      }
+
+      // تطبيق الخلفية المناسبة
+      applySectionBackground(section, visualIndex);
+      
+      visualIndex++;
+      processedCount++;
+    });
+
+    if (CONFIG.debug) {
+      console.log(`✅ Section backgrounds applied: ${processedCount}/${sections.length} sections processed`);
+    }
+
+    // إرسال event مخصص لإشعار النظائم الأخرى
+    window.dispatchEvent(new CustomEvent('sectionBackgroundsApplied', {
+      detail: { 
+        processedCount, 
+        totalCount: sections.length,
+        config: CONFIG 
+      }
+    }));
+  }
+
+  /**
+   * Debounce function لتحسين الأداء
+   * @param {Function} func - الدالة المراد تأخيرها
+   * @param {number} wait - وقت التأخير بالميلي ثانية
+   * @returns {Function}
+   */
+  function debounce(func, wait = 100) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func.apply(this, args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+
+  /**
+   * إعادة تطبيق النظام (مفيد عند تغيير المحتوى ديناميكياً)
+   */
+  function refreshSectionBackgrounds() {
+    if (CONFIG.debug) {
+      console.log('🔄 Refreshing section backgrounds...');
+    }
+    applySectionBackgrounds();
+  }
+
+  /**
+   * تطبيق الانتقالات السلسة على الأقسام
+   */
+  function enableSmoothTransitions() {
+    if (!CONFIG.enableTransitions) return;
+
+    const style = document.createElement('style');
+    style.textContent = `
+      /* Smooth transitions for section background changes */
+      main > section:not(.hero):not(.cta-band),
+      main > .section:not(.hero):not(.cta-band) {
+        transition: background-color 0.3s ease;
+      }
+    `;
+    document.head.appendChild(style);
+
+    if (CONFIG.debug) {
+      console.log('✅ Smooth transitions enabled for section backgrounds');
+    }
+  }
+
+  /**
+   * مراقبة تغييرات DOM لإعادة تطبيق النظام تلقائياً
+   */
+  function setupDOMObserver() {
+    // مراقبة إضافة/حذف الأقسام
+    const observer = new MutationObserver(debounce((mutations) => {
+      let shouldRefresh = false;
+
+      mutations.forEach((mutation) => {
+        // التحقق من إضافة أو حذف عقد
+        if (mutation.type === 'childList') {
+          const addedSections = Array.from(mutation.addedNodes)
+            .filter(node => node.nodeType === 1 && 
+                   (node.matches('section') || node.matches('.section')));
+          
+          const removedSections = Array.from(mutation.removedNodes)
+            .filter(node => node.nodeType === 1 && 
+                   (node.matches('section') || node.matches('.section')));
+
+          if (addedSections.length > 0 || removedSections.length > 0) {
+            shouldRefresh = true;
+          }
+        }
+
+        // التحقق من تغيير classes
+        if (mutation.type === 'attributes' && 
+            mutation.attributeName === 'class' && 
+            mutation.target.matches('section, .section')) {
+          shouldRefresh = true;
+        }
+      });
+
+      if (shouldRefresh) {
+        if (CONFIG.debug) {
+          console.log('🔍 DOM changes detected, refreshing section backgrounds...');
+        }
+        refreshSectionBackgrounds();
+      }
+    }, 250));
+
+    // مراقبة body container لتشمل جميع الأقسام
+    const bodyContainer = document.body;
+    if (bodyContainer) {
+      observer.observe(bodyContainer, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['class']
+      });
+
+      if (CONFIG.debug) {
+        console.log('👁️ DOM observer setup for dynamic content changes (body-wide)');
+      }
+    }
+
+    return observer;
+  }
+
+  /**
+   * إعداد event listeners للأحداث المهمة
+   */
+  function setupEventListeners() {
+    // إعادة تطبيق عند تغيير حجم الشاشة (مع debounce)
+    window.addEventListener('resize', debounce(refreshSectionBackgrounds, 250));
+
+    // إعادة تطبيق عند تغيير اللغة
+    window.addEventListener('languageChanged', refreshSectionBackgrounds);
+
+    // API عام للاستخدام الخارجي
+    window.INTEC_SectionBackgrounds = {
+      refresh: refreshSectionBackgrounds,
+      config: CONFIG,
+      apply: applySectionBackgrounds
+    };
+
+    // إضافة applyAlternatingSectionClasses كاسم مستعار
+    window.applyAlternatingSectionClasses = refreshSectionBackgrounds;
+    window.refreshBackgrounds = refreshSectionBackgrounds;
+    
+    // دالة لتمكين debug mode
+    window.debugBackgroundSystem = function() {
+      CONFIG.debug = true;
+      console.log('🐛 Debug mode enabled for Section Background System');
+      console.log('📊 Current Config:', CONFIG);
+      refreshSectionBackgrounds();
+    };
+
+    if (CONFIG.debug) {
+      console.log('🔧 Event listeners setup complete');
+      console.log('💡 Use window.INTEC_SectionBackgrounds.refresh() to manually refresh');
+    }
+  }
+
+  /**
+   * تشغيل النظام الرئيسي
+   */
+  function initializeSystem() {
+    const startTime = performance.now();
+
+    try {
+      // تمكين الانتقالات السلسة
+      enableSmoothTransitions();
+
+      // تطبيق النظام للمرة الأولى
+      applySectionBackgrounds();
+
+      // إعداد مراقبة التغييرات
+      setupDOMObserver();
+
+      // إعداد event listeners
+      setupEventListeners();
+
+      const endTime = performance.now();
+      const initTime = (endTime - startTime).toFixed(2);
+
+      console.log(`🎨 Section Background System initialized successfully in ${initTime}ms`);
+      
+      if (CONFIG.debug) {
+        console.log('📊 System Config:', CONFIG);
+      }
+
+    } catch (error) {
+      console.error('❌ Section Background System initialization failed:', error);
+    }
+  }
+
+  // تشغيل النظام عند تحميل DOM أو فوراً إذا كان جاهزاً
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeSystem);
+  } else {
+    // DOM جاهز، تشغيل فوري
+    initializeSystem();
+  }
+
+  // تشغيل إضافي عند تحميل النافذة (للتأكد من تحميل جميع الموارد)
+  window.addEventListener('load', refreshSectionBackgrounds);
+
+})();
+
+// ============================================================================
+// 🎨 ALTERNATING SECTION BACKGROUNDS SYSTEM
+// نظام الخلفيات المتناوبة التلقائي
+// ============================================================================
+
+(function() {
+  'use strict';
+
+  /**
+   * ⚙️ إعدادات النظام
+   */
+  const CONFIG = {
+    // CSS classes للخلفيات المتناوبة
+    surfaceClass: 'section--surface',  // الأقسام الزوجية (فاتح)
+    altClass: 'section--alt',          // الأقسام الفردية (متناوب)
+    
+    // قائمة الأقسام المستثناة من النظام التلقائي
+    excludeSelectors: [
+      '.hero',
+      '.footer', 
+      '.header',
+      '.navigation',
+      '[data-no-alternating]',
+      '.section--no-alternating'
+    ],
+    
+    // إعدادات المراقبة
+    observeChanges: true,        // مراقبة التغييرات في DOM
+    debounceDelay: 300,         // تأخير لتجنب الاستدعاءات المتكررة
+    
+    // وضع التطوير
+    debug: true                // لعرض تفاصيل إضافية في console
+  };
+
+  /**
+   * 🎯 وظيفة تطبيق الخلفيات المتناوبة
+   */
+  function applyAlternatingSectionClasses() {
+    // البحث عن جميع الأقسام في الصفحة
+    const sections = document.querySelectorAll('section, .section');
+    
+    if (sections.length === 0) {
+      if (CONFIG.debug) {
+        console.log('🔍 No sections found for alternating backgrounds');
+      }
+      return;
+    }
+
+    // تصفية الأقسام المستثناة
+    const validSections = Array.from(sections).filter(section => {
+      // تحقق من الاستثناءات
+      for (const excludeSelector of CONFIG.excludeSelectors) {
+        if (section.matches(excludeSelector)) {
+          if (CONFIG.debug) {
+            console.log(`⏭️ Excluding section: ${excludeSelector}`);
+          }
+          return false;
+        }
+      }
+      return true;
+    });
+
+    if (CONFIG.debug) {
+      console.log(`🎨 Processing ${validSections.length} sections for alternating backgrounds`);
+    }
+
+    // إزالة الخلفيات القديمة أولاً
+    validSections.forEach(section => {
+      section.classList.remove(CONFIG.surfaceClass, CONFIG.altClass);
+    });
+
+    // تطبيق الخلفيات المتناوبة
+    validSections.forEach((section, index) => {
+      const isEven = index % 2 === 0;
+      const className = isEven ? CONFIG.surfaceClass : CONFIG.altClass;
+      
+      section.classList.add(className);
+      
+      if (CONFIG.debug) {
+        console.log(`✅ Section ${index + 1}: Applied .${className}`);
+      }
+    });
+
+    if (CONFIG.debug) {
+      console.log('🎨 Alternating section backgrounds applied successfully');
+    }
+  }
+
+  /**
+   * ⏱️ تطبيق Debounce لتحسين الأداء
+   */
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+
+  /**
+   * 👁️ مراقب التغييرات في DOM
+   */
+  function setupDOMObserver() {
+    if (!CONFIG.observeChanges) return null;
+
+    const debouncedRefresh = debounce(() => {
+      if (CONFIG.debug) {
+        console.log('🔄 DOM changes detected, refreshing section backgrounds...');
+      }
+      applyAlternatingSectionClasses();
+    }, CONFIG.debounceDelay);
+
+    const observer = new MutationObserver((mutations) => {
+      let shouldRefresh = false;
+
+      mutations.forEach((mutation) => {
+        // التحقق من إضافة/حذف sections
+        if (mutation.type === 'childList') {
+          for (const node of mutation.addedNodes) {
+            if (node.nodeType === Node.ELEMENT_NODE) {
+              if (node.matches('section, .section') || 
+                  node.querySelector('section, .section')) {
+                shouldRefresh = true;
+                break;
+              }
+            }
+          }
+          
+          for (const node of mutation.removedNodes) {
+            if (node.nodeType === Node.ELEMENT_NODE) {
+              if (node.matches('section, .section') || 
+                  node.querySelector('section, .section')) {
+                shouldRefresh = true;
+                break;
+              }
+            }
+          }
+        }
+
+        // التحقق من تغيير classes
+        if (mutation.type === 'attributes' && 
+            mutation.attributeName === 'class' && 
+            mutation.target.matches('section, .section')) {
+          shouldRefresh = true;
+        }
+      });
+
+      if (shouldRefresh) {
+        debouncedRefresh();
+      }
+    });
+
+    // مراقبة body container لتشمل جميع الأقسام
+    const bodyContainer = document.body;
+    if (bodyContainer) {
+      observer.observe(bodyContainer, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['class']
+      });
+
+      if (CONFIG.debug) {
+        console.log('👁️ DOM observer setup for dynamic content changes');
+      }
+    }
+
+    return observer;
+  }
+
+  /**
+   * 🎛️ إعداد event listeners للأحداث المهمة
+   */
+  function setupEventListeners() {
+    // إعادة تطبيق عند تغيير حجم الشاشة (مع debounce)
+    const debouncedResize = debounce(applyAlternatingSectionClasses, 250);
+    window.addEventListener('resize', debouncedResize);
+
+    // إعادة تطبيق عند تغيير اللغة
+    window.addEventListener('languageChanged', applyAlternatingSectionClasses);
+
+    if (CONFIG.debug) {
+      console.log('🎛️ Event listeners setup complete');
+    }
+  }
+
+  /**
+   * 🚀 تهيئة النظام
+   */
+  function initializeSystem() {
+    if (CONFIG.debug) {
+      console.log('🚀 Initializing alternating section backgrounds system...');
+    }
+
+    // تطبيق فوري للخلفيات
+    applyAlternatingSectionClasses();
+    
+    // إعداد المراقبة والاستجابة للأحداث
+    setupDOMObserver();
+    setupEventListeners();
+
+    // API عام للاستخدام الخارجي
+    window.INTEC_SectionBackgrounds = {
+      refresh: applyAlternatingSectionClasses,
+      config: CONFIG,
+      apply: applyAlternatingSectionClasses
+    };
+
+    if (CONFIG.debug) {
+      console.log('✅ Alternating section backgrounds system initialized');
+    }
+  }
+
+  // تشغيل النظام عند تحميل الصفحة
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeSystem);
+  } else {
+    initializeSystem();
+  }
+
+})();
+
+// PUBLIC API للاستخدام الخارجي
+// ============================================================================
+
+/**
+ * 🌐 API عام لإدارة خلفيات الأقسام
+ * يمكن استخدامه من أي مكان في الموقع
+ */
+window.INTEC = window.INTEC || {};
+window.INTEC.SectionBackgrounds = {
+  /**
+   * إعادة تطبيق ألوان الخلفية المتناوبة
+   */
+  refresh() {
+    if (window.INTEC_SectionBackgrounds) {
+      window.INTEC_SectionBackgrounds.refresh();
+    }
+  },
+
+  /**
+   * الحصول على إعدادات النظام
+   */
+  getConfig() {
+    return window.INTEC_SectionBackgrounds?.config || null;
+  },
+
+  /**
+   * تطبيق النظام يدوياً
+   */
+  apply() {
+    if (window.INTEC_SectionBackgrounds) {
+      window.INTEC_SectionBackgrounds.apply();
+    }
+  }
+};
+
+// ============================================================================
+// CONSOLE INFO للمطورين
+// ============================================================================
+console.log(`
+🎨 INTEC Brussels - Section Background System
+═══════════════════════════════════════════════
+
+✅ System Status: Active
+🔧 Mode: Automatic alternating backgrounds  
+📱 Responsive: Yes
+🎭 Transitions: Enabled
+🔍 Debug Mode: ${window.INTEC_SectionBackgrounds?.config?.debug ? 'ON' : 'OFF'}
+
+💡 Usage:
+   window.INTEC.SectionBackgrounds.refresh()  // إعادة تطبيق
+   window.INTEC.SectionBackgrounds.apply()    // تطبيق يدوي
+   window.INTEC.SectionBackgrounds.getConfig() // عرض الإعدادات
+
+🎯 CSS Classes:
+   .section--surface  // للأقسام الزوجية (فاتح)
+   .section--alt      // للأقسام الفردية (داكن)
+
+═══════════════════════════════════════════════
+`);

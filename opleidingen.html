@@ -5,39 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Ontdek de officiele opleidingen van INTEC Brussel: PC en Netwerktechnicus, Netwerkbeheerder met Python, Systeembeheerder en Cyber Security Engineer."
+      content="Ontdek de officiële opleidingen van INTEC Brussel: PC en Netwerktechnicus, Netwerkbeheerder met Python, Systeembeheerder en Cyber Security Engineer. Officieel aanbod met actuele startdata."
     />
-    <title>Opleidingen - INTEC Brussel</title>
+    <meta name="keywords" content="INTEC Brussel, opleidingen, IT training, netwerktechnicus, systeembeheerder, cyber security, Python, Brussels" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://intecbrussel.be/opleidingen.html" />
+    <title>Opleidingen - INTEC Brussel | IT Training & Certificering</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <link rel="stylesheet" href="assets/css/local-fonts.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/accordion.js" defer></script>
+    <script src="assets/js/i18n/nl.js"></script>
+    <script src="assets/js/i18n/en.js"></script>
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "INTEC Brussel Opleidingen",
+      "description": "Officiële IT-opleidingen van INTEC Brussel",
+      "numberOfItems": 4,
+      "itemListElement": [
+        {
+          "@type": "Course",
+          "position": 1,
+          "name": "PC en Netwerktechnicus",
+          "description": "Servers beheren, netwerken configureren en troubleshooting uitvoeren",
+          "provider": {
+            "@type": "Organization",
+            "name": "INTEC Brussel"
+          }
+        },
+        {
+          "@type": "Course", 
+          "position": 2,
+          "name": "Netwerkbeheerder met Python",
+          "description": "Combineer netwerkbeheer met automatisering in Python",
+          "provider": {
+            "@type": "Organization",
+            "name": "INTEC Brussel"
+          }
+        },
+        {
+          "@type": "Course",
+          "position": 3, 
+          "name": "Systeembeheerder",
+          "description": "Bouw expertise in infrastructuur, Windows/Linux servers, virtualisatie",
+          "provider": {
+            "@type": "Organization",
+            "name": "INTEC Brussel"
+          }
+        },
+        {
+          "@type": "Course",
+          "position": 4,
+          "name": "Cyber Security Engineer", 
+          "description": "Leer netwerken beveiligen, security-analyses uitvoeren en incidenten reduceren",
+          "provider": {
+            "@type": "Organization",
+            "name": "INTEC Brussel"
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Ga naar hoofdinhoud</a>
     <div class="page-shell">
-      <div class="top-banner">
-        <div class="container">
-          <span>Nieuwe lichting start begin november - intakegesprekken lopen nu.</span>
-          <a class="top-banner__cta" href="inschrijven.html">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path
-                d="M5 12h14M13 6l6 6-6 6"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            Vraag je intake aan
-          </a>
-        </div>
-      </div>
-
-      <header class="site-nav">
-        <div class="container site-nav__inner">
+      <header class="site-header">
+        <div class="container site-header__inner">
           <a class="brand" href="index.html" aria-label="INTEC Brussel">
-            <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" />
-            <span>INTEC Brussel</span>
+            <img
+              src="assets/img/logo+intec+brusselZWART1.png"
+              alt="INTEC Brussel logo"
+              data-critical="true"
+              decoding="async"
+              loading="eager"
+            />
           </a>
           <button
             class="nav-toggle"
@@ -46,9 +93,11 @@
             aria-expanded="false"
             data-nav-toggle="#primary-navigation"
           >
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <span class="sr-only">Menu openen</span>
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
               <path
                 d="M4 6h16M4 12h16M4 18h16"
+                stroke="currentColor"
                 stroke-width="1.8"
                 stroke-linecap="round"
               />
@@ -61,211 +110,369 @@
               <li><a href="inschrijven.html">Inschrijven</a></li>
               <li><a href="overons.html">Over ons</a></li>
               <li><a href="contact.html">Contact</a></li>
-              <li><a href="cvdb/index.html">Toegang partners</a></li>
+              <li><a href="cvdb/index.html">Toegang Partners</a></li>
             </ul>
           </nav>
-          <div class="nav-actions">
+          <div class="site-header__actions">
+            <div class="language-switch" role="group" aria-label="Taalkeuze">
+              <button type="button" data-lang-select data-lang="nl">NL</button>
+              <button type="button" data-lang-select data-lang="en">EN</button>
+            </div>
             <a class="button" href="digipunt.html">Digipunt</a>
           </div>
         </div>
       </header>
 
-            <main id="main-content" tabindex="-1">
-        <section class="feature-section" id="opleidingen">
-          <div class="container two-column">
-            <div class="section-headline" data-animate="fade-up">
-              <span>Officieel aanbod</span>
-              <h1>De opleidingen van INTEC Brussel</h1>
-              <p>
-                Kies uit vier trajecten die rechtstreeks van onze campus komen. Inhoud, startdata en beschrijvingen zijn
-                gebaseerd op de officiele informatie zodat je zeker bent van de juiste details.
+      <main id="main-content" tabindex="-1">
+        <section class="hero">
+          <div class="container hero__grid">
+            <div class="hero__content">
+              <span class="hero__eyebrow" data-i18n="opleidingen.hero.eyebrow">Official Programs</span>
+              <h1 class="hero__title" data-i18n="opleidingen.hero.title">INTEC Brussels Training Programs</h1>
+              <p class="hero__description" data-i18n="opleidingen.hero.description">
+                Choose from four programs directly from our campus. Content, start dates and descriptions are based on official information so you can be sure of the correct details.
               </p>
               <div class="hero__actions">
-                <a class="button hero__cta" href="inschrijven.html">
-                  <span class="hero__label" aria-hidden="true">Plan intake</span>
-                  <span class="sr-only">Ga naar inschrijven</span>
+                <a class="button" href="inschrijven.html">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="8.5" cy="7" r="4"></circle>
+                    <path d="M20 8v6M23 11h-6"></path>
+                  </svg>
+                  <span data-i18n="opleidingen.hero.cta1">Plan intake</span>
                 </a>
-                <a class="button button--ghost hero__cta hero__cta--secondary" href="#programma-overzicht">
-                  <span class="hero__label" aria-hidden="true">Bekijk programma&apos;s</span>
-                  <span class="sr-only">Scroll naar programma overzicht</span>
+                <a class="button button--ghost" href="#programs">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                  </svg>
+                  <span data-i18n="opleidingen.hero.cta2">View programs</span>
                 </a>
               </div>
             </div>
-            <aside class="highlight-box" data-animate="fade-up" style="--animation-delay: 0.15s;">
-              <div class="highlight-box__body">
-                <h3>Waarom deze trajecten?</h3>
-                <ul class="grid-list">
-                  <li>Actuele inhoud afgestemd op de Brusselse arbeidsmarkt</li>
-                  <li>Hands-on begeleiding door trainers uit het werkveld</li>
-                  <li>Startdata en leerpaden zoals gepubliceerd door INTEC Brussel</li>
-                  <li>Voorbereiding op jobs in infrastructuur, netwerkbeheer en security</li>
+            <div class="hero__visual">
+              <div class="hero-card">
+                <div class="hero-card__content">
+                  <h2 data-i18n="opleidingen.why.title">Why these programs?</h2>
+                  <ul>
+                    <li data-i18n="opleidingen.why.reason1">Current content aligned with the Brussels job market</li>
+                    <li data-i18n="opleidingen.why.reason2">Hands-on guidance by trainers from the field</li>
+                    <li data-i18n="opleidingen.why.reason3">Start dates and learning paths as published by INTEC Brussels</li>
+                    <li data-i18n="opleidingen.why.reason4">Preparation for jobs in infrastructure, network management and security</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--alt" id="programs">
+          <div class="container">
+            <div class="section-heading">
+              <span data-i18n="opleidingen.overview.eyebrow">Program overview</span>
+              <h2 data-i18n="opleidingen.overview.title">Which training suits you?</h2>
+              <p data-i18n="opleidingen.overview.description">
+                Discover the four programs and click through for more information or to plan your intake.
+              </p>
+            </div>
+            
+            <div class="course-grid">
+              <article class="course-card">
+                <h3 data-i18n="opleidingen.pc.title">PC and Network Technician</h3>
+                <p data-i18n="opleidingen.pc.description">
+                  Manage servers, configure networks and perform troubleshooting. You learn to work with Cisco, Linux and Microsoft and develop strong support skills.
+                </p>
+                <ul class="course-card__dates">
+                  <li data-i18n="opleidingen.pc.date1">Start dates: September 8, 2025 (Full)</li>
+                  <li data-i18n="opleidingen.pc.date2">Next start: March 9, 2026</li>
                 </ul>
-              </div>
-            </aside>
+                <a class="button course-card__cta" href="support.html">
+                  <span data-i18n="opleidingen.pc.cta">More info</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M5 12h14M13 6l6 6-6 6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
+              </article>
+
+              <article class="course-card">
+                <h3 data-i18n="opleidingen.python.title">Network Administrator with Python</h3>
+                <p data-i18n="opleidingen.python.description">
+                  Combine network management with automation in Python. Labs focus on modern infrastructures and scripting.
+                </p>
+                <ul class="course-card__dates">
+                  <li data-i18n="opleidingen.python.date1">Start date: February 2, 2026</li>
+                </ul>
+                <a class="button course-card__cta" href="python.html">
+                  <span data-i18n="opleidingen.python.cta">More info</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M5 12h14M13 6l6 6-6 6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
+              </article>
+
+              <article class="course-card">
+                <h3 data-i18n="opleidingen.sysadmin.title">System Administrator</h3>
+                <p data-i18n="opleidingen.sysadmin.description">
+                  Build expertise in infrastructure, Windows/Linux servers, virtualization and monitoring. With practical projects and certification preparation.
+                </p>
+                <ul class="course-card__dates">
+                  <li data-i18n="opleidingen.sysadmin.date1">Start dates: February 23, 2026</li>
+                  <li data-i18n="opleidingen.sysadmin.date2">Extra start: May 18, 2026</li>
+                </ul>
+                <a class="button course-card__cta" href="systeembeheerder.html">
+                  <span data-i18n="opleidingen.sysadmin.cta">More info</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M5 12h14M13 6l6 6-6 6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
+              </article>
+
+              <article class="course-card">
+                <h3 data-i18n="opleidingen.security.title">Cybersecurity Engineer</h3>
+                <p data-i18n="opleidingen.security.description">
+                  Learn to secure networks, perform security analyses and reduce incidents with ethical hacking and cloud security.
+                </p>
+                <ul class="course-card__dates">
+                  <li data-i18n="opleidingen.security.date1">Start date: November 24, 2025</li>
+                </ul>
+                <a class="button course-card__cta" href="security.html">
+                  <span data-i18n="opleidingen.security.cta">More info</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M5 12h14M13 6l6 6-6 6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
+              </article>
+            </div>
           </div>
         </section>
 
-        <section class="section" id="programma-overzicht">
+        <section class="section training-spotlight" id="expectations" aria-labelledby="expectations-title">
           <div class="container">
-            <div class="section-heading" data-animate="fade-up">
-              <span>Programma overzicht</span>
-              <h2>Welke opleiding past bij jou?</h2>
-              <p>
-                Ontdek de vier trajecten en klik door voor meer informatie of om je intake te plannen.
+            <div class="training-spotlight__intro">
+              <span class="training-spotlight__eyebrow" data-i18n="training.spotlight.eyebrow">Deepen Your Skills</span>
+              <h2 id="expectations-title" class="training-spotlight__title" data-i18n="training.spotlight.title">Choose the path that fits you</h2>
+              <p class="training-spotlight__description" data-i18n="training.spotlight.description">
+                Discover our specialized training programs that prepare you for a future-proof career in IT. Each path combines hands-on experience with personal guidance.
               </p>
             </div>
-            <div class="program-grid" data-animate="fade-up">
-              <article class="program-card program-card--support">
-                <div class="program-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 32 32" fill="none">
-                    <circle cx="16" cy="12" r="5" stroke="currentColor" stroke-width="1.8" />
-                    <path d="M8 23.5c0-2.5 3.5-4.5 8-4.5s8 2 8 4.5V26H8v-2.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
-                  </svg>
+            
+            <div class="training-spotlight__grid">
+              <article class="training-card">
+                <div class="training-card__header">
+                  <div class="training-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                      <line x1="8" y1="21" x2="16" y2="21"/>
+                      <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                  </div>
+                  <h3 class="training-card__title" data-i18n="training.spotlight.pc.title">PC and Network Technician</h3>
                 </div>
-                <h3>PC en Netwerktechnicus</h3>
-                <p>
-                  Servers beheren, netwerken configureren en troubleshooting uitvoeren. Je leert werken met Cisco, Linux en
-                  Microsoft en ontwikkelt sterke supportskills.
-                </p>
-                <p>
-                  <strong>Startdata:</strong><br />8 september 2025 (Volzet)<br />9 maart 2026
-                </p>
-                <footer><a href="support.html">Meer info</a></footer>
+                <div class="training-card__content">
+                  <ul class="training-card__features">
+                    <li>
+                      <svg class="feature-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                      <span data-i18n="training.spotlight.pc.feature1">Hardware installation and maintenance</span>
+                    </li>
+                    <li>
+                      <svg class="feature-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                      <span data-i18n="training.spotlight.pc.feature2">Network configuration and troubleshooting</span>
+                    </li>
+                    <li>
+                      <svg class="feature-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                      <span data-i18n="training.spotlight.pc.feature3">Customer support and helpdesk</span>
+                    </li>
+                    <li>
+                      <svg class="feature-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                      <span data-i18n="training.spotlight.pc.feature4">Internship at local companies</span>
+                    </li>
+                  </ul>
+                </div>
               </article>
 
-              <article class="program-card program-card--network">
-                <div class="program-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 32 32" fill="none">
-                    <circle cx="11" cy="16" r="4" stroke="currentColor" stroke-width="1.8" />
-                    <circle cx="21" cy="16" r="4" stroke="currentColor" stroke-width="1.8" />
-                    <path d="M15 16h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-                  </svg>
+              <article class="training-card">
+                <div class="training-card__header">
+                  <div class="training-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                      <polyline points="2,17 12,22 22,17"/>
+                      <polyline points="2,12 12,17 22,12"/>
+                    </svg>
+                  </div>
+                  <h3 class="training-card__title" data-i18n="training.spotlight.python.title">Network Administrator with Python</h3>
                 </div>
-                <h3>Netwerkbeheerder met Python</h3>
-                <p>
-                  Combineer netwerkbeheer met automatisering in Python. Labs richten zich op moderne infrastructuren en scripting.
-                </p>
-                <p>
-                  <strong>Startdatum:</strong><br />2 februari 2026
-                </p>
-                <footer><a href="python.html">Meer info</a></footer>
+                <div class="training-card__content">
+                  <ul class="training-card__features">
+                    <li>
+                      <svg class="feature-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                      <span data-i18n="training.spotlight.python.feature1">Enterprise networking with Cisco</span>
+                    </li>
+                    <li>
+                      <svg class="feature-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                      <span data-i18n="training.spotlight.python.feature2">Python scripting and automation</span>
+                    </li>
+                    </li>
+                                        <li>
+                      <svg class="feature-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                      <span data-i18n="training.spotlight.python.feature3">Cloud infrastructure management</span>
+                    </li>
+                    <li>
+                      <svg class="feature-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                      <span data-i18n="training.spotlight.python.feature4">DevOps and CI/CD principles</span>
+                    </li>
+                  </ul>
+                </div>
               </article>
 
-              <article class="program-card program-card--systems">
-                <div class="program-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 32 32" fill="none">
-                    <circle cx="16" cy="10" r="4" stroke="currentColor" stroke-width="1.8" />
-                    <path d="M8 26c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-                    <path d="M5 12h4m14 0h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-                  </svg>
+              <article class="training-card">
+                <div class="training-card__header">
+                  <div class="training-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="6" width="20" height="8" rx="1"/>
+                      <path d="m6 2 2 2-2 2"/>
+                      <path d="m18 2-2 2 2 2"/>
+                    </svg>
+                  </div>
+                  <h3 class="training-card__title" data-i18n="training.spotlight.sysadmin.title">System Administrator</h3>
                 </div>
-                <h3>Systeembeheerder</h3>
-                <p>
-                  Bouw expertise in infrastructuur, Windows/Linux servers, virtualisatie en monitoring. Met praktijkprojecten en
-                  certificatievoorbereiding.
-                </p>
-                <p>
-                  <strong>Startdata:</strong><br />23 februari 2026<br />18 mei 2026
-                </p>
-                <footer><a href="systeembeheerder.html">Meer info</a></footer>
+                <div class="training-card__content">
+                  <ul class="training-card__features">
+                    <li>
+                      <svg class="feature-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                      <span data-i18n="training.spotlight.sysadmin.feature1">Windows Server and Linux management</span>
+                    </li>
+                    <li>
+                      <svg class="feature-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                      <span data-i18n="training.spotlight.sysadmin.feature2">Virtualization and cloud platforms</span>
+                    </li>
+                    <li>
+                      <svg class="feature-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                      <span data-i18n="training.spotlight.sysadmin.feature3">Security and backup strategies</span>
+                    </li>
+                    <li>
+                      <svg class="feature-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                      <span data-i18n="training.spotlight.sysadmin.feature4">PowerShell and Bash automation</span>
+                    </li>
+                  </ul>
+                </div>
               </article>
 
-              <article class="program-card program-card--security">
-                <div class="program-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 32 32" fill="none">
-                    <path d="M16 5l10 4v6c0 6-4.5 10.5-10 12-5.5-1.5-10-6-10-12V9l10-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
-                    <path d="M13 17l2 2 4-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
+              <article class="training-card">
+                <div class="training-card__header">
+                  <div class="training-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                      <path d="m9 12 2 2 4-4"/>
+                    </svg>
+                  </div>
+                  <h3 class="training-card__title" data-i18n="training.spotlight.security.title">Cybersecurity Specialist</h3>
                 </div>
-                <h3>Cyber Security Engineer</h3>
-                <p>
-                  Leer netwerken beveiligen, security-analyses uitvoeren en incidenten reduceren met ethical hacking en cloud security.
-                </p>
-                <p>
-                  <strong>Startdatum:</strong><br />24 november 2025
-                </p>
-                <footer><a href="security.html">Meer info</a></footer>
+                <div class="training-card__content">
+                  <ul class="training-card__features">
+                    <li>
+                      <svg class="feature-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                      <span data-i18n="training.spotlight.security.feature1">Ethical hacking and penetration testing</span>
+                    </li>
+                    <li>
+                      <svg class="feature-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                      <span data-i18n="training.spotlight.security.feature2">Security Operations Center (SOC)</span>
+                    </li>
+                    <li>
+                      <svg class="feature-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                      <span data-i18n="training.spotlight.security.feature3">Incident response and forensics</span>
+                    </li>
+                    <li>
+                      <svg class="feature-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                      <span data-i18n="training.spotlight.security.feature4">Compliance and governance</span>
+                    </li>
+                  </ul>
+                </div>
               </article>
             </div>
           </div>
         </section>
 
-        <section class="section" id="hoogtepunten">
+        <section class="cta-section cta-section--primary" aria-labelledby="cta-primary-title">
           <div class="container">
-            <div class="section-heading" data-animate="fade-up">
-              <span>Verdiep je</span>
-              <h2>Wat mag je per traject verwachten?</h2>
-              <p>
-                Hoogtepunten rechtstreeks gebaseerd op de kern van elke opleiding zoals die door INTEC Brussel wordt aangeboden.
-              </p>
+            <div class="cta-content">
+              <span class="cta-eyebrow">Start je carrière</span>
+              <h2 id="cta-primary-title" class="cta-title">Klaar om je traject te kiezen?</h2>
+              <p class="cta-description">Plan een intake en ontdek welk programma aansluit op jouw ambities.</p>
             </div>
-            <div class="grid-two" data-animate="fade-up">
-              <article class="highlight-box">
-                <div class="highlight-box__body">
-                  <h3>PC en Netwerktechnicus</h3>
-                  <ul class="grid-list">
-                    <li>Introductie tot het beheer van servers en netwerken</li>
-                    <li>Verken Cisco-, Linux- en Microsoft-ecosystemen</li>
-                    <li>Troubleshooting-technieken voor veelvoorkomende problemen</li>
-                    <li>Voorbereiding op een praktische rol als eerstelijns IT-technicus</li>
-                  </ul>
-                </div>
-              </article>
-              <article class="highlight-box">
-                <div class="highlight-box__body">
-                  <h3>Netwerkbeheerder met Python</h3>
-                  <ul class="grid-list">
-                    <li>Netwerkconfiguratie combineren met automatisering in Python</li>
-                    <li>Hands-on labs gericht op hedendaagse infrastructuren</li>
-                    <li>Focus op inzetbaarheid in een snelgroeiend werkveld</li>
-                    <li>Voor deelnemers die netwerkkennis willen uitbreiden met scripting</li>
-                  </ul>
-                </div>
-              </article>
-              <article class="highlight-box">
-                <div class="highlight-box__body">
-                  <h3>Systeembeheerder</h3>
-                  <ul class="grid-list">
-                    <li>Diepgaande kennis van Windows- en Linux-servers</li>
-                    <li>Virtualisatie, monitoring en cloudintegraties</li>
-                    <li>Projectwerk en certificatievoorbereiding</li>
-                    <li>Ideaal voor een carriere in infrastructuurteams</li>
-                  </ul>
-                </div>
-              </article>
-              <article class="highlight-box">
-                <div class="highlight-box__body">
-                  <h3>Cyber Security Engineer</h3>
-                  <ul class="grid-list">
-                    <li>Firewallbeheer, vulnerability assessment en incident response</li>
-                    <li>Ethical hacking labs en cloud security use cases</li>
-                    <li>Samenwerken met SOC-teams en securitypartners</li>
-                    <li>Klaar voor functies als security analyst of consultant</li>
-                  </ul>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="cta-band cta-band--promo">
-          <div class="cta-band__inner">
-            <div class="cta-band__content">
-              <span class="cta-band__eyebrow">Nieuwe lichting start begin november</span>
-              <h2>Klaar om je traject te kiezen?</h2>
-              <p>Plan een intake en ontdek welk programma aansluit op jouw ambities.</p>
-            </div>
-            <div class="cta-band__actions">
-              <a class="button cta-band__primary" href="inschrijven.html">
-                <span aria-hidden="true">Schrijf je in</span>
-                <span class="sr-only">Plan intake</span>
+            <div class="cta-actions">
+              <a class="button button--primary cta-button" href="inschrijven.html" aria-describedby="cta-primary-title">
+                <span aria-hidden="true">Contact opnemen</span>
+                <span class="sr-only">Ga naar inschrijfpagina om contact op te nemen</span>
               </a>
-              <a class="button button--ghost" href="contact.html">Stel je vraag</a>
+              <a class="button button--secondary cta-button" href="contact.html">
+                <span aria-hidden="true">Vraag advies</span>
+                <span class="sr-only">Ga naar contactpagina voor persoonlijk advies</span>
+              </a>
             </div>
           </div>
         </section>
 
-                <section class="section cta-band cta-band--minimal">
+        <section class="section cta-band cta-band--minimal">
           <div class="cta-band__inner container">
             <div class="cta-band__content">
               <span class="cta-band__eyebrow" data-i18n="about.cta.eyebrow">Samen bouwen</span>
@@ -275,8 +482,20 @@
               </p>
             </div>
             <div class="cta-band__actions">
-              <a class="button" href="contact.html" data-i18n="about.cta.primary">Contacteer ons team</a>
-              <a class="button button--ghost" href="index.html#opleidingen" data-i18n="about.cta.secondary">Ontdek opleidingen</a>
+              <a class="button" href="contact.html" data-i18n="about.cta.primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Contacteer ons team
+              </a>
+              <a class="button button--ghost" href="index.html#opleidingen" data-i18n="about.cta.secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+                Ontdek opleidingen
+              </a>
             </div>
           </div>
         </section>
@@ -287,41 +506,45 @@
           <div class="footer__grid">
             <div class="footer__column">
               <a class="brand" href="index.html">
-                <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" />
-                <span>INTEC Brussel</span>
+                <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="lazy" />
               </a>
-              <p>We bouwen aan inclusieve IT-teams met talent uit Brussel en Vlaanderen.</p>
+              <p data-i18n="footer.mission">
+                INTEC Brussel bouwt aan een inclusieve digitale samenleving via opleidingen, coaching en partnerschappen
+                met werkgevers die klaar zijn voor morgen.
+              </p>
             </div>
             <div class="footer__column">
-              <h3>Contact</h3>
-              <ul class="footer__links">
-                <li>Rouppeplein 16<br />1000 Brussel</li>
+              <h3 data-i18n="footer.contactTitle">Contact</h3>
+              <ul>
+                <li data-i18n="footer.address" data-i18n-allow-html="true">
+                  Rouppeplein 16<br />1000 Brussel
+                </li>
                 <li><a href="tel:+3224112907">02/411 29 07</a></li>
                 <li><a href="mailto:info@intecbrussel.be">info@intecbrussel.be</a></li>
+                <li><a href="mailto:pr@intecbrussel.be">pr@intecbrussel.be</a></li>
               </ul>
             </div>
             <div class="footer__column">
-              <h3>Opleidingen</h3>
-              <ul class="footer__links">
-                <li><a href="index.html#opleidingen">PC &amp; Netwerk</a></li>
-                <li><a href="index.html#opleidingen">Netwerkbeheerder met Python</a></li>
-                <li><a href="index.html#opleidingen">Systeembeheerder</a></li>
-                <li><a href="index.html#opleidingen">Cyber Security Engineer</a></li>
+              <h3 data-i18n="footer.companyTitle">Bedrijfsinfo</h3>
+              <ul>
+                <li data-i18n="footer.companyNumber">Ondernemingsnummer: 0476.094.416</li>
+                <li data-i18n="footer.siteNumber">Vestigingsnummer: 2.108.890.046</li>
+                <li data-i18n="footer.socialNumber">RSZ: 10/945-31-54801</li>
               </ul>
             </div>
             <div class="footer__column">
-              <h3>Snel naar</h3>
-              <ul class="footer__links">
-                <li><a href="overons.html">Over ons</a></li>
-                <li><a href="inschrijven.html">Inschrijven</a></li>
-                <li><a href="contact.html">Contact</a></li>
+              <h3 data-i18n="footer.followTitle">Volg ons</h3>
+              <ul class="footer__social">
+                <li><a href="https://www.linkedin.com/groups/3973164/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+                <li><a href="https://www.facebook.com/intecbrussel.be" target="_blank" rel="noreferrer">Facebook</a></li>
+                <li><a href="https://x.com/INTEC_BRUSSEL" target="_blank" rel="noreferrer">X</a></li>
               </ul>
             </div>
           </div>
 
           <div class="footer__meta">
-            <span>&copy; <span id="year">2025</span> INTEC Brussel</span>
-            <span>Actiris | VDAB | ESF gecertificeerd opleidingscentrum</span>
+            <span>&copy; <span id="year">2025</span> INTEC Brussel.</span>
+            <span data-i18n="footer.accreditation">Erkend door VDAB, Actiris en ESF.</span>
           </div>
         </div>
       </footer>

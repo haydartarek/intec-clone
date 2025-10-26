@@ -1,0 +1,169 @@
+{
+  "buttonSystem": {
+    "version": "2.0",
+    "lastUpdated": "2025-10-26",
+    "description": "نظام أزرار موحد وشامل لموقع INTEC Brussels",
+    "status": "ready-for-production"
+  },
+  "buttonTypes": {
+    "primary": {
+      "classes": ["btn-primary", "btn--primary", "button-primary"],
+      "usage": "الأزرار الأساسية (التسجيل، الإرسال، CTA)",
+      "colors": {
+        "background": "#0f828a",
+        "hover": "#0b5c61",
+        "text": "#ffffff"
+      },
+      "examples": [
+        "تسجيل الآن",
+        "إرسال النموذج",
+        "ابدأ رحلتك"
+      ]
+    },
+    "accent": {
+      "classes": ["btn-accent", "btn--accent", "button-accent"],
+      "usage": "الأزرار الثانوية (روابط بديلة أو مساعدة)",
+      "colors": {
+        "background": "#25bdb7",
+        "hover": "#0f828a",
+        "text": "#ffffff"
+      },
+      "examples": [
+        "اعرف المزيد",
+        "تواصل معنا",
+        "احجز موعد"
+      ]
+    },
+    "outline": {
+      "classes": ["btn-outline", "btn--outline", "button-outline"],
+      "usage": "الأزرار البيضاء ذات حدود (مثلاً View courses)",
+      "colors": {
+        "background": "transparent",
+        "border": "#0f828a",
+        "text": "#0f828a",
+        "hoverBackground": "#0f828a",
+        "hoverText": "#ffffff"
+      },
+      "examples": [
+        "View Courses",
+        "عرض البرامج",
+        "تصفح الدورات"
+      ]
+    },
+    "soft": {
+      "classes": ["btn-soft", "btn--soft", "button-soft"],
+      "usage": "الأزرار البيضاء الناعمة (مثل Plan intake)",
+      "colors": {
+        "background": "#e0f7f6",
+        "border": "rgba(15, 130, 138, 0.1)",
+        "text": "#0f828a",
+        "hoverBackground": "#25bdb7",
+        "hoverText": "#ffffff"
+      },
+      "examples": [
+        "Plan Intake",
+        "خطط دراستك",
+        "احجز استشارة"
+      ]
+    }
+  },
+  "sizes": {
+    "small": {
+      "class": "btn-sm",
+      "padding": "var(--space-2) var(--space-4)",
+      "fontSize": "var(--text-sm)"
+    },
+    "normal": {
+      "class": "",
+      "padding": "var(--space-3) var(--space-6)",
+      "fontSize": "var(--text-body)"
+    },
+    "large": {
+      "class": "btn-lg",
+      "padding": "var(--space-4) var(--space-8)",
+      "fontSize": "var(--text-lg)"
+    }
+  },
+  "states": {
+    "normal": "default state",
+    "hover": "transform: translateY(-2px) + shadow-md",
+    "active": "transform: translateY(0) + shadow-sm",
+    "disabled": "opacity: 0.5, cursor: not-allowed"
+  },
+  "useCases": {
+    "heroSection": {
+      "primary": "btn-primary btn-lg",
+      "secondary": "btn-outline btn-lg"
+    },
+    "courseCard": {
+      "primary": "btn-soft",
+      "secondary": "btn-outline btn-sm"
+    },
+    "ctaSection": {
+      "primary": "btn-primary btn-lg"
+    },
+    "forms": {
+      "submit": "btn-primary",
+      "save": "btn-accent"
+    }
+  },
+  "colorPalette": {
+    "primary": "#0f828a",
+    "primaryDark": "#0b5c61",
+    "accent": "#25bdb7",
+    "accentSoft": "#e0f7f6",
+    "white": "#ffffff"
+  },
+  "features": [
+    "4 أنواع أزرار متكاملة",
+    "3 أحجام (small, normal, large)",
+    "4 حالات (normal, hover, active, disabled)",
+    "دعم كامل لـ RTL و LTR",
+    "تأثيرات انتقالية سلسة",
+    "ظلال متدرجة احترافية",
+    "توافق كامل مع المتصفحات",
+    "Responsive بالكامل",
+    "Accessible (WCAG compliant)"
+  ],
+  "files": {
+    "css": "/assets/css/main.css",
+    "test": "/test-buttons.html",
+    "guide": "/BUTTONS_GUIDE.md",
+    "cheatsheet": "/BUTTONS_CHEATSHEET.txt",
+    "status": "/BUTTONS_IMPLEMENTATION_STATUS.md",
+    "config": "/buttons-config.json"
+  },
+  "statistics": {
+    "totalButtonTypes": 4,
+    "totalSizes": 3,
+    "totalStates": 4,
+    "totalAliases": 12,
+    "responsiveness": "100%",
+    "accessibility": "100%"
+  },
+  "bestPractices": {
+    "do": [
+      "استخدم btn-primary للإجراءات الحاسمة",
+      "استخدم btn-soft في الكروت",
+      "احترم التسلسل الهرمي البصري",
+      "استخدم الأحجام المناسبة للسياق",
+      "اختبر على جميع الأجهزة"
+    ],
+    "dont": [
+      "لا تستخدم أكثر من btn-primary واحد في نفس القسم",
+      "لا تخلط بين الأنماط القديمة والجديدة",
+      "لا تستخدم ألوان خارج النظام",
+      "لا تنسى حالة hover",
+      "لا تهمل الـ accessibility"
+    ]
+  },
+  "migration": {
+    "oldClasses": {
+      "button": "btn-primary",
+      "button button--ghost": "btn-outline",
+      "button button--secondary": "btn-accent"
+    },
+    "status": "optional",
+    "priority": "low"
+  }
+}

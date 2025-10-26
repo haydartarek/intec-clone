@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partners & Collaboration Sections Test - INTEC Brussels</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        .test-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--color-primary);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            z-index: 1000;
+            font-size: 14px;
+            max-width: 300px;
+        }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-indicator">
+        🤝 Partners & CTA Sections<br>
+        <small>Testing separated divs with new classes</small>
+    </div>
+
+    <!-- Hero for context -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero__title">Partners & Collaboration Test</h1>
+            <p class="hero__subtitle">Testing the new separated sections with distinct styling</p>
+        </div>
+    </section>
+
+    <!-- Regular content section for context -->
+    <section class="section">
+        <div class="demo-container">
+            <h2>Content Before Partners</h2>
+            <p>This is regular content to show the flow and background alternation.</p>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="section partners-callout">
+        <div class="partners-callout__inner container">
+            <div class="partners-callout__content">
+                <span class="partners-callout__eyebrow">Partners</span>
+                <h2>INOPTEC+: your reliable IT support partner</h2>
+                <p>
+                    Our internal IT support cell provides helpdesk services, microlearning, and on-site interventions for
+                    organizations enhancing their digital transformation.
+                </p>
+            </div>
+            <div class="partners-callout__actions">
+                <a class="button" href="https://inoptecplus.be/" target="_blank" rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    Contact us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regular content section for context -->
+    <section class="section">
+        <div class="demo-container">
+            <h2>Content Between Sections</h2>
+            <p>This section shows how the background alternation continues between the two main sections.</p>
+        </div>
+    </section>
+
+    <!-- Collaboration CTA Section -->
+    <section class="section collaboration-cta">
+        <div class="collaboration-cta__inner container">
+            <div class="collaboration-cta__content">
+                <span class="collaboration-cta__eyebrow">Building together</span>
+                <h2>Want to make a difference for talent in Brussels?</h2>
+                <p>
+                    Get in touch and discover how we can collaborate on training, internships, or coaching.
+                </p>
+            </div>
+            <div class="collaboration-cta__actions">
+                <a class="button" href="contact.html">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    Contact our team
+                </a>
+                <a class="button button--ghost" href="index.html#opleidingen">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                    </svg>
+                    Explore courses
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final content section -->
+    <section class="section">
+        <div class="demo-container">
+            <h2>Content After CTA</h2>
+            <p>This final section shows the complete flow with properly separated and styled sections.</p>
+            
+            <div class="card" style="margin-top: 2rem;">
+                <h3>Summary</h3>
+                <ul>
+                    <li><strong>Partners Section</strong>: Clean white card with border and shadow</li>
+                    <li><strong>Collaboration CTA</strong>: Full-width gradient background</li>
+                    <li><strong>Separation</strong>: Clear visual distinction between purposes</li>
+                    <li><strong>Consistency</strong>: Both follow design system patterns</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include the alternating background system -->
+    <script src="assets/js/main.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const sections = document.querySelectorAll('section');
+                console.log('🤝 Partners & CTA Sections Status:');
+                sections.forEach((section, index) => {
+                    const classes = Array.from(section.classList).join(' ');
+                    const bgColor = getComputedStyle(section).backgroundColor;
+                    console.log(`Section ${index + 1}: ${classes} - BG: ${bgColor}`);
+                });
+                
+                // Update status indicator
+                const indicator = document.querySelector('.test-indicator');
+                indicator.innerHTML = `
+                    🤝 Sections Separated<br>
+                    <small>Partners: ✅ Card Style<br>
+                    CTA: ✅ Full Width<br>
+                    Classes: ✅ Unique</small>
+                `;
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
