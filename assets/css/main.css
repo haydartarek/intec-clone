@@ -1,76 +1,130 @@
-/* ==========================================================================    INTEC Brussel - Main Stylesheet (Final Optimized Version)    ========================================================================== */
+/* ============================================================================
+   INTEC Brussel UI System
+   main.css
+   ---------------------------------------------------------------------------
+   Purpose: Unified layout and component system for all public pages.
+   Structure:
+     1. CSS Variables (Design System)
+     2. Reset & Base Styles
+     3. Typography System
+     4. Layout System
+     5. Component Library
+     6. Page-Level Variants
+     7. Responsive Utilities
+     8. Media Queries
+     9. Print Styles
+   Conventions:
+     - Utility classes follow .{property}-{token} naming.
+     - Section modifiers use the .section--{modifier} convention.
+     - Design tokens live in :root and use descriptive names.
+   ============================================================================
+*/
+
+/* ============================================================================
+   1. CSS Variables (Design System)
+   ============================================================================
+*/
 :root {
-  /* Colors */
+  /* Colors - Brand Identity */
   --color-primary: #0f828a;
-  --color-primary-dark: #0b5c61;
+  --color-secondary: #7357ff;
   --color-accent: #25bdb7;
   --color-accent-soft: #e0f7f6;
-  --color-primary-soft: color-mix(
-    in srgb,
-    var(--color-primary) 18%,
-    transparent
-  );
-  --color-text: #163335;
-  --color-text-muted: #3f5c5f;
-  --color-bg: #f4fbfb;
+  --color-warm: #f59f0b;
+  --color-text-primary: #163335;
+  --color-text-secondary: #3f5c5f;
+  --color-background: #f4fbfb;
   --color-surface: #ffffff;
   --color-border: #d4e7e6;
-  --color-aqua-soft: #e4f9f8;
-  --color-iris: #7357ff;
-  --color-iris-soft: color-mix(in srgb, var(--color-iris) 18%, #ffffff 82%);
+  --color-muted-surface: #e4f9f8;
+  --color-footer: #0c1b37;
+  --color-danger: #c03737;
+
+  /* Spacing Scale (8px rhythm) */
+  --space-xs: 0.5rem; /* 8px */
+  --space-sm: 1rem; /* 16px */
+  --space-md: 1.5rem; /* 24px */
+  --space-lg: 2.5rem; /* 40px */
+  --space-xl: 3.75rem; /* 60px */
+  --space-2xl: 5rem; /* 80px */
+  --space-3xl: 6rem;
+
+  /* Typography */
+  --font-primary: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --leading-tight: 1.2;
+  --leading-snug: 1.35;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(15, 130, 138, 0.08);
+  --shadow-md: 0 4px 12px rgba(15, 130, 138, 0.1);
+  --shadow-lg: 0 8px 24px rgba(15, 130, 138, 0.12);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Layout */
+  --max-width-content: 1200px;
+  --max-width-text: 800px;
+  --section-hero-min-height: 32rem;
+  --grid-gap: var(--space-md);
+  --gradient-shell: linear-gradient(180deg, rgba(230, 249, 248, 1) 0%, rgba(240, 255, 255, 1) 100%);
+
+  /* Legacy + compatibility tokens */
+  --color-primary-dark: #0b5c61;
+  --color-primary-soft: color-mix(in srgb, var(--color-primary) 18%, transparent);
+  --color-iris: var(--color-secondary);
+  --color-iris-soft: color-mix(in srgb, var(--color-secondary) 18%, #ffffff 82%);
+  --color-aqua-soft: var(--color-muted-surface);
+  --color-text: var(--color-text-primary);
+  --color-text-muted: var(--color-text-secondary);
+  --color-bg: var(--color-background);
+  --shadow-xl: 0 12px 32px rgba(15, 130, 138, 0.16);
+  --shadow-card: 0 4px 12px rgba(15, 130, 138, 0.08), 0 12px 24px rgba(15, 130, 138, 0.06);
+  --shadow-hover: 0 8px 24px rgba(15, 130, 138, 0.12), 0 24px 48px rgba(15, 130, 138, 0.08);
   --glass-bg: rgba(255, 255, 255, 0.82);
   --glass-border: rgba(255, 255, 255, 0.4);
   --glass-shadow: 0 18px 38px rgba(15, 130, 138, 0.12);
-  --glass-blur: 26px; /* Typography */
-  --font-sans: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --glass-blur: 26px;
+  --font-sans: var(--font-primary);
   --text-hero: clamp(2.5rem, 4.5vw, 3.6rem);
   --text-h1: clamp(2.25rem, 4vw, 3rem);
   --text-h2: clamp(1.75rem, 3vw, 2.4rem);
   --text-h3: clamp(1.25rem, 2.2vw, 1.65rem);
   --text-h4: clamp(1.1rem, 1.8vw, 1.35rem);
-  --text-body-lg: clamp(1rem, 1.5vw, 1.08rem);
-  --text-body: clamp(0.95rem, 1.5vw, 1.05rem);
-  --text-body-sm: clamp(0.875rem, 1.2vw, 0.95rem);
-  --text-label: clamp(0.8rem, 1vw, 0.9rem); /* Line heights */
-  --leading-tight: 1.2;
-  --leading-snug: 1.35;
-  --leading-normal: 1.5;
-  --leading-relaxed: 1.65; /* Spacing - Unified System */
-  --space-xs: 0.5rem;
-  --space-sm: 0.75rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-  --space-xl: 2rem;
-  --space-2xl: 3rem;
-  --space-3xl: 4rem;
+  --text-body-lg: 1.125rem;
+  --text-body: var(--font-size-base);
+  --text-body-sm: var(--font-size-sm);
+  --text-label: var(--font-size-sm);
   --space-section: clamp(4rem, 7vw, 6rem);
   --space-section-tight: clamp(3rem, 5vw, 4rem);
   --space-card: clamp(1.75rem, 3vw, 2.5rem);
   --gap-cards: clamp(1.75rem, 3vw, 2.5rem);
-  --gap-elements: clamp(1rem, 2vw, 1.5rem); /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(15, 130, 138, 0.06);
-  --shadow-md: 0 4px 12px rgba(15, 130, 138, 0.08);
-  --shadow-lg: 0 6px 16px rgba(15, 130, 138, 0.1);
-  --shadow-xl: 0 8px 24px rgba(15, 130, 138, 0.12);
-  --shadow-card:
-    0 4px 12px rgba(15, 130, 138, 0.08), 0 12px 24px rgba(15, 130, 138, 0.06);
-  --shadow-hover:
-    0 8px 24px rgba(15, 130, 138, 0.12), 0 24px 48px rgba(15, 130, 138, 0.08); /* Borders */
+  --gap-elements: clamp(1rem, 2vw, 1.5rem);
   --border-width: 1px;
   --border-width-thick: 2px;
   --border-color: rgba(15, 130, 138, 0.12);
-  --border-color-strong: rgba(15, 130, 138, 0.2); /* Border Radius */
-  --radius-sm: 12px;
-  --radius-md: 18px;
-  --radius-lg: 26px; /* Transitions */
-  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Layout */
-  --max-width: 1160px;
-  --gradient-shell: linear-gradient(
-    180deg,
-    rgba(230, 249, 248, 1) 0%,
-    rgba(240, 255, 255, 1) 100%
-  );
+  --border-color-strong: rgba(15, 130, 138, 0.2);
+  --max-width: var(--max-width-content);
   --hero-padding-y: clamp(3.75rem, 7.5vw, 5.25rem);
   --hero-padding-x: clamp(2rem, 5vw, 2.75rem);
   --hero-gap: clamp(2.5rem, 6vw, 3.75rem);
@@ -79,55 +133,69 @@
   --hero-max-width: 1200px;
   --hero-bg: rgba(255, 255, 255, 0.94);
   --hero-image-height: clamp(320px, 38vw, 460px);
-} /* Reset & Base Styles */
-*,
-*::before,
-*::after {
+}
+
+/* ============================================================================
+   2. Reset & Base Styles
+   ============================================================================
+*/
+*, *::before, *::after {
   box-sizing: border-box;
 }
+
 html {
   font-size: 16px;
   scroll-behavior: smooth;
   scroll-padding-top: 96px;
 }
+
 body {
   margin: 0;
   padding: 0;
-  font-family: var(--font-sans);
-  color: var(--color-text);
-  background: var(--color-bg);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
   line-height: var(--leading-normal);
-  font-size: 16px;
+  color: var(--color-text-primary);
+  background: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
+
 a {
-  text-decoration: none;
-  transition: var(--transition-base);
   color: var(--color-primary);
-  font-weight: 600;
-  transition:
-    color var(--transition-base),
-    transform var(--transition-base);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: color var(--transition-base), transform var(--transition-base);
 }
+
+a:hover,
+a:focus {
+  color: var(--color-secondary);
+}
+
 button {
   font-family: inherit;
-  border: none;
+  border: 0;
   background: none;
+  color: inherit;
+  padding: 0;
   cursor: pointer;
-  text-decoration: none;
 }
+
 ul,
 ol {
   list-style: none;
   margin: 0;
   padding: 0;
-} /* Accessibility */
+}
+
+/* Accessibility */
 .sr-only {
   position: absolute;
   width: 1px;
