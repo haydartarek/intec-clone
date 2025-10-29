@@ -208,6 +208,38 @@ main > section:nth-of-type(odd):not(.hero):not([class*="--"]) {
   background: var(--color-surface);
 }
 
+.section--aqua {
+  background: color-mix(in srgb, var(--color-accent-soft) 70%, var(--color-surface) 35%);
+}
+
+.section--intro {
+  background: var(--gradient-shell);
+  position: relative;
+}
+
+.page-opleidingen .section {
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+}
+
+.page-opleidingen main > section + section {
+  border-top: 1px solid rgba(15, 130, 138, 0.08);
+}
+
+.page-opleidingen .section-heading {
+  text-align: left;
+  justify-items: start;
+  align-items: start;
+  margin-inline: 0;
+}
+
+.page-opleidingen .section-heading span {
+  margin-inline: 0;
+}
+
+.page-opleidingen .section-heading p {
+  max-width: 620px;
+}
+
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
@@ -846,6 +878,60 @@ color: var(--color-primary-dark);
   width: 100%;
 }
 
+.feature-list {
+  display: grid;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-accent-soft) 88%, #ffffff 12%);
+  color: var(--color-text);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s ease;
+}
+
+.feature-item::before {
+  content: none !important;
+}
+
+.feature-item__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: #ffffff;
+  flex-shrink: 0;
+  box-shadow: 0 8px 18px rgba(15, 130, 138, 0.12);
+}
+
+.feature-item__icon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.feature-item:hover,
+.feature-item:focus-within {
+  background: linear-gradient(90deg, var(--color-primary-soft), var(--color-accent-soft));
+  transform: translateX(3px);
+  box-shadow: 0 6px 14px rgba(15, 130, 138, 0.08);
+}
+
+.feature-item:hover .feature-item__icon,
+.feature-item:focus-within .feature-item__icon {
+  filter: brightness(1.08);
+}
+
 /* Grid highlight section */
 .grid-two.is-visible {
   display: grid;
@@ -946,54 +1032,20 @@ color: var(--color-primary-dark);
   margin-bottom: 0.75rem;
 }
 
-.grid-two.is-visible ul,
-.grid-two.is-visible li {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.grid-two.is-visible .grid-list {
-  display: grid;
-  gap: 0.75rem;
+.grid-two.is-visible .feature-list {
   grid-auto-rows: auto;
 }
 
-.grid-two.is-visible .grid-list li {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: var(--color-accent-soft);
-  border-radius: var(--radius-md);
-  padding: 0.85rem 1rem;
-  margin: 0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
-  transition: all 0.25s ease;
-  min-height: auto;
-  color: var(--color-text);
+.grid-two.is-visible .feature-item {
+  padding: 1rem 1.15rem;
 }
 
-.grid-two.is-visible .grid-list li::before {
-  content: "";
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  mask: url("assets/icons/check.svg") no-repeat center;
-  -webkit-mask: url("assets/icons/check.svg") no-repeat center;
-  mask-size: 13px;
-  -webkit-mask-size: 13px;
-  flex-shrink: 0;
+.grid-two.is-visible .feature-item__icon {
+  width: 2.2rem;
+  height: 2.2rem;
 }
 
-.grid-two.is-visible .grid-list li:hover,
-.grid-two.is-visible .grid-list li:focus-within {
-  background: linear-gradient(90deg, var(--color-primary-soft), var(--color-accent-soft));
-  transform: translateX(3px);
-}
-
-.grid-two.is-visible .grid-list li span,
-.grid-two.is-visible .grid-list li p {
+.grid-two.is-visible .feature-item span {
   color: var(--color-text);
   font-size: var(--text-body);
   line-height: 1.55;
@@ -1023,18 +1075,124 @@ color: var(--color-primary-dark);
     left: 1.25rem;
   }
 
-  .grid-two.is-visible .grid-list {
+  .grid-two.is-visible .feature-list {
     gap: 0.6rem;
   }
 }
 
 /* عند الشاشات الصغيرة: كلهم عمود واحد */
+.page-opleidingen .program-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--gap-cards);
+  padding: var(--space-section);
+  background: none;
+  border-radius: var(--radius-lg);
+  box-shadow: none;
+  border: none;
+}
+
+.page-opleidingen .program-grid:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.page-opleidingen .program-grid .card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur)) saturate(185%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(185%);
+  padding: 2rem 1.5rem;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.page-opleidingen .program-grid .card::before {
+  content: "";
+  position: absolute;
+  top: -22px;
+  left: 1.5rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  mask: url("assets/icons/network.svg") no-repeat center;
+  -webkit-mask: url("assets/icons/network.svg") no-repeat center;
+  mask-size: 24px;
+  -webkit-mask-size: 24px;
+}
+
+.page-opleidingen .program-grid .card:nth-child(2)::before {
+  mask: url("assets/icons/python.svg") no-repeat center;
+  -webkit-mask: url("assets/icons/python.svg") no-repeat center;
+}
+
+.page-opleidingen .program-grid .card:nth-child(3)::before {
+  mask: url("assets/icons/server.svg") no-repeat center;
+  -webkit-mask: url("assets/icons/server.svg") no-repeat center;
+}
+
+.page-opleidingen .program-grid .card:nth-child(4)::before {
+  mask: url("assets/icons/shield.svg") no-repeat center;
+  -webkit-mask: url("assets/icons/shield.svg") no-repeat center;
+}
+
+.page-opleidingen .program-grid .card:hover,
+.page-opleidingen .program-grid .card:focus-within {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+  border-top: 3px solid var(--color-accent);
+}
+
+.page-opleidingen .program-grid .card h3 {
+  font-size: 1.25rem;
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: var(--space-sm);
+}
+
+.page-opleidingen .program-grid .card p {
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin-bottom: var(--space-sm);
+}
+
+.page-opleidingen .program-grid .card p:last-of-type {
+  margin-bottom: var(--space-md);
+}
+
+.page-opleidingen .program-grid .card footer {
+  margin-top: auto;
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.page-opleidingen .program-grid .card footer .button {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.page-opleidingen .program-grid .card footer .button svg {
+  width: 20px;
+  height: 20px;
+}
+
 @media (max-width: 768px) {
   .faq-grid {
     grid-template-columns: 1fr;
   }
   .faq-grid > * {
     grid-column: auto;
+  }
+  .page-opleidingen .program-grid {
+    padding: var(--space-card);
+  }
+  .page-opleidingen .program-grid .card {
+    padding: 1.75rem 1.35rem;
   }
 }
 
@@ -1233,6 +1391,70 @@ color: var(--color-primary-dark);
   transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
 }
+
+.page-opleidingen .intro-grid {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.page-opleidingen .intro-grid > * {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  padding: clamp(1.9rem, 3.2vw, 2.4rem);
+  backdrop-filter: blur(var(--glass-blur)) saturate(185%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(185%);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-opleidingen .intro-grid > *:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.page-opleidingen .intro-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.page-opleidingen .intro-content h1 {
+  font-size: clamp(2.1rem, 4vw, 2.8rem);
+  line-height: var(--leading-tight);
+}
+
+.page-opleidingen .intro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.page-opleidingen .intro-actions .button {
+  min-width: 180px;
+}
+
+.page-opleidingen .intro-highlight .feature-list {
+  gap: 0.85rem;
+}
+
+.page-opleidingen .intro-highlight .feature-item {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 12px 28px rgba(15, 130, 138, 0.08);
+}
+
+.page-opleidingen .intro-highlight .feature-item__icon {
+  width: 2.1rem;
+  height: 2.1rem;
+}
+
 
 /* Highlight Box */
 .highlight-box .grid-list {
