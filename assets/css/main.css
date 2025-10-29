@@ -2444,9 +2444,10 @@ textarea:valid:not(:placeholder-shown) {
 .footer {
   position: relative;
   background: linear-gradient(180deg, rgba(11, 92, 97, 0.96) 0%, rgba(9, 74, 78, 1) 100%);
-  color: rgba(255, 255, 255, 0.92);
   padding-block: var(--space-section);
   margin-top: auto;
+  color: var(--color-surface);
+  padding-bottom: 10px;
 }
 
 .footer::before {
@@ -2468,13 +2469,14 @@ textarea:valid:not(:placeholder-shown) {
 .footer__column {
   display: grid;
   gap: var(--space-md);
+  align-items: start;
 }
 
 .footer__column h3 {
   font-size: var(--text-h4);
-  color: #ffffff;
   padding-bottom: var(--space-sm);
   border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+  color: var(--color-surface);
 }
 
 .footer__column ul {
@@ -2483,15 +2485,23 @@ textarea:valid:not(:placeholder-shown) {
   list-style: none;
   padding: 0;
   margin: 0;
+  color: var(--color-surface);
 }
 
 .footer__column a {
-  color: rgba(255, 255, 255, 0.88);
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
   padding: 0.25rem 0;
   transition: var(--transition-base);
+  color: var(--color-surface);
+}
+
+.footer p {
+  color: var(--color-surface);
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+  margin: 0;
 }
 
 .footer__column a:hover {
