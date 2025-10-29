@@ -1463,6 +1463,149 @@ p {
   }
 }
 
+/* Grid highlight refresh */
+.grid-two.is-visible,
+.program-info-grid {
+  display: grid;
+  gap: clamp(1.5rem, 2vw, 2.5rem);
+  padding: var(--space-section);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(145deg, var(--color-aqua-soft), #f7fdfd);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.04);
+}
+
+.grid-two.is-visible {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  align-items: start;
+  background: linear-gradient(145deg, var(--color-aqua-soft), #f8fefe);
+  border: 1px solid rgba(15, 130, 138, 0.1);
+}
+
+.grid-two.is-visible > * {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.1rem, 2.5vw, 1.6rem);
+  background: var(--glass-bg);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.5rem;
+  border: 1px solid rgba(15, 130, 138, 0.08);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-two.is-visible > *:hover,
+.grid-two.is-visible > *:focus-within {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.grid-two.is-visible h3 {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.grid-two.is-visible h3::before {
+  content: "";
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  box-shadow: 0 10px 20px rgba(15, 130, 138, 0.16);
+  mask: url("assets/icons/network.svg") no-repeat center;
+  -webkit-mask: url("assets/icons/network.svg") no-repeat center;
+  mask-size: 24px;
+  -webkit-mask-size: 24px;
+  flex-shrink: 0;
+}
+
+.grid-two.is-visible > *:nth-child(2) h3::before {
+  mask: url("assets/icons/python.svg") no-repeat center;
+  -webkit-mask: url("assets/icons/python.svg") no-repeat center;
+}
+
+.grid-two.is-visible > *:nth-child(3) h3::before {
+  mask: url("assets/icons/server.svg") no-repeat center;
+  -webkit-mask: url("assets/icons/server.svg") no-repeat center;
+}
+
+.grid-two.is-visible > *:nth-child(4) h3::before {
+  mask: url("assets/icons/shield.svg") no-repeat center;
+  -webkit-mask: url("assets/icons/shield.svg") no-repeat center;
+}
+
+.grid-two.is-visible p {
+  color: var(--color-text);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.grid-two.is-visible .feature-list {
+  gap: clamp(0.85rem, 2vw, 1rem);
+}
+
+.grid-two.is-visible .feature-item {
+  gap: 0.85rem;
+  padding: 0.9rem 1rem;
+  background: rgba(15, 130, 138, 0.08);
+}
+
+.grid-two.is-visible .feature-item__icon {
+  width: 48px;
+  height: 48px;
+}
+
+.grid-two.is-visible .feature-item__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.grid-two.is-visible .feature-item span {
+  font-size: var(--text-body);
+  line-height: 1.6;
+}
+
+.grid-two.is-visible .feature-item:hover,
+.grid-two.is-visible .feature-item:focus-within {
+  transform: translateY(-3px);
+  background: linear-gradient(120deg, color-mix(in srgb, var(--color-primary-soft) 65%, #ffffff 35%), var(--color-accent-soft));
+  box-shadow: 0 10px 26px rgba(15, 130, 138, 0.12);
+}
+
+@media (max-width: 900px) {
+  .grid-two.is-visible {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-two.is-visible {
+    padding: var(--space-card);
+    gap: clamp(1.25rem, 5vw, 1.75rem);
+  }
+
+  .grid-two.is-visible > * {
+    padding: 1.75rem 1.35rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-two.is-visible > * {
+    padding: clamp(1.5rem, 5vw, 1.8rem);
+  }
+
+  .grid-two.is-visible .feature-item__icon {
+    width: 42px;
+    height: 42px;
+  }
+}
+
 /* عند الشاشات الصغيرة: كلهم عمود واحد */
 .program-grid.is-visible {
   display: grid;
