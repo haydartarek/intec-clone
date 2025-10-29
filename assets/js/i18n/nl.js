@@ -294,6 +294,12 @@ window.i18n.nl = {
   "contact.label": "Contact",
   "contact.title": "We helpen je graag verder",
   "contact.intro": "Heb je vragen over onze opleidingen, wil je samenwerken of plan je een bedrijfsbezoek? Stuur ons een bericht via het formulier of neem rechtstreeks contact op met een van onze medewerkers.",
+  // Contact hero chips and buttons
+  "contact.hero.chip1": "Algemene vragen",
+  "contact.hero.chip2": "Samenwerkingen",
+  "contact.hero.chip3": "Digipunt support",
+  "contact.hero.primary": "Schrijf je in",
+  "contact.hero.secondary": "Bezoek Digipunt",
   "contact.form.name": "Naam",
   "contact.form.email": "E-mailadres",
   "contact.form.message": "Bericht",

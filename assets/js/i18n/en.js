@@ -289,6 +289,12 @@ window.i18n.en = {
   "contact.label": "Contact",
   "contact.title": "We’re happy to help",
   "contact.intro": "Have questions about our courses, want to collaborate, or plan a company visit? Send us a message via the form or contact one of our team members directly.",
+  // Contact hero chips and buttons
+  "contact.hero.chip1": "General enquiries",
+  "contact.hero.chip2": "Partnerships",
+  "contact.hero.chip3": "Digipoint support",
+  "contact.hero.primary": "Register",
+  "contact.hero.secondary": "Visit Digipoint",
   "contact.form.name": "Name",
   "contact.form.email": "Email address",
   "contact.form.message": "Message",
