@@ -11,33 +11,23 @@
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <link rel="stylesheet" href="assets/css/local-fonts.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="assets/js/i18n/nl.js"></script>
+    <script src="assets/js/i18n/en.js"></script>
     <script src="assets/js/main.js" defer></script>
   </head>
-  <body>
+  <body class="page-opleidingen">
     <a class="skip-link" href="#main-content">Ga naar hoofdinhoud</a>
     <div class="page-shell">
-      <div class="top-banner">
-        <div class="container">
-          <span>Nieuwe lichting start begin november - intakegesprekken lopen nu.</span>
-          <a class="top-banner__cta" href="inschrijven.html">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path
-                d="M5 12h14M13 6l6 6-6 6"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            Vraag je intake aan
-          </a>
-        </div>
-      </div>
-
-      <header class="site-nav">
-        <div class="container site-nav__inner">
+      <header class="site-header">
+        <div class="container site-header__inner">
           <a class="brand" href="index.html" aria-label="INTEC Brussel">
-            <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" />
-            <span>INTEC Brussel</span>
+            <img
+              src="assets/img/logo+intec+brusselZWART1.png"
+              alt="INTEC Brussel logo"
+              data-critical="true"
+              decoding="async"
+              loading="eager"
+            />
           </a>
           <button
             class="nav-toggle"
@@ -46,9 +36,11 @@
             aria-expanded="false"
             data-nav-toggle="#primary-navigation"
           >
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <span class="sr-only" data-i18n="nav.toggle">Menu openen</span>
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
               <path
                 d="M4 6h16M4 12h16M4 18h16"
+                stroke="currentColor"
                 stroke-width="1.8"
                 stroke-linecap="round"
               />
@@ -56,56 +48,90 @@
           </button>
           <nav class="primary-nav" aria-label="Hoofdmenu">
             <ul class="nav-links" id="primary-navigation" role="list">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="index.html#opleidingen" aria-current="page">Opleidingen</a></li>
-              <li><a href="inschrijven.html">Inschrijven</a></li>
-              <li><a href="overons.html">Over ons</a></li>
-              <li><a href="contact.html">Contact</a></li>
-              <li><a href="cvdb/index.html">Toegang partners</a></li>
+              <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+              <li>
+                <a href="opleidingen.html" aria-current="page" data-i18n="nav.training">Opleidingen</a>
+              </li>
+              <li><a href="inschrijven.html" data-i18n="nav.register">Inschrijven</a></li>
+              <li><a href="overons.html" data-i18n="nav.about">Over ons</a></li>
+              <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+              <li><a href="cvdb/index.html" data-i18n="nav.partners">Toegang Partners</a></li>
             </ul>
           </nav>
-          <div class="nav-actions">
-            <a class="button" href="digipunt.html">Digipunt</a>
+          <div class="site-header__actions">
+            <div class="language-switch" role="group" aria-label="Taalkeuze" data-i18n-aria-label="nav.languageGroup">
+              <button type="button" data-lang-select data-lang="nl">NL</button>
+              <button type="button" data-lang-select data-lang="en">EN</button>
+            </div>
+            <a class="button" href="digipunt.html" data-i18n="nav.digipunt">Digipunt</a>
           </div>
         </div>
       </header>
 
-            <main id="main-content" tabindex="-1">
-        <section class="feature-section" id="opleidingen">
-          <div class="container two-column">
-            <div class="section-headline" data-animate="fade-up">
-              <span>Officieel aanbod</span>
+      <main id="main-content" tabindex="-1">
+        <section class="section section--intro section--surface" id="opleidingen">
+          <div class="container intro-grid two-column">
+            <div class="intro-content" data-animate="fade-up">
+              <span class="section-label">Officieel aanbod</span>
               <h1>De opleidingen van INTEC Brussel</h1>
               <p>
                 Kies uit vier trajecten die rechtstreeks van onze campus komen. Inhoud, startdata en beschrijvingen zijn
                 gebaseerd op de officiele informatie zodat je zeker bent van de juiste details.
               </p>
-              <div class="hero__actions">
-                <a class="button hero__cta" href="inschrijven.html">
-                  <span class="hero__label" aria-hidden="true">Plan intake</span>
+              <div class="intro-actions">
+                <a class="button" href="inschrijven.html">
+                  <span aria-hidden="true">Plan intake</span>
                   <span class="sr-only">Ga naar inschrijven</span>
                 </a>
-                <a class="button button--ghost hero__cta hero__cta--secondary" href="#programma-overzicht">
-                  <span class="hero__label" aria-hidden="true">Bekijk programma&apos;s</span>
+                <a class="button button--ghost" href="#programma-overzicht">
+                  <span aria-hidden="true">Bekijk programma&apos;s</span>
                   <span class="sr-only">Scroll naar programma overzicht</span>
                 </a>
               </div>
             </div>
-            <aside class="highlight-box" data-animate="fade-up" style="--animation-delay: 0.15s;">
+            <aside class="highlight-box intro-highlight" data-animate="fade-up" style="--animation-delay: 0.15s;">
               <div class="highlight-box__body">
                 <h3>Waarom deze trajecten?</h3>
-                <ul class="grid-list">
-                  <li>Actuele inhoud afgestemd op de Brusselse arbeidsmarkt</li>
-                  <li>Hands-on begeleiding door trainers uit het werkveld</li>
-                  <li>Startdata en leerpaden zoals gepubliceerd door INTEC Brussel</li>
-                  <li>Voorbereiding op jobs in infrastructuur, netwerkbeheer en security</li>
+                <ul class="grid-list feature-list">
+                  <li class="feature-item">
+                    <span class="feature-item__icon" aria-hidden="true">
+                      <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                        <path d="M7.5 13.5 4.5 10.5 3 12l4.5 4.5L17 7l-1.5-1.5-8 8z" fill="currentColor" />
+                      </svg>
+                    </span>
+                    <span>Actuele inhoud afgestemd op de Brusselse arbeidsmarkt</span>
+                  </li>
+                  <li class="feature-item">
+                    <span class="feature-item__icon" aria-hidden="true">
+                      <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                        <path d="M7.5 13.5 4.5 10.5 3 12l4.5 4.5L17 7l-1.5-1.5-8 8z" fill="currentColor" />
+                      </svg>
+                    </span>
+                    <span>Hands-on begeleiding door trainers uit het werkveld</span>
+                  </li>
+                  <li class="feature-item">
+                    <span class="feature-item__icon" aria-hidden="true">
+                      <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                        <path d="M7.5 13.5 4.5 10.5 3 12l4.5 4.5L17 7l-1.5-1.5-8 8z" fill="currentColor" />
+                      </svg>
+                    </span>
+                    <span>Startdata en leerpaden zoals gepubliceerd door INTEC Brussel</span>
+                  </li>
+                  <li class="feature-item">
+                    <span class="feature-item__icon" aria-hidden="true">
+                      <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                        <path d="M7.5 13.5 4.5 10.5 3 12l4.5 4.5L17 7l-1.5-1.5-8 8z" fill="currentColor" />
+                      </svg>
+                    </span>
+                    <span>Voorbereiding op jobs in infrastructuur, netwerkbeheer en security</span>
+                  </li>
                 </ul>
               </div>
             </aside>
           </div>
         </section>
 
-        <section class="section" id="programma-overzicht">
+        <section class="section section--aqua" id="programma-overzicht">
           <div class="container">
             <div class="section-heading" data-animate="fade-up">
               <span>Programma overzicht</span>
@@ -115,13 +141,7 @@
               </p>
             </div>
             <div class="program-grid" data-animate="fade-up">
-              <article class="program-card program-card--support">
-                <div class="program-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 32 32" fill="none">
-                    <circle cx="16" cy="12" r="5" stroke="currentColor" stroke-width="1.8" />
-                    <path d="M8 23.5c0-2.5 3.5-4.5 8-4.5s8 2 8 4.5V26H8v-2.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
-                  </svg>
-                </div>
+              <article class="card program-card">
                 <h3>PC en Netwerktechnicus</h3>
                 <p>
                   Servers beheren, netwerken configureren en troubleshooting uitvoeren. Je leert werken met Cisco, Linux en
@@ -130,17 +150,24 @@
                 <p>
                   <strong>Startdata:</strong><br />8 september 2025 (Volzet)<br />9 maart 2026
                 </p>
-                <footer><a href="support.html">Meer info</a></footer>
+                <footer>
+                  <a class="button button--ghost button--sm" href="support.html">
+                    Meer info
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M5 12h14M13 6l6 6-6 6"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </a>
+                </footer>
               </article>
 
-              <article class="program-card program-card--network">
-                <div class="program-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 32 32" fill="none">
-                    <circle cx="11" cy="16" r="4" stroke="currentColor" stroke-width="1.8" />
-                    <circle cx="21" cy="16" r="4" stroke="currentColor" stroke-width="1.8" />
-                    <path d="M15 16h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-                  </svg>
-                </div>
+              <article class="card program-card">
                 <h3>Netwerkbeheerder met Python</h3>
                 <p>
                   Combineer netwerkbeheer met automatisering in Python. Labs richten zich op moderne infrastructuren en scripting.
@@ -148,17 +175,24 @@
                 <p>
                   <strong>Startdatum:</strong><br />2 februari 2026
                 </p>
-                <footer><a href="python.html">Meer info</a></footer>
+                <footer>
+                  <a class="button button--ghost button--sm" href="python.html">
+                    Meer info
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M5 12h14M13 6l6 6-6 6"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </a>
+                </footer>
               </article>
 
-              <article class="program-card program-card--systems">
-                <div class="program-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 32 32" fill="none">
-                    <circle cx="16" cy="10" r="4" stroke="currentColor" stroke-width="1.8" />
-                    <path d="M8 26c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-                    <path d="M5 12h4m14 0h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-                  </svg>
-                </div>
+              <article class="card program-card">
                 <h3>Systeembeheerder</h3>
                 <p>
                   Bouw expertise in infrastructuur, Windows/Linux servers, virtualisatie en monitoring. Met praktijkprojecten en
@@ -167,16 +201,24 @@
                 <p>
                   <strong>Startdata:</strong><br />23 februari 2026<br />18 mei 2026
                 </p>
-                <footer><a href="systeembeheerder.html">Meer info</a></footer>
+                <footer>
+                  <a class="button button--ghost button--sm" href="systeembeheerder.html">
+                    Meer info
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M5 12h14M13 6l6 6-6 6"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </a>
+                </footer>
               </article>
 
-              <article class="program-card program-card--security">
-                <div class="program-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 32 32" fill="none">
-                    <path d="M16 5l10 4v6c0 6-4.5 10.5-10 12-5.5-1.5-10-6-10-12V9l10-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
-                    <path d="M13 17l2 2 4-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
+              <article class="card program-card">
                 <h3>Cyber Security Engineer</h3>
                 <p>
                   Leer netwerken beveiligen, security-analyses uitvoeren en incidenten reduceren met ethical hacking en cloud security.
@@ -184,7 +226,21 @@
                 <p>
                   <strong>Startdatum:</strong><br />24 november 2025
                 </p>
-                <footer><a href="security.html">Meer info</a></footer>
+                <footer>
+                  <a class="button button--ghost button--sm" href="security.html">
+                    Meer info
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M5 12h14M13 6l6 6-6 6"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </a>
+                </footer>
               </article>
             </div>
           </div>
