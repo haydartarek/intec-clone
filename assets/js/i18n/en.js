@@ -17,6 +17,7 @@ window.i18n.en = {
   "nav.contact": "Contact",
   "nav.partners": "Partner Access",
   "nav.digipunt": "Digipoint",
+  "nav.languageGroup": "Language selection",
   "nav.toggle": "Open menu",
 
   // -----------------------------
@@ -33,6 +34,25 @@ window.i18n.en = {
   "label.learnmore": "Learn more",
   "label.viewprogram": "View program",
   "label.planintake": "Plan your intake",
+
+  // -----------------------------
+  // PROGRAM SHARED CONTENT
+  // -----------------------------
+  "program.info.label": "Practical info",
+  "program.info.generalTitle": "Practical details about this program",
+  "program.info.item1": "Cost: Free",
+  "program.info.item2": "Language: Dutch",
+  "program.info.item3": "Prerequisites: Not required",
+  "program.info.item4": "Program duration: 1 year",
+  "program.info.item5": "Monday to Friday from 08:30 to 17:00 (classes start at 09:00)",
+  "program.info.note": "Do you need specific support to participate in the selection or training? For example because of a physical limitation. Let us know.",
+  "program.info.locationTitle": "Location",
+  "program.info.locationBody": "Campus Rouppeplein 16, 1000 Brussels. Easily accessible by public transport.",
+  "program.info.benefitsTitle": "Benefits",
+  "program.info.benefit1": "Your travel costs are fully reimbursed during the training.",
+  "program.info.benefit2": "Childcare or after-school care expenses are reimbursed.",
+  "program.info.benefit3": "You keep your unemployment benefits and other allowances throughout the training.",
+  "program.cta.eyebrow": "Next step",
 
   // -----------------------------
   // HOME PAGE
@@ -311,52 +331,252 @@ window.i18n.en = {
   // -----------------------------
   // PYTHON PAGE
   // -----------------------------
+  "python.hero.eyebrow": "Program",
   "python.hero.title": "Network Administrator with Python",
-  "python.hero.lead": "Learn to design and manage business networks while automating workflows with Python.",
+  "python.hero.lead": "Learn to design and manage enterprise networks while automating workflows with Python. This program blends infrastructure, cloud, and scripting to prepare you for modern network environments.",
   "python.hero.ctaPrimary": "Plan your intake",
   "python.hero.ctaSecondary": "View program",
-  "python.program.title": "Automating Networks from A to Z",
-  "python.program.module1": "Enterprise networking",
-  "python.program.module2": "Python & automation",
-  "python.program.module3": "Cloud & observability",
-  "python.program.module4": "Security & automation ops",
+  "python.hero.caption": "Combine networking labs with Python and DevOps automation exercises.",
+  "python.hero.metaTitle": "Start date",
+  "python.hero.metaDates": "18 November 2025",
+  "python.hero.metaNote": "Register up to six months before the start. After the intake you complete a preparatory sprint covering Python fundamentals.",
+
+  "python.hero.metric1Label": "Automation cases",
+  "python.hero.metric1Value": "45+",
+  "python.hero.metric2Label": "Python sprints",
+  "python.hero.metric2Value": "12",
+  "python.hero.metric3Label": "Certification success",
+  "python.hero.metric3Value": "88%",
+
+  // Overview
+  "python.overview.label": "What you learn",
+  "python.overview.title": "Automate networking from end to end",
+  "python.overview.text1": "Deepen your knowledge of routing, switching, firewalling, and wireless. Use Python to build scripts that manage configurations, automate monitoring, and interact with APIs.",
+  "python.overview.text2": "We connect infrastructure management with DevOps principles - version control, CI/CD for network code, and documentation - so you can deliver changes quickly and safely.",
+  "python.overview.list2": "Python scripts for configuration management, monitoring, and REST APIs.",
+  "python.overview.list3": "Introductions to Azure and AWS plus Infrastructure as Code with Terraform.",
+  "python.overview.listDevops": "Version control with Git, automation with Ansible, and pipelines for network code.",
+  "python.overview.list4": "Zero trust, policy automation, and compliance checks with the right tooling.",
+
+  // Modules
+  "python.modules.label": "Program",
+  "python.modules.title": "Modules & specialisations",
+  "python.modules.lead": "Combine network fundamentals with automation and security. Each module ends with a lab case to test your skills.",
+  "python.modules.networkTitle": "Enterprise networking",
+  "python.modules.networkBody": "Routing and switching, VLANs, QoS, and wireless design implemented with Cisco and open standards.",
+  "python.modules.pythonTitle": "Python & automation",
+  "python.modules.pythonBody": "Python fundamentals, object-oriented programming, APIs, Ansible, and scripting for configuration management.",
+  "python.modules.cloudTitle": "Cloud & observability",
+  "python.modules.cloudBody": "Networking in Azure and AWS, IaC with Terraform, log analysis, and monitoring with tools such as Grafana and Prometheus.",
+  "python.modules.securityTitle": "Security & automation ops",
+  "python.modules.securityBody": "Zero trust, firewall policies, automated compliance checks, and incident-response workflows.",
+
+  // Journey
+  "python.journey.label": "Journey",
+  "python.journey.title": "Your learning path",
+  "python.journey.step1Title": "Intake & fundamentals",
+  "python.journey.step1Body": "Assess network and language level, then onboard with Python basics and core network concepts.",
+  "python.journey.step2Title": "Network expertise",
+  "python.journey.step2Body": "Configure and troubleshoot in physical and virtual labs, including Cisco Packet Tracer and GNS3.",
+  "python.journey.step3Title": "Automation",
+  "python.journey.step3Body": "Python and Ansible projects, DevOps workflows, and integrations with monitoring platforms.",
+  "python.journey.step4Title": "Internship & certification",
+  "python.journey.step4Body": "Eight-week internship plus preparation for Cisco CCNA, DevNet Associate, or PCEP certifications with intensive job coaching.",
+
   "python.cta.title": "Make a difference with Networks & Python",
-  "python.cta.body": "Book your intake and discover how this training prepares you for roles such as network engineer or cloud operations specialist.",
+  "python.cta.body": "Book your intake and discover how this track prepares you for roles such as network engineer, NetDevOps specialist, or cloud operations engineer.",
+  "python.cta.primary": "Plan intake",
+  "python.cta.secondary": "Ask a question",
 
   // -----------------------------
   // SYSTEEMBEHEERDER PAGE
   // -----------------------------
-  "sysadmin.hero.eyebrow": "Training",
+  "sysadmin.hero.eyebrow": "Program",
   "sysadmin.hero.title": "System Administrator",
-  "sysadmin.hero.lead": "Learn to manage, secure, and automate servers, networks, and cloud environments.",
+  "sysadmin.hero.lead": "Learn to manage, secure, and automate servers, networks, and cloud environments. Become the pivotal profile that keeps IT infrastructure stable and high-performing.",
   "sysadmin.hero.ctaPrimary": "Plan your intake",
   "sysadmin.hero.ctaSecondary": "View program",
-  "sysadmin.hero.caption": "Hands-on labs with Windows Server, Linux, virtualization, and cloud management.",
-  "sysadmin.hero.metaTitle": "Next start date",
+  "sysadmin.hero.caption": "Hands-on labs with Windows Server, Linux, virtualisation, and cloud management.",
+  "sysadmin.hero.metaTitle": "Next start dates",
   "sysadmin.hero.metaDates": "January 2026",
-  "sysadmin.hero.metaNote": "Intake interviews from November. Preparatory system administration track included.",
+  "sysadmin.hero.metaNote": "Intake interviews start in November. Includes a preparatory track covering system administration fundamentals.",
 
-  // Highlights
+  "sysadmin.hero.metric1Label": "Server labs",
+  "sysadmin.hero.metric1Value": "40+",
+  "sysadmin.hero.metric2Label": "Cloud projects",
+  "sysadmin.hero.metric2Value": "12",
+  "sysadmin.hero.metric3Label": "Job match within 3 months",
+  "sysadmin.hero.metric3Value": "82%",
+
+  // Overview
   "sysadmin.overview.label": "What you learn",
-  "sysadmin.overview.title": "Comprehensive management of servers and cloud",
-  "sysadmin.overview.text1": "Install, configure and maintain Windows and Linux servers, network services and backups. Automate routine tasks using PowerShell and Bash.",
-  "sysadmin.overview.text2": "Combine hands-on labs with cybersecurity insight and cloud administration. Work on projects simulating real production scenarios.",
+  "sysadmin.overview.title": "End-to-end server and cloud management",
+  "sysadmin.overview.text1": "Install, configure, and maintain Windows and Linux servers, network services, and backups. Automate routine tasks with PowerShell and Bash.",
+  "sysadmin.overview.text2": "Combine practical labs with cybersecurity insight and cloud management. Work on projects that mirror real production scenarios.",
+  "sysadmin.highlight.serversBody": "Install and manage Windows Server, Linux, VMware, and Hyper-V.",
+  "sysadmin.highlight.networkBody": "Manage switches, routers, and DNS/DHCP services for reliable communication.",
+  "sysadmin.highlight.cloudBody": "Work with Microsoft Azure, AWS, and PowerShell automation for provisioning and monitoring.",
+  "sysadmin.highlight.securityBody": "Implement user rights, firewalls, and backup strategies to keep data secure.",
+
+  // Modules
+  "sysadmin.modules.label": "Program",
+  "sysadmin.modules.title": "Modules & focus areas",
+  "sysadmin.modules.lead": "Practical modules guide you step by step toward professional system administration.",
+  "sysadmin.modules.os": "Operating systems",
+  "sysadmin.modules.osBody": "Windows Server, Linux, and virtualisation management with both command-line and GUI tools.",
+  "sysadmin.modules.network": "Network management",
+  "sysadmin.modules.networkBody": "DNS, DHCP, Active Directory, VPN, and firewall configuration.",
+  "sysadmin.modules.security": "Security",
+  "sysadmin.modules.securityBody": "User management, permissions, backups, and endpoint protection.",
+  "sysadmin.modules.cloud": "Cloud & automation",
+  "sysadmin.modules.cloudBody": "Azure and AWS administration, PowerShell scripting, and monitoring with tools like Grafana.",
+
+  // Journey
+  "sysadmin.journey.label": "Journey",
+  "sysadmin.journey.title": "From intake to your first job",
+  "sysadmin.journey.step1Title": "Fundamentals & intake",
+  "sysadmin.journey.step1Body": "Screening and introduction to hardware and core IT concepts.",
+  "sysadmin.journey.step2Title": "Server management",
+  "sysadmin.journey.step2Body": "Installation and management of servers in Windows and Linux.",
+  "sysadmin.journey.step3Title": "Cloud & security",
+  "sysadmin.journey.step3Body": "Implement cloud infrastructure and security controls.",
+  "sysadmin.journey.step4Title": "Internship & certification",
+  "sysadmin.journey.step4Body": "Eight-week internship plus preparation for Microsoft or CompTIA certifications with job coaching.",
+
+  // Practical info
+  "sysadmin.info.item1": "Cost: Free training",
+  "sysadmin.info.item2": "Language: Dutch",
+  "sysadmin.info.item3": "Prerequisites: Basic computer knowledge",
+  "sysadmin.info.item4": "Duration: 1 year",
+  "sysadmin.info.item5": "Day program (08:30 - 17:00)",
+  "sysadmin.info.locationBody": "Rouppeplein 16, 1000 Brussels - easily reachable by public transport.",
+  "sysadmin.info.benefit1": "Full reimbursement of travel costs",
+  "sysadmin.info.benefit2": "Childcare costs are reimbursed",
+  "sysadmin.info.benefit3": "You keep unemployment benefits and other allowances during the training.",
+  "sysadmin.cta.title": "Take the step into professional system administration",
+  "sysadmin.cta.body": "Prepare for a role as IT support, system, or cloud administrator with practical experience and certification coaching.",
+  "sysadmin.cta.primary": "Plan intake",
+  "sysadmin.cta.secondary": "Ask a question",
 
   // -----------------------------
   // SECURITY PAGE
   // -----------------------------
-  "security.hero.title": "Cybersecurity Specialist",
-  "security.hero.lead": "Protect networks, applications, and data from modern threats.",
-  "security.cta.title": "Take your first step into cybersecurity",
-  "security.cta.body": "Become an expert in digital safety with practical, hands-on training.",
+  "security.hero.eyebrow": "Program",
+  "security.hero.title": "Cyber Security Engineer",
+  "security.hero.lead": "Learn to detect, stop, and prevent cyber attacks. Combine ethical hacking with security architecture, monitoring, and incident response for networks, servers, and cloud.",
+  "security.hero.ctaPrimary": "Plan your intake",
+  "security.hero.ctaSecondary": "View program",
+  "security.hero.caption": "Work with SOC tools, SIEM, forensics, and red-team platforms guided by experts.",
+  "security.hero.metaTitle": "Next start dates",
+  "security.hero.metaDates": "3 March 2026",
+  "security.hero.metaNote": "The intake includes a security mindset check, logic assessments, and a refresher on networking basics.",
+
+  "security.hero.metric1Label": "SOC simulations",
+  "security.hero.metric1Value": "18",
+  "security.hero.metric2Label": "Red-team assignments",
+  "security.hero.metric2Value": "12",
+  "security.hero.metric3Label": "Alumni working in cybersecurity",
+  "security.hero.metric3Value": "95%",
+
+  // Overview
+  "security.overview.label": "What you learn",
+  "security.overview.title": "Defend every layer of the organisation",
+  "security.overview.text1": "Analyse vulnerabilities, run penetration tests, and build defensive measures. We connect blue team, red team, and governance to help you secure end-to-end.",
+  "security.overview.text2": "Build security programmes that balance people, processes, and technology using frameworks such as NIST, CIS, and ISO 27001.",
+  "security.overview.list1": "Labs covering network, endpoint, and cloud security",
+  "security.overview.list2": "Threat hunting inside a simulated Security Operations Center",
+  "security.overview.list3": "Incident-response drills with forensics and reporting",
+  "security.overview.list4": "Internships with companies, government, or SOC partners",
+
+  // Modules
+  "security.modules.label": "Program",
+  "security.modules.title": "Modules & labs",
+  "security.modules.lead": "Each component blends theory with lab scenarios using up-to-date tools, frameworks, and case files.",
+  "security.modules.networkTitle": "Network & endpoint security",
+  "security.modules.networkBody": "Firewalls, intrusion detection, endpoint protection, and secure access.",
+  "security.modules.hackingTitle": "Ethical hacking",
+  "security.modules.hackingBody": "Pentesting tools, vulnerability scanning, exploits, and social engineering.",
+  "security.modules.cloudTitle": "Cloud & app security",
+  "security.modules.cloudBody": "Azure Sentinel, AWS Security Hub, web application firewalls, and API protection.",
+  "security.modules.governanceTitle": "Governance & compliance",
+  "security.modules.governanceBody": "Risk management, policies, audits, and GDPR/NIS2 compliance.",
+
+  // Journey
+  "security.journey.label": "Journey",
+  "security.journey.title": "From fundamentals to security specialist",
+  "security.journey.step1Title": "Intake & fundamentals",
+  "security.journey.step1Body": "Screening, refresh of networking and operating systems, and an introduction to security mindset and tooling.",
+  "security.journey.step2Title": "Blue team labs",
+  "security.journey.step2Body": "Monitoring, detection, incident handling, and reporting inside a simulated SOC.",
+  "security.journey.step3Title": "Red team & forensics",
+  "security.journey.step3Body": "Pentesting, exploitation, reverse engineering, and forensic investigation with real cases.",
+  "security.journey.step4Title": "Internship & certification",
+  "security.journey.step4Body": "Eight-week internship, coaching toward certifications such as CompTIA Security+, Cisco CCST, or EC-Council, and intensive job matching.",
+
+  "security.cta.title": "Protect organisations against digital threats",
+  "security.cta.body": "Book your intake and discover how you can make the difference as a cyber security engineer, SOC analyst, or incident responder.",
+  "security.cta.primary": "Plan intake",
+  "security.cta.secondary": "Ask a question",
 
   // -----------------------------
   // SUPPORT PAGE
   // -----------------------------
-  "support.hero.title": "IT Support Specialist",
-  "support.hero.lead": "Help users, solve technical problems, and master IT service management.",
-  "support.cta.title": "Start your career in IT Support",
-  "support.cta.body": "Become the bridge between technology and people through practical training.",
+  "support.hero.eyebrow": "Program",
+  "support.hero.title": "PC and Network Technician",
+  "support.hero.lead": "Build your future in IT support with a hands-on track that combines hardware, networking, and customer-focused service. Learn to analyse incidents, secure systems, and guide users professionally.",
+  "support.hero.ctaPrimary": "Plan your intake",
+  "support.hero.ctaSecondary": "View program",
+  "support.hero.caption": "Learn in small groups with modern labs and coaching from industry experts.",
+  "support.hero.metaTitle": "Next start dates",
+  "support.hero.metaDates": "9 March 2026 (registrations open)",
+  "support.hero.metaNote": "Register up to six months before the start. Info sessions and assessments help you confirm whether this track suits you.",
+
+  "support.hero.metric1Label": "Placement partners",
+  "support.hero.metric1Value": "60+",
+  "support.hero.metric2Label": "Learner satisfaction",
+  "support.hero.metric2Value": "92%",
+  "support.hero.metric3Label": "Hands-on labs",
+  "support.hero.metric3Value": "70%",
+
+  // Overview
+  "support.overview.label": "What you learn",
+  "support.overview.title": "A broad foundation in IT support",
+  "support.overview.text1": "Become the first point of contact for workstations, servers, and users. Combine troubleshooting with proactive monitoring and ITIL-based documentation.",
+  "support.overview.text2": "Alongside the technical skills we work on communication, service mindset, and workplace organisation so you can report clearly, set priorities, and support hybrid teams.",
+  "support.overview.list1": "70% practical labs covering hardware, networking, and security",
+  "support.overview.list2": "Internship with a partner company or social-profit organisation",
+  "support.overview.list3": "Support from digital coaches and integrated language guidance",
+  "support.overview.list4": "Soft skills: customer communication, teamwork, and planning",
+
+  // Modules
+  "support.modules.label": "Program",
+  "support.modules.title": "Modules & focus areas",
+  "support.modules.lead": "A mix of fundamentals and specialisations prepares you for helpdesk, onsite support, or technical operations roles in SMEs, government, and integrators.",
+  "support.modules.deviceTitle": "Workplace & hardware",
+  "support.modules.deviceBody": "Assemble, image, maintain, and troubleshoot PCs, laptops, and peripherals using diagnostic tools and lifecycle best practices.",
+  "support.modules.networkTitle": "Networking & cloud",
+  "support.modules.networkBody": "LAN/WAN fundamentals, Wi-Fi, routing and switching, plus an introduction to Azure and M365 administration. Configure, monitor, and resolve incidents.",
+  "support.modules.osTitle": "Operating systems",
+  "support.modules.osBody": "Windows 11, Windows Server, and Linux basics. Automate with PowerShell, manage permissions, and build secure configurations.",
+  "support.modules.securityTitle": "Security & service",
+  "support.modules.securityBody": "Endpoint protection, backup, disaster recovery, and documentation. Work with ITIL processes, SLAs, and service desk tooling.",
+
+  // Journey
+  "support.journey.label": "Journey",
+  "support.journey.title": "From intake to your first job",
+  "support.journey.step1Title": "Intake & fundamentals",
+  "support.journey.step1Body": "Info session, assessments, and language check. You start with workplace fundamentals, safety, and service desk workflows.",
+  "support.journey.step2Title": "Deep dive labs",
+  "support.journey.step2Body": "Project-based labs covering networking, virtualisation, and scripting with coaching on troubleshooting and customer communication.",
+  "support.journey.step3Title": "Internship & certification",
+  "support.journey.step3Body": "Six to eight weeks of internship plus preparation for certifications such as CompTIA ITF+ or Microsoft Fundamentals.",
+  "support.journey.step4Title": "Career coaching",
+  "support.journey.step4Body": "CV and interview coaching, partner matching, and follow-up during your first year on the job.",
+
+  "support.cta.title": "Ready to start as a PC and Network Technician?",
+  "support.cta.body": "Schedule your intake and discover how we tailor the learning path. Our coaches are ready to answer all your questions.",
+  "support.cta.primary": "Plan intake",
+  "support.cta.secondary": "Ask a question",
 
   // -----------------------------
   // FOOTER

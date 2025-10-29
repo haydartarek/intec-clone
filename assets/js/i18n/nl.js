@@ -17,6 +17,7 @@ window.i18n.nl = {
   "nav.contact": "Contact",
   "nav.partners": "Toegang Partners",
   "nav.digipunt": "Digipunt",
+  "nav.languageGroup": "Taalkeuze",
   "nav.toggle": "Menu openen",
 
   // -----------------------------
@@ -33,6 +34,25 @@ window.i18n.nl = {
   "label.learnmore": "Lees meer",
   "label.viewprogram": "Bekijk programma",
   "label.planintake": "Plan je intake",
+
+  // -----------------------------
+  // PROGRAMMA GEMEENSCHAPPELIJKE INHOUD
+  // -----------------------------
+  "program.info.label": "Praktisch",
+  "program.info.generalTitle": "Algemene informatie over deze opleiding",
+  "program.info.item1": "Prijs: Gratis",
+  "program.info.item2": "Taal: Nederlands",
+  "program.info.item3": "Voorkennis: Niet verplicht",
+  "program.info.item4": "Duur opleiding: 1 jaar",
+  "program.info.item5": "Elke dag van 8u30 tot 17u (lessen starten om 9u)",
+  "program.info.note": "Heb je specifieke behoeften om te kunnen deelnemen aan de selectie of opleiding? Bijvoorbeeld omwille van een fysieke beperking. Laat het ons weten.",
+  "program.info.locationTitle": "Locatie",
+  "program.info.locationBody": "Campus Rouppeplein 16, 1000 Brussel. Deze locatie is zeer goed bereikbaar met het openbaar vervoer.",
+  "program.info.benefitsTitle": "Voordelen",
+  "program.info.benefit1": "Tijdens de opleiding worden je vervoerskosten volledig terugbetaald.",
+  "program.info.benefit2": "De kosten voor kinder- of buitenschoolse opvang worden terugbetaald.",
+  "program.info.benefit3": "Tijdens de opleiding blijf je wettelijk in orde met je werkloosheidsvergoeding en andere uitkeringen.",
+  "program.cta.eyebrow": "Volgende stap",
 
   // -----------------------------
   // HOME PAGE
@@ -316,57 +336,252 @@ window.i18n.nl = {
   // -----------------------------
   // PYTHON PAGE
   // -----------------------------
+  "python.hero.eyebrow": "Opleiding",
   "python.hero.title": "Netwerkbeheerder met Python",
-  "python.hero.lead": "Leer bedrijfsnetwerken ontwerpen en beheren terwijl je workflows automatiseert met Python.",
+  "python.hero.lead": "Leer bedrijfsnetwerken ontwerpen en beheren terwijl je workflows automatiseert met Python. Deze opleiding combineert infrastructuur, cloud en scripting om je klaar te stomen voor moderne netwerkomgevingen.",
   "python.hero.ctaPrimary": "Plan je intake",
   "python.hero.ctaSecondary": "Bekijk programma",
-  "python.program.title": "Netwerken automatiseren van A tot Z",
-  "python.program.module1": "Enterprise networking",
-  "python.program.module2": "Python & automatisering",
-  "python.program.module3": "Cloud & observability",
-  "python.program.module4": "Security & automation ops",
+  "python.hero.caption": "Combineer netwerklabs met automatiseringsoefeningen in Python en DevOps-tools.",
+  "python.hero.metaTitle": "Startmoment",
+  "python.hero.metaDates": "18 november 2025",
+  "python.hero.metaNote": "Inschrijven kan tot zes maanden voor de start. Na de intake volg je een voorbereidende sprint met Python-basics.",
+
+  "python.hero.metric1Label": "Automatiseringscases",
+  "python.hero.metric1Value": "45+",
+  "python.hero.metric2Label": "Python sprints",
+  "python.hero.metric2Value": "12",
+  "python.hero.metric3Label": "Certificatiesucces",
+  "python.hero.metric3Value": "88%",
+
+  // Overzicht
+  "python.overview.label": "Wat je leert",
+  "python.overview.title": "Netwerken automatiseren van A tot Z",
+  "python.overview.text1": "Je verdiept je in routing, switching, firewalling en wireless. Met Python bouw je scripts die configuraties beheren, monitoring automatiseren en API's aanspreken.",
+  "python.overview.text2": "We koppelen infrastructuurbeheer aan DevOps-principes zoals versiebeheer, CI/CD voor netwerkcode en documentatie zodat je snel en veilig veranderingen oplevert.",
+  "python.overview.list2": "Python-scripts voor configuratiebeheer, monitoring en REST API's.",
+  "python.overview.list3": "Introducties tot Azure en AWS en Infrastructure as Code met Terraform.",
+  "python.overview.listDevops": "Versiebeheer met Git, Ansible-automatisering en pipelines voor netwerkcode.",
+  "python.overview.list4": "Zero trust, policy automation en compliance-checks met tooling.",
+
+  // Modules
+  "python.modules.label": "Programma",
+  "python.modules.title": "Modules & specialisaties",
+  "python.modules.lead": "Je combineert netwerkfundamenten met automatisering en security. Elke module eindigt met een labcase die je vaardigheden test.",
+  "python.modules.networkTitle": "Enterprise networking",
+  "python.modules.networkBody": "Routing en switching, VLAN's, QoS en wireless design. Implementatie volgens Cisco- en openstandaarden.",
+  "python.modules.pythonTitle": "Python & automatisering",
+  "python.modules.pythonBody": "Python fundamentals, objectgeorienteerd programmeren, API's, Ansible en scripting voor configuratiebeheer.",
+  "python.modules.cloudTitle": "Cloud & observability",
+  "python.modules.cloudBody": "Networking in Azure en AWS, IaC met Terraform, loganalyse en monitoring met tools zoals Grafana en Prometheus.",
+  "python.modules.securityTitle": "Security & automation ops",
+  "python.modules.securityBody": "Zero trust, firewall policies, geautomatiseerde compliance-checks en incident-response workflows.",
+
+  // Traject
+  "python.journey.label": "Traject",
+  "python.journey.title": "Jouw leerroute",
+  "python.journey.step1Title": "Intake & fundamentals",
+  "python.journey.step1Body": "Screening van netwerk- en taalniveau en onboarding in Python-basics en netwerkconcepten.",
+  "python.journey.step2Title": "Netwerkexpertise",
+  "python.journey.step2Body": "Configuratie en troubleshooting in fysieke en virtuele labs zoals Cisco Packet Tracer en GNS3.",
+  "python.journey.step3Title": "Automatisering",
+  "python.journey.step3Body": "Python- en Ansible-projecten, DevOps-workflows en integratie met monitoringplatformen.",
+  "python.journey.step4Title": "Stage & certificatie",
+  "python.journey.step4Body": "Stage van acht weken plus voorbereiding op Cisco CCNA, DevNet Associate of PCEP-certificaten en intensieve jobcoaching.",
+
   "python.cta.title": "Maak het verschil met netwerken & Python",
-  "python.cta.body": "Boek je intake en ontdek hoe dit traject je voorbereidt op functies als network engineer of cloud operations specialist.",
+  "python.cta.body": "Boek je intake en ontdek hoe dit traject je voorbereidt op functies als network engineer, NetDevOps of cloud operations specialist.",
+  "python.cta.primary": "Plan intake",
+  "python.cta.secondary": "Stel een vraag",
 
   // -----------------------------
   // SYSTEEMBEHEERDER PAGE
   // -----------------------------
   "sysadmin.hero.eyebrow": "Opleiding",
   "sysadmin.hero.title": "Systeembeheerder",
-  "sysadmin.hero.lead": "Leer servers, netwerken en cloudomgevingen beheren, beveiligen en automatiseren.",
+  "sysadmin.hero.lead": "Leer servers, netwerken en cloudomgevingen beheren, beveiligen en automatiseren. Word de spilfiguur die IT-infrastructuren stabiel en performant houdt.",
   "sysadmin.hero.ctaPrimary": "Plan je intake",
   "sysadmin.hero.ctaSecondary": "Bekijk programma",
   "sysadmin.hero.caption": "Praktische labs met Windows Server, Linux, virtualisatie en cloudbeheer.",
-  "sysadmin.hero.metaTitle": "Volgende startmoment",
+  "sysadmin.hero.metaTitle": "Volgende startmomenten",
   "sysadmin.hero.metaDates": "Januari 2026",
-  "sysadmin.hero.metaNote": "Intakegesprekken vanaf november. Voorbereidingstraject met basistechnieken inbegrepen.",
+  "sysadmin.hero.metaNote": "Intakegesprekken vanaf november. Voorbereidingstraject met basistechnieken systeembeheer inbegrepen.",
 
-  // Highlights
+  "sysadmin.hero.metric1Label": "Serverlabs",
+  "sysadmin.hero.metric1Value": "40+",
+  "sysadmin.hero.metric2Label": "Cloudprojecten",
+  "sysadmin.hero.metric2Value": "12",
+  "sysadmin.hero.metric3Label": "Jobmatch binnen 3 maanden",
+  "sysadmin.hero.metric3Value": "82%",
+
+  // Overzicht
   "sysadmin.overview.label": "Wat je leert",
   "sysadmin.overview.title": "Volledig beheer van servers en cloud",
   "sysadmin.overview.text1": "Installeer, configureer en onderhoud Windows- en Linux-servers, netwerkdiensten en back-ups. Automatiseer routinetaken met PowerShell en Bash.",
-  "sysadmin.overview.text2": "Combineer praktijklabs met cybersecurity-inzicht en cloudbeheer. Werk aan projecten die echte productie-scenario’s nabootsen.",
+  "sysadmin.overview.text2": "Combineer praktijklabs met cybersecurity-inzicht en cloudbeheer. Werk aan projecten die echte productie-scenario's nabootsen.",
+  "sysadmin.highlight.serversBody": "Leer Windows Server, Linux, VMware en Hyper-V installeren en beheren.",
+  "sysadmin.highlight.networkBody": "Beheer switches, routers en DNS- en DHCP-diensten voor stabiele communicatie.",
+  "sysadmin.highlight.cloudBody": "Werk met Microsoft Azure, AWS en PowerShell-automatisering voor provisioning en monitoring.",
+  "sysadmin.highlight.securityBody": "Implementeer gebruikersrechten, firewalls en back-upstrategien om data veilig te houden.",
 
   // Modules
   "sysadmin.modules.label": "Programma",
-  "sysadmin.modules.title": "Modules & specialisaties",
+  "sysadmin.modules.title": "Modules & vakgebieden",
   "sysadmin.modules.lead": "De opleiding bestaat uit praktische modules die stap voor stap leiden tot professioneel systeembeheer.",
+  "sysadmin.modules.os": "Besturingssystemen",
+  "sysadmin.modules.osBody": "Windows Server, Linux en virtualisatiebeheer met zowel command-line als GUI-tools.",
+  "sysadmin.modules.network": "Netwerkbeheer",
+  "sysadmin.modules.networkBody": "DNS, DHCP, Active Directory, VPN en firewallconfiguratie.",
+  "sysadmin.modules.security": "Security",
+  "sysadmin.modules.securityBody": "Gebruikersbeheer, rechten, back-ups en endpointbeveiliging.",
+  "sysadmin.modules.cloud": "Cloud & automatisering",
+  "sysadmin.modules.cloudBody": "Azure- en AWS-beheer, PowerShell-scripting en monitoring met onder meer Grafana.",
+
+  // Traject
+  "sysadmin.journey.label": "Traject",
+  "sysadmin.journey.title": "Van intake tot eerste job",
+  "sysadmin.journey.step1Title": "Fundamentals & intake",
+  "sysadmin.journey.step1Body": "Screening en introductie tot hardware en IT-basisconcepten.",
+  "sysadmin.journey.step2Title": "Serverbeheer",
+  "sysadmin.journey.step2Body": "Installatie en beheer van servers in Windows en Linux.",
+  "sysadmin.journey.step3Title": "Cloud & security",
+  "sysadmin.journey.step3Body": "Implementatie van cloudinfrastructuur en beveiligingsprotocollen.",
+  "sysadmin.journey.step4Title": "Stage & certificatie",
+  "sysadmin.journey.step4Body": "Stage van acht weken plus voorbereiding op Microsoft- of CompTIA-certificaten en jobcoaching.",
+
+  // Praktisch
+  "sysadmin.info.item1": "Gratis opleiding",
+  "sysadmin.info.item2": "Taal: Nederlands",
+  "sysadmin.info.item3": "Voorkennis: basis computerkennis",
+  "sysadmin.info.item4": "Duur: 1 jaar",
+  "sysadmin.info.item5": "Dagopleiding (8u30 - 17u)",
+  "sysadmin.info.locationBody": "Rouppeplein 16, 1000 Brussel - goed bereikbaar met openbaar vervoer.",
+  "sysadmin.info.benefit1": "Volledige terugbetaling vervoerskosten",
+  "sysadmin.info.benefit2": "Kinderopvangkosten worden vergoed",
+  "sysadmin.info.benefit3": "Tijdens de opleiding blijf je wettelijk in orde met je werkloosheidsvergoeding en andere uitkeringen.",
+  "sysadmin.cta.title": "Zet de stap naar professioneel systeembeheer",
+  "sysadmin.cta.body": "Bereid je voor op een rol als IT-support, systeem- of cloudbeheerder met praktijkervaring en certificatie.",
+  "sysadmin.cta.primary": "Plan intake",
+  "sysadmin.cta.secondary": "Stel een vraag",
 
   // -----------------------------
   // SECURITY PAGE
   // -----------------------------
-  "security.hero.title": "Cybersecurity Specialist",
-  "security.hero.lead": "Bescherm netwerken, applicaties en data tegen bedreigingen.",
-  "security.cta.title": "Zet je eerste stap in cybersecurity",
-  "security.cta.body": "Word een expert in digitale veiligheid met praktijkgerichte training.",
+  "security.hero.eyebrow": "Opleiding",
+  "security.hero.title": "Cyber Security Engineer",
+  "security.hero.lead": "Leer cyberaanvallen detecteren, stoppen en voorkomen. Je combineert ethical hacking met beveiligingsarchitectuur, monitoring en incident response voor netwerken, servers en cloud.",
+  "security.hero.ctaPrimary": "Plan je intake",
+  "security.hero.ctaSecondary": "Bekijk programma",
+  "security.hero.caption": "Werk met SOC-tools, SIEM, forensics en red-teamplatformen onder begeleiding van experts.",
+  "security.hero.metaTitle": "Volgende startmomenten",
+  "security.hero.metaDates": "3 maart 2026",
+  "security.hero.metaNote": "Intake omvat een security mindset-check, logische testen en kennismaking met basisnetwerken.",
+
+  "security.hero.metric1Label": "SOC-simulaties",
+  "security.hero.metric1Value": "18",
+  "security.hero.metric2Label": "Red-team opdrachten",
+  "security.hero.metric2Value": "12",
+  "security.hero.metric3Label": "Alumni actief in cybersecurity",
+  "security.hero.metric3Value": "95%",
+
+  // Overzicht
+  "security.overview.label": "Wat je leert",
+  "security.overview.title": "Verdedig elke laag van de organisatie",
+  "security.overview.text1": "Je analyseert kwetsbaarheden, voert pentests uit en bouwt verdedigingsmechanismen. We koppelen blue team, red team en governance zodat je end-to-end beveiligt.",
+  "security.overview.text2": "Je leert securityprogramma's opzetten die rekening houden met mensen, processen en technologie. We werken met frameworks zoals NIST, CIS en ISO 27001.",
+  "security.overview.list1": "Labs rond netwerk-, endpoint- en cloudbeveiliging",
+  "security.overview.list2": "Threat hunting in een gesimuleerde Security Operations Center",
+  "security.overview.list3": "Incident-responseoefeningen met forensics en rapportering",
+  "security.overview.list4": "Stage bij bedrijven, overheid of SOC-partners",
+
+  // Modules
+  "security.modules.label": "Programma",
+  "security.modules.title": "Modules & labs",
+  "security.modules.lead": "Elk onderdeel combineert theorie met scenario's in het lab. Je werkt met actuele tools, frameworks en casefiles.",
+  "security.modules.networkTitle": "Netwerk & endpoint security",
+  "security.modules.networkBody": "Firewalls, intrusion detection, endpoint protection en secure access.",
+  "security.modules.hackingTitle": "Ethical hacking",
+  "security.modules.hackingBody": "Pentesting tools, vulnerability scanning, exploits en social engineering.",
+  "security.modules.cloudTitle": "Cloud & app security",
+  "security.modules.cloudBody": "Azure Sentinel, AWS Security Hub, webapp-firewalls en API-beveiliging.",
+  "security.modules.governanceTitle": "Governance & compliance",
+  "security.modules.governanceBody": "Riskmanagement, policies, audits en GDPR- en NIS2-compliance.",
+
+  // Traject
+  "security.journey.label": "Traject",
+  "security.journey.title": "Van basis tot securityspecialist",
+  "security.journey.step1Title": "Intake & fundamentals",
+  "security.journey.step1Body": "Screening, refresh van netwerken en operating systems en introductie tot security mindset en tooling.",
+  "security.journey.step2Title": "Blue team labs",
+  "security.journey.step2Body": "Monitoring, detection, incident handling en rapportering binnen een gesimuleerde SOC.",
+  "security.journey.step3Title": "Red team & forensics",
+  "security.journey.step3Body": "Pentesting, exploitatie, reverse engineering en forensisch onderzoek met echte casussen.",
+  "security.journey.step4Title": "Stage & certificatie",
+  "security.journey.step4Body": "Stage van acht weken, coaching richting certificaten zoals CompTIA Security+, Cisco CCST of EC-Council en intensieve jobmatching.",
+
+  "security.cta.title": "Bescherm organisaties tegen digitale dreigingen",
+  "security.cta.body": "Boek je intake en ontdek hoe jij het verschil maakt als cyber security engineer, SOC-analist of incident responder.",
+  "security.cta.primary": "Plan intake",
+  "security.cta.secondary": "Stel een vraag",
 
   // -----------------------------
   // SUPPORT PAGE
   // -----------------------------
-  "support.hero.title": "IT Support",
-  "support.hero.lead": "Help gebruikers, los technische problemen op en leer omgaan met IT-servicebeheer.",
-  "support.cta.title": "Start je carrière in IT Support",
-  "support.cta.body": "Word de brug tussen technologie en mensen met deze praktijkgerichte opleiding.",
+  "support.hero.eyebrow": "Opleiding",
+  "support.hero.title": "PC en Netwerktechnicus",
+  "support.hero.lead": "Bouw je toekomst in ICT-support met een hands-on traject dat hardware, netwerken en klantgerichte service verenigt. Je leert storingen analyseren, systemen beveiligen en gebruikers professioneel begeleiden.",
+  "support.hero.ctaPrimary": "Plan je intake",
+  "support.hero.ctaSecondary": "Bekijk programma",
+  "support.hero.caption": "Leren in kleine groepen, moderne labs en coaching door experten uit het werkveld.",
+  "support.hero.metaTitle": "Volgende startmomenten",
+  "support.hero.metaDates": "9 maart 2026 (inschrijvingen open)",
+  "support.hero.metaNote": "Schrijf je in tot zes maanden voor de start. Infosessies en assessments helpen je bepalen of dit traject bij je past.",
+
+  "support.hero.metric1Label": "Stagepartners",
+  "support.hero.metric1Value": "60+",
+  "support.hero.metric2Label": "Tevreden cursisten",
+  "support.hero.metric2Value": "92%",
+  "support.hero.metric3Label": "Praktijklabs in de opleiding",
+  "support.hero.metric3Value": "70%",
+
+  // Overzicht
+  "support.overview.label": "Wat je leert",
+  "support.overview.title": "Een brede basis in IT-support",
+  "support.overview.text1": "Je groeit uit tot het eerste aanspreekpunt voor werkplekken, servers en gebruikers. Je combineert troubleshooting met proactieve monitoring en documentatie volgens ITIL-standaarden.",
+  "support.overview.text2": "Naast techniek werken we aan communicatie, service skills en werkplekorganisatie. Zo kan je helder rapporteren, prioriteiten stellen en teams ondersteunen in hybride omgevingen.",
+  "support.overview.list1": "70% praktijklabs rond hardware, netwerken en security",
+  "support.overview.list2": "Stage bij een partnerbedrijf of social-profitorganisatie",
+  "support.overview.list3": "Begeleiding door digicoaches en taalondersteuning",
+  "support.overview.list4": "Softskills: klantcommunicatie, teamwork en planning",
+
+  // Modules
+  "support.modules.label": "Programma",
+  "support.modules.title": "Modules & vakgebieden",
+  "support.modules.lead": "Een combinatie van fundamenten en specialisaties maakt je klaar voor helpdesk, onsite support of technisch beheer bij kmo's, overheden en integratoren.",
+  "support.modules.deviceTitle": "Werkplek & hardware",
+  "support.modules.deviceBody": "Assemblage, imaging, onderhoud en troubleshooting van pc's, laptops en randapparatuur. Je werkt met diagnostische tools en volgt best practices voor lifecyclemanagement.",
+  "support.modules.networkTitle": "Netwerken & cloud",
+  "support.modules.networkBody": "LAN/WAN-basics, wifi, routing en switching, introductie tot Azure en M365-beheer. Je leert configureren, monitoren en incidenten oplossen.",
+  "support.modules.osTitle": "Besturingssystemen",
+  "support.modules.osBody": "Windows 11, Windows Server en Linux-basics. Automatisering met PowerShell, rechtenbeheer en veilige configuraties.",
+  "support.modules.securityTitle": "Security & service",
+  "support.modules.securityBody": "Endpointbescherming, back-up, disaster recovery en documentatie. Werk met ITIL-processen, SLA's en servicedesk-tools.",
+
+  // Traject
+  "support.journey.label": "Traject",
+  "support.journey.title": "Van intake tot eerste job",
+  "support.journey.step1Title": "Intake & fundamentals",
+  "support.journey.step1Body": "Infosessie, assessments en taalcheck. Je start met werkplekfundamenten, veiligheid en servicedeskflow.",
+  "support.journey.step2Title": "Deep dive labs",
+  "support.journey.step2Body": "Projectmatig werken rond netwerken, virtualisatie en scripts met coaching op troubleshooting en klantencontact.",
+  "support.journey.step3Title": "Stage & certificatie",
+  "support.journey.step3Body": "Zes tot acht weken stage. We bereiden je voor op certificaten zoals CompTIA ITF+ of Microsoft Fundamentals.",
+  "support.journey.step4Title": "Jobcoaching",
+  "support.journey.step4Body": "CV- en interviewcoaching, matching met partners en nazorg in het eerste jaar op de werkvloer.",
+
+  "support.cta.title": "Klaar om als PC en Netwerktechnicus te starten?",
+  "support.cta.body": "Plan je intake en ontdek hoe we jouw leerpad personaliseren. Onze coaches staan klaar om al je vragen te beantwoorden.",
+  "support.cta.primary": "Plan intake",
+  "support.cta.secondary": "Stel een vraag",
 
   // -----------------------------
   // FOOTER

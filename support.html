@@ -44,7 +44,7 @@
           <nav class="primary-nav" aria-label="Hoofdmenu">
             <ul class="nav-links" id="primary-navigation" role="list">
               <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-              <li><a href="index.html#opleidingen" data-i18n="nav.training">Opleidingen</a></li>
+              <li><a href="opleidingen.html" data-i18n="nav.training">Opleidingen</a></li>
               <li><a href="inschrijven.html" data-i18n="nav.register">Inschrijven</a></li>
               <li><a href="overons.html" data-i18n="nav.about">Over ons</a></li>
               <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
@@ -67,39 +67,58 @@
       </header>
 
       <main id="main-content" tabindex="-1">
-        <section class="hero hero--program">
-          <div class="container hero__grid">
-            <div class="hero__content">
-              <span class="hero__eyebrow" data-i18n="support.hero.eyebrow">Opleiding</span>
-              <h1 class="hero__title" data-i18n="support.hero.title">PC en Netwerktechnicus</h1>
-              <p class="hero__description" data-i18n="support.hero.lead">
-                Bouw je toekomst in ICT-support met een hands-on traject dat hardware, netwerken en klantgerichte
-                service verenigt. Je leert storingen analyseren, systemen beveiligen en gebruikers professioneel
-                begeleiden.
-              </p>
-              <div class="hero__actions">
+        <section class="hero hero--program program-hero">
+          <div class="container hero__grid program-hero__grid">
+            <div class="hero__content program-hero__content">
+              <div class="program-hero__intro">
+                <span class="hero__eyebrow" data-i18n="support.hero.eyebrow">Opleiding</span>
+                <h1 class="hero__title" data-i18n="support.hero.title">PC en Netwerktechnicus</h1>
+                <p class="hero__description" data-i18n="support.hero.lead">
+                  Bouw je toekomst in ICT-support met een hands-on traject dat hardware, netwerken en klantgerichte
+                  service verenigt. Je leert storingen analyseren, systemen beveiligen en gebruikers professioneel
+                  begeleiden.
+                </p>
+              </div>
+              <div class="hero__actions program-hero__actions">
                 <a class="button" href="inschrijven.html" data-i18n="support.hero.ctaPrimary">Plan je intake</a>
                 <a class="button button--ghost" href="#modules" data-i18n="support.hero.ctaSecondary">Bekijk programma</a>
               </div>
-            </div>
-            <div class="hero__visual">
-              <div class="hero-card hero-card--program">
-                <img
-                  src="assets/img/infraweb2.jpg" data-critical="true" decoding="async"
-                  alt="Cursisten oefenen netwerkbeheer in het lab"
-                  loading="eager" />
-                <p class="hero-card__caption" data-i18n="support.hero.caption">
-                  Leren in kleine groepen, moderne labs en coaching door experten uit het werkveld.
-                </p>
-              </div>
-              <div class="hero-highlight">
-                <span data-i18n="support.hero.metaTitle">Volgende startmomenten</span>
-                <strong data-i18n="support.hero.metaDates">9 maart 2026 (inschrijvingen open)</strong>
-                <p data-i18n="support.hero.metaNote">
+              <div class="program-hero__meta">
+                <span class="program-hero__meta-title" data-i18n="support.hero.metaTitle">Volgende startmomenten</span>
+                <strong class="program-hero__meta-value" data-i18n="support.hero.metaDates">9 maart 2026 (inschrijvingen open)</strong>
+                <p class="program-hero__meta-note" data-i18n="support.hero.metaNote">
                   Schrijf je in tot zes maanden voor de start. Infosessies en assessments helpen je bepalen of dit traject
                   bij je past.
                 </p>
               </div>
+              <dl class="program-hero__metrics" role="list">
+                <div class="program-hero__metric">
+                  <dt data-i18n="support.hero.metric1Label">Stagepartners</dt>
+                  <dd data-i18n="support.hero.metric1Value">60+</dd>
+                </div>
+                <div class="program-hero__metric">
+                  <dt data-i18n="support.hero.metric2Label">Tevreden cursisten</dt>
+                  <dd data-i18n="support.hero.metric2Value">92%</dd>
+                </div>
+                <div class="program-hero__metric">
+                  <dt data-i18n="support.hero.metric3Label">Praktijklabs in de opleiding</dt>
+                  <dd data-i18n="support.hero.metric3Value">70%</dd>
+                </div>
+              </dl>
+            </div>
+            <div class="hero__visual program-hero__media">
+              <div class="program-hero__image">
+                <img
+                  src="assets/img/infraweb2.jpg"
+                  data-critical="true"
+                  decoding="async"
+                  alt="Cursisten oefenen netwerkbeheer in het lab"
+                  loading="eager"
+                />
+              </div>
+              <p class="program-hero__caption" data-i18n="support.hero.caption">
+                Leren in kleine groepen, moderne labs en coaching door experten uit het werkveld.
+              </p>
             </div>
           </div>
         </section>

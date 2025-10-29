@@ -39,7 +39,7 @@
           <nav class="primary-nav" aria-label="Hoofdmenu">
             <ul class="nav-links" id="primary-navigation" role="list">
               <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-              <li><a href="index.html#opleidingen" data-i18n="nav.training">Opleidingen</a></li>
+              <li><a href="opleidingen.html" data-i18n="nav.training">Opleidingen</a></li>
               <li><a href="inschrijven.html" data-i18n="nav.register">Inschrijven</a></li>
               <li><a href="overons.html" data-i18n="nav.about">Over ons</a></li>
               <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
@@ -63,22 +63,46 @@
 
       <main id="main-content" tabindex="-1">
         <!-- HERO -->
-        <section class="hero hero--program">
-          <div class="container hero__grid">
-            <div class="hero__content">
-              <span class="hero__eyebrow" data-i18n="python.hero.eyebrow">Opleiding</span>
-              <h1 class="hero__title" data-i18n="python.hero.title">Netwerkbeheerder met Python</h1>
-              <p class="hero__description" data-i18n="python.hero.lead">
-                Leer bedrijfsnetwerken ontwerpen en beheren terwijl je workflows automatiseert met Python. Deze opleiding
-                combineert infrastructuur, cloud en scripting om je klaar te stomen voor moderne netwerkomgevingen.
-              </p>
-              <div class="hero__actions">
+        <section class="hero hero--program program-hero">
+          <div class="container hero__grid program-hero__grid">
+            <div class="hero__content program-hero__content">
+              <div class="program-hero__intro">
+                <span class="hero__eyebrow" data-i18n="python.hero.eyebrow">Opleiding</span>
+                <h1 class="hero__title" data-i18n="python.hero.title">Netwerkbeheerder met Python</h1>
+                <p class="hero__description" data-i18n="python.hero.lead">
+                  Leer bedrijfsnetwerken ontwerpen en beheren terwijl je workflows automatiseert met Python. Deze opleiding
+                  combineert infrastructuur, cloud en scripting om je klaar te stomen voor moderne netwerkomgevingen.
+                </p>
+              </div>
+              <div class="hero__actions program-hero__actions">
                 <a class="button" href="inschrijven.html" data-i18n="python.hero.ctaPrimary">Plan je intake</a>
                 <a class="button button--ghost" href="#modules" data-i18n="python.hero.ctaSecondary">Bekijk programma</a>
               </div>
+              <div class="program-hero__meta">
+                <span class="program-hero__meta-title" data-i18n="python.hero.metaTitle">Startmoment</span>
+                <strong class="program-hero__meta-value" data-i18n="python.hero.metaDates">18 november 2025</strong>
+                <p class="program-hero__meta-note" data-i18n="python.hero.metaNote">
+                  Inschrijven kan tot zes maanden voor de start. Na de intake volg je een voorbereidende sprint met
+                  Python-basics.
+                </p>
+              </div>
+              <dl class="program-hero__metrics" role="list">
+                <div class="program-hero__metric">
+                  <dt data-i18n="python.hero.metric1Label">Automatiseringscases</dt>
+                  <dd data-i18n="python.hero.metric1Value">45+</dd>
+                </div>
+                <div class="program-hero__metric">
+                  <dt data-i18n="python.hero.metric2Label">Python sprints</dt>
+                  <dd data-i18n="python.hero.metric2Value">12</dd>
+                </div>
+                <div class="program-hero__metric">
+                  <dt data-i18n="python.hero.metric3Label">Certificatiesucces</dt>
+                  <dd data-i18n="python.hero.metric3Value">88%</dd>
+                </div>
+              </dl>
             </div>
-            <div class="hero__visual">
-              <div class="hero-card hero-card--program">
+            <div class="hero__visual program-hero__media">
+              <div class="program-hero__image">
                 <img
                   src="assets/img/pythonweb.jpg"
                   data-critical="true"
@@ -86,18 +110,10 @@
                   alt="Studenten automatiseren netwerken met Python"
                   loading="eager"
                 />
-                <p class="hero-card__caption" data-i18n="python.hero.caption">
-                  Combineer netwerklabs met automatiseringsoefeningen in Python en DevOps-tools.
-                </p>
               </div>
-              <div class="hero-highlight">
-                <span data-i18n="python.hero.metaTitle">Startmoment</span>
-                <strong data-i18n="python.hero.metaDates">18 november 2025</strong>
-                <p data-i18n="python.hero.metaNote">
-                  Inschrijven kan tot zes maanden voor de start. Na de intake volg je een voorbereidende sprint met
-                  Python-basics.
-                </p>
-              </div>
+              <p class="program-hero__caption" data-i18n="python.hero.caption">
+                Combineer netwerklabs met automatiseringsoefeningen in Python en DevOps-tools.
+              </p>
             </div>
           </div>
         </section>
