@@ -308,6 +308,7 @@ window.i18n.nl = {
   "contact.placeholders.email": "naam@voorbeeld.be",
   "contact.placeholders.message": "Hoe kunnen we je helpen?",
   "contact.peopleTitle": "Contactpersonen",
+  "contact.peopleIntro": "Neem contact op met de juiste persoon voor je vraag. We staan klaar om te helpen met opleidingen, stages of communicatie.",
   "contact.general.title": "Algemene info",
   "contact.general.body": "info@intecbrussel.be<br />02/411 29 07",
   "contact.openingTitle": "Openingstijden campus",

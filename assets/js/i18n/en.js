@@ -303,6 +303,7 @@ window.i18n.en = {
   "contact.placeholders.email": "name@example.com",
   "contact.placeholders.message": "How can we assist you?",
   "contact.peopleTitle": "Contact persons",
+  "contact.peopleIntro": "Get in touch with the right person for your enquiry. We’re ready to help with courses, internships, or communications.",
   "contact.general.title": "General info",
   "contact.general.body": "info@intecbrussel.be<br />02/411 29 07",
   "contact.openingTitle": "Campus opening hours",
