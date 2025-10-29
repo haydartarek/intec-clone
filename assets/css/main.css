@@ -1507,7 +1507,6 @@ p {
 }
 
 .program-grid.is-visible .card-icon {
-  --card-icon-mask: url("assets/icons/network.svg");
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -1517,36 +1516,12 @@ p {
   color: var(--color-primary-dark);
   flex-shrink: 0;
   box-shadow: 0 8px 20px rgba(15, 130, 138, 0.12);
-  position: relative;
 }
 
-.program-grid.is-visible .card-icon::after {
-  content: "";
+.program-grid.is-visible .card-icon svg {
   width: 28px;
   height: 28px;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  mask: var(--card-icon-mask) no-repeat center;
-  -webkit-mask: var(--card-icon-mask) no-repeat center;
-  mask-size: contain;
-  -webkit-mask-size: contain;
-}
-
-.program-grid.is-visible .card-icon img,
-.program-grid.is-visible .card-icon svg {
-  max-width: 60%;
-  height: auto;
-}
-
-.program-grid.is-visible .card-icon--python {
-  --card-icon-mask: url("assets/icons/python.svg");
-}
-
-.program-grid.is-visible .card-icon--server {
-  --card-icon-mask: url("assets/icons/server.svg");
-}
-
-.program-grid.is-visible .card-icon--shield {
-  --card-icon-mask: url("assets/icons/shield.svg");
+  fill: currentColor;
 }
 
 .program-grid.is-visible .card h3 {
@@ -2534,7 +2509,7 @@ textarea:valid:not(:placeholder-shown) {
 
 .program-info-grid .grid-list {
   display: grid;
-  gap: var(--space-md);
+  gap: clamp(1rem, 2vw, 1.35rem);
   list-style: none;
   padding: 0;
   margin: 0;
@@ -2542,22 +2517,116 @@ textarea:valid:not(:placeholder-shown) {
 
 .program-info-grid .grid-list li {
   position: relative;
-  padding-left: 1.5rem;
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 0.85rem;
+  align-items: flex-start;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(15, 130, 138, 0.08);
   color: var(--color-text-muted);
   font-size: var(--text-body);
-  line-height: var(--leading-relaxed);
+  line-height: 1.65;
+}
+
+.program-info-grid .grid-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .program-info-grid .grid-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.65rem;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  box-shadow: 0 2px 6px rgba(15, 130, 138, 0.25);
+  content: attr(data-icon);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--color-iris), color-mix(in srgb, var(--color-accent) 50%, #5f8dff 50%));
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  box-shadow: 0 12px 24px rgba(70, 89, 170, 0.25);
+  margin-top: 0.25rem;
+}
+
+.program-info-grid {
+  grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.05fr) minmax(0, 1.05fr);
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+}
+
+.program-info-grid > .highlight-box {
+  background: #ffffff;
+  border: 1px solid rgba(15, 130, 138, 0.08);
+  border-radius: calc(var(--radius-md) + 6px);
+  padding: clamp(1.75rem, 3vw, 2.3rem);
+  box-shadow: 0 22px 48px rgba(15, 130, 138, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.2rem, 2.5vw, 1.75rem);
+}
+
+.program-info-grid > .highlight-box:first-child .grid-list {
+  gap: clamp(0.85rem, 2vw, 1.1rem);
+}
+
+.program-info-grid > .highlight-box:first-child .grid-list li::before {
+  background: linear-gradient(135deg, var(--color-iris), color-mix(in srgb, var(--color-accent) 40%, #5f8dff 60%));
+}
+
+.program-info-grid > .highlight-box p {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.program-info-grid > .highlight-box p + p {
+  margin-top: 0.85rem;
+}
+
+.program-info-grid > .highlight-box h3 {
+  margin: 0;
+}
+
+@media (max-width: 1200px) {
+  .program-info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .program-info-grid > :nth-child(3) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .program-info-grid {
+    grid-template-columns: 1fr;
+    gap: clamp(1.25rem, 5vw, 1.75rem);
+  }
+
+  .program-info-grid > .highlight-box {
+    padding: clamp(1.5rem, 4vw, 1.9rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .program-info-grid > .highlight-box {
+    padding: clamp(1.25rem, 6vw, 1.6rem);
+  }
+
+  .program-info-grid .grid-list li {
+    grid-template-columns: 32px 1fr;
+    gap: 0.65rem;
+  }
+
+  .program-info-grid .grid-list li::before {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
 }
 
 .page--program .stats-bar {
