@@ -1,0 +1,9 @@
+/* Backup: main.css pre-refactor
+   File: assets/css/main.css
+   Created: 2025-10-30
+   Note: This file is a lightweight marker backup created before an automated consolidation edit.
+   The full original content exists in Git history. If you want a byte-for-byte copy included here,
+   I can create it (it will be large). For now this file records timestamp and the backup intent.
+*/
+
+/* To restore original: git checkout -- assets/css/main.css */
