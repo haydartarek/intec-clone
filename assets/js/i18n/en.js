@@ -70,6 +70,86 @@ window.i18n.en = {
   "home.courses.subtitle": "Future-oriented training with personal guidance.",
   "home.courses.lead": "Our VDAB-recognized programs focus on building future-proof IT skills. Learn in small groups with digital coaches and integrated language support.",
 
+  // -----------------------------
+  // OPLEIDINGEN / COURSES PAGE
+  // -----------------------------
+  "courses.eyebrow": "Official offering",
+  "courses.title": "INTEC Brussels programs",
+  "courses.lead": "Choose from four tracks offered directly from our campus. Content, start dates and descriptions are based on official information so you can rely on accurate details.",
+  "courses.cta.primary": "Plan intake",
+  "courses.cta.viewPrograms": "View programs",
+
+  "courses.why.title": "Why these tracks?",
+  "courses.why.item1": "Up-to-date content aligned with the Brussels labour market",
+  "courses.why.item2": "Hands-on guidance from trainers who work in the field",
+  "courses.why.item3": "Start dates and learning paths as published by INTEC Brussels",
+  "courses.why.item4": "Preparation for jobs in infrastructure, network management and security",
+
+  "courses.overview.label": "Program overview",
+  "courses.overview.title": "Which program fits you?",
+  "courses.overview.lead": "Discover the four tracks and click through for more information or to plan your intake.",
+
+  // Program: PC & Network Technician
+  "courses.pc.title": "PC and Network Technician",
+  "courses.pc.body": "Manage servers, configure networks and perform troubleshooting. You’ll work with Cisco, Linux and Microsoft and develop strong support skills.",
+  "courses.pc.startLabel": "Start dates",
+  "courses.pc.more": "More info",
+
+  // Program: Network Administrator with Python
+  "courses.python.title": "Network Administrator with Python",
+  "courses.python.body": "Combine network administration with automation in Python. Labs focus on modern infrastructures and scripting.",
+  "courses.python.startLabel": "Start date",
+  "courses.python.more": "More info",
+
+  // Program: System Administrator
+  "courses.sysadmin.title": "System Administrator",
+  "courses.sysadmin.body": "Build expertise in infrastructure, Windows/Linux servers, virtualization and monitoring. Practical projects and certification preparation are included.",
+  "courses.sysadmin.startLabel": "Start dates",
+  "courses.sysadmin.more": "More info",
+
+  // Program: Cyber Security Engineer
+  "courses.cyber.title": "Cyber Security Engineer",
+  "courses.cyber.body": "Learn to secure networks, perform security analyses and reduce incidents with ethical hacking and cloud security.",
+  "courses.cyber.startLabel": "Start date",
+  "courses.cyber.more": "More info",
+
+  // Deepen / highlights
+  "courses.deepen.eyebrow": "Deepen",
+  "courses.deepen.title": "What to expect per track?",
+  "courses.deepen.lead": "Highlights directly based on the core of each program as offered by INTEC Brussels.",
+
+  // PC highlights
+  "courses.pc.feature1": "Introduction to managing servers and networks",
+  "courses.pc.feature2": "Explore Cisco, Linux and Microsoft ecosystems",
+  "courses.pc.feature3": "Troubleshooting techniques for common issues",
+  "courses.pc.feature4": "Preparation for a practical role as a first-line IT technician",
+
+  // Python highlights
+  "courses.python.feature1": "Combine network configuration with automation in Python",
+  "courses.python.feature2": "Hands-on labs focused on modern infrastructures",
+  "courses.python.feature3": "Focus on employability in a fast-growing field",
+  "courses.python.feature4": "For participants who want to expand networking skills with scripting",
+
+  // Sysadmin highlights
+  "courses.sysadmin.feature1": "In-depth knowledge of Windows and Linux servers",
+  "courses.sysadmin.feature2": "Virtualization, monitoring and cloud integrations",
+  "courses.sysadmin.feature3": "Project work and certification preparation",
+  "courses.sysadmin.feature4": "Ideal for a career in infrastructure teams",
+
+  // Cyber highlights
+  "courses.cyber.feature1": "Firewall management, vulnerability assessment and incident response",
+  "courses.cyber.feature2": "Ethical hacking labs and cloud security use cases",
+  "courses.cyber.feature3": "Collaboration with SOC teams and security partners",
+  "courses.cyber.feature4": "Ready for roles such as security analyst or consultant",
+
+  // CTA band
+  "courses.cta.newCohort": "New cohort starts early November",
+  "courses.cta.promptTitle": "Ready to choose your track?",
+  "courses.cta.promptLead": "Plan an intake and discover which program matches your ambitions.",
+  "courses.cta.register": "Register",
+  "courses.cta.ask": "Ask a question",
+
+
   "home.courses.pc.title": "PC and Network Technician",
   "home.courses.pc.body": "Develop expertise in hardware installation, server management, and troubleshooting for SMEs and large organizations.",
   "home.courses.pc.date1": "Start date: October 7, 2025",

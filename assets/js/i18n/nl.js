@@ -70,6 +70,86 @@ window.i18n.nl = {
   "home.courses.subtitle": "Toekomstgerichte opleidingen met persoonlijke begeleiding.",
   "home.courses.lead": "Onze erkende VDAB-programma's richten zich op het bouwen van toekomstgerichte IT-competenties. Je leert in kleine groepen, met digicoaches en taalondersteuning binnen handbereik.",
 
+  // -----------------------------
+  // OPLEIDINGEN / COURSES PAGE
+  // -----------------------------
+  "courses.eyebrow": "Officieel aanbod",
+  "courses.title": "De opleidingen van INTEC Brussel",
+  "courses.lead": "Kies uit vier trajecten die rechtstreeks van onze campus komen. Inhoud, startdata en beschrijvingen zijn gebaseerd op de officiële informatie zodat je zeker bent van de juiste details.",
+  "courses.cta.primary": "Plan intake",
+  "courses.cta.viewPrograms": "Bekijk programma's",
+
+  "courses.why.title": "Waarom deze trajecten?",
+  "courses.why.item1": "Actuele inhoud afgestemd op de Brusselse arbeidsmarkt",
+  "courses.why.item2": "Hands-on begeleiding door trainers uit het werkveld",
+  "courses.why.item3": "Startdata en leerpaden zoals gepubliceerd door INTEC Brussel",
+  "courses.why.item4": "Voorbereiding op jobs in infrastructuur, netwerkbeheer en security",
+
+  "courses.overview.label": "Programma overzicht",
+  "courses.overview.title": "Welke opleiding past bij jou?",
+  "courses.overview.lead": "Ontdek de vier trajecten en klik door voor meer informatie of om je intake te plannen.",
+
+  // Program: PC & Netwerktechnicus
+  "courses.pc.title": "PC en Netwerktechnicus",
+  "courses.pc.body": "Servers beheren, netwerken configureren en troubleshooting uitvoeren. Je leert werken met Cisco, Linux en Microsoft en ontwikkelt sterke supportskills.",
+  "courses.pc.startLabel": "Startdata",
+  "courses.pc.more": "Meer info",
+
+  // Program: Netwerkbeheerder met Python
+  "courses.python.title": "Netwerkbeheerder met Python",
+  "courses.python.body": "Combineer netwerkbeheer met automatisering in Python. Labs richten zich op moderne infrastructuren en scripting.",
+  "courses.python.startLabel": "Startdatum",
+  "courses.python.more": "Meer info",
+
+  // Program: Systeembeheerder
+  "courses.sysadmin.title": "Systeembeheerder",
+  "courses.sysadmin.body": "Bouw expertise in infrastructuur, Windows/Linux servers, virtualisatie en monitoring. Met praktijkprojecten en certificatievoorbereiding.",
+  "courses.sysadmin.startLabel": "Startdata",
+  "courses.sysadmin.more": "Meer info",
+
+  // Program: Cyber Security Engineer
+  "courses.cyber.title": "Cyber Security Engineer",
+  "courses.cyber.body": "Leer netwerken beveiligen, security-analyses uitvoeren en incidenten reduceren met ethical hacking en cloud security.",
+  "courses.cyber.startLabel": "Startdatum",
+  "courses.cyber.more": "Meer info",
+
+  // Deepen / highlights
+  "courses.deepen.eyebrow": "Verdiep je",
+  "courses.deepen.title": "Wat mag je per traject verwachten?",
+  "courses.deepen.lead": "Hoogtepunten rechtstreeks gebaseerd op de kern van elke opleiding zoals die door INTEC Brussel wordt aangeboden.",
+
+  // PC highlights
+  "courses.pc.feature1": "Introductie tot het beheer van servers en netwerken",
+  "courses.pc.feature2": "Verken Cisco-, Linux- en Microsoft-ecosystemen",
+  "courses.pc.feature3": "Troubleshooting-technieken voor veelvoorkomende problemen",
+  "courses.pc.feature4": "Voorbereiding op een praktische rol als eerstelijns IT-technicus",
+
+  // Python highlights
+  "courses.python.feature1": "Netwerkconfiguratie combineren met automatisering in Python",
+  "courses.python.feature2": "Hands-on labs gericht op hedendaagse infrastructuren",
+  "courses.python.feature3": "Focus op inzetbaarheid in een snelgroeiend werkveld",
+  "courses.python.feature4": "Voor deelnemers die netwerkkennis willen uitbreiden met scripting",
+
+  // Sysadmin highlights
+  "courses.sysadmin.feature1": "Diepgaande kennis van Windows- en Linux-servers",
+  "courses.sysadmin.feature2": "Virtualisatie, monitoring en cloudintegraties",
+  "courses.sysadmin.feature3": "Projectwerk en certificatievoorbereiding",
+  "courses.sysadmin.feature4": "Ideaal voor een carriere in infrastructuurteams",
+
+  // Cyber highlights
+  "courses.cyber.feature1": "Firewallbeheer, vulnerability assessment en incident response",
+  "courses.cyber.feature2": "Ethical hacking labs en cloud security use cases",
+  "courses.cyber.feature3": "Samenwerken met SOC-teams en securitypartners",
+  "courses.cyber.feature4": "Klaar voor functies als security analyst of consultant",
+
+  // CTA band
+  "courses.cta.newCohort": "Nieuwe lichting start begin november",
+  "courses.cta.promptTitle": "Klaar om je traject te kiezen?",
+  "courses.cta.promptLead": "Plan een intake en ontdek welk programma aansluit op jouw ambities.",
+  "courses.cta.register": "Schrijf je in",
+  "courses.cta.ask": "Stel je vraag",
+
+
   "home.courses.pc.title": "PC en Netwerktechnicus",
   "home.courses.pc.body": "Bouw expertise op in hardware-installaties, serverbeheer en het oplossen van netwerkstoringen voor kmo's en grotere organisaties.",
   "home.courses.pc.date1": "Startdata: 7 oktober 2025",
