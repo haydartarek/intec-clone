@@ -574,7 +574,7 @@ p {
 }
 
 .hero__title::first-letter {
-  background: linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 35%, #7057ff 65%), #ffffff);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 35%, var(--color-iris) 65%), #ffffff);
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
@@ -582,7 +582,7 @@ p {
 
 .hero__title em,
 .hero__title span {
-  background: linear-gradient(135deg, #7357ff, color-mix(in srgb, var(--color-accent) 50%, #7357ff 50%));
+  background: linear-gradient(135deg, var(--color-iris), color-mix(in srgb, var(--color-accent) 50%, var(--color-iris) 50%));
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
@@ -623,14 +623,14 @@ p {
 }
 
 .hero__actions .button:not(.button--ghost) {
-  background: linear-gradient(135deg, #7357ff, color-mix(in srgb, var(--color-accent) 35%, #5f8dff 65%));
+  background: linear-gradient(135deg, var(--color-iris), color-mix(in srgb, var(--color-accent) 35%, #5f8dff 65%));
   color: #ffffff;
   border: none;
 }
 
 .hero__actions .button.button--ghost {
   background: transparent;
-  border: 2px solid color-mix(in srgb, var(--color-accent) 40%, #7357ff 60%);
+  border: 2px solid color-mix(in srgb, var(--color-accent) 40%, var(--color-iris) 60%);
   color: color-mix(in srgb, var(--color-primary-dark) 40%, #5a4dc9 60%);
   box-shadow: none;
 }
@@ -686,7 +686,7 @@ p {
   inset: 0;
   border-radius: 50%;
   padding: 3px;
-  background: linear-gradient(135deg, rgba(115, 87, 255, 0.85), color-mix(in srgb, var(--color-primary) 60%, #7057ff 40%));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-iris) 85%, transparent), color-mix(in srgb, var(--color-primary) 60%, var(--color-iris) 40%));
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
@@ -1003,7 +1003,7 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #7357ff, color-mix(in srgb, var(--color-accent) 50%, #5f8dff 50%));
+  background: linear-gradient(135deg, var(--color-iris), color-mix(in srgb, var(--color-accent) 50%, #5f8dff 50%));
   color: #ffffff;
   font-weight: 700;
   font-size: 1.05rem;
@@ -1026,6 +1026,34 @@ p {
   font-size: var(--text-body);
   color: var(--color-text-muted);
   line-height: 1.65;
+}
+
+.program-highlight__features,
+.program-modules__grid,
+.program-benefits__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: clamp(1.5rem, 3vw, 2rem);
+  align-items: stretch;
+}
+
+.program-highlight__intro .section-heading,
+.program-modules__intro .section-heading,
+.program-benefits__intro .section-heading {
+  max-width: 720px;
+}
+
+.section-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.9rem, 2vw, 1.3rem);
+  margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+.section-actions .button {
+  border-radius: 999px;
+  padding-inline: clamp(1.5rem, 3vw, 2.1rem);
 }
 
 
@@ -1597,6 +1625,7 @@ p {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  min-width: 150px;
   text-decoration: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease,
     border-color 0.3s ease;
