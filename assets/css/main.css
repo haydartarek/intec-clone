@@ -1531,19 +1531,6 @@ p {
   padding-bottom: 0;
 }
 
-.grid-two .feature-item__icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-soft));
-  color: #ffffff;
-  flex-shrink: 0;
-  box-shadow: 0 6px 16px rgba(15, 130, 138, 0.18);
-}
-
 .grid-two .feature-item__icon svg {
   width: 20px;
   height: 20px;
@@ -1663,7 +1650,8 @@ p {
   box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.04);
 }
 
-.program-grid.is-visible .card {
+.program-grid.is-visible .card,
+.program-grid .program-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1675,6 +1663,7 @@ p {
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
   padding: 2rem 1.75rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
 }
 
 .program-grid.is-visible .card:hover,
@@ -1682,6 +1671,12 @@ p {
   transform: translateY(-6px);
   box-shadow: var(--shadow-hover);
   border-top: 3px solid var(--color-accent);
+}
+
+.program-grid .program-card:hover,
+.program-grid .program-card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
 }
 
 .program-grid.is-visible .card-header {
@@ -3653,3 +3648,6 @@ textarea:focus-visible {
 
 
 
+.program-grid .program-card {
+  border-top: none;
+}
