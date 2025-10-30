@@ -696,28 +696,28 @@ main > section:nth-of-type(5):not([class*="section--"], [class*="bg-"]) {
 
 /* Card component (low-specificity, safe to add) */
 .card {
+
+.card {
   background: var(--color-surface);
-  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
   box-shadow: var(--shadow-sm);
-  border: var(--border-width) solid var(--border-color);
+  transition: var(--transition-base);
   overflow: hidden;
   display: block;
 }
 
-.card__body {
-  padding: var(--space-card);
-}
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
 
-.card--elevated {
-  box-shadow: var(--shadow-card);
-  transform: translateZ(0);
-}
+.card__header { font-weight: var(--font-weight-bold); font-size: var(--font-size-lg); margin-bottom: var(--space-md); }
+.card__meta { color: var(--color-text-secondary); font-size: var(--font-size-sm); }
 
-.card--ghost {
-  background: transparent;
-  border: none;
-  box-shadow: none;
-}
+.card__body { padding: var(--space-card); }
+
+.card--elevated { box-shadow: var(--shadow-card); transform: translateZ(0); }
+
+.card--ghost { background: transparent; border: none; box-shadow: none; }
 
 /* Responsive utilities */
 @media (max-width: 720px) {
