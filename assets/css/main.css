@@ -661,9 +661,7 @@ main > section:nth-of-type(5):not([class*="section--"], [class*="bg-"]) {
   display: none !important;
 }
 
-.text-center {
-  text-align: center;
-}
+/* .text-center consolidated: canonical utility with !important is defined later in this file (utilities section). Removed duplicate ruleset to fix duplicate-selector lint errors. */
 
 /* --------------------------------------------------------------------------
    Utility System Finalization (low specificity, additive)
@@ -702,26 +700,70 @@ main > section:nth-of-type(5):not([class*="section--"], [class*="bg-"]) {
 
 /* Card component (low-specificity, safe to add) */
 .card {
+  /* Harmonized card internal spacing and layout
+     - Use vertical rhythm token --space-card for top/bottom padding
+     - Use medium horizontal padding so cards align in grids
+     - Use flex column to allow equal-height cards when used inside grids
+     - Keep border, radius and shadow tokens to preserve visual identity */
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: var(--space-lg);
+  padding-block: var(--space-card);
+  padding-inline: var(--space-md);
   box-shadow: var(--shadow-sm);
   transition: var(--transition-base);
   overflow: hidden;
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 
-.card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
 
-.card__header { font-weight: var(--font-weight-bold); font-size: var(--font-size-lg); margin-bottom: var(--space-md); }
+/* Header / title area: align icons/numbers with titles */
+.card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-elements);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  margin: 0 0 var(--space-md) 0; /* Title to text gap: ~1.5x base */
+}
+.card__title { margin: 0; flex: 1; }
+.card__icon { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
 .card__meta { color: var(--color-text-secondary); font-size: var(--font-size-sm); }
 
-.card__body { padding: var(--space-card); }
+/* Card body uses flexible area to balance heights in grids */
+.card__body {
+  padding: 0; /* internal padding moved to .card to ensure consistent edges */
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-elements);
+  flex: 1 1 auto;
+}
 
 .card--elevated { box-shadow: var(--shadow-card); transform: translateZ(0); }
 
 .card--ghost { background: transparent; border: none; box-shadow: none; }
+
+/* Paragraphs inside cards: consistent line-height and spacing */
+.card p {
+  margin: 0 0 var(--space-sm) 0;
+  line-height: var(--leading-relaxed);
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+}
+
+/* Buttons inside cards get breathing space (top and bottom) */
+.card .button { margin-top: var(--space-md); margin-bottom: var(--space-md); }
+
+/* Small screens: reduce internal padding to preserve content density */
+@media (width <= 720px) {
+  .card { padding-block: calc(var(--space-card) * 0.75); padding-inline: var(--space-sm); }
+}
 
 /* Responsive utilities */
 @media (width <= 720px) {
@@ -4217,6 +4259,7 @@ textarea:valid:not(:placeholder-shown) {
     align-items: flex-start;
   }
 
+  /* stylelint-disable-next-line no-duplicate-selectors -- intentional responsive override */
   .highlight-box .grid-list li {
     min-height: 80px;
     padding: var(--space-md);
@@ -4496,10 +4539,7 @@ textarea:focus-visible {
   color: var(--color-surface);
 }
 
-::selection {
-  background: var(--color-accent);
-  color: var(--color-surface);
-}
+/* Duplicate ::selection removed (identical to the previous block) to resolve duplicate-selector linting. */
 
 ::-webkit-scrollbar {
   width: 12px;
