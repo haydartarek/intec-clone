@@ -3131,29 +3131,34 @@ body.page--program .hero__actions .button.button--ghost:focus-visible {
 .two-column > .contact-panel {
   background: var(--color-surface);
   color: var(--color-text-primary);
-  padding: var(--space-lg);
+  padding: var(--space-xl) var(--space-lg);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
   border: var(--border-width) solid var(--border-color);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
   gap: var(--space-sm);
   min-height: 1px; /* allow align-items: stretch on container to balance heights */
   align-self: stretch;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: 1.65;
 }
 
 .two-column > .highlight-box p,
 .two-column > .contact-panel p {
-  margin: 0;
+  margin: 0 0 var(--space-sm) 0;
   color: var(--color-text-primary);
   font-size: var(--text-body);
   line-height: var(--leading-relaxed);
   max-width: 60ch; /* readability */
 }
 
-.two-column > .highlight-box p + p,
-.two-column > .contact-panel p + p {
-  margin-top: var(--space-sm);
+.two-column > .highlight-box p:last-of-type,
+.two-column > .contact-panel p:last-of-type {
+  margin-bottom: 0;
 }
 
 .two-column > .highlight-box .button,
@@ -3161,6 +3166,44 @@ body.page--program .hero__actions .button.button--ghost:focus-visible {
 .two-column > .highlight-box a.button,
 .two-column > .contact-panel a.button {
   margin-top: var(--space-md);
+  align-self: flex-start; /* baseline aligned with text on desktop */
+}
+
+/* Contact links and emphasis in contact panel */
+.two-column > .contact-panel a,
+.two-column > .contact-panel strong,
+.two-column > .contact-panel .contact-link {
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+.two-column > .contact-panel a:hover,
+.two-column > .contact-panel .contact-link:hover {
+  text-decoration: underline;
+  color: var(--color-primary);
+}
+
+.two-column > .contact-panel a:focus-visible,
+.two-column > .contact-panel .contact-link:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (width <= 767px) {
+  .two-column > .highlight-box,
+  .two-column > .contact-panel {
+    font-size: var(--font-size-sm);
+    line-height: 1.7;
+    padding: var(--space-lg) var(--space-md);
+    align-items: stretch;
+  }
+
+  .two-column > .highlight-box .button,
+  .two-column > .contact-panel .button,
+  .two-column > .highlight-box a.button,
+  .two-column > .contact-panel a.button {
+    align-self: center; /* buttons centered on mobile */
+  }
 }
 
 /* Ensure footer elements (actions) stick to the bottom so boxes visually match height */
