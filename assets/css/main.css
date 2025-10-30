@@ -168,6 +168,12 @@
     --grid-gap-sm: calc(var(--grid-gap) / 2);
     --grid-gap-md: var(--grid-gap);
     --grid-gap-lg: calc(var(--grid-gap) * 1.5);
+
+  /* Additional semantic tokens */
+  --gap: var(--grid-gap);
+  --bg-hero: var(--gradient-shell);
+  --bg-purple: var(--color-secondary);
+  --bg-orange: var(--color-warm);
 }
 
 /* ============================================================================
@@ -393,14 +399,14 @@ main > section {
 .section {
   width: 100%;
   margin: 0;
-  padding-block: var(--space-xl);
+  padding: var(--space-2xl) 0;
   background: var(--color-background);
 }
 
 .section-container {
-  width: min(100%, var(--max-width-content));
+  max-width: var(--max-width-content);
   margin-inline: auto;
-  padding-inline: clamp(var(--space-sm), 4vw, var(--space-lg));
+  padding-inline: var(--space-xl);
 }
 
 .section-tight {
@@ -413,10 +419,10 @@ main > section {
 }
 
 .section--hero {
-  min-height: var(--section-hero-min-height);
+  min-height: 500px;
   display: flex;
   align-items: center;
-  padding-block: var(--space-xl);
+  background: var(--bg-hero);
 }
 
 /* NOTE: Duplicate hero/section rules exist in other blocks (legacy rules).
@@ -433,6 +439,9 @@ main > section {
   background: var(--color-surface);
   color: var(--color-text-primary);
 }
+
+.section--accent { background: var(--bg-purple); color: var(--color-surface); }
+.section--warm { background: var(--bg-orange); color: #2d1b04; }
 
 .section--accent {
   background: var(--color-secondary);
