@@ -2035,77 +2035,6 @@ body.page--program .hero__actions .button.button--ghost:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .highlight-box.is-visible { transition: none !important; }
 }
-
-/* Harmonize visible highlight-box and contact-panel to appear as twin cards */
-.two-column > .highlight-box.is-visible,
-.two-column > .contact-panel {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: stretch;
-  padding: var(--space-xl) var(--space-lg);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  box-shadow: var(--shadow-card);
-  border: 1px solid var(--border-color);
-  min-height: 100%;
-}
-
-/* Ensure internal text rhythm */
-.two-column > .highlight-box.is-visible p,
-.two-column > .contact-panel p {
-  margin: 0 0 var(--space-sm) 0;
-  font-size: var(--font-size-base);
-  line-height: 1.65;
-  color: var(--color-text-primary);
-  max-width: 60ch;
-}
-
-.two-column > .highlight-box.is-visible p:last-of-type,
-.two-column > .contact-panel p:last-of-type {
-  margin-bottom: 0;
-}
-
-/* Button alignment and sizing */
-.two-column > .highlight-box.is-visible .button,
-.two-column > .contact-panel .button,
-.two-column > .highlight-box.is-visible a.button,
-.two-column > .contact-panel a.button {
-  margin-top: var(--space-md);
-  align-self: flex-start;
-  min-height: 48px;
-  padding-inline: var(--space-lg);
-  border-radius: var(--radius-pill, 999px);
-}
-
-/* Contact links emphasis */
-.two-column > .contact-panel a,
-.two-column > .contact-panel .contact-link {
-  font-weight: 600;
-  color: var(--color-primary-dark);
-}
-
-.two-column > .contact-panel a:hover,
-.two-column > .contact-panel .contact-link:hover {
-  text-decoration: underline;
-  color: var(--color-primary);
-}
-
-/* Responsive stacking behavior */
-@media (width <= 767px) {
-  .two-column > .highlight-box.is-visible,
-  .two-column > .contact-panel {
-    display: block;
-    width: 100%;
-    margin-bottom: var(--space-md);
-    padding: var(--space-lg) var(--space-md);
-    text-align: left;
-  }
-
-  .two-column > .highlight-box.is-visible .button,
-  .two-column > .contact-panel .button { align-self: center; }
-}
-
 .card h3,
 .course-card h3,
 .program-card h3,
@@ -2295,6 +2224,22 @@ body.page--program .hero__actions .button.button--ghost:focus-visible {
   padding: var(--space-card);
 }
 
+/* Card-level styling for FAQ items: keep cards consistent with design tokens */
+.faq-grid > * {
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+  padding: var(--space-card);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.faq-grid > *:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
 .faq-grid > :nth-child(1) {
   grid-column: span 2;
 } /* ???????? ?????? ??????? ?????? ??????? */
@@ -2366,14 +2311,12 @@ body.page--program .hero__actions .button.button--ghost:focus-visible {
 }
 
 .faq-grid,
-.two-column,
 .timeline--four {
   line-height: var(--leading-relaxed);
   color: var(--color-text-muted);
   font-size: var(--text-body);
 } /* ????? ????? ???? ?? ???? */
 .faq-grid > *,
-.two-column > *,
 .timeline--four .timeline__item {
   display: flex;
   flex-direction: column;
@@ -2383,7 +2326,6 @@ body.page--program .hero__actions .button.button--ghost:focus-visible {
 } /* ???????? ???? ?????? */
 .faq-grid h3,
 .faq-grid h4,
-.two-column h3,
 .timeline--four h3 {
   font-size: var(--text-h4);
   font-weight: 700;
@@ -2392,7 +2334,6 @@ body.page--program .hero__actions .button.button--ghost:focus-visible {
   line-height: var(--leading-snug);
 } /* ??????? */
 .faq-grid p,
-.two-column p,
 .timeline--four p {
   margin: 0;
   font-size: var(--text-body);
@@ -2401,12 +2342,10 @@ body.page--program .hero__actions .button.button--ghost:focus-visible {
   hyphens: auto;
 } /* ??? ???????? ??? ??????? ??????? */
 .faq-grid p + p,
-.two-column p + p,
 .timeline--four p + p {
   margin-top: var(--space-xs);
 } /* ??? ???? ?????? ???? ???????? */
 .faq-grid > *,
-.two-column > *,
 .timeline--four .timeline__item {
   min-height: 100%;
 }
@@ -3203,165 +3142,187 @@ body.page--program .hero__actions .button.button--ghost:focus-visible {
 .timeline--four {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(1.5rem, 2.5vw, 2rem);
-} /* Two Column Layout */
+}
+
+/* ============================
+   TWO-COLUMN LAYOUT (Modern Glass Style)
+   ============================ */
+
 .two-column {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
   gap: var(--gap-cards);
   align-items: stretch;
   justify-content: center;
-  background: color-mix(in srgb, var(--color-surface) 70%, transparent);
-  border-radius: var(--radius-md);
-  border: var(--border-width) solid var(--border-color);
-  box-shadow: var(--shadow-card);
-  padding: var(--space-card);
-  backdrop-filter: blur(10px) saturate(160%);
-  transition:
-    box-shadow var(--transition-base),
-    transform var(--transition-base);
+  background: color-mix(in srgb, var(--color-surface) 75%, transparent);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgb(15 130 138 / 12%);
+  box-shadow: 0 6px 22px rgb(15 130 138 / 10%);
+  padding: var(--space-xl);
+  backdrop-filter: blur(14px) saturate(160%);
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
 }
 
-.two-column > * {
-  background: var(--color-surface);
-  border: var(--border-width) solid var(--border-color-strong);
-  border-radius: var(--radius-md);
-  padding: var(--space-card);
-  box-shadow: var(--shadow-sm);
-  transition:
-    transform var(--transition-base),
-    box-shadow var(--transition-base);
-}
-
-.two-column > *:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
-}
-
-/* Refined two-column layout and unified box styles for highlight-box + contact-panel
-   - Desktop: fixed two-column grid, consistent gap and balanced heights
-   - Mobile: single column, reduced gap, full-width centered blocks
-   - Visual rhythm: unified padding, radius, shadow, background and text color
-   - Accessibility: max line-length, visible focus states for keyboard users
-   - Animation: subtle fade-up, respects prefers-reduced-motion
-*/
-
-@media (width >= 768px) {
-  .two-column {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-lg);
-    align-items: stretch;
-    justify-content: center;
-  }
-}
-
-@media (width <= 767px) {
-  .two-column {
-    grid-template-columns: 1fr;
-    gap: var(--space-md);
-    width: 100%;
-    justify-content: center;
-    margin-inline: auto;
-  }
-
-  .two-column > * {
-    width: 100%;
-    margin-inline: auto;
-  }
-}
-
-/* Target the two elements we want visually unified inside the two-column */
+/* ============================
+   CARDS INSIDE TWO-COLUMN
+   ============================ */
 .two-column > .highlight-box,
 .two-column > .contact-panel {
-  background: var(--color-surface);
-  color: var(--color-text-primary);
-  padding: var(--space-xl) var(--space-lg);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-  border: var(--border-width) solid var(--border-color);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: stretch;
-  gap: var(--space-sm);
-  min-height: 1px; /* allow align-items: stretch on container to balance heights */
-  align-self: stretch;
-  font-family: var(--font-primary);
-  font-size: var(--font-size-base);
-  line-height: 1.65;
+  gap: var(--space-md);
+  background: color-mix(in srgb, var(--color-surface) 94%, var(--color-accent) 6%);
+  border: 1px solid rgb(15 130 138 / 14%);
+  border-radius: var(--radius-md);
+  box-shadow: 0 6px 18px rgb(15 130 138 / 10%);
+  padding: var(--space-xl) var(--space-lg);
+  min-height: 100%;
+  line-height: 1.75;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
 }
 
-.two-column > .highlight-box p,
-.two-column > .contact-panel p {
-  margin: 0 0 var(--space-sm) 0;
-  color: var(--color-text-primary);
+/* Smooth hover lift effect */
+.two-column > .highlight-box:hover,
+.two-column > .contact-panel:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgb(15 130 138 / 14%);
+  background: color-mix(in srgb, var(--color-surface) 97%, var(--color-accent) 3%);
+}
+
+/* ============================
+   TEXT & PARAGRAPH STYLE
+   ============================ */
+.two-column p {
+  position: relative;
+  margin: 0 0 var(--space-sm);
+  padding-left: 2rem;
   font-size: var(--text-body);
-  line-height: var(--leading-relaxed);
-  max-width: 60ch; /* readability */
+  color: var(--color-text-primary);
+  line-height: 1.75;
+  text-align: left;
+  transition: color 0.3s ease;
 }
 
-.two-column > .highlight-box p:last-of-type,
-.two-column > .contact-panel p:last-of-type {
+.two-column p:last-child {
   margin-bottom: 0;
 }
 
-.two-column > .highlight-box .button,
-.two-column > .contact-panel .button,
-.two-column > .highlight-box a.button,
-.two-column > .contact-panel a.button {
-  margin-top: var(--space-md);
-  align-self: flex-start; /* baseline aligned with text on desktop */
-}
-
-/* Contact links and emphasis in contact panel */
-.two-column > .contact-panel a,
-.two-column > .contact-panel strong,
-.two-column > .contact-panel .contact-link {
-  font-weight: 600;
+/* Add icons visually before each paragraph */
+.two-column p::before {
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  font-size: 1.25rem;
   color: var(--color-primary-dark);
+  opacity: 0.9;
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-.two-column > .contact-panel a:hover,
-.two-column > .contact-panel .contact-link:hover {
-  text-decoration: underline;
+.two-column p:hover::before {
+  transform: scale(1.15);
+  opacity: 1;
+}
+
+/* Assign contextual icons */
+.two-column > .highlight-box p:nth-of-type(1)::before { content: "📩"; }
+.two-column > .highlight-box p:nth-of-type(2)::before { content: "🧭"; }
+.two-column > .highlight-box p:nth-of-type(3)::before { content: "📅"; }
+
+.two-column > .contact-panel p:nth-of-type(1)::before { content: "💬"; }
+.two-column > .contact-panel p:nth-of-type(2)::before { content: "📧"; }
+.two-column > .contact-panel p:nth-of-type(3)::before { content: "📞"; }
+.two-column > .contact-panel p:nth-of-type(4)::before { content: "🕓"; }
+
+/* ============================
+   HEADINGS
+   ============================ */
+.two-column h3,
+.two-column h4 {
+  font-size: var(--text-h4);
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: var(--space-sm);
+  letter-spacing: 0.015em;
+  line-height: var(--leading-snug);
+}
+
+/* ============================
+   LINKS
+   ============================ */
+.two-column a {
+  color: var(--color-primary-dark);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.25s ease, text-decoration 0.25s ease;
+}
+
+.two-column a:hover {
   color: var(--color-primary);
+  text-decoration: underline;
 }
 
-.two-column > .contact-panel a:focus-visible,
-.two-column > .contact-panel .contact-link:focus-visible {
-  outline: 3px solid var(--color-accent);
-  outline-offset: 3px;
+/* ============================
+   BUTTONS
+   ============================ */
+.two-column .button,
+.two-column a.button {
+  align-self: flex-start;
+  background: var(--color-accent-soft);
+  color: var(--color-primary-dark);
+  font-weight: 600;
+  font-size: var(--text-body);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgb(15 130 138 / 10%);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
-@media (width <= 767px) {
-  .two-column > .highlight-box,
-  .two-column > .contact-panel {
-    font-size: var(--font-size-sm);
-    line-height: 1.7;
-    padding: var(--space-lg) var(--space-md);
-    align-items: stretch;
-  }
-
-  .two-column > .highlight-box .button,
-  .two-column > .contact-panel .button,
-  .two-column > .highlight-box a.button,
-  .two-column > .contact-panel a.button {
-    align-self: center; /* buttons centered on mobile */
-  }
+.two-column .button:hover,
+.two-column a.button:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 18px rgb(15 130 138 / 15%);
+  background: color-mix(in srgb, var(--color-accent-soft) 85%, white 15%);
 }
 
-/* Ensure footer elements (actions) stick to the bottom so boxes visually match height */
+/* Keep last child at bottom */
 .two-column > .highlight-box > *:last-child,
 .two-column > .contact-panel > *:last-child {
   margin-top: auto;
 }
 
-/* Focus states for keyboard users inside these boxes */
-.two-column .button:focus-visible,
-.two-column a:focus-visible {
-  outline: 3px solid var(--color-accent);
-  outline-offset: 3px;
-  box-shadow: 0 6px 18px rgb(15 130 138 / 12%);
+/* ============================
+   RESPONSIVE BEHAVIOR
+   ============================ */
+@media (max-width: 767px) {
+  .two-column {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .two-column > .highlight-box,
+  .two-column > .contact-panel {
+    padding: var(--space-lg) var(--space-md);
+    font-size: var(--font-size-sm);
+    line-height: 1.7;
+  }
+
+  .two-column h3 {
+    text-align: center;
+    font-size: var(--text-h5);
+  }
+
+  .two-column .button {
+    align-self: center;
+    width: 100%;
+  }
 }
+
 
 /* Subtle fade-up animation for appearance (disabled when user prefers reduced motion) */
 @keyframes fade-up {
@@ -3376,9 +3337,6 @@ body.page--program .hero__actions .button.button--ghost:focus-visible {
   }
 }
 
-.two-column > * {
-  animation: fade-up 480ms ease both;
-}
 
 @media (prefers-reduced-motion: reduce) {
   .two-column > * {
@@ -3769,31 +3727,13 @@ textarea:valid:not(:placeholder-shown) {
   font-size: var(--text-body) !important;
   max-width: 30ch !important;
   margin-inline: auto !important;
-} /* ============ 5. FAQ or additional sections ============ */
-.faq-grid {
-  display: grid;
-  gap: var(--gap-cards);
-  background: var(--color-surface);
-  border-radius: var(--radius-md);
-  border: var(--border-width) solid var(--border-color);
-  box-shadow: var(--shadow-card);
-  padding: var(--space-card);
 }
+/* ============ 5. FAQ or additional sections ============ */
+/* FAQ card layout is defined in the canonical `.faq-grid` block earlier
+   in this file to avoid duplication. See the main `.faq-grid` definition
+   near the components area for layout and card rules. */
 
-.faq-grid > * {
-  background: var(--color-surface);
-  border-radius: var(--radius-sm);
-  padding: var(--space-card);
-  box-shadow: var(--shadow-sm);
-  transition:
-    transform var(--transition-base),
-    box-shadow var(--transition-base);
-}
-
-.faq-grid > *:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
-} /* Partners Section */
+/* Partners Section */
 .partners-section {
   padding-block: var(--space-section);
   background: var(--gradient-shell);
@@ -4274,7 +4214,7 @@ textarea:valid:not(:placeholder-shown) {
 }
 
 .contact-panel a:hover,
-.two-column a:focus-visible {
+ a:focus-visible {
   color: var(--color-primary-dark);
   text-decoration: underline;
   text-decoration: none;
@@ -4530,7 +4470,6 @@ textarea:valid:not(:placeholder-shown) {
   }
 
   .hero__grid,
-  .two-column,
   .about-hero__layout,
   .contact-hero__layout,
   .hero--with-form .hero__grid {
