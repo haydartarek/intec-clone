@@ -2245,7 +2245,7 @@ body.page--program .hero__actions .button.button--ghost:focus-visible {
   font-size: 1rem;
   line-height: 1.6;
   font-weight: 400;
-  word-break: break-word;
+  overflow-wrap: anywhere;
   width: 100%;
   align-self: stretch;
 }
@@ -2275,7 +2275,7 @@ body.page--program .hero__actions .button.button--ghost:focus-visible {
   line-height: 1.6;
   font-weight: 500;
   flex: 1;
-  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .program-info-grid .grid-list li:last-child {
@@ -2387,7 +2387,7 @@ body.page--program .hero__actions .button.button--ghost:focus-visible {
   color: var(--color-text);
   font-size: 1rem;
   line-height: 1.6;
-  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .grid-two .feature-list {
@@ -3213,7 +3213,7 @@ textarea:valid:not(:placeholder-shown) {
   margin-bottom: var(--space-sm);
   margin-top: 0;
   clear: both;
-  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .about-values__grid > article::after {
