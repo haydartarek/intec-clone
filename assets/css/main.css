@@ -133,6 +133,23 @@
   --hero-max-width: 1200px;
   --hero-bg: rgb(255 255 255 / 94%);
   --hero-image-height: clamp(320px, 38vw, 460px);
+
+  /* Button tokens (mapped to existing values to avoid visual changes) */
+  --button-padding-y: 0.78rem;
+  --button-padding-x: 1.75rem;
+  --button-radius: 36px;
+  --button-font-size: 0.95rem;
+  --button-min-height: 44px;
+  --button-ghost-bg: rgb(15 130 138 / 8%);
+
+  /* Card tokens (already largely present but explicit for consolidation) */
+  --card-padding: var(--space-card);
+  --card-radius: var(--radius-md);
+  --card-border: var(--border-width) solid var(--border-color);
+
+  /* Container tokens */
+  --container-padding-sm: clamp(var(--space-sm), 4vw, var(--space-lg));
+  --container-padding-wide: clamp(var(--space-sm), 6vw, var(--space-2xl));
 }
 
 /* ============================================================================
@@ -384,6 +401,11 @@ main > section {
   padding-block: var(--space-xl);
 }
 
+/* NOTE: Duplicate hero/section rules exist in other blocks (legacy rules).
+   These are intentionally preserved for now to avoid visual regressions.
+   Marked for later cleanup: consolidate hero-related styles into
+   a single canonical block and remove legacy duplicates in a follow-up PR. */
+
 .section--colored {
   color: var(--color-surface);
 }
@@ -566,10 +588,10 @@ main > section:nth-of-type(5):not([class*="section--"], [class*="bg-"]) {
   justify-content: center;
   gap: var(--space-sm);
   font-weight: var(--font-weight-medium);
-  font-size: 0.95rem;
-  padding: 0.78rem 1.75rem;
-  border-radius: 36px;
-  min-height: 44px;
+  font-size: var(--button-font-size);
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border-radius: var(--button-radius);
+  min-height: var(--button-min-height);
   color: var(--color-surface);
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   box-shadow: var(--shadow-card);
@@ -587,7 +609,7 @@ main > section:nth-of-type(5):not([class*="section--"], [class*="bg-"]) {
 }
 
 .button--ghost {
-  background: rgb(15 130 138 / 8%);
+  background: var(--button-ghost-bg);
   color: var(--color-primary-dark);
   border: var(--border-width) solid var(--border-color);
 }
