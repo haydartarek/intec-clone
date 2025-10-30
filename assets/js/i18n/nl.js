@@ -362,11 +362,11 @@ window.i18n.nl = {
   "about.journey.label": "Onze aanpak",
   "about.journey.title": "Van talent tot duurzame tewerkstelling",
   "about.journey.step1Title": "1. Instroom & selectie",
-  "about.journey.step1Body": "We starten met infosessies...",
+  "about.journey.step1Body": "We starten met infosessies, assessments en taalchecks zodat elke cursist in het juiste traject belandt.",
   "about.journey.step2Title": "2. Leertraject & coaching",
-  "about.journey.step2Body": "Intensieve modules, taalondersteuning...",
+  "about.journey.step2Body": "Intensieve modules, taalondersteuning en loopbaanbegeleiding gaan hand in hand. We werken in kleine groepen met veel praktijk.",
   "about.journey.step3Title": "3. Stage & alumni",
-  "about.journey.step3Body": "We koppelen cursisten aan partners...",
+  "about.journey.step3Body": "We koppelen cursisten aan partners, volgen hen op tot een jaar na instroom en blijven investeren in verdere groei.",
 
   // -----------------------------
   // CONTACT PAGE
