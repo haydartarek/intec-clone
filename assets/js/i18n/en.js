@@ -364,6 +364,35 @@ window.i18n.en = {
   "about.journey.step3Body": "We connect students with partners and continue to support them after graduation.",
 
   // -----------------------------
+  // DIGIPUNT PAGE
+  // -----------------------------
+  "digipunt.label": "Digipoint",
+  "digipunt.title": "DIGIPUNT INTEC",
+  "digipunt.lead1": "INTEC Brussels' Digipoint at the Muntpunt library supports anyone who needs digital help or wants to become more confident with smartphones, tablets, or computers.",
+  "digipunt.lead2": "Our digi-coaches answer your questions, guide you step by step, and create a learning plan so you can continue practicing independently.",
+  "digipunt.chip.support": "Digipoint support",
+  "digipunt.cta.contact": "Contact",
+  "digipunt.cta.courses": "Explore courses",
+
+  "digipunt.whatTitle": "What can you do there?",
+  "digipunt.whatBody": "We run free workshops and personalised coaching tracks. Everything is free and accessible without an appointment during opening hours.",
+  "digipunt.list.item1": "Apps, settings and accounts on smartphone or tablet",
+  "digipunt.list.item2": "Laptop basics, file management and safe browsing",
+  "digipunt.list.item3": "Online services like appointments, banking and shopping",
+  "digipunt.list.item4": "Online security and protection against phishing",
+
+  "digipunt.whereTitle": "Where & when?",
+  "digipunt.whereBody": "Digipoint INTEC\nMuntpunt library, 3rd floor\nMunt 6, 1000 Brussels",
+  "digipunt.hours.tue": "Tuesday: 14:00 - 18:00 (drop-in)",
+  "digipunt.hours.wedthu": "Wednesday & Thursday: 14:00 - 17:00",
+  "digipunt.hours.fri": "Friday: 14:00 - 17:00",
+
+  "digipunt.contactTitle": "Contact",
+  "digipunt.contactBody": "digipunt@intecbrussel.be<br />+32 474 93 17 46",
+  "digipunt.contactNote": "Want to know more or request a group session? Email or call us and we'll explore the options together.",
+  "digipunt.moreInfo": "MORE INFO",
+
+  // -----------------------------
   // CONTACT PAGE
   // -----------------------------
   "contact.label": "Contact",
@@ -391,6 +420,7 @@ window.i18n.en = {
   "contact.phoneHours": "Phone available 9:00 - 12:00 and 13:00 - 16:00",
   "contact.pr.title": "Press & communication",
   "contact.pr.body": "pr@intecbrussel.be",
+  "contact.combined.title": "Communications & Workplace Learning",
   "contact.stage.title": "Internships & workplace learning",
   "contact.stage.body": "stage@intecbrussel.be",
   "contact.digipunt.title": "Digipoint & support",
@@ -729,4 +759,28 @@ window.i18n.en = {
   "team.cta.body": "We are open to new partners, volunteers, and future colleagues. Contact us for more information about collaboration, guest lectures, or open vacancies.",
   "team.cta.primary": "Schedule a Meeting",
   "team.cta.secondary": "Explore Courses"
+  ,
+  // -----------------------------
+  // VACANCIES PAGE
+  "vacancies.label": "Vacancies",
+  "vacancies.hero.title": "Vacancies at INTEC Brussels",
+  "vacancies.hero.lead": "Work with us to develop talent and guide them toward sustainable IT careers. We’re looking for colleagues who want to make an impact.",
+  "vacancies.hero.chip1": "Impactful teams",
+  "vacancies.hero.chip2": "Learning organisation",
+  "vacancies.hero.chip3": "Hybrid collaboration",
+  "vacancies.hero.cardTitle": "Your future at INTEC",
+  "vacancies.hero.perk1": "Committed teams that help talent grow.",
+  "vacancies.hero.perk2": "Opportunities for training, coaching and innovation.",
+  "vacancies.hero.perk3": "Flexible workplaces in Brussels and beyond.",
+  "vacancies.hero.ctaLinkedIn": "Follow us on LinkedIn",
+  "vacancies.hero.ctaContact": "Contact us",
+  "vacancies.section.title": "Our open positions",
+  "vacancies.section.lead": "Here you’ll find an overview of current vacancies at INTEC Brussels. Apply online or get in touch for more information.",
+  "vacancies.cta.eyebrow": "Stay informed",
+  "vacancies.cta.title": "Can't find a suitable vacancy?",
+  "vacancies.cta.body": "Follow us on LinkedIn or send a spontaneous application to our HR team. We'd love to hear from you.",
+  "vacancies.cta.primary": "Email us your CV",
+  "vacancies.cta.secondary": "Follow us on LinkedIn",
+  "vacancies.loading": "Loading vacancies...",
+  "vacancies.meta.title": "Vacancies at INTEC Brussels | INTEC Brussels"
 };

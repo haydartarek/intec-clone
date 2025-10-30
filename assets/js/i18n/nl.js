@@ -369,6 +369,35 @@ window.i18n.nl = {
   "about.journey.step3Body": "We koppelen cursisten aan partners, volgen hen op tot een jaar na instroom en blijven investeren in verdere groei.",
 
   // -----------------------------
+  // DIGIPUNT PAGE
+  // -----------------------------
+  "digipunt.label": "Digipunt",
+  "digipunt.title": "DIGIPUNT INTEC",
+  "digipunt.lead1": "Het Digipunt van INTEC Brussel in de Muntpunt-bibliotheek ondersteunt iedereen die zich digitaal achterop voelt of gewoon vaardiger wil worden met smartphone, tablet of computer.",
+  "digipunt.lead2": "Onze digicoaches beantwoorden jouw vragen, helpen je stap voor stap verder en stellen samen een leerplan op zodat je zelfstandig kan oefenen.",
+  "digipunt.chip.support": "Digipunt support",
+  "digipunt.cta.contact": "Contact",
+  "digipunt.cta.courses": "Ontdek opleidingen",
+
+  "digipunt.whatTitle": "Wat kan je er doen?",
+  "digipunt.whatBody": "We organiseren gratis workshops en persoonlijke coachingtrajecten. Alles is kosteloos en toegankelijk zonder afspraak tijdens de openingsuren.",
+  "digipunt.list.item1": "Apps, instellingen en accounts op smartphone of tablet",
+  "digipunt.list.item2": "Laptopbasics, bestanden beheren en veilig surfen",
+  "digipunt.list.item3": "Online diensten zoals afspraken maken, bankieren en shoppen",
+  "digipunt.list.item4": "Onlinesecurity en bescherming tegen phishing",
+
+  "digipunt.whereTitle": "Waar en wanneer?",
+  "digipunt.whereBody": "Digipunt INTEC\nMuntpunt bibliotheek, 3e verdieping\nMunt 6, 1000 Brussel",
+  "digipunt.hours.tue": "Dinsdag: 14:00 - 18:00 (vrije inloop)",
+  "digipunt.hours.wedthu": "Woensdag & Donderdag: 14:00 - 17:00",
+  "digipunt.hours.fri": "Vrijdag: 14:00 - 17:00",
+
+  "digipunt.contactTitle": "Contact",
+  "digipunt.contactBody": "digipunt@intecbrussel.be<br />+32 474 93 17 46",
+  "digipunt.contactNote": "Wil je meer weten of een groepssessie aanvragen? Stuur ons een mail of bel en we bekijken samen de mogelijkheden.",
+  "digipunt.moreInfo": "MEER INFO",
+
+  // -----------------------------
   // CONTACT PAGE
   // -----------------------------
   "contact.label": "Contact",
@@ -396,6 +425,7 @@ window.i18n.nl = {
   "contact.phoneHours": "Telefonisch bereikbaar 9:00 - 12:00 en 13:00 - 16:00",
   "contact.pr.title": "Pers & communicatie",
   "contact.pr.body": "pr@intecbrussel.be",
+  "contact.combined.title": "Pers & communicatie",
   "contact.stage.title": "Stages & werkplekleren",
   "contact.stage.body": "stage@intecbrussel.be",
   "contact.digipunt.title": "Digipunt & ondersteuning",
@@ -734,4 +764,28 @@ window.i18n.nl = {
   "team.cta.body": "We staan open voor nieuwe partners, vrijwilligers en toekomstige collega’s. Neem contact op voor meer info over samenwerking, gastcolleges of openstaande vacatures.",
   "team.cta.primary": "Plan een Gesprek",
   "team.cta.secondary": "Ontdek Opleidingen"
+  ,
+  // -----------------------------
+  // VACANCIES PAGE
+  "vacancies.label": "Vacatures",
+  "vacancies.hero.title": "Vacatures bij INTEC Brussel",
+  "vacancies.hero.lead": "Werk mee aan onze missie om talent te ontwikkelen en te begeleiden naar duurzame IT-jobs. We zoeken collega's die impact willen maken.",
+  "vacancies.hero.chip1": "Impactvolle teams",
+  "vacancies.hero.chip2": "Lerende organisatie",
+  "vacancies.hero.chip3": "Hybride samenwerken",
+  "vacancies.hero.cardTitle": "Je toekomst bij INTEC",
+  "vacancies.hero.perk1": "Betrokken teams die talent laten groeien.",
+  "vacancies.hero.perk2": "Ruimte voor opleiding, coaching en innovatie.",
+  "vacancies.hero.perk3": "Flexibele werkplekken in Brussel en daarbuiten.",
+  "vacancies.hero.ctaLinkedIn": "Volg ons op LinkedIn",
+  "vacancies.hero.ctaContact": "Neem contact op",
+  "vacancies.section.title": "Onze openstaande vacatures",
+  "vacancies.section.lead": "Hier vind je een overzicht van alle actuele vacatures bij INTEC Brussel. Solliciteer online of neem contact op voor meer informatie.",
+  "vacancies.cta.eyebrow": "Blijf op de hoogte",
+  "vacancies.cta.title": "Geen geschikte vacature gevonden?",
+  "vacancies.cta.body": "Volg ons op LinkedIn of stuur een spontane sollicitatie naar ons HR-team. We leren je graag kennen.",
+  "vacancies.cta.primary": "Mail ons je cv",
+  "vacancies.cta.secondary": "Volg ons op LinkedIn",
+  "vacancies.loading": "Vacatures worden geladen...",
+  "vacancies.meta.title": "Vacatures bij INTEC Brussel | INTEC Brussel"
 };

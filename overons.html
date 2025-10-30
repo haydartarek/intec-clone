@@ -11,19 +11,25 @@
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <link rel="stylesheet" href="assets/css/local-fonts.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
-       <script src="assets/js/i18n/nl.js"></script>
-<script src="assets/js/i18n/en.js"></script>
-<script src="assets/js/main.js" defer></script>
+    <script src="assets/js/i18n/nl.js"></script>
+    <script src="assets/js/i18n/en.js"></script>
+    <script src="assets/js/main.js" defer></script>
   </head>
+
   <body class="page--overons">
-    <a class="skip-link" href="#main-content">Ga naar hoofdinhoud</a>
     <div class="page-shell">
       <header class="site-header">
         <div class="container site-header__inner">
           <a class="brand" href="index.html" aria-label="INTEC Brussel">
-            <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" />
-            
+            <img
+              src="assets/img/logo+intec+brusselZWART1.png"
+              alt="INTEC Brussel logo"
+              data-critical="true"
+              decoding="async"
+              loading="eager"
+            />
           </a>
+
           <button
             class="nav-toggle"
             type="button"
@@ -41,6 +47,7 @@
               />
             </svg>
           </button>
+
           <nav class="primary-nav" aria-label="Hoofdmenu">
             <ul class="nav-links" id="primary-navigation" role="list">
               <li><a href="index.html" data-i18n="nav.home">Home</a></li>
@@ -51,13 +58,38 @@
               <li><a href="cvdb/index.html" data-i18n="nav.partners">Toegang Partners</a></li>
             </ul>
           </nav>
+
           <div class="site-header__actions">
-            <div
-              class="language-switch"
-              role="group"
-              aria-label="Taalkeuze"
-              data-i18n-aria-label="nav.languageGroup"
-            >
+            <ul class="social-links">
+              <li>
+                <a href="https://www.linkedin.com/groups/3973164/" target="_blank" rel="noreferrer noopener">
+                  <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:.5em;">
+                    <rect x="2" y="2" width="20" height="20" rx="3" fill="#0A66C2"></rect>
+                    <path fill="#fff" d="M6.5 9.5h2.5v8H6.5v-8zM7.75 7.5a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5zM12 9.5h2.3v1.1h.03c.32-.6 1.1-1.1 2.26-1.1 2.42 0 2.86 1.59 2.86 3.66v4.34h-2.5v-3.85c0-.92-.02-2.11-1.29-2.11-1.29 0-1.49 1.01-1.49 2.04v3.92H12v-8z"/>
+                  </svg>
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/intecbrussel.be" target="_blank" rel="noreferrer noopener">
+                  <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:.5em;">
+                    <rect x="2" y="2" width="20" height="20" rx="3" fill="#1877F2"></rect>
+                    <path fill="#fff" d="M15 8h-1.2c-.9 0-1.2.5-1.2 1.1V10H15l-.3 2h-2v6H10v-6H8v-2h2V9.1C10 7 11.2 6 13.1 6c1 0 1.9.1 1.9.1V8z"/>
+                  </svg>
+                  Facebook
+                </a>
+              </li>
+              <li>
+                <a href="https://x.com/INTEC_BRUSSEL" target="_blank" rel="noreferrer noopener">
+                  <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:.5em;">
+                    <rect x="2" y="2" width="20" height="20" rx="3" fill="#000"></rect>
+                    <path fill="#fff" d="M7 8l10 8M17 8L7 16" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                  </svg>
+                  X
+                </a>
+              </li>
+            </ul>
+            <div class="language-switch" role="group" aria-label="Taalkeuze" data-i18n-aria-label="nav.languageGroup">
               <button type="button" data-lang-select data-lang="nl">NL</button>
               <button type="button" data-lang-select data-lang="en">EN</button>
             </div>
@@ -65,7 +97,9 @@
           </div>
         </div>
       </header>
+
       <main id="main-content" tabindex="-1">
+        <!-- HERO -->
         <section class="about-hero">
           <div class="container about-hero__layout">
             <div class="about-hero__content">
@@ -86,6 +120,7 @@
                 <a class="button button--ghost" href="contact.html" data-i18n="about.hero.secondary">Plan kennismaking</a>
               </div>
             </div>
+
             <div class="about-hero__card card card--strong card--decorated">
               <strong data-i18n="about.valuesTitle">Onze waarden</strong>
               <ul class="about-pill-list">
@@ -110,6 +145,7 @@
           </div>
         </section>
 
+        <!-- ABOUT VALUES -->
         <section class="section intake-steps about-values">
           <div class="container">
             <div class="section-heading">
@@ -120,6 +156,7 @@
                 Samen met onze partners zorgen we ervoor dat talent kan groeien en organisaties klaar zijn voor morgen.
               </p>
             </div>
+
             <div class="about-values__grid">
               <article class="about-card card card--interactive card--decorated">
                 <span class="about-card__icon">01</span>
@@ -128,6 +165,7 @@
                   Van taalondersteuning tot digicoaches: we zorgen dat elk talent kan instromen en doorstromen.
                 </p>
               </article>
+
               <article class="about-card card card--interactive card--decorated">
                 <span class="about-card__icon">02</span>
                 <h3 data-i18n="about.values.card2Title">Sterke partnerschappen</h3>
@@ -135,6 +173,7 @@
                   We werken samen met bedrijven, overheden en non-profits om impact te maken in Brussel en Vlaanderen.
                 </p>
               </article>
+
               <article class="about-card card card--interactive card--decorated">
                 <span class="about-card__icon">03</span>
                 <h3 data-i18n="about.values.card3Title">Innovatie met mensen</h3>
@@ -142,6 +181,7 @@
                   Technologie is geen doel op zich: we koppelen digitale knowhow aan soft skills en coaching.
                 </p>
               </article>
+
               <article class="about-card card card--interactive card--decorated">
                 <span class="about-card__icon">04</span>
                 <h3 data-i18n="about.values.card4Title">Duurzame jobs</h3>
@@ -153,6 +193,7 @@
           </div>
         </section>
 
+        <!-- ABOUT COLUMNS -->
         <section class="section section--surface about-columns">
           <div class="container">
             <div class="about-columns__grid">
@@ -168,6 +209,7 @@
                 </p>
                 <a class="button" href="vacatures.html" data-i18n="about.workCta">Bekijk vacatures</a>
               </div>
+
               <div class="about-columns__card about-columns__card--accent card card--strong card--decorated">
                 <h2 data-i18n="about.experienceTitle">Ervaring sinds 2001</h2>
                 <p data-i18n="about.experienceIntro">
@@ -184,43 +226,53 @@
           </div>
         </section>
 
+        <!-- ABOUT JOURNEY -->
         <section class="section section--surface about-journey">
           <div class="container">
-            <div class="section-heading">
-              <span class="section-label" data-i18n="about.journey.label">Onze aanpak</span>
-              <h2 class="section-title" data-i18n="about.journey.title">Van talent tot duurzame tewerkstelling</h2>
+            <div class="timeline">
+              <div class="section-heading">
+                <span class="section-label" data-i18n="about.journey.label">Onze aanpak</span>
+                <h2 class="section-title" data-i18n="about.journey.title">
+                  Van talent tot duurzame tewerkstelling
+                </h2>
+              </div>
+
+              <ul class="timeline timeline--plain">
+                <li>
+                  <div class="timeline__content">
+                    <strong data-i18n="about.journey.step1Title">1. Instroom &amp; selectie</strong>
+                    <span data-i18n="about.journey.step1Body">
+                      We starten met infosessies, assessments en taalchecks zodat elke cursist in het juiste traject
+                      belandt.
+                    </span>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="timeline__content">
+                    <strong data-i18n="about.journey.step2Title">2. Leertraject &amp; coaching</strong>
+                    <span data-i18n="about.journey.step2Body">
+                      Intensieve modules, taalondersteuning en loopbaanbegeleiding gaan hand in hand. We werken in kleine
+                      groepen met veel praktijk.
+                    </span>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="timeline__content">
+                    <strong data-i18n="about.journey.step3Title">3. Stage &amp; alumni</strong>
+                    <span data-i18n="about.journey.step3Body">
+                      We koppelen cursisten aan partners, volgen hen op tot een jaar na instroom en blijven investeren in
+                      verdere groei.
+                    </span>
+                  </div>
+                </li>
+              </ul>
             </div>
-            <ul class="timeline timeline--plain">
-              <li>
-                <div class="timeline__content">
-                  <strong data-i18n="about.journey.step1Title">1. Instroom &amp; selectie</strong>
-                  <span data-i18n="about.journey.step1Body">
-                    We starten met infosessies, assessments en taalchecks zodat elke cursist in het juiste traject belandt.
-                  </span>
-                </div>
-              </li>
-              <li>
-                <div class="timeline__content">
-                  <strong data-i18n="about.journey.step2Title">2. Leertraject &amp; coaching</strong>
-                  <span data-i18n="about.journey.step2Body">
-                    Intensieve modules, taalondersteuning en loopbaanbegeleiding gaan hand in hand. We werken in kleine
-                    groepen met veel praktijk.
-                  </span>
-                </div>
-              </li>
-              <li>
-                <div class="timeline__content">
-                  <strong data-i18n="about.journey.step3Title">3. Stage &amp; alumni</strong>
-                  <span data-i18n="about.journey.step3Body">
-                    We koppelen cursisten aan partners, volgen hen op tot een jaar na instroom en blijven investeren in
-                    verdere groei.
-                  </span>
-                </div>
-              </li>
-            </ul>
           </div>
         </section>
 
+        <!-- CTA -->
         <section class="section cta-band cta-band--minimal cta-band--highlight">
           <div class="cta-band__inner container">
             <div class="cta-band__content">
@@ -230,9 +282,15 @@
                 Neem contact op en ontdek hoe we kunnen samenwerken rond trajecten, stages of coaching.
               </p>
             </div>
+
             <div class="cta-band__actions">
               <a class="button" href="contact.html" data-i18n="about.cta.primary">Contacteer ons team</a>
-              <a class="button button--ghost" href="index.html#opleidingen" data-i18n="about.cta.secondary">Ontdek opleidingen</a>
+              <a
+                class="button button--ghost"
+                href="index.html#opleidingen"
+                data-i18n="about.cta.secondary"
+                >Ontdek opleidingen</a
+              >
             </div>
           </div>
         </section>
@@ -243,14 +301,20 @@
           <div class="footer__grid">
             <div class="footer__column">
               <a class="brand" href="index.html">
-                <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" />
-                
+                <img
+                  src="assets/img/logo+intec+brusselZWART1.png"
+                  alt="INTEC Brussel logo"
+                  data-critical="true"
+                  decoding="async"
+                  loading="eager"
+                />
               </a>
               <p data-i18n="footer.mission">
                 INTEC Brussel bouwt aan een inclusieve digitale samenleving via opleidingen, coaching en partnerschappen
                 met werkgevers die klaar zijn voor morgen.
               </p>
             </div>
+
             <div class="footer__column">
               <h3 data-i18n="footer.contactTitle">Contact</h3>
               <ul>
@@ -262,6 +326,7 @@
                 <li><a href="mailto:pr@intecbrussel.be">pr@intecbrussel.be</a></li>
               </ul>
             </div>
+
             <div class="footer__column">
               <h3 data-i18n="footer.companyTitle">Bedrijfsinfo</h3>
               <ul>
@@ -270,15 +335,41 @@
                 <li data-i18n="footer.socialNumber">RSZ: 10/945-31-54801</li>
               </ul>
             </div>
+
             <div class="footer__column">
               <h3 data-i18n="footer.followTitle">Volg ons</h3>
               <ul>
-                <li><a href="https://www.linkedin.com/groups/3973164/" target="_blank" rel="noreferrer">LinkedIn</a></li>
-                <li><a href="https://www.facebook.com/intecbrussel.be" target="_blank" rel="noreferrer">Facebook</a></li>
-                <li><a href="https://x.com/INTEC_BRUSSEL" target="_blank" rel="noreferrer">X</a></li>
+                  <li>
+                    <a href="https://www.linkedin.com/groups/3973164/" target="_blank" rel="noreferrer noopener">
+                      <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:.5em;">
+                        <rect x="2" y="2" width="20" height="20" rx="3" fill="#0A66C2"></rect>
+                        <path fill="#fff" d="M6.5 9.5h2.5v8H6.5v-8zM7.75 7.5a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5zM12 9.5h2.3v1.1h.03c.32-.6 1.1-1.1 2.26-1.1 2.42 0 2.86 1.59 2.86 3.66v4.34h-2.5v-3.85c0-.92-.02-2.11-1.29-2.11-1.29 0-1.49 1.01-1.49 2.04v3.92H12v-8z"/>
+                      </svg>
+                      LinkedIn
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.facebook.com/intecbrussel.be" target="_blank" rel="noreferrer noopener">
+                      <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:.5em;">
+                        <rect x="2" y="2" width="20" height="20" rx="3" fill="#1877F2"></rect>
+                        <path fill="#fff" d="M15 8h-1.2c-.9 0-1.2.5-1.2 1.1V10H15l-.3 2h-2v6H10v-6H8v-2h2V9.1C10 7 11.2 6 13.1 6c1 0 1.9.1 1.9.1V8z"/>
+                      </svg>
+                      Facebook
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://x.com/INTEC_BRUSSEL" target="_blank" rel="noreferrer noopener">
+                      <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:.5em;">
+                        <rect x="2" y="2" width="20" height="20" rx="3" fill="#000"></rect>
+                        <path fill="#fff" d="M7 8l10 8M17 8L7 16" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                      </svg>
+                      X
+                    </a>
+                  </li>
               </ul>
             </div>
           </div>
+
           <div class="footer__meta">
             <span>&copy; <span id="year">2025</span> INTEC Brussel.</span>
             <span data-i18n="footer.accreditation">Erkend door VDAB, Actiris en ESF.</span>

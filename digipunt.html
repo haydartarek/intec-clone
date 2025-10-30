@@ -11,10 +11,11 @@
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <link rel="stylesheet" href="assets/css/local-fonts.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="assets/js/i18n/nl.js"></script>
+    <script src="assets/js/i18n/en.js"></script>
     <script src="assets/js/main.js" defer></script>
   </head>
   <body class="page--digipunt">
-    <a class="skip-link" href="#main-content">Ga naar hoofdinhoud</a>
     <div class="page-shell">
       <header class="site-header">
         <div class="container site-header__inner">
@@ -68,13 +69,13 @@
         <section class="about-hero hero--digipunt">
           <div class="container about-hero__layout">
             <div class="about-hero__content">
-              <span class="section-label">Digipunt</span>
-              <h1 class="about-hero__title">DIGIPUNT INTEC</h1>
-              <p class="about-hero__lead">
+              <span class="section-label" data-i18n="digipunt.label">Digipunt</span>
+              <h1 class="about-hero__title" data-i18n="digipunt.title">DIGIPUNT INTEC</h1>
+              <p class="about-hero__lead" data-i18n="digipunt.lead1">
                 Het Digipunt van INTEC Brussel in de Muntpunt-bibliotheek ondersteunt iedereen die zich digitaal
                 achterop voelt of gewoon vaardiger wil worden met smartphone, tablet of computer.
               </p>
-              <p class="about-hero__lead">
+              <p class="about-hero__lead" data-i18n="digipunt.lead2">
                 Onze digicoaches beantwoorden jouw vragen, helpen je stap voor stap verder en stellen samen een leerplan op
                 zodat je zelfstandig kan oefenen.
               </p>
@@ -102,42 +103,42 @@
           <div class="container">
             <div class="about-columns__grid">
               <article class="about-columns__card card card--strong">
-                <h2>Wat kan je er doen?</h2>
-                <p>
+                <h2 data-i18n="digipunt.whatTitle">Wat kan je er doen?</h2>
+                <p data-i18n="digipunt.whatBody">
                   We organiseren gratis workshops en persoonlijke coachingtrajecten. Alles is kosteloos en toegankelijk
                   zonder afspraak tijdens de openingsuren.
                 </p>
                 <ul class="about-pill-list">
-                  <li>Apps, instellingen en accounts op smartphone of tablet</li>
-                  <li>Laptopbasics, bestanden beheren en veilig surfen</li>
-                  <li>Online diensten zoals afspraken maken, bankieren en shoppen</li>
-                  <li>Onlinesecurity en bescherming tegen phishing</li>
+                  <li data-i18n="digipunt.list.item1">Apps, instellingen en accounts op smartphone of tablet</li>
+                  <li data-i18n="digipunt.list.item2">Laptopbasics, bestanden beheren en veilig surfen</li>
+                  <li data-i18n="digipunt.list.item3">Online diensten zoals afspraken maken, bankieren en shoppen</li>
+                  <li data-i18n="digipunt.list.item4">Onlinesecurity en bescherming tegen phishing</li>
                 </ul>
               </article>
               <article class="about-columns__card about-columns__card--accent card card--strong card--decorated">
-                <h2>Waar en wanneer?</h2>
-                <p>
+                <h2 data-i18n="digipunt.whereTitle">Waar en wanneer?</h2>
+                <p data-i18n-allow-html="true" data-i18n="digipunt.whereBody">
                   Digipunt INTEC<br />
                   Muntpunt bibliotheek, 3e verdieping<br />
                   Munt 6, 1000 Brussel
                 </p>
                 <ul class="about-pill-list">
-                  <li>Dinsdag: 14:00 - 18:00 (vrije inloop)</li>
-                  <li>Woensdag &amp; donderdag: 14:00 - 17:00</li>
-                  <li>Vrijdag: 14:00 - 17:00</li>
+                  <li data-i18n="digipunt.hours.tue">Dinsdag: 14:00 - 18:00 (vrije inloop)</li>
+                  <li data-i18n="digipunt.hours.wedthu">Woensdag &amp; donderdag: 14:00 - 17:00</li>
+                  <li data-i18n="digipunt.hours.fri">Vrijdag: 14:00 - 17:00</li>
                 </ul>
               </article>
               <article class="about-columns__card card card--strong">
-                <h2>Contact</h2>
-                <p>
+                <h2 data-i18n="digipunt.contactTitle">Contact</h2>
+                <p data-i18n-allow-html="true" data-i18n="digipunt.contactBody">
                   digipunt@intecbrussel.be<br />
                   +32 474 93 17 46
                 </p>
-                <p>
+                <p data-i18n="digipunt.contactNote">
                   Wil je meer weten of een groepssessie aanvragen? Stuur ons een mail of bel en we bekijken samen de
                   mogelijkheden.
                 </p>
-                <a class="button" href="https://samenin.brussels/diginew" target="_blank" rel="noreferrer noopener">MEER INFO</a>
+                <a class="button" href="https://samenin.brussels/diginew" target="_blank" rel="noreferrer noopener" data-i18n="digipunt.moreInfo">MEER INFO</a>
               </article>
             </div>
           </div>
@@ -195,9 +196,33 @@
             <div class="footer__column">
               <h3 data-i18n="footer.followTitle">Volg ons</h3>
               <ul>
-                <li><a href="https://www.linkedin.com/groups/3973164/" target="_blank" rel="noreferrer">LinkedIn</a></li>
-                <li><a href="https://www.facebook.com/intecbrussel.be" target="_blank" rel="noreferrer">Facebook</a></li>
-                <li><a href="https://x.com/INTEC_BRUSSEL" target="_blank" rel="noreferrer">X</a></li>
+                <li>
+                  <a href="https://www.linkedin.com/groups/3973164/" target="_blank" rel="noreferrer noopener">
+                    <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:.5em;">
+                      <rect x="2" y="2" width="20" height="20" rx="3" fill="#0A66C2"></rect>
+                      <path fill="#fff" d="M6.5 9.5h2.5v8H6.5v-8zM7.75 7.5a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5zM12 9.5h2.3v1.1h.03c.32-.6 1.1-1.1 2.26-1.1 2.42 0 2.86 1.59 2.86 3.66v4.34h-2.5v-3.85c0-.92-.02-2.11-1.29-2.11-1.29 0-1.49 1.01-1.49 2.04v3.92H12v-8z"/>
+                    </svg>
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.facebook.com/intecbrussel.be" target="_blank" rel="noreferrer noopener">
+                    <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:.5em;">
+                      <rect x="2" y="2" width="20" height="20" rx="3" fill="#1877F2"></rect>
+                      <path fill="#fff" d="M15 8h-1.2c-.9 0-1.2.5-1.2 1.1V10H15l-.3 2h-2v6H10v-6H8v-2h2V9.1C10 7 11.2 6 13.1 6c1 0 1.9.1 1.9.1V8z"/>
+                    </svg>
+                    Facebook
+                  </a>
+                </li>
+                <li>
+                  <a href="https://x.com/INTEC_BRUSSEL" target="_blank" rel="noreferrer noopener">
+                    <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:.5em;">
+                      <rect x="2" y="2" width="20" height="20" rx="3" fill="#000"></rect>
+                      <path fill="#fff" d="M7 8l10 8M17 8L7 16" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                    X
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
