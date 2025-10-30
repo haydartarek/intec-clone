@@ -2036,6 +2036,76 @@ body.page--program .hero__actions .button.button--ghost:focus-visible {
   .highlight-box.is-visible { transition: none !important; }
 }
 
+/* Harmonize visible highlight-box and contact-panel to appear as twin cards */
+.two-column > .highlight-box.is-visible,
+.two-column > .contact-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: var(--space-xl) var(--space-lg);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-color);
+  min-height: 100%;
+}
+
+/* Ensure internal text rhythm */
+.two-column > .highlight-box.is-visible p,
+.two-column > .contact-panel p {
+  margin: 0 0 var(--space-sm) 0;
+  font-size: var(--font-size-base);
+  line-height: 1.65;
+  color: var(--color-text-primary);
+  max-width: 60ch;
+}
+
+.two-column > .highlight-box.is-visible p:last-of-type,
+.two-column > .contact-panel p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Button alignment and sizing */
+.two-column > .highlight-box.is-visible .button,
+.two-column > .contact-panel .button,
+.two-column > .highlight-box.is-visible a.button,
+.two-column > .contact-panel a.button {
+  margin-top: var(--space-md);
+  align-self: flex-start;
+  min-height: 48px;
+  padding-inline: var(--space-lg);
+  border-radius: var(--radius-pill, 999px);
+}
+
+/* Contact links emphasis */
+.two-column > .contact-panel a,
+.two-column > .contact-panel .contact-link {
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+.two-column > .contact-panel a:hover,
+.two-column > .contact-panel .contact-link:hover {
+  text-decoration: underline;
+  color: var(--color-primary);
+}
+
+/* Responsive stacking behavior */
+@media (width <= 767px) {
+  .two-column > .highlight-box.is-visible,
+  .two-column > .contact-panel {
+    display: block;
+    width: 100%;
+    margin-bottom: var(--space-md);
+    padding: var(--space-lg) var(--space-md);
+    text-align: left;
+  }
+
+  .two-column > .highlight-box.is-visible .button,
+  .two-column > .contact-panel .button { align-self: center; }
+}
+
 .card h3,
 .course-card h3,
 .program-card h3,
