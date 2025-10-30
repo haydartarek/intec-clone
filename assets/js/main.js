@@ -127,6 +127,12 @@ document.addEventListener("DOMContentLoaded", function () {
       const active = lang === currentLanguage;
       btn.classList.toggle("is-active", active);
       btn.setAttribute("aria-pressed", active);
+      // Keep a single source of truth for the active language for CSS/selectors
+      if (active) {
+        btn.setAttribute("aria-current", "true");
+      } else {
+        btn.removeAttribute("aria-current");
+      }
     });
   }
 
