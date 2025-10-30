@@ -2159,7 +2159,7 @@ body.page--program .hero__actions .button.button--ghost:focus-visible {
     var(--color-primary),
     var(--color-accent)
   );
-  color: #fff;
+  color: var(--color-text-inverse);
   flex-shrink: 0;
   box-shadow: 0 8px 18px rgb(15 130 138 / 12%);
 }
@@ -4447,6 +4447,11 @@ textarea:valid:not(:placeholder-shown) {
 .text-muted {
   color: var(--color-text-muted) !important;
 }
+
+/* Low-specificity helpers for token-driven text colors */
+.text-on-surface { color: var(--color-text-primary) !important; }
+.text-inverse { color: var(--color-text-inverse) !important; }
+
 
 .bg-surface {
   background: var(--color-surface) !important;
