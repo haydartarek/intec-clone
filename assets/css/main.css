@@ -532,6 +532,20 @@ main > section:nth-of-type(5):not([class*="section--"], [class*="bg-"]) {
   gap: var(--grid-gap);
 }
 
+/* Explicit grid utilities per BDD */
+.grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: var(--gap); }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--gap); }
+.grid-auto { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: var(--gap); }
+
+@media (max-width: 1024px) {
+  .grid-3 { grid-template-columns: repeat(2,1fr); }
+}
+
+@media (max-width: 768px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .section { padding: var(--space-xl) 0; }
+}
+
 /* Expanded grid utilities */
 .grid-4 {
   display: grid;
