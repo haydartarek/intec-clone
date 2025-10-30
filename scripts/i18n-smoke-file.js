@@ -2,7 +2,7 @@
   const puppeteer = require('puppeteer');
   const path = require('path');
   const files = [
-    'index.html','opleidingen.html','contact.html','python.html','support.html'
+    'index.html','opleidingen.html','contact.html','python.html','support.html','systeembeheerder.html','security.html'
   ];
   const browser = await puppeteer.launch({args:['--no-sandbox','--disable-setuid-sandbox']});
   const page = await browser.newPage();
