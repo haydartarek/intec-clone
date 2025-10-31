@@ -20,6 +20,7 @@
   
   /* Text Colors - WCAG AA Optimized */
   --color-text: #0d2e30;                 /* Dark teal - 11.5:1 contrast on white */
+  --color-text-primary: #1b1b1b;         /* Primary UI text (header/nav) */
   --color-text-muted: #2d5456;          /* Muted text - 7:1 contrast on white */
   --color-text-light: #4a6b6d;          /* Light text for less emphasis */
   --color-text-invert: #ffffff;         /* White text for dark backgrounds */
@@ -33,8 +34,9 @@
   --color-surface: #ffffff;
   --color-surface-alt: #f6fbfb;         /* Slightly tinted surface */
   --color-primary-rgb: 15, 130, 138;
-  --color-glass-bg: color-mix(in srgb, rgb(var(--color-primary-rgb)) 18%, rgba(255, 255, 255, 0.65) 82%);
-  --color-glass-border: color-mix(in srgb, rgb(var(--color-primary-rgb)) 22%, rgba(255, 255, 255, 0.25) 78%);
+  --color-glass-bg: rgba(255, 255, 255, 0.85);
+  --color-glass-border: rgba(255, 255, 255, 0.5);
+  --color-glass-border-strong: rgba(255, 255, 255, 0.7);
   
   /* Border Colors */
   --color-border: #cfe3e2;              /* Light border */
@@ -91,7 +93,7 @@
   --carousel-dot-gap: 0.75rem;
   
 /* =======================================
-   SHADOW SYSTEM – INTEC 2025
+   SHADOW SYSTEM � INTEC 2025
    Unified soft teal depth hierarchy
    ======================================= */
 --shadow-sm: 0 2px 6px rgba(var(--color-primary-rgb), 0.06);
@@ -107,9 +109,7 @@
   0 8px 24px rgba(var(--color-primary-rgb), 0.12),
   0 24px 48px rgba(var(--color-primary-rgb), 0.10);
 
---shadow-glass:
-  0 6px 28px rgba(var(--color-primary-rgb), 0.14),
-  0 12px 32px rgba(var(--color-primary-rgb), 0.10);
+--shadow-glass: 0 4px 20px rgba(0, 0, 0, 0.05);
 
 /* =======================================
    BORDER & RADIUS SYSTEM
@@ -134,13 +134,14 @@
    UNIFIED GLASS ALIASES (LINK TO OLD SYSTEM)
    ======================================= */
 /* Ensure consistency and fallback safety */
---blur-glass: 12px;
+--blur-glass: 14px;
 --blur-glass-hover: calc(var(--blur-glass) + 4px);
 
 --glass-bg: var(--color-glass-bg);
 --glass-blur: var(--blur-glass);
 --glass-border: var(--color-glass-border);
---glass-shadow: var(--shadow-card);
+--glass-border-strong: var(--color-glass-border-strong);
+--glass-shadow: var(--shadow-glass);
 --glass-shadow-hover: var(--shadow-hover);
 --glass-transition: var(--transition-base);
 
@@ -405,7 +406,7 @@ h4 { font-size: var(--text-h4); }
 
 
 /* =======================================
-   STATS CARDS – High Contrast Numbers
+   STATS CARDS � High Contrast Numbers
    ======================================= */
 
 .stats-card {
@@ -440,7 +441,7 @@ h4 { font-size: var(--text-h4); }
 }
 
 /* =======================================
-   BUTTON SYSTEM – Unified Interactive Style
+   BUTTON SYSTEM � Unified Interactive Style
    ======================================= */
 
 .btn {
@@ -478,7 +479,7 @@ h4 { font-size: var(--text-h4); }
 }
 
 /* =======================================
-   LINKS – Base Interactive Rules
+   LINKS � Base Interactive Rules
    ======================================= */
 
 a {
@@ -503,7 +504,7 @@ a:focus {
 }
 
 /* =======================================
-   FOOTER – Enhanced Visual Design (INTEC 2025)
+   FOOTER � Enhanced Visual Design (INTEC 2025)
    ======================================= */
 
 .footer {
@@ -513,7 +514,7 @@ a:focus {
     var(--color-footer-bg-bottom)
   );
   color: var(--color-footer-text);
-  padding: var(--space-3xl) 0 0;
+  padding: clamp(1rem, 3vw, 1.75rem) 0 0;
   position: relative;
   box-shadow: var(--shadow-lg); /* unified soft depth */
 }
@@ -523,7 +524,7 @@ a:focus {
   padding-bottom: var(--space-2xl);
 }
 
-/* Footer Heading – strong hierarchy */
+/* Footer Heading � strong hierarchy */
 .footer__heading {
   color: var(--color-footer-heading);
   font-size: var(--text-h4);
@@ -592,7 +593,7 @@ a:focus {
 }
 
 /* =======================================
-   HERO IMAGE – Enhanced Presentation
+   HERO IMAGE � Enhanced Presentation
    ======================================= */
 
 .hero__image {
@@ -622,7 +623,7 @@ a:focus {
 
 
 /* =======================================
-   PROGRAM CARDS – Unified Glass Design
+   PROGRAM CARDS � Unified Glass Design
    ======================================= */
 
 .program-card {
@@ -693,7 +694,7 @@ a:focus {
 }
 
 /* =======================================
-   GRID SYSTEM – Responsive Unified Layout
+   GRID SYSTEM � Responsive Unified Layout
    ======================================= */
 
 .grid {
@@ -707,7 +708,7 @@ a:focus {
 .grid--4 { grid-template-columns: repeat(4, 1fr); }
 
 /* =======================================
-   ANIMATION SYSTEM – Fade Up Motion
+   ANIMATION SYSTEM � Fade Up Motion
    ======================================= */
 
 @keyframes fade-up {
@@ -738,7 +739,7 @@ a:focus {
 .fade-up--delay-500 { animation-delay: 0.5s; }
 
 /* =======================================
-   RESPONSIVE DESIGN – Mobile & Desktop
+   RESPONSIVE DESIGN � Mobile & Desktop
    ======================================= */
 
 @media (max-width: 768px) {
@@ -767,7 +768,7 @@ a:focus {
 
 
 /* =======================================
-   ACCESSIBILITY – Inclusive Design Support
+   ACCESSIBILITY � Inclusive Design Support
    ======================================= */
 
 .sr-only {
@@ -789,7 +790,7 @@ a:focus {
 }
 
 /* =======================================
-   PRINT STYLES – Clean Output for Printing
+   PRINT STYLES � Clean Output for Printing
    ======================================= */
 
 @media print {
@@ -814,7 +815,7 @@ a:focus {
 }
 
 /* =======================================
-   REDUCED MOTION – Accessibility for Users
+   REDUCED MOTION � Accessibility for Users
    ======================================= */
 
 @media (prefers-reduced-motion: reduce) {
@@ -835,7 +836,7 @@ a:focus {
 }
 
 /* =======================================
-   TYPOGRAPHY HIERARCHY – Unified Refinement
+   TYPOGRAPHY HIERARCHY � Unified Refinement
    ======================================= */
 
 h1, h2, h3, h4, h5, h6 {
@@ -866,7 +867,7 @@ img {
 }
 
 /* =======================================
-   ENHANCED LINKS – Unified Interactive Feel
+   ENHANCED LINKS � Unified Interactive Feel
    ======================================= */
 
 a {
@@ -892,7 +893,7 @@ a:focus {
 
 
 /* =======================================
-   ENHANCED BUTTON SYSTEM – INTEC 2025
+   ENHANCED BUTTON SYSTEM � INTEC 2025
    ======================================= */
 
 .btn {
@@ -940,7 +941,7 @@ a:focus {
 }
 
 /* =======================================
-   ENHANCED LINKS – Unified Interactive Feel
+   ENHANCED LINKS � Unified Interactive Feel
    ======================================= */
 
 a {
@@ -966,7 +967,7 @@ a:focus-visible {
 }
 
 /* =======================================
-   FOOTER – Minimal Variant
+   FOOTER � Minimal Variant
    ======================================= */
 
 .footer {
@@ -993,7 +994,7 @@ a:focus-visible {
 }
 
 /* =======================================
-   ANIMATION SYSTEM – Fade Up Motion
+   ANIMATION SYSTEM � Fade Up Motion
    ======================================= */
 
 @keyframes fade-up {
@@ -1024,7 +1025,7 @@ a:focus-visible {
 
 
 /* =======================================
-   PAGE LAYOUT AND STRUCTURE – INTEC 2025
+   PAGE LAYOUT AND STRUCTURE � INTEC 2025
    ======================================= */
 
 .page-shell {
@@ -1076,7 +1077,7 @@ main > section + section {
 }
 
 /* =======================================
-   ENHANCED TYPOGRAPHY SYSTEM – SECTION HEADINGS
+   ENHANCED TYPOGRAPHY SYSTEM � SECTION HEADINGS
    ======================================= */
 
 .section-heading {
@@ -1156,7 +1157,7 @@ main > section + section {
 
 
 /* =======================================
-   ENHANCED BUTTON SYSTEM – INTEC 2025
+   ENHANCED BUTTON SYSTEM � INTEC 2025
    Unified with Glass & Shadow System
    ======================================= */
 
@@ -1292,7 +1293,7 @@ main > section + section {
 
 
 /* =======================================
-   ENHANCED CARD SYSTEM – INTEC 2025
+   ENHANCED CARD SYSTEM � INTEC 2025
    Unified with Glass & Shadow System
    ======================================= */
 
@@ -1412,7 +1413,7 @@ main > section + section {
 
 
 /* =======================================
-   LAYOUT SYSTEM – INTEC 2025
+   LAYOUT SYSTEM � INTEC 2025
    Unified Containers, Grid & Flex Utilities
    ======================================= */
 
@@ -1583,7 +1584,7 @@ main > section + section {
 
 
 /* =======================================
-   ICON & VISUAL SYSTEM – INTEC 2025
+   ICON & VISUAL SYSTEM � INTEC 2025
    Unified with Accent & Glass Design
    ======================================= */
 
@@ -1770,7 +1771,7 @@ main > section + section {
 
 
 /* =======================================
-   FORM SYSTEM – INTEC 2025
+   FORM SYSTEM � INTEC 2025
    Enhanced with Glass, Shadow & Feedback
    ======================================= */
 
@@ -1973,7 +1974,7 @@ select.form-control:hover {
 
 
 /* =======================================
-   ANIMATION & EFFECTS SYSTEM – INTEC 2025
+   ANIMATION & EFFECTS SYSTEM � INTEC 2025
    Unified Motion + Glass Morphism Harmony
    ======================================= */
 
@@ -2128,7 +2129,7 @@ select.form-control:hover {
 
 
 /* =======================================
-   UTILITY SYSTEM – INTEC 2025
+   UTILITY SYSTEM � INTEC 2025
    Unified Spacing, Display, Text, and Glass Helpers
    ======================================= */
 
@@ -2291,7 +2292,7 @@ select.form-control:hover {
 
 
 /* =======================================
-   TYPOGRAPHY & BUTTON SYSTEM – INTEC 2025
+   TYPOGRAPHY & BUTTON SYSTEM � INTEC 2025
    Unified Hierarchy + Glass Harmony
    ======================================= */
 
@@ -2387,7 +2388,7 @@ p {
 }
 
 /* =======================================
-   BUTTON SYSTEM – Enhanced with Glass
+   BUTTON SYSTEM � Enhanced with Glass
    ======================================= */
 .button {
   display: inline-flex;
@@ -2503,7 +2504,7 @@ p {
 }
 
 /* ==========================================
-   HEADER & NAVIGATION – INTEC 2025 GLASS EDITION
+   HEADER & NAVIGATION � INTEC 2025 GLASS EDITION
    Seamless blend of motion, translucency & clarity
    ========================================== */
 
@@ -2512,20 +2513,21 @@ p {
   top: 0;
   z-index: 1000;
   background: var(--glass-bg);
-  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  color: var(--color-text-primary);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   border-bottom: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
   padding-block: var(--space-md);
-  transition: var(--glass-transition);
-  color: var(--color-text);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, color 0.2s ease;
 }
 
 .site-header.scrolled {
-  box-shadow: var(--glass-shadow-hover);
+  background: var(--color-bg-white);
   border-bottom-color: var(--glass-border-strong);
-  background: color-mix(in srgb, var(--glass-bg) 80%, var(--color-primary) 20%);
-  backdrop-filter: blur(calc(var(--glass-blur) * 1.3));
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
 }
 
 /* === Header Layout === */
@@ -2546,14 +2548,14 @@ p {
 .brand {
   display: inline-flex;
   align-items: center;
-  color: var(--color-text);
+  color: var(--color-text-primary);
   padding: 0.5rem 0;
-  transition: transform var(--glass-transition), opacity var(--glass-transition);
+  transition: color 0.2s ease, transform var(--glass-transition), opacity var(--glass-transition);
 }
 
 .brand:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
+  transform: none;
+  opacity: 1;
 }
 
 .brand img {
@@ -2564,12 +2566,12 @@ p {
   display: block;
   object-fit: contain;
   transition: transform var(--glass-transition), filter var(--glass-transition);
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
 }
 
 .brand:hover img {
-  transform: scale(1.04);
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+  transform: scale(1.05);
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.12));
 }
 
 /* ==========================================
@@ -2583,7 +2585,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-sm);
+  gap: clamp(0.75rem, 2vw, 1.5rem);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -2594,44 +2596,50 @@ p {
 }
 
 .nav-links a {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: var(--text-body);
   font-weight: var(--weight-semibold);
-  color: var(--color-text-muted);
-  padding: 0.75rem 1.25rem;
-  border-radius: var(--radius-sm);
-  transition: var(--glass-transition);
+  color: var(--color-text-primary);
+  padding: 0.6rem 0;
+  margin-inline: clamp(0.5rem, 1vw, 1rem);
   white-space: nowrap;
-  position: relative;
-  backdrop-filter: blur(6px);
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.25rem;
+  width: 100%;
+  height: 2px;
+  background: var(--color-accent);
+  border-radius: 999px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
 }
 
 .nav-links a:hover,
 .nav-links a:focus-visible {
-  color: var(--color-primary);
-  background: rgba(var(--color-primary-rgb), 0.08);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.15);
-  text-decoration: none;
+  color: var(--color-text-primary);
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .nav-links a[aria-current="page"] {
-  color: var(--color-primary);
-  font-weight: var(--weight-bold);
+  color: var(--color-text-primary);
 }
 
 .nav-links a[aria-current="page"]::after {
-  content: '';
-  position: absolute;
-  bottom: 4px;
-  left: 20%;
-  width: 60%;
-  height: 3px;
-  border-radius: 999px;
-  background: var(--color-primary);
-  box-shadow: 0 0 8px rgba(var(--color-primary-rgb), 0.3);
+  transform: scaleX(1);
 }
 
 /* ==========================================
@@ -2646,74 +2654,122 @@ p {
 
 /* === Language Switcher === */
 .language-switch {
+  --lang-pill-size: 40px;
+  --lang-gap: 8px;
+  --lang-padding: 6px;
+  --lang-offset: calc(var(--lang-pill-size) + var(--lang-gap));
+  --lang-translate: 0px;
+  position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: var(--lang-gap);
   border-radius: 999px;
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  box-shadow: var(--glass-shadow);
-  transition: var(--glass-transition);
-  padding: 0.4rem 0.6rem;
-  gap: 0.25rem;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.12);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 6px 20px rgba(var(--color-primary-rgb), 0.08);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  padding: var(--lang-padding);
+  overflow: hidden;
+  will-change: transform;
+  margin-right: var(--space-card);
 }
 
-.language-switch:hover {
-  box-shadow: var(--glass-shadow-hover);
-  transform: translateY(-2px);
+.language-switch::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: var(--lang-padding);
+  width: var(--lang-pill-size);
+  height: var(--lang-pill-size);
+  border-radius: 999px;
+  background: var(--color-accent);
+  box-shadow: 0 8px 20px rgba(var(--color-primary-rgb), 0.16);
+  transform: translate3d(var(--lang-translate, 0), -50%, 0);
+  opacity: 0;
+  transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.25s ease;
+  will-change: transform;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.language-switch[data-active-lang]::before {
+  opacity: 1;
+}
+
+.language-switch[data-active-lang="nl"] {
+  --lang-translate: 0px;
+}
+
+.language-switch[data-active-lang="en"] {
+  --lang-translate: var(--lang-offset);
 }
 
 .language-switch button {
-  min-width: 44px;
-  height: 44px;
-  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--lang-pill-size);
+  height: var(--lang-pill-size);
+  border-radius: 999px;
   font-size: var(--text-body-sm);
   font-weight: var(--weight-semibold);
-  color: var(--color-text);
+  color: var(--color-text-primary);
   background: transparent;
   border: none;
   cursor: pointer;
   letter-spacing: 0.02em;
-  transition: var(--glass-transition);
+  line-height: 1;
+  padding: 0;
+  transition: color 0.3s ease, opacity 0.3s ease;
+  opacity: 0.75;
 }
 
 .language-switch button.is-active,
 .language-switch button[aria-current="true"] {
   color: var(--color-text-invert);
-  background: var(--color-primary);
-  box-shadow: 0 2px 8px rgba(var(--color-primary-rgb), 0.35);
-  transform: scale(1.05);
+  opacity: 1;
 }
 
-.language-switch button:hover:not(.is-active) {
-  transform: translateY(-1px);
-  background: rgba(var(--color-primary-rgb), 0.05);
+.language-switch button:not(.is-active):hover,
+.language-switch button:not(.is-active):focus-visible {
+  opacity: 0.95;
 }
 
 /* === CTA Button (e.g., DigiPunt) === */
-.site-header__actions .button {
-  min-height: 44px;
-  padding: 0.75rem 1.75rem;
+.site-header__actions .btn-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0.65rem 1.5rem;
   font-size: var(--text-body-sm);
   font-weight: var(--weight-semibold);
   white-space: nowrap;
-  background: var(--color-primary);
-  color: var(--color-text-invert);
-  border-radius: var(--radius-pill);
-  border: 2px solid transparent;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: var(--color-bg-white);
+  border: 1px solid rgba(255, 255, 255, 0.65);
   box-shadow: var(--glass-shadow);
-  transition: var(--glass-transition);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
-.site-header__actions .button:hover {
+.site-header__actions .btn-accent:hover,
+.site-header__actions .btn-accent:focus-visible {
   box-shadow: var(--glass-shadow-hover);
-  transform: translateY(-2px) scale(1.02);
-  background: var(--color-primary-dark);
+  transform: translateY(-2px);
+  background: var(--color-primary);
+}
+
+.site-header__actions .btn-accent[aria-current="page"] {
+  display: none;
 }
 
 
 /* ==========================================
-   MOBILE MENU TOGGLE – Unified with Glass Motion
+   MOBILE MENU TOGGLE � Unified with Glass Motion
    ========================================== */
 .nav-toggle {
   display: none;
@@ -2724,7 +2780,7 @@ p {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
-  color: var(--color-text);
+  color: var(--color-text-primary);
   transition: var(--glass-transition);
   cursor: pointer;
   align-items: center;
@@ -2750,7 +2806,7 @@ p {
 }
 
 /* ==========================================
-   HERO SECTION – INTEC 2025 GLASS HERO
+   HERO SECTION � INTEC 2025 GLASS HERO
    ========================================== */
 .hero {
   position: relative;
@@ -2964,7 +3020,7 @@ p {
 
 
 /* ==========================================
-   HERO HIGHLIGHT CARD – INTEC 2025 GLASS EDITION
+   HERO HIGHLIGHT CARD � INTEC 2025 GLASS EDITION
    ========================================== */
 
 .hero-highlight {
@@ -3044,7 +3100,7 @@ p {
 }
 
 .hero-highlight > span:first-child::before {
-  content: "📅";
+  content: "??";
   font-size: 1.1em;
   opacity: 0.9;
 }
@@ -3090,7 +3146,7 @@ p {
 }
 
 /* =======================================
-   UNIFIED GLASS CARD SYSTEM – INTEC 2025
+   UNIFIED GLASS CARD SYSTEM � INTEC 2025
    Optimized with :is() selector
    ======================================= */
 
@@ -3252,6 +3308,11 @@ p {
    Course Card Special Accent
    ======================================= */
 .course-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--space-md);
+  height: 100%;
   border-top: var(--border-width-thick) solid var(--color-accent);
 }
 .course-card:hover {
@@ -3341,10 +3402,15 @@ p {
   gap: var(--gap-cards);
   max-width: var(--max-width);
   margin-inline: auto;
+  align-items: stretch;
+  grid-auto-rows: 1fr;
 }
 
 .course-grid .btn-soft.course-card__cta {
-  margin-top: var(--space-md);
+  margin-top: auto;
+  align-self: stretch;
+  display: inline-flex;
+  justify-content: center;
   background-color: var(--color-accent);
   color: var(--color-text-invert);
   border: none;
@@ -3601,7 +3667,7 @@ p {
 }
 
 .about-pill-list li::before {
-  content: "✓";
+  content: "?";
   position: absolute;
   left: 0;
   top: 0;
@@ -3746,7 +3812,7 @@ p {
   grid-column: span 2;
 }
 
-/* الكارتين الثاني والثالث يبقيان طبيعيين */
+/* ???????? ?????? ??????? ?????? ??????? */
 .faq-grid > :nth-child(2),
 .faq-grid > :nth-child(3) {
   grid-column: span 1;
@@ -3782,19 +3848,19 @@ p {
   margin: 0;
 }
 
-.faq-grid li::marker { /* لكل المحركات */
+.faq-grid li::marker { /* ??? ???????? */
   content: none;
 }
 
-/* 2) لو فيه <details><summary> (سهم الفتح/الإغلاق) */
-.faq-grid summary::marker {            /* المعياري */
+/* 2) ?? ??? <details><summary> (??? ?????/???????) */
+.faq-grid summary::marker {            /* ???????? */
   content: none;
 }
 .faq-grid summary::-webkit-details-marker { /* WebKit */
   display: none;
 }
 
-/* 3) تنسيق نص أوضح داخل العناصر */
+/* 3) ????? ?? ???? ???? ??????? */
 .faq-grid li {
   margin-bottom: var(--space-md);
 }
@@ -3824,7 +3890,7 @@ p {
   font-size: var(--text-body);
 }
 
-/* تباعد موحّد داخل كل كارت */
+/* ????? ????? ???? ?? ???? */
 .faq-grid > *,
 .two-column > *,
 .timeline--four .timeline__item {
@@ -3835,7 +3901,7 @@ p {
   padding: var(--space-card);
 }
 
-/* العناوين داخل الكروت */
+/* ???????? ???? ?????? */
 .faq-grid h3,
 .faq-grid h4,
 .two-column h3,
@@ -3847,26 +3913,26 @@ p {
   line-height: var(--leading-snug);
 }
 
-/* الفقرات */
+/* ??????? */
 .faq-grid p,
 .two-column p,
 .timeline--four p {
   margin: 0;
   font-size: var(--text-body);
   color: var(--color-text-muted);
-  text-align: left; /* ✅ محاذاة لليسار */
+  text-align: left; /* ? ?????? ?????? */
   hyphens: none;
   word-spacing: normal;
 }
 
-/* ضبط المسافات بين الفقرات الطويلة */
+/* ??? ???????? ??? ??????? ??????? */
 .faq-grid p + p,
 .two-column p + p,
 .timeline--four p + p {
   margin-top: var(--space-xs);
 }
 
-/* جعل جميع الكروت بنفس الارتفاع */
+/* ??? ???? ?????? ???? ???????? */
 .faq-grid > *,
 .two-column > *,
 .timeline--four .timeline__item {
@@ -3878,7 +3944,7 @@ p {
   width: 100%;
 }
 
-/* عند الشاشات الصغيرة: كلهم عمود واحد */
+/* ??? ??????? ???????: ???? ???? ???? */
 @media (max-width: 768px) {
   .faq-grid {
     grid-template-columns: 1fr;
@@ -4838,8 +4904,8 @@ textarea:valid:not(:placeholder-shown) {
   max-width: var(--max-width);
   padding: var(--space-card);
   gap: var(--gap-elements);
-  flex-direction: column; /* ✅ جعل المحتوى عمودي */
-  align-items: flex-start; /* ✅ محاذاة لليسار */
+  flex-direction: column; /* ? ??? ??????? ????? */
+  align-items: flex-start; /* ? ?????? ?????? */
 }
 
 /* Special styling for registration CTA */
@@ -4927,7 +4993,7 @@ textarea:valid:not(:placeholder-shown) {
   font-size: clamp(2.2rem, 4.5vw, 2.8rem);
   line-height: 1.25;
   font-weight: 800;
-  max-width: 700px; /* ✅ نفس العرض مثل الفقرة */
+  max-width: 700px; /* ? ??? ????? ??? ?????? */
 }
 
 .cta-band p {
@@ -4944,7 +5010,7 @@ textarea:valid:not(:placeholder-shown) {
 .cta-band--minimal p {
   font-size: clamp(1.15rem, 2vw, 1.3rem);
   line-height: 1.7;
-  max-width: 700px; /* ✅ نفس عرض العنوان */
+  max-width: 700px; /* ? ??? ??? ??????? */
 }
 
 .cta-band__actions {
@@ -4992,7 +5058,7 @@ textarea:valid:not(:placeholder-shown) {
 
 
 /* ==========================================================================
-   PAGE: OVER ONS — visually identical to inschrijven.html
+   PAGE: OVER ONS � visually identical to inschrijven.html
    ========================================================================== */
 
 /* ============ 1. Global section alternation ============ */
@@ -5002,10 +5068,10 @@ textarea:valid:not(:placeholder-shown) {
   transition: background var(--transition-base), box-shadow var(--transition-base);
 }
 
-/* ═══════════════════════════════════════════════════════════
+/* -----------------------------------------------------------
    PARTNERS CALLOUT SECTION - Enhanced CTA Design
    INTEC 2025 Visual Identity Compliant
-   ═══════════════════════════════════════════════════════════ */
+   ----------------------------------------------------------- */
 
 .partners-callout {
   padding: var(--space-section) 0;
@@ -5018,32 +5084,27 @@ textarea:valid:not(:placeholder-shown) {
 
 .partners-callout__inner {
   position: relative;
-  width: min(100%, var(--max-width));
+  width: min(100%, 1080px);
   margin-inline: auto;
-  padding: var(--space-2xl) var(--space-xl);
-  
-  /* Center content with balanced spacing */
+  padding: var(--space-2xl) clamp(var(--space-xl), 4vw, calc(var(--space-2xl) + 0.5rem));
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: var(--space-2xl);
-  
-  /* Subtle depth */
+  justify-content: flex-start;
+  gap: clamp(var(--space-lg), 4vw, var(--space-2xl));
   isolation: isolate;
 }
 
 .partners-callout__content {
-  /* Center and constrain width for optimal readability */
-  max-width: 720px;
+  order: 1;
+  flex: 1 1 100%;
+  max-width: 860px;
   width: 100%;
-  
-  /* Stack elements with consistent spacing */
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--space-md);
+  margin-left: 0;
+  text-align: left;
 }
 
 .partners-callout__eyebrow {
@@ -5112,18 +5173,14 @@ textarea:valid:not(:placeholder-shown) {
 }
 
 .partners-callout__actions {
-  /* Button container with horizontal layout */
+  order: 2;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   gap: var(--gap-elements);
-  flex-wrap: wrap;
-  
-  /* Ensure equal heights through flex */
-  align-items: stretch;
-  
-  /* Spacing from content */
-  margin-top: var(--space-sm);
+  min-width: 200px;
+  margin-left: clamp(var(--space-md), 5vw, var(--space-xl));
 }
 
 .partners-callout__actions > * {
@@ -5153,9 +5210,9 @@ textarea:valid:not(:placeholder-shown) {
   background: var(--color-primary-soft);
 }
 
-/* ═══════════════════════════════════════════════════════════
+/* -----------------------------------------------------------
    RESPONSIVE: Mobile optimization
-   ═══════════════════════════════════════════════════════════ */
+   ----------------------------------------------------------- */
 
 @media (max-width: 768px) {
   .partners-callout {
@@ -5199,85 +5256,153 @@ textarea:valid:not(:placeholder-shown) {
 }
 
 /* ============ Collaboration CTA Section ============ */
+.collaboration-cta.section {
+  border-top: none;
+}
+
 .collaboration-cta {
-  width: 100vw;
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  padding: 0;
+  margin: 0;
+  padding: clamp(3rem, 7vw, 5rem) 0 0;
+  margin-bottom: -1.5rem;
+  background: linear-gradient(180deg, rgba(37, 189, 183, 0.12) 0%, rgba(240, 255, 255, 0.65) 100%);
+}
+
+.collaboration-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(37, 189, 183, 0.18), transparent 55%),
+              radial-gradient(circle at bottom right, rgba(15, 130, 138, 0.18), transparent 60%);
+  opacity: 0.85;
+  pointer-events: none;
 }
 
 .collaboration-cta__inner {
   position: relative;
-  width: 100%;
-  max-width: 100%;
-  padding: var(--space-3xl) var(--space-container);
+  width: min(100%, 1080px);
+  margin-inline: auto;
+  padding: var(--space-2xl) clamp(var(--space-xl), 5vw, var(--space-3xl));
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: var(--space-2xl);
-  flex-direction: row;
+  gap: clamp(var(--space-xl), 6vw, var(--space-3xl));
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 24px 60px rgba(var(--color-primary-rgb), 0.12),
+    0 12px 32px rgba(var(--color-primary-rgb), 0.08);
+  overflow: hidden;
+}
+
+.collaboration-cta__inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.12);
+  pointer-events: none;
 }
 
 .collaboration-cta__content {
-  flex: 1;
-  max-width: 750px;
-}
-
-.collaboration-cta__actions {
-  flex-shrink: 0;
+  flex: 1 1 62%;
+  max-width: 760px;
   display: flex;
+  flex-direction: column;
   gap: var(--space-md);
-  align-items: center;
-  align-self: center;
 }
 
 .collaboration-cta__eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1.2rem;
+  gap: 0.45rem;
+  padding: 0.45rem 1.25rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.15);
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 600;
-  font-size: 0.85rem;
+  background: rgba(var(--color-primary-rgb), 0.12);
+  color: var(--color-primary-dark);
+  font-weight: var(--weight-semibold);
+  font-size: 0.82rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   width: fit-content;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
 }
 
 .collaboration-cta h2 {
-  font-size: clamp(1.75rem, 3.2vw, 2.125rem);
-  line-height: 1.25;
-  color: white;
-  margin: 0 0 var(--space-md);
-  font-weight: 800;
+  font-size: clamp(1.9rem, 3.4vw, 2.4rem);
+  line-height: var(--leading-snug);
+  color: var(--color-heading);
+  margin: 0;
+  font-weight: var(--weight-bold);
 }
 
 .collaboration-cta p {
-  font-size: var(--text-body);
+  font-size: var(--text-body-lg);
   line-height: var(--leading-relaxed);
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--color-text);
   margin: 0;
+  max-width: 640px;
 }
 
-/* Responsive adjustments */
+.collaboration-cta__actions {
+  flex: 0 0 auto;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+  min-width: 220px;
+}
+
+.collaboration-cta__actions .btn-primary {
+  min-width: 220px;
+  justify-content: center;
+  font-size: var(--text-body-lg);
+}
+
+.collaboration-cta__actions .btn-outline {
+  min-width: 220px;
+  justify-content: center;
+  font-size: var(--text-body-lg);
+}
+
 @media (max-width: 768px) {
-  .partners-callout__inner,
+  .partners-callout__inner {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+    gap: var(--space-xl);
+  }
+
+  .partners-callout__content {
+    margin-left: 0;
+    order: 1;
+  }
+
+  .partners-callout__actions {
+    order: 2;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space-md);
+    margin-left: 0;
+  }
+
   .collaboration-cta__inner {
     flex-direction: column;
     align-items: flex-start;
-    text-align: left;
+    gap: var(--space-xl);
+    padding: var(--space-2xl) var(--space-lg);
   }
-  
-  .partners-callout__actions,
+
   .collaboration-cta__actions {
-    align-self: stretch;
-    justify-content: flex-start;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .collaboration-cta__actions a {
+    width: 100%;
   }
 }
 
@@ -5285,7 +5410,7 @@ textarea:valid:not(:placeholder-shown) {
 .about-hero {
   position: relative;
   overflow: hidden;
-  padding-block: clamp(4rem, 8vw, 7rem); /* ✅ نفس الـ hero */
+  padding-block: clamp(4rem, 8vw, 7rem); /* ? ??? ??? hero */
   margin: 0;
 }
 
@@ -5306,45 +5431,45 @@ textarea:valid:not(:placeholder-shown) {
 
 .about-hero__layout {
   display: grid;
-  grid-template-columns: 1fr 1.2fr; /* ✅ نفس الـ hero */
-  gap: clamp(2rem, 4vw, 4rem); /* ✅ نفس الـ hero */
+  grid-template-columns: 1fr 1.2fr; /* ? ??? ??? hero */
+  gap: clamp(2rem, 4vw, 4rem); /* ? ??? ??? hero */
   align-items: center;
   
 }
 
 .about-hero__content {
   display: grid;
-  gap: clamp(1.2rem, 2vw, 1.8rem); /* ✅ نفس الـ hero */
-  text-align: left; /* ✅ محاذاة لليسار */
+  gap: clamp(1.2rem, 2vw, 1.8rem); /* ? ??? ??? hero */
+  text-align: left; /* ? ?????? ?????? */
   
 }
 
 .about-hero__title {
-  font-size: var(--text-hero); /* ✅ نفس حجم hero__title */
+  font-size: var(--text-hero); /* ? ??? ??? hero__title */
   color: var(--color-text);
   font-weight: 800;
   line-height: var(--leading-tight);
   margin: 0;
-  text-align: left; /* ✅ محاذاة لليسار */
+  text-align: left; /* ? ?????? ?????? */
 }
 
 .about-hero__lead {
   font-size: var(--text-body-lg);
   color: var(--color-text-muted);
   line-height: var(--leading-relaxed);
-  max-width: 580px; /* ✅ نفس الـ hero */
+  max-width: 580px; /* ? ??? ??? hero */
   margin: 0;
-  text-align: left; /* ✅ محاذاة لليسار */
+  text-align: left; /* ? ?????? ?????? */
 }
 
 /* Buttons in hero */
 .about-hero__cta {
   display: flex;
-  gap: var(--gap-elements); /* ✅ نفس الـ hero__actions */
+  gap: var(--gap-elements); /* ? ??? ??? hero__actions */
   flex-wrap: wrap;
   align-items: center;
   margin-top: var(--space-md);
-  justify-content: flex-start; /* ✅ محاذاة الأزرار لليسار */
+  justify-content: flex-start; /* ? ?????? ??????? ?????? */
 }
 
 .about-hero__cta .button {
@@ -5424,7 +5549,7 @@ textarea:valid:not(:placeholder-shown) {
   padding: var(--space-card);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
   text-align: left;
-  display: block; /* مهم لإزالة أي تعارض */
+  display: block; /* ??? ?????? ?? ????? */
   border: var(--border-width) solid var(--border-color);
   min-width: 100%;
 }
@@ -5561,9 +5686,9 @@ textarea:valid:not(:placeholder-shown) {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
+/* -----------------------------------------------------------
    PARTNER CAROUSEL - Container & Track (60fps optimized)
-   ═══════════════════════════════════════════════════════════ */
+   ----------------------------------------------------------- */
 
 .partner-carousel {
   position: relative;
@@ -5631,9 +5756,9 @@ textarea:valid:not(:placeholder-shown) {
   min-height: 110px;
 }
 
-/* ═══════════════════════════════════════════════════════════
+/* -----------------------------------------------------------
    LOGO CARDS - Stable, no layout shift
-   ═══════════════════════════════════════════════════════════ */
+   ----------------------------------------------------------- */
 
 .logo-card {
   border-radius: var(--radius-md);
@@ -5713,9 +5838,9 @@ textarea:valid:not(:placeholder-shown) {
   content-visibility: auto;
 }
 
-/* ═══════════════════════════════════════════════════════════
+/* -----------------------------------------------------------
    PARTNER CAROUSEL NAVIGATION - 60fps, Zero Jitter
-   ═══════════════════════════════════════════════════════════ */
+   ----------------------------------------------------------- */
 
 .partner-carousel__nav {
   /* Positioning - FIXED Y, only visual effects allowed */
@@ -5809,9 +5934,9 @@ textarea:valid:not(:placeholder-shown) {
   outline-offset: 3px;
 }
 
-/* ═══════════════════════════════════════════════════════════
+/* -----------------------------------------------------------
    CAROUSEL DOTS - Synchronized indicators
-   ═══════════════════════════════════════════════════════════ */
+   ----------------------------------------------------------- */
 
 .partner-carousel__dots {
   display: flex;
@@ -5855,9 +5980,9 @@ textarea:valid:not(:placeholder-shown) {
   outline-offset: 3px;
 }
 
-/* ═══════════════════════════════════════════════════════════
+/* -----------------------------------------------------------
    RESPONSIVE: Adjust button positioning
-   ═══════════════════════════════════════════════════════════ */
+   ----------------------------------------------------------- */
 
 @media (max-width: 768px) {
   .partner-carousel {
@@ -5896,9 +6021,9 @@ textarea:valid:not(:placeholder-shown) {
   }
 }
 
-/* ═══════════════════════════════════════════════════════════
+/* -----------------------------------------------------------
    REDUCED MOTION: Instant transitions
-   ═══════════════════════════════════════════════════════════ */
+   ----------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
   .partner-carousel__nav,
@@ -6086,13 +6211,13 @@ textarea:valid:not(:placeholder-shown) {
 
 
 .hero--with-form {
-  padding-block: clamp(4rem, 8vw, 7rem); /* ✅ نفس الـ hero */
+  padding-block: clamp(4rem, 8vw, 7rem); /* ? ??? ??? hero */
 }
 
 .hero--with-form .hero__grid {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: clamp(2rem, 4vw, 4rem); /* ✅ نفس الـ hero */
+  gap: clamp(2rem, 4vw, 4rem); /* ? ??? ??? hero */
   align-items: start;
 }
 
@@ -6151,7 +6276,7 @@ textarea:valid:not(:placeholder-shown) {
 }
 
 .badge-list li::before {
-  content: "✓";
+  content: "?";
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -6378,7 +6503,7 @@ textarea::placeholder {
 }
 
 .form-success__title::before {
-  content: '✓';
+  content: '?';
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -6934,7 +7059,7 @@ textarea::placeholder {
 }
 
 .tip-card ul li::before {
-  content: "✓";
+  content: "?";
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -7059,14 +7184,14 @@ textarea::placeholder {
 }
 
 .faq-item summary::before {
-  content: "❓";
+  content: "?";
   font-size: clamp(1.125rem, 1.75vw, 1.375rem);
   flex-shrink: 0;
   transition: transform 0.3s ease;
 }
 
 .faq-item details[open] summary::before {
-  content: "✅";
+  content: "?";
 }
 
 .faq-item summary:hover {
@@ -7109,7 +7234,7 @@ textarea::placeholder {
 }
 
 .faq-item ul li::before {
-  content: "✓";
+  content: "?";
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -7589,21 +7714,22 @@ textarea::placeholder {
     right: 0;
     flex-direction: column;
     align-items: stretch;
-    backdrop-filter: blur(14px);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     padding: var(--space-lg);
     margin-top: 1px;
-    border-bottom: var(--border-width) solid var(--border-color);
-    box-shadow: var(--shadow-lg);
-    transform: scaleY(0);
-    transform-origin: top;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    transform: translateY(-16px);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: var(--transition-base);
+    transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
   .nav-links.is-open {
-    transform: scaleY(1);
+    transform: translateY(0);
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -7769,9 +7895,13 @@ textarea::placeholder {
     padding: 0.2rem;
   }
 
+  .language-switch {
+    --lang-pill-size: 36px;
+    --lang-gap: 6px;
+    --lang-padding: 5px;
+  }
+
   .language-switch button {
-    min-width: 38px;
-    height: 30px;
     font-size: 0.75rem;
   }
 
@@ -8017,13 +8147,13 @@ textarea::placeholder {
   hyphens: none;
 }
 
-/* Global Text Spacing Fix - أكثر تحديداً */
+/* Global Text Spacing Fix - ???? ??????? */
 p, h1, h2, h3, h4, h5, h6, span, div {
   word-spacing: normal;
   hyphens: none;
 }
 
-/* تم حذف القواعد العامة التي تخل بالتصميم */
+/* ?? ??? ??????? ?????? ???? ??? ???????? */
 
 /* Button Enhancements - Larger across site */
 .button {
@@ -8066,7 +8196,7 @@ p, h1, h2, h3, h4, h5, h6, span, div {
   margin-inline: auto;
   margin-bottom: var(--space-2xl);
   padding-inline: clamp(1rem, 4vw, 2rem);
-  text-align: center; /* ✅ توسيط المحتوى */
+  text-align: center; /* ? ????? ??????? */
 }
 
 .partners-section .container {
@@ -8075,22 +8205,22 @@ p, h1, h2, h3, h4, h5, h6, span, div {
 }
 
 .partners-section .section-lead {
-  text-align: center; /* ✅ توسيط النص */
+  text-align: center; /* ? ????? ???? */
   font-size: clamp(1.05rem, 1.8vw, 1.25rem) !important;
   line-height: 1.7;
 }
 
 .partners-section .section-title {
-  text-align: center; /* ✅ توسيط العنوان */
+  text-align: center; /* ? ????? ??????? */
 }
 
 .partners-section .section-label {
-  text-align: center; /* ✅ توسيط التسمية */
-  margin-inline: auto; /* ✅ توسيط أفقي */
+  text-align: center; /* ? ????? ??????? */
+  margin-inline: auto; /* ? ????? ???? */
 }
 
 .partners-section .button {
-  margin-inline: auto; /* ✅ توسيط الزر */
+  margin-inline: auto; /* ? ????? ???? */
 }
 
 /* Course Card Refinements */
@@ -8125,8 +8255,48 @@ p, h1, h2, h3, h4, h5, h6, span, div {
   margin: 0;
 }
 
+.course-date__countdown {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-left: 0.5rem;
+  padding: 0.15rem 0.65rem;
+  border-radius: 999px;
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-semibold);
+  background: rgba(var(--color-primary-rgb), 0.1);
+  color: var(--color-primary-dark);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  white-space: nowrap;
+}
+
+.course-date__countdown.course-date__countdown--soon {
+  background: rgba(37, 189, 183, 0.18);
+  color: #0f5f63;
+}
+
+.course-date__countdown.course-date__countdown--today {
+  background: var(--color-accent);
+  color: var(--color-bg-white);
+}
+
+.course-date__countdown.course-date__countdown--past {
+  background: rgba(214, 61, 80, 0.2);
+  color: #a52130;
+}
+
+.course-date__countdown svg {
+  width: 14px;
+  height: 14px;
+}
+
 .course-card__cta {
-  align-self: flex-start;
+  margin-top: auto;
+  align-self: stretch;
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
   padding: var(--space-sm) var(--space-lg);
   background: var(--color-accent-soft);
   color: var(--color-primary);
@@ -8752,7 +8922,7 @@ textarea:focus-visible {
 }
 
 .two-col-content__body li::before {
-  content: "✓";
+  content: "?";
   position: absolute;
   left: 0;
   color: var(--color-primary);
@@ -8767,20 +8937,20 @@ textarea:focus-visible {
   vertical-align: middle;
 }
 
-.section-heading[data-icon="⚙️"] .section-title::before {
-  content: "⚙️ ";
+.section-heading[data-icon="??"] .section-title::before {
+  content: "?? ";
 }
 
-.section-heading[data-icon="📍"] .section-title::before {
-  content: "📍 ";
+.section-heading[data-icon="??"] .section-title::before {
+  content: "?? ";
 }
 
-.section-heading[data-icon="🎯"] .section-title::before {
-  content: "🎯 ";
+.section-heading[data-icon="??"] .section-title::before {
+  content: "?? ";
 }
 
-.section-heading[data-icon="📚"] .section-title::before {
-  content: "📚 ";
+.section-heading[data-icon="??"] .section-title::before {
+  content: "?? ";
 }
 
 /* Enhanced Program Cards */
@@ -9094,7 +9264,7 @@ textarea:focus-visible {
 /* End of Stylesheet */
 
 /* =======================================
-   🔝 BACK TO TOP BUTTON
+   ?? BACK TO TOP BUTTON
    Enhanced visibility, accessibility, and responsiveness
    ======================================= */
 
@@ -9376,9 +9546,9 @@ textarea:focus-visible {
    ============================================================================ */
 
 /* Task 1: Alternating Section Backgrounds */
-/* About page structure: Hero (light) → Values (white) → What Drives Us (light) → About Cards (white) → From Talent (light) → CTA (white) */
+/* About page structure: Hero (light) ? Values (white) ? What Drives Us (light) ? About Cards (white) ? From Talent (light) ? CTA (white) */
 
-/* تم دمج .hero في التعريف الأول */
+/* ?? ??? .hero ?? ??????? ????? */
 
 /* Values section - White background (already has custom styling) */
 .values-section {
@@ -9602,11 +9772,11 @@ h3 {
    ============================================================================ */
 
 /* =======================================
-   🎨 VISUAL HIERARCHY - WCAG AA Optimized
+   ?? VISUAL HIERARCHY - WCAG AA Optimized
    Accessible backgrounds with clear separation
    ======================================= */
 
-/* 1️⃣ Section Background System - Balanced Contrast */
+/* 1?? Section Background System - Balanced Contrast */
 
 .section--surface {
   background: var(--color-surface);  /* Pure white #ffffff */
@@ -9640,8 +9810,7 @@ h3 {
 }
 
 /* CTA Section - Soft gradient with strong text */
-.section--cta,
-.collaboration-cta {
+.section--cta {
   background: linear-gradient(180deg, var(--color-accent-soft) 0%, var(--color-surface-alt) 100%);
   position: relative;
   box-shadow: inset 0 2px 4px rgba(15, 130, 138, 0.05);
@@ -9649,18 +9818,15 @@ h3 {
 }
 
 .section--cta h2,
-.section--cta h3,
-.collaboration-cta h2,
-.collaboration-cta h3 {
+.section--cta h3 {
   color: var(--color-heading);  /* Extra dark for contrast */
 }
 
-.section--cta p,
-.collaboration-cta p {
+.section--cta p {
   color: var(--color-text);  /* Strong text color */
 }
 
-/* 2️⃣ Programs Section - Clear visual separation */
+/* 2?? Programs Section - Clear visual separation */
 .section--programs,
 section[id="opleidingen"] {
   background: var(--color-aqua-soft);
@@ -9685,21 +9851,21 @@ section[id="opleidingen"] .section-title::after {
   border-radius: var(--radius-sm);
 }
 
-/* 3️⃣ Statistics Section - Enhanced Depth */
+/* 3?? Statistics Section - Enhanced Depth */
 .stats-section,
 .intec-counter-section {
-  background: var(--color-bg);  /* مائل للـteal الناعم */
+  background: var(--color-bg);  /* ???? ???teal ?????? */
   padding: var(--space-section) 0;
 }
 
 .stats-section .section-title,
 .intec-counter-section .section-title {
-  font-size: var(--text-3xl);  /* أكبر قليلاً */
+  font-size: var(--text-3xl);  /* ???? ?????? */
   text-align: center;
   margin-bottom: var(--space-2xl);
 }
 
-/* 4️⃣ Partners Section - Enhanced Visual Appeal */
+/* 4?? Partners Section - Enhanced Visual Appeal */
 .partners-section,
 section[id="partners"] {
   background: var(--color-surface-alt);
@@ -9727,37 +9893,37 @@ section[id="partners"]::before {
   border: 1px solid rgba(15, 130, 138, 0.05);
 }
 
-/* 💡 Section Dividers - Subtle Visual Separation */
+/* ?? Section Dividers - Subtle Visual Separation */
 section + section {
   border-top: 1px solid var(--color-border);
 }
 
-/* 3️⃣ Typography Hierarchy */
+/* 3?? Typography Hierarchy */
 h1, h2, h3 {
-  color: var(--color-text);  /* قوي، واضح */
+  color: var(--color-text);  /* ???? ???? */
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
 }
 
 p {
-  color: var(--color-text-muted);  /* توازن بصري */
+  color: var(--color-text-muted);  /* ????? ???? */
   line-height: var(--leading-relaxed);
 }
 
-/* الروابط */
+/* ??????? */
 a {
-  color: var(--color-primary);  /* يلفت الانتباه دون إزعاج */
+  color: var(--color-primary);  /* ???? ???????? ??? ????? */
   text-decoration: none;
   font-weight: var(--weight-medium);
   transition: var(--transition-colors);
 }
 
 a:hover {
-  color: var(--color-accent);  /* تأثير ديناميكي متناغم */
+  color: var(--color-accent);  /* ????? ???????? ?????? */
 }
 
 /* =======================================
-   4️⃣ BUTTONS SYSTEM - INTEC 2025 Enhanced
+   4?? BUTTONS SYSTEM - INTEC 2025 Enhanced
    Modern, Elegant, Tactile
    ======================================= */
 
@@ -9804,7 +9970,7 @@ button,
 }
 
 /* =======================================
-   🚫 PREVENT UNDERLINES ON ALL BUTTONS
+   ?? PREVENT UNDERLINES ON ALL BUTTONS
    Buttons should NEVER have text-decoration
    in any state (hover, focus, active)
    ======================================= */
@@ -9862,7 +10028,7 @@ button:focus-visible,
 }
 
 /* =======================================
-   🎯 PRIMARY BUTTONS
+   ?? PRIMARY BUTTONS
    Main actions: Registration, Submit, Primary CTA
    ======================================= */
 
@@ -9901,7 +10067,7 @@ button:focus-visible,
 }
 
 /* =======================================
-   🎨 ACCENT BUTTONS
+   ?? ACCENT BUTTONS
    Secondary actions: Alternative links, Help
    ======================================= */
 
@@ -9940,7 +10106,7 @@ button:focus-visible,
 }
 
 /* =======================================
-   ⭕ OUTLINE BUTTONS
+   ? OUTLINE BUTTONS
    Bordered buttons: Exploration, View courses
    ======================================= */
 
@@ -9982,7 +10148,7 @@ button:focus-visible,
 }
 
 /* =======================================
-   💫 SOFT BUTTONS
+   ?? SOFT BUTTONS
    Gentle appearance: Plan intake, Cards
    ======================================= */
 
@@ -10024,7 +10190,7 @@ button:focus-visible,
 }
 
 /* =======================================
-   📐 BUTTON SIZES
+   ?? BUTTON SIZES
    Responsive sizing with proper touch targets
    ======================================= */
 
@@ -10050,7 +10216,7 @@ button:focus-visible,
 }
 
 /* =======================================
-   🔄 BUTTON STATES
+   ?? BUTTON STATES
    Disabled and loading states
    ======================================= */
 
@@ -10098,7 +10264,7 @@ button:disabled,
 }
 
 /* =======================================
-   🎨 BUTTON GROUPS & HIERARCHY
+   ?? BUTTON GROUPS & HIERARCHY
    Multiple buttons together - INTEC 2025 Standards
    ======================================= */
 
@@ -10119,7 +10285,6 @@ button:disabled,
 
 /* Hero actions, CTA sections - Primary + Outline pattern */
 .hero__actions,
-.collaboration-cta__actions,
 .cta-actions,
 .cta-band__actions,
 .action-group {
@@ -10132,7 +10297,6 @@ button:disabled,
 
 /* Ensure equal height for paired buttons */
 .hero__actions > *,
-.collaboration-cta__actions > *,
 .cta-actions > *,
 .cta-band__actions > *,
 .action-group > * {
@@ -10141,7 +10305,6 @@ button:disabled,
 
 /* Visual hierarchy: Primary always comes first */
 .hero__actions > :first-child,
-.collaboration-cta__actions > :first-child,
 .cta-actions > :first-child,
 .cta-band__actions > :first-child,
 .action-group > :first-child {
@@ -10151,7 +10314,6 @@ button:disabled,
 }
 
 .hero__actions > :nth-child(2),
-.collaboration-cta__actions > :nth-child(2),
 .cta-actions > :nth-child(2),
 .cta-band__actions > :nth-child(2),
 .action-group > :nth-child(2) {
@@ -10161,7 +10323,7 @@ button:disabled,
 }
 
 /* =======================================
-   📐 BUTTON HIERARCHY ENFORCEMENT
+   ?? BUTTON HIERARCHY ENFORCEMENT
    INTEC 2025 Standards - Visual Contrast
    ======================================= */
 
@@ -10173,7 +10335,6 @@ button:disabled,
 
 /* Prevent duplicate styles in same container */
 .hero__actions .btn-primary + .btn-primary,
-.collaboration-cta__actions .btn-primary + .btn-primary,
 .cta-actions .btn-primary + .btn-primary,
 .cta-band__actions .btn-primary + .btn-primary {
   /* If two primaries exist, force second to outline */
@@ -10183,7 +10344,6 @@ button:disabled,
 }
 
 .hero__actions .btn-primary + .btn-primary:hover,
-.collaboration-cta__actions .btn-primary + .btn-primary:hover,
 .cta-actions .btn-primary + .btn-primary:hover,
 .cta-band__actions .btn-primary + .btn-primary:hover {
   background: var(--color-primary);
@@ -10192,7 +10352,6 @@ button:disabled,
 
 /* Typography alignment for paired buttons */
 .hero__actions > *,
-.collaboration-cta__actions > *,
 .cta-actions > *,
 .cta-band__actions > * {
   font-size: var(--text-body-lg);
@@ -10203,7 +10362,6 @@ button:disabled,
 
 /* Consistent spacing and rhythm */
 .hero__actions,
-.collaboration-cta__actions,
 .cta-actions,
 .cta-band__actions {
   margin-top: var(--space-lg);
@@ -10212,7 +10370,6 @@ button:disabled,
 /* Mobile adjustments for action groups */
 @media (max-width: 640px) {
   .hero__actions,
-  .collaboration-cta__actions,
   .cta-actions,
   .cta-band__actions {
     flex-direction: column;
@@ -10221,7 +10378,6 @@ button:disabled,
   }
   
   .hero__actions > *,
-  .collaboration-cta__actions > *,
   .cta-actions > *,
   .cta-band__actions > * {
     width: 100%;
@@ -10230,7 +10386,7 @@ button:disabled,
 }
 
 /* =======================================
-   🌐 RESPONSIVE ADJUSTMENTS
+   ?? RESPONSIVE ADJUSTMENTS
    Mobile-friendly touch targets
    ======================================= */
 
@@ -10256,7 +10412,7 @@ button:disabled,
   }
 }
 
-/* 5️⃣ Stats Section */
+/* 5?? Stats Section */
 .stats-card {
   background: var(--color-bg-white);
   color: var(--color-text);
@@ -10287,7 +10443,7 @@ button:disabled,
 }
 
 /* =======================================
-   6️⃣ FOOTER SECTION - Strong Visual Ending
+   6?? FOOTER SECTION - Strong Visual Ending
    WCAG AA Compliant on Dark Background
    ======================================= */
 footer,
@@ -10295,7 +10451,6 @@ footer,
   background: #0d2e30;  /* Extra dark teal for strong contrast */
   color: var(--color-text-invert);
   padding: var(--space-section) 0;
-  margin-top: var(--space-3xl);
   border-top: 3px solid var(--color-accent);
   position: relative;
 }
@@ -10783,7 +10938,7 @@ footer a:hover,
 }
 
 .team-list li::before {
-  content: '•';
+  content: '�';
   position: absolute;
   left: 0;
   color: var(--color-accent);
@@ -11643,7 +11798,6 @@ footer a:hover,
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
 }
 
 /* Vertical Rhythm System */
@@ -11749,7 +11903,7 @@ footer a:hover,
 }
 
 .highlight-list li:before {
-  content: '✓';
+  content: '?';
   font-weight: 600;
   color: var(--color-primary);
   flex-shrink: 0;
@@ -11781,7 +11935,7 @@ footer a:hover,
   color: var(--color-primary);
 }
 
-/* Programs Grid - Responsive 3→2→1 Layout */
+/* Programs Grid - Responsive 3?2?1 Layout */
 .programs-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -12307,5 +12461,3 @@ footer a:hover,
     opacity: 1;
   }
 }
-
-/* Focus Management */

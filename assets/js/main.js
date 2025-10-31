@@ -122,12 +122,25 @@ document.addEventListener("DOMContentLoaded", function () {
    * Update language button states
    */
   function updateLanguageButtons() {
+    document.querySelectorAll(".language-switch").forEach((switcher) => {
+      switcher.dataset.activeLang = currentLanguage;
+    });
+
     document.querySelectorAll("[data-lang-select]").forEach((btn) => {
       const lang = btn.dataset.lang;
       const active = lang === currentLanguage;
       
       // Update visual state
       btn.classList.toggle("is-active", active);
+      
+      const switcher = btn.closest(".language-switch");
+      if (switcher) {
+        if (active) {
+          switcher.dataset.activeLang = lang;
+        } else if (!switcher.querySelector(".is-active")) {
+          delete switcher.dataset.activeLang;
+        }
+      }
       
       // Update ARIA attributes for accessibility
       btn.setAttribute("aria-pressed", active);
@@ -219,6 +232,135 @@ function setupSmoothScroll() {
     });
   });
 }
+
+  // =============================
+  // Course Countdown Badges
+  // =============================
+
+  const MS_PER_DAY = 24 * 60 * 60 * 1000;
+  const COURSE_COUNTDOWN_CLASS = "course-date__countdown";
+  const COURSE_COUNTDOWN_MODIFIERS = [
+    `${COURSE_COUNTDOWN_CLASS}--soon`,
+    `${COURSE_COUNTDOWN_CLASS}--today`,
+    `${COURSE_COUNTDOWN_CLASS}--past`
+  ];
+
+  const COURSE_COUNTDOWN_MESSAGES = {
+    en: {
+      inMany(days) {
+        return `Starts in ${days} days`;
+      },
+      inOne() {
+        return "Starts in 1 day";
+      },
+      today: "Starts today",
+      pastMany(days) {
+        return `Started ${days} days ago`;
+      },
+      pastOne() {
+        return "Started 1 day ago";
+      }
+    },
+    nl: {
+      inMany(days) {
+        return `Start over ${days} dagen`;
+      },
+      inOne() {
+        return "Start over 1 dag";
+      },
+      today: "Start vandaag",
+      pastMany(days) {
+        return `Gestart ${days} dagen geleden`;
+      },
+      pastOne() {
+        return "Gestart 1 dag geleden";
+      }
+    }
+  };
+
+  function getActiveLanguageCode() {
+    if (typeof currentLanguage === "string") {
+      return currentLanguage;
+    }
+    const docLang = document.documentElement.getAttribute("lang") || "en";
+    return docLang.slice(0, 2);
+  }
+
+  function formatCountdownMessage(diffDays, lang) {
+    const messages = COURSE_COUNTDOWN_MESSAGES[lang] || COURSE_COUNTDOWN_MESSAGES.en;
+    if (diffDays > 0) {
+      return diffDays === 1 ? messages.inOne() : messages.inMany(diffDays);
+    }
+    if (diffDays === 0) {
+      return messages.today;
+    }
+    const pastDays = Math.abs(diffDays);
+    return pastDays === 1 ? messages.pastOne() : messages.pastMany(pastDays);
+  }
+
+  function updateCourseCountdowns() {
+    const lang = getActiveLanguageCode();
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    document.querySelectorAll("[data-start-date]").forEach((item) => {
+      const isoDate = item.getAttribute("data-start-date");
+      if (!isoDate) {
+        return;
+      }
+
+      const targetDate = new Date(isoDate);
+      if (Number.isNaN(targetDate.getTime())) {
+        return;
+      }
+
+      targetDate.setHours(0, 0, 0, 0);
+      const diffDays = Math.round((targetDate - today) / MS_PER_DAY);
+
+      const message = formatCountdownMessage(diffDays, lang);
+      if (!message) {
+        return;
+      }
+
+      let badge = item.querySelector("[data-countdown]");
+      if (!badge) {
+        badge = document.createElement("span");
+        badge.setAttribute("data-countdown", "");
+        badge.setAttribute("aria-live", "polite");
+        badge.setAttribute("role", "status");
+        badge.classList.add(COURSE_COUNTDOWN_CLASS);
+        item.appendChild(document.createTextNode(" "));
+        item.appendChild(badge);
+      } else {
+        badge.classList.add(COURSE_COUNTDOWN_CLASS);
+      }
+
+      badge.textContent = message;
+      COURSE_COUNTDOWN_MODIFIERS.forEach((cls) => badge.classList.remove(cls));
+
+      if (diffDays === 0) {
+        badge.classList.add(`${COURSE_COUNTDOWN_CLASS}--today`);
+      } else if (diffDays < 0) {
+        badge.classList.add(`${COURSE_COUNTDOWN_CLASS}--past`);
+      } else if (diffDays <= 30) {
+        badge.classList.add(`${COURSE_COUNTDOWN_CLASS}--soon`);
+      }
+    });
+  }
+
+  let courseCountdownTimer = null;
+
+  function startCourseCountdownTimer() {
+    updateCourseCountdowns();
+    if (courseCountdownTimer) {
+      clearInterval(courseCountdownTimer);
+    }
+    courseCountdownTimer = setInterval(updateCourseCountdowns, 60 * 60 * 1000);
+  }
+
+  window.addEventListener("languageChanged", () => {
+    updateCourseCountdowns();
+  });
 
   // =============================
   // Sticky Header with Hide/Show
@@ -857,9 +999,9 @@ function setupSmoothScroll() {
     // ═══════════════════════════════════════════
     const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const styles = getComputedStyle(document.documentElement);
-    const TRANSITION_MS = REDUCED_MOTION ? 0 : 600;
-    const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
-    const AUTOPLAY_MS = REDUCED_MOTION ? 0 : 4000;
+    const TRANSITION_MS = REDUCED_MOTION ? 0 : 850;
+    const EASE = "cubic-bezier(0.33, 1, 0.68, 1)";
+    const AUTOPLAY_MS = REDUCED_MOTION ? 0 : 6500;
     const MIN_SWIPE_PX = 50;
     const SWIPE_THRESHOLD = 0.2; // 20% of slide width
 
@@ -898,11 +1040,19 @@ function setupSmoothScroll() {
     // ═══════════════════════════════════════════
     function setTransform(index, withTransition = true) {
       const x = -index * stepX;
-      track.style.transition = withTransition && TRANSITION_MS > 0 
-        ? `transform ${TRANSITION_MS}ms ${EASE}` 
-        : "none";
-      track.style.transform = `translate3d(${x}px, 0, 0)`;
-      track.style.willChange = withTransition ? "transform" : "auto";
+      const apply = () => {
+        track.style.transition = withTransition && TRANSITION_MS > 0
+          ? `transform ${TRANSITION_MS}ms ${EASE}`
+          : "none";
+        track.style.transform = `translate3d(${x}px, 0, 0)`;
+        track.style.willChange = withTransition ? "transform" : "auto";
+      };
+
+      if (withTransition && TRANSITION_MS > 0) {
+        requestAnimationFrame(apply);
+      } else {
+        apply();
+      }
     }
 
     // ═══════════════════════════════════════════
@@ -1272,6 +1422,7 @@ function setupSmoothScroll() {
     setupSmoothScroll();
     setupScrollAnimations();
     setupCounters();
+    startCourseCountdownTimer();
     initPartnerCarousel();
     enhanceAccordions();
     updateFooterYear();
@@ -1361,7 +1512,7 @@ const siteHeader = document.querySelector('.site-header');
 
 if (siteHeader) {
   window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 50) {
+    if (window.pageYOffset > 60) {
       siteHeader.classList.add('scrolled');
     } else {
       siteHeader.classList.remove('scrolled');
