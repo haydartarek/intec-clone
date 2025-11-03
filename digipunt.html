@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
@@ -33,7 +33,7 @@
           <nav class="primary-nav" aria-label="Hoofdmenu">
             <ul class="nav-links" id="primary-navigation" role="list">
               <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-              <li><a href="index.html#opleidingen" data-i18n="nav.training">Courses</a></li>
+              <li><a href="opleidingen.html" data-i18n="nav.training">Courses</a></li>
               <li><a href="inschrijven.html" data-i18n="nav.register">Register</a></li>
               <li><a href="overons.html" data-i18n="nav.about">About us</a></li>
               <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
@@ -51,94 +51,34 @@
       </header>
 
       <main id="main-content" tabindex="-1">
-        <section class="hero_section">
-          <div class="container hero-service">
-            <div class="hero-service__card">
-              <div class="hero-service__content">
-                <span class="hero-service__eyebrow">Digipunt</span>
-                <h1 class="hero-service__title" data-i18n="digipunt.title" data-i18n-allow-html="true">
-                  DIGIPUNT <span class="hero-service__highlight">INTEC</span>
+                <section class="hero_section">
+          <div class="container">
+            <div>
+              <span data-i18n="digipunt.hero.metaTitle">Locatie</span>
+              <h1 data-i18n="digipunt.title">
+                  DIGIPUNT INTEC
                 </h1>
-                <p class="hero-service__subtitle" data-i18n="digipunt.subtitle">
-                  Gratis digitale ondersteuning voor alle Brusselaars in de Muntpunt-bibliotheek.
-                </p>
-                <p class="hero-service__description" data-i18n="digipunt.description">
+              <p data-i18n="digipunt.subtitle">
+                Gratis digitale ondersteuning voor alle Brusselaars in de Muntpunt-bibliotheek.
+              </p>
+              <div>
+                <a class="btn-primary btn-lg" href="contact.html" data-i18n="digipunt.hero.ctaPrimary">Bezoek ons</a>
+                <a class="btn-outline btn-lg" href="opleidingen.html" data-i18n="digipunt.hero.ctaSecondary">Bekijk opleidingen</a>
+              </div>
+            </div>
+            <div>
+              <div>
+                <img
+                  src="assets/img/IntecBrussel.png"
+                  alt="Digipunt services"
+                  decoding="async"
+                  loading="eager"
+                  width="560"
+                  height="420"
+                />
+                <p data-i18n="digipunt.description">
                   Onze digicoaches helpen je stap voor stap met smartphone, tablet of computer. Gratis workshops, persoonlijke coaching en leertrajecten op maat.
                 </p>
-                <div class="hero-service__actions">
-                  <a class="btn-primary btn-lg" href="#contact-section" data-i18n="digipunt.hero.ctaPrimary">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                      <line x1="16" y1="2" x2="16" y2="6"></line>
-                      <line x1="8" y1="2" x2="8" y2="6"></line>
-                      <line x1="3" y1="10" x2="21" y2="10"></line>
-                    </svg>
-                    Plan afspraak
-                  </a>
-                  <a class="btn-outline btn-lg" href="https://samenin.brussels/diginew" target="_blank" rel="noreferrer noopener" data-i18n="digipunt.hero.ctaSecondary">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                      <polyline points="15 3 21 3 21 9"></polyline>
-                      <line x1="10" y1="14" x2="21" y2="3"></line>
-                    </svg>
-                    Meer info
-                  </a>
-                </div>
-                <dl class="hero-service__stats" aria-label="Kerncijfers Digipunt INTEC" data-i18n-aria-label="digipunt.hero.stats.aria">
-                  <div class="hero-service__stat">
-                    <dt class="hero-service__stat-value" data-i18n="digipunt.hero.stats.access.value">Gratis</dt>
-                    <dd class="hero-service__stat-label" data-i18n="digipunt.hero.stats.access.label">Vrije toegang</dd>
-                  </div>
-                  <div class="hero-service__stat">
-                    <dt class="hero-service__stat-value" data-i18n="digipunt.hero.stats.hours.value">4 dgn</dt>
-                    <dd class="hero-service__stat-label" data-i18n="digipunt.hero.stats.hours.label">Per week geopend</dd>
-                  </div>
-                  <div class="hero-service__stat">
-                    <dt class="hero-service__stat-value" data-i18n="digipunt.hero.stats.support.value">1-op-1</dt>
-                    <dd class="hero-service__stat-label" data-i18n="digipunt.hero.stats.support.label">Persoonlijke coaching</dd>
-                  </div>
-                </dl>
-                <div class="hero-service__meta">
-                  <span class="hero-service__meta-label" data-i18n="digipunt.hero.metaTitle">Locatie</span>
-                  <strong class="hero-service__meta-value" data-i18n="digipunt.hero.metaValue">Muntpunt bibliotheek, 3e verdieping</strong>
-                  <p class="hero-service__meta-note" data-i18n="digipunt.hero.metaNote">
-                    Dinsdag t/m vrijdag geopend. Vrije inloop op dinsdag (14:00-18:00). Geen afspraak nodig tijdens openingsuren.
-                  </p>
-                </div>
-              </div>
-              <div class="hero-service__visual">
-                <div class="hero-service__visual-ring">
-                  <img
-                    src="assets/img/intec-brussel-contact.jpg"
-                    alt="Digipunt INTEC digicoaches helpen bezoekers met digitale vaardigheden"
-                    loading="eager"
-                    decoding="async"
-                    width="560"
-                    height="560"
-                    data-critical="true" />
-                </div>
-                <ul class="hero-service__decor hero-service__decor--partners" aria-hidden="true">
-                  <li class="hero-service__decor-item hero-service__decor-item--partner-one">
-                    <figure>
-                      <img src="assets/img/muntpuntlogo.png" alt="Muntpunt logo" loading="lazy" decoding="async" />
-                    </figure>
-                  </li>
-                  <li class="hero-service__decor-item hero-service__decor-item--partner-two">
-                    <figure>
-                      <img src="assets/img/trace_logo_kleur.jpg" alt="Tracé Brussel logo" loading="lazy" decoding="async" />
-                    </figure>
-                  </li>
-                  <li class="hero-service__decor-item hero-service__decor-item--partner-three">
-                    <figure>
-                      <img src="assets/img/digibanken.png" alt="Digibanken logo" loading="lazy" decoding="async" />
-                    </figure>
-                  </li>
-                  <li class="hero-service__decor-item hero-service__decor-item--partner-four">
-                    <figure>
-                      <img src="assets/img/Logo+e-inclusie+vierkant.png" alt="E-inclusie Alle Brusselaars digitaal logo" loading="lazy" decoding="async" />
-                    </figure>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
@@ -197,15 +137,15 @@
         </section>
 
         <section class="section cta-band cta-band--minimal cta-band--highlight">
-          <div class="cta-band__inner container">
-            <div class="cta-band__content">
-              <span class="cta-band__eyebrow" data-i18n="about.cta.eyebrow">Samen bouwen</span>
+          <div class="enrollment-cta__content container">
+            <div class="enrollment-cta__content">
+              <span class="enrollment-cta__eyebrow" data-i18n="about.cta.eyebrow">Samen bouwen</span>
               <h2 data-i18n="about.cta.title">Wil je mee het verschil maken voor talent in Brussel?</h2>
               <p data-i18n="about.cta.body">
                 Neem contact op en ontdek hoe we kunnen samenwerken rond trajecten, stages of coaching.
               </p>
             </div>
-            <div class="cta-band__actions">
+            <div class="enrollment-cta__actions">
               <a class="btn-primary" href="contact.html" data-i18n="about.cta.primary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -213,7 +153,7 @@
                 </svg>
                 Contacteer ons team
               </a>
-              <a class="btn-outline" href="index.html#opleidingen" data-i18n="about.cta.secondary">
+              <a class="btn-outline" href="opleidingen.html" data-i18n="about.cta.secondary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                   <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>

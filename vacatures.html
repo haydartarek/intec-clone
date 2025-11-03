@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
@@ -35,7 +35,7 @@
           <nav class="primary-nav" aria-label="Hoofdmenu">
             <ul class="nav-links" id="primary-navigation" role="list">
               <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-              <li><a href="index.html#opleidingen" data-i18n="nav.training">Courses</a></li>
+              <li><a href="opleidingen.html" data-i18n="nav.training">Courses</a></li>
               <li><a href="inschrijven.html" data-i18n="nav.register">Register</a></li>
               <li><a href="overons.html" data-i18n="nav.about">About us</a></li>
               <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
@@ -54,83 +54,34 @@
 
       <main id="main-content" tabindex="-1">
         <!-- Hero Section -->
-        <section class="hero_section">
-          <div class="container hero-service">
-            <div class="hero-service__card">
-              <div class="hero-service__content">
-                <span class="hero-service__eyebrow" data-i18n="vacancies.label">Carri�res</span>
-                <h1 class="hero-service__title" data-i18n="vacancies.hero.title" data-i18n-allow-html="true">
-                  Werk mee aan <span class="hero-service__highlight">digitale inclusie</span>
+                <section class="hero_section">
+          <div class="container">
+            <div>
+              <span data-i18n="vacancies.label">Carri�res</span>
+              <h1 data-i18n="vacancies.hero.title">
+                  Werk mee aan digitale inclusie
                 </h1>
-                <p class="hero-service__subtitle" data-i18n="vacancies.hero.subtitle">
-                  Sluit je aan bij ons team van gepassioneerde professionals die talent ontwikkelen en begeleiden naar duurzame IT-carri�res.
-                </p>
-                <p class="hero-service__description" data-i18n="vacancies.hero.description">
+              <p data-i18n="vacancies.hero.subtitle">
+                Sluit je aan bij ons team van gepassioneerde professionals die talent ontwikkelen en begeleiden naar duurzame IT-carri�res.
+              </p>
+              <div>
+                <a class="btn-primary btn-lg" href="#vacatures-grid" data-i18n="vacancies.hero.ctaPrimary">Bekijk vacatures</a>
+                <a class="btn-outline btn-lg" href="contact.html" data-i18n="vacancies.hero.ctaSecondary">Neem contact op</a>
+              </div>
+            </div>
+            <div>
+              <div>
+                <img
+                  src="assets/img/IntecBrussel.png"
+                  alt="Vacatures bij INTEC"
+                  decoding="async"
+                  loading="eager"
+                  width="560"
+                  height="420"
+                />
+                <p data-i18n="vacancies.hero.description">
                   We zoeken collega's in coaching, IT-training, administratie en ondersteuning die impact willen maken in het leven van onze cursisten.
                 </p>
-                <div class="hero-service__actions">
-                  <a class="btn-primary btn-lg" href="#vacatures-grid" data-i18n="vacancies.hero.ctaPrimary">Bekijk vacatures</a>
-                  <a class="btn-outline btn-lg" href="contact.html" data-i18n="vacancies.hero.ctaSecondary">Neem contact op</a>
-                </div>
-                <dl class="hero-service__stats" aria-label="Waarom werken bij INTEC" data-i18n-aria-label="vacancies.hero.stats.aria">
-                  <div class="hero-service__stat">
-                    <dt class="hero-service__stat-value" data-i18n="vacancies.hero.stats.impact.value">500+</dt>
-                    <dd class="hero-service__stat-label" data-i18n="vacancies.hero.stats.impact.label">Cursisten per jaar begeleid</dd>
-                  </div>
-                  <div class="hero-service__stat">
-                    <dt class="hero-service__stat-value" data-i18n="vacancies.hero.stats.team.value">30+</dt>
-                    <dd class="hero-service__stat-label" data-i18n="vacancies.hero.stats.team.label">Teamleden in diverse rollen</dd>
-                  </div>
-                  <div class="hero-service__stat">
-                    <dt class="hero-service__stat-value" data-i18n="vacancies.hero.stats.growth.value">15 jaar</dt>
-                    <dd class="hero-service__stat-label" data-i18n="vacancies.hero.stats.growth.label">Expertise in IT-opleiding</dd>
-                  </div>
-                </dl>
-                <div class="hero-service__meta">
-                  <span class="hero-service__meta-label" data-i18n="vacancies.hero.metaTitle">Werk bij INTEC</span>
-                  <strong class="hero-service__meta-value" data-i18n="vacancies.hero.metaHighlight">Impactvolle teams, hybride werken</strong>
-                  <p class="hero-service__meta-note" data-i18n="vacancies.hero.metaNote">
-                    Bij INTEC Brussel werk je in een lerende organisatie met ruimte voor professionele groei, opleiding en innovatie.
-                  </p>
-                </div>
-              </div>
-              <div class="hero-service__visual">
-                <div class="hero-service__visual-ring">
-                  <img
-                    src="assets/img/IntecBrussel.png"
-                    alt="INTEC Brussel team werkt samen aan digitale inclusie"
-                    decoding="async"
-                    loading="lazy"
-                    width="560"
-                    height="560"
-                    data-critical="true" />
-                </div>
-                <ul class="hero-service__decor" aria-hidden="true">
-                  <li class="hero-service__decor-item hero-service__decor-item--one">
-                    <span class="hero-service__decor-icon">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round" />
-                        <circle cx="9" cy="7" r="4" />
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                    </span>
-                  </li>
-                  <li class="hero-service__decor-item hero-service__decor-item--three">
-                    <span class="hero-service__decor-icon">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 17.27 18.18 21l-1.64-7 5.46-4.74-7.12-.61L12 2 9.12 8.65l-7.12.61L7.46 14 5.82 21z" stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                    </span>
-                  </li>
-                  <li class="hero-service__decor-item hero-service__decor-item--two">
-                    <span class="hero-service__decor-icon">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round" />
-                        <polyline points="22,4 12,14.01 9,11.01" stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                    </span>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
@@ -146,10 +97,10 @@
                 Bij INTEC Brussel werk je in een lerende organisatie waar professionele groei, samenwerking en maatschappelijke impact centraal staan.
               </p>
             </div>
-            <div class="card-grid card-grid--quadrant quadrant-grid">
+            <div class="programs-showcase__grid">
               <article class="card card--quadrant fade-up" data-delay="1">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round" />
                       <circle cx="9" cy="7" r="4" />
@@ -157,63 +108,63 @@
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title" data-i18n="vacancies.benefits.team.title">Impactvolle teams</h3>
+                    <h3 class="feature-card__title" data-i18n="vacancies.benefits.team.title">Impactvolle teams</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="vacancies.benefits.team.text">
                     Werk samen met gepassioneerde professionals die elke dag het verschil maken in het leven van onze cursisten. Je collega's zijn experts in coaching, IT-training en begeleiding.
                   </p>
                 </div>
               </article>
               <article class="card card--quadrant fade-up" data-delay="2">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" stroke-linecap="round" stroke-linejoin="round" />
                       <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title" data-i18n="vacancies.benefits.growth.title">Professionele ontwikkeling</h3>
+                    <h3 class="feature-card__title" data-i18n="vacancies.benefits.growth.title">Professionele ontwikkeling</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="vacancies.benefits.growth.text">
                     Ruimte voor opleiding, certificeringen en coaching. We investeren in jouw groei met training budgets, conferenties en interne kennisdeling.
                   </p>
                 </div>
               </article>
               <article class="card card--quadrant fade-up" data-delay="3">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke-linecap="round" stroke-linejoin="round" />
                       <polyline points="9,22 9,12 15,12 15,22" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title" data-i18n="vacancies.benefits.flexibility.title">Hybride werken</h3>
+                    <h3 class="feature-card__title" data-i18n="vacancies.benefits.flexibility.title">Hybride werken</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="vacancies.benefits.flexibility.text">
                     Flexibele werkplekken met mix van on-site coaching en remote werk. Moderne faciliteiten in het centrum van Brussel, met goede bereikbaarheid per openbaar vervoer.
                   </p>
                 </div>
               </article>
               <article class="card card--quadrant fade-up" data-delay="4">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <path d="M12 17.27 18.18 21l-1.64-7 5.46-4.74-7.12-.61L12 2 9.12 8.65l-7.12.61L7.46 14 5.82 21z" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title" data-i18n="vacancies.benefits.impact.title">Maatschappelijke impact</h3>
+                    <h3 class="feature-card__title" data-i18n="vacancies.benefits.impact.title">Maatschappelijke impact</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="vacancies.benefits.impact.text">
                     Draag bij aan digitale inclusie en emancipatie door kwetsbare groepen naar duurzame IT-carri�res te begeleiden. Zie elke dag het tastbare resultaat van jouw werk.
                   </p>
@@ -250,20 +201,20 @@
             >
               Vacatures worden geladen...
             </div>
-            <div class="card-grid card-grid--features" id="vacatures-grid" aria-live="polite"></div>
+            <div class="programs-showcase__grid" id="vacatures-grid" aria-live="polite"></div>
           </div>
         </section>
 
         <section class="section cta-band cta-band--minimal cta-band--highlight">
-          <div class="cta-band__inner container">
-            <div class="cta-band__content">
-              <span class="cta-band__eyebrow" data-i18n="vacancies.cta.eyebrow">Blijf op de hoogte</span>
+          <div class="enrollment-cta__content container">
+            <div class="enrollment-cta__content">
+              <span class="enrollment-cta__eyebrow" data-i18n="vacancies.cta.eyebrow">Blijf op de hoogte</span>
               <h2 data-i18n="vacancies.cta.title">Geen geschikte vacature gevonden?</h2>
               <p data-i18n="vacancies.cta.body">
                 Volg ons op LinkedIn of stuur een spontane sollicitatie naar ons HR-team. We leren je graag kennen.
               </p>
             </div>
-            <div class="cta-band__actions">
+            <div class="enrollment-cta__actions">
               <a class="btn-primary" href="mailto:hr@intecbrussel.be" data-i18n="vacancies.cta.primary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -289,16 +240,16 @@
           </div>
         </section>
 
-                        <section class="section cta-band cta-band--minimal">
-          <div class="cta-band__inner container">
-            <div class="cta-band__content">
-              <span class="cta-band__eyebrow" data-i18n="about.cta.eyebrow">Samen bouwen</span>
+                        <section class="enrollment-cta">
+          <div class="enrollment-cta__content container">
+            <div class="enrollment-cta__content">
+              <span class="enrollment-cta__eyebrow" data-i18n="about.cta.eyebrow">Samen bouwen</span>
               <h2 data-i18n="about.cta.title">Wil je mee het verschil maken voor talent in Brussel?</h2>
               <p data-i18n="about.cta.body">
                 Neem contact op en ontdek hoe we kunnen samenwerken rond trajecten, stages of coaching.
               </p>
             </div>
-            <div class="cta-band__actions">
+            <div class="enrollment-cta__actions">
               <a class="btn-primary" href="contact.html" data-i18n="about.cta.primary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -306,7 +257,7 @@
                 </svg>
                 Contacteer ons team
               </a>
-              <a class="btn-outline" href="index.html#opleidingen" data-i18n="about.cta.secondary">
+              <a class="btn-outline" href="opleidingen.html" data-i18n="about.cta.secondary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                   <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>

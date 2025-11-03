@@ -32,6 +32,11 @@
   font-weight: var(--weight-medium);
 }
 
+/* =======================================
+   hero-section all pages • Enhanced Visual Design (INTEC 2025)
+   ======================================= */
+
+
 
 /* =======================================
    FOOTER • Enhanced Visual Design (INTEC 2025)
@@ -109,19 +114,299 @@
    HERO IMAGE • Enhanced Presentation
    ======================================= */
 
-.hero__image {
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-glass);
-  height: auto;
-  max-width: 100%;
-  transition: var(--glass-transition);
+/* =======================================
+   HERO SECTION • Unified Design (INTEC 2025)
+   ======================================= */
+
+.hero_section {
+  position: relative;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fcfc 100%);
+  padding: clamp(4rem, 10vw, 8rem) 0 clamp(3rem, 8vw, 6rem);
+  overflow: hidden;
 }
 
-.hero__image:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-4px);
+.hero_section::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(37, 189, 183, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
 }
 
+.hero_section .container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(3rem, 6vw, 5rem);
+  align-items: center;
+}
+
+/* Content Column (Left) - First div inside container */
+.hero_section .container > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+/* Eyebrow Label */
+.hero_section .container > div:first-child span {
+  display: inline-block;
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  font-weight: 600;
+  color: #0f828a;
+  background: rgba(15, 130, 138, 0.08);
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: fit-content;
+  border: 1px solid rgba(15, 130, 138, 0.15);
+  transition: all 0.3s ease;
+}
+
+.hero_section .container > div:first-child span:hover {
+  background: rgba(15, 130, 138, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(15, 130, 138, 0.1);
+}
+
+/* Main Heading */
+.hero_section .container > div:first-child h1 {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #0d2e30;
+  margin: 0;
+  letter-spacing: -0.02em;
+  text-align: left;
+  text-transform: capitalize;
+}
+
+/* Description Text - Direct p child */
+.hero_section .container > div:first-child > p {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  line-height: 1.7;
+  color: #2d5456;
+  margin: 0;
+  max-width: 90%;
+  text-align: left;
+}
+
+/* Buttons Container - Direct div child */
+.hero_section .container > div:first-child > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+/* Image Column (Right) - Second div inside container */
+.hero_section .container > div:last-child {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Inner wrapper with image and caption - هذا div واحد فقط */
+.hero_section .container > div:last-child > div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 480px;
+}
+
+/* Decorative diagonal lines behind image */
+.hero_section .container > div:last-child > div::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -20%;
+  width: 130%;
+  height: 130%;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 12px,
+    rgba(37, 189, 183, 0.12) 12px,
+    rgba(37, 189, 183, 0.12) 15px
+  );
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.hero_section .container > div:last-child > div::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -20%;
+  width: 130%;
+  height: 130%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 40%, transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Image - الصورة الدائرية مباشرة */
+.hero_section .container > div:last-child > div img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+  background: #ffffff;
+  padding: 8px;
+  box-sizing: border-box;
+  box-shadow: 
+    0 20px 60px rgba(15, 130, 138, 0.15),
+    0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(1.05) contrast(1.08) saturate(1.1);
+}
+
+.hero_section .container > div:last-child > div img:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 
+    0 30px 80px rgba(15, 130, 138, 0.2),
+    0 12px 35px rgba(0, 0, 0, 0.12);
+  filter: brightness(1.08) contrast(1.1) saturate(1.15);
+}
+
+/* Image Caption - p مباشرة بعد الصورة */
+.hero_section .container > div:last-child > div p {
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  line-height: 1.6;
+  color: #2d5456;
+  text-align: center;
+  font-style: italic;
+  margin: 0;
+  max-width: 90%;
+  opacity: 0.9;
+}
+
+/* Decorative Elements */
+.hero_section .container > div:last-child::before {
+  content: '';
+  position: absolute;
+  top: -8%;
+  right: -8%;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(37, 189, 183, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+  animation: floating 6s ease-in-out infinite;
+}
+
+.hero_section .container > div:last-child::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  left: -10%;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(15, 130, 138, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+  animation: floating 8s ease-in-out infinite reverse;
+}
+
+/* =======================================
+   RESPONSIVE DESIGN
+   ======================================= */
+
+@media (max-width: 1024px) {
+  .hero_section .container {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 3rem);
+  }
+
+  .hero_section .container > div:last-child > div {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero_section {
+    padding: clamp(3rem, 8vw, 5rem) 0 clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .hero_section::before {
+    width: 400px;
+    height: 400px;
+    top: 5%;
+    right: -20%;
+  }
+
+  .hero_section .container {
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  /* Image First on Mobile */
+  .hero_section .container > div:last-child {
+    order: -1;
+  }
+
+  .hero_section .container > div:first-child {
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero_section .container > div:first-child span {
+    margin-inline: auto;
+  }
+
+  .hero_section .container > div:first-child > p {
+    max-width: 100%;
+  }
+
+  .hero_section .container > div:first-child > div {
+    justify-content: center;
+  }
+
+  .hero_section .container > div:last-child > div {
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero_section {
+    padding: clamp(2.5rem, 7vw, 4rem) 0 clamp(2rem, 5vw, 3rem);
+  }
+
+  .hero_section .container > div:last-child > div {
+    max-width: 280px;
+  }
+  
+  .hero_section .container > div:last-child > div img {
+    padding: 6px;
+  }
+
+  .hero_section .container > div:first-child > div {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero_section .container > div:first-child > div a {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+}
 
 /* =======================================
    UTILITY CLASSES
@@ -511,19 +796,6 @@ main > section + section {
   padding-top: var(--space-md);
   border-top: 1px solid var(--color-border);
 }
-
-.card--compact { padding: var(--space-lg); }
-
-.card--featured {
-  color: var(--color-text-invert);
-  background: color-mix(in srgb, var(--color-primary) 40%, rgba(255, 255, 255, 0.2));
-  border: 1px solid var(--color-primary);
-  box-shadow: var(--shadow-glass);
-}
-
-.card--featured .card-title { color: var(--color-text-invert); }
-.card--featured .card-body  { color: rgba(255, 255, 255, 0.9); }
-.card--featured::before     { opacity: 1; background: var(--color-primary); }
 
 /* =======================================
    LAYOUT SYSTEM • INTEC 2025
@@ -1294,9 +1566,9 @@ select.form-control:hover {
 }
 
 .site-header__inner {
-  display: grid;
-  grid-template-columns: minmax(140px, auto) 1fr minmax(auto, max-content);
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: clamp(0.75rem, 2vw, 1.5rem);
   max-width: var(--max-width);
   margin-inline: auto;
@@ -1318,10 +1590,12 @@ select.form-control:hover {
   padding: 0.5rem 0;
   transition: opacity var(--glass-transition);
   flex-shrink: 0;
+  max-width: 180px;
 }
 
 .brand img {
-  width: clamp(140px, 12vw, 180px);
+  width: 100%;
+  max-width: 160px;
   height: auto;
   display: block;
   object-fit: contain;
@@ -1338,8 +1612,11 @@ select.form-control:hover {
    NAVIGATION
    ========================================== */
 .primary-nav {
-  display: contents;
+  flex: 1;
+  display: flex;
+  justify-content: center;
   min-width: 0;
+  margin-left: clamp(1rem, 3vw, 2rem);
 }
 
 .nav-links {
@@ -1351,7 +1628,6 @@ select.form-control:hover {
   margin: 0;
   padding: 0;
   flex-wrap: nowrap;
-  overflow: hidden;
 }
 
 .nav-links li {
@@ -1414,7 +1690,6 @@ select.form-control:hover {
   display: flex;
   align-items: center;
   gap: clamp(0.5rem, 1vw, 0.75rem);
-  justify-self: end;
   flex-wrap: nowrap;
   white-space: nowrap;
   flex-shrink: 0;
@@ -1571,15 +1846,17 @@ select.form-control:hover {
    RESPONSIVE ADJUSTMENTS
    ========================================== */
 @media (max-width: 1280px) {
-  .site-header__inner {
-    grid-template-columns: minmax(130px, auto) 1fr minmax(auto, max-content);
-    gap: clamp(0.5rem, 1.5vw, 1rem);
+  .brand {
+    max-width: 150px;
+  }
+  .brand img {
+    max-width: 140px;
   }
   .nav-links {
-    gap: clamp(0.25rem, 1vw, 0.75rem);
+    gap: clamp(0.4rem, 1vw, 0.8rem);
   }
   .nav-links a {
-    padding: 0.5rem clamp(0.25rem, 0.8vw, 0.5rem);
+    padding: 0.5rem clamp(0.3rem, 0.8vw, 0.5rem);
     font-size: clamp(0.8rem, 1.3vw, 0.9rem);
   }
   .site-header__actions {
@@ -1588,20 +1865,24 @@ select.form-control:hover {
 }
 
 @media (max-width: 1024px) {
-  .site-header__inner {
-    grid-template-columns: auto 1fr auto;
+  .brand {
+    max-width: 130px;
+  }
+  .brand img {
+    max-width: 120px;
   }
   .nav-links a {
     font-size: 0.85rem;
+    padding: 0.5rem 0.35rem;
   }
 }
 
 @media (max-width: 900px) {
   .nav-links {
-    gap: 0.4rem;
+    gap: 0.3rem;
   }
   .nav-links a {
-    padding: 0.5rem 0.4rem;
+    padding: 0.5rem 0.3rem;
     font-size: 0.8rem;
   }
 }
@@ -3860,15 +4141,6 @@ textarea:valid:not(:placeholder-shown) {
   color: inherit;
 }
 
-/* Hero with form: padding + grid only (باقي أنماط الهيرو مدموجة سابقًا) */
-.hero--with-form { padding-block: clamp(4rem, 8vw, 7rem); }
-.hero--with-form .hero__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: clamp(2rem, 4vw, 4rem);
-  align-items: start;
-}
-
 /* ============================================================================
    Registration (Inschrijven) – Deduped / Unified
    ============================================================================ */
@@ -3932,8 +4204,7 @@ textarea:valid:not(:placeholder-shown) {
 }
 
 /* Registration Card in Hero */
-.register-hero__card,
-.hero-card {
+.register-hero__card {
   border-radius: var(--radius-lg);
   padding: var(--space-card);
   border: var(--border-width-thick) solid var(--border-color);
@@ -3941,7 +4212,7 @@ textarea:valid:not(:placeholder-shown) {
   display: grid;
   gap: var(--gap-elements);
 }
-.hero-card h3 {
+.register-hero__card h3 {
   font-size: var(--text-h3);
   color: var(--color-text);
   margin: 0;
@@ -4804,12 +5075,8 @@ textarea:valid:not(:placeholder-shown) {
   .brand { order: 1; }
 
   /* Grids عامة */
-  .hero__grid,
   .two-column,
-  .contact-hero__layout,
-  .hero--with-form .hero__grid { grid-template-columns: 1fr; gap: var(--space-xl); }
-  .hero__visual { order: -1; }
-  .hero-card { max-width: 100%; }
+  .contact-hero__layout { grid-template-columns: 1fr; gap: var(--space-xl); }
 
   .course-grid, .program-grid, .counter-grid {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -4875,9 +5142,6 @@ textarea:valid:not(:placeholder-shown) {
   .brand img { width: 160px; }
   .language-switch { padding: 0.2rem; --lang-pill-size: 36px; --lang-gap: 6px; --lang-padding: 5px; }
   .language-switch button { font-size: 0.75rem; }
-
-  .hero__actions { flex-direction: column; width: 100%; }
-  .hero__actions .button { width: 100%; justify-content: center; }
 
   .footer__social-link { width: 100%; justify-content: flex-start; }
 }
@@ -5030,10 +5294,6 @@ textarea:valid:not(:placeholder-shown) {
   .site-header, .footer, .nav-links, .cta-band, .button { display: none !important; }
   .section { padding-block: 1.5rem; page-break-inside: avoid; }
 }
-
-/* 6) Minor hero/text tweaks (kept as is) -------------------- */
-.hero__eyebrow { font-size: clamp(1rem, 1.8vw, 1.2rem) !important; padding: 0.6rem 1.6rem; }
-.hero__description { font-size: clamp(1.1rem, 2vw, 1.3rem) !important; line-height: 1.7; text-align: center; word-spacing: normal; hyphens: none; }
 
 /* Global text spacing normalization */
 p, h1, h2, h3, h4, h5, h6, span, div { word-spacing: normal; hyphens: none; }
@@ -5569,14 +5829,6 @@ img[loading="lazy"] {
   margin-bottom: 0;
 }
 
-/* Hero card hover */
-:is(.page--program-python, .page--program-sysadmin, .page--program-security) .hero-card {
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
-}
-:is(.page--program-python, .page--program-sysadmin, .page--program-security) .hero-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
-}
 /* =======================================
    BACK TO TOP BUTTON
    ======================================= */
@@ -5630,7 +5882,6 @@ img[loading="lazy"] {
 /* =======================================
    ALIGNMENT OVERRIDES
    ======================================= */
-
 .partners-section .section-label,
 .partners-section .section-heading,
 .partners-section .section-title,
@@ -5648,12 +5899,6 @@ img[loading="lazy"] {
    RESPONSIVE — HERO / TIMELINE / PROGRAM
    ======================================= */
 @media (max-width:992px){
-  .hero__stats{
-    grid-template-columns:repeat(3,1fr);
-    gap:var(--space-md);
-    padding:var(--space-md);
-  }
-  .hero__stat-value{ font-size:clamp(1.5rem,2.5vw,2rem); }
 }
 
 @media (max-width:768px){
@@ -6155,59 +6400,42 @@ button:disabled,
 }
 
 /* Action containers */
-.hero__actions, .cta-actions, .cta-band__actions, .action-group {
+.cta-actions, .cta-band__actions, .action-group {
   display: flex;
   gap: var(--space-md);
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
 }
-.hero__actions > *, .cta-actions > *, .cta-band__actions > *, .action-group > * {
+.cta-actions > *, .cta-band__actions > *, .action-group > * {
   min-height: 52px;
 }
 
 /* Visual order */
-.hero__actions > :first-child,
 .cta-actions > :first-child,
 .cta-band__actions > :first-child,
 .action-group > :first-child { position: relative; z-index: 1; }
-.hero__actions > :nth-child(2),
 .cta-actions > :nth-child(2),
 .cta-band__actions > :nth-child(2),
 .action-group > :nth-child(2) { position: relative; z-index: 0; }
 
-/* Enforce Primary + Outline pattern if two primaries appear */
-.hero__actions .btn-primary + .btn-primary,
-.cta-actions .btn-primary + .btn-primary,
-.cta-band__actions .btn-primary + .btn-primary {
-  background: var(--color-bg-white);
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary);
-}
-.hero__actions .btn-primary + .btn-primary:hover,
-.cta-actions .btn-primary + .btn-primary:hover,
-.cta-band__actions .btn-primary + .btn-primary:hover {
-  background: var(--color-primary);
-  color: var(--color-bg-white);
-}
-
 /* Typography for paired buttons */
-.hero__actions > *, .cta-actions > *, .cta-band__actions > * {
+.cta-actions > *, .cta-band__actions > * {
   font-size: var(--text-body-lg);
   font-weight: var(--weight-semibold);
   letter-spacing: 0.01em;
   line-height: 1.2;
 }
-.hero__actions, .cta-actions, .cta-band__actions { margin-top: var(--space-lg); }
+.cta-actions, .cta-band__actions { margin-top: var(--space-lg); }
 
 /* Mobile stacking */
 @media (max-width: 640px) {
-  .hero__actions, .cta-actions, .cta-band__actions {
+  .cta-actions, .cta-band__actions {
     flex-direction: column;
     width: 100%;
     gap: var(--space-sm);
   }
-  .hero__actions > *, .cta-actions > *, .cta-band__actions > * {
+  .cta-actions > *, .cta-band__actions > * {
     width: 100%;
     justify-content: center;
   }
@@ -6293,36 +6521,6 @@ button:disabled,
 .team-structure .section-heading::before {
   background: var(--color-primary);
 }
-
-/* =======================================
-   Hero Visuals
-   ======================================= */
-.hero-card__image {
-  box-shadow: 0 8px 32px var(--color-primary-15) !important;
-  border-radius: 12px !important;
-  overflow: hidden;
-  height: auto !important;
-  max-height: 400px !important;
-  object-fit: cover !important;
-}
-.hero-card__content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 400px;
-}
-
-/* Hero navigation aid */
-.hero-nav { margin-top: var(--space-xl); text-align: center; opacity: 0.8; }
-.hero-nav__text { font-size: 0.9rem; color: var(--color-text); margin-bottom: 0.5rem; }
-.hero-nav__links { font-size: 0.85rem; }
-.hero-nav__links a {
-  color: var(--color-accent);
-  text-decoration: none;
-  margin: 0 0.5rem;
-  transition: color 0.3s ease;
-}
-.hero-nav__links a:hover { color: var(--color-text-teal); text-decoration: underline; }
 
 /* =======================================
    Board of Directors Grid
@@ -7031,16 +7229,6 @@ button:disabled,
   pointer-events: none;
 }
 
-.page--opleidingen .opleidingen-hero .hero-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: clamp(2rem, 6vw, 4rem);
-  align-items: start;
-  position: relative;
-  z-index: 1;
-}
-.page--opleidingen .hero-content { padding-right: 2rem; }
-
 /* Use local scope to avoid clashing with global .section-label rules */
 .page--opleidingen .opleidingen-hero .section-label {
   display: inline-block;
@@ -7054,31 +7242,6 @@ button:disabled,
   border-radius: 20px;
 }
 
-.page--opleidingen .hero-title {
-  font-size: clamp(2rem, 4vw, 2.5rem);
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--color-text);
-  margin-bottom: var(--space-lg);
-}
-.page--opleidingen .hero-description {
-  font-size: 1.125rem;
-  line-height: var(--leading-relaxed);
-  color: var(--color-primary);
-  margin-bottom: 2.5rem;
-  max-width: 540px;
-}
-.page--opleidingen .hero-actions {
-  display: flex; gap: var(--gap-sm); flex-wrap: wrap;
-}
-
-/* Hero highlight */
-.page--opleidingen .hero-highlight {
-  border-radius: var(--radius-lg);
-  box-shadow: 0 8px 24px var(--color-primary-10);
-  border: 1px solid var(--color-primary-10);
-  overflow: hidden;
-}
 .page--opleidingen .highlight-content { padding: var(--space-xl); }
 .page--opleidingen .highlight-title {
   font-size: 1.25rem; font-weight: 600; color: var(--color-text);
@@ -7233,10 +7396,6 @@ button:disabled,
    RESPONSIVE TWEAKS
    ========================= */
 @media (max-width: 992px) {
-  .page--opleidingen .opleidingen-hero .hero-grid {
-    grid-template-columns: 1fr; gap: var(--space-xl);
-  }
-  .page--opleidingen .hero-content { padding-right: 0; }
 }
 
 /* ============================================================================
@@ -7396,10 +7555,6 @@ button:disabled,
   .page--opleidingen .container { padding: 0 16px; }
   .page--opleidingen .section { padding: 56px 0; }
 
-  .page--opleidingen .hero-grid { grid-template-columns: 1fr; gap: var(--gap-lg); }
-  .page--opleidingen .hero-content { padding-right: 0; text-align: center; }
-  .page--opleidingen .hero-title { font-size: 2rem; }
-
   .page--opleidingen .section-title { font-size: 1.75rem; }
 
   .page--opleidingen .programs-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -7421,7 +7576,6 @@ button:disabled,
 
 @media (max-width: 480px) {
   .page--opleidingen .section { padding: 40px 0; }
-  .page--opleidingen .hero-title { font-size: 1.75rem; }
   .page--opleidingen .section-title { font-size: 1.5rem; }
   .page--opleidingen .program-card { padding: var(--space-card); }
 }
@@ -7444,3 +7598,430 @@ button:disabled,
 
 .page--opleidingen .content-loaded { animation: opleid-fadeIn 0.5s ease-in-out; }
 @keyframes opleid-fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* =======================================
+   UNIFIED SECTIONS SYSTEM • Clean & Modern (INTEC 2025)
+   ALL PAGES (except index.html)
+   ======================================= */
+
+/* =======================================
+   PROGRAMS SHOWCASE SECTION
+   ======================================= */
+.programs-showcase {
+  position: relative;
+  background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+  padding: clamp(4rem, 8vw, 6rem) 0;
+}
+
+.programs-showcase__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(1.5rem, 3vw, 2rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+/* Program Card */
+.program-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.program-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #0f828a 0%, #25bdb7 100%);
+  border-radius: 16px 16px 0 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.program-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(15, 130, 138, 0.2);
+  box-shadow: 
+    0 12px 24px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(15, 130, 138, 0.1);
+}
+
+.program-card:hover::before {
+  opacity: 1;
+}
+
+.program-card__icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(15, 130, 138, 0.08) 0%, rgba(37, 189, 183, 0.08) 100%);
+  border-radius: 12px;
+  color: #0f828a;
+}
+
+.program-card__icon svg {
+  width: 32px;
+  height: 32px;
+  stroke-width: 2;
+}
+
+.program-card__title {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: #0d2e30;
+  margin: 0;
+}
+
+.program-card__description {
+  font-size: clamp(0.938rem, 1.5vw, 1rem);
+  line-height: 1.7;
+  color: #2d5456;
+  margin: 0;
+  flex: 1;
+}
+
+.program-card__meta {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #0f828a;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.program-card__meta li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.program-card__meta strong {
+  font-weight: 600;
+}
+
+.program-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #0f828a;
+  font-weight: 600;
+  font-size: 0.938rem;
+  text-decoration: none;
+  margin-top: auto;
+  transition: all 0.2s ease;
+}
+
+.program-card__link:hover {
+  color: #25bdb7;
+  gap: 0.75rem;
+}
+
+.program-card__link svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease;
+}
+
+.program-card__link:hover svg {
+  transform: translateX(4px);
+}
+
+/* =======================================
+   TRAINING FEATURES SECTION
+   ======================================= */
+.training-features {
+  position: relative;
+  background: #ffffff;
+  padding: clamp(4rem, 8vw, 6rem) 0;
+}
+
+.training-features__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: clamp(1.5rem, 3vw, 2rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+/* Feature Card */
+.feature-card {
+  position: relative;
+  background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  border-color: rgba(15, 130, 138, 0.15);
+}
+
+.feature-card__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.feature-card__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 130, 138, 0.08);
+  border-radius: 10px;
+  color: #0f828a;
+  flex-shrink: 0;
+}
+
+.feature-card__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.feature-card__title {
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: #0d2e30;
+  margin: 0;
+}
+
+.feature-card__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.feature-card__list li {
+  font-size: 0.938rem;
+  line-height: 1.6;
+  color: #2d5456;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.feature-card__list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #0f828a;
+  font-weight: 700;
+}
+
+/* =======================================
+   WHY CHOOSE INTEC SECTION
+   ======================================= */
+.why-choose-intec {
+  position: relative;
+  background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+  padding: clamp(4rem, 8vw, 6rem) 0;
+}
+
+.why-choose-intec__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: clamp(1.5rem, 3vw, 2rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+/* Benefit Card */
+.benefit-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #0f828a 0%, #25bdb7 100%);
+  border-radius: 0 0 4px 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  border-color: rgba(15, 130, 138, 0.2);
+}
+
+.benefit-card:hover::before {
+  opacity: 1;
+}
+
+.benefit-card__title {
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: #0d2e30;
+  margin: 0 0 1rem 0;
+}
+
+.benefit-card__text {
+  font-size: clamp(0.938rem, 1.5vw, 1rem);
+  line-height: 1.7;
+  color: #2d5456;
+  margin: 0;
+}
+
+/* =======================================
+   ENROLLMENT CTA SECTION
+   ======================================= */
+.enrollment-cta {
+  position: relative;
+  background: linear-gradient(135deg, #0f828a 0%, #25bdb7 100%);
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.enrollment-cta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.enrollment-cta__content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2rem);
+  align-items: center;
+}
+
+.enrollment-cta__eyebrow {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.enrollment-cta h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+  margin: 0;
+}
+
+.enrollment-cta__body {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
+  max-width: 600px;
+}
+
+.enrollment-cta__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.enrollment-cta .btn-primary {
+  background: #ffffff;
+  color: #0f828a;
+  border: 2px solid transparent;
+}
+
+.enrollment-cta .btn-primary:hover {
+  background: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.enrollment-cta .btn-outline {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.enrollment-cta .btn-outline:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+}
+
+/* =======================================
+   RESPONSIVE DESIGN
+   ======================================= */
+@media (max-width: 768px) {
+  .programs-showcase__grid,
+  .training-features__grid,
+  .why-choose-intec__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .enrollment-cta__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .enrollment-cta__actions a {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .programs-showcase,
+  .training-features,
+  .why-choose-intec {
+    padding: clamp(2.5rem, 6vw, 3.5rem) 0;
+  }
+
+  .enrollment-cta {
+    padding: clamp(2rem, 5vw, 3rem) 0;
+  }
+}

@@ -90,7 +90,7 @@
           <nav class="primary-nav" aria-label="Hoofdmenu">
             <ul class="nav-links" id="primary-navigation" role="list">
               <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-              <li><a href="index.html#opleidingen" aria-current="page" data-i18n="nav.training">Courses</a></li>
+              <li><a href="opleidingen.html" aria-current="page" data-i18n="nav.training">Courses</a></li>
               <li><a href="inschrijven.html" data-i18n="nav.register">Register</a></li>
               <li><a href="overons.html" data-i18n="nav.about">About us</a></li>
               <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
@@ -109,117 +109,67 @@
 
       <main id="main-content" tabindex="-1">
         <!-- Hero Section -->
-        <section class="hero_section">
-          <div class="container hero-service">
-            <div class="hero-service__card">
-              <div class="hero-service__content">
-                <span class="hero-service__eyebrow" data-i18n="opleidingen.hero.eyebrow">Opleidingen</span>
-                <h1 class="hero-service__title" data-i18n="opleidingen.hero.title" data-i18n-allow-html="true">
-                  Kies het IT-traject dat <span class="hero-service__highlight">bij jou past</span>
+                <section class="hero_section">
+          <div class="container">
+            <div>
+              <span data-i18n="opleidingen.hero.eyebrow">Opleidingen</span>
+              <h1 data-i18n="opleidingen.hero.title">
+                  Kies het IT-traject dat bij jou past
                 </h1>
-                <p class="hero-service__subtitle" data-i18n="opleidingen.hero.subtitle">
-                  Van netwerktechnicus tot cyber security engineer � alle trajecten leiden naar een toekomstbestendige IT-carri�re.
-                </p>
-                <p class="hero-service__description" data-i18n="opleidingen.hero.description">
+              <p data-i18n="opleidingen.hero.subtitle">
+                Van netwerktechnicus tot cyber security engineer � alle trajecten leiden naar een toekomstbestendige IT-carri�re.
+              </p>
+              <div>
+                <a class="btn-primary btn-lg" href="inschrijven.html" data-i18n="opleidingen.hero.ctaPrimary">Start inschrijving</a>
+                <a class="btn-outline btn-lg" href="#programs" data-i18n="opleidingen.hero.ctaSecondary">Bekijk programma's</a>
+              </div>
+            </div>
+            <div>
+              <div>
+                <img
+                  src="assets/img/IntecBrussel.png"
+                  alt="Opleidingen overzicht"
+                  decoding="async"
+                  loading="eager"
+                  width="560"
+                  height="420"
+                />
+                <p data-i18n="opleidingen.hero.description">
                   Ontdek vier erkende VDAB-opleidingen die je klaarstomen voor de Brusselse arbeidsmarkt. Elk traject combineert hands-on praktijk, persoonlijke begeleiding en een stage bij lokale werkgevers. Start je intake en bouw aan je IT-expertise.
                 </p>
-                <div class="hero-service__actions">
-                  <a class="btn-primary btn-lg" href="inschrijven.html" data-i18n="opleidingen.hero.ctaPrimary">Start inschrijving</a>
-                  <a class="btn-outline btn-lg" href="#programs" data-i18n="opleidingen.hero.ctaSecondary">Bekijk programma's</a>
-                </div>
-                <dl class="hero-service__stats" aria-label="Opleidingen statistieken" data-i18n-aria-label="opleidingen.hero.stats.aria">
-                  <div class="hero-service__stat">
-                    <dt class="hero-service__stat-value">4</dt>
-                    <dd class="hero-service__stat-label" data-i18n="opleidingen.hero.stats.programs.label">Erkende IT-trajecten</dd>
-                  </div>
-                  <div class="hero-service__stat">
-                    <dt class="hero-service__stat-value">85%</dt>
-                    <dd class="hero-service__stat-label" data-i18n="opleidingen.hero.stats.employment.label">Aan het werk na opleiding</dd>
-                  </div>
-                  <div class="hero-service__stat">
-                    <dt class="hero-service__stat-value">6-12 mnd</dt>
-                    <dd class="hero-service__stat-label" data-i18n="opleidingen.hero.stats.duration.label">Gemiddelde trajectduur</dd>
-                  </div>
-                </dl>
-                <div class="hero-service__meta">
-                  <span class="hero-service__meta-label" data-i18n="opleidingen.hero.metaTitle">Wat maakt ons anders?</span>
-                  <strong class="hero-service__meta-value" data-i18n="opleidingen.hero.metaHighlight">Praktijk + Stage + Certificering + Jobcoaching</strong>
-                  <p class="hero-service__meta-note" data-i18n="opleidingen.hero.metaNote">
-                    Alle opleidingen worden erkend door VDAB en Actiris. We werken samen met Brussels bedrijven voor stages en directe jobkansen.
-                  </p>
-                </div>
-              </div>
-              <div class="hero-service__visual">
-                <div class="hero-service__visual-ring">
-                  <img
-                    src="assets/img/IntecBrussel.png"
-                    alt="INTEC Brussel IT Opleidingen"
-                    decoding="async"
-                    loading="lazy"
-                    width="560"
-                    height="560"
-                    data-critical="true" />
-                </div>
-                <ul class="hero-service__decor" aria-hidden="true">
-                  <li class="hero-service__decor-item hero-service__decor-item--one">
-                    <span class="hero-service__decor-icon">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                        <line x1="8" y1="21" x2="16" y2="21"/>
-                        <line x1="12" y1="17" x2="12" y2="21"/>
-                      </svg>
-                    </span>
-                  </li>
-                  <li class="hero-service__decor-item hero-service__decor-item--three">
-                    <span class="hero-service__decor-icon">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                      </svg>
-                    </span>
-                  </li>
-                  <li class="hero-service__decor-item hero-service__decor-item--two">
-                    <span class="hero-service__decor-icon">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                        <polyline points="2,17 12,22 22,17"/>
-                        <polyline points="2,12 12,17 22,12"/>
-                      </svg>
-                    </span>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="section section--surface" id="programs">
+        <section class="programs-showcase" id="programs">
           <div class="container">
             <div class="section-heading">
-              <span class="section-label" data-i18n="opleidingen.overview.label">Ons aanbod</span>
+              <span class="section-label" data-i18n="opleidingen.overview.label">Onze Programma's</span>
               <h2 class="section-title" data-i18n="opleidingen.overview.title">Welke opleiding past bij jou?</h2>
               <p class="section-lead" data-i18n="opleidingen.overview.description">
                 Vier erkende trajecten die je voorbereiden op jobs in netwerken, infrastructuur, automatisering en security. Elk traject combineert theorie, labs en een stage op maat.
               </p>
             </div>
             
-            <div class="card-grid card-grid--feature">
-              <article class="card card--feature fade-up" data-delay="1">
-                <div class="card__icon" aria-hidden="true">
+            <div class="programs-showcase__grid">
+              <article class="program-card fade-up" data-delay="1">
+                <div class="program-card__icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
                     <line x1="8" y1="21" x2="16" y2="21" stroke-linecap="round"/>
                     <line x1="12" y1="17" x2="12" y2="21" stroke-linecap="round"/>
                   </svg>
                 </div>
-                <h3 class="card__title" data-i18n="opleidingen.pc.title">PC en Netwerktechnicus</h3>
-                <p class="card__text" data-i18n="opleidingen.pc.description">
+                <h3 class="program-card__title" data-i18n="opleidingen.pc.title">PC en Netwerktechnicus</h3>
+                <p class="program-card__description" data-i18n="opleidingen.pc.description">
                   Beheer servers, configureer netwerken en voer troubleshooting uit. Je werkt met Cisco, Linux en Microsoft en ontwikkelt sterke support-skills voor een job in de eerste lijn.
                 </p>
-                <ul class="card__meta" aria-label="Startdata PC Netwerktechnicus">
+                <ul class="program-card__meta" aria-label="Startdata PC Netwerktechnicus">
                   <li data-start-date="2025-09-08" data-i18n="opleidingen.pc.date1"><strong>Start:</strong> 8 september 2025 (Vol)</li>
                   <li data-start-date="2026-03-09" data-i18n="opleidingen.pc.date2"><strong>Volgende:</strong> 9 maart 2026</li>
                 </ul>
-                <a class="card__link" href="support.html" data-i18n="opleidingen.pc.cta">
+                <a class="program-card__link" href="support.html" data-i18n="opleidingen.pc.cta">
                   Meer info over PC Netwerktechnicus
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -227,22 +177,22 @@
                 </a>
               </article>
 
-              <article class="card card--feature fade-up" data-delay="2">
-                <div class="card__icon" aria-hidden="true">
+              <article class="program-card fade-up" data-delay="2">
+                <div class="program-card__icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polygon points="12 2 2 7 12 12 22 7 12 2"/>
                     <polyline points="2,17 12,22 22,17" stroke-linecap="round" stroke-linejoin="round"/>
                     <polyline points="2,12 12,17 22,12" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </div>
-                <h3 class="card__title" data-i18n="opleidingen.python.title">Netwerkbeheerder met Python</h3>
-                <p class="card__text" data-i18n="opleidingen.python.description">
+                <h3 class="program-card__title" data-i18n="opleidingen.python.title">Netwerkbeheerder met Python</h3>
+                <p class="program-card__description" data-i18n="opleidingen.python.description">
                   Combineer netwerkbeheer met automatisering in Python. Labs focussen op moderne infrastructuren, scripting en DevOps-principes voor een job met toekomst.
                 </p>
-                <ul class="card__meta" aria-label="Startdata Netwerkbeheerder Python">
+                <ul class="program-card__meta" aria-label="Startdata Netwerkbeheerder Python">
                   <li data-start-date="2026-02-02" data-i18n="opleidingen.python.date1"><strong>Start:</strong> 2 februari 2026</li>
                 </ul>
-                <a class="card__link" href="python.html" data-i18n="opleidingen.python.cta">
+                <a class="program-card__link" href="python.html" data-i18n="opleidingen.python.cta">
                   Meer info over Python Netwerkbeheerder
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -250,23 +200,23 @@
                 </a>
               </article>
 
-              <article class="card card--feature fade-up" data-delay="3">
-                <div class="card__icon" aria-hidden="true">
+              <article class="program-card fade-up" data-delay="3">
+                <div class="program-card__icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="2" y="6" width="20" height="8" rx="1"/>
                     <path d="m6 2 2 2-2 2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="m18 2-2 2 2 2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </div>
-                <h3 class="card__title" data-i18n="opleidingen.sysadmin.title">Systeembeheerder</h3>
-                <p class="card__text" data-i18n="opleidingen.sysadmin.description">
+                <h3 class="program-card__title" data-i18n="opleidingen.sysadmin.title">Systeembeheerder</h3>
+                <p class="program-card__description" data-i18n="opleidingen.sysadmin.description">
                   Bouw expertise in infrastructuur, Windows/Linux servers, virtualisatie en monitoring. Met praktische projecten en certificeringsvoorbereiding voor een senior-rol.
                 </p>
-                <ul class="card__meta" aria-label="Startdata Systeembeheerder">
+                <ul class="program-card__meta" aria-label="Startdata Systeembeheerder">
                   <li data-start-date="2026-02-23" data-i18n="opleidingen.sysadmin.date1"><strong>Start:</strong> 23 februari 2026</li>
                   <li data-start-date="2026-05-18" data-i18n="opleidingen.sysadmin.date2"><strong>Extra start:</strong> 18 mei 2026</li>
                 </ul>
-                <a class="card__link" href="systeembeheerder.html" data-i18n="opleidingen.sysadmin.cta">
+                <a class="program-card__link" href="systeembeheerder.html" data-i18n="opleidingen.sysadmin.cta">
                   Meer info over Systeembeheerder
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -274,20 +224,20 @@
                 </a>
               </article>
 
-              <article class="card card--feature fade-up" data-delay="4">
-                <div class="card__icon" aria-hidden="true">
+              <article class="program-card fade-up" data-delay="4">
+                <div class="program-card__icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </div>
-                <h3 class="card__title" data-i18n="opleidingen.security.title">Cybersecurity Engineer</h3>
-                <p class="card__text" data-i18n="opleidingen.security.description">
+                <h3 class="program-card__title" data-i18n="opleidingen.security.title">Cybersecurity Engineer</h3>
+                <p class="program-card__description" data-i18n="opleidingen.security.description">
                   Leer netwerken beveiligen, security-analyses uitvoeren en incidenten reduceren met ethical hacking, cloud security en compliance voor kritische infrastructuren.
                 </p>
-                <ul class="card__meta" aria-label="Startdata Cybersecurity Engineer">
+                <ul class="program-card__meta" aria-label="Startdata Cybersecurity Engineer">
                   <li data-start-date="2025-11-24" data-i18n="opleidingen.security.date1"><strong>Start:</strong> 24 november 2025</li>
                 </ul>
-                <a class="card__link" href="security.html" data-i18n="opleidingen.security.cta">
+                <a class="program-card__link" href="security.html" data-i18n="opleidingen.security.cta">
                   Meer info over Cybersecurity Engineer
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -298,7 +248,7 @@
           </div>
         </section>
 
-        <section class="section" id="expectations">
+        <section class="training-features" id="expectations">
           <div class="container">
             <div class="section-heading">
               <span class="section-label" data-i18n="training.spotlight.label">Wat leer je?</span>
@@ -308,129 +258,113 @@
               </p>
             </div>
             
-            <div class="card-grid card-grid--quadrant">
-              <article class="card card--quadrant fade-up" data-delay="1">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+            <div class="training-features__grid">
+              <article class="feature-card fade-up" data-delay="1">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
                       <line x1="8" y1="21" x2="16" y2="21" stroke-linecap="round"/>
                       <line x1="12" y1="17" x2="12" y2="21" stroke-linecap="round"/>
                     </svg>
                   </span>
-                  <div>
-                    <h3 class="card__title" data-i18n="training.spotlight.pc.title">PC Netwerktechnicus</h3>
-                  </div>
+                  <h3 class="feature-card__title" data-i18n="training.spotlight.pc.title">PC Netwerktechnicus</h3>
                 </div>
-                <div class="card__body">
-                  <ul class="card__list">
+                <ul class="feature-card__list">
                     <li data-i18n="training.spotlight.pc.feature1">Hardware installatie en onderhoud</li>
                     <li data-i18n="training.spotlight.pc.feature2">Netwerk configuratie en troubleshooting</li>
                     <li data-i18n="training.spotlight.pc.feature3">Customer support en helpdesk</li>
                     <li data-i18n="training.spotlight.pc.feature4">Stage bij lokale bedrijven</li>
                   </ul>
-                </div>
               </article>
 
-              <article class="card card--quadrant fade-up" data-delay="2">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+              <article class="feature-card fade-up" data-delay="2">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <polygon points="12 2 2 7 12 12 22 7 12 2"/>
                       <polyline points="2,17 12,22 22,17" stroke-linecap="round" stroke-linejoin="round"/>
                       <polyline points="2,12 12,17 22,12" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                   </span>
-                  <div>
-                    <h3 class="card__title" data-i18n="training.spotlight.python.title">Netwerkbeheerder Python</h3>
-                  </div>
+                  <h3 class="feature-card__title" data-i18n="training.spotlight.python.title">Netwerkbeheerder Python</h3>
                 </div>
-                <div class="card__body">
-                  <ul class="card__list">
+                <ul class="feature-card__list">
                     <li data-i18n="training.spotlight.python.feature1">Enterprise networking met Cisco</li>
                     <li data-i18n="training.spotlight.python.feature2">Python scripting en automatisering</li>
                     <li data-i18n="training.spotlight.python.feature3">Cloud infrastructuur beheer</li>
                     <li data-i18n="training.spotlight.python.feature4">DevOps en CI/CD principes</li>
                   </ul>
-                </div>
               </article>
 
-              <article class="card card--quadrant fade-up" data-delay="3">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+              <article class="feature-card fade-up" data-delay="3">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <rect x="2" y="6" width="20" height="8" rx="1"/>
                       <path d="m6 2 2 2-2 2" stroke-linecap="round" stroke-linejoin="round"/>
                       <path d="m18 2-2 2 2 2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                   </span>
-                  <div>
-                    <h3 class="card__title" data-i18n="training.spotlight.sysadmin.title">Systeembeheerder</h3>
-                  </div>
+                  <h3 class="feature-card__title" data-i18n="training.spotlight.sysadmin.title">Systeembeheerder</h3>
                 </div>
-                <div class="card__body">
-                  <ul class="card__list">
+                <ul class="feature-card__list">
                     <li data-i18n="training.spotlight.sysadmin.feature1">Windows Server en Linux beheer</li>
                     <li data-i18n="training.spotlight.sysadmin.feature2">Virtualisatie en cloud platforms</li>
                     <li data-i18n="training.spotlight.sysadmin.feature3">Security en backup strategie�n</li>
                     <li data-i18n="training.spotlight.sysadmin.feature4">PowerShell en Bash automatisering</li>
                   </ul>
-                </div>
               </article>
 
-              <article class="card card--quadrant fade-up" data-delay="4">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+              <article class="feature-card fade-up" data-delay="4">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/>
                       <path d="m9 12 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                   </span>
-                  <div>
-                    <h3 class="card__title" data-i18n="training.spotlight.security.title">Cybersecurity Engineer</h3>
-                  </div>
+                  <h3 class="feature-card__title" data-i18n="training.spotlight.security.title">Cybersecurity Engineer</h3>
                 </div>
-                <div class="card__body">
-                  <ul class="card__list">
+                <ul class="feature-card__list">
                     <li data-i18n="training.spotlight.security.feature1">Ethical hacking en penetration testing</li>
                     <li data-i18n="training.spotlight.security.feature2">Security Operations Center (SOC)</li>
                     <li data-i18n="training.spotlight.security.feature3">Incident response en forensics</li>
                     <li data-i18n="training.spotlight.security.feature4">Compliance en governance</li>
                   </ul>
-                </div>
               </article>
             </div>
           </div>
         </section>
 
-        <section class="section section--surface">
+        <section class="why-choose-intec">
           <div class="container">
             <div class="section-heading">
               <span class="section-label" data-i18n="opleidingen.benefits.label">Waarom INTEC?</span>
               <h2 class="section-title" data-i18n="opleidingen.benefits.title">Wat maakt onze opleidingen anders?</h2>
               <p class="section-lead" data-i18n="opleidingen.benefits.description">
-                Van dag ��n werk je met echte infrastructuur, ervaren trainers en trajectcoaches die je begeleiden naar een duurzame job.
+                Van dag één werk je met echte infrastructuur, ervaren trainers en trajectcoaches die je begeleiden naar een duurzame job.
               </p>
             </div>
             
-            <div class="info-card-grid">
-              <article class="info-card fade-up" data-delay="1">
-                <h3 class="info-card__title" data-i18n="opleidingen.benefits.practice.title">Hands-on labs</h3>
-                <p class="info-card__text" data-i18n="opleidingen.benefits.practice.body">
+            <div class="why-choose-intec__grid">
+              <article class="benefit-card fade-up" data-delay="1">
+                <h3 class="benefit-card__title" data-i18n="opleidingen.benefits.practice.title">Hands-on labs</h3>
+                <p class="benefit-card__text" data-i18n="opleidingen.benefits.practice.body">
                   Werk met professionele servers, Cisco-apparatuur en cloud platforms. Je leert door te doen, niet door te lezen.
                 </p>
               </article>
               
-              <article class="info-card fade-up" data-delay="2">
-                <h3 class="info-card__title" data-i18n="opleidingen.benefits.guidance.title">Persoonlijke coaching</h3>
-                <p class="info-card__text" data-i18n="opleidingen.benefits.guidance.body">
+              <article class="benefit-card fade-up" data-delay="2">
+                <h3 class="benefit-card__title" data-i18n="opleidingen.benefits.guidance.title">Persoonlijke coaching</h3>
+                <p class="benefit-card__text" data-i18n="opleidingen.benefits.guidance.body">
                   Je trajectcoach volgt je van intake tot tewerkstelling. Extra ondersteuning via het Digipunt voor taal en digitale basisvaardigheden.
                 </p>
               </article>
               
-              <article class="info-card fade-up" data-delay="3">
-                <h3 class="info-card__title" data-i18n="opleidingen.benefits.internship.title">Stage bij Brussels bedrijven</h3>
-                <p class="info-card__text" data-i18n="opleidingen.benefits.internship.body">
+              <article class="benefit-card fade-up" data-delay="3">
+                <h3 class="benefit-card__title" data-i18n="opleidingen.benefits.internship.title">Stage bij Brussels bedrijven</h3>
+                <p class="benefit-card__text" data-i18n="opleidingen.benefits.internship.body">
                   Elke opleiding eindigt met een stage. Veel cursisten starten meteen bij hun stagebedrijf dankzij ons netwerk van 200+ partners.
                 </p>
               </article>
@@ -438,15 +372,14 @@
           </div>
         </section>
 
-        <section class="section cta-band cta-band--minimal">
-          <div class="cta-band__inner container">
-            <div class="cta-band__content">
-              <span class="cta-band__eyebrow" data-i18n="opleidingen.cta.eyebrow">Klaar om te starten?</span>
-              <h2 data-i18n="opleidingen.cta.title">Begin vandaag nog je IT-carri�re</h2>
-              <p data-i18n="opleidingen.cta.body">
-                Plan je intake en ontdek welk traject het best bij jouw ambities en beschikbaarheid past.
-              </p>
-              <div class="cta-band__actions">
+        <section class="enrollment-cta">
+          <div class="enrollment-cta__content container">
+            <span class="enrollment-cta__eyebrow" data-i18n="opleidingen.cta.eyebrow">Klaar om te starten?</span>
+            <h2 data-i18n="opleidingen.cta.title">Begin vandaag nog je IT-carrière</h2>
+            <p class="enrollment-cta__body" data-i18n="opleidingen.cta.body">
+              Plan je intake en ontdek welk traject het best bij jouw ambities en beschikbaarheid past.
+            </p>
+            <div class="enrollment-cta__actions">
                 <a class="btn-primary" href="inschrijven.html" data-i18n="opleidingen.cta.primary">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>

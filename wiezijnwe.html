@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
@@ -33,7 +33,7 @@
           <nav class="primary-nav" aria-label="Hoofdmenu">
             <ul class="nav-links" id="primary-navigation" role="list">
               <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-              <li><a href="index.html#opleidingen" data-i18n="nav.training">Courses</a></li>
+              <li><a href="opleidingen.html" data-i18n="nav.training">Courses</a></li>
               <li><a href="inschrijven.html" data-i18n="nav.register">Register</a></li>
               <li><a href="overons.html" data-i18n="nav.about">About us</a></li>
               <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
@@ -52,83 +52,34 @@
 
       <main id="main-content" tabindex="-1">
         <!-- Hero Section -->
-        <section class="hero_section">
-          <div class="container hero-service">
-            <div class="hero-service__card">
-              <div class="hero-service__content">
-                <span class="hero-service__eyebrow" data-i18n="team.label">Wie zijn we</span>
-                <h1 class="hero-service__title" data-i18n="team.hero.title" data-i18n-allow-html="true">
-                  Board of Directors &amp; <span class="hero-service__highlight">Our Team</span>
+                <section class="hero_section">
+          <div class="container">
+            <div>
+              <span data-i18n="team.label">Wie zijn we</span>
+              <h1 data-i18n="team.hero.title">
+                  Board of Directors &amp; Our Team
                 </h1>
-                <p class="hero-service__subtitle" data-i18n="team.hero.subtitle">
-                  Meet the people behind INTEC Brussels.
-                </p>
-                <p class="hero-service__description" data-i18n="team.hero.lead">
-                  From strategic guidance to daily support, our team is committed to digital inclusion and empowerment. With over 20 nationalities and 15+ languages spoken, we understand the diverse needs of our students.
-                </p>
-                <div class="hero-service__actions">
-                  <a class="btn-primary btn-lg" href="#team-overview" data-i18n="team.hero.ctaPrimary">Meet the Team</a>
-                  <a class="btn-outline btn-lg" href="contact.html" data-i18n="team.hero.ctaSecondary">Get in Touch</a>
-                </div>
-                <dl class="hero-service__stats" aria-label="Team statistics" data-i18n-aria-label="team.hero.stats.aria">
-                  <div class="hero-service__stat">
-                    <dt class="hero-service__stat-value" data-i18n="team.hero.stats.members.value">30+</dt>
-                    <dd class="hero-service__stat-label" data-i18n="team.hero.stats.members.label">Team members</dd>
-                  </div>
-                  <div class="hero-service__stat">
-                    <dt class="hero-service__stat-value" data-i18n="team.hero.stats.nationalities.value">20+</dt>
-                    <dd class="hero-service__stat-label" data-i18n="team.hero.stats.nationalities.label">Nationalities represented</dd>
-                  </div>
-                  <div class="hero-service__stat">
-                    <dt class="hero-service__stat-value" data-i18n="team.hero.stats.languages.value">15+</dt>
-                    <dd class="hero-service__stat-label" data-i18n="team.hero.stats.languages.label">Languages spoken</dd>
-                  </div>
-                </dl>
-                <div class="hero-service__meta">
-                  <span class="hero-service__meta-label" data-i18n="team.hero.metaTitle">Our Team</span>
-                  <strong class="hero-service__meta-value" data-i18n="team.hero.metaHighlight">Diverse, dedicated, impactful</strong>
-                  <p class="hero-service__meta-note" data-i18n="team.hero.metaNote">
-                    Jump to: <a href="#board">Board of Directors</a> | <a href="#values">Values</a> | <a href="#team-overview">Departments</a> | <a href="#diversity">Diversity</a>
-                  </p>
-                </div>
+              <p data-i18n="team.hero.subtitle">
+                Meet the people behind INTEC Brussels.
+              </p>
+              <div>
+                <a class="btn-primary btn-lg" href="#team-overview" data-i18n="team.hero.ctaPrimary">Meet the Team</a>
+                <a class="btn-outline btn-lg" href="contact.html" data-i18n="team.hero.ctaSecondary">Get in Touch</a>
               </div>
-              <div class="hero-service__visual">
-                <div class="hero-service__visual-ring">
-                  <img
-                    src="assets/img/IntecBrussel.png"
-                    alt="INTEC Brussels team working together in collaborative environment"
-                    decoding="async"
-                    loading="lazy"
-                    width="560"
-                    height="560"
-                    data-critical="true" />
-                </div>
-                <ul class="hero-service__decor" aria-hidden="true">
-                  <li class="hero-service__decor-item hero-service__decor-item--one">
-                    <span class="hero-service__decor-icon">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round" />
-                        <circle cx="9" cy="7" r="4" />
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                    </span>
-                  </li>
-                  <li class="hero-service__decor-item hero-service__decor-item--three">
-                    <span class="hero-service__decor-icon">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 17.27 18.18 21l-1.64-7 5.46-4.74-7.12-.61L12 2 9.12 8.65l-7.12.61L7.46 14 5.82 21z" stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                    </span>
-                  </li>
-                  <li class="hero-service__decor-item hero-service__decor-item--two">
-                    <span class="hero-service__decor-icon">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round" />
-                        <polyline points="22,4 12,14.01 9,11.01" stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                    </span>
-                  </li>
-                </ul>
+            </div>
+            <div>
+              <div>
+                <img
+                  src="assets/img/IntecBrussel.png"
+                  alt="Wie zijn we"
+                  decoding="async"
+                  loading="eager"
+                  width="560"
+                  height="420"
+                />
+                <p data-i18n="team.hero.imageCaption">
+                  Ons team zet zich elke dag in voor jouw succes
+                </p>
               </div>
             </div>
           </div>
@@ -144,64 +95,64 @@
                 Our board provides strategic guidance and oversight to ensure INTEC Brussels remains focused on our mission of digital inclusion.
               </p>
             </div>
-            <div class="card-grid card-grid--quadrant quadrant-grid">
+            <div class="programs-showcase__grid">
               <article class="card card--quadrant fade-up" data-delay="1">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round" />
                       <circle cx="12" cy="7" r="4" />
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title" data-i18n="team.board.frans">Frans De Keyser</h3>
+                    <h3 class="feature-card__title" data-i18n="team.board.frans">Frans De Keyser</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="team.board.frans.role">
                     Chairman - Provides strategic leadership and ensures organizational alignment with our mission of digital inclusion and social impact.
                   </p>
                 </div>
               </article>
               <article class="card card--quadrant fade-up" data-delay="2">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round" />
                       <circle cx="12" cy="7" r="4" />
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title" data-i18n="team.board.guido">Guido De Grefte</h3>
+                    <h3 class="feature-card__title" data-i18n="team.board.guido">Guido De Grefte</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="team.board.guido.role">
                     Treasurer - Oversees financial sustainability and resource allocation to support our educational programs and social initiatives.
                   </p>
                 </div>
               </article>
               <article class="card card--quadrant fade-up" data-delay="3">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round" />
                       <circle cx="12" cy="7" r="4" />
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title" data-i18n="team.board.bart">Bart Jaeken</h3>
+                    <h3 class="feature-card__title" data-i18n="team.board.bart">Bart Jaeken</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="team.board.bart.role">
                     Board Member - Contributes expertise in organizational development and community partnerships for sustainable growth.
                   </p>
                 </div>
               </article>
               <article class="card card--quadrant fade-up" data-delay="4">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round" />
                       <circle cx="9" cy="7" r="4" />
@@ -209,10 +160,10 @@
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title">Frederik Roelens &amp; C�dric van Garsse</h3>
+                    <h3 class="feature-card__title">Frederik Roelens &amp; C�dric van Garsse</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="team.board.members.role">
                     Board Members - Provide guidance on stakeholder engagement, quality assurance, and strategic partnerships with employers and institutions.
                   </p>
@@ -223,7 +174,7 @@
         </section>
 
         <!-- Our Values & Culture Section -->
-        <section class="section section--surface" id="values">
+        <section class="why-choose-intec" id="values">
           <div class="container">
             <div class="section-heading">
               <span class="section-label" data-i18n="team.values.label">Our Culture</span>
@@ -232,46 +183,46 @@
                 We believe in transparency, growth, and inclusion � values that shape our daily work and guide every interaction with students, partners, and colleagues.
               </p>
             </div>
-            <div class="card-grid card-grid--quadrant quadrant-grid">
+            <div class="programs-showcase__grid">
               <article class="card card--quadrant fade-up" data-delay="1">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round" />
                       <circle cx="12" cy="12" r="3" />
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title" data-i18n="team.values.transparency.title">Transparency &amp; Openness</h3>
+                    <h3 class="feature-card__title" data-i18n="team.values.transparency.title">Transparency &amp; Openness</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="team.values.transparency.text">
                     Collaboration through honesty. We communicate openly about challenges, successes, and learning opportunities to build trust within our team and with students.
                   </p>
                 </div>
               </article>
               <article class="card card--quadrant fade-up" data-delay="2">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round" />
                       <polyline points="22,4 12,14.01 9,11.01" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title" data-i18n="team.values.learning.title">Continuous Learning</h3>
+                    <h3 class="feature-card__title" data-i18n="team.values.learning.title">Continuous Learning</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="team.values.learning.text">
                     We grow alongside our students. Our team embraces ongoing professional development, shares knowledge actively, and stays current with industry trends.
                   </p>
                 </div>
               </article>
               <article class="card card--quadrant fade-up" data-delay="3">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round" />
                       <circle cx="9" cy="7" r="4" />
@@ -279,27 +230,27 @@
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title" data-i18n="team.values.inclusion.title">Inclusive Mindset</h3>
+                    <h3 class="feature-card__title" data-i18n="team.values.inclusion.title">Inclusive Mindset</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="team.values.inclusion.text">
                     Everyone belongs at INTEC. We celebrate diversity, create accessible learning environments, and ensure every voice is heard and valued.
                   </p>
                 </div>
               </article>
               <article class="card card--quadrant fade-up" data-delay="4">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title" data-i18n="team.values.innovation.title">Innovation &amp; Impact</h3>
+                    <h3 class="feature-card__title" data-i18n="team.values.innovation.title">Innovation &amp; Impact</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="team.values.innovation.text">
                     Technology with purpose and care. We leverage innovation to create meaningful social impact and empower individuals to build sustainable IT careers.
                   </p>
@@ -319,46 +270,46 @@
                 Four pillars, one purpose � empowering every learner through dedicated teamwork, expert guidance, and reliable support.
               </p>
             </div>
-            <div class="card-grid card-grid--features">
-              <article class="card card--feature fade-up" data-delay="1">
+            <div class="programs-showcase__grid">
+              <article class="feature-card fade-up" data-delay="1">
                 <div class="card__header align-start">
-                  <span class="card__icon" aria-hidden="true">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round" />
                       <line x1="9" y1="3" x2="9" y2="21" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title" data-i18n="team.structure.admin.title">Administration</h3>
+                    <h3 class="feature-card__title" data-i18n="team.structure.admin.title">Administration</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="team.structure.admin.subtitle">
                     Keeping our systems steady and operations smooth. Our administrative team ensures seamless coordination across all programs.
                   </p>
-                  <ul class="card__list">
+                  <ul class="feature-card__list">
                     <li>Sana B. - Team Leader</li>
                     <li>Sango C.</li>
                     <li>Noor W. - Administrative Support</li>
                   </ul>
                 </div>
               </article>
-              <article class="card card--feature fade-up" data-delay="2">
+              <article class="feature-card fade-up" data-delay="2">
                 <div class="card__header align-start">
-                  <span class="card__icon" aria-hidden="true">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title" data-i18n="team.structure.coaching.title">Employment &amp; Language Coaching</h3>
+                    <h3 class="feature-card__title" data-i18n="team.structure.coaching.title">Employment &amp; Language Coaching</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="team.structure.coaching.subtitle">
                     Empowering students through mentorship and empathy. Coaches guide career development and language skills for workplace success.
                   </p>
-                  <ul class="card__list">
+                  <ul class="feature-card__list">
                     <li>Teodora M. - Team Leader</li>
                     <li>Fadwa E.</li>
                     <li>Aynur D.</li>
@@ -367,23 +318,23 @@
                   </ul>
                 </div>
               </article>
-              <article class="card card--feature fade-up" data-delay="3">
+              <article class="feature-card fade-up" data-delay="3">
                 <div class="card__header align-start">
-                  <span class="card__icon" aria-hidden="true">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" stroke-linecap="round" stroke-linejoin="round" />
                       <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title" data-i18n="team.structure.instructors.title">Instructors</h3>
+                    <h3 class="feature-card__title" data-i18n="team.structure.instructors.title">Instructors</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="team.structure.instructors.subtitle">
                     Transforming knowledge into real-world progress. Expert instructors deliver hands-on training across diverse IT specializations.
                   </p>
-                  <ul class="card__list">
+                  <ul class="feature-card__list">
                     <li>Omar M. - Lead Instructor</li>
                     <li>Denys L.</li>
                     <li>Hilal D.</li>
@@ -397,9 +348,9 @@
                   </ul>
                 </div>
               </article>
-              <article class="card card--feature fade-up" data-delay="4">
+              <article class="feature-card fade-up" data-delay="4">
                 <div class="card__header align-start">
-                  <span class="card__icon" aria-hidden="true">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <rect x="2" y="2" width="20" height="8" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round" />
                       <rect x="2" y="14" width="20" height="8" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -408,14 +359,14 @@
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title" data-i18n="team.structure.it.title">IT Support INOPTEC+</h3>
+                    <h3 class="feature-card__title" data-i18n="team.structure.it.title">IT Support INOPTEC+</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="team.structure.it.subtitle">
                     Building bridges between people and technology. Technical support team ensures infrastructure reliability and digital accessibility.
                   </p>
-                  <ul class="card__list">
+                  <ul class="feature-card__list">
                     <li>Erwin S. - IT Coordinator</li>
                     <li>Thomas T.</li>
                     <li>Yewondwossen S.</li>
@@ -431,7 +382,7 @@
         </section>
 
         <!-- Leadership & Coordination Section -->
-        <section class="section section--surface">
+        <section class="why-choose-intec">
           <div class="container">
             <div class="section-heading">
               <span class="section-label" data-i18n="team.leadership.label">Leadership</span>
@@ -440,15 +391,15 @@
                 Dedicated leaders ensure every course runs smoothly and every team member has the support they need to excel.
               </p>
             </div>
-            <div class="card-grid card-grid--features">
+            <div class="programs-showcase__grid">
               <article class="card card--info fade-up" data-delay="1">
-                <div class="card__header">
+                <div class="feature-card__header">
                   <div>
-                    <h3 class="card__title">Team Leaders</h3>
+                    <h3 class="feature-card__title">Team Leaders</h3>
                   </div>
                 </div>
-                <div class="card__body">
-                  <ul class="card__list">
+                <div class="feature-card__list">
+                  <ul class="feature-card__list">
                     <li><strong>Sana B.</strong> - Administration</li>
                     <li><strong>Erwin S.</strong> - INOPTEC+</li>
                     <li><strong>Omar M.</strong> - Instructors</li>
@@ -457,13 +408,13 @@
                 </div>
               </article>
               <article class="card card--info fade-up" data-delay="2">
-                <div class="card__header">
+                <div class="feature-card__header">
                   <div>
-                    <h3 class="card__title">HR &amp; General Coordination</h3>
+                    <h3 class="feature-card__title">HR &amp; General Coordination</h3>
                   </div>
                 </div>
-                <div class="card__body">
-                  <ul class="card__list">
+                <div class="feature-card__list">
+                  <ul class="feature-card__list">
                     <li><strong>Sajid Y.</strong> - HR Manager</li>
                     <li><strong>Sana B.</strong> - HR Support</li>
                     <li><strong>Ruud Marks</strong> - General Coordinator</li>
@@ -471,13 +422,13 @@
                 </div>
               </article>
               <article class="card card--info fade-up" data-delay="3">
-                <div class="card__header">
+                <div class="feature-card__header">
                   <div>
-                    <h3 class="card__title">Support Services</h3>
+                    <h3 class="feature-card__title">Support Services</h3>
                   </div>
                 </div>
-                <div class="card__body">
-                  <ul class="card__list">
+                <div class="feature-card__list">
+                  <ul class="feature-card__list">
                     <li><strong>Noor W.</strong> - Administrative Support</li>
                     <li><strong>Sabrina C.</strong> - Digital Skills Coach</li>
                   </ul>
@@ -488,16 +439,16 @@
         </section>
 
         <!-- CTA Band -->
-        <section class="section cta-band cta-band--minimal">
-          <div class="cta-band__inner container">
-            <div class="cta-band__content">
-              <span class="cta-band__eyebrow" data-i18n="about.cta.eyebrow">Samen bouwen</span>
+        <section class="enrollment-cta">
+          <div class="enrollment-cta__content container">
+            <div class="enrollment-cta__content">
+              <span class="enrollment-cta__eyebrow" data-i18n="about.cta.eyebrow">Samen bouwen</span>
               <h2 data-i18n="about.cta.title">Wil je mee het verschil maken voor talent in Brussel?</h2>
               <p data-i18n="about.cta.body">
                 Neem contact op en ontdek hoe we kunnen samenwerken rond trajecten, stages of coaching.
               </p>
             </div>
-            <div class="cta-band__actions">
+            <div class="enrollment-cta__actions">
               <a class="btn-primary" href="contact.html" data-i18n="about.cta.primary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -505,7 +456,7 @@
                 </svg>
                 Contacteer ons team
               </a>
-              <a class="btn-outline" href="index.html#opleidingen" data-i18n="about.cta.secondary">
+              <a class="btn-outline" href="opleidingen.html" data-i18n="about.cta.secondary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                   <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>

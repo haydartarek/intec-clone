@@ -7,6 +7,11 @@ window.i18n.nl = {
   "digipunt.meta.title": "Digipunt | INTEC Brussel",
   "digipunt.meta.description": "Digipunt INTEC Brussel helpt iedereen die digitale ondersteuning zoekt. Ontdek onze gratis workshops, coaching en openingsuren in Muntpunt.",
   "digipunt.title": "DIGIPUNT INTEC",
+  "digipunt.subtitle": "Gratis digitale ondersteuning voor alle Brusselaars in de Muntpunt-bibliotheek.",
+  "digipunt.description": "Het Digipunt van INTEC Brussel ondersteunt iedereen die zich digitaal wil ontwikkelen. Onze digicoaches helpen je stap voor stap verder.",
+  "digipunt.hero.metaTitle": "Locatie",
+  "digipunt.hero.ctaPrimary": "Bezoek ons",
+  "digipunt.hero.ctaSecondary": "Bekijk opleidingen",
   "digipunt.intro1": "Het Digipunt van INTEC Brussel in de Muntpunt-bibliotheek ondersteunt iedereen die zich digitaal achterop voelt of gewoon vaardiger wil worden met smartphone, tablet of computer.",
   "digipunt.intro2": "Onze digicoaches beantwoorden jouw vragen, helpen je stap voor stap verder en stellen samen een leerplan op zodat je zelfstandig kan oefenen.",
   "digipunt.what.title": "Wat kan je er doen?",
@@ -126,20 +131,25 @@ window.i18n.nl = {
   // OPLEIDINGEN PAGE (Training programs page)
   // -----------------------------
   "opleidingen.hero.eyebrow": "Officieel aanbod",
-  "opleidingen.hero.title": "De opleidingen van INTEC Brussel",
-  "opleidingen.hero.description": "Kies uit vier trajecten die rechtstreeks van onze campus komen. Inhoud, startdata en beschrijvingen zijn gebaseerd op de officiële informatie zodat je zeker bent van de juiste details.",
+  "opleidingen.hero.title": "Kies het IT-traject dat bij jou past",
+  "opleidingen.hero.subtitle": "Van netwerktechnicus tot cyber security engineer – alle trajecten leiden naar een toekomstbestendige IT-carrière.",
+  "opleidingen.hero.ctaPrimary": "Start inschrijving",
+  "opleidingen.hero.ctaSecondary": "Bekijk programma's",
+  "opleidingen.hero.description": "Ontdek vier erkende VDAB-opleidingen die je klaarstomen voor de Brusselse arbeidsmarkt. Elk traject combineert hands-on praktijk, persoonlijke begeleiding en een stage bij lokale werkgevers. Start je intake en bouw aan je IT-expertise.",
   "opleidingen.hero.cta1": "Plan intake",
   "opleidingen.hero.cta2": "Bekijk programma's",
+  
+  // Overview Section
+  "opleidingen.overview.label": "Ons aanbod",
+  "opleidingen.overview.title": "Welke opleiding past bij jou?",
+  "opleidingen.overview.description": "Vier erkende trajecten die je voorbereiden op jobs in netwerken, infrastructuur, automatisering en security. Elk traject combineert theorie, labs en een stage op maat.",
+  "opleidingen.overview.eyebrow": "Programmaoverzicht",
   
   "opleidingen.why.title": "Waarom deze trajecten?",
   "opleidingen.why.reason1": "Actuele inhoud afgestemd op de Brusselse arbeidsmarkt",
   "opleidingen.why.reason2": "Hands-on begeleiding door trainers uit het werkveld",
   "opleidingen.why.reason3": "Startdata en leerpaden zoals gepubliceerd door INTEC Brussel",
   "opleidingen.why.reason4": "Voorbereiding op jobs in infrastructuur, netwerkbeheer en security",
-  
-  "opleidingen.overview.eyebrow": "Programmaoverzicht",
-  "opleidingen.overview.title": "Welke opleiding past bij jou?",
-  "opleidingen.overview.description": "Ontdek de vier trajecten en klik door voor meer informatie of om je intake te plannen.",
   
   // Course cards
   "opleidingen.pc.title": "PC en Netwerktechnicus",
@@ -167,6 +177,7 @@ window.i18n.nl = {
   // -----------------------------
   // TRAINING SPOTLIGHT SECTION (for opleidingen.html)
   // -----------------------------
+  "training.spotlight.label": "Verdiep je",
   "training.spotlight.eyebrow": "Verdiep je",
   "training.spotlight.title": "Kies het traject dat bij jou past",
   "training.spotlight.description": "Ontdek onze gespecialiseerde opleidingen die je voorbereiden op een toekomstbestendige carrière in IT. Elk traject combineert praktijkervaring met persoonlijke begeleiding.",
@@ -198,6 +209,27 @@ window.i18n.nl = {
   "training.spotlight.security.feature2": "Security Operations Center (SOC)",
   "training.spotlight.security.feature3": "Incident response en forensics",
   "training.spotlight.security.feature4": "Compliance en governance",
+
+  // Benefits Section
+  "opleidingen.benefits.label": "Voordelen",
+  "opleidingen.benefits.title": "Waarom kiezen voor INTEC Brussel?",
+  "opleidingen.benefits.description": "Onze opleidingen combineren praktijkervaring met persoonlijke begeleiding om je succesvol te maken in de IT-sector.",
+  
+  "opleidingen.benefits.practice.title": "Praktijkgerichte aanpak",
+  "opleidingen.benefits.practice.body": "Leer door te doen in onze moderne campuslabs met actuele apparatuur en software uit het werkveld.",
+  
+  "opleidingen.benefits.guidance.title": "Persoonlijke begeleiding",
+  "opleidingen.benefits.guidance.body": "Klein groepen, individuele coaching en taalondersteuning zorgen ervoor dat je elke stap meemaakt.",
+  
+  "opleidingen.benefits.internship.title": "Stage en werkervaring",
+  "opleidingen.benefits.internship.body": "Elke opleiding eindigt met een stage. Veel cursisten starten meteen bij hun stagebedrijf dankzij ons netwerk van 200+ partners.",
+
+  // CTA Section
+  "opleidingen.cta.eyebrow": "Klaar om te starten?",
+  "opleidingen.cta.title": "Begin vandaag nog je IT-carrière",
+  "opleidingen.cta.body": "Plan je intake en ontdek welk traject het best bij jouw ambities en beschikbaarheid past.",
+  "opleidingen.cta.primary": "Start voorinschrijving",
+  "opleidingen.cta.secondary": "Stel je vragen",
 
   // -----------------------------
   // HOME PAGE
@@ -283,8 +315,10 @@ window.i18n.nl = {
   // -----------------------------
   // Register Page (New Keys)
   "register.label": "Inschrijven",
+  "register.label": "Inschrijven",
   "register.title": "Start je traject met een intakegesprek",
   "register.subtitle": "Elke opleiding begint met een persoonlijke intake om jouw succes te garanderen.",
+  "register.hero.imageCaption": "Begin je leertraject met een persoonlijk intakegesprek",
   "register.intro": "Elke opleiding start met een intake. Tijdens dit gesprek onderzoeken we samen jouw motivatie, beschikbaarheid, digitale vaardigheden en taalniveau. Dankzij deze screening kan je traject meteen op maat van jouw noden starten.",
   "register.hero.stats.aria": "Intakeproces statistieken",
   "register.hero.chip1": "Gratis VDAB-traject",
@@ -440,7 +474,12 @@ window.i18n.nl = {
   // OVERONS PAGE
   // -----------------------------
   "about.label": "Over INTEC",
+  "about.hero.eyebrow": "Over INTEC",
   "about.hero.title": "Missie & Visie",
+  "about.hero.subtitle": "We bouwen aan een inclusieve digitale samenleving waarin iedereen kan excelleren.",
+  "about.hero.description": "Talent staat centraal, ongeacht achtergrond of leeftijd. We verlagen drempels naar duurzame jobs en versterken digitale vaardigheden bij elke stap.",
+  "about.hero.ctaPrimary": "Ontdek opleidingen",
+  "about.hero.ctaSecondary": "Plan kennismaking",
   "about.hero.lead": "We bouwen aan een samenleving waarin iedereen kan meedoen in de digitale wereld. Talent staat centraal, ongeacht achtergrond of leeftijd.",
   "about.hero.chip1": "Inclusieve opleidingen",
   "about.hero.chip2": "Digitaal en toekomstgericht",
@@ -496,18 +535,67 @@ window.i18n.nl = {
   // -----------------------------
   "contact.label": "Contact",
   "contact.title": "We helpen je graag verder",
+  "contact.subtitle": "Neem contact op voor vragen over opleidingen, stages of samenwerkingen.",
   "contact.intro": "Heb je vragen over onze opleidingen, wil je samenwerken of plan je een bedrijfsbezoek? Stuur ons een bericht via het formulier of neem rechtstreeks contact op met een van onze medewerkers.",
+  "contact.hero.ctaPrimary": "Stuur ons een bericht",
+  "contact.hero.ctaSecondary": "Schrijf je in",
+  "contact.hero.imageCaption": "INTEC Brussel - Centraal gelegen nabij het Muntplein",
   "contact.hero.primary": "Schrijf je in",
   "contact.hero.secondary": "Bezoek Digipunt",
+  
+  // Contact Form Section
+  "contact.form.label": "Contactformulier",
+  "contact.form.title": "Stuur ons een bericht",
+  "contact.form.intro": "Vul het formulier in en we nemen zo snel mogelijk contact met je op.",
   "contact.form.name": "Naam",
   "contact.form.email": "E-mailadres",
   "contact.form.message": "Bericht",
   "contact.form.submit": "Verstuur bericht",
+  "contact.form.note": "We respecteren je privacy en gebruiken je gegevens enkel om contact met je op te nemen.",
   "contact.placeholders.name": "Jouw naam",
   "contact.placeholders.email": "naam@voorbeeld.be",
   "contact.placeholders.message": "Hoe kunnen we je helpen?",
+  
+  // Contact Info Section
+  "contact.info.label": "Contactinformatie",
+  "contact.info.title": "Neem rechtstreeks contact op",
+  "contact.info.intro": "Kies de juiste contactpersoon voor je vraag of bezoek ons op campus.",
   "contact.peopleTitle": "Contactpersonen",
   "contact.peopleIntro": "Neem contact op met de juiste persoon voor je vraag. We staan klaar om te helpen met opleidingen, stages of communicatie.",
+  
+  // Contact Cards
+  "contact.cards.general.title": "Algemene info",
+  "contact.cards.general.text": "Voor vragen over opleidingen, inschrijvingen of algemene informatie kun je ons bereiken via e-mail of telefoon tijdens de openingstijden.",
+  
+  "contact.cards.internship.title": "Stages & werkplekleren",
+  "contact.cards.internship.text": "Wil je een stageplek aanbieden of zoek je een gemotiveerde IT-professional in opleiding? Ons stage-team koppelt talenten aan bedrijven voor leerzame praktijkervaring.",
+  
+  "contact.cards.press.title": "Pers & communicatie",
+  "contact.cards.press.text": "Ben je journalist, onderzoeker of samenwerkingspartner? Neem contact op met onze communicatieafdeling voor persberichten, interviews of samenwerkingsmogelijkheden.",
+  
+  "contact.cards.digipunt.title": "Digipunt & ondersteuning",
+  "contact.cards.digipunt.text": "Hulp nodig met digitale tools of het invullen van je formulier? Boek een afspraak in ons Digipunt of kom langs tijdens de vrije inloopsessies.",
+  "contact.cards.digipunt.cta": "Bezoek Digipunt",
+  
+  // Visit Section
+  "contact.visit.label": "Kom langs",
+  "contact.visit.title": "Bezoek onze campus",
+  "contact.visit.text": "Je bent welkom om onze campus te bezoeken, kennismaken met ons team en de faciliteiten te bekijken.",
+  
+  // Opening Hours
+  "contact.hours.title": "Openingstijden",
+  "contact.hours.note": "Tijdens schoolvakanties en feestdagen zijn we gesloten. Neem contact op voor afwijkende openingstijden.",
+  
+  // Location
+  "contact.location.title": "Locatie",
+  "contact.location.mapCta": "Route plannen",
+  "contact.location.transport": "Op 5 minuten wandelen van station Brussel-Centraal. Bereikbaar met metro lijnen 1 en 5 (halte De Brouckère) en tram 3, 4 (halte Anneessens).",
+  
+  // CTA Section
+  "contact.cta.eyebrow": "Heb je nog vragen?",
+  "contact.cta.title": "We staan klaar om je te helpen",
+  "contact.cta.body": "Neem contact op via het formulier, bel ons of kom langs op campus. Ons team helpt je graag verder.",
+  
   "contact.general.title": "Algemene info",
   "contact.general.body": "info@intecbrussel.be<br />02/411 29 07",
   "contact.general.extra1": "Voor vragen over opleidingen, inschrijvingen of algemene informatie kun je ons bereiken via e-mail of telefoon tijdens de openingstijden.",
@@ -551,7 +639,7 @@ window.i18n.nl = {
   // PYTHON PAGE
   // -----------------------------
   "python.hero.eyebrow": "Opleiding",
-  "python.hero.title": "Netwerkbeheerder met <span class=\"hero-service__highlight\">Python</span>",
+  "python.hero.title": "Netwerkbeheerder met Python",
   "python.hero.subtitle": "Leer bedrijfsnetwerken ontwerpen en beheren terwijl je workflows automatiseert met Python.",
   "python.hero.description": "Werk met Cisco- en cloudlabs, versiebeheer en API-automation om infrastructuur sneller en veiliger uit te rollen.",
   "python.hero.lead": "Leer bedrijfsnetwerken ontwerpen en beheren terwijl je workflows automatiseert met Python.",
@@ -626,7 +714,7 @@ window.i18n.nl = {
   // SYSTEEMBEHEERDER PAGE
   // -----------------------------
   "sysadmin.hero.eyebrow": "Opleiding",
-  "sysadmin.hero.title": "Professionele <span class=\"hero-service__highlight\">Systeembeheerder</span>",
+  "sysadmin.hero.title": "Professionele Systeembeheerder",
   "sysadmin.hero.subtitle": "Leer servers, netwerken en cloudomgevingen beheren, beveiligen en automatiseren.",
   "sysadmin.hero.description": "Beheer hybride landschappen met monitoring, back-upstrategieën en security-by-design, ondersteund door automation met PowerShell en Ansible.",
   "sysadmin.hero.lead": "Leer servers, netwerken en cloudomgevingen beheren, beveiligen en automatiseren.",
@@ -697,7 +785,7 @@ window.i18n.nl = {
   // SECURITY PAGE
   // -----------------------------
   "security.hero.eyebrow": "Opleiding",
-  "security.hero.title": "Cyber <span class=\"hero-service__highlight\">Security Engineer</span>",
+  "security.hero.title": "Cyber Security Engineer",
   "security.hero.subtitle": "Bescherm netwerken, applicaties en data tegen bedreigingen met deze hands-on opleiding in cybersecurity.",
   "security.hero.description": "Train in SOC-simulaties, threat hunting en cloud hardening met tooling zoals SIEM, EDR en automatisering van responseflows.",
   "security.hero.lead": "Bescherm netwerken, applicaties en data tegen bedreigingen met deze hands-on opleiding in cybersecurity.",
@@ -767,7 +855,7 @@ window.i18n.nl = {
   // SUPPORT PAGE
   // -----------------------------
   "support.hero.eyebrow": "Opleiding",
-  "support.hero.title": "PC en <span class=\"hero-service__highlight\">Netwerktechnicus</span>",
+  "support.hero.title": "PC en Netwerktechnicus",
   "support.hero.subtitle": "Leer gebruikers helpen, technische problemen oplossen en netwerken beheren met deze brede IT-support opleiding.",
   "support.hero.description": "70% praktijklabs, stage bij partnerbedrijven en intensieve coaching maken je het eerste aanspreekpunt voor elke werkplek.",
   "support.hero.lead": "Leer gebruikers helpen, technische problemen oplossen en netwerken beheren met deze brede IT-support opleiding.",
@@ -853,6 +941,10 @@ window.i18n.nl = {
   "team.meta.description": "Ontdek wie we zijn bij INTEC Brussel: maak kennis met de teams achter onze opleidingen, leer meer over onze partners en samenwerkingen met werkgevers, en verken de kracht van ons netwerk.",
   "team.label": "Wie zijn we",
   "team.hero.title": "Raad van Bestuur & Team",
+  "team.hero.subtitle": "Meet the people behind INTEC Brussels.",
+  "team.hero.ctaPrimary": "Meet the Team",
+  "team.hero.ctaSecondary": "Get in Touch",
+  "team.hero.imageCaption": "Ons team zet zich elke dag in voor jouw succes",
   "team.hero.lead": "Ontmoet de mensen achter INTEC Brussel. Van strategische begeleiding tot dagelijkse ondersteuning, ons team zet zich in voor digitale inclusie en empowerment.",
   "team.hero.scroll": "Scroll verder ↓ om het team te ontdekken",
   "team.nav.board": "Raad van Bestuur",

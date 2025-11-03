@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
@@ -36,7 +36,7 @@
           <nav class="primary-nav" aria-label="Hoofdmenu">
             <ul class="nav-links" id="primary-navigation" role="list">
               <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-              <li><a href="index.html#opleidingen" data-i18n="nav.training">Courses</a></li>
+              <li><a href="opleidingen.html" data-i18n="nav.training">Courses</a></li>
               <li><a href="inschrijven.html" aria-current="page" data-i18n="nav.register">Register</a></li>
               <li><a href="overons.html" data-i18n="nav.about">About us</a></li>
               <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
@@ -55,93 +55,41 @@
 
       <main id="main-content" tabindex="-1">
         <!-- Hero Section -->
-        <section class="hero_section">
-          <div class="container hero-service">
-            <div class="hero-service__card">
-              <div class="hero-service__content">
-                <span class="hero-service__eyebrow" data-i18n="register.label">Inschrijven</span>
-                <h1 class="hero-service__title" data-i18n="register.title" data-i18n-allow-html="true">
-                  Start je traject met een <span class="hero-service__highlight">intakegesprek</span>
+                <section class="hero_section">
+          <div class="container">
+            <div>
+              <span data-i18n="register.label">Inschrijven</span>
+              <h1 data-i18n="register.title">
+                  Start je traject met een intakegesprek
                 </h1>
-                <p class="hero-service__subtitle" data-i18n="register.subtitle">
-                  Elke opleiding begint met een persoonlijke intake om jouw succes te garanderen.
-                </p>
-                <p class="hero-service__description" data-i18n="register.intro">
-                  Elke opleiding start met een intake. Tijdens dit gesprek onderzoeken we samen jouw motivatie, beschikbaarheid, digitale vaardigheden en taalniveau. Dankzij deze screening kan je traject meteen op maat van jouw noden starten.
-                </p>
-                <div class="hero-service__actions">
-                  <a class="btn-primary btn-lg" href="#registration-form" data-i18n="register.hero.ctaPrimary">Start voorinschrijving</a>
-                  <a class="btn-outline btn-lg" href="#intake-proces" data-i18n="register.hero.ctaSecondary">Bekijk stappen</a>
-                </div>
-                <dl class="hero-service__stats" aria-label="Intakeproces statistieken" data-i18n-aria-label="register.hero.stats.aria">
-                  <div class="hero-service__stat">
-                    <dt class="hero-service__stat-value">4</dt>
-                    <dd class="hero-service__stat-label" data-i18n="register.hero.stats.steps.label">Stappen in intakeproces</dd>
-                  </div>
-                  <div class="hero-service__stat">
-                    <dt class="hero-service__stat-value">3 dagen</dt>
-                    <dd class="hero-service__stat-label" data-i18n="register.hero.stats.response.label">Gemiddelde reactietijd</dd>
-                  </div>
-                  <div class="hero-service__stat">
-                    <dt class="hero-service__stat-value">95%</dt>
-                    <dd class="hero-service__stat-label" data-i18n="register.hero.stats.success.label">Succesvol afgerond</dd>
-                  </div>
-                </dl>
-                <div class="hero-service__meta">
-                  <span class="hero-service__meta-label" data-i18n="register.hero.metaTitle">Wat gebeurt er?</span>
-                  <strong class="hero-service__meta-value" data-i18n="register.hero.metaHighlight">Infosessie ? Workshop ? Testen ? Gesprek</strong>
-                  <p class="hero-service__meta-note" data-i18n="register.hero.metaNote">
-                    Je kan je ook inschrijven voor enkel de infosessie. Inschrijven kan tot maximaal zes maanden voor de startdatum.
-                  </p>
-                </div>
+              <p data-i18n="register.subtitle">
+                Elke opleiding begint met een persoonlijke intake om jouw succes te garanderen.
+              </p>
+              <div>
+                <a class="btn-primary btn-lg" href="#registration-form" data-i18n="register.hero.ctaPrimary">Start voorinschrijving</a>
+                <a class="btn-outline btn-lg" href="#intake-proces" data-i18n="register.hero.ctaSecondary">Bekijk stappen</a>
               </div>
-              <div class="hero-service__visual">
-                <div class="hero-service__visual-ring">
-                  <img
-                    src="assets/img/IntecBrussel.png"
-                    alt="INTEC Brussel intakegesprek"
-                    decoding="async"
-                    loading="lazy"
-                    width="560"
-                    height="560"
-                    data-critical="true" />
-                </div>
-                <ul class="hero-service__decor" aria-hidden="true">
-                  <li class="hero-service__decor-item hero-service__decor-item--one">
-                    <span class="hero-service__decor-icon">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke-linecap="round" stroke-linejoin="round" />
-                        <polyline points="14 2 14 8 20 8" stroke-linecap="round" stroke-linejoin="round" />
-                        <line x1="12" y1="18" x2="12" y2="12" stroke-linecap="round" stroke-linejoin="round" />
-                        <line x1="9" y1="15" x2="15" y2="15" stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                    </span>
-                  </li>
-                  <li class="hero-service__decor-item hero-service__decor-item--three">
-                    <span class="hero-service__decor-icon">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round" />
-                        <polyline points="22,4 12,14.01 9,11.01" stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                    </span>
-                  </li>
-                  <li class="hero-service__decor-item hero-service__decor-item--two">
-                    <span class="hero-service__decor-icon">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round" />
-                        <circle cx="9" cy="7" r="4" />
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                    </span>
-                  </li>
-                </ul>
+            </div>
+            <div>
+              <div>
+                <img
+                  src="assets/img/IntecBrussel.png"
+                  alt="Inschrijven bij INTEC"
+                  decoding="async"
+                  loading="eager"
+                  width="560"
+                  height="420"
+                />
+                <p data-i18n="register.hero.imageCaption">
+                  Begin je leertraject met een persoonlijk intakegesprek
+                </p>
               </div>
             </div>
           </div>
         </section>
 
         <!-- Registration Form Section -->
-        <section class="section section--surface" id="registration-form">
+        <section class="why-choose-intec" id="registration-form">
           <div class="container">
             <div class="section-heading">
               <span class="section-label" data-i18n="register.form.label">Voorinschrijving</span>
@@ -366,28 +314,28 @@
                 juiste stappen zetten.
               </p>
             </div>
-                        <div class="card-grid card-grid--quadrant register-prep-grid">
+                        <div class="programs-showcase__grid register-prep-grid">
               <article class="card card--quadrant fade-up" data-delay="1">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path d="m5 12 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round" />
                       <rect x="3" y="3" width="18" height="18" rx="4" ry="4" />
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title" data-i18n="register.tips.vdab.title">VDAB-voorwaarden in orde</h3>
+                    <h3 class="feature-card__title" data-i18n="register.tips.vdab.title">VDAB-voorwaarden in orde</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="register.tips.vdab.body">
                     Zorg dat je als werkzoekende geregistreerd bent bij VDAB en dat je consulent je interesse voor het traject kent. Zo starten we meteen voorbereid.
                   </p>
                 </div>
               </article>
               <article class="card card--quadrant fade-up" data-delay="2">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" stroke-linecap="round" stroke-linejoin="round" />
                       <path d="M16 2v4" stroke-linecap="round" stroke-linejoin="round" />
@@ -396,36 +344,36 @@
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title" data-i18n="register.tips.documents.title">Recente documenten</h3>
+                    <h3 class="feature-card__title" data-i18n="register.tips.documents.title">Recente documenten</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="register.tips.documents.body">
                     Breng een up-to-date cv, identiteitskaart en eventuele attesten mee. Heb je ze digitaal klaar? Stuur ze vooraf zodat je intake sneller verloopt.
                   </p>
                 </div>
               </article>
               <article class="card card--quadrant fade-up" data-delay="3">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path d="M12 6v6l4 2" stroke-linecap="round" stroke-linejoin="round" />
                       <circle cx="12" cy="12" r="9" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title" data-i18n="register.tips.availability.title">Beschikbaarheid &amp; motivatie</h3>
+                    <h3 class="feature-card__title" data-i18n="register.tips.availability.title">Beschikbaarheid &amp; motivatie</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="register.tips.availability.body">
                     Denk vooraf na over kinderopvang, vervoer en andere afspraken. Zo maak je een realistische planning en kan je trajectcoach gericht meedenken.
                   </p>
                 </div>
               </article>
               <article class="card card--quadrant fade-up" data-delay="4">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">
+                <div class="feature-card__header">
+                  <span class="feature-card__icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path d="M12 6a6 6 0 0 0-6 6" stroke-linecap="round" stroke-linejoin="round" />
                       <path d="M12 18a6 6 0 0 0 6-6" stroke-linecap="round" stroke-linejoin="round" />
@@ -435,14 +383,14 @@
                     </svg>
                   </span>
                   <div>
-                    <h3 class="card__title" data-i18n="register.tips.coach.title">Tip van onze trajectcoaches</h3>
+                    <h3 class="feature-card__title" data-i18n="register.tips.coach.title">Tip van onze trajectcoaches</h3>
                   </div>
                 </div>
-                <div class="card__body">
+                <div class="feature-card__list">
                   <p class="card__text" data-i18n="register.tips.coach.body">
                     Kom een kwartier vroeger, noteer je vragen en maak documenten digitaal klaar. Onze digicoaches helpen je met formulieren en tools zodra je arriveert.
                   </p>
-                  <ul class="card__list">
+                  <ul class="feature-card__list">
                     <li data-i18n="register.tips.coach.item1">VDAB-doorverwijzing bij de hand</li>
                     <li data-i18n="register.tips.coach.item2">Digicoach ondersteuning ter plaatse</li>
                     <li data-i18n="register.tips.coach.item3">Taalondersteuning Nederlands/Engels</li>
@@ -461,7 +409,7 @@
             </div>
             <div class="split-layout register-next-steps">
               <article class="card card--info fade-up" data-delay="1">
-                <div class="card__body">
+                <div class="feature-card__list">
                 <p data-i18n="register.confirmation.step1">
                   Je ontvangt per e-mail een bevestiging met de uitnodiging voor de eerstvolgende infosessie en workshop.
                 </p>
@@ -625,17 +573,17 @@
           </div>
         </section>
 
-        <section class="section cta-band cta-band--minimal">
-          <div class="cta-band__inner container">
-            <div class="cta-band__content">
-              <span class="cta-band__eyebrow" data-i18n="register.cta.eyebrow">Klaar om te starten?</span>
+        <section class="enrollment-cta">
+          <div class="enrollment-cta__content container">
+            <div class="enrollment-cta__content">
+              <span class="enrollment-cta__eyebrow" data-i18n="register.cta.eyebrow">Klaar om te starten?</span>
               <h2 data-i18n="register.cta.title">Ontdek welke opleiding bij jou past</h2>
               <p data-i18n="register.cta.body">
                 Bekijk het overzicht van onze erkende VDAB-opleidingen en kies het traject dat aansluit bij jouw ambities.
                 We begeleiden je van eerste intake tot duurzame tewerkstelling.
               </p>
             </div>
-            <div class="cta-band__actions">
+            <div class="enrollment-cta__actions">
               <a class="btn-primary" href="opleidingen.html" data-i18n="register.cta.primary">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <circle cx="11" cy="11" r="8"></circle>

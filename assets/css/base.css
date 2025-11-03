@@ -524,12 +524,6 @@ textarea{
 .card--surface{
   background-color: var(--color-surface-alt, #f6fbfb);
 }
-.card--feature{
-  align-items: flex-start;
-}
-.card--feature .card__body{
-  color: var(--color-text-muted, #4a6b6d);
-}
 .card--quadrant:nth-of-type(odd){
   background-color: var(--color-accent-soft, #e8f9f8);
 }
@@ -700,17 +694,6 @@ textarea{
   font-size: 0.95rem;
   color: var(--color-text-muted, #4a6b6d);
 }
-/* =======================================
-   Hero Component
-   ======================================= */
-.hero{
-  position: relative;
-  overflow: hidden;
-  background: var(--color-bg-white, #ffffff);
-  padding-block: clamp(var(--space-xl), 8vw, var(--space-2xl));
-  margin: 0 0 var(--space-2xl);
-}
-
 /* =======================================
    Grid Container Styles
    ======================================= */
@@ -1101,31 +1084,21 @@ textarea{
 .program-feature-grid .card__body p{
   margin: 0;
 }
-.quadrant-grid .card{
-  min-height: 100%;
+
+/* Split Layout for Two-Column Sections */
+.split-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 3vw, 2rem);
+  margin-top: clamp(var(--spacing-lg), 6vw, var(--spacing-xl));
 }
-.quadrant-grid .card:nth-child(odd){
-  background: linear-gradient(160deg, rgba(var(--color-primary-rgb, 15, 130, 138), 0.08), rgba(255, 255, 255, 0.9));
+
+@media (min-width: 768px) {
+  .split-layout {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
-.quadrant-grid .card:nth-child(even){
-  background: var(--color-bg-white, #ffffff);
-}
-.quadrant-grid .card__header{
-  min-height: calc(var(--card-header-height) + 0.5rem);
-}
-.info-card-grid .card{
-  align-self: stretch;
-  background: var(--color-bg-white, #ffffff);
-}
-.info-card-grid .feature-list__item{
-  gap: var(--spacing-xs);
-}
-.info-card-grid .feature-list__content p{
-  margin: 0;
-}
-.info-card-grid .card__body p:last-child{
-  margin-bottom: 0;
-}
+
 .unique-section{
   margin-top: clamp(var(--spacing-lg), 6vw, var(--spacing-xl));
 }
@@ -1138,34 +1111,9 @@ textarea{
 .unique-section__card .card__body{
   gap: var(--spacing-sm);
 }
-.phase-grid{
-  --card-gap: clamp(1.5rem, 4vw, 2.5rem);
-}
-.phase-grid .card{
-  padding-top: clamp(2.5rem, 5vw, 3.5rem);
-}
-.phase-card--intake{
-  --phase-color: #0f828a;
-}
-.phase-card--labs{
-  --phase-color: #0b5c61;
-}
-.phase-card--stage{
-  --phase-color: #25bdb7;
-}
-.phase-card--coaching{
-  --phase-color: #ff8364;
-}
-.phase-grid .card__footer{
-  justify-content: flex-start;
-}
 .program-feature-grid .card__title,
-.quadrant-grid .card__title,
 .unique-section__card .card__title{
   font-size: clamp(1.25rem, 2.4vw, 1.6rem);
-}
-.phase-grid .card__title{
-  font-size: clamp(1.3rem, 2.4vw, 1.65rem);
 }
 .unique-section__card .feature-list__item + .feature-list__item{
   margin-top: var(--spacing-xs);
@@ -1175,16 +1123,6 @@ textarea{
 }
 @media (max-width: 575px){.unique-section__card .card__header{
     flex-direction: column;
-  }
-}
-@media (min-width: 768px){.phase-grid{
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(1.5rem, 4vw, 2.5rem);
-  }
-}
-@media (min-width: 1024px){.phase-grid{
-    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 

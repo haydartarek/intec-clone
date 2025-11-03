@@ -1,4 +1,4 @@
-// assets/js/i18n/en.js
+﻿// assets/js/i18n/en.js
 window.i18n = window.i18n || {};
 window.i18n.en = {
   // -----------------------------
@@ -7,6 +7,11 @@ window.i18n.en = {
   "digipunt.meta.title": "Digipoint | INTEC Brussels",
   "digipunt.meta.description": "Digipoint INTEC Brussels helps everyone who seeks digital support. Discover our free workshops, coaching and opening hours at Muntpunt.",
   "digipunt.title": "DIGIPOINT INTEC",
+  "digipunt.subtitle": "Free digital support for all Brussels residents at the Muntpunt library.",
+  "digipunt.description": "The Digipoint of INTEC Brussels supports everyone who wants to develop digitally. Our digital coaches help you step by step.",
+  "digipunt.hero.metaTitle": "Location",
+  "digipunt.hero.ctaPrimary": "Visit us",
+  "digipunt.hero.ctaSecondary": "View courses",
   "digipunt.intro1": "The Digipoint of INTEC Brussels at Muntpunt library supports everyone who feels digitally behind or simply wants to become more skilled with smartphones, tablets or computers.",
   "digipunt.intro2": "Our digital coaches answer your questions, help you step by step and create a learning plan together so you can practice independently.",
   "digipunt.what.title": "What can you do there?",
@@ -126,20 +131,25 @@ window.i18n.en = {
   // OPLEIDINGEN PAGE (Training programs page)
   // -----------------------------
   "opleidingen.hero.eyebrow": "Official Programs",
-  "opleidingen.hero.title": "INTEC Brussels Training Programs",
-  "opleidingen.hero.description": "Choose from four programs directly from our campus. Content, start dates and descriptions are based on official information so you can be sure of the correct details.",
+  "opleidingen.hero.title": "Choose the IT path that fits you",
+  "opleidingen.hero.subtitle": "From network technician to cyber security engineer – all paths lead to a future-proof IT career.",
+  "opleidingen.hero.ctaPrimary": "Start registration",
+  "opleidingen.hero.ctaSecondary": "View programs",
+  "opleidingen.hero.description": "Discover four recognized VDAB courses that prepare you for the Brussels job market. Each program combines hands-on practice, personal guidance, and an internship with local employers. Start your intake and build your IT expertise.",
   "opleidingen.hero.cta1": "Plan intake",
   "opleidingen.hero.cta2": "View programs",
+  
+  // Overview Section
+  "opleidingen.overview.label": "Our Offering",
+  "opleidingen.overview.title": "Which training suits you?",
+  "opleidingen.overview.description": "Four recognized programs that prepare you for jobs in networking, infrastructure, automation, and security. Each program combines theory, labs, and a customized internship.",
+  "opleidingen.overview.eyebrow": "Program overview",
   
   "opleidingen.why.title": "Why these programs?",
   "opleidingen.why.reason1": "Current content aligned with the Brussels job market",
   "opleidingen.why.reason2": "Hands-on guidance by trainers from the field",
   "opleidingen.why.reason3": "Start dates and learning paths as published by INTEC Brussels",
   "opleidingen.why.reason4": "Preparation for jobs in infrastructure, network management and security",
-  
-  "opleidingen.overview.eyebrow": "Program overview",
-  "opleidingen.overview.title": "Which training suits you?",
-  "opleidingen.overview.description": "Discover the four programs and click through for more information or to plan your intake.",
   
   // Course cards
   "opleidingen.pc.title": "PC and Network Technician",
@@ -167,6 +177,7 @@ window.i18n.en = {
   // -----------------------------
   // TRAINING SPOTLIGHT SECTION (for opleidingen.html)
   // -----------------------------
+  "training.spotlight.label": "Deepen Your Skills",
   "training.spotlight.eyebrow": "Deepen Your Skills",
   "training.spotlight.title": "Choose the path that fits you",
   "training.spotlight.description": "Discover our specialized training programs that prepare you for a future-proof career in IT. Each path combines hands-on experience with personal guidance.",
@@ -198,6 +209,27 @@ window.i18n.en = {
   "training.spotlight.security.feature2": "Security Operations Center (SOC)",
   "training.spotlight.security.feature3": "Incident response and forensics",
   "training.spotlight.security.feature4": "Compliance and governance",
+
+  // Benefits Section
+  "opleidingen.benefits.label": "Benefits",
+  "opleidingen.benefits.title": "Why choose INTEC Brussels?",
+  "opleidingen.benefits.description": "Our training programs combine practical experience with personal guidance to make you successful in the IT sector.",
+  
+  "opleidingen.benefits.practice.title": "Practical approach",
+  "opleidingen.benefits.practice.body": "Learn by doing in our modern campus labs with current equipment and software from the field.",
+  
+  "opleidingen.benefits.guidance.title": "Personal guidance",
+  "opleidingen.benefits.guidance.body": "Small groups, individual coaching and language support ensure you succeed at every step.",
+  
+  "opleidingen.benefits.internship.title": "Internship and work experience",
+  "opleidingen.benefits.internship.body": "Every course ends with an internship. Many students start immediately at their internship company thanks to our network of 200+ partners.",
+
+  // CTA Section
+  "opleidingen.cta.eyebrow": "Ready to start?",
+  "opleidingen.cta.title": "Start your IT career today",
+  "opleidingen.cta.body": "Plan your intake and discover which program best suits your ambitions and availability.",
+  "opleidingen.cta.primary": "Start pre-registration",
+  "opleidingen.cta.secondary": "Ask your questions",
 
   // -----------------------------
   // HOME PAGE
@@ -285,6 +317,7 @@ window.i18n.en = {
   "register.label": "Register",
   "register.title": "Start your journey with an intake interview",
   "register.subtitle": "Every course begins with a personal intake to set you up for success.",
+  "register.hero.imageCaption": "Start your learning journey with a personal intake interview",
   "register.intro": "Every course starts with an intake. During this conversation, we explore your motivation, availability, digital skills, and language level together. This screening ensures your journey begins tailored to your needs.",
   "register.hero.stats.aria": "Intake process statistics",
   "register.hero.chip1": "Free VDAB program",
@@ -435,7 +468,12 @@ window.i18n.en = {
   // OVERONS PAGE
   // -----------------------------
   "about.label": "About INTEC",
+  "about.hero.eyebrow": "About INTEC",
   "about.hero.title": "Mission & Vision",
+  "about.hero.subtitle": "We are building an inclusive digital society where everyone can excel.",
+  "about.hero.description": "Talent is central, regardless of background or age. We lower barriers to sustainable jobs and strengthen digital skills at every step.",
+  "about.hero.ctaPrimary": "Discover courses",
+  "about.hero.ctaSecondary": "Book an introduction",
   "about.hero.lead": "We are building a society where everyone can participate in the digital world. Talent is central, regardless of background or age.",
   "about.hero.chip1": "Inclusive training",
   "about.hero.chip2": "Digital and future-oriented",
@@ -491,18 +529,67 @@ window.i18n.en = {
   // -----------------------------
   "contact.label": "Contact",
   "contact.title": "We're happy to help",
+  "contact.subtitle": "Contact us for questions about courses, internships, or collaborations.",
   "contact.intro": "Have questions about our courses, want to collaborate, or plan a company visit? Send us a message via the form or contact one of our team members directly.",
+  "contact.hero.ctaPrimary": "Send us a message",
+  "contact.hero.ctaSecondary": "Register now",
+  "contact.hero.imageCaption": "INTEC Brussels - Centrally located near Muntplein",
   "contact.hero.primary": "Register now",
   "contact.hero.secondary": "Visit Digipoint",
+  
+  // Contact Form Section
+  "contact.form.label": "Contact Form",
+  "contact.form.title": "Send us a message",
+  "contact.form.intro": "Fill out the form and we'll get back to you as soon as possible.",
   "contact.form.name": "Name",
   "contact.form.email": "Email address",
   "contact.form.message": "Message",
   "contact.form.submit": "Send message",
+  "contact.form.note": "We respect your privacy and only use your information to contact you.",
   "contact.placeholders.name": "Your name",
   "contact.placeholders.email": "name@example.com",
   "contact.placeholders.message": "How can we assist you?",
+  
+  // Contact Info Section
+  "contact.info.label": "Contact Information",
+  "contact.info.title": "Get in touch directly",
+  "contact.info.intro": "Choose the right contact person for your question or visit us on campus.",
   "contact.peopleTitle": "Contact persons",
   "contact.peopleIntro": "Contact the right person for your question. We're ready to help with courses, internships, or communication.",
+  
+  // Contact Cards
+  "contact.cards.general.title": "General info",
+  "contact.cards.general.text": "For questions about courses, registrations, or general information, you can reach us via email or phone during opening hours.",
+  
+  "contact.cards.internship.title": "Internships & workplace learning",
+  "contact.cards.internship.text": "Want to offer an internship or looking for a motivated IT professional in training? Our internship team connects talents with companies for valuable practical experience.",
+  
+  "contact.cards.press.title": "Press & communication",
+  "contact.cards.press.text": "Are you a journalist, researcher, or partner? Contact our communications department for press releases, interviews, or collaboration opportunities.",
+  
+  "contact.cards.digipunt.title": "Digipoint & support",
+  "contact.cards.digipunt.text": "Need help with digital tools or filling out forms? Book an appointment at our Digipoint or drop by during our open sessions.",
+  "contact.cards.digipunt.cta": "Visit Digipoint",
+  
+  // Visit Section
+  "contact.visit.label": "Visit us",
+  "contact.visit.title": "Visit our campus",
+  "contact.visit.text": "You are welcome to visit our campus, meet our team, and view the facilities.",
+  
+  // Opening Hours
+  "contact.hours.title": "Opening Hours",
+  "contact.hours.note": "We are closed during school holidays and public holidays. Contact us for deviating opening hours.",
+  
+  // Location
+  "contact.location.title": "Location",
+  "contact.location.mapCta": "Plan route",
+  "contact.location.transport": "A 5-minute walk from Brussels-Central station. Accessible via metro lines 1 and 5 (De Brouckère stop) and tram 3, 4 (Anneessens stop).",
+  
+  // CTA Section
+  "contact.cta.eyebrow": "Still have questions?",
+  "contact.cta.title": "We're ready to help you",
+  "contact.cta.body": "Contact us via the form, call us, or visit our campus. Our team is happy to assist you.",
+  
   "contact.general.title": "General info",
   "contact.general.body": "info@intecbrussel.be<br />02/411 29 07",
   "contact.general.extra1": "For questions about courses, registrations, or general information, you can reach us via email or phone during opening hours.",
@@ -599,6 +686,10 @@ window.i18n.en = {
   "team.meta.description": "Discover who we are at INTEC Brussels: meet the teams behind our courses, learn about our partners and collaborations with employers, and explore the strength of our network.",
   "team.label": "Who We Are",
   "team.hero.title": "Board of Directors & Team",
+  "team.hero.subtitle": "Meet the people behind INTEC Brussels.",
+  "team.hero.ctaPrimary": "Meet the Team",
+  "team.hero.ctaSecondary": "Get in Touch",
+  "team.hero.imageCaption": "Our team is dedicated to your success every day",
   "team.hero.lead": "Meet the people behind INTEC Brussels. From strategic guidance to daily support, our team is committed to digital inclusion and empowerment.",
   "team.hero.scroll": "Scroll down ↓ to discover our team",
   "team.nav.board": "Board",

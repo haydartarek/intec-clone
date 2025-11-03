@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
@@ -32,7 +32,7 @@
           <nav class="primary-nav" aria-label="Hoofdmenu">
             <ul class="nav-links" id="primary-navigation" role="list">
               <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-              <li><a href="index.html#opleidingen" data-i18n="nav.training">Courses</a></li>
+              <li><a href="opleidingen.html" data-i18n="nav.training">Courses</a></li>
               <li><a href="inschrijven.html" data-i18n="nav.register">Register</a></li>
               <li><a href="overons.html" data-i18n="nav.about">About us</a></li>
               <li><a href="contact.html" aria-current="page" data-i18n="nav.contact">Contact</a></li>
@@ -51,89 +51,41 @@
 
       <main id="main-content" tabindex="-1">
         <!-- Hero Section -->
-        <section class="hero_section">
-          <div class="container hero-service">
-            <div class="hero-service__card">
-              <div class="hero-service__content">
-                <span class="hero-service__eyebrow" data-i18n="contact.label">Contact</span>
-                <h1 class="hero-service__title" data-i18n="contact.title" data-i18n-allow-html="true">
-                  We helpen je <span class="hero-service__highlight">graag verder</span>
+                <section class="hero_section">
+          <div class="container">
+            <div>
+              <span data-i18n="contact.label">Contact</span>
+              <h1 data-i18n="contact.title">
+                  We helpen je graag verder
                 </h1>
-                <p class="hero-service__subtitle" data-i18n="contact.subtitle">
-                  Neem contact op voor vragen over opleidingen, stages of samenwerkingen.
-                </p>
-                <p class="hero-service__description" data-i18n="contact.intro">
-                  Heb je vragen over onze opleidingen, wil je samenwerken of plan je een bedrijfsbezoek? Stuur ons een bericht via het formulier of neem rechtstreeks contact op met een van onze medewerkers.
-                </p>
-                <div class="hero-service__actions">
-                  <a class="btn-primary btn-lg" href="#contact-form" data-i18n="contact.hero.ctaPrimary">Stuur ons een bericht</a>
-                  <a class="btn-outline btn-lg" href="inschrijven.html" data-i18n="contact.hero.ctaSecondary">Schrijf je in</a>
-                </div>
-                <dl class="hero-service__stats" aria-label="Contact informatie" data-i18n-aria-label="contact.hero.stats.aria">
-                  <div class="hero-service__stat">
-                    <dt class="hero-service__stat-value">Ma-Vr</dt>
-                    <dd class="hero-service__stat-label" data-i18n="contact.hero.stats.hours.label">9:00 - 16:00 uur</dd>
-                  </div>
-                  <div class="hero-service__stat">
-                    <dt class="hero-service__stat-value">5 min</dt>
-                    <dd class="hero-service__stat-label" data-i18n="contact.hero.stats.location.label">Van station Brussel-Centraal</dd>
-                  </div>
-                  <div class="hero-service__stat">
-                    <dt class="hero-service__stat-value">24/7</dt>
-                    <dd class="hero-service__stat-label" data-i18n="contact.hero.stats.response.label">Reactie binnen 48 uur</dd>
-                  </div>
-                </dl>
-                <div class="hero-service__meta">
-                  <span class="hero-service__meta-label" data-i18n="contact.hero.metaTitle">Locatie</span>
-                  <strong class="hero-service__meta-value" data-i18n="contact.hero.metaHighlight">Rouppeplein 16, 1000 Brussel</strong>
-                  <p class="hero-service__meta-note" data-i18n="contact.hero.metaNote">
-                    Op wandelafstand van De Brouck�re en Anneessens. Bereikbaar met metro lijnen 1 en 5, tram 3 en 4.
-                  </p>
-                </div>
+              <p data-i18n="contact.subtitle">
+                Neem contact op voor vragen over opleidingen, stages of samenwerkingen.
+              </p>
+              <div>
+                <a class="btn-primary btn-lg" href="#contact-form" data-i18n="contact.hero.ctaPrimary">Stuur ons een bericht</a>
+                <a class="btn-outline btn-lg" href="inschrijven.html" data-i18n="contact.hero.ctaSecondary">Schrijf je in</a>
               </div>
-              <div class="hero-service__visual">
-                <div class="hero-service__visual-ring">
-                  <img
-                    src="assets/img/IntecBrussel.png"
-                    alt="INTEC Brussel kantoor locatie"
-                    decoding="async"
-                    loading="lazy"
-                    width="560"
-                    height="560"
-                    data-critical="true" />
-                </div>
-                <ul class="hero-service__decor" aria-hidden="true">
-                  <li class="hero-service__decor-item hero-service__decor-item--one">
-                    <span class="hero-service__decor-icon">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-linecap="round" stroke-linejoin="round" />
-                        <polyline points="22,6 12,13 2,6" stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                    </span>
-                  </li>
-                  <li class="hero-service__decor-item hero-service__decor-item--three">
-                    <span class="hero-service__decor-icon">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linecap="round" stroke-linejoin="round" />
-                        <circle cx="12" cy="10" r="3" />
-                      </svg>
-                    </span>
-                  </li>
-                  <li class="hero-service__decor-item hero-service__decor-item--two">
-                    <span class="hero-service__decor-icon">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                    </span>
-                  </li>
-                </ul>
+            </div>
+            <div>
+              <div>
+                <img
+                  src="assets/img/IntecBrussel.png"
+                  alt="Contact INTEC Brussel"
+                  decoding="async"
+                  loading="eager"
+                  width="560"
+                  height="420"
+                />
+                <p data-i18n="contact.hero.imageCaption">
+                  INTEC Brussel - Centraal gelegen nabij het Muntplein
+                </p>
               </div>
             </div>
           </div>
         </section>
 
         <!-- Contact Form Section -->
-        <section class="section section--surface">
+        <section class="why-choose-intec">
           <div class="container">
             <div class="section-heading">
               <span class="section-label" data-i18n="contact.form.label">Stuur een bericht</span>
@@ -232,15 +184,15 @@
                 Liever direct contact? Kies het juiste kanaal voor jouw vraag.
               </p>
             </div>
-            <div class="card-grid card-grid--quadrant quadrant-grid">
+            <div class="programs-showcase__grid">
               <article class="card card--quadrant fade-up" data-delay="1">
-                <div class="card__icon">
+                <div class="feature-card__icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-linecap="round" stroke-linejoin="round" />
                     <polyline points="22,6 12,13 2,6" stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
                 </div>
-                <h3 class="card__title" data-i18n="contact.cards.general.title">Algemene vragen</h3>
+                <h3 class="feature-card__title" data-i18n="contact.cards.general.title">Algemene vragen</h3>
                 <p class="card__text" data-i18n="contact.cards.general.text">
                   Voor vragen over opleidingen, inschrijvingen of algemene informatie.
                 </p>
@@ -250,13 +202,13 @@
                 </ul>
               </article>
               <article class="card card--quadrant fade-up" data-delay="2">
-                <div class="card__icon">
+                <div class="feature-card__icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <rect x="2" y="7" width="20" height="14" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round" />
                     <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
                 </div>
-                <h3 class="card__title" data-i18n="contact.cards.internship.title">Stages & werkplekleren</h3>
+                <h3 class="feature-card__title" data-i18n="contact.cards.internship.title">Stages & werkplekleren</h3>
                 <p class="card__text" data-i18n="contact.cards.internship.text">
                   Voor stageplekken, werkplekleren en partnerships met bedrijven.
                 </p>
@@ -266,14 +218,14 @@
                 </ul>
               </article>
               <article class="card card--quadrant fade-up" data-delay="3">
-                <div class="card__icon">
+                <div class="feature-card__icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round" />
                     <circle cx="9" cy="7" r="4" />
                     <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
                 </div>
-                <h3 class="card__title" data-i18n="contact.cards.press.title">Pers & communicatie</h3>
+                <h3 class="feature-card__title" data-i18n="contact.cards.press.title">Pers & communicatie</h3>
                 <p class="card__text" data-i18n="contact.cards.press.text">
                   Voor persberichten, interviews en media-aanvragen.
                 </p>
@@ -283,7 +235,7 @@
                 </ul>
               </article>
               <article class="card card--quadrant fade-up" data-delay="4">
-                <div class="card__icon">
+                <div class="feature-card__icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <rect x="2" y="2" width="20" height="8" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round" />
                     <rect x="2" y="14" width="20" height="8" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -291,7 +243,7 @@
                     <line x1="6" y1="18" x2="6.01" y2="18" stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
                 </div>
-                <h3 class="card__title" data-i18n="contact.cards.digipunt.title">Digipunt ondersteuning</h3>
+                <h3 class="feature-card__title" data-i18n="contact.cards.digipunt.title">Digipunt ondersteuning</h3>
                 <p class="card__text" data-i18n="contact.cards.digipunt.text">
                   Hulp nodig met digitale vaardigheden of online solliciteren?
                 </p>
@@ -302,33 +254,33 @@
         </section>
 
         <!-- Opening Hours & Location -->
-        <section class="section section--surface">
+        <section class="why-choose-intec">
           <div class="container">
             <div class="section-heading">
               <span class="section-label" data-i18n="contact.visit.label">Bezoek ons</span>
               <h2 class="section-title" data-i18n="contact.visit.title">Openingstijden & locatie</h2>
             </div>
-            <div class="info-card-grid">
-              <article class="info-card fade-up" data-delay="1">
-                <h3 class="info-card__title" data-i18n="contact.hours.title">Openingstijden</h3>
-                <ul class="info-card__list">
+            <div class="why-choose-intec__grid">
+              <article class="benefit-card fade-up" data-delay="1">
+                <h3 class="benefit-card__title" data-i18n="contact.hours.title">Openingstijden</h3>
+                <ul class="benefit-card__list">
                   <li><strong>Maandag - Vrijdag:</strong> 9:00 - 16:00</li>
                   <li><strong>Telefonisch:</strong> 9:00 - 12:00, 13:00 - 16:00</li>
                   <li><strong>Weekend:</strong> Gesloten</li>
                   <li><strong>Feestdagen:</strong> Gesloten</li>
                 </ul>
-                <p class="info-card__note" data-i18n="contact.hours.note">
+                <p class="benefit-card__note" data-i18n="contact.hours.note">
                   Voor een persoonlijk gesprek raden we aan om vooraf een afspraak te maken.
                 </p>
               </article>
-              <article class="info-card fade-up" data-delay="2">
-                <h3 class="info-card__title" data-i18n="contact.location.title">Locatie</h3>
-                <p class="info-card__text">
+              <article class="benefit-card fade-up" data-delay="2">
+                <h3 class="benefit-card__title" data-i18n="contact.location.title">Locatie</h3>
+                <p class="benefit-card__text">
                   <strong>INTEC Brussel</strong><br />
                   Rouppeplein 16<br />
                   1000 Brussel
                 </p>
-                <p class="info-card__text" data-i18n="contact.location.transport">
+                <p class="benefit-card__text" data-i18n="contact.location.transport">
                   <strong>Bereikbaarheid:</strong><br />
                   � Metro: lijnen 1 & 5 (De Brouck�re)<br />
                   � Tram: lijnen 3 & 4 (Anneessens)<br />
@@ -348,12 +300,12 @@
                   Route plannen
                 </a>
               </article>
-              <article class="info-card fade-up" data-delay="3">
-                <h3 class="info-card__title" data-i18n="contact.visit.title">Kom langs</h3>
-                <p class="info-card__text" data-i18n="contact.visit.text">
+              <article class="benefit-card fade-up" data-delay="3">
+                <h3 class="benefit-card__title" data-i18n="contact.visit.title">Kom langs</h3>
+                <p class="benefit-card__text" data-i18n="contact.visit.text">
                   Je bent welkom tijdens onze openingstijden voor een rondleiding, informatiegesprek of om je in te schrijven.
                 </p>
-                <ul class="info-card__list">
+                <ul class="benefit-card__list">
                   <li>Bekijk onze leslokalen en faciliteiten</li>
                   <li>Ontmoet onze coaches en instructeurs</li>
                   <li>Stel al je vragen persoonlijk</li>
@@ -382,18 +334,18 @@
         </section>
 
         <!-- CTA Band -->
-        <section class="section cta-band cta-band--minimal">
-          <div class="cta-band__inner container">
-            <div class="cta-band__content">
-              <span class="cta-band__eyebrow" data-i18n="contact.cta.eyebrow">Klaar om te starten?</span>
+        <section class="enrollment-cta">
+          <div class="enrollment-cta__content container">
+            <div class="enrollment-cta__content">
+              <span class="enrollment-cta__eyebrow" data-i18n="contact.cta.eyebrow">Klaar om te starten?</span>
               <h2 data-i18n="contact.cta.title">Begin vandaag nog je IT-carri�re</h2>
               <p data-i18n="contact.cta.body">
                 Schrijf je in voor een van onze opleidingen of plan een informatiegesprek met ons team.
               </p>
             </div>
-            <div class="cta-band__actions">
+            <div class="enrollment-cta__actions">
               <a class="btn-primary" href="inschrijven.html" data-i18n="contact.cta.primary">Schrijf je in</a>
-              <a class="btn-outline" href="index.html#opleidingen" data-i18n="contact.cta.secondary">Bekijk opleidingen</a>
+              <a class="btn-outline" href="opleidingen.html" data-i18n="contact.cta.secondary">Bekijk opleidingen</a>
             </div>
           </div>
         </section>
