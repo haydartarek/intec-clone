@@ -953,6 +953,30 @@ window.i18n.nl = {
   // -----------------------------
   // FOOTER
   // -----------------------------
+  "footer.aboutTitle": "Over INTEC",
+  "footer.aboutUs": "Wie zijn we",
+  "footer.ourTeam": "Ons Team",
+  "footer.digipunt": "Digipunt",
+  "footer.careers": "Vacatures",
+  "footer.contact": "Contact",
+  "footer.coursesTitle": "Opleidingen",
+  "footer.python": "Python Developer",
+  "footer.security": "Cybersecurity",
+  "footer.sysadmin": "Systeembeheerder",
+  "footer.support": "IT Support",
+  "footer.allCourses": "Alle opleidingen",
+  "footer.quickLinksTitle": "Snelle Links",
+  "footer.register": "Inschrijven",
+  "footer.faq": "FAQ",
+  "footer.privacy": "Privacy Policy",
+  "footer.terms": "Voorwaarden",
+  "footer.accessibility": "Toegankelijkheid",
+  "footer.newsletterTitle": "Nieuwsbrief",
+  "footer.newsletterDesc": "Blijf op de hoogte van nieuws, updates, en exclusieve aanbiedingen.",
+  "footer.emailPlaceholder": "Uw email",
+  "footer.subscribe": "SUBSCRIBE",
+  "footer.allRights": "Alle rechten voorbehouden.",
+  "footer.accreditation": "Erkend door VDAB, Actiris en ESF.",
   "footer.mission": "INTEC Brussel bouwt aan een inclusieve digitale samenleving via opleidingen, coaching en partnerschappen met werkgevers die klaar zijn voor morgen.",
   "footer.contactTitle": "Contact",
   "footer.address": "Rouppeplein 16<br />1000 Brussel",
@@ -961,7 +985,6 @@ window.i18n.nl = {
   "footer.siteNumber": "Vestigingsnummer: 2.108.890.046",
   "footer.socialNumber": "RSZ: 10/945-31-54801",
   "footer.followTitle": "Volg ons",
-  "footer.accreditation": "Erkend door VDAB, Actiris en ESF.",
 
   // -----------------------------
   // WIE ZIJN WE PAGE (/wiezijnwe.html)

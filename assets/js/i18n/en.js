@@ -683,6 +683,30 @@ window.i18n.en = {
   // -----------------------------
   // FOOTER
   // -----------------------------
+  "footer.aboutTitle": "About INTEC",
+  "footer.aboutUs": "Who We Are",
+  "footer.ourTeam": "Our Team",
+  "footer.digipunt": "Digipunt",
+  "footer.careers": "Careers",
+  "footer.contact": "Contact",
+  "footer.coursesTitle": "Courses",
+  "footer.python": "Python Developer",
+  "footer.security": "Cybersecurity",
+  "footer.sysadmin": "System Administrator",
+  "footer.support": "IT Support",
+  "footer.allCourses": "All Courses",
+  "footer.quickLinksTitle": "Quick Links",
+  "footer.register": "Register",
+  "footer.faq": "FAQ",
+  "footer.privacy": "Privacy Policy",
+  "footer.terms": "Terms & Conditions",
+  "footer.accessibility": "Accessibility",
+  "footer.newsletterTitle": "Newsletter",
+  "footer.newsletterDesc": "Subscribe to our newsletter for a weekly dose of news, updates, helpful tips, and exclusive offers.",
+  "footer.emailPlaceholder": "Your email",
+  "footer.subscribe": "SUBSCRIBE",
+  "footer.allRights": "All rights reserved.",
+  "footer.accreditation": "Recognized by VDAB, Actiris, and ESF.",
   "footer.mission": "INTEC Brussels builds an inclusive digital society through training, coaching, and partnerships with employers ready for tomorrow.",
   "footer.contactTitle": "Contact",
   "footer.address": "Rouppeplein 16<br />1000 Brussels",
@@ -691,7 +715,6 @@ window.i18n.en = {
   "footer.siteNumber": "Site Number: 2.108.890.046",
   "footer.socialNumber": "RSZ: 10/945-31-54801",
   "footer.followTitle": "Follow us",
-  "footer.accreditation": "Recognized by VDAB, Actiris, and ESF.",
 
   // -----------------------------
   // WIE ZIJN WE PAGE (/wiezijnwe.html)
