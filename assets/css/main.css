@@ -1,4 +1,4 @@
-/* =======================================
+﻿/* =======================================
    STATS CARDS • High Contrast Numbers
    ======================================= */
 
@@ -7922,15 +7922,19 @@ button:disabled,
   pointer-events: none;
 }
 
-.enrollment-cta__content {
+.enrollment-cta .container {
   position: relative;
   z-index: 1;
+}
+
+.enrollment-cta__content {
   max-width: 800px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: clamp(1.5rem, 3vw, 2rem);
+  gap: clamp(1rem, 2vw, 1.5rem);
   align-items: center;
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
 }
 
 .enrollment-cta__eyebrow {
@@ -7958,7 +7962,7 @@ button:disabled,
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.95);
   margin: 0;
-  max-width: 600px;
+  max-width: 650px;
 }
 
 .enrollment-cta__actions {
@@ -7967,7 +7971,6 @@ button:disabled,
   gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 1rem;
 }
 
 .enrollment-cta .btn-primary {
@@ -8025,3 +8028,4 @@ button:disabled,
     padding: clamp(2rem, 5vw, 3rem) 0;
   }
 }
+
