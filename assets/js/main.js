@@ -1482,27 +1482,43 @@ if (navToggle) {
 }
 
 // =============================
-// Back to Top Button
+// Back to Top Button - Modern
 // =============================
-const backToTopBtn = document.getElementById('backToTop');
+const backToTopBtn = document.getElementById('backToTopBtn');
 
 if (backToTopBtn) {
-  // Show/hide button on scroll
-  window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-      backToTopBtn.classList.add('is-visible');
+  // Show/Hide button on scroll based on 60% of page
+  const toggleBackToTop = () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercentage = (scrollTop / documentHeight) * 100;
+    
+    if (scrollPercentage > 60) {
+      backToTopBtn.classList.add('show');
     } else {
-      backToTopBtn.classList.remove('is-visible');
+      backToTopBtn.classList.remove('show');
     }
+  };
+
+  // Throttle scroll event for better performance
+  let scrollTimeout;
+  window.addEventListener('scroll', () => {
+    if (scrollTimeout) {
+      window.cancelAnimationFrame(scrollTimeout);
+    }
+    scrollTimeout = window.requestAnimationFrame(toggleBackToTop);
   });
 
-  // Scroll to top on click
+  // Smooth scroll to top on click
   backToTopBtn.addEventListener('click', () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   });
+
+  // Initial check
+  toggleBackToTop();
 }
 
 // =============================
