@@ -230,6 +230,9 @@ window.i18n.en = {
   "opleidingen.cta.body": "Plan your intake and discover which program best suits your ambitions and availability.",
   "opleidingen.cta.primary": "Start pre-registration",
   "opleidingen.cta.secondary": "Ask your questions",
+  "opleidingen.cta.trust1": "Free intake",
+  "opleidingen.cta.trust2": "Within 2 minutes",
+  "opleidingen.cta.trust3": "No obligations",
 
   // -----------------------------
   // HOME PAGE
@@ -311,6 +314,9 @@ window.i18n.en = {
   "about.cta.body": "Get in touch and discover how we can collaborate on training, internships, or coaching.",
   "about.cta.primary": "Contact our team",
   "about.cta.secondary": "Explore courses",
+  "about.cta.trust1": "Free intake",
+  "about.cta.trust2": "Within 2 minutes",
+  "about.cta.trust3": "No obligations",
 
   // -----------------------------
   // Register Page (New Keys)
@@ -463,6 +469,9 @@ window.i18n.en = {
   "register.cta.body": "Explore our recognized VDAB courses and choose a path that matches your ambitions. We guide you from intake to sustainable employment.",
   "register.cta.primary": "View the offer",
   "register.cta.secondary": "Discuss with a coach",
+  "register.cta.trust1": "Free intake",
+  "register.cta.trust2": "Within 2 minutes",
+  "register.cta.trust3": "No obligations",
 
   // -----------------------------
   // OVERONS PAGE
@@ -589,6 +598,11 @@ window.i18n.en = {
   "contact.cta.eyebrow": "Still have questions?",
   "contact.cta.title": "We're ready to help you",
   "contact.cta.body": "Contact us via the form, call us, or visit our campus. Our team is happy to assist you.",
+  "contact.cta.primary": "Plan intake",
+  "contact.cta.secondary": "View courses",
+  "contact.cta.trust1": "Free intake",
+  "contact.cta.trust2": "Within 2 minutes",
+  "contact.cta.trust3": "No obligations",
   
   "contact.general.title": "General info",
   "contact.general.body": "info@intecbrussel.be<br />02/411 29 07",
@@ -822,7 +836,10 @@ window.i18n.en = {
   "team.cta.title": "Want to Help Build Our Team?",
   "team.cta.body": "We are open to new partners, volunteers, and future colleagues. Contact us for more information about collaboration, guest lectures, or open vacancies.",
   "team.cta.primary": "Schedule a Meeting",
-  "team.cta.secondary": "Explore Courses"
+  "team.cta.secondary": "Explore Courses",
+  "team.cta.trust1": "Free intake",
+  "team.cta.trust2": "Within 2 minutes",
+  "team.cta.trust3": "No obligations"
 ,
 
   // -----------------------------
@@ -887,6 +904,9 @@ window.i18n.en = {
   "support.cta.body": "Become the bridge between technology and people with this practical training.",
   "support.cta.primary": "Plan intake",
   "support.cta.secondary": "Ask a question",
+  "support.cta.trust1": "Free intake",
+  "support.cta.trust2": "Within 2 minutes",
+  "support.cta.trust3": "No obligations",
 
   // -----------------------------
   // PYTHON PAGE
@@ -950,6 +970,9 @@ window.i18n.en = {
   "python.cta.body": "Book your intake and discover how this trajectory prepares you for roles as network engineer or cloud operations specialist.",
   "python.cta.primary": "Plan intake",
   "python.cta.secondary": "Ask a question",
+  "python.cta.trust1": "Free intake",
+  "python.cta.trust2": "Within 2 minutes",
+  "python.cta.trust3": "No obligations",
 
   // -----------------------------
   // SECURITY PAGE
@@ -1013,6 +1036,9 @@ window.i18n.en = {
   "security.cta.body": "Book your intake and start your journey to become a cybersecurity specialist in high demand.",
   "security.cta.primary": "Plan intake",
   "security.cta.secondary": "Ask a question",
+  "security.cta.trust1": "Free intake",
+  "security.cta.trust2": "Within 2 minutes",
+  "security.cta.trust3": "No obligations",
 
   // -----------------------------
   // SYSADMIN PAGE  
@@ -1078,6 +1104,9 @@ window.i18n.en = {
   "sysadmin.cta.body": "Book your intake and discover how this trajectory prepares you for roles in system administration and infrastructure management.",
   "sysadmin.cta.primary": "Plan intake",
   "sysadmin.cta.secondary": "Ask a question",
+  "sysadmin.cta.trust1": "Free intake",
+  "sysadmin.cta.trust2": "Within 2 minutes",
+  "sysadmin.cta.trust3": "No obligations",
 
   // -----------------------------
   // SUPPORT PAGE - Complete Translations

@@ -230,6 +230,9 @@ window.i18n.nl = {
   "opleidingen.cta.body": "Plan je intake en ontdek welk traject het best bij jouw ambities en beschikbaarheid past.",
   "opleidingen.cta.primary": "Start voorinschrijving",
   "opleidingen.cta.secondary": "Stel je vragen",
+  "opleidingen.cta.trust1": "Gratis intake",
+  "opleidingen.cta.trust2": "Binnen 2 minuten",
+  "opleidingen.cta.trust3": "Zonder verplichting",
 
   // -----------------------------
   // HOME PAGE
@@ -311,6 +314,9 @@ window.i18n.nl = {
   "about.cta.body": "Neem contact op en ontdek hoe we kunnen samenwerken rond trajecten, stages of coaching.",
   "about.cta.primary": "Contacteer ons team",
   "about.cta.secondary": "Ontdek opleidingen",
+  "about.cta.trust1": "Gratis intake",
+  "about.cta.trust2": "Binnen 2 minuten",
+  "about.cta.trust3": "Zonder verplichting",
 
   // -----------------------------
   // Register Page (New Keys)
@@ -464,11 +470,17 @@ window.i18n.nl = {
   "register.cta.body": "Bekijk het overzicht van onze erkende VDAB-opleidingen en kies het traject dat aansluit bij jouw ambities. We begeleiden je van eerste intake tot duurzame tewerkstelling.",
   "register.cta.primary": "Bekijk het aanbod",
   "register.cta.secondary": "Bespreek met een coach",
+  "register.cta.trust1": "Gratis intake",
+  "register.cta.trust2": "Binnen 2 minuten",
+  "register.cta.trust3": "Zonder verplichting",
   "about.cta.eyebrow": "Samen bouwen",
   "about.cta.title": "Wil je mee het verschil maken voor talent in Brussel?",
   "about.cta.body": "Neem contact op en ontdek hoe we kunnen samenwerken rond trajecten, stages of coaching.",
   "about.cta.primary": "Contacteer ons team",
   "about.cta.secondary": "Ontdek opleidingen",
+  "about.cta.trust1": "Gratis intake",
+  "about.cta.trust2": "Binnen 2 minuten",
+  "about.cta.trust3": "Zonder verplichting",
 
   // -----------------------------
   // OVERONS PAGE
@@ -592,9 +604,14 @@ window.i18n.nl = {
   "contact.location.transport": "Op 5 minuten wandelen van station Brussel-Centraal. Bereikbaar met metro lijnen 1 en 5 (halte De Brouckère) en tram 3, 4 (halte Anneessens).",
   
   // CTA Section
-  "contact.cta.eyebrow": "Heb je nog vragen?",
-  "contact.cta.title": "We staan klaar om je te helpen",
-  "contact.cta.body": "Neem contact op via het formulier, bel ons of kom langs op campus. Ons team helpt je graag verder.",
+  "contact.cta.eyebrow": "Klaar om te starten?",
+  "contact.cta.title": "Begin vandaag nog je IT-carrière",
+  "contact.cta.body": "Schrijf je in voor een van onze opleidingen of plan een informatiegesprek met ons team.",
+  "contact.cta.primary": "Schrijf je in",
+  "contact.cta.secondary": "Bekijk opleidingen",
+  "contact.cta.trust1": "Gratis intake",
+  "contact.cta.trust2": "Binnen 2 minuten",
+  "contact.cta.trust3": "Zonder verplichting",
   
   "contact.general.title": "Algemene info",
   "contact.general.body": "info@intecbrussel.be<br />02/411 29 07",
@@ -709,6 +726,9 @@ window.i18n.nl = {
   "python.cta.body": "Boek je intake en ontdek hoe dit traject je voorbereidt op functies als network engineer of cloud operations specialist.",
   "python.cta.primary": "Plan intake",
   "python.cta.secondary": "Stel een vraag",
+  "python.cta.trust1": "Gratis intake",
+  "python.cta.trust2": "Binnen 2 minuten",
+  "python.cta.trust3": "Zonder verplichting",
 
   // -----------------------------
   // SYSTEEMBEHEERDER PAGE
@@ -780,6 +800,9 @@ window.i18n.nl = {
   "sysadmin.cta.body": "Leer servers, netwerken en cloud beheren met deze uitgebreide opleiding.",
   "sysadmin.cta.primary": "Plan intake",
   "sysadmin.cta.secondary": "Stel een vraag",
+  "sysadmin.cta.trust1": "Gratis intake",
+  "sysadmin.cta.trust2": "Binnen 2 minuten",
+  "sysadmin.cta.trust3": "Zonder verplichting",
 
   // -----------------------------
   // SECURITY PAGE
@@ -850,6 +873,9 @@ window.i18n.nl = {
   "security.cta.body": "Word een expert in digitale veiligheid met praktijkgerichte training.",
   "security.cta.primary": "Plan intake",
   "security.cta.secondary": "Stel een vraag",
+  "security.cta.trust1": "Gratis intake",
+  "security.cta.trust2": "Binnen 2 minuten",
+  "security.cta.trust3": "Zonder verplichting",
 
   // -----------------------------
   // SUPPORT PAGE
@@ -920,6 +946,9 @@ window.i18n.nl = {
   "support.cta.body": "Word de brug tussen technologie en mensen met deze praktijkgerichte opleiding.",
   "support.cta.primary": "Plan intake",
   "support.cta.secondary": "Stel een vraag",
+  "support.cta.trust1": "Gratis intake",
+  "support.cta.trust2": "Binnen 2 minuten",
+  "support.cta.trust3": "Zonder verplichting",
 
   // -----------------------------
   // FOOTER
@@ -1081,5 +1110,8 @@ window.i18n.nl = {
   "team.cta.title": "Wil je helpen ons team te versterken?",
   "team.cta.body": "We staan open voor nieuwe partners, vrijwilligers en toekomstige collega’s. Neem contact op voor meer info over samenwerking, gastcolleges of openstaande vacatures.",
   "team.cta.primary": "Plan een Gesprek",
-  "team.cta.secondary": "Ontdek Opleidingen"
+  "team.cta.secondary": "Ontdek Opleidingen",
+  "team.cta.trust1": "Gratis intake",
+  "team.cta.trust2": "Binnen 2 minuten",
+  "team.cta.trust3": "Zonder verplichting"
 };

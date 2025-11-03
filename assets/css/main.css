@@ -7900,52 +7900,26 @@ button:disabled,
 }
 
 /* =======================================
-   ENROLLMENT CTA SECTION - Enhanced
+   ENROLLMENT CTA SECTION - Modern Final CTA
+   Full-width container, clean design, subtle animations
    ======================================= */
 .enrollment-cta {
   position: relative;
-  background: linear-gradient(135deg, #0f828a 0%, #1a9ba3 50%, #25bdb7 100%);
-  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: linear-gradient(135deg, #f8fafa 0%, #ffffff 100%);
+  padding: clamp(3.5rem, 10vw, 4.5rem) 0;
   overflow: hidden;
   isolation: isolate;
+  border-top: 4px solid var(--color-primary);
 }
 
-/* Animated background effects */
+/* Subtle noise texture overlay */
 .enrollment-cta::before {
   content: '';
   position: absolute;
-  top: -50%;
-  right: -10%;
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
-  border-radius: 50%;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E");
   pointer-events: none;
-  animation: float 20s ease-in-out infinite;
   z-index: 0;
-}
-
-.enrollment-cta::after {
-  content: '';
-  position: absolute;
-  bottom: -30%;
-  left: -5%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: float 25s ease-in-out infinite reverse;
-  z-index: 0;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(30px, -30px) scale(1.1);
-  }
 }
 
 .enrollment-cta .container {
@@ -7953,30 +7927,30 @@ button:disabled,
   z-index: 1;
 }
 
-/* Wrapper for better control */
+/* Wrapper - single column, centered */
 .enrollment-cta__wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(2rem, 4vw, 3rem);
+  gap: clamp(1.25rem, 3vw, 1.5rem);
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 /* Content container */
 .enrollment-cta__content {
-  max-width: 850px;
-  margin: 0 auto;
-  text-align: center;
   display: flex;
   flex-direction: column;
-  gap: clamp(1rem, 2.5vw, 1.75rem);
+  gap: clamp(0.75rem, 2vw, 1rem);
   align-items: center;
-  animation: fadeInUp 0.8s ease-out;
+  animation: fadeInUp 0.25s ease-out;
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -7984,48 +7958,45 @@ button:disabled,
   }
 }
 
-/* Eyebrow/Label */
+/* Eyebrow/Label - minimal badge */
 .enrollment-cta__eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.8125rem;
-  font-weight: 700;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  padding: 0.625rem 1.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+  padding: 0.5rem 1.25rem;
   border-radius: 100px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  letter-spacing: 0.075em;
+  transition: all 0.2s ease;
 }
 
 .enrollment-cta__eyebrow:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateY(-2px);
+  background: var(--color-primary-10);
+  transform: translateY(-1px);
 }
 
-/* Title */
+/* Title - modern typography */
 .enrollment-cta__title {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(1.75rem, 4.5vw, 2.5rem);
   font-weight: 800;
-  line-height: 1.15;
-  color: #ffffff;
-  margin: 0;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+  line-height: 1.2;
+  color: var(--color-heading);
+  margin: clamp(0.75rem, 2vw, 1rem) 0 0;
   letter-spacing: -0.02em;
+  max-width: 32ch;
 }
 
-/* Body text */
+/* Body text - optimal readability */
 .enrollment-cta__body {
-  font-size: clamp(1.0625rem, 2.2vw, 1.25rem);
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.95);
-  margin: 0;
-  max-width: 680px;
+  font-size: clamp(1.125rem, 2.2vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: clamp(0.75rem, 2vw, 1rem) 0 0;
+  max-width: 60ch;
   font-weight: 400;
 }
 
@@ -8033,89 +8004,135 @@ button:disabled,
 .enrollment-cta__actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: clamp(0.75rem, 2.5vw, 1rem);
   flex-wrap: wrap;
   justify-content: center;
-  animation: fadeInUp 0.8s ease-out 0.2s both;
+  animation: fadeInUp 0.25s ease-out 0.06s both;
+  margin-top: clamp(1rem, 3vw, 1.25rem);
 }
 
-/* Button base styles in CTA */
+/* Button base styles - modern, clean */
 .enrollment-cta__btn {
   min-width: 200px;
-  padding: 1rem 2rem;
+  height: clamp(3rem, 10vw, 3.25rem);
+  padding: 0 clamp(1.5rem, 4vw, 2rem);
   font-size: 1rem;
   font-weight: 600;
-  border-radius: 12px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.625rem;
   text-decoration: none;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
-}
-
-.enrollment-cta__btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.enrollment-cta__btn:hover::before {
-  opacity: 1;
+  letter-spacing: 0.01em;
+  border: 2px solid transparent;
 }
 
 .enrollment-cta__btn .btn__icon {
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
   flex-shrink: 0;
+  width: 18px;
+  height: 18px;
 }
 
 .enrollment-cta__btn:hover .btn__icon {
-  transform: translateX(3px);
+  transform: translateX(2px);
 }
 
-/* Primary button in CTA */
+/* Primary button - solid, accessible */
 .enrollment-cta .btn--primary {
-  background: #ffffff;
-  color: #0f828a;
-  border: 2px solid #ffffff;
+  background: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+  font-weight: 700;
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(15, 130, 138, 0.15);
 }
 
 .enrollment-cta .btn--primary:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
   color: #ffffff;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    0 8px 24px rgba(15, 130, 138, 0.25);
 }
 
 .enrollment-cta .btn--primary:active {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(0);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(15, 130, 138, 0.15);
 }
 
-/* Outline button in CTA */
+.enrollment-cta .btn--primary:focus-visible {
+  outline: 3px solid var(--color-accent-soft);
+  outline-offset: 2px;
+}
+
+/* Outline button - clean secondary */
 .enrollment-cta .btn--outline {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  color: #ffffff;
-  border: 2px solid rgba(255, 255, 255, 0.9);
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  font-weight: 600;
 }
 
 .enrollment-cta .btn--outline:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: #ffffff;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  transform: translateY(-2px);
 }
 
 .enrollment-cta .btn--outline:active {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(0);
+  background: transparent;
+}
+
+.enrollment-cta .btn--outline:focus-visible {
+  outline: 3px solid var(--color-accent-soft);
+  outline-offset: 2px;
+}
+
+/* Trust elements - micro-copy below buttons */
+.enrollment-cta__trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  margin-top: clamp(1rem, 3vw, 1.5rem);
+  animation: fadeInUp 0.25s ease-out 0.12s both;
+}
+
+.enrollment-cta__trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  white-space: nowrap;
+}
+
+.enrollment-cta__trust-item::before {
+  content: '✓';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.125rem;
+  height: 1.125rem;
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
 }
 
 /* =======================================
@@ -8123,65 +8140,58 @@ button:disabled,
    ======================================= */
 @media (max-width: 768px) {
   .enrollment-cta {
-    padding: clamp(3rem, 7vw, 4rem) 0;
+    padding: clamp(2.5rem, 8vw, 3rem) 0;
   }
 
   .enrollment-cta__wrapper {
-    gap: clamp(1.5rem, 3vw, 2rem);
+    gap: 1rem;
   }
 
   .enrollment-cta__title {
-    font-size: clamp(1.75rem, 6vw, 2.25rem);
+    font-size: clamp(1.5rem, 6vw, 1.75rem);
   }
 
   .enrollment-cta__body {
-    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    font-size: 1rem;
   }
 
   .enrollment-cta__actions {
     flex-direction: column;
     width: 100%;
-    gap: 0.875rem;
+    gap: 0.75rem;
   }
 
   .enrollment-cta__btn {
     width: 100%;
-    max-width: 360px;
     min-width: auto;
+  }
+
+  .enrollment-cta__trust {
+    flex-direction: column;
+    gap: 0.75rem;
   }
 }
 
 @media (max-width: 480px) {
   .enrollment-cta {
-    padding: clamp(2.5rem, 6vw, 3rem) 0;
-  }
-
-  .enrollment-cta::before,
-  .enrollment-cta::after {
-    width: 400px;
-    height: 400px;
+    padding: 2rem 0;
   }
 
   .enrollment-cta__eyebrow {
     font-size: 0.75rem;
-    padding: 0.5rem 1.25rem;
+    padding: 0.5rem 1rem;
   }
 
-  .enrollment-cta__btn {
-    padding: 0.875rem 1.5rem;
-    font-size: 0.9375rem;
+  .enrollment-cta__trust-item {
+    font-size: 0.8125rem;
   }
 }
 
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .enrollment-cta::before,
-  .enrollment-cta::after {
-    animation: none;
-  }
-
   .enrollment-cta__content,
-  .enrollment-cta__actions {
+  .enrollment-cta__actions,
+  .enrollment-cta__trust {
     animation: none;
   }
 
