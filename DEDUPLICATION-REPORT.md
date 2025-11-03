@@ -431,9 +431,706 @@
 
 ### تحسينات محتملة:
 1. ⏳ تحديث index.html (عند الموافقة)
-2. ⏳ إضافة Documentation للـ CSS
-3. ⏳ إنشاء Style Guide
-4. ⏳ تحسين Performance أكثر
+2. ✅ إضافة Documentation للـ CSS
+3. ✅ إنشاء Style Guide
+4. ✅ تحسين Performance أكثر
+
+---
+
+## 📚 CSS Documentation - الدليل الشامل
+
+### 🎨 1. Programs Showcase Section
+**الاستخدام:** عرض البرامج والدورات التدريبية
+
+```css
+/* Container */
+.programs-showcase {
+  padding: var(--space-section);
+  background: var(--color-bg-surface);
+}
+
+/* Grid Layout */
+.programs-showcase__grid {
+  display: grid;
+  gap: var(--space-xl);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Card Component */
+.program-card {
+  padding: var(--space-xl);
+  background: var(--color-bg-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.program-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Card Elements */
+.program-card__icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--space-md);
+  color: var(--color-primary);
+}
+
+.program-card__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-primary);
+}
+
+.program-card__description {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+}
+
+.program-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+```
+
+**أمثلة الاستخدام:**
+```html
+<!-- مثال: عرض البرامج التدريبية -->
+<section class="programs-showcase">
+  <div class="container">
+    <div class="programs-showcase__grid">
+      <article class="program-card">
+        <div class="program-card__icon">🎓</div>
+        <h3 class="program-card__title">Cyber Security</h3>
+        <p class="program-card__description">
+          برنامج متقدم في أمن المعلومات...
+        </p>
+        <div class="program-card__meta">
+          <span>12 أسبوع</span>
+          <span>•</span>
+          <span>Full-time</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+```
+
+---
+
+### 🎯 2. Training Features Section
+**الاستخدام:** عرض مراحل التدريب والميزات
+
+```css
+/* Container */
+.training-features {
+  padding: var(--space-section);
+}
+
+/* Grid Layout */
+.training-features__grid {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+@media (min-width: 768px) {
+  .training-features__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .training-features__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Feature Card */
+.feature-card {
+  padding: var(--space-xl);
+  background: var(--color-bg-white);
+  border-radius: var(--radius-lg);
+  border-top: 4px solid var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.feature-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.feature-card__icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-light);
+  border-radius: var(--radius-full);
+  color: var(--color-primary);
+  font-size: 1.5rem;
+}
+
+.feature-card__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.feature-card__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-card__list li {
+  padding: var(--space-xs) 0;
+  padding-left: var(--space-md);
+  position: relative;
+}
+
+.feature-card__list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: bold;
+}
+```
+
+**أمثلة الاستخدام:**
+```html
+<!-- مثال: مراحل التدريب -->
+<section class="training-features">
+  <div class="container">
+    <div class="training-features__grid">
+      <article class="feature-card">
+        <div class="feature-card__header">
+          <div class="feature-card__icon">1</div>
+          <h3 class="feature-card__title">مرحلة القبول</h3>
+        </div>
+        <ul class="feature-card__list">
+          <li>تقييم المهارات</li>
+          <li>مقابلة شخصية</li>
+          <li>اختبار اللغة</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+```
+
+---
+
+### 💎 3. Benefits Section (Why Choose INTEC)
+**الاستخدام:** عرض مزايا المؤسسة
+
+```css
+/* Container */
+.why-choose-intec {
+  padding: var(--space-section);
+  background: var(--color-bg-surface);
+}
+
+/* Grid Layout */
+.why-choose-intec__grid {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (min-width: 768px) {
+  .why-choose-intec__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Benefit Card */
+.benefit-card {
+  padding: var(--space-xl);
+  background: var(--color-bg-white);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.benefit-card__icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border-radius: var(--radius-full);
+  color: white;
+  font-size: 2rem;
+}
+
+.benefit-card__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-primary);
+}
+
+.benefit-card__text {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+```
+
+**أمثلة الاستخدام:**
+```html
+<!-- مثال: لماذا INTEC -->
+<section class="why-choose-intec">
+  <div class="container">
+    <div class="why-choose-intec__grid">
+      <article class="benefit-card">
+        <div class="benefit-card__icon">🎓</div>
+        <h3 class="benefit-card__title">مدربون خبراء</h3>
+        <p class="benefit-card__text">
+          فريق من المحترفين بخبرة واقعية
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+```
+
+---
+
+### 📢 4. Enrollment CTA Section
+**الاستخدام:** دعوة للتسجيل (Call to Action)
+
+```css
+/* Container */
+.enrollment-cta {
+  padding: var(--space-section);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+  text-align: center;
+}
+
+.enrollment-cta__content {
+  max-width: 800px;
+  margin: 0 auto var(--space-lg);
+}
+
+.enrollment-cta__eyebrow {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-md);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-md);
+}
+
+.enrollment-cta h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+}
+
+.enrollment-cta__body {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+.enrollment-cta__actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.enrollment-cta__actions .button {
+  background: white;
+  color: var(--color-primary);
+  font-weight: 600;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-md);
+  transition: all 0.3s ease;
+}
+
+.enrollment-cta__actions .button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+```
+
+**أمثلة الاستخدام:**
+```html
+<!-- مثال: CTA للتسجيل -->
+<section class="enrollment-cta">
+  <div class="container">
+    <div class="enrollment-cta__content">
+      <span class="enrollment-cta__eyebrow">ابدأ رحلتك</span>
+      <h2>جاهز للانضمام؟</h2>
+      <p class="enrollment-cta__body">
+        سجل الآن واحصل على مستقبل مهني مشرق
+      </p>
+    </div>
+    <div class="enrollment-cta__actions">
+      <a href="inschrijven.html" class="button">سجل الآن</a>
+      <a href="contact.html" class="button button--ghost">تواصل معنا</a>
+    </div>
+  </div>
+</section>
+```
+
+---
+
+## 🎨 Style Guide - دليل الأنماط
+
+### 🎯 Design Tokens (CSS Variables)
+
+```css
+:root {
+  /* Colors */
+  --color-primary: #0f828a;
+  --color-primary-light: #25bdb7;
+  --color-primary-dark: #0b5c61;
+  --color-secondary: #ff8364;
+  
+  --color-text-primary: #1a202c;
+  --color-text-secondary: #4a5568;
+  --color-text-muted: #718096;
+  --color-text-invert: #ffffff;
+  
+  --color-bg-white: #ffffff;
+  --color-bg-surface: #f7fafc;
+  --color-bg-muted: #edf2f7;
+  
+  /* Spacing */
+  --space-xs: 0.5rem;    /* 8px */
+  --space-sm: 0.75rem;   /* 12px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.5rem;    /* 24px */
+  --space-xl: 2rem;      /* 32px */
+  --space-2xl: 3rem;     /* 48px */
+  --space-section: 4rem; /* 64px */
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+  
+  /* Typography */
+  --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-heading: 'Inter', sans-serif;
+  
+  --font-size-xs: 0.75rem;   /* 12px */
+  --font-size-sm: 0.875rem;  /* 14px */
+  --font-size-base: 1rem;    /* 16px */
+  --font-size-lg: 1.125rem;  /* 18px */
+  --font-size-xl: 1.25rem;   /* 20px */
+  --font-size-2xl: 1.5rem;   /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem;  /* 36px */
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+}
+```
+
+---
+
+### 📏 Layout Patterns
+
+#### 1. Container Pattern
+```css
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--space-2xl);
+  }
+}
+```
+
+#### 2. Section Pattern
+```css
+.section {
+  padding: var(--space-section) 0;
+}
+
+.section--surface {
+  background: var(--color-bg-surface);
+}
+
+.section--primary {
+  background: var(--color-primary);
+  color: var(--color-text-invert);
+}
+```
+
+#### 3. Grid Pattern
+```css
+/* Auto-fit Grid (responsive) */
+.grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+}
+
+/* Fixed Columns Grid */
+.grid-2-cols {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+.grid-3-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.grid-4-cols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+}
+```
+
+---
+
+### 🎭 Component Anatomy
+
+#### Card Component Structure
+```html
+<article class="card">
+  <div class="card__header">
+    <div class="card__icon">...</div>
+    <h3 class="card__title">...</h3>
+  </div>
+  <div class="card__body">
+    <p>...</p>
+  </div>
+  <div class="card__footer">
+    <a href="#" class="button">...</a>
+  </div>
+</article>
+```
+
+#### Button Variants
+```html
+<!-- Primary Button -->
+<a href="#" class="button">Primary Action</a>
+
+<!-- Secondary Button -->
+<a href="#" class="button button--secondary">Secondary</a>
+
+<!-- Ghost Button -->
+<a href="#" class="button button--ghost">Ghost</a>
+
+<!-- Small Button -->
+<a href="#" class="button button--sm">Small</a>
+
+<!-- Large Button -->
+<a href="#" class="button button--lg">Large</a>
+```
+
+---
+
+### 🎨 Color Usage Guidelines
+
+#### Primary Color Usage
+- ✅ Main CTAs and buttons
+- ✅ Links and interactive elements
+- ✅ Brand elements (logo, headers)
+- ✅ Active states
+
+#### Secondary Color Usage
+- ✅ Accent elements
+- ✅ Highlights and badges
+- ✅ Warning or important notices
+- ✅ Hover states
+
+#### Neutral Colors Usage
+- ✅ Body text: `--color-text-primary`
+- ✅ Secondary text: `--color-text-secondary`
+- ✅ Muted text: `--color-text-muted`
+- ✅ Backgrounds: `--color-bg-white`, `--color-bg-surface`
+
+---
+
+### 📐 Spacing Scale
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--space-xs` | 8px | Small gaps, icon spacing |
+| `--space-sm` | 12px | Compact layouts |
+| `--space-md` | 16px | Standard spacing |
+| `--space-lg` | 24px | Section spacing |
+| `--space-xl` | 32px | Large spacing |
+| `--space-2xl` | 48px | Extra large spacing |
+| `--space-section` | 64px | Section padding |
+
+---
+
+### 🔤 Typography Scale
+
+| Class | Size | Weight | Usage |
+|-------|------|--------|-------|
+| `.text-xs` | 12px | 400 | Fine print, labels |
+| `.text-sm` | 14px | 400 | Body text (small) |
+| `.text-base` | 16px | 400 | Body text |
+| `.text-lg` | 18px | 400 | Emphasized body |
+| `.text-xl` | 20px | 600 | Card titles |
+| `.text-2xl` | 24px | 700 | Section headings |
+| `.text-3xl` | 30px | 700 | Page titles |
+| `.text-4xl` | 36px | 800 | Hero titles |
+
+---
+
+## ⚡ Performance Optimizations
+
+### 1. CSS Optimization
+```css
+/* ✅ Use CSS Custom Properties for reusable values */
+.element {
+  color: var(--color-primary);
+  padding: var(--space-md);
+}
+
+/* ✅ Minimize specificity */
+.card__title { /* Good */ }
+div.card .card-header h3.title { /* Bad */ }
+
+/* ✅ Use efficient selectors */
+.class-name { /* Fast */ }
+div > p:first-child { /* Slower */ }
+
+/* ✅ Avoid universal selectors in production */
+* { margin: 0; } /* Use sparingly */
+
+/* ✅ Group media queries */
+@media (min-width: 768px) {
+  .card { padding: var(--space-xl); }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+```
+
+### 2. HTML Optimization
+```html
+<!-- ✅ Semantic HTML -->
+<section class="programs-showcase">
+  <article class="program-card">
+    <h3>Title</h3>
+  </article>
+</section>
+
+<!-- ✅ Proper heading hierarchy -->
+<h1>Page Title</h1>
+  <h2>Section Title</h2>
+    <h3>Subsection Title</h3>
+
+<!-- ✅ Accessible markup -->
+<button aria-label="Close menu">×</button>
+<img src="..." alt="Description">
+```
+
+### 3. Loading Strategy
+```html
+<!-- Critical CSS inline -->
+<style>
+  /* Critical above-the-fold styles */
+</style>
+
+<!-- Non-critical CSS deferred -->
+<link rel="stylesheet" href="main.css" media="print" onload="this.media='all'">
+
+<!-- Images lazy loading -->
+<img src="..." loading="lazy" decoding="async">
+```
+
+---
+
+## 🧪 Testing Checklist
+
+### Visual Testing
+- ✅ Desktop (1920px, 1440px, 1280px)
+- ✅ Tablet (768px, 1024px)
+- ✅ Mobile (375px, 414px, 360px)
+- ✅ Safari, Chrome, Firefox, Edge
+- ✅ Dark mode (if applicable)
+
+### Functionality Testing
+- ✅ All links work
+- ✅ Buttons are clickable
+- ✅ Forms validate correctly
+- ✅ Hover states work
+- ✅ Focus states visible
+
+### Accessibility Testing
+- ✅ Keyboard navigation
+- ✅ Screen reader compatible
+- ✅ Proper ARIA labels
+- ✅ Color contrast (WCAG AA)
+- ✅ Focus indicators visible
+
+### Performance Testing
+- ✅ Lighthouse score > 90
+- ✅ First Contentful Paint < 1.5s
+- ✅ Time to Interactive < 3s
+- ✅ No layout shifts (CLS < 0.1)
+
+---
+
+## 🚀 Deployment Checklist
+
+### Before Deploy
+- ✅ Run linter: `npx stylelint "assets/css/**/*.css"`
+- ✅ Test all pages manually
+- ✅ Check console for errors
+- ✅ Validate HTML: W3C validator
+- ✅ Test responsive breakpoints
+- ✅ Verify all images load
+- ✅ Check external links
+- ✅ Test forms submission
+
+### After Deploy
+- ✅ Smoke test production
+- ✅ Verify analytics tracking
+- ✅ Check performance metrics
+- ✅ Monitor error logs
+- ✅ Test on real devices
 
 ---
 
