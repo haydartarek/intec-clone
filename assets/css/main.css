@@ -42,72 +42,7 @@
    FOOTER • Enhanced Visual Design (INTEC 2025)
    ======================================= */
 
-.footer {
-  background: linear-gradient(
-    to bottom,
-    var(--color-footer-bg),
-    var(--color-footer-bg-bottom)
-  );
-  box-shadow: var(--shadow-lg);
-  color: var(--color-footer-text);
-  padding: clamp(1rem, 3vw, 1.75rem) 0 0;
-  position: relative;
-}
-
-.footer__main {
-  padding-bottom: var(--space-2xl);
-}
-
-.footer__heading {
-  color: var(--color-footer-heading);
-  font-size: var(--text-h4);
-  font-weight: var(--weight-bold);
-  letter-spacing: 0.5px;
-  margin-bottom: var(--space-lg);
-  text-transform: uppercase;
-}
-
-.footer__text {
-  color: var(--color-footer-text);
-  line-height: var(--leading-relaxed);
-  opacity: 0.95;
-}
-
-.footer__text--muted {
-  color: var(--color-footer-text-muted);
-  font-size: var(--text-body-sm);
-}
-
-.footer a {
-  color: var(--color-footer-link);
-  display: inline-block;
-  font-weight: var(--weight-medium);
-  text-decoration: none;
-  transition: var(--transition-fast);
-}
-
-.footer a:hover {
-  color: var(--color-footer-link-hover);
-  text-shadow: 0 0 8px rgba(var(--color-primary-rgb), 0.4);
-  transform: translateX(2px);
-}
-
-.footer__bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-top: var(--space-2xl);
-  padding: var(--space-lg) 0;
-}
-
-.footer__logo {
-  filter: brightness(0) invert(1);
-  opacity: 0.9;
-  transition: var(--transition-fast);
-}
-
-.footer__logo:hover {
-  opacity: 1;
-  transform: scale(1.03);
-}
+/* Footer styles removed - ready for new design */
 
 
 /* =======================================
@@ -4877,149 +4812,7 @@ textarea:valid:not(:placeholder-shown) {
 /* ================================
    Footer — Enhanced (De-duplicated)
    ================================ */
-.footer {
-  position: relative;
-  color: var(--color-footer-text);
-  padding: clamp(0.9rem, 2vw, 1.15rem) 0 clamp(0.7rem, 1.8vw, 0.95rem);
-  margin-top: auto;
-}
-.footer::before {
-  content: "";
-  position: absolute;
-  inset-inline: 0;
-  top: 0;
-  height: 2px;
-}
-
-/* Grid + shared container paddings in مكان واحد */
-.footer__grid,
-.footer__meta {
-  max-width: var(--max-width);
-  margin-inline: auto;
-  padding-inline: clamp(0.75rem, 3vw, 1.35rem);
-}
-.footer__grid {
-  display: grid;
-  grid-template-columns: 40% repeat(3, 20%);
-  gap: clamp(1.05rem, 2.5vw, 2rem);
-  padding-bottom: 1.1rem;
-}
-
-/* عمود عام */
-.footer__column {
-  position: relative;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-  text-align: left;
-  justify-content: flex-start;
-}
-/* فواصل عمودية بين الأعمدة */
-.footer__column:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: -0.6rem;
-  width: 1px;
-  height: calc(100% - 0.5rem);
-}
-
-/* رؤوس الأعمدة */
-.footer__column h3 {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--color-text-invert);
-  margin: 0 0 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  text-align: left;
-}
-
-/* علامة وهوية */
-.footer__brand {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding-top: 0.35rem;
-  align-items: flex-start;
-}
-.footer__brand-logo { display: inline-flex; align-items: center; }
-.footer__brand img { width: 180px; height: auto; }
-.footer__brand-text {
-  font-size: 0.9375rem;
-  line-height: var(--leading-normal);
-  color: var(--color-white-80);
-  margin: 0.45rem 0 0 0;
-  text-align: left;
-  font-weight: 400;
-}
-
-/* القوائم والروابط */
-.footer__column ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex; flex-direction: column;
-  gap: 0.6rem;
-}
-.footer__column a {
-  text-decoration: none;
-  font-size: 0.9375rem;
-  line-height: var(--leading-relaxed);
-  display: inline-flex;
-  align-items: center;
-  transition: color 0.2s ease;
-  text-align: left;
-}
-.footer__column a:hover { color: var(--color-text-invert); }
-
-/* شبكات التواصل */
-.footer__social { display: grid; gap: 0.65rem; justify-items: flex-start; }
-.footer__social-link {
-  display: inline-flex; align-items: center; gap: 0.6rem;
-  padding: 0.3rem 0.85rem 0.3rem 0.35rem;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.05);
-  color: var(--color-white-80);
-  transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
-  font-weight: 600; letter-spacing: 0.01em;
-  width: min(100%, 12.5rem);
-  justify-content: flex-start;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
-}
-.footer__social-link:hover {
-  transform: translateY(-2px);
-  background: rgba(255,255,255,0.14);
-  color: var(--color-white);
-}
-.footer__social-icon {
-  display: grid; place-items: center;
-  width: 2rem; height: 2rem; border-radius: 999px;
-  background: linear-gradient(140deg, rgba(125,212,212,0.4), rgba(123,161,255,0.28));
-  color: var(--color-white); flex-shrink: 0;
-}
-.footer__social-icon svg { width: 1rem; height: 1rem; fill: currentColor; }
-.footer__social-label { line-height: 1; }
-
-/* Copyright/meta */
-.footer__meta {
-  margin-top: 0.9rem;
-  padding-top: 0.9rem;
-  border-top: 1px solid rgba(255,255,255,0.12);
-  text-align: center;
-}
-.footer__copyright {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.6);
-  margin: 0; text-align: center;
-}
-.footer__copyright a {
-  color: var(--color-white-80);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-.footer__copyright a:hover { color: var(--color-text-invert); }
+/* Footer section removed - preparing for new design */
 
 /* =============== Animations (عامة) =============== */
 [data-animate] {
@@ -5040,18 +4833,9 @@ textarea:valid:not(:placeholder-shown) {
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* =============== Responsive =============== */
-/* 1200↓: تخفيف عمود العلامة */
-@media (max-width: 1200px) {
-  .footer__grid { grid-template-columns: 35% repeat(3, 1fr); gap: clamp(1.15rem, 3vw, 2rem); }
-}
 
-/* 991↓: دمج قواعد الفوتر والهيدر في كتلة واحدة (بدون تكرار) */
+/* 991↓: دمج قواعد الهيدر في كتلة واحدة */
 @media (max-width: 991px) {
-  /* Footer grid تحول لعمودين وتخفيف الفواصل */
-  .footer__grid { grid-template-columns: repeat(2, 1fr); gap: clamp(0.95rem, 4vw, 1.5rem); }
-  .footer__column:first-child { grid-column: 1 / -1; margin-bottom: 0.6rem; }
-  .footer__column:not(:last-child)::after { display: none; }
-
   /* Header/Nav (كما هي ولكن مدموجة) */
   .site-header__inner { grid-template-columns: auto auto auto; gap: var(--space-md); }
   .nav-toggle { display: inline-flex; order: 3; }
@@ -5132,18 +4916,11 @@ textarea:valid:not(:placeholder-shown) {
   .cta-band__actions .button { width: 100%; justify-content: center; min-height: 52px; }
 }
 
-/* 767↓: دمج قواعد الفوتر مع الهيدر بدون تكرار */
-@media (max-width: 767px) {
-  .footer { padding: 1.1rem 0 0.9rem; }
-  .footer__grid { grid-template-columns: 1fr; gap: 0.95rem; }
-  .footer__brand img { width: 150px; }
-
-  .site-header__inner { min-height: 70px; }
+/* 767↓: تحسينات الهيدر والعناصر */
+@media (max-width: 767px) {  .site-header__inner { min-height: 70px; }
   .brand img { width: 160px; }
   .language-switch { padding: 0.2rem; --lang-pill-size: 36px; --lang-gap: 6px; --lang-padding: 5px; }
   .language-switch button { font-size: 0.75rem; }
-
-  .footer__social-link { width: 100%; justify-content: flex-start; }
 }
 
 
@@ -5208,10 +4985,6 @@ textarea:valid:not(:placeholder-shown) {
     padding-block: var(--space-lg);
   }
   .page--program .stats-item:last-child { border-bottom: none; }
-
-  /* Footer on tablet/mobile */
-  .footer__grid { grid-template-columns: 1fr; }
-  .footer__meta { display: flex; flex-direction: column; align-items: flex-start; }
 
   /* Highlight lists */
   .highlight-box .grid-list li {
@@ -6484,23 +6257,8 @@ button:disabled,
 
 
 /* =======================================
-   FOOTER — Strong Visual Ending (WCAG AA)
+   FOOTER — Removed for redesign
    ======================================= */
-:is(footer, .footer) {
-  background: linear-gradient(to bottom, var(--color-footer-bg), var(--color-footer-bg-bottom));
-  color: var(--color-footer-text);
-  padding: var(--space-section) 0;
-  border-top: 3px solid var(--color-accent);
-  position: relative;
-}
-:is(footer, .footer) :is(h1,h2,h3,h4,h5,h6) { color: var(--color-footer-heading); }
-:is(footer, .footer) p { color: var(--color-footer-text); }
-:is(footer, .footer) a {
-  color: var(--color-footer-link);
-  font-weight: var(--weight-medium);
-  transition: var(--transition-colors);
-}
-:is(footer, .footer) a:hover { color: var(--color-footer-link-hover); }
 
 /* =======================================
    Section Titles / Heading Decor
