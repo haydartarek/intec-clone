@@ -869,7 +869,7 @@ window.i18n.en = {
   // SUPPORT PAGE
   // -----------------------------
   "support.hero.eyebrow": "Course",
-  "support.hero.title": "PC and <span class=\"hero-service__highlight\">Network Technician</span>",
+  "support.hero.title": "PC and Network Technician",
   "support.hero.subtitle": "Learn to help users, solve technical problems, and manage networks with this comprehensive IT support training.",
   "support.hero.description": "70% lab time, an industry internship, and dedicated coaching prepare you to be the first point of contact for every workplace.",
   "support.hero.lead": "Learn to help users, solve technical problems, and manage networks with this comprehensive IT support training.",
@@ -1001,7 +1001,7 @@ window.i18n.en = {
   // SECURITY PAGE
   // -----------------------------
   "security.hero.eyebrow": "Course",
-  "security.hero.title": "Cyber <span class=\"hero-service__highlight\">Security Engineer</span>",
+  "security.hero.title": "Cyber Security Engineer",
   "security.hero.subtitle": "Protect networks and systems against modern threats and implement security policies.",
   "security.hero.description": "Train in SOC simulations, threat hunting, and cloud hardening with tooling such as SIEM, EDR, and automated response playbooks.",
   "security.hero.lead": "Protect networks and systems against modern threats and implement security policies.",

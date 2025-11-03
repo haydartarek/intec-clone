@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test 2x2 Grid</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background: #f0f9fa;
+        }
+        
+        .programs-showcase__grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .program-card {
+            padding: 2rem;
+            background: white;
+            border: 2px solid #0f828a;
+            border-radius: 20px;
+            min-height: 300px;
+        }
+        
+        .program-card__title {
+            font-size: 1.5rem;
+            color: #0f828a;
+            margin-bottom: 1rem;
+        }
+        
+        .program-card__description {
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; margin-bottom: 2rem;">Test Grid 2×2</h1>
+    
+    <div class="programs-showcase__grid">
+        <div class="program-card">
+            <h3 class="program-card__title">1. PC en Netwerktechnicus</h3>
+            <p class="program-card__description">Dit is de eerste kaart in de grid</p>
+        </div>
+        
+        <div class="program-card">
+            <h3 class="program-card__title">2. Netwerkbeheerder met Python</h3>
+            <p class="program-card__description">Dit is de tweede kaart in de grid</p>
+        </div>
+        
+        <div class="program-card">
+            <h3 class="program-card__title">3. Systeembeheerder</h3>
+            <p class="program-card__description">Dit is de derde kaart in de grid</p>
+        </div>
+        
+        <div class="program-card">
+            <h3 class="program-card__title">4. Cybersecurity Engineer</h3>
+            <p class="program-card__description">Dit is de vierde kaart in de grid</p>
+        </div>
+    </div>
+    
+    <script>
+        console.log('Grid computed style:', window.getComputedStyle(document.querySelector('.programs-showcase__grid')).gridTemplateColumns);
+    </script>
+</body>
+</html>
