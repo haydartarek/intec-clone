@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="nl" data-lang="nl">
   <head>
     <meta charset="UTF-8" />
@@ -10,6 +10,7 @@
     <title>Partnerlogin | INTEC Brussel</title>
     <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico" />
     <link rel="stylesheet" href="../assets/css/local-fonts.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
     <link rel="stylesheet" href="../assets/css/main.css" />
     <script src="../assets/js/i18n/nl.js"></script>
     <script src="../assets/js/i18n/en.js"></script>
@@ -18,86 +19,35 @@
   <body>
     <div class="page-shell">
       <header class="site-header">
-  <div class="container">
-    <div class="site-header__inner">
-      
-      <!-- Logo / Brand -->
-      <a class="brand" href="../index.html" aria-label="INTEC Brussel">
-        <img 
-          src="../assets/img/logo+intec+brusselZWART1.png" 
-          alt="INTEC Brussel logo" 
-          width="200" 
-          height="auto"
-          decoding="async" 
-          loading="eager"
-        />
-      </a>
-
-      <!-- Primary Navigation -->
-      <nav class="primary-nav" aria-label="Primary navigation">
-        <ul class="nav-links" id="primary-navigation">
-          <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
-          <li><a href="../index.html#opleidingen" data-i18n="nav.training">Opleidingen</a></li>
-          <li><a href="../inschrijven.html" data-i18n="nav.register">Inschrijven</a></li>
-          <li><a href="../overons.html" data-i18n="nav.about">Over ons</a></li>
-          <li><a href="../contact.html" data-i18n="nav.contact">Contact</a></li>
-          <li><a href="../cvdb/index.html" aria-current="page" data-i18n="nav.partners">Toegang Partners</a></li>
-        </ul>
-      </nav>
-
-      <!-- Header Actions: Language + Digipoint + Mobile Toggle -->
-      <div class="site-header__actions">
-        
-        <!-- Language Switcher -->
-        <div 
-          class="language-switch" 
-          role="group" 
-          aria-label="Taalkeuze"
-          data-i18n-aria-label="nav.languageGroup"
-        >
-          <button 
-            type="button" 
-            data-lang-select 
-            data-lang="nl"
-          >
-            NL
+        <div class="container site-header__inner">
+          <a class="brand" href="../index.html" aria-label="INTEC Brussel">
+            <img src="../assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" fetchpriority="high">
+          </a>
+          <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" data-nav-toggle="#primary-navigation">
+            <span class="sr-only" data-i18n="nav.toggle">Open menu</span>
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+            </svg>
           </button>
-          <button 
-            type="button" 
-            data-lang-select 
-            data-lang="en"
-          >
-            EN
-          </button>
+          <nav class="primary-nav" aria-label="Primary navigation">
+            <ul class="nav-links" id="primary-navigation" role="list">
+              <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+              <li><a href="../index.html#opleidingen" data-i18n="nav.training">Courses</a></li>
+              <li><a href="../inschrijven.html" data-i18n="nav.register">Register</a></li>
+              <li><a href="../overons.html" data-i18n="nav.about">About us</a></li>
+              <li><a href="../contact.html" data-i18n="nav.contact">Contact</a></li>
+              <li><a href="../cvdb/index.html" aria-current="page" data-i18n="nav.partners">Partner Access</a></li>
+            </ul>
+          </nav>
+          <div class="site-header__actions">
+            <div class="language-switch" role="group" aria-label="nav.languageGroup" data-i18n-aria-label="nav.languageGroup" data-active-lang="en">
+              <button type="button" data-lang-select data-lang="nl" aria-pressed="false" aria-current="false">NL</button>
+              <button type="button" data-lang-select data-lang="en" class="is-active" aria-pressed="true" aria-current="true">EN</button>
+            </div>
+            <a class="btn-accent btn-sm" href="../digipunt.html" data-i18n="nav.digipunt">Digipoint</a>
+          </div>
         </div>
-
-        <!-- Digipoint Button -->
-        <a class="btn-accent btn-sm" href="../digipunt.html" data-i18n="nav.digipunt">Digipunt</a>
-
-        <!-- Mobile Navigation Toggle -->
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-controls="primary-navigation"
-          aria-expanded="false"
-          data-nav-toggle="#primary-navigation"
-        >
-          <span class="sr-only" data-i18n="nav.toggle">Menu openen</span>
-          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none">
-            <path
-              d="M4 6h16M4 12h16M4 18h16"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-          </svg>
-        </button>
-
-      </div>
-
-    </div>
-  </div>
-</header>
+      </header>
 
       <main>
         <section class="section section--surface">
@@ -145,12 +95,17 @@
       <footer class="footer">
         <div class="container">
           <div class="footer__grid">
-            <div class="footer__column">
-              <a class="brand" href="../index.html">
-                <img src="../assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" loading="lazy" decoding="async" />
-                
+            <div class="footer__column footer__brand">
+              <a class="footer__brand-logo" href="index.html">
+                <img
+                  src="assets/img/logo+intec+brusselZWART1.png"
+                  alt="INTEC Brussel logo"
+                  data-critical="true"
+                  decoding="async"
+                  loading="lazy"
+                />
               </a>
-              <p data-i18n="footer.mission">
+              <p class="footer__brand-text" data-i18n="footer.mission">
                 INTEC Brussel bouwt aan een inclusieve digitale samenleving via opleidingen, coaching en partnerschappen
                 met werkgevers die klaar zijn voor morgen.
               </p>
@@ -174,18 +129,46 @@
                 <li data-i18n="footer.socialNumber">RSZ: 10/945-31-54801</li>
               </ul>
             </div>
-            <div class="footer__column">
+            <div class="footer__column footer__social-column">
               <h3 data-i18n="footer.followTitle">Volg ons</h3>
-              <ul class="footer__social">
-                <li><a href="https://www.linkedin.com/company/intec-brussel" target="_blank" rel="noreferrer">LinkedIn</a></li>
-                <li><a href="https://www.facebook.com/IntecBrussel" target="_blank" rel="noreferrer">Facebook</a></li>
-                <li><a href="https://www.youtube.com/@intecbrussel" target="_blank" rel="noreferrer">YouTube</a></li>
+              <ul class="footer__social" role="list">
+                <li>
+                  <a class="footer__social-link" href="https://www.linkedin.com/groups/3973164/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                    <span class="footer__social-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" focusable="false">
+                        <path d="M4.98 3.5a2.48 2.48 0 1 1 0 4.96 2.48 2.48 0 0 1 0-4.96ZM3.5 9h2.96v11H3.5zM9 9h2.83v1.58h.04c.39-.73 1.35-1.5 2.78-1.5C17.82 9.08 19 10.6 19 13.2V20h-2.96v-6.15c0-1.47-.53-2.47-1.84-2.47-1 0-1.6.67-1.86 1.32-.1.25-.12.6-.12.95V20H9z" />
+                      </svg>
+                    </span>
+                    <span class="footer__social-label">LinkedIn</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="footer__social-link" href="https://www.facebook.com/intecbrussel.be" target="_blank" rel="noreferrer" aria-label="Facebook">
+                    <span class="footer__social-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" focusable="false">
+                        <path d="M13.5 22h-3v-7H8v-3h2.5V9.75C10.5 7.68 11.75 6 14.48 6c1.11 0 1.93.1 1.93.1l-.07 2.72s-.83-.01-1.73-.01c-.98 0-1.14.45-1.14 1.2V12H17l-.19 3h-2.38z" />
+                      </svg>
+                    </span>
+                    <span class="footer__social-label">Facebook</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="footer__social-link" href="https://x.com/INTEC_BRUSSEL" target="_blank" rel="noreferrer" aria-label="X">
+                    <span class="footer__social-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" focusable="false">
+                        <path d="M18.36 3h3.14l-6.85 7.83 7.84 10.64h-6.17l-4.56-6.17L6.23 21.47H3.09l7.28-8.33L3.93 3h6.19l4.12 5.56z" />
+                      </svg>
+                    </span>
+                    <span class="footer__social-label">X</span>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
           <div class="footer__meta">
             <span>&copy; <span id="year">2025</span> INTEC Brussel.</span>
             <span data-i18n="footer.accreditation">Erkend door VDAB, Actiris en ESF.</span>
+            
           </div>
         </div>
       </footer>

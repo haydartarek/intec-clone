@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
@@ -10,104 +10,135 @@
     <title>Over ons | INTEC Brussel</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <link rel="stylesheet" href="assets/css/local-fonts.css" />
-    <link rel="stylesheet" href="assets/css/main.css?v=20251024n" />
-       <script src="assets/js/i18n/nl.js"></script>
-<script src="assets/js/i18n/en.js"></script>
-<script src="assets/js/main.js" defer></script>
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <script src="assets/js/i18n/nl.js"></script>
+    <script src="assets/js/i18n/en.js"></script>
+    <script src="assets/js/main.js" defer></script>
   </head>
   <body class="main-content">
-    <a class="skip-link" href="#main-content">Ga naar hoofdinhoud</a>
     <div class="page-shell">
       <header class="site-header">
         <div class="container site-header__inner">
           <a class="brand" href="index.html" aria-label="INTEC Brussel">
-            <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" />
-            
+            <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" fetchpriority="high">
           </a>
-          <button
-            class="nav-toggle"
-            type="button"
-            aria-controls="primary-navigation"
-            aria-expanded="false"
-            data-nav-toggle="#primary-navigation"
-          >
-            <span class="sr-only" data-i18n="nav.toggle">Menu openen</span>
+          <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" data-nav-toggle="#primary-navigation">
+            <span class="sr-only" data-i18n="nav.toggle">Open menu</span>
             <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-              <path
-                d="M4 6h16M4 12h16M4 18h16"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              />
+              <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
             </svg>
           </button>
           <nav class="primary-nav" aria-label="Hoofdmenu">
             <ul class="nav-links" id="primary-navigation" role="list">
               <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-              <li><a href="index.html#opleidingen" data-i18n="nav.training">Opleidingen</a></li>
-              <li><a href="inschrijven.html" data-i18n="nav.register">Inschrijven</a></li>
-              <li><a href="overons.html" aria-current="page" data-i18n="nav.about">Over ons</a></li>
+              <li><a href="index.html#opleidingen" data-i18n="nav.training">Courses</a></li>
+              <li><a href="inschrijven.html" data-i18n="nav.register">Register</a></li>
+              <li><a href="overons.html" aria-current="page" data-i18n="nav.about">About us</a></li>
               <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
-              <li><a href="cvdb/index.html" data-i18n="nav.partners">Toegang Partners</a></li>
+              <li><a href="cvdb/index.html" data-i18n="nav.partners">Partner Access</a></li>
             </ul>
           </nav>
           <div class="site-header__actions">
-            <div
-              class="language-switch"
-              role="group"
-              aria-label="Taalkeuze"
-              data-i18n-aria-label="nav.languageGroup"
-            >
-              <button type="button" data-lang-select data-lang="nl">NL</button>
-              <button type="button" data-lang-select data-lang="en">EN</button>
+            <div class="language-switch" role="group" aria-label="nav.languageGroup" data-i18n-aria-label="nav.languageGroup" data-active-lang="en">
+              <button type="button" data-lang-select data-lang="nl" aria-pressed="false" aria-current="false">NL</button>
+              <button type="button" data-lang-select data-lang="en" class="is-active" aria-pressed="true" aria-current="true">EN</button>
             </div>
-            <a class="btn-accent btn-sm" href="digipunt.html" data-i18n="nav.digipunt">Digipunt</a>
+            <a class="btn-accent btn-sm" href="digipunt.html" data-i18n="nav.digipunt">Digipoint</a>
           </div>
         </div>
       </header>
       <main id="main-content" tabindex="-1">
-        <section class="hero">
-          <div class="container hero__grid">
-            <div class="hero__content">
-              <span class="hero__eyebrow" data-i18n="about.label">Over INTEC</span>
-              <h1 class="hero__title" data-i18n="about.hero.title">Missie &amp; Visie</h1>
-              <p class="hero__description" data-i18n="about.hero.lead">
-                We bouwen aan een samenleving waarin iedereen kan meedoen in de digitale wereld. Talent staat centraal,
-                ongeacht achtergrond of leeftijd. We verlagen drempels naar duurzame jobs en versterken digitale
-                vaardigheden bij elke stap.
-              </p>
-              <div class="hero__actions">
-                <a class="btn-primary btn-lg" href="index.html#opleidingen" data-i18n="about.hero.primary">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                  </svg>
-                  Ontdek opleidingen
-                </a>
-                <a class="btn-outline btn-lg" href="contact.html" data-i18n="about.hero.secondary">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                  </svg>
-                  Plan kennismaking
-                </a>
-              </div>
-            </div>
-            <div class="hero__visual">
-              <div class="hero-card">
-                <img 
-                  src="assets/img/intec-brussel-contact.jpg" 
-                  alt="INTEC Brussels IT training center with modern technology and coding environment"
-                  loading="eager"
-                  decoding="async"
-                  width="560"
-                  height="420"
-                />
-                <p class="hero-card__caption" data-i18n="about.hero.caption">
-                  Inclusieve opleidingen die talent begeleiden naar duurzame tewerkstelling in de digitale wereld.
+        <section class="hero_section">
+          <div class="container hero-service">
+            <div class="hero-service__card">
+              <div class="hero-service__content">
+                <span class="hero-service__eyebrow" data-i18n="about.label">Over INTEC</span>
+                <h1 class="hero-service__title" data-i18n="about.hero.title" data-i18n-allow-html="true">
+                  Missie &amp; <span class="hero-service__highlight">Visie</span>
+                </h1>
+                <p class="hero-service__subtitle" data-i18n="about.hero.subtitle">
+                  We bouwen aan een inclusieve digitale samenleving waarin iedereen kan excelleren.
                 </p>
+                <p class="hero-service__description" data-i18n="about.hero.description">
+                  Talent staat centraal, ongeacht achtergrond of leeftijd. We verlagen drempels naar duurzame jobs en versterken digitale vaardigheden bij elke stap.
+                </p>
+                <div class="hero-service__actions">
+                  <a class="btn-primary btn-lg" href="index.html#opleidingen" data-i18n="about.hero.primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                    </svg>
+                    Ontdek opleidingen
+                  </a>
+                  <a class="btn-outline btn-lg" href="contact.html" data-i18n="about.hero.secondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                      <line x1="16" y1="2" x2="16" y2="6"></line>
+                      <line x1="8" y1="2" x2="8" y2="6"></line>
+                      <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    Plan kennismaking
+                  </a>
+                </div>
+                <dl class="hero-service__stats" aria-label="Kerncijfers INTEC Brussel" data-i18n-aria-label="about.hero.stats.aria">
+                  <div class="hero-service__stat">
+                    <dt class="hero-service__stat-value" data-i18n="about.hero.stats.programs.value">7+</dt>
+                    <dd class="hero-service__stat-label" data-i18n="about.hero.stats.programs.label">ICT-opleidingen</dd>
+                  </div>
+                  <div class="hero-service__stat">
+                    <dt class="hero-service__stat-value" data-i18n="about.hero.stats.students.value">200+</dt>
+                    <dd class="hero-service__stat-label" data-i18n="about.hero.stats.students.label">Cursisten per jaar</dd>
+                  </div>
+                  <div class="hero-service__stat">
+                    <dt class="hero-service__stat-value" data-i18n="about.hero.stats.success.value">85%</dt>
+                    <dd class="hero-service__stat-label" data-i18n="about.hero.stats.success.label">Slaagpercentage</dd>
+                  </div>
+                </dl>
+                <div class="hero-service__meta">
+                  <span class="hero-service__meta-label" data-i18n="about.hero.metaTitle">Sinds 2018</span>
+                  <strong class="hero-service__meta-value" data-i18n="about.hero.metaValue">Erkend door VDAB</strong>
+                  <p class="hero-service__meta-note" data-i18n="about.hero.metaNote">
+                    Inclusieve opleidingen met sterke netwerken in de Brusselse IT-sector, ondersteund door overheid en partners.
+                  </p>
+                </div>
+              </div>
+              <div class="hero-service__visual">
+                <div class="hero-service__visual-ring">
+                  <img
+                    src="assets/img/intec-brussel-contact.jpg"
+                    alt="INTEC Brussels IT training center with modern technology and coding environment"
+                    loading="eager"
+                    decoding="async"
+                    width="560"
+                    height="560"
+                    data-critical="true" />
+                </div>
+                <ul class="hero-service__decor" aria-hidden="true">
+                  <li class="hero-service__decor-item hero-service__decor-item--one">
+                    <span class="hero-service__decor-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M9 7a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                  </li>
+                  <li class="hero-service__decor-item hero-service__decor-item--three">
+                    <span class="hero-service__decor-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                  </li>
+                  <li class="hero-service__decor-item hero-service__decor-item--two">
+                    <span class="hero-service__decor-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round" />
+                        <polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -119,7 +150,7 @@
               <span class="section-label" data-i18n="about.values.sectionLabel">Over INTEC</span>
               <h2 class="section-title" data-i18n="about.values.sectionTitle">Onze waarden &amp; Cultuur</h2>
               <p class="section-lead" data-i18n="about.values.sectionLead">
-                Onze waarden weerspiegelen de cultuur van INTEC Brussel — samenwerking, respect en continue groei.
+                Onze waarden weerspiegelen de cultuur van INTEC Brussel � samenwerking, respect en continue groei.
               </p>
             </div>
             <div class="values-content">
@@ -132,7 +163,7 @@
               </ul>
               <div class="cta-stack">
                 <a
-                  class="button button--ghost"
+                  class="btn-outline"
                   href="assets/pdf/jaarverslag-2024.pdf"
                   target="_blank"
                   rel="noreferrer noopener"
@@ -147,7 +178,7 @@
                   </svg>
                   Jaarverslag
                 </a>
-                <a class="button button--ghost" href="wiezijnwe.html" data-i18n="about.buttons.team">
+                <a class="btn-outline" href="wiezijnwe.html" data-i18n="about.buttons.team">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                     <circle cx="9" cy="7" r="4"></circle>
@@ -222,7 +253,7 @@
             </div>
             <div class="about-cards">
               <article class="about-card">
-                <h3 data-i18n="about.workTitle">💼 Werken bij INTEC Brussel?</h3>
+                <h3 data-i18n="about.workTitle">?? Werken bij INTEC Brussel?</h3>
                 <p data-i18n="about.workIntro">
                   Sluit je aan bij een divers en geengageerd team dat mensen vooruit helpt via opleiding en coaching. We
                   werken interdisciplinair en zetten sterk in op gelijke kansen en levenslang leren.
@@ -241,7 +272,7 @@
               </article>
               <article class="about-card about-card--experience">
                 <div class="about-card__accent"></div>
-                <h3 data-i18n="about.experienceTitle">⭐ Ervaring sinds 2001</h3>
+                <h3 data-i18n="about.experienceTitle">? Ervaring sinds 2001</h3>
                 <p data-i18n="about.experienceIntro">
                   Meer dan twintig jaar geleden startten we als opleidingspartner van VDAB. Vandaag begeleiden we
                   werkzoekenden, starters en professionals naar digitale en technische beroepen.
@@ -290,7 +321,7 @@
                   groepen met veel praktijk.
                 </p>
                 <p data-i18n="about.journey.step2Extra1">
-                  INTEC Brussel biedt moderne leslokalen, eigen labomgeving en hands-on training met actuele technologieën uit het werkveld.
+                  INTEC Brussel biedt moderne leslokalen, eigen labomgeving en hands-on training met actuele technologie�n uit het werkveld.
                 </p>
                 <p data-i18n="about.journey.step2Extra2">
                   Digicoaches en taalconsulenten ondersteunen je doorheen het hele traject, zodat niemand achterblijft en iedereen succesvol kan afstuderen.
@@ -323,19 +354,19 @@
               </p>
             </div>
             <div class="cta-band__actions">
-              <a class="button" href="index.html#opleidingen" data-i18n="about.cta.secondary">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                </svg>
-                Ontdek opleidingen
-              </a>
-              <a class="button button--ghost" href="contact.html" data-i18n="about.cta.primary">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <a class="btn-primary" href="contact.html" data-i18n="about.cta.primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                   <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
                 Contacteer ons team
+              </a>
+              <a class="btn-outline" href="index.html#opleidingen" data-i18n="about.cta.secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+                Ontdek opleidingen
               </a>
             </div>
           </div>
@@ -345,12 +376,17 @@
       <footer class="footer">
         <div class="container">
           <div class="footer__grid">
-            <div class="footer__column">
-              <a class="brand" href="index.html">
-                <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" />
-                
+            <div class="footer__column footer__brand">
+              <a class="footer__brand-logo" href="index.html">
+                <img
+                  src="assets/img/logo+intec+brusselZWART1.png"
+                  alt="INTEC Brussel logo"
+                  data-critical="true"
+                  decoding="async"
+                  loading="lazy"
+                />
               </a>
-              <p data-i18n="footer.mission">
+              <p class="footer__brand-text" data-i18n="footer.mission">
                 INTEC Brussel bouwt aan een inclusieve digitale samenleving via opleidingen, coaching en partnerschappen
                 met werkgevers die klaar zijn voor morgen.
               </p>
@@ -374,18 +410,46 @@
                 <li data-i18n="footer.socialNumber">RSZ: 10/945-31-54801</li>
               </ul>
             </div>
-            <div class="footer__column">
+            <div class="footer__column footer__social-column">
               <h3 data-i18n="footer.followTitle">Volg ons</h3>
-              <ul class="footer__social">
-                <li><a href="https://www.linkedin.com/groups/3973164/" target="_blank" rel="noreferrer">LinkedIn</a></li>
-                <li><a href="https://www.facebook.com/intecbrussel.be" target="_blank" rel="noreferrer">Facebook</a></li>
-                <li><a href="https://x.com/INTEC_BRUSSEL" target="_blank" rel="noreferrer">X</a></li>
+              <ul class="footer__social" role="list">
+                <li>
+                  <a class="footer__social-link" href="https://www.linkedin.com/groups/3973164/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                    <span class="footer__social-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" focusable="false">
+                        <path d="M4.98 3.5a2.48 2.48 0 1 1 0 4.96 2.48 2.48 0 0 1 0-4.96ZM3.5 9h2.96v11H3.5zM9 9h2.83v1.58h.04c.39-.73 1.35-1.5 2.78-1.5C17.82 9.08 19 10.6 19 13.2V20h-2.96v-6.15c0-1.47-.53-2.47-1.84-2.47-1 0-1.6.67-1.86 1.32-.1.25-.12.6-.12.95V20H9z" />
+                      </svg>
+                    </span>
+                    <span class="footer__social-label">LinkedIn</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="footer__social-link" href="https://www.facebook.com/intecbrussel.be" target="_blank" rel="noreferrer" aria-label="Facebook">
+                    <span class="footer__social-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" focusable="false">
+                        <path d="M13.5 22h-3v-7H8v-3h2.5V9.75C10.5 7.68 11.75 6 14.48 6c1.11 0 1.93.1 1.93.1l-.07 2.72s-.83-.01-1.73-.01c-.98 0-1.14.45-1.14 1.2V12H17l-.19 3h-2.38z" />
+                      </svg>
+                    </span>
+                    <span class="footer__social-label">Facebook</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="footer__social-link" href="https://x.com/INTEC_BRUSSEL" target="_blank" rel="noreferrer" aria-label="X">
+                    <span class="footer__social-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" focusable="false">
+                        <path d="M18.36 3h3.14l-6.85 7.83 7.84 10.64h-6.17l-4.56-6.17L6.23 21.47H3.09l7.28-8.33L3.93 3h6.19l4.12 5.56z" />
+                      </svg>
+                    </span>
+                    <span class="footer__social-label">X</span>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
           <div class="footer__meta">
             <span>&copy; <span id="year">2025</span> INTEC Brussel.</span>
             <span data-i18n="footer.accreditation">Erkend door VDAB, Actiris en ESF.</span>
+            
           </div>
         </div>
       </footer>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
@@ -10,295 +10,390 @@
     <title>Contact | INTEC Brussel</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <link rel="stylesheet" href="assets/css/local-fonts.css" />
-    <link rel="stylesheet" href="assets/css/main.css?v=20251024o" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
     <script src="assets/js/i18n/nl.js"></script>
     <script src="assets/js/i18n/en.js"></script>
     <script src="assets/js/main.js" defer></script>
   </head>
   <body class="main-content">
-    <a class="skip-link" href="#main-content">Ga naar hoofdinhoud</a>
     <div class="page-shell">
       <header class="site-header">
         <div class="container site-header__inner">
           <a class="brand" href="index.html" aria-label="INTEC Brussel">
-            <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" />
+            <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" fetchpriority="high">
           </a>
-          <button
-            class="nav-toggle"
-            type="button"
-            aria-controls="primary-navigation"
-            aria-expanded="false"
-            data-nav-toggle="#primary-navigation"
-          >
-            <span class="sr-only" data-i18n="nav.toggle">Menu openen</span>
+          <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" data-nav-toggle="#primary-navigation">
+            <span class="sr-only" data-i18n="nav.toggle">Open menu</span>
             <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-              <path
-                d="M4 6h16M4 12h16M4 18h16"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              />
+              <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
             </svg>
           </button>
           <nav class="primary-nav" aria-label="Hoofdmenu">
             <ul class="nav-links" id="primary-navigation" role="list">
               <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-              <li><a href="index.html#opleidingen" data-i18n="nav.training">Opleidingen</a></li>
-              <li><a href="inschrijven.html" data-i18n="nav.register">Inschrijven</a></li>
-              <li><a href="overons.html" data-i18n="nav.about">Over ons</a></li>
+              <li><a href="index.html#opleidingen" data-i18n="nav.training">Courses</a></li>
+              <li><a href="inschrijven.html" data-i18n="nav.register">Register</a></li>
+              <li><a href="overons.html" data-i18n="nav.about">About us</a></li>
               <li><a href="contact.html" aria-current="page" data-i18n="nav.contact">Contact</a></li>
-              <li><a href="cvdb/index.html" data-i18n="nav.partners">Toegang Partners</a></li>
+              <li><a href="cvdb/index.html" data-i18n="nav.partners">Partner Access</a></li>
             </ul>
           </nav>
           <div class="site-header__actions">
-            <div
-              class="language-switch"
-              role="group"
-              aria-label="Taalkeuze"
-              data-i18n-aria-label="nav.languageGroup"
-            >
-              <button type="button" data-lang-select data-lang="nl">NL</button>
-              <button type="button" data-lang-select data-lang="en">EN</button>
+            <div class="language-switch" role="group" aria-label="nav.languageGroup" data-i18n-aria-label="nav.languageGroup" data-active-lang="en">
+              <button type="button" data-lang-select data-lang="nl" aria-pressed="false" aria-current="false">NL</button>
+              <button type="button" data-lang-select data-lang="en" class="is-active" aria-pressed="true" aria-current="true">EN</button>
             </div>
-            <a class="btn-accent btn-sm" href="digipunt.html" data-i18n="nav.digipunt">Digipunt</a>
+            <a class="btn-accent btn-sm" href="digipunt.html" data-i18n="nav.digipunt">Digipoint</a>
           </div>
         </div>
       </header>
 
       <main id="main-content" tabindex="-1">
-        <section class="hero">
-          <div class="container hero__grid">
-            <div class="hero__content">
-              <span class="hero__eyebrow" data-i18n="contact.label">Contact</span>
-              <h1 class="hero__title" data-i18n="contact.title">We helpen je graag verder</h1>
-              <p class="hero__description" data-i18n="contact.intro">
-                Heb je vragen over onze opleidingen, wil je samenwerken of plan je een bedrijfsbezoek? Stuur ons een
-                bericht via het formulier of neem rechtstreeks contact op met een van onze medewerkers.
-              </p>
-              <div class="hero__actions">
-                <a class="btn-primary btn-lg" href="inschrijven.html" data-i18n="contact.hero.primary">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <line x1="19" y1="8" x2="19" y2="14"></line>
-                    <line x1="22" y1="11" x2="16" y2="11"></line>
-                  </svg>
-                  Schrijf je in
-                </a>
-                <a class="btn-outline btn-lg" href="digipunt.html" data-i18n="contact.hero.secondary">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                    <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
-                    <polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
-                    <polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
-                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                  </svg>
-                  Bezoek Digipunt
-                </a>
+        <!-- Hero Section -->
+        <section class="hero_section">
+          <div class="container hero-service">
+            <div class="hero-service__card">
+              <div class="hero-service__content">
+                <span class="hero-service__eyebrow" data-i18n="contact.label">Contact</span>
+                <h1 class="hero-service__title" data-i18n="contact.title" data-i18n-allow-html="true">
+                  We helpen je <span class="hero-service__highlight">graag verder</span>
+                </h1>
+                <p class="hero-service__subtitle" data-i18n="contact.subtitle">
+                  Neem contact op voor vragen over opleidingen, stages of samenwerkingen.
+                </p>
+                <p class="hero-service__description" data-i18n="contact.intro">
+                  Heb je vragen over onze opleidingen, wil je samenwerken of plan je een bedrijfsbezoek? Stuur ons een bericht via het formulier of neem rechtstreeks contact op met een van onze medewerkers.
+                </p>
+                <div class="hero-service__actions">
+                  <a class="btn-primary btn-lg" href="#contact-form" data-i18n="contact.hero.ctaPrimary">Stuur ons een bericht</a>
+                  <a class="btn-outline btn-lg" href="inschrijven.html" data-i18n="contact.hero.ctaSecondary">Schrijf je in</a>
+                </div>
+                <dl class="hero-service__stats" aria-label="Contact informatie" data-i18n-aria-label="contact.hero.stats.aria">
+                  <div class="hero-service__stat">
+                    <dt class="hero-service__stat-value">Ma-Vr</dt>
+                    <dd class="hero-service__stat-label" data-i18n="contact.hero.stats.hours.label">9:00 - 16:00 uur</dd>
+                  </div>
+                  <div class="hero-service__stat">
+                    <dt class="hero-service__stat-value">5 min</dt>
+                    <dd class="hero-service__stat-label" data-i18n="contact.hero.stats.location.label">Van station Brussel-Centraal</dd>
+                  </div>
+                  <div class="hero-service__stat">
+                    <dt class="hero-service__stat-value">24/7</dt>
+                    <dd class="hero-service__stat-label" data-i18n="contact.hero.stats.response.label">Reactie binnen 48 uur</dd>
+                  </div>
+                </dl>
+                <div class="hero-service__meta">
+                  <span class="hero-service__meta-label" data-i18n="contact.hero.metaTitle">Locatie</span>
+                  <strong class="hero-service__meta-value" data-i18n="contact.hero.metaHighlight">Rouppeplein 16, 1000 Brussel</strong>
+                  <p class="hero-service__meta-note" data-i18n="contact.hero.metaNote">
+                    Op wandelafstand van De Brouck�re en Anneessens. Bereikbaar met metro lijnen 1 en 5, tram 3 en 4.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="hero__visual">
-              <div class="hero-card">
-              <form id="contact-form" novalidate>
-                <label>
-                  <span data-i18n="contact.form.name">Naam</span>
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    autocomplete="name"
-                    data-i18n-placeholder="contact.placeholders.name"
-                    placeholder="Jouw naam"
-                  />
-                </label>
-                <label>
-                  <span data-i18n="contact.form.email">E-mailadres</span>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    autocomplete="email"
-                    data-i18n-placeholder="contact.placeholders.email"
-                    placeholder="naam@voorbeeld.be"
-                  />
-                </label>
-                <label>
-                  <span data-i18n="contact.form.message">Bericht</span>
-                  <textarea
-                    name="message"
-                    rows="5"
-                    required
-                    data-i18n-placeholder="contact.placeholders.message"
-                    placeholder="Hoe kunnen we je helpen?"
-                  ></textarea>
-                </label>
-                <button class="btn-primary" type="submit" data-i18n="contact.form.submit">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <line x1="22" y1="2" x2="11" y2="13"></line>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                  </svg>
-                  Verstuur bericht
-                </button>
-              </form>
+              <div class="hero-service__visual">
+                <div class="hero-service__visual-ring">
+                  <img
+                    src="assets/img/IntecBrussel.png"
+                    alt="INTEC Brussel kantoor locatie"
+                    decoding="async"
+                    loading="lazy"
+                    width="560"
+                    height="560"
+                    data-critical="true" />
+                </div>
+                <ul class="hero-service__decor" aria-hidden="true">
+                  <li class="hero-service__decor-item hero-service__decor-item--one">
+                    <span class="hero-service__decor-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-linecap="round" stroke-linejoin="round" />
+                        <polyline points="22,6 12,13 2,6" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                  </li>
+                  <li class="hero-service__decor-item hero-service__decor-item--three">
+                    <span class="hero-service__decor-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="12" cy="10" r="3" />
+                      </svg>
+                    </span>
+                  </li>
+                  <li class="hero-service__decor-item hero-service__decor-item--two">
+                    <span class="hero-service__decor-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </section>
 
+        <!-- Contact Form Section -->
+        <section class="section section--surface">
+          <div class="container">
+            <div class="section-heading">
+              <span class="section-label" data-i18n="contact.form.label">Stuur een bericht</span>
+              <h2 class="section-title" data-i18n="contact.form.title">Contactformulier</h2>
+              <p class="section-lead" data-i18n="contact.form.intro">
+                Vul het formulier in en we nemen zo snel mogelijk contact met je op. Gemiddelde reactietijd is 48 uur.
+              </p>
+            </div>
+            <div class="form-container">
+              <form id="contact-form" class="contact-form" novalidate>
+                <div class="form-row">
+                  <label class="form-label">
+                    <span class="form-label__text" data-i18n="contact.form.name">Naam *</span>
+                    <input
+                      type="text"
+                      name="name"
+                      class="form-input"
+                      required
+                      autocomplete="name"
+                      data-i18n-placeholder="contact.placeholders.name"
+                      placeholder="Jouw volledige naam"
+                    />
+                  </label>
+                  <label class="form-label">
+                    <span class="form-label__text" data-i18n="contact.form.email">E-mailadres *</span>
+                    <input
+                      type="email"
+                      name="email"
+                      class="form-input"
+                      required
+                      autocomplete="email"
+                      data-i18n-placeholder="contact.placeholders.email"
+                      placeholder="naam@voorbeeld.be"
+                    />
+                  </label>
+                </div>
+                <div class="form-row">
+                  <label class="form-label">
+                    <span class="form-label__text" data-i18n="contact.form.phone">Telefoonnummer (optioneel)</span>
+                    <input
+                      type="tel"
+                      name="phone"
+                      class="form-input"
+                      autocomplete="tel"
+                      data-i18n-placeholder="contact.placeholders.phone"
+                      placeholder="+32 XXX XX XX XX"
+                    />
+                  </label>
+                  <label class="form-label">
+                    <span class="form-label__text" data-i18n="contact.form.subject">Onderwerp *</span>
+                    <select name="subject" class="form-input" required>
+                      <option value="" data-i18n="contact.form.subject.placeholder">Selecteer een onderwerp</option>
+                      <option value="general" data-i18n="contact.form.subject.general">Algemene vraag</option>
+                      <option value="training" data-i18n="contact.form.subject.training">Vraag over opleiding</option>
+                      <option value="internship" data-i18n="contact.form.subject.internship">Stage aanvraag</option>
+                      <option value="partnership" data-i18n="contact.form.subject.partnership">Samenwerking</option>
+                      <option value="press" data-i18n="contact.form.subject.press">Pers & communicatie</option>
+                    </select>
+                  </label>
+                </div>
+                <label class="form-label">
+                  <span class="form-label__text" data-i18n="contact.form.message">Bericht *</span>
+                  <textarea
+                    name="message"
+                    rows="6"
+                    class="form-input"
+                    required
+                    data-i18n-placeholder="contact.placeholders.message"
+                    placeholder="Vertel ons waarmee we je kunnen helpen..."
+                  ></textarea>
+                </label>
+                <div class="form-actions">
+                  <button class="btn-primary btn-lg" type="submit" data-i18n="contact.form.submit">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <line x1="22" y1="2" x2="11" y2="13"></line>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    Verstuur bericht
+                  </button>
+                  <p class="form-note" data-i18n="contact.form.note">
+                    We respecteren je privacy. Jouw gegevens worden nooit gedeeld met derden.
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact Information Cards -->
         <section class="section">
           <div class="container">
             <div class="section-heading">
-              <span class="section-label" data-i18n="contact.peopleTitle">Contactpersonen</span>
-              <h2 class="section-title" data-i18n="contact.peopleTitle">Contactpersonen</h2>
-              <p class="section-lead" data-i18n="contact.peopleIntro">
-                Neem contact op met de juiste persoon voor je vraag. We staan klaar om te helpen met opleidingen, stages of communicatie.
+              <span class="section-label" data-i18n="contact.info.label">Bereikbaarheid</span>
+              <h2 class="section-title" data-i18n="contact.info.title">Direct contact</h2>
+              <p class="section-lead" data-i18n="contact.info.intro">
+                Liever direct contact? Kies het juiste kanaal voor jouw vraag.
               </p>
             </div>
-            <ul class="timeline timeline--four">
-              <li>
-                <div class="timeline__content">
-                  <strong data-i18n="contact.general.title">Algemene info</strong>
-                  <span data-i18n="contact.general.body" data-i18n-allow-html="true">
-                    info@intecbrussel.be<br />02/411 29 07
-                  </span>
-                  <p data-i18n="contact.general.extra1">
-                    Voor vragen over opleidingen, inschrijvingen of algemene informatie kun je ons bereiken via e-mail of telefoon tijdens de openingstijden.
-                  </p>
-                  <p data-i18n="contact.general.extra2">
-                    Ons team staat klaar om je te helpen bij het vinden van de juiste opleiding die past bij jouw ambities en achtergrond.
-                  </p>
-                  <div class="schedule">
-                    <strong data-i18n="contact.openingTitle">Openingstijden campus</strong>
-                    <span data-i18n="contact.openingHours">Maandag - Vrijdag, 9:00 - 16:00</span>
-                    <span data-i18n="contact.phoneHours">Telefonisch bereikbaar 9:00 - 12:00 en 13:00 - 16:00</span>
-                  </div>
+            <div class="card-grid card-grid--quadrant quadrant-grid">
+              <article class="card card--quadrant fade-up" data-delay="1">
+                <div class="card__icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-linecap="round" stroke-linejoin="round" />
+                    <polyline points="22,6 12,13 2,6" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
                 </div>
-              </li>
-              <li>
-                <div class="timeline__content">
-                  <strong data-i18n="contact.pr.title">Pers &amp; communicatie</strong>
-                  <span data-i18n-allow-html="true">
-                    <a href="mailto:pr@intecbrussel.be" data-i18n="contact.pr.body">pr@intecbrussel.be</a><br />
-                    <a href="tel:+3224112907">02/411 29 07</a>
-                  </span>
-                  <p data-i18n="contact.pr.extra1">
-                    Ben je journalist, onderzoeker of samenwerkingspartner? Neem contact op met onze communicatieafdeling voor persberichten, interviews of samenwerkingsmogelijkheden.
-                  </p>
-                  <p data-i18n="contact.pr.extra2">
-                    We delen graag onze visie op digitale inclusie, arbeidsmarktparticipatie en de impact van INTEC Brussel in het Brussels digitale ecosysteem.
-                  </p>
+                <h3 class="card__title" data-i18n="contact.cards.general.title">Algemene vragen</h3>
+                <p class="card__text" data-i18n="contact.cards.general.text">
+                  Voor vragen over opleidingen, inschrijvingen of algemene informatie.
+                </p>
+                <ul class="card__meta">
+                  <li><a href="mailto:info@intecbrussel.be">info@intecbrussel.be</a></li>
+                  <li><a href="tel:+3224112907">02/411 29 07</a></li>
+                </ul>
+              </article>
+              <article class="card card--quadrant fade-up" data-delay="2">
+                <div class="card__icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
                 </div>
-              </li>
-              <li>
-                <div class="timeline__content">
-                  <strong data-i18n="contact.stage.title">Stages &amp; werkplekleren</strong>
-                  <span data-i18n-allow-html="true">
-                    <a href="mailto:stage@intecbrussel.be" data-i18n="contact.stage.body">stage@intecbrussel.be</a><br />
-                    <a href="tel:+3224112907">02/411 29 07</a>
-                  </span>
-                  <p data-i18n="contact.stage.extra1">
-                    Wil je een stageplek aanbieden of zoek je een gemotiveerde IT-professional in opleiding? Ons stage-team koppelt talenten aan bedrijven voor leerzame praktijkervaring.
-                  </p>
-                  <p data-i18n="contact.stage.extra2">
-                    We begeleiden zowel stagiairs als stagebedrijven intensief om ervoor te zorgen dat werkplekleren een succes wordt voor beide partijen.
-                  </p>
+                <h3 class="card__title" data-i18n="contact.cards.internship.title">Stages & werkplekleren</h3>
+                <p class="card__text" data-i18n="contact.cards.internship.text">
+                  Voor stageplekken, werkplekleren en partnerships met bedrijven.
+                </p>
+                <ul class="card__meta">
+                  <li><a href="mailto:stage@intecbrussel.be">stage@intecbrussel.be</a></li>
+                  <li><a href="tel:+3224112907">02/411 29 07</a></li>
+                </ul>
+              </article>
+              <article class="card card--quadrant fade-up" data-delay="3">
+                <div class="card__icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
                 </div>
-              </li>
-              <li>
-                <div class="timeline__content">
-                  <strong data-i18n="contact.digipunt.title">Digipunt &amp; ondersteuning</strong>
-                  <span data-i18n="contact.digipunt.body">
-                    Hulp nodig met digitale tools of het invullen van je formulier? Boek een afspraak in ons Digipunt of kom
-                    langs tijdens de vrije inloopsessies.
-                  </span>
-                  <p data-i18n="contact.digipunt.extra1">
-                    Ons Digipunt biedt laagdrempelige ondersteuning bij online solliciteren, e-mail aanmaken, documenten scannen en andere digitale handelingen.
-                  </p>
-                  <p data-i18n="contact.digipunt.extra2">
-                    Je kunt terecht zonder afspraak tijdens de inloopsessies of een individueel moment inplannen voor meer gerichte begeleiding.
-                  </p>
-                  <a href="digipunt.html" class="btn-primary" data-i18n="contact.digipunt.cta">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                      <line x1="16" y1="2" x2="16" y2="6"></line>
-                      <line x1="8" y1="2" x2="8" y2="6"></line>
-                      <line x1="3" y1="10" x2="21" y2="10"></line>
-                    </svg>
-                    Plan een Digipunt-bezoek
-                  </a>
+                <h3 class="card__title" data-i18n="contact.cards.press.title">Pers & communicatie</h3>
+                <p class="card__text" data-i18n="contact.cards.press.text">
+                  Voor persberichten, interviews en media-aanvragen.
+                </p>
+                <ul class="card__meta">
+                  <li><a href="mailto:pr@intecbrussel.be">pr@intecbrussel.be</a></li>
+                  <li><a href="tel:+3224112907">02/411 29 07</a></li>
+                </ul>
+              </article>
+              <article class="card card--quadrant fade-up" data-delay="4">
+                <div class="card__icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <line x1="6" y1="6" x2="6.01" y2="6" stroke-linecap="round" stroke-linejoin="round" />
+                    <line x1="6" y1="18" x2="6.01" y2="18" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
                 </div>
-              </li>
-            </ul>
+                <h3 class="card__title" data-i18n="contact.cards.digipunt.title">Digipunt ondersteuning</h3>
+                <p class="card__text" data-i18n="contact.cards.digipunt.text">
+                  Hulp nodig met digitale vaardigheden of online solliciteren?
+                </p>
+                <a href="digipunt.html" class="card__link" data-i18n="contact.cards.digipunt.cta">Bezoek Digipunt ?</a>
+              </article>
+            </div>
           </div>
         </section>
 
-        <section class="section">
+        <!-- Opening Hours & Location -->
+        <section class="section section--surface">
           <div class="container">
-            <div class="two-column">
-              <div class="card">
-                <span class="section-label" data-i18n="contact.addressLabel">Locatie</span>
-                <h2 data-i18n="contact.addressTitle">Bezoek ons</h2>
-                <p data-i18n="contact.addressBody" data-i18n-allow-html="true">
-                  INTEC Brussel<br />Rouppeplein 16<br />1000 Brussel
+            <div class="section-heading">
+              <span class="section-label" data-i18n="contact.visit.label">Bezoek ons</span>
+              <h2 class="section-title" data-i18n="contact.visit.title">Openingstijden & locatie</h2>
+            </div>
+            <div class="info-card-grid">
+              <article class="info-card fade-up" data-delay="1">
+                <h3 class="info-card__title" data-i18n="contact.hours.title">Openingstijden</h3>
+                <ul class="info-card__list">
+                  <li><strong>Maandag - Vrijdag:</strong> 9:00 - 16:00</li>
+                  <li><strong>Telefonisch:</strong> 9:00 - 12:00, 13:00 - 16:00</li>
+                  <li><strong>Weekend:</strong> Gesloten</li>
+                  <li><strong>Feestdagen:</strong> Gesloten</li>
+                </ul>
+                <p class="info-card__note" data-i18n="contact.hours.note">
+                  Voor een persoonlijk gesprek raden we aan om vooraf een afspraak te maken.
                 </p>
-                <p data-i18n="contact.access">
-                  Op 5 minuten wandelen van station Brussel-Centraal. Bereikbaar met metro lijnen 1 en 5 (halte De
-                  Brouckère) en tram 3, 4 (halte Anneessens).
+              </article>
+              <article class="info-card fade-up" data-delay="2">
+                <h3 class="info-card__title" data-i18n="contact.location.title">Locatie</h3>
+                <p class="info-card__text">
+                  <strong>INTEC Brussel</strong><br />
+                  Rouppeplein 16<br />
+                  1000 Brussel
+                </p>
+                <p class="info-card__text" data-i18n="contact.location.transport">
+                  <strong>Bereikbaarheid:</strong><br />
+                  � Metro: lijnen 1 & 5 (De Brouck�re)<br />
+                  � Tram: lijnen 3 & 4 (Anneessens)<br />
+                  � Station: 5 min wandelen vanaf Brussel-Centraal
                 </p>
                 <a
-                  class="button"
+                  class="btn-outline"
                   href="https://maps.google.com/?q=INTEC+Brussel"
                   target="_blank"
                   rel="noreferrer"
-                  data-i18n="contact.mapCta"
+                  data-i18n="contact.location.mapCta"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="12" cy="10" r="3" />
                   </svg>
                   Route plannen
                 </a>
-              </div>
-              <div class="card">
-                <iframe
-                  class="map-embed"
-                  title="Kaart van INTEC Brussel"
-                  loading="lazy"
-                  decoding="async"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2517.233190161455!2d4.345231176796987!3d50.844495960925955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c478a3b1c6bf%3A0x99c5fadc8e158b1a!2sINTEC%20Brussel!5e0!3m2!1snl!2sbe!4v1697985637000!5m2!1snl!2sbe"
-                  allowfullscreen=""
-                  referrerpolicy="no-referrer-when-downgrade"
-                ></iframe>
-              </div>
+              </article>
+              <article class="info-card fade-up" data-delay="3">
+                <h3 class="info-card__title" data-i18n="contact.visit.title">Kom langs</h3>
+                <p class="info-card__text" data-i18n="contact.visit.text">
+                  Je bent welkom tijdens onze openingstijden voor een rondleiding, informatiegesprek of om je in te schrijven.
+                </p>
+                <ul class="info-card__list">
+                  <li>Bekijk onze leslokalen en faciliteiten</li>
+                  <li>Ontmoet onze coaches en instructeurs</li>
+                  <li>Stel al je vragen persoonlijk</li>
+                  <li>Schrijf je direct in voor een opleiding</li>
+                </ul>
+              </article>
             </div>
           </div>
         </section>
 
-        <section class="section cta-band">
+        <!-- Map Section -->
+        <section class="section">
+          <div class="container">
+            <div class="map-container">
+              <iframe
+                class="map-embed"
+                title="Kaart van INTEC Brussel"
+                loading="lazy"
+                decoding="async"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2517.233190161455!2d4.345231176796987!3d50.844495960925955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c478a3b1c6bf%3A0x99c5fadc8e158b1a!2sINTEC%20Brussel!5e0!3m2!1snl!2sbe!4v1697985637000!5m2!1snl!2sbe"
+                allowfullscreen=""
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA Band -->
+        <section class="section cta-band cta-band--minimal">
           <div class="cta-band__inner container">
             <div class="cta-band__content">
-              <span class="cta-band__eyebrow" data-i18n="about.cta.eyebrow">Samen bouwen</span>
-              <h2 data-i18n="about.cta.title">Wil je mee het verschil maken voor talent in Brussel?</h2>
-              <p data-i18n="about.cta.body">
-                Neem contact op en ontdek hoe we kunnen samenwerken rond trajecten, stages of coaching.
+              <span class="cta-band__eyebrow" data-i18n="contact.cta.eyebrow">Klaar om te starten?</span>
+              <h2 data-i18n="contact.cta.title">Begin vandaag nog je IT-carri�re</h2>
+              <p data-i18n="contact.cta.body">
+                Schrijf je in voor een van onze opleidingen of plan een informatiegesprek met ons team.
               </p>
             </div>
             <div class="cta-band__actions">
-              <a class="btn-primary btn-lg" href="contact.html" data-i18n="about.cta.primary">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-                Contacteer ons team
-              </a>
-              <a class="btn-outline btn-lg" href="index.html#opleidingen" data-i18n="about.cta.secondary">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                </svg>
-                Ontdek opleidingen
-              </a>
+              <a class="btn-primary" href="inschrijven.html" data-i18n="contact.cta.primary">Schrijf je in</a>
+              <a class="btn-outline" href="index.html#opleidingen" data-i18n="contact.cta.secondary">Bekijk opleidingen</a>
             </div>
           </div>
         </section>
@@ -307,11 +402,17 @@
       <footer class="footer">
         <div class="container">
           <div class="footer__grid">
-            <div class="footer__column">
-              <a class="brand" href="index.html">
-                <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" />
+            <div class="footer__column footer__brand">
+              <a class="footer__brand-logo" href="index.html">
+                <img
+                  src="assets/img/logo+intec+brusselZWART1.png"
+                  alt="INTEC Brussel logo"
+                  data-critical="true"
+                  decoding="async"
+                  loading="lazy"
+                />
               </a>
-              <p data-i18n="footer.mission">
+              <p class="footer__brand-text" data-i18n="footer.mission">
                 INTEC Brussel bouwt aan een inclusieve digitale samenleving via opleidingen, coaching en partnerschappen
                 met werkgevers die klaar zijn voor morgen.
               </p>
@@ -335,22 +436,49 @@
                 <li data-i18n="footer.socialNumber">RSZ: 10/945-31-54801</li>
               </ul>
             </div>
-            <div class="footer__column">
+            <div class="footer__column footer__social-column">
               <h3 data-i18n="footer.followTitle">Volg ons</h3>
-              <ul class="footer__social">
-                <li><a href="https://www.linkedin.com/groups/3973164/" target="_blank" rel="noreferrer">LinkedIn</a></li>
-                <li><a href="https://www.facebook.com/intecbrussel.be" target="_blank" rel="noreferrer">Facebook</a></li>
-                <li><a href="https://x.com/INTEC_BRUSSEL" target="_blank" rel="noreferrer">X</a></li>
+              <ul class="footer__social" role="list">
+                <li>
+                  <a class="footer__social-link" href="https://www.linkedin.com/groups/3973164/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                    <span class="footer__social-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" focusable="false">
+                        <path d="M4.98 3.5a2.48 2.48 0 1 1 0 4.96 2.48 2.48 0 0 1 0-4.96ZM3.5 9h2.96v11H3.5zM9 9h2.83v1.58h.04c.39-.73 1.35-1.5 2.78-1.5C17.82 9.08 19 10.6 19 13.2V20h-2.96v-6.15c0-1.47-.53-2.47-1.84-2.47-1 0-1.6.67-1.86 1.32-.1.25-.12.6-.12.95V20H9z" />
+                      </svg>
+                    </span>
+                    <span class="footer__social-label">LinkedIn</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="footer__social-link" href="https://www.facebook.com/intecbrussel.be" target="_blank" rel="noreferrer" aria-label="Facebook">
+                    <span class="footer__social-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" focusable="false">
+                        <path d="M13.5 22h-3v-7H8v-3h2.5V9.75C10.5 7.68 11.75 6 14.48 6c1.11 0 1.93.1 1.93.1l-.07 2.72s-.83-.01-1.73-.01c-.98 0-1.14.45-1.14 1.2V12H17l-.19 3h-2.38z" />
+                      </svg>
+                    </span>
+                    <span class="footer__social-label">Facebook</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="footer__social-link" href="https://x.com/INTEC_BRUSSEL" target="_blank" rel="noreferrer" aria-label="X">
+                    <span class="footer__social-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" focusable="false">
+                        <path d="M18.36 3h3.14l-6.85 7.83 7.84 10.64h-6.17l-4.56-6.17L6.23 21.47H3.09l7.28-8.33L3.93 3h6.19l4.12 5.56z" />
+                      </svg>
+                    </span>
+                    <span class="footer__social-label">X</span>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
           <div class="footer__meta">
             <span>&copy; <span id="year">2025</span> INTEC Brussel.</span>
             <span data-i18n="footer.accreditation">Erkend door VDAB, Actiris en ESF.</span>
+            
           </div>
         </div>
       </footer>
     </div>
-    <script src="assets/js/3d-cards.js"></script>
   </body>
 </html>

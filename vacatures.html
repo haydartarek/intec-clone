@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
@@ -11,96 +11,214 @@
     <title data-i18n="vacancies.meta.title">Vacatures bij INTEC Brussel | INTEC Brussel</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <link rel="stylesheet" href="assets/css/local-fonts.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/utilities.css" />
+    <script src="assets/js/i18n/nl.js"></script>
+    <script src="assets/js/i18n/en.js"></script>
     <script src="assets/js/main.js" defer></script>
   </head>
   <body class="page--vacatures">
-    <a class="skip-link" href="#main-content">Ga naar hoofdinhoud</a>
     <div class="page-shell">
       <header class="site-header">
         <div class="container site-header__inner">
           <a class="brand" href="index.html" aria-label="INTEC Brussel">
-            <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" />
+            <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" fetchpriority="high">
           </a>
-          <button
-            class="nav-toggle"
-            type="button"
-            aria-controls="primary-navigation"
-            aria-expanded="false"
-            data-nav-toggle="#primary-navigation"
-          >
-            <span class="sr-only" data-i18n="nav.toggle">Menu openen</span>
+          <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" data-nav-toggle="#primary-navigation">
+            <span class="sr-only" data-i18n="nav.toggle">Open menu</span>
             <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-              <path
-                d="M4 6h16M4 12h16M4 18h16"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              />
+              <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
             </svg>
           </button>
           <nav class="primary-nav" aria-label="Hoofdmenu">
             <ul class="nav-links" id="primary-navigation" role="list">
               <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-              <li><a href="index.html#opleidingen" data-i18n="nav.training">Opleidingen</a></li>
-              <li><a href="inschrijven.html" data-i18n="nav.register">Inschrijven</a></li>
-              <li><a href="overons.html" data-i18n="nav.about">Over ons</a></li>
+              <li><a href="index.html#opleidingen" data-i18n="nav.training">Courses</a></li>
+              <li><a href="inschrijven.html" data-i18n="nav.register">Register</a></li>
+              <li><a href="overons.html" data-i18n="nav.about">About us</a></li>
               <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
-              <li><a href="cvdb/index.html" data-i18n="nav.partners">Toegang Partners</a></li>
+              <li><a href="cvdb/index.html" data-i18n="nav.partners">Partner Access</a></li>
             </ul>
           </nav>
           <div class="site-header__actions">
-            <div
-              class="language-switch"
-              role="group"
-              aria-label="Taalkeuze"
-              data-i18n-aria-label="nav.languageGroup"
-            >
-              <button type="button" data-lang-select data-lang="nl">NL</button>
-              <button type="button" data-lang-select data-lang="en">EN</button>
+            <div class="language-switch" role="group" aria-label="nav.languageGroup" data-i18n-aria-label="nav.languageGroup" data-active-lang="en">
+              <button type="button" data-lang-select data-lang="nl" aria-pressed="false" aria-current="false">NL</button>
+              <button type="button" data-lang-select data-lang="en" class="is-active" aria-pressed="true" aria-current="true">EN</button>
             </div>
-            <a class="btn-accent btn-sm" href="digipunt.html" data-i18n="nav.digipunt">Digipunt</a>
+            <a class="btn-accent btn-sm" href="digipunt.html" data-i18n="nav.digipunt">Digipoint</a>
           </div>
         </div>
       </header>
 
       <main id="main-content" tabindex="-1">
-        <section class="about-hero">
-          <div class="container about-hero__layout">
-            <div class="about-hero__content">
-              <span class="section-label" data-i18n="vacancies.label">Vacatures</span>
-              <h1 class="about-hero__title" data-i18n="vacancies.hero.title">Vacatures bij INTEC Brussel</h1>
-              <p class="about-hero__lead" data-i18n="vacancies.hero.lead">
-                Werk mee aan onze missie om talent te ontwikkelen en te begeleiden naar duurzame IT-jobs. We zoeken
-                collega's die impact willen maken.
-              </p>
-              <div class="about-hero__chips">
-                <span data-i18n="vacancies.hero.chip1">Impactvolle teams</span>
-                <span data-i18n="vacancies.hero.chip2">Lerende organisatie</span>
-                <span data-i18n="vacancies.hero.chip3">Hybride samenwerken</span>
+        <!-- Hero Section -->
+        <section class="hero_section">
+          <div class="container hero-service">
+            <div class="hero-service__card">
+              <div class="hero-service__content">
+                <span class="hero-service__eyebrow" data-i18n="vacancies.label">Carri�res</span>
+                <h1 class="hero-service__title" data-i18n="vacancies.hero.title" data-i18n-allow-html="true">
+                  Werk mee aan <span class="hero-service__highlight">digitale inclusie</span>
+                </h1>
+                <p class="hero-service__subtitle" data-i18n="vacancies.hero.subtitle">
+                  Sluit je aan bij ons team van gepassioneerde professionals die talent ontwikkelen en begeleiden naar duurzame IT-carri�res.
+                </p>
+                <p class="hero-service__description" data-i18n="vacancies.hero.description">
+                  We zoeken collega's in coaching, IT-training, administratie en ondersteuning die impact willen maken in het leven van onze cursisten.
+                </p>
+                <div class="hero-service__actions">
+                  <a class="btn-primary btn-lg" href="#vacatures-grid" data-i18n="vacancies.hero.ctaPrimary">Bekijk vacatures</a>
+                  <a class="btn-outline btn-lg" href="contact.html" data-i18n="vacancies.hero.ctaSecondary">Neem contact op</a>
+                </div>
+                <dl class="hero-service__stats" aria-label="Waarom werken bij INTEC" data-i18n-aria-label="vacancies.hero.stats.aria">
+                  <div class="hero-service__stat">
+                    <dt class="hero-service__stat-value" data-i18n="vacancies.hero.stats.impact.value">500+</dt>
+                    <dd class="hero-service__stat-label" data-i18n="vacancies.hero.stats.impact.label">Cursisten per jaar begeleid</dd>
+                  </div>
+                  <div class="hero-service__stat">
+                    <dt class="hero-service__stat-value" data-i18n="vacancies.hero.stats.team.value">30+</dt>
+                    <dd class="hero-service__stat-label" data-i18n="vacancies.hero.stats.team.label">Teamleden in diverse rollen</dd>
+                  </div>
+                  <div class="hero-service__stat">
+                    <dt class="hero-service__stat-value" data-i18n="vacancies.hero.stats.growth.value">15 jaar</dt>
+                    <dd class="hero-service__stat-label" data-i18n="vacancies.hero.stats.growth.label">Expertise in IT-opleiding</dd>
+                  </div>
+                </dl>
+                <div class="hero-service__meta">
+                  <span class="hero-service__meta-label" data-i18n="vacancies.hero.metaTitle">Werk bij INTEC</span>
+                  <strong class="hero-service__meta-value" data-i18n="vacancies.hero.metaHighlight">Impactvolle teams, hybride werken</strong>
+                  <p class="hero-service__meta-note" data-i18n="vacancies.hero.metaNote">
+                    Bij INTEC Brussel werk je in een lerende organisatie met ruimte voor professionele groei, opleiding en innovatie.
+                  </p>
+                </div>
+              </div>
+              <div class="hero-service__visual">
+                <div class="hero-service__visual-ring">
+                  <img
+                    src="assets/img/IntecBrussel.png"
+                    alt="INTEC Brussel team werkt samen aan digitale inclusie"
+                    decoding="async"
+                    loading="lazy"
+                    width="560"
+                    height="560"
+                    data-critical="true" />
+                </div>
+                <ul class="hero-service__decor" aria-hidden="true">
+                  <li class="hero-service__decor-item hero-service__decor-item--one">
+                    <span class="hero-service__decor-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                  </li>
+                  <li class="hero-service__decor-item hero-service__decor-item--three">
+                    <span class="hero-service__decor-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 17.27 18.18 21l-1.64-7 5.46-4.74-7.12-.61L12 2 9.12 8.65l-7.12.61L7.46 14 5.82 21z" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                  </li>
+                  <li class="hero-service__decor-item hero-service__decor-item--two">
+                    <span class="hero-service__decor-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round" />
+                        <polyline points="22,4 12,14.01 9,11.01" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                  </li>
+                </ul>
               </div>
             </div>
-            <div class="about-hero__card card card--strong card--decorated">
-              <strong data-i18n="vacancies.hero.cardTitle">Je toekomst bij INTEC</strong>
-              <ul class="about-pill-list">
-                <li data-i18n="vacancies.hero.perk1">Betrokken teams die talent laten groeien.</li>
-                <li data-i18n="vacancies.hero.perk2">Ruimte voor opleiding, coaching en innovatie.</li>
-                <li data-i18n="vacancies.hero.perk3">Flexibele werkplekken in Brussel en daarbuiten.</li>
-              </ul>
-              <div class="cta-stack">
-                <a
-                  class="button button--ghost"
-                  href="https://www.linkedin.com/groups/3973164/"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  data-i18n="vacancies.hero.ctaLinkedIn"
-                >
-                  Volg ons op LinkedIn
-                </a>
-                <a class="button button--ghost" href="contact.html" data-i18n="vacancies.hero.ctaContact">
-                  Neem contact op
-                </a>
-              </div>
+          </div>
+        </section>
+
+        <!-- Company Benefits Section -->
+        <section class="section">
+          <div class="container">
+            <div class="section-heading">
+              <span class="section-label" data-i18n="vacancies.benefits.label">Voordelen</span>
+              <h2 class="section-title" data-i18n="vacancies.benefits.title">Waarom werken bij INTEC</h2>
+              <p class="section-lead" data-i18n="vacancies.benefits.lead">
+                Bij INTEC Brussel werk je in een lerende organisatie waar professionele groei, samenwerking en maatschappelijke impact centraal staan.
+              </p>
+            </div>
+            <div class="card-grid card-grid--quadrant quadrant-grid">
+              <article class="card card--quadrant fade-up" data-delay="1">
+                <div class="card__header">
+                  <span class="card__icon" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                  <div>
+                    <h3 class="card__title" data-i18n="vacancies.benefits.team.title">Impactvolle teams</h3>
+                  </div>
+                </div>
+                <div class="card__body">
+                  <p class="card__text" data-i18n="vacancies.benefits.team.text">
+                    Werk samen met gepassioneerde professionals die elke dag het verschil maken in het leven van onze cursisten. Je collega's zijn experts in coaching, IT-training en begeleiding.
+                  </p>
+                </div>
+              </article>
+              <article class="card card--quadrant fade-up" data-delay="2">
+                <div class="card__header">
+                  <span class="card__icon" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                  <div>
+                    <h3 class="card__title" data-i18n="vacancies.benefits.growth.title">Professionele ontwikkeling</h3>
+                  </div>
+                </div>
+                <div class="card__body">
+                  <p class="card__text" data-i18n="vacancies.benefits.growth.text">
+                    Ruimte voor opleiding, certificeringen en coaching. We investeren in jouw groei met training budgets, conferenties en interne kennisdeling.
+                  </p>
+                </div>
+              </article>
+              <article class="card card--quadrant fade-up" data-delay="3">
+                <div class="card__header">
+                  <span class="card__icon" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke-linecap="round" stroke-linejoin="round" />
+                      <polyline points="9,22 9,12 15,12 15,22" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                  <div>
+                    <h3 class="card__title" data-i18n="vacancies.benefits.flexibility.title">Hybride werken</h3>
+                  </div>
+                </div>
+                <div class="card__body">
+                  <p class="card__text" data-i18n="vacancies.benefits.flexibility.text">
+                    Flexibele werkplekken met mix van on-site coaching en remote werk. Moderne faciliteiten in het centrum van Brussel, met goede bereikbaarheid per openbaar vervoer.
+                  </p>
+                </div>
+              </article>
+              <article class="card card--quadrant fade-up" data-delay="4">
+                <div class="card__header">
+                  <span class="card__icon" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M12 17.27 18.18 21l-1.64-7 5.46-4.74-7.12-.61L12 2 9.12 8.65l-7.12.61L7.46 14 5.82 21z" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                  <div>
+                    <h3 class="card__title" data-i18n="vacancies.benefits.impact.title">Maatschappelijke impact</h3>
+                  </div>
+                </div>
+                <div class="card__body">
+                  <p class="card__text" data-i18n="vacancies.benefits.impact.text">
+                    Draag bij aan digitale inclusie en emancipatie door kwetsbare groepen naar duurzame IT-carri�res te begeleiden. Zie elke dag het tastbare resultaat van jouw werk.
+                  </p>
+                </div>
+              </article>
             </div>
           </div>
         </section>
@@ -132,7 +250,7 @@
             >
               Vacatures worden geladen...
             </div>
-            <div class="about-values__grid vacatures__grid" id="vacatures-grid" aria-live="polite"></div>
+            <div class="card-grid card-grid--features" id="vacatures-grid" aria-live="polite"></div>
           </div>
         </section>
 
@@ -146,14 +264,25 @@
               </p>
             </div>
             <div class="cta-band__actions">
-              <a class="button" href="mailto:hr@intecbrussel.be" data-i18n="vacancies.cta.primary">Mail ons je cv</a>
+              <a class="btn-primary" href="mailto:hr@intecbrussel.be" data-i18n="vacancies.cta.primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Mail ons je cv
+              </a>
               <a
-                class="button button--ghost"
+                class="btn-outline"
                 href="https://www.linkedin.com/groups/3973164/"
                 target="_blank"
                 rel="noreferrer noopener"
                 data-i18n="vacancies.cta.secondary"
               >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
                 Volg ons op LinkedIn
               </a>
             </div>
@@ -170,8 +299,20 @@
               </p>
             </div>
             <div class="cta-band__actions">
-              <a class="button" href="contact.html" data-i18n="about.cta.primary">Contacteer ons team</a>
-              <a class="button button--ghost" href="index.html#opleidingen" data-i18n="about.cta.secondary">Ontdek opleidingen</a>
+              <a class="btn-primary" href="contact.html" data-i18n="about.cta.primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Contacteer ons team
+              </a>
+              <a class="btn-outline" href="index.html#opleidingen" data-i18n="about.cta.secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+                Ontdek opleidingen
+              </a>
             </div>
           </div>
         </section>
@@ -180,11 +321,17 @@
       <footer class="footer">
         <div class="container">
           <div class="footer__grid">
-            <div class="footer__column">
-              <a class="brand" href="index.html">
-                <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" />
+            <div class="footer__column footer__brand">
+              <a class="footer__brand-logo" href="index.html">
+                <img
+                  src="assets/img/logo+intec+brusselZWART1.png"
+                  alt="INTEC Brussel logo"
+                  data-critical="true"
+                  decoding="async"
+                  loading="lazy"
+                />
               </a>
-              <p data-i18n="footer.mission">
+              <p class="footer__brand-text" data-i18n="footer.mission">
                 INTEC Brussel bouwt aan een inclusieve digitale samenleving via opleidingen, coaching en partnerschappen
                 met werkgevers die klaar zijn voor morgen.
               </p>
@@ -208,22 +355,46 @@
                 <li data-i18n="footer.socialNumber">RSZ: 10/945-31-54801</li>
               </ul>
             </div>
-            <div class="footer__column">
+            <div class="footer__column footer__social-column">
               <h3 data-i18n="footer.followTitle">Volg ons</h3>
-              <ul class="footer__social">
+              <ul class="footer__social" role="list">
                 <li>
-                  <a href="https://www.linkedin.com/groups/3973164/" target="_blank" rel="noreferrer">LinkedIn</a>
+                  <a class="footer__social-link" href="https://www.linkedin.com/groups/3973164/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                    <span class="footer__social-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" focusable="false">
+                        <path d="M4.98 3.5a2.48 2.48 0 1 1 0 4.96 2.48 2.48 0 0 1 0-4.96ZM3.5 9h2.96v11H3.5zM9 9h2.83v1.58h.04c.39-.73 1.35-1.5 2.78-1.5C17.82 9.08 19 10.6 19 13.2V20h-2.96v-6.15c0-1.47-.53-2.47-1.84-2.47-1 0-1.6.67-1.86 1.32-.1.25-.12.6-.12.95V20H9z" />
+                      </svg>
+                    </span>
+                    <span class="footer__social-label">LinkedIn</span>
+                  </a>
                 </li>
                 <li>
-                  <a href="https://www.facebook.com/intecbrussel.be" target="_blank" rel="noreferrer">Facebook</a>
+                  <a class="footer__social-link" href="https://www.facebook.com/intecbrussel.be" target="_blank" rel="noreferrer" aria-label="Facebook">
+                    <span class="footer__social-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" focusable="false">
+                        <path d="M13.5 22h-3v-7H8v-3h2.5V9.75C10.5 7.68 11.75 6 14.48 6c1.11 0 1.93.1 1.93.1l-.07 2.72s-.83-.01-1.73-.01c-.98 0-1.14.45-1.14 1.2V12H17l-.19 3h-2.38z" />
+                      </svg>
+                    </span>
+                    <span class="footer__social-label">Facebook</span>
+                  </a>
                 </li>
-                <li><a href="https://x.com/INTEC_BRUSSEL" target="_blank" rel="noreferrer">X</a></li>
+                <li>
+                  <a class="footer__social-link" href="https://x.com/INTEC_BRUSSEL" target="_blank" rel="noreferrer" aria-label="X">
+                    <span class="footer__social-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" focusable="false">
+                        <path d="M18.36 3h3.14l-6.85 7.83 7.84 10.64h-6.17l-4.56-6.17L6.23 21.47H3.09l7.28-8.33L3.93 3h6.19l4.12 5.56z" />
+                      </svg>
+                    </span>
+                    <span class="footer__social-label">X</span>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
           <div class="footer__meta">
             <span>&copy; <span id="year">2025</span> INTEC Brussel.</span>
             <span data-i18n="footer.accreditation">Erkend door VDAB, Actiris en ESF.</span>
+            
           </div>
         </div>
       </footer>
@@ -277,27 +448,60 @@
           placeholder.hidden = true;
           grid.innerHTML = "";
 
-          jobs.forEach((job) => {
+          jobs.forEach((job, index) => {
             const card = document.createElement("article");
-            card.className = "card card--interactive card--decorated vacatures-card";
+            card.className = "card card--feature fade-up";
+            card.setAttribute("data-delay", String((index % 3) + 1));
 
-            const chip = document.createElement("span");
-            chip.className = "vacatures-card__chip";
-            chip.textContent = job.team || t("vacancies.card.team", getFallback("teamLabel"));
-            card.appendChild(chip);
+            const header = document.createElement("div");
+            header.className = "card__header align-start";
+
+            const iconWrap = document.createElement("span");
+            iconWrap.className = "card__icon";
+            iconWrap.setAttribute("aria-hidden", "true");
+            const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.setAttribute("width", "24");
+            svg.setAttribute("height", "24");
+            svg.setAttribute("viewBox", "0 0 24 24");
+            svg.setAttribute("fill", "none");
+            svg.setAttribute("stroke", "currentColor");
+            svg.setAttribute("stroke-width", "2");
+            svg.setAttribute("aria-hidden", "true");
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            path.setAttribute("d", "M20 7h-9M14 17H5M20 12H10M14 7l-5-5M9 17l-5 5");
+            path.setAttribute("stroke-linecap", "round");
+            path.setAttribute("stroke-linejoin", "round");
+            svg.appendChild(path);
+            iconWrap.appendChild(svg);
+            header.appendChild(iconWrap);
+
+            const headerContent = document.createElement("div");
+            if (job.team) {
+              const badge = document.createElement("span");
+              badge.className = "card__badge";
+              badge.textContent = job.team;
+              headerContent.appendChild(badge);
+            }
 
             const title = document.createElement("h3");
+            title.className = "card__title";
             title.textContent = job.title || "";
-            card.appendChild(title);
+            headerContent.appendChild(title);
+            header.appendChild(headerContent);
+            card.appendChild(header);
+
+            const body = document.createElement("div");
+            body.className = "card__body";
 
             if (job.description) {
               const description = document.createElement("p");
+              description.className = "card__text";
               description.textContent = job.description;
-              card.appendChild(description);
+              body.appendChild(description);
             }
 
             const meta = document.createElement("ul");
-            meta.className = "vacatures-card__meta";
+            meta.className = "card__meta";
 
             const addMetaItem = (labelKey, fallback, value) => {
               if (!value) return;
@@ -311,33 +515,30 @@
               meta.appendChild(li);
             };
 
-            addMetaItem("vacancies.card.team", getFallback("teamLabel"), job.team);
             addMetaItem("vacancies.card.location", getFallback("locationLabel"), job.location);
-            addMetaItem(
-              "vacancies.card.posted",
-              getFallback("postedLabel"),
-              formatDate(job.posted)
-            );
+            addMetaItem("vacancies.card.posted", getFallback("postedLabel"), formatDate(job.posted));
 
             if (meta.children.length) {
-              card.appendChild(meta);
+              body.appendChild(meta);
             }
+
+            card.appendChild(body);
 
             const footer = document.createElement("div");
-            footer.className = "vacatures-card__footer";
+            footer.className = "card__footer card__footer--start";
 
-            const button = document.createElement("a");
-            button.className = "button";
-            button.textContent = t("vacancies.card.button", getFallback("buttonLabel"));
+            const link = document.createElement("a");
+            link.className = "button card__cta";
+            link.textContent = t("vacancies.card.button", getFallback("buttonLabel"));
             const applyUrl = (job.applyUrl || "").trim();
-            button.href = applyUrl || "mailto:hr@intecbrussel.be";
+            link.href = applyUrl || "mailto:hr@intecbrussel.be";
             if (applyUrl.startsWith("http")) {
-              button.target = "_blank";
-              button.rel = "noreferrer noopener";
+              link.target = "_blank";
+              link.rel = "noreferrer noopener";
             }
-
-            footer.appendChild(button);
+            footer.appendChild(link);
             card.appendChild(footer);
+
             grid.appendChild(card);
           });
         };
