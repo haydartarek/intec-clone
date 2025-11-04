@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
@@ -24,13 +24,8 @@
     <meta property="twitter:image" content="https://intecbrussel.be/assets/img/sysadmin.webp" />
     
     <title>Systeembeheerder | INTEC Brussel</title>
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-    <link rel="stylesheet" href="assets/css/local-fonts.css" />
-    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />    <link rel="stylesheet" href="assets/css/base.css" />
     <link rel="stylesheet" href="assets/css/main.css?v=638977700000000000" />
-    <link rel="stylesheet" href="assets/css/layout.css" />
-    <link rel="stylesheet" href="assets/css/components.css" />
-    <link rel="stylesheet" href="assets/css/utilities.css" />
     <link rel="stylesheet" href="assets/css/pages/programs.css" />
     <script src="assets/js/i18n/nl.js"></script>
     <script src="assets/js/i18n/en.js"></script>
@@ -41,58 +36,43 @@
       <header class="site-header">
         <div class="container site-header__inner">
           <a class="brand" href="index.html" aria-label="INTEC Brussel">
-            <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" />
-            
+            <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" fetchpriority="high">
           </a>
-          <button
-            class="nav-toggle"
-            type="button"
-            aria-controls="primary-navigation"
-            aria-expanded="false"
-            data-nav-toggle="#primary-navigation"
-          >
-            <span class="sr-only" data-i18n="nav.toggle">Menu openen</span>
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path
-                d="M4 6h16M4 12h16M4 18h16"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              />
+          <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" data-nav-toggle="#primary-navigation">
+            <span class="sr-only" data-i18n="nav.toggle">Open menu</span>
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
             </svg>
           </button>
           <nav class="primary-nav" aria-label="Hoofdmenu">
             <ul class="nav-links" id="primary-navigation" role="list">
               <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-              <li><a href="opleidingen.html" data-i18n="nav.training">Opleidingen</a></li>
-              <li><a href="inschrijven.html" data-i18n="nav.register">Inschrijven</a></li>
-              <li><a href="overons.html" data-i18n="nav.about">Over ons</a></li>
+              <li><a href="opleidingen.html" data-i18n="nav.training">Courses</a></li>
+              <li><a href="inschrijven.html" data-i18n="nav.register">Register</a></li>
+              <li><a href="overons.html" data-i18n="nav.about">About us</a></li>
               <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
-              <li><a href="cvdb/index.html" data-i18n="nav.partners">Toegang Partners</a></li>
+              <li><a href="cvdb/index.html" data-i18n="nav.partners">Partner Access</a></li>
             </ul>
           </nav>
           <div class="site-header__actions">
-            <div
-              class="language-switch"
-              role="group"
-              aria-label="Taalkeuze"
-              data-i18n-aria-label="nav.languageGroup"
-            >
-              <button type="button" data-lang-select data-lang="nl">NL</button>
-              <button type="button" data-lang-select data-lang="en">EN</button>
+            <div class="language-switch" role="group" aria-label="nav.languageGroup" data-i18n-aria-label="nav.languageGroup" data-active-lang="en">
+              <button type="button" data-lang-select data-lang="nl" aria-pressed="false" aria-current="false">NL</button>
+              <button type="button" data-lang-select data-lang="en" class="is-active" aria-pressed="true" aria-current="true">EN</button>
             </div>
-            <a class="btn-accent btn-sm" href="digipunt.html" data-i18n="nav.digipunt">Digipunt</a>
+            <a class="btn-accent btn-sm" href="digipunt.html" data-i18n="nav.digipunt">Digipoint</a>
           </div>
         </div>
       </header>
 
       <main id="main-content" tabindex="-1">
-                <section class="hero_section">
+        <!-- HERO SECTION -->
+        <section class="hero-section">
           <div class="container">
             <div>
               <span data-i18n="sysadmin.hero.eyebrow">Opleiding</span>
-              <h1 data-i18n="sysadmin.hero.title" data-i18n-allow-html>
-                  Systeembeheerder
-                </h1>
+              <h1 data-i18n="sysadmin.hero.title">
+                Systeembeheerder
+              </h1>
               <p data-i18n="sysadmin.hero.subtitle">
                 Word de spilfiguur die IT-infrastructuren stabiel, veilig en performant houdt.
               </p>
@@ -104,7 +84,7 @@
             <div>
               <div>
                 <img
-                  src="assets/img/sysweb.jpg"
+                  src="assets/img/intec-brussel-contact.jpg"
                   alt="Systeembeheerder opleiding"
                   decoding="async"
                   loading="eager"
@@ -119,597 +99,369 @@
           </div>
         </section>
 
-                <section class="training-features">
-          <div class="container">
-            <div class="program-highlight fade-up">
-              <div class="program-highlight__intro fade-up" data-delay="1">
-                <div class="section-heading">
-                  <span class="section-label" data-i18n="sysadmin.overview.label">Wat je leert</span>
-                  <h2 class="program-highlight__title" data-i18n="sysadmin.overview.title">Volledig beheer van servers en cloud</h2>
-                  <p class="program-highlight__lead" data-i18n="sysadmin.overview.text1">
-                    Installeer, configureer en onderhoud Windows- en Linux-servers, netwerkdiensten en back-ups.
-                    Automatiseer routinetaken met PowerShell en Bash.
-                  </p>
-                </div>
-                <p class="program-highlight__lead" data-i18n="sysadmin.overview.text2">
-                  Combineer praktijklabs met cybersecurity-inzicht en cloudbeheer. Werk aan projecten die echte productie-scenarioG��s nabootsen.
-                </p>
-                <div class="section-actions">
-                  <a class="btn-primary btn-lg" href="inschrijven.html" data-i18n="sysadmin.hero.ctaPrimary">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                      <circle cx="8.5" cy="7" r="4"></circle>
-                      <path d="M20 8v6M23 11h-6"></path>
-                    </svg>
-                    Plan je intake
-                  </a>
-                  <a class="btn-outline btn-lg" href="#modules" data-i18n="sysadmin.hero.ctaSecondary">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                    </svg>
-                    Bekijk programma
-                  </a>
-                </div>
-              </div>
-              <div class="training-features__grid">
-                <article class="feature-card fade-up" data-delay="1">
-                  <div class="feature-card__header">
-                    <span class="feature-card__icon icon-circle" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                        <path d="M4 6h16v10H4zm2 2v6h12V8zm-2 10h16v2H4z" />
-                      </svg>
-                    </span>
-                    <div>
-                      <h3 class="feature-card__title" data-i18n="sysadmin.highlight.feature1Title">Servers &amp; Virtualisatie</h3>
-                    </div>
-                  </div>
-                  <div class="feature-card__list">
-                    <p data-i18n="sysadmin.highlight.serversBody">Leer Windows Server, Linux, VMware en Hyper-V installeren en beheren.</p>
-                  </div>
-                </article>
-                <article class="feature-card fade-up" data-delay="2">
-                  <div class="feature-card__header">
-                    <span class="feature-card__icon icon-circle" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                        <path d="M12 4a3 3 0 1 1-2.83 4H8a3 3 0 1 1 0-2h1.17A3 3 0 0 1 12 4zm6 8a3 3 0 1 1-2.83 4H14v2a3 3 0 1 1-2 0v-2h-1.17A3 3 0 1 1 12 12h1v-2h2v2h1a3 3 0 0 1 2-2z" />
-                      </svg>
-                    </span>
-                    <div>
-                      <h3 class="feature-card__title" data-i18n="sysadmin.highlight.feature2Title">Netwerken</h3>
-                    </div>
-                  </div>
-                  <div class="feature-card__list">
-                    <p data-i18n="sysadmin.highlight.networkBody">Beheer switches, routers en DNS/DHCP-diensten voor stabiele communicatie.</p>
-                  </div>
-                </article>
-                <article class="feature-card fade-up" data-delay="3">
-                  <div class="feature-card__header">
-                    <span class="feature-card__icon icon-circle" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                        <path d="M19 11a4 4 0 0 0-3.8-4A5 5 0 0 0 6 9.5 3.5 3.5 0 0 0 6 16h11a3 3 0 0 0 2-5z" />
-                      </svg>
-                    </span>
-                    <div>
-                      <h3 class="feature-card__title" data-i18n="sysadmin.highlight.feature3Title">Cloud &amp; Automation</h3>
-                    </div>
-                  </div>
-                  <div class="feature-card__list">
-                    <p data-i18n="sysadmin.highlight.cloudBody">Werk met Microsoft Azure, AWS en PowerShell Automation voor provisioning en monitoring.</p>
-                  </div>
-                </article>
-                <article class="feature-card fade-up" data-delay="4">
-                  <div class="feature-card__header">
-                    <span class="feature-card__icon icon-circle" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                        <path d="M12 2 5 5v6c0 4.97 3.26 9.58 7 11 3.74-1.42 7-6.03 7-11V5l-7-3zm0 4.2 4 1.8v4c0 3.06-1.88 6.11-4 7.45-2.12-1.34-4-4.39-4-7.45v-4l4-1.8z" />
-                      </svg>
-                    </span>
-                    <div>
-                      <h3 class="feature-card__title" data-i18n="sysadmin.highlight.feature4Title">Security &amp; Backup</h3>
-                    </div>
-                  </div>
-                  <div class="feature-card__list">
-                    <p data-i18n="sysadmin.highlight.securityBody">Implementeer gebruikersrechten, firewalls en back-upstrategie�n om data veilig te houden.</p>
-                  </div>
-                </article>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section" id="modules">
-          <div class="container">
-            <div class="section-heading">
-              <span class="section-label" data-i18n="sysadmin.modules.label">Programma</span>
-              <h2 class="section-title" data-i18n="sysadmin.modules.title">Modules &amp; vakgebieden</h2>
-              <p class="section-lead" data-i18n="sysadmin.modules.lead">
-                De opleiding bestaat uit praktische modules die stap voor stap leiden tot professioneel systeembeheer.
-              </p>
-            </div>
-            <div class="programs-showcase__grid">
-              <article class="card card--quadrant fade-up" data-delay="1">
-                <div class="feature-card__header">
-                  <span class="feature-card__icon icon-circle" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                      <path d="M4 5h16v14H4V5zm2 2v10h12V7H6zm3-4h8v2H9V3z" />
-                    </svg>
-                  </span>
-                  <div>
-                    <h3 class="feature-card__title" data-i18n="sysadmin.modules.os">Besturingssystemen</h3>
-                  </div>
-                </div>
-                <div class="feature-card__list">
-                  <p data-i18n="sysadmin.modules.osBody">Windows Server, Linux en virtualisatiebeheer. Gebruik command-line en GUI-tools effici�nt.</p>
-                </div>
-                <div class="card__footer">
-                  <a class="card__link" href="#modules" data-i18n="label.learnmore">Lees meer
-                    <svg viewBox="0 0 16 16" focusable="false" aria-hidden="true">
-                      <path d="M6 3l5 5-5 5-1.4-1.4L8.2 8 4.6 4.4z" />
-                    </svg>
-                  </a>
-                </div>
-              </article>
-              <article class="card card--quadrant fade-up" data-delay="2">
-                <div class="feature-card__header">
-                  <span class="feature-card__icon icon-circle" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                      <path d="M12 4a3 3 0 1 1-2.83 4H8a3 3 0 1 1 0-2h1.17A3 3 0 0 1 12 4zm6 8a3 3 0 1 1-2.83 4H14v2a3 3 0 1 1-2 0v-2h-1.17A3 3 0 1 1 12 12h1v-2h2v2h1a3 3 0 0 1 2-2z" />
-                    </svg>
-                  </span>
-                  <div>
-                    <h3 class="feature-card__title" data-i18n="sysadmin.modules.network">Netwerkbeheer</h3>
-                  </div>
-                </div>
-                <div class="feature-card__list">
-                  <p data-i18n="sysadmin.modules.networkBody">DNS, DHCP, Active Directory, VPN en firewall-configuratie.</p>
-                </div>
-                <div class="card__footer">
-                  <a class="card__link" href="#modules" data-i18n="label.learnmore">Lees meer
-                    <svg viewBox="0 0 16 16" focusable="false" aria-hidden="true">
-                      <path d="M6 3l5 5-5 5-1.4-1.4L8.2 8 4.6 4.4z" />
-                    </svg>
-                  </a>
-                </div>
-              </article>
-              <article class="card card--quadrant fade-up" data-delay="3">
-                <div class="feature-card__header">
-                  <span class="feature-card__icon icon-circle" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                      <path d="M12 2 5 5v6c0 4.97 3.26 9.58 7 11 3.74-1.42 7-6.03 7-11V5l-7-3zm0 4.2 4 1.8v4c0 3.06-1.88 6.11-4 7.45-2.12-1.34-4-4.39-4-7.45v-4l4-1.8z" />
-                    </svg>
-                  </span>
-                  <div>
-                    <h3 class="feature-card__title" data-i18n="sysadmin.modules.security">Security</h3>
-                  </div>
-                </div>
-                <div class="feature-card__list">
-                  <p data-i18n="sysadmin.modules.securityBody">Gebruikersbeheer, rechten, back-ups en endpoint-beveiliging.</p>
-                </div>
-                <div class="card__footer">
-                  <a class="card__link" href="#modules" data-i18n="label.learnmore">Lees meer
-                    <svg viewBox="0 0 16 16" focusable="false" aria-hidden="true">
-                      <path d="M6 3l5 5-5 5-1.4-1.4L8.2 8 4.6 4.4z" />
-                    </svg>
-                  </a>
-                </div>
-              </article>
-              <article class="card card--quadrant fade-up" data-delay="4">
-                <div class="feature-card__header">
-                  <span class="feature-card__icon icon-circle" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                      <path d="M19 11a4 4 0 0 0-3.8-4A5 5 0 0 0 6 9.5 3.5 3.5 0 0 0 6 16h11a3 3 0 0 0 2-5z" />
-                    </svg>
-                  </span>
-                  <div>
-                    <h3 class="feature-card__title" data-i18n="sysadmin.modules.cloud">Cloud &amp; Automatisering</h3>
-                  </div>
-                </div>
-                <div class="feature-card__list">
-                  <p data-i18n="sysadmin.modules.cloudBody">Azure en AWS-beheer, PowerShell-scripting en monitoring met Grafana.</p>
-                </div>
-                <div class="card__footer">
-                  <a class="card__link" href="#modules" data-i18n="label.learnmore">Lees meer
-                    <svg viewBox="0 0 16 16" focusable="false" aria-hidden="true">
-                      <path d="M6 3l5 5-5 5-1.4-1.4L8.2 8 4.6 4.4z" />
-                    </svg>
-                  </a>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="why-choose-intec">
-          <div class="container">
-            <div class="section-heading">
-              <span class="section-label" data-i18n="sysadmin.journey.label">Traject</span>
-              <h2 class="section-title" data-i18n="sysadmin.journey.title">Van intake tot eerste job</h2>
-            </div>
-            <div class="training-features__grid">
-              <article class="card card--timeline phase-card phase-card--intake fade-up" data-delay="1">
-                <span class="phase-card__badge">1</span>
-                <div class="feature-card__header">
-                  <h3 class="feature-card__title" data-i18n="sysadmin.journey.step1Title">Fundamentals &amp; intake</h3>
-                </div>
-                <div class="feature-card__list">
-                  <p data-i18n="sysadmin.journey.step1Body">Leer basiskennis van IT-infrastructuur: netwerken, besturingssystemen, virtualisatie en command-line tools.</p>
-                </div>
-                <div class="card__footer">
-                  <span class="card__meta" data-i18n="sysadmin.journey.duration1">4 weken basislabs</span>
-                </div>
-              </article>
-              <article class="card card--timeline phase-card phase-card--labs fade-up" data-delay="2">
-                <span class="phase-card__badge">2</span>
-                <div class="feature-card__header">
-                  <h3 class="feature-card__title" data-i18n="sysadmin.journey.step2Title">Serverbeheer</h3>
-                </div>
-                <div class="feature-card__list">
-                  <p data-i18n="sysadmin.journey.step2Body">Windows, Linux, virtualisatie en scripting met PowerShell voor beheer en automatisering.</p>
-                </div>
-                <div class="card__footer">
-                  <span class="card__meta" data-i18n="sysadmin.journey.duration2">18 weken hands-on labs</span>
-                </div>
-              </article>
-              <article class="card card--timeline phase-card phase-card--stage fade-up" data-delay="3">
-                <span class="phase-card__badge">3</span>
-                <div class="feature-card__header">
-                  <h3 class="feature-card__title" data-i18n="sysadmin.journey.step3Title">Cloud &amp; Security</h3>
-                </div>
-                <div class="feature-card__list">
-                  <p data-i18n="sysadmin.journey.step3Body">Azure, AWS, monitoring, security-audits en compliancetools.</p>
-                </div>
-                <div class="card__footer">
-                  <span class="card__meta" data-i18n="sysadmin.journey.duration3">10 weken cloud &amp; security sprints</span>
-                </div>
-              </article>
-              <article class="card card--timeline phase-card phase-card--coaching fade-up" data-delay="4">
-                <span class="phase-card__badge">4</span>
-                <div class="feature-card__header">
-                  <h3 class="feature-card__title" data-i18n="sysadmin.journey.step4Title">Stage &amp; certificatie</h3>
-                </div>
-                <div class="feature-card__list">
-                  <p data-i18n="sysadmin.journey.step4Body">Doe praktijkervaring op bij een partnerbedrijf en bereid je voor op certificaties zoals Microsoft, Linux+ of AWS.</p>
-                </div>
-                <div class="card__footer">
-                  <span class="card__meta" data-i18n="sysadmin.journey.duration4">8 weken stage + loopbaanbegeleiding</span>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
+        <!-- INTRO SECTION -->
         <section class="section">
           <div class="container">
-            <div class="section-heading">
-              <span class="section-label" data-i18n="program.info.label">Praktisch</span>
-              <h2 class="section-title" data-i18n="program.info.generalTitle">Algemene informatie over deze opleiding</h2>
-            </div>
-            <div class="why-choose-intec__grid">
-              <article class="card card--info fade-up" data-delay="1">
-                <div class="feature-card__header">
-                  <span class="feature-card__icon icon-circle" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                      <path d="M5 4h1V2h2v2h6V2h2v2h1a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 4v10h14V8H5zm3 3h6v2H8z" />
-                    </svg>
-                  </span>
-                  <div>
-                    <h3 class="feature-card__title" data-i18n="program.info.generalInfoTitle">Praktische info</h3>
-                  </div>
-                </div>
-                <div class="feature-card__list">
-                  <ul class="feature-list">
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content">
-                        <p data-i18n="program.info.item1">Prijs: Gratis</p>
-                      </div>
-                    </li>
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content">
-                        <p data-i18n="program.info.item2">Taal: Nederlands</p>
-                      </div>
-                    </li>
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content">
-                        <p data-i18n="program.info.item3">Voorkennis: Niet verplicht</p>
-                      </div>
-                    </li>
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content">
-                        <p data-i18n="program.info.item4">Duur opleiding: 1 jaar</p>
-                      </div>
-                    </li>
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content">
-                        <p data-i18n="program.info.item5">Elke dag van 8u30 tot 17u (lessen starten om 9u)</p>
-                      </div>
-                    </li>
-                  </ul>
-                  <p class="text-small text-muted" data-i18n="program.info.note">Inschrijven kan via de website of een intakegesprek. Neem contact op voor een persoonlijke toelichting over de opleiding, traject en jobkansen.</p>
-                </div>
-              </article>
-              <article class="card card--info fade-up" data-delay="2">
-                <div class="feature-card__header">
-                  <span class="feature-card__icon icon-circle" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                      <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 2.5-2.5A2.5 2.5 0 0 1 12 11.5z" />
-                    </svg>
-                  </span>
-                  <div>
-                    <h3 class="feature-card__title" data-i18n="program.info.locationTitle">Locatie</h3>
-                  </div>
-                </div>
-                <div class="feature-card__list">
-                  <p data-i18n="program.info.locationBody" data-i18n-allow-html>INTEC Brussel<br />Gaucheretstraat 89-91<br />1030 Schaarbeek<br />In het hart van Brussel, vlakbij het Noordstation en goed bereikbaar met openbaar vervoer.</p>
-                </div>
-              </article>
-              <article class="card card--info fade-up" data-delay="3">
-                <div class="feature-card__header">
-                  <span class="feature-card__icon icon-circle" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                      <path d="M12 17.27 18.18 21l-1.64-7 5.46-4.74-7.12-.61L12 2 9.12 8.65l-7.12.61L7.46 14 5.82 21z" />
-                    </svg>
-                  </span>
-                  <div>
-                    <h3 class="feature-card__title" data-i18n="program.info.benefitsTitle">Voordelen</h3>
-                  </div>
-                </div>
-                <div class="feature-card__list">
-                  <ul class="feature-list">
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content">
-                        <p data-i18n="program.info.benefit1">Tijdens de opleiding worden je vervoerskosten volledig terugbetaald.</p>
-                      </div>
-                    </li>
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content">
-                        <p data-i18n="program.info.benefit2">De kosten voor kinder- of buitenschoolse opvang worden terugbetaald.</p>
-                      </div>
-                    </li>
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content">
-                        <p data-i18n="program.info.benefit3">Je ontvangt een vergoeding gedurende de gehele opleiding.</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </article>
+            <div class="section-intro">
+              <p class="text-lead">
+                Ben je op zoek naar een carrière in de IT-sector? Wil je deel uitmaken van een groeiende en innovatieve sector? Onze Systeembeheerder-opleiding biedt je een compleet pakket van vaardigheden en ondersteuning om een succesvolle start te maken in de IT-wereld.
+              </p>
             </div>
           </div>
         </section>
 
-        <section class="why-choose-intec">
+        <!-- TRAINING FEATURES SECTION -->
+        <section class="section section--alt">
           <div class="container">
-            <div class="section-heading">
-              <span class="section-label" data-i18n="program.extra.label">Extra Info</span>
-              <h2 class="section-title" data-i18n="program.extra.title">Waarom kiezen voor deze opleiding?</h2>
-              <p class="section-lead" data-i18n="program.extra.subtitle">Ontdek wat deze opleiding uniek maakt en welke carri�remogelijkheden je krijgt na afloop.</p>
-            </div>
-            <div class="split-layout">
-              <article class="card fade-up" data-delay="1">
-                <div class="feature-card__header align-start">
-                  <span class="feature-card__icon icon-circle" aria-hidden="true">
-                    <svg viewBox="0 0 32 32" focusable="false" aria-hidden="true">
-                      <path d="M16 4a8 8 0 0 0-8 8h3a5 5 0 1 1 5 5 2 2 0 0 0-2 2v1.5h3V19a5 5 0 1 0-5-5h-3a8 8 0 1 1 8 8v3h-3v3h3a3 3 0 1 0 0-6 5 5 0 0 0 0-10z" />
-                    </svg>
-                  </span>
-                  <div>
-                    <span class="section-label" data-i18n="program.unique.subtitle">Een combinatie van theorie, praktijk en persoonlijke begeleiding</span>
-                    <h3 class="feature-card__title" data-i18n="program.unique.title">Wat maakt deze opleiding uniek?</h3>
-                  </div>
+            <div class="grid grid--3 grid--gap-lg">
+              
+              <!-- Feature Card 1: Technische Ondersteuning -->
+              <article class="feature-card">
+                <div class="feature-card__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
                 </div>
-                <div class="feature-card__list">
-                  <ul class="feature-list">
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content" data-i18n="program.unique.feature1">Praktijkgerichte labs met actuele hard- en software</div>
-                    </li>
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content" data-i18n="program.unique.feature2">Kleinschalige groepen voor persoonlijke aandacht</div>
-                    </li>
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content" data-i18n="program.unique.feature3">Ervaren docenten vanuit het IT-werkveld</div>
-                    </li>
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content" data-i18n="program.unique.feature4">Focus op klantcontact en communicatievaardigheden</div>
-                    </li>
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content" data-i18n="program.unique.feature5">Regelmatige assessments en voortgangsgesprekken</div>
-                    </li>
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content" data-i18n="program.unique.feature6">Directe connecties met potenti�le werkgevers</div>
-                    </li>
-                  </ul>
-                  <p class="text-muted" data-i18n="program.unique.description">Als Systeembeheerder leer je niet alleen infrastructuren bouwen en onderhouden, maar ook hoe je proactief incidenten voorkomt en samenwerkt met stakeholders.</p>
-                </div>
-              </article>
-              <article class="card fade-up" data-delay="2">
-                <div class="feature-card__header align-start">
-                  <span class="feature-card__icon icon-circle" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                      <path d="M7 4h10l3 5-8 12-8-12 3-5zm5 13 5.5-8.25L15 6H9l-2.5 2.75zM11 7h2v4h-2zm0 6h2v2h-2z" />
-                    </svg>
-                  </span>
-                  <div>
-                    <span class="section-label" data-i18n="program.career.subtitle">Functies waarvoor je na deze opleiding in aanmerking komt</span>
-                    <h3 class="feature-card__title" data-i18n="program.career.title">Carrièremogelijkheden</h3>
-                  </div>
-                </div>
-                <div class="feature-card__list">
-                  <ul class="feature-list">
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content" data-i18n="program.career.job1">IT Support Technician bij kleine en middelgrote bedrijven</div>
-                    </li>
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content" data-i18n="program.career.job2">Help Desk Specialist voor technische ondersteuning</div>
-                    </li>
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content" data-i18n="program.career.job3">Junior System Administrator</div>
-                    </li>
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content" data-i18n="program.career.job4">Network Support Technician</div>
-                    </li>
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content" data-i18n="program.career.job5">Field Service Technician voor on-site support</div>
-                    </li>
-                    <li class="feature-list__item">
-                      <span class="feature-list__icon" aria-hidden="true">
-                        <svg viewBox="0 0 20 20" focusable="false">
-                          <path d="M8.5 13.5 5 10l1.4-1.4 2.1 2.1 5-5L15 7.1z" />
-                        </svg>
-                      </span>
-                      <div class="feature-list__content" data-i18n="program.career.job6">Technical Support Representative bij IT-bedrijven</div>
-                    </li>
-                  </ul>
-                  <p class="text-muted" data-i18n="program.career.description">De vraag naar systeembeheerders blijft hoog. Werkgevers zoeken professionals die infrastructuren stabiel houden en klaar zijn voor cloudtransities.</p>
-                </div>
-                <div class="card__footer card__footer--start">
-                  <a class="card__link" href="vacatures.html" data-i18n="label.nextstep">
-                    Bekijk vacatures
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </a>
-                </div>
-              </article>
-            </div>
-          </div>
-
-        <section class="enrollment-cta">
-          <div class="container">
-            <div class="enrollment-cta__wrapper">
-              <div class="enrollment-cta__content">
-                <span class="enrollment-cta__eyebrow" data-i18n="program.cta.eyebrow">Next step</span>
-                <h2 class="enrollment-cta__title" data-i18n="sysadmin.cta.title">Zet de stap naar professioneel systeembeheer</h2>
-                <p class="enrollment-cta__body" data-i18n="sysadmin.cta.body">
-                  Bereid je voor op een rol als IT-support, systeem- of cloudbeheerder met praktijkervaring en certificatie.
+                <h3>Technische Ondersteuning</h3>
+                <p>
+                  Bij INTEC BRUSSEL krijg je de kans om diepgaande technische kennis en vaardigheden te ontwikkelen die essentieel zijn voor een systeembeheerder. Ons programma omvat onder andere training in hardware, netwerken, virtualisatie, besturingssystemen (Windows en Linux), en ITIL. Je leert niet alleen hoe je servers en netwerken installeert en beheert, maar ook hoe je proactief problemen voorkomt en beveiliging implementeert. Met hands-on ervaring en praktijkgerichte projecten bereiden we je voor op de uitdagingen van het echte werk, zodat je klaar bent voor de arbeidsmarkt.
                 </p>
-              </div>
-              <div class="enrollment-cta__actions">
-                <a class="btn btn--primary btn--lg enrollment-cta__btn" href="inschrijven.html" data-i18n="sysadmin.cta.primary">
-                  <svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              </article>
+
+              <!-- Feature Card 2: Ondersteuning bij Werkzoektocht -->
+              <article class="feature-card">
+                <div class="feature-card__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                     <circle cx="8.5" cy="7" r="4"></circle>
-                    <path d="M20 8v6M23 11h-6"></path>
+                    <polyline points="17 11 19 13 23 9"></polyline>
                   </svg>
-                  <span>Plan intake</span>
-                </a>
-                <a class="btn btn--outline btn--lg enrollment-cta__btn" href="contact.html" data-i18n="sysadmin.cta.secondary">
-                  <svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </div>
+                <h3>Ondersteuning bij Werkzoektocht</h3>
+                <p>
+                  Wij gaan verder dan alleen technische training. Tijdens en na de opleiding bieden we uitgebreide ondersteuning bij het vinden van werk. Ons team helpt je met sollicitatievoorbereiding, het opstellen van je CV, en we organiseren sollicitatietrainingen en simulaties om je zelfvertrouwen te geven. Bovendien krijg je toegang tot ons uitgebreide netwerk van bedrijven en partners, waarmee we je kans op een succesvolle jobmatch aanzienlijk vergroten. De begeleiding stopt niet na het afronden van de opleiding; wij blijven je ondersteunen tijdens je zoektocht naar werk.
+                </p>
+              </article>
+
+              <!-- Feature Card 3: Taalondersteuning -->
+              <article class="feature-card">
+                <div class="feature-card__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                   </svg>
-                  <span>Stel een vraag</span>
-                </a>
-              </div>
-              <div class="enrollment-cta__trust">
-                <span class="enrollment-cta__trust-item" data-i18n="sysadmin.cta.trust1">Gratis intake</span>
-                <span class="enrollment-cta__trust-item" data-i18n="sysadmin.cta.trust2">Binnen 2 minuten</span>
-                <span class="enrollment-cta__trust-item" data-i18n="sysadmin.cta.trust3">Zonder verplichting</span>
-              </div>
+                </div>
+                <h3>Taalondersteuning</h3>
+                <p>
+                  Goede communicatie is essentieel in de IT-sector, en daarom bieden we tijdens de opleiding gerichte taalondersteuning (voor wie het nodig heeft). Onze taalcoaches helpen je je Nederlands te verbeteren zodat je technisch vakjargon en klantgerichte communicatie onder de knie krijgt. Of je nu nog je taalniveau moet versterken of net dat laatste duwtje in de rug nodig hebt, onze taalcoaches staan klaar om je persoonlijk te begeleiden.
+                </p>
+              </article>
+
             </div>
           </div>
         </section>
-      </main>
 
+        <!-- START DATES & ENROLLMENT SECTION -->
+        <section class="section">
+          <div class="container">
+            <div class="enrollment-section">
+              
+              <div class="enrollment-info">
+                <h2>Startdata</h2>
+                <ul class="date-list">
+                  <li class="date-item date-item--available" data-start-date="2026-02-23">
+                    <div class="date-text">23 februari 2026</div>
+                    <div class="date-info">
+                      <span class="date-status" data-i18n="date.badge.available">Beschikbaar</span>
+                      <span class="date-countdown"><!-- JS fills this --></span>
+                    </div>
+                  </li>
+                  <li class="date-item date-item--available" data-start-date="2026-05-18">
+                    <div class="date-text">18 mei 2026</div>
+                    <div class="date-info">
+                      <span class="date-status" data-i18n="date.badge.available">Beschikbaar</span>
+                      <span class="date-countdown"><!-- JS fills this --></span>
+                    </div>
+                  </li>
+                </ul>
+                
+                <div class="alert alert--info">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                  <p>
+                    <strong>Let op:</strong> Inschrijven voor een opleiding kan pas vanaf 6 maanden vóór de startdatum van de opleiding.
+                  </p>
+                </div>
+
+                <a href="inschrijven.html" class="btn-primary btn-lg btn-block">
+                  IK WIL DEZE OPLEIDING
+                </a>
+              </div>
+
+              <div class="requirements-card">
+                <h3>Voorwaarden</h3>
+                <ul class="requirements-list">
+                  <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Je bent werkzoekend op de dag dat opleiding start
+                  </li>
+                  <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Jouw Nederlands taalniveau is minimum 2.1
+                  </li>
+                  <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Je hebt een passie voor IT
+                  </li>
+                  <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Je kan vlot met de computer werken
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- PROGRAM MODULES SECTION -->
+        <section class="section section--alt" id="modules">
+          <div class="container">
+            <div class="section-header">
+              <h2>Technisch Programma</h2>
+              <p class="text-muted">
+                Het technische programma van onze Systeembeheerder opleiding biedt een allesomvattend curriculum waarmee je jezelf ontwikkelt tot een professionele systeembeheerder. Met onze praktijkgerichte benadering ben je direct klaar om aan de slag te gaan in de IT-sector.
+              </p>
+            </div>
+
+            <div class="modules-grid">
+              
+              <!-- Module 1 -->
+              <article class="module-card">
+                <div class="module-card__header">
+                  <span class="module-number">01</span>
+                  <h3>Basiskennis van Hardware en Netwerken</h3>
+                </div>
+                <div class="module-card__content">
+                  <p>
+                    De eerste modules leggen de basis voor hardware en netwerkbeheer, met onderwerpen zoals CPU, moederbord, opslagapparaten en netwerktopologieën.
+                  </p>
+                  <ul class="module-topics">
+                    <li><strong>Netwerkcomponenten en Troubleshooting:</strong> Leer hoe je netwerkapparatuur configureert en veelvoorkomende problemen oplost.</li>
+                    <li><strong>Netwerkprotocollen:</strong> Inzicht in protocollen zoals TCP/IP, DNS, en DHCP.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <!-- Module 2 -->
+              <article class="module-card">
+                <div class="module-card__header">
+                  <span class="module-number">02</span>
+                  <h3>Virtualisatie en Cloudtechnologieën</h3>
+                </div>
+                <div class="module-card__content">
+                  <p>
+                    Virtualisatie is een centraal onderdeel van het curriculum, waarbij je leert werken met platforms zoals Oracle VirtualBox en Microsoft Hyper-V.
+                  </p>
+                  <ul class="module-topics">
+                    <li><strong>Virtualisatie:</strong> Opzetten en beheren van virtuele machines en netwerken.</li>
+                    <li><strong>Cloudbeheer:</strong> Leer de basis van cloudtechnologieën, inclusief Microsoft Azure en Nextcloud.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <!-- Module 3 -->
+              <article class="module-card">
+                <div class="module-card__header">
+                  <span class="module-number">03</span>
+                  <h3>Windows en Linux Serverbeheer</h3>
+                </div>
+                <div class="module-card__content">
+                  <p>
+                    De opleiding richt zich op het beheer van zowel Windows als Linux servers, waarbij je leert werken met Active Directory, DHCP en DNS.
+                  </p>
+                  <ul class="module-topics">
+                    <li><strong>Windows Server:</strong> Configuratie en beheer van Windows servers, inclusief virtualisatie en netwerkdiensten zoals DNS en DHCP.</li>
+                    <li><strong>Linux Serverbeheer:</strong> Installatie en configuratie van Linux-servers, inclusief gebruikersbeheer en netwerksystemen.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <!-- Module 4 -->
+              <article class="module-card">
+                <div class="module-card__header">
+                  <span class="module-number">04</span>
+                  <h3>Beveiliging en Netwerkbeheer</h3>
+                </div>
+                <div class="module-card__content">
+                  <p>
+                    Netwerkbeveiliging is een essentieel onderdeel van de opleiding. Je leert firewalls configureren en hoe je netwerken beveiligt tegen bedreigingen.
+                  </p>
+                  <ul class="module-topics">
+                    <li><strong>Netwerkbeveiliging:</strong> Configuratie van firewalls en VPN's.</li>
+                    <li><strong>Incident Response en Monitoring:</strong> Leer hoe je netwerkverkeer monitort en bedreigingen identificeert.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <!-- Module 5 -->
+              <article class="module-card">
+                <div class="module-card__header">
+                  <span class="module-number">05</span>
+                  <h3>ITIL en Helpdeskvaardigheden</h3>
+                </div>
+                <div class="module-card__content">
+                  <p>
+                    De opleiding biedt inzicht in ITIL-principes en helpt je om sterke helpdeskvaardigheden te ontwikkelen, inclusief het werken met ticketing-systemen.
+                  </p>
+                  <ul class="module-topics">
+                    <li><strong>ITIL:</strong> Incident- en probleembeheer volgens het ITIL4-framework.</li>
+                    <li><strong>Helpdesksoftware:</strong> Gebruik van tools zoals ticketingsystemen voor klantenondersteuning.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <!-- Module 6 -->
+              <article class="module-card">
+                <div class="module-card__header">
+                  <span class="module-number">06</span>
+                  <h3>Certificering en Specialisatie</h3>
+                </div>
+                <div class="module-card__content">
+                  <p>
+                    Tijdens de opleiding krijg je de kans om internationaal erkende certificeringen te behalen, zoals Cisco CCNA en CompTIA Network+, wat je inzetbaarheid op de arbeidsmarkt vergroot.
+                  </p>
+                </div>
+              </article>
+
+              <!-- Module 7 -->
+              <article class="module-card">
+                <div class="module-card__header">
+                  <span class="module-number">07</span>
+                  <h3>Praktijkgerichte Projecten en Simulaties</h3>
+                </div>
+                <div class="module-card__content">
+                  <p>
+                    De opleiding omvat praktijkgerichte projecten, waarbij je netwerkproblemen oplost en je vaardigheden toepast in realistische scenario's.
+                  </p>
+                  <ul class="module-topics">
+                    <li><strong>Teamprojecten:</strong> Samenwerken aan uitdagende netwerkbeheerprojecten.</li>
+                  </ul>
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- GENERAL INFO SECTION -->
+        <section class="section">
+          <div class="container">
+            <div class="info-grid">
+              
+              <div class="info-main">
+                <h2>Algemene informatie over deze opleiding</h2>
+                
+                <div class="info-details">
+                  <div class="info-item">
+                    <dt>Prijs</dt>
+                    <dd><span class="badge badge--success">Gratis</span></dd>
+                  </div>
+                  <div class="info-item">
+                    <dt>Taal</dt>
+                    <dd>Nederlands</dd>
+                  </div>
+                  <div class="info-item">
+                    <dt>Voorkennis</dt>
+                    <dd>Niet verplicht</dd>
+                  </div>
+                  <div class="info-item">
+                    <dt>Duur</dt>
+                    <dd>1 jaar</dd>
+                  </div>
+                  <div class="info-item">
+                    <dt>Lesuren</dt>
+                    <dd>Elke dag van 8u30 tot 17u<br><small>(Lessen starten om 9u)</small></dd>
+                  </div>
+                  <div class="info-item">
+                    <dt>Locatie</dt>
+                    <dd>Campus Rouppeplein<br><small>Deze locatie is zeer goed bereikbaar met het openbaar vervoer.</small></dd>
+                  </div>
+                </div>
+
+                <div class="alert alert--warning">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                  <p>
+                    Heb je specifieke behoeften of noden om aan te sluiten bij de selecties of opleiding? Bijvoorbeeld omwille van een fysieke beperking. Laat het ons weten.
+                  </p>
+                </div>
+              </div>
+
+              <div class="benefits-card">
+                <h3>Voordelen</h3>
+                <ul class="benefits-list">
+                  <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <div>
+                      <strong>Vervoerskosten</strong>
+                      <p>Tijdens de opleiding worden je vervoerskosten volledig terugbetaald.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <div>
+                      <strong>Kinderopvang</strong>
+                      <p>De kosten voor kinder- of buitenschoolse opvang worden terugbetaald.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <div>
+                      <strong>Uitkeringen</strong>
+                      <p>Tijdens de opleiding blijf je wettelijk in orde met je werkloosheidsvergoeding en andere uitkeringen.</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+      </main>
 
       <!-- Footer -->
       <footer class="site-footer">
         <div class="container">
           <div class="footer-grid">
+            <!-- Column 1: About INTEC -->
             <div class="footer-column">
               <h3 class="footer-heading" data-i18n="footer.aboutTitle">Over INTEC</h3>
               <ul class="footer-links">
@@ -720,6 +472,7 @@
                 <li><a href="contact.html" data-i18n="footer.contact">Contact</a></li>
               </ul>
             </div>
+            <!-- Column 2: Opleidingen -->
             <div class="footer-column">
               <h3 class="footer-heading" data-i18n="footer.coursesTitle">Opleidingen</h3>
               <ul class="footer-links">
@@ -730,6 +483,7 @@
                 <li><a href="opleidingen.html" data-i18n="footer.allCourses">Alle opleidingen</a></li>
               </ul>
             </div>
+            <!-- Column 3: Quick Links -->
             <div class="footer-column">
               <h3 class="footer-heading" data-i18n="footer.quickLinksTitle">Snelle Links</h3>
               <ul class="footer-links">
@@ -740,6 +494,7 @@
                 <li><a href="#" data-i18n="footer.accessibility">Toegankelijkheid</a></li>
               </ul>
             </div>
+            <!-- Column 4: Newsletter -->
             <div class="footer-column footer-newsletter">
               <h3 class="footer-heading" data-i18n="footer.newsletterTitle">Nieuwsbrief</h3>
               <p class="newsletter-description" data-i18n="footer.newsletterDesc">Blijf op de hoogte van nieuws, updates, en exclusieve aanbiedingen.</p>
@@ -755,20 +510,14 @@
               </div>
             </div>
           </div>
+          <!-- Footer Bottom -->
           <div class="footer-bottom">
             <p class="footer-copyright">&copy; <span id="footer-year">2025</span> INTEC Brussel. <span data-i18n="footer.allRights">Alle rechten voorbehouden.</span></p>
             <p class="footer-accreditation" data-i18n="footer.accreditation">Erkend door VDAB, Actiris en ESF.</p>
           </div>
         </div>
       </footer>
-<!-- Floating CTA Button -->
-      <div class="floating-cta">
-        <a class="button" href="inschrijven.html" data-i18n="sysadmin.hero.ctaPrimary">Plan je intake</a>
-      </div>
     </div>
-  
-    </body>
-</html>
     <!-- Back to Top Button - Modern Design -->
     <button id="backToTopBtn" class="back-to-top-modern" aria-label="العودة للأعلى">
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -778,9 +527,52 @@
     </button>
 
 
-
-
-
-
-
-<script>if(document.getElementById('footer-year')){document.getElementById('footer-year').textContent=new Date().getFullYear();}</script>
+    <script>if(document.getElementById('footer-year')){document.getElementById('footer-year').textContent=new Date().getFullYear();}</script>
+    
+    <script>
+    // Start Date Countdown Calculator with i18n support
+    (function() {
+      const dateItems = document.querySelectorAll('.date-item[data-start-date]');
+      const currentLang = document.documentElement.lang || 'nl';
+      const i18n = window.i18n?.[currentLang] || window.i18n?.nl || {};
+      
+      // Get translation with fallback
+      const t = (key, fallback) => i18n[key] || fallback;
+      
+      dateItems.forEach(item => {
+        const startDateStr = item.getAttribute('data-start-date');
+        const countdownSpan = item.querySelector('.date-countdown');
+        
+        if (!startDateStr || !countdownSpan) return;
+        
+        const startDate = new Date(startDateStr);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        startDate.setHours(0, 0, 0, 0);
+        
+        const diffTime = startDate - today;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        
+        if (diffDays > 0) {
+          // Future date
+          const dayText = diffDays === 1 ? t('date.countdown.day', 'dag') : t('date.countdown.days', 'dagen');
+          countdownSpan.textContent = `${t('date.countdown.starts', 'Begint over')} ${diffDays} ${dayText}`;
+          if (diffDays <= 30) {
+            countdownSpan.classList.add('soon');
+          }
+        } else if (diffDays === 0) {
+          // Today
+          countdownSpan.textContent = t('date.countdown.today', 'Begint vandaag!');
+          countdownSpan.classList.add('soon');
+        } else {
+          // Past date
+          const absDays = Math.abs(diffDays);
+          const dayText = absDays === 1 ? t('date.countdown.day', 'dag') : t('date.countdown.days', 'dagen');
+          countdownSpan.textContent = `${t('date.countdown.started', 'Begonnen')} ${absDays} ${dayText} ${t('date.countdown.ago', 'geleden')}`;
+          countdownSpan.classList.add('started');
+        }
+      });
+    })();
+    </script>
+  </body>
+</html>

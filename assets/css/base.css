@@ -273,6 +273,7 @@
 }
 html{
   font-size: 100%;
+  scrollbar-gutter: stable;
 }
 body{
   margin: 0;

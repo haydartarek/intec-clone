@@ -1395,8 +1395,259 @@ function setupSmoothScroll() {
     });
   }
 
+  // FAQ Accordion (for inschrijven.html)
+  // =====================================
+  
+  function initFAQAccordion() {
+    const faqButtons = document.querySelectorAll('.faq-question');
+    
+    faqButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        
+        if (!answer) return;
+        
+        // Toggle current item
+        button.setAttribute('aria-expanded', !isExpanded);
+        
+        if (isExpanded) {
+          answer.classList.remove('is-open');
+        } else {
+          answer.classList.add('is-open');
+        }
+      });
+    });
+  }
+
+  // Registration Form Validation (for inschrijven.html)
+  // ====================================================
+  
+  function initRegistrationForm() {
+    const form = document.querySelector('.contact-form--register');
+    if (!form) return;
+    
+    // Dutch validation messages
+    const errorMessages = {
+      'full-name': 'Vul je volledige naam in.',
+      'email': 'Vul een geldig e-mailadres in.',
+      'phone': 'Vul je telefoonnummer in.',
+      'national-number': 'Vul een geldig rijksregisternummer in.',
+      'postcode': 'Vul je postcode in.',
+      'city': 'Vul je gemeente of stad in.',
+      'address': 'Vul je adres in.',
+      'course': 'Kies een opleiding.',
+      'gender': 'Kies een geslacht.'
+    };
+    
+    // Validate single field
+    function validateField(field) {
+      const fieldName = field.getAttribute('name');
+      const errorElement = document.getElementById(`${fieldName}-error`);
+      
+      if (!errorElement) return true;
+      
+      let isValid = true;
+      let errorMessage = '';
+      
+      // Check if required field is empty
+      if (field.hasAttribute('required')) {
+        if (field.type === 'radio') {
+          const radioGroup = form.querySelectorAll(`input[name="${fieldName}"]`);
+          isValid = Array.from(radioGroup).some(radio => radio.checked);
+        } else if (field.tagName === 'SELECT') {
+          isValid = field.value !== '' && field.value !== null;
+        } else {
+          isValid = field.value.trim() !== '';
+        }
+        
+        if (!isValid) {
+          errorMessage = errorMessages[fieldName] || 'Dit veld is verplicht.';
+        }
+      }
+      
+      // Email validation
+      if (isValid && field.type === 'email' && field.value.trim() !== '') {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        isValid = emailPattern.test(field.value);
+        if (!isValid) {
+          errorMessage = errorMessages['email'];
+        }
+      }
+      
+      // Update UI
+      if (!isValid) {
+        field.setAttribute('aria-invalid', 'true');
+        errorElement.textContent = errorMessage;
+      } else {
+        field.setAttribute('aria-invalid', 'false');
+        errorElement.textContent = '';
+      }
+      
+      return isValid;
+    }
+    
+    // Validate all fields
+    function validateForm() {
+      let isFormValid = true;
+      
+      // Validate text inputs
+      const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+      inputs.forEach(input => {
+        if (!validateField(input)) {
+          isFormValid = false;
+        }
+      });
+      
+      // Validate radio groups
+      const radioGroups = form.querySelectorAll('.radio-pill-group[aria-required="true"]');
+      radioGroups.forEach(group => {
+        const firstRadio = group.querySelector('input[type="radio"]');
+        if (firstRadio && !validateField(firstRadio)) {
+          isFormValid = false;
+        }
+      });
+      
+      return isFormValid;
+    }
+    
+    // Add blur validation for inputs
+    const inputs = form.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+      input.addEventListener('blur', () => {
+        if (input.value.trim() !== '' || input.hasAttribute('aria-invalid')) {
+          validateField(input);
+        }
+      });
+      
+      // Clear error on input
+      input.addEventListener('input', () => {
+        const fieldName = input.getAttribute('name');
+        const errorElement = document.getElementById(`${fieldName}-error`);
+        if (errorElement && errorElement.textContent !== '') {
+          validateField(input);
+        }
+      });
+    });
+    
+    // Add change validation for radio buttons
+    const radios = form.querySelectorAll('input[type="radio"]');
+    radios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        validateField(radio);
+      });
+    });
+    
+    // Handle Enter key on last input field (Ctrl+Enter in textarea)
+    const lastInput = form.querySelector('textarea[name="message"]');
+    if (lastInput) {
+      lastInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && e.ctrlKey) {
+          e.preventDefault();
+          form.dispatchEvent(new Event('submit', { cancelable: true }));
+        }
+      });
+    }
+    
+    // Form submission
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      if (validateForm()) {
+        const submitButton = form.querySelector('.btn-submit');
+        submitButton.disabled = true;
+        submitButton.textContent = 'Bezig met verzenden...';
+        
+        // Simulate form submission (replace with actual API call)
+        setTimeout(() => {
+          alert('Bedankt voor je inschrijving! We nemen binnen 3 werkdagen contact met je op.');
+          form.reset();
+          submitButton.disabled = false;
+          submitButton.textContent = 'Verstuur inschrijving';
+          
+          // Clear all error messages
+          const errors = form.querySelectorAll('.form-error');
+          errors.forEach(error => error.textContent = '');
+          
+          // Clear aria-invalid attributes
+          const fields = form.querySelectorAll('[aria-invalid]');
+          fields.forEach(field => field.removeAttribute('aria-invalid'));
+        }, 1500);
+      } else {
+        // Find first error and scroll to it smoothly
+        const firstError = form.querySelector('.form-error:not(:empty)');
+        if (firstError) {
+          const fieldContainer = firstError.closest('.form-label');
+          if (fieldContainer) {
+            // Calculate offset to keep field visible with some padding
+            const rect = fieldContainer.getBoundingClientRect();
+            const offset = window.pageYOffset + rect.top - 100;
+            
+            window.scrollTo({ 
+              top: offset,
+              behavior: 'smooth' 
+            });
+            
+            // Focus the invalid field after scroll
+            setTimeout(() => {
+              const invalidField = fieldContainer.querySelector('.form-input[aria-invalid="true"], input[aria-invalid="true"]');
+              if (invalidField) {
+                invalidField.focus();
+              }
+            }, 500);
+          }
+        }
+      }
+    });
+    
+    console.log('✅ Registration form validation initialized');
+  }
+
   // =============================
   // Update Footer Year
+  // =============================
+  // Intake Prep Accordion (Redesigned Section)
+  // =============================
+  
+  function initIntakePrepAccordion() {
+    const accordionItems = document.querySelectorAll('.page--inschrijven .accordion-item');
+    
+    if (accordionItems.length === 0) return;
+    
+    accordionItems.forEach(item => {
+      const header = item.querySelector('.accordion-header');
+      const body = item.querySelector('.accordion-body');
+      
+      if (!header || !body) return;
+      
+      header.addEventListener('click', () => {
+        const isExpanded = header.getAttribute('aria-expanded') === 'true';
+        
+        // Toggle current item
+        header.setAttribute('aria-expanded', !isExpanded);
+        body.setAttribute('aria-hidden', isExpanded);
+        
+        // Smooth animation
+        if (!isExpanded) {
+          body.style.maxHeight = body.scrollHeight + 'px';
+        } else {
+          body.style.maxHeight = '0';
+        }
+      });
+      
+      // Initialize first item as open
+      if (header.getAttribute('aria-expanded') === 'true') {
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+    });
+    
+    if (window.INTEC?.debug) {
+      console.log(`✅ Intake prep accordion initialized (${accordionItems.length} items)`);
+    }
+  }
+
   // =============================
   
   function updateFooterYear() {
@@ -1425,6 +1676,9 @@ function setupSmoothScroll() {
     startCourseCountdownTimer();
     initPartnerCarousel();
     enhanceAccordions();
+    initFAQAccordion();
+    initIntakePrepAccordion();
+    initRegistrationForm();
     updateFooterYear();
     
     const initEnd = performance.now();
@@ -1892,7 +2146,7 @@ if (siteHeader) {
     ],
     
     // إعدادات المراقبة
-    observeChanges: true,        // مراقبة التغييرات في DOM
+    observeChanges: false,       // تعطيل المراقبة لمنع الرجفة في DevTools
     debounceDelay: 300,         // تأخير لتجنب الاستدعاءات المتكررة
     
     // وضع التطوير
@@ -1974,6 +2228,9 @@ if (siteHeader) {
   function setupDOMObserver() {
     if (!CONFIG.observeChanges) return null;
 
+    let isObserving = true;
+    let mutationTimeout = null;
+
     const debouncedRefresh = debounce(() => {
       if (CONFIG.debug) {
         console.log('🔄 DOM changes detected, refreshing section backgrounds...');
@@ -1982,37 +2239,30 @@ if (siteHeader) {
     }, CONFIG.debounceDelay);
 
     const observer = new MutationObserver((mutations) => {
+      // إيقاف مؤقت للمراقبة لتجنب الرجفة
+      if (!isObserving) return;
+      
+      // تجميد المراقبة لمدة 2 ثانية بعد أي تغيير
+      if (mutationTimeout) clearTimeout(mutationTimeout);
+      isObserving = false;
+      
+      mutationTimeout = setTimeout(() => {
+        isObserving = true;
+      }, 2000);
+
       let shouldRefresh = false;
 
       mutations.forEach((mutation) => {
-        // التحقق من إضافة/حذف sections
+        // فقط sections حقيقية
         if (mutation.type === 'childList') {
           for (const node of mutation.addedNodes) {
-            if (node.nodeType === Node.ELEMENT_NODE) {
-              if (node.matches('section, .section') || 
-                  node.querySelector('section, .section')) {
-                shouldRefresh = true;
-                break;
-              }
+            if (node.nodeType === Node.ELEMENT_NODE && 
+                (node.matches('section, .section') || 
+                 node.querySelector('section, .section'))) {
+              shouldRefresh = true;
+              break;
             }
           }
-          
-          for (const node of mutation.removedNodes) {
-            if (node.nodeType === Node.ELEMENT_NODE) {
-              if (node.matches('section, .section') || 
-                  node.querySelector('section, .section')) {
-                shouldRefresh = true;
-                break;
-              }
-            }
-          }
-        }
-
-        // التحقق من تغيير classes
-        if (mutation.type === 'attributes' && 
-            mutation.attributeName === 'class' && 
-            mutation.target.matches('section, .section')) {
-          shouldRefresh = true;
         }
       });
 

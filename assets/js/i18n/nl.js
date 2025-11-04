@@ -450,6 +450,8 @@ window.i18n.nl = {
   "register.faq.prep.q2.body": "Onze trajecten zijn voltijds en intensief. Bespreek je situatie met je trajectcoach; samen zoeken we naar oplossingen rond opvang, mobiliteit of een voorbereid traject.",
   "register.faq.prep.q3.title": "Is mijn taalniveau voldoende?",
   "register.faq.prep.q3.body": "We mikken op niveau B1 Nederlands of Engels. Tijdens de intake testen we dit en koppelen we je aan taalondersteuning wanneer dat nodig is.",
+  "register.faq.prep.q4.title": "Hoe lang duurt het intakegesprek?",
+  "register.faq.prep.q4.body": "Een intake duurt gemiddeld 45-60 minuten. We nemen de tijd om je situatie, motivatie en doelen te bespreken en samen het beste traject te bepalen.",
   "register.faq.support.title": "Ondersteuning tijdens je traject",
   "register.faq.support.body": "Je staat er nooit alleen voor. We combineren digitale tools met persoonlijke begeleiding zodat je vlot doorstroomt naar stage en werk.",
   "register.faq.support.badge1": "Trajectcoaches",
@@ -462,7 +464,7 @@ window.i18n.nl = {
   "register.faq.support.language": "Versterk je Nederlands of Engels met extra taal- en communicatiebegeleiding.",
   "register.faq.support.note": "Extra hulp nodig? Vermeld het in je formulier. We plannen graag een bijkomend gesprek of verwijzen je naar het Digipunt voor voorbereidende sessies.",
   "register.faq.contact.title": "Twijfel je nog?",
-  "register.faq.contact.body": "Neem contact op en vertel ons waarmee we kunnen helpen. We bekijken samen welke opleiding, timing en ondersteuning het best bij jouw situatie aansluiten.",
+  "register.faq.contact.body": "Plan een kennismaking of bezoek het Digipunt voor extra voorbereiding.",
   "register.faq.contact.ctaPrimary": "Plan een kennismaking",
   "register.faq.contact.ctaSecondary": "Bezoek het Digipunt",
   "register.cta.eyebrow": "Klaar om te starten?",
@@ -734,10 +736,9 @@ window.i18n.nl = {
   // SYSTEEMBEHEERDER PAGE
   // -----------------------------
   "sysadmin.hero.eyebrow": "Opleiding",
-  "sysadmin.hero.title": "Professionele Systeembeheerder",
-  "sysadmin.hero.subtitle": "Leer servers, netwerken en cloudomgevingen beheren, beveiligen en automatiseren.",
-  "sysadmin.hero.description": "Beheer hybride landschappen met monitoring, back-upstrategieën en security-by-design, ondersteund door automation met PowerShell en Ansible.",
-  "sysadmin.hero.lead": "Leer servers, netwerken en cloudomgevingen beheren, beveiligen en automatiseren.",
+  "sysadmin.hero.title": "Systeembeheerder",
+  "sysadmin.hero.subtitle": "Word de spilfiguur die IT-infrastructuren stabiel, veilig en performant houdt.",
+  "sysadmin.hero.description": "Beheer servers, netwerken en cloudomgevingen. Praktische labs met Windows Server, Linux, virtualisatie, automatisering en monitoring.",
   "sysadmin.hero.ctaPrimary": "Plan je intake",
   "sysadmin.hero.ctaSecondary": "Bekijk programma",
   "sysadmin.hero.caption": "Praktische labs met Windows Server, Linux, virtualisatie en cloudbeheer.",
@@ -809,34 +810,111 @@ window.i18n.nl = {
   // -----------------------------
   "security.hero.eyebrow": "Opleiding",
   "security.hero.title": "Cyber Security Engineer",
-  "security.hero.subtitle": "Bescherm netwerken, applicaties en data tegen bedreigingen met deze hands-on opleiding in cybersecurity.",
-  "security.hero.description": "Train in SOC-simulaties, threat hunting en cloud hardening met tooling zoals SIEM, EDR en automatisering van responseflows.",
-  "security.hero.lead": "Bescherm netwerken, applicaties en data tegen bedreigingen met deze hands-on opleiding in cybersecurity.",
+  "security.hero.subtitle": "Bescherm netwerken, servers en cloudomgevingen tegen bedreigingen en aanvallen. Word een sleutelspeler in IT-beveiliging.",
+  "security.hero.description": "Leer ethical hacking, incident response en security operations. Praktijkgerichte training met Cisco-apparatuur en certificeringvoorbereiding.",
   "security.hero.ctaPrimary": "Plan je intake",
   "security.hero.ctaSecondary": "Bekijk programma",
-  "security.hero.caption": "Praktijkervaring met penetration testing, security operations centers (SOC) en incident response in een gesimuleerde omgeving.",
-  "security.hero.metaTitle": "Volgende startmomenten",
-  "security.hero.metaDates": "Najaar 2025",
-  "security.hero.metaNote": "Schrijf je tijdig in: intakegesprekken en technische screening bepalen je instapniveau.",
-  "security.hero.stats.labs.value": "8 labs",
-  "security.hero.stats.labs.label": "SOC, incident response & red teaming",
-  "security.hero.stats.tools.value": "3 toolsets",
-  "security.hero.stats.tools.label": "SIEM, EDR en cloud hardening",
-  "security.hero.stats.cert.value": "Cert prep",
-  "security.hero.stats.cert.label": "Voorbereiding CompTIA Security+",
-  "security.hero.stats.aria": "Kerncijfers opleiding Cyber Security Engineer",
 
-  // Overview
-  "security.overview.label": "Wat je leert",
-  "security.overview.title": "Verdedig elke laag van de organisatie",
-  "security.overview.text1": "Leer netwerk-, endpoint- en cloudbeveiliging implementeren. Oefen met ethical hacking, threat hunting en incident response in een veilige labo-omgeving.",
-  "security.overview.text2": "Combineer technische vaardigheden met compliance en governance. Bereid je voor op rollen zoals SOC analyst, security engineer of penetration tester.",
-  "security.overview.feature1Title": "Labs & Beveiliging",
-  "security.overview.list1": "Labs rond netwerk-, endpoint- en cloudbeveiliging",
-  "security.overview.feature2Title": "Threat hunting",
-  "security.overview.list2": "Threat hunting in een gesimuleerde Security Operations Center",
-  "security.overview.feature3Title": "Incident response",
-  "security.overview.list3": "Incident response oefeningen met forensics en rapportering",
+  // Intro
+  "security.intro.text": "Cybersecurity is vandaag onmisbaar voor elke organisatie. Als Cyber Security Engineer leer je netwerken, servers en cloudomgevingen beschermen tegen bedreigingen en aanvallen. Je bouwt stap voor stap kennis en praktijkervaring op om een sleutelrol te spelen in het beveiligen van IT-systemen.",
+
+  // Feature Cards
+  "security.features.card1.title": "Technische Ondersteuning",
+  "security.features.card1.text": "Bij INTEC BRUSSEL krijg je de mogelijkheid om diepgaande technische kennis en vaardigheden te ontwikkelen die essentieel zijn voor een PC & Netwerktechnicus. Ons programma omvat onder andere training in hardware, software, netwerken, besturingssystemen, en ITIL. Je leert niet alleen hoe je problemen op kunt lossen, maar ook hoe je proactief kunt denken en handelen om technische uitdagingen aan te pakken. Met hands-on ervaring en praktijkgerichte projecten, bereiden we je voor op het echte werk.",
+  "security.features.card2.title": "Ondersteuning bij Werkzoektocht",
+  "security.features.card2.text": "Wij gaan verder dan alleen technische training. Tijdens en na de opleiding bieden we uitgebreide ondersteuning bij het vinden van werk. Ons team helpt je met sollicitatievoorbereiding, het opstellen van je CV, en we organiseren sollicitatietrainingen en simulaties om je zelfvertrouwen te geven. Bovendien krijg je toegang tot ons uitgebreide netwerk van bedrijven en partners, waarmee we je kans op een succesvolle jobmatch aanzienlijk vergroten. De begeleiding stopt niet na het afronden van de opleiding; wij blijven je ondersteunen tijdens je zoektocht naar werk.",
+  "security.features.card3.title": "Taalondersteuning",
+  "security.features.card3.text": "Goede communicatie is essentieel in de IT-sector, en daarom bieden we tijdens de opleiding gerichte taalondersteuning (voor wie het nodig heeft). Onze taalcoaches helpen je je Nederlands te verbeteren zodat je technisch vakjargon en klantgerichte communicatie onder de knie krijgt. Of je nu nog je taalniveau moet versterken of net dat laatste duwtje in de rug nodig hebt, onze taalcoaches staan klaar om je persoonlijk te begeleiden.",
+
+  // Enrollment
+  "security.enrollment.title": "Startdata",
+  "security.enrollment.cta": "IK WIL DEZE OPLEIDING",
+
+  // Requirements
+  "security.requirements.title": "Voorwaarden",
+  "security.requirements.item1": "Je bent werkzoekend op de dag dat opleiding start",
+  "security.requirements.item2": "Jouw Nederlands taalniveau is minimum 2.4",
+  "security.requirements.item3": "Je hebt een passie voor IT",
+  "security.requirements.item4": "Je kan vlot met de computer werken",
+
+  // Modules
+  "security.modules.title": "Wat je leert",
+  "security.modules.intro": "Het technische programma van onze Cyber Security Engineer opleiding biedt een diepgaand curriculum waarmee je je ontwikkelt tot een specialist in IT-beveiliging. Met onze praktijkgerichte aanpak leer je niet alleen systemen op te zetten en te beheren, maar ook te beschermen tegen digitale dreigingen. Zo ben je na de opleiding klaar om een sleutelrol te spelen in de cybersecuritysector.",
+
+  // Module 1
+  "security.module1.title": "Fundamenten van IT en Netwerken",
+  "security.module1.description": "Je start met de basis van computerhardware, besturingssystemen en netwerken. Je leert hoe computers en servers opgebouwd zijn, hoe je Windows en Linux installeert en configureert, en hoe je netwerken opzet en beheert. Je bouwt een stevige basis in IP-adressering, routing en netwerkapparatuur, zodat je begrijpt hoe digitale infrastructuur functioneert.",
+  "security.module1.topic1": "Hardware & OS: Computers en servers opbouwen en configureren",
+  "security.module1.topic2": "Netwerken: IP-adressering, routing en netwerkapparatuur",
+  "security.module1.topic3": "Basis configuratie: Windows en Linux installatie en beheer",
+
+  // Module 2
+  "security.module2.title": "Cybersecurityprincipes en Netwerkbeveiliging",
+  "security.module2.description": "Vanaf het begin ligt de nadruk op veiligheid. Je verdiept je in de belangrijkste concepten van cybersecurity zoals toegangsbeheer, encryptie, kwetsbaarheidsbeheer en risicobeheer. Je leert netwerken te beveiligen met firewalls en VPN's, en je oefent in het detecteren en voorkomen van aanvallen. Ook incident response en digitale forensics komen aan bod.",
+  "security.module2.topic1": "Security fundamentals: Toegangsbeheer, encryptie en risicobeheer",
+  "security.module2.topic2": "Netwerkbeveiliging: Firewalls, VPN's en aanvaldetectie",
+  "security.module2.topic3": "Incident response: Digitale forensics en incidentafhandeling",
+
+  // Module 3
+  "security.module3.title": "Ethical Hacking en CyberOps",
+  "security.module3.description": "Een cyber security engineer moet denken als een aanvaller om systemen te kunnen verdedigen. In de modules ethical hacking en CyberOps leer je de technieken van hackers begrijpen en toepassen in een gecontroleerde omgeving. Je doet ervaring op met tools zoals Kali Linux, Nessus en Wireshark, en leert security monitoring, intrusion analysis en incident handling volgens internationale standaarden.",
+  "security.module3.topic1": "Ethical hacking: Kali Linux, penetration testing en vulnerability scanning",
+  "security.module3.topic2": "Security tools: Nessus, Wireshark en security monitoring",
+  "security.module3.topic3": "CyberOps: Intrusion analysis en incident handling",
+
+  // Module 4
+  "security.module4.title": "Servers, Cloud en Virtualisatie",
+  "security.module4.description": "Naast netwerken is serverbeheer een belangrijke vaardigheid. Je leert hoe je Windows Server en Linux Server installeert en beheert, hoe je Active Directory inzet voor gebruikersbeheer, en hoe je virtualisatie- en cloudoplossingen beveiligt. Je krijgt ook ervaring met VMware, Hyper-V en Azure cloud security.",
+  "security.module4.topic1": "Server beheer: Windows Server, Linux Server en Active Directory",
+  "security.module4.topic2": "Virtualisatie: VMware en Hyper-V configuratie",
+  "security.module4.topic3": "Cloud security: Azure beveiliging en identity management",
+
+  // Module 5
+  "security.module5.title": "ITIL en Security Operations",
+  "security.module5.description": "Een professionele IT-omgeving vraagt om gestructureerde processen. Je leert werken met ITIL-processen, hoe je beveiligingsincidenten registreert en opvolgt, en hoe je prioriteiten stelt in je dagelijks werk. Je krijgt ook inzicht in Security Operations Centers (SOC), waar je leert hoe je security monitoring uitvoert en reageert op beveiligingsincidenten.",
+  "security.module5.topic1": "ITIL processen: Incident management, problem management en change management",
+  "security.module5.topic2": "SOC operations: Security monitoring en incident response",
+  "security.module5.topic3": "Professional werkwijze: Beveiligingsincidenten registreren, opvolgen en prioriteiten stellen",
+
+  // Module 6
+  "security.module6.title": "Certificering en Internationale Erkenning",
+  "security.module6.description": "Onze opleiding bereidt je voor op internationaal erkende certificaten die jouw kansen op de arbeidsmarkt versterken. Je haalt tijdens de opleiding het Cisco CCST Cybersecurity-certificaat en bereidt je voor op de CompTIA Security+ certificering. Daarnaast behaal je via de Cisco Networking Academy verschillende badges die je expertise aantonen.",
+  "security.module6.topic1": "Cisco CCST: Cybersecurity certificering voorbereiden en behalen",
+  "security.module6.topic2": "CompTIA Security+: Voorbereiding op internationaal erkend security certificaat",
+  "security.module6.topic3": "Cisco NetAcad: Extra badges en certificaten behalen",
+
+  // Module 7
+  "security.module7.title": "Praktijkprojecten en Eindopdracht",
+  "security.module7.description": "De opleiding sluit af met een reeks hands-on projecten waarin je jouw opgedane kennis en vaardigheden samenbrengt. Je werkt met echte Cisco-apparatuur in ons labo, voert teamprojecten uit waarbij je netwerken opzet, beveiligt en verdedigt. Tot slot werk je aan een eindproject met realistische cases van bedrijven en organisaties, inclusief ervaringsweken in een professionele omgeving.",
+  "security.module7.topic1": "Hands-on labs: Werken met Cisco-apparatuur en security tools",
+  "security.module7.topic2": "Team projecten: Netwerken opzetten, beveiligen en verdedigen",
+  "security.module7.topic3": "Eindproject: Concrete cases met bedrijven en organisaties, inclusief ervaringsweken",
+
+  // General Info
+  "security.info.title": "Algemene informatie over deze opleiding",
+  "security.info.price.label": "Prijs",
+  "security.info.price.value": "Gratis",
+  "security.info.language.label": "Taal",
+  "security.info.language.value": "Nederlands",
+  "security.info.prerequisites.label": "Voorkennis",
+  "security.info.prerequisites.value": "Niet verplicht",
+  "security.info.duration.label": "Duur",
+  "security.info.duration.value": "8 maanden",
+  "security.info.hours.label": "Lesuren",
+  "security.info.hours.value": "Elke dag van 8u30 tot 17u<br><small>(Lessen starten om 9u)</small>",
+  "security.info.location.label": "Locatie",
+  "security.info.location.value": "Campus Rouppeplein<br><small>Zeer goed bereikbaar met het openbaar vervoer.</small>",
+  "security.info.accessibility": "Heb je specifieke behoeften of noden om aan te sluiten bij de selecties of opleiding? Bijvoorbeeld omwille van een fysieke beperking. Laat het ons weten.",
+
+  // Benefits
+  "security.benefits.title": "Voordelen",
+  "security.benefits.transport.title": "Vervoerskosten",
+  "security.benefits.transport.text": "Tijdens de opleiding worden je vervoerskosten volledig terugbetaald.",
+  "security.benefits.childcare.title": "Kinderopvang",
+  "security.benefits.childcare.text": "De kosten voor kinder- of buitenschoolse opvang worden terugbetaald.",
+  "security.benefits.allowances.title": "Uitkeringen",
+  "security.benefits.allowances.text": "Tijdens de opleiding blijf je wettelijk in orde met je werkloosheidsvergoeding en andere uitkeringen.",
+
   "security.overview.feature4Title": "Stage",
   "security.overview.list4": "Stage bij bedrijven, overheid of SOC-partners",
 
@@ -949,6 +1027,28 @@ window.i18n.nl = {
   "support.cta.trust1": "Gratis intake",
   "support.cta.trust2": "Binnen 2 minuten",
   "support.cta.trust3": "Zonder verplichting",
+
+  // -----------------------------
+  // DATUM KAARTEN & STATUS BADGES
+  // -----------------------------
+  "date.badge.full": "Volzet",
+  "date.badge.available": "Beschikbaar",
+  "date.countdown.starts": "Begint over",
+  "date.countdown.started": "Begonnen",
+  "date.countdown.day": "dag",
+  "date.countdown.days": "dagen",
+  "date.countdown.ago": "geleden",
+  "date.countdown.today": "Begint vandaag!",
+
+  // -----------------------------
+  // PYTHON PAGE
+  // -----------------------------
+  "python.hero.eyebrow": "Opleiding",
+  "python.hero.title": "Netwerkbeheerder met Python",
+  "python.hero.subtitle": "Bouw je toekomst in ICT met netwerkbeheer en Python-programmering. Word een expert in netwerkautomatisering en cloudtechnologieën.",
+  "python.hero.description": "70% praktijklabs, stage bij partnerbedrijven en intensieve coaching maken je de netwerkspecialist die elke organisatie nodig heeft.",
+  "python.hero.ctaPrimary": "Plan je intake",
+  "python.hero.ctaSecondary": "Bekijk programma",
 
   // -----------------------------
   // FOOTER
