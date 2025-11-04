@@ -937,7 +937,7 @@ window.i18n.en = {
   // PYTHON PAGE
   // -----------------------------
   "python.hero.eyebrow": "Course",
-  "python.hero.title": "Network Administrator with <span class=\"hero-service__highlight\">Python</span>",
+  "python.hero.title": "Network Administrator with Python",
   "python.hero.subtitle": "Learn to design and manage enterprise networks while automating workflows with Python.",
   "python.hero.description": "Work with Cisco and cloud labs, version control, and API automation to deploy infrastructure faster and more securely.",
   "python.hero.lead": "Learn to design and manage enterprise networks while automating workflows with Python.",
@@ -1069,7 +1069,7 @@ window.i18n.en = {
   // SYSADMIN PAGE  
   // -----------------------------
   "sysadmin.hero.eyebrow": "Course",
-  "sysadmin.hero.title": "Professional <span class=\"hero-service__highlight\">System Administrator</span>",
+  "sysadmin.hero.title": "System Administrator",
   "sysadmin.hero.subtitle": "Learn to manage servers, automate tasks, and maintain IT infrastructure.",
   "sysadmin.hero.description": "Operate hybrid environments with monitoring, backup strategies, and security by design—powered by automation with PowerShell and Ansible.",
   "sysadmin.hero.lead": "Learn to manage servers, automate tasks, and maintain IT infrastructure.",
