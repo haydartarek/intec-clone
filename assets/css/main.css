@@ -10197,71 +10197,232 @@ body.page--program .badge--success {
   color: var(--color-success-dark);
 }
 
-/* -----------------------------------------------------------------------------
-   Section: Benefits - Larger and Clearer
-   ----------------------------------------------------------------------------- */
+/* =======================================
+   COURSE BENEFITS SECTION - Compact & Scan-Friendly
+   Left-aligned with small icon chips and tight spacing
+   ======================================= */
 
-body.page--program .course-benefits {
+/* Container */
+body.page--course .course-benefits {
   background: var(--color-bg-white);
-  border: 2px solid rgba(var(--color-text-rgb), 0.08);
-  border-radius: 20px;
-  padding: 40px;
+  border: 1px solid rgba(var(--color-text-rgb), 0.08);
+  border-radius: 16px;
+  padding: 40px 32px;
+  max-width: 900px;
+  margin-inline: auto;
 }
 
-body.page--program .course-benefits__title {
-  font-size: clamp(1.5rem, 3vw, 1.875rem);
+/* Heading */
+body.page--course .course-benefits__title {
+  font-size: 1.5rem; /* 24px */
   font-weight: 700;
   color: var(--color-text);
-  margin-bottom: var(--space-xl);
+  margin-bottom: 28px;
+  text-align: left;
 }
 
-body.page--program .course-benefits__list {
+/* List Container - Single Column */
+body.page--course .course-benefits__list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 20px; /* Desktop: 18-22px per spec */
 }
 
-body.page--program .course-benefits__item {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
+/* Individual Benefit Item */
+body.page--course .course-benefits__item {
+  display: grid;
+  grid-template-columns: 32px 1fr; /* Fixed icon rail + flexible content */
+  gap: 16px;
+  align-items: start;
 }
 
-body.page--program .course-benefits__icon {
-  flex-shrink: 0;
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, var(--color-success-soft), rgba(var(--color-success-rgb), 0.1));
+/* Icon Chip - Compact Circular */
+body.page--course .course-benefits__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px; /* Fully circular */
+  background: rgba(var(--color-success-rgb), 0.08);
+  border: 1px solid rgba(var(--color-success-rgb), 0.2);
   color: var(--color-success);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  transition: background 220ms ease, border-color 220ms ease;
 }
 
-body.page--program .course-benefits__icon svg {
-  width: 28px;
-  height: 28px;
+/* Icon SVG - Small and Centered */
+body.page--course .course-benefits__icon svg {
+  width: 17px;
+  height: 17px;
+  stroke-width: 2.5;
 }
 
-body.page--program .course-benefits__content {
-  flex-grow: 1;
+/* Content Column */
+body.page--course .course-benefits__content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0; /* Allow text wrapping */
 }
 
-body.page--program .course-benefits__name {
-  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
-  font-weight: 700;
+/* Benefit Title - Body Weight */
+body.page--course .course-benefits__name {
+  font-size: 15px;
+  font-weight: 600;
   color: var(--color-text);
-  margin-bottom: 8px;
+  line-height: 1.5;
 }
 
-body.page--program .course-benefits__description {
-  font-size: clamp(1rem, 2vw, 1.125rem);
-  line-height: 1.7;
+/* Benefit Description - Regular Body */
+body.page--course .course-benefits__description {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
   color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Subtle Hover Effect - No Layout Shift */
+body.page--course .course-benefits__item:hover .course-benefits__icon {
+  background: rgba(var(--color-success-rgb), 0.12);
+  border-color: rgba(var(--color-success-rgb), 0.3);
+}
+
+/* =======================================
+   RESPONSIVE BEHAVIOR
+   ======================================= */
+
+/* Mobile: Reduce spacing, keep structure */
+@media (max-width: 899px) {
+  body.page--course .course-benefits {
+    padding: 36px 24px;
+  }
+  
+  body.page--course .course-benefits__title {
+    font-size: 1.375rem; /* 22px */
+    margin-bottom: 24px;
+  }
+  
+  body.page--course .course-benefits__list {
+    gap: 16px; /* Mobile: 14-18px per spec */
+  }
+  
+  body.page--course .course-benefits__item {
+    grid-template-columns: 28px 1fr; /* Slightly smaller icon rail */
+    gap: 14px;
+  }
+  
+  body.page--course .course-benefits__icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  body.page--course .course-benefits__icon svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  body.page--course .course-benefits__name {
+    font-size: 14.5px;
+  }
+  
+  body.page--course .course-benefits__description {
+    font-size: 14.5px;
+  }
+}
+
+/* Tablet: Keep desktop spacing */
+@media (min-width: 900px) and (max-width: 1199px) {
+  body.page--course .course-benefits {
+    padding: 40px 28px;
+  }
+}
+
+/* =======================================
+   PER-COURSE ACCENT COLORS
+   Subtle hue shift for icon chips
+   ======================================= */
+
+/* Python - Blue accent */
+body.page--course-python .course-benefits__icon {
+  background: rgba(55, 118, 171, 0.08); /* Python blue */
+  border-color: rgba(55, 118, 171, 0.2);
+  color: #3776ab;
+}
+
+body.page--course-python .course-benefits__item:hover .course-benefits__icon {
+  background: rgba(55, 118, 171, 0.12);
+  border-color: rgba(55, 118, 171, 0.3);
+}
+
+/* Security - Red accent */
+body.page--course-security .course-benefits__icon {
+  background: rgba(231, 76, 60, 0.08); /* Security red */
+  border-color: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+}
+
+body.page--course-security .course-benefits__item:hover .course-benefits__icon {
+  background: rgba(231, 76, 60, 0.12);
+  border-color: rgba(231, 76, 60, 0.3);
+}
+
+/* Support - Green accent */
+body.page--course-support .course-benefits__icon {
+  background: rgba(39, 174, 96, 0.08); /* Support green */
+  border-color: rgba(39, 174, 96, 0.2);
+  color: #27ae60;
+}
+
+body.page--course-support .course-benefits__item:hover .course-benefits__icon {
+  background: rgba(39, 174, 96, 0.12);
+  border-color: rgba(39, 174, 96, 0.3);
+}
+
+/* Sysadmin - Orange accent */
+body.page--course-sysadmin .course-benefits__icon {
+  background: rgba(243, 156, 18, 0.08); /* Sysadmin orange */
+  border-color: rgba(243, 156, 18, 0.2);
+  color: #f39c12;
+}
+
+body.page--course-sysadmin .course-benefits__item:hover .course-benefits__icon {
+  background: rgba(243, 156, 18, 0.12);
+  border-color: rgba(243, 156, 18, 0.3);
+}
+
+/* =======================================
+   ACCESSIBILITY
+   ======================================= */
+
+/* Focus Styles for Interactive Elements */
+body.page--course .course-benefits a:focus-visible,
+body.page--course .course-benefits button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  body.page--course .course-benefits {
+    border-width: 2px;
+  }
+  
+  body.page--course .course-benefits__icon {
+    border-width: 2px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  body.page--course .course-benefits__icon {
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* -----------------------------------------------------------------------------
