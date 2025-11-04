@@ -383,88 +383,110 @@
         </section>
 
         <!-- GENERAL INFO SECTION -->
-        <section class="section">
+        <section class="section" id="algemene-informatie">
           <div class="container">
-            <div class="info-grid">
+            <div class="course-general">
               
-              <div class="info-main">
-                <h2>Algemene informatie over deze opleiding</h2>
+              <h2 class="course-general__title">Algemene informatie over deze opleiding</h2>
+              
+              <dl class="course-general__list">
+                <!-- Price -->
+                <div class="course-general__item">
+                  <dt class="course-general__label">Prijs</dt>
+                  <dd class="course-general__value">
+                    <span class="course-general__badge">Gratis</span>
+                  </dd>
+                </div>
                 
-                <div class="info-details">
-                  <div class="info-item">
-                    <dt>Prijs</dt>
-                    <dd><span class="badge badge--success">Gratis</span></dd>
-                  </div>
-                  <div class="info-item">
-                    <dt>Taal</dt>
-                    <dd>Nederlands</dd>
-                  </div>
-                  <div class="info-item">
-                    <dt>Voorkennis</dt>
-                    <dd>Niet verplicht</dd>
-                  </div>
-                  <div class="info-item">
-                    <dt>Duur</dt>
-                    <dd>1 jaar</dd>
-                  </div>
-                  <div class="info-item">
-                    <dt>Lesuren</dt>
-                    <dd>Elke dag van 8u30 tot 17u<br><small>(Lessen starten om 9u)</small></dd>
-                  </div>
-                  <div class="info-item">
-                    <dt>Locatie</dt>
-                    <dd>Campus Rouppeplein of Digital City Oudergem<br><small>Beide locaties zijn zeer goed bereikbaar met het openbaar vervoer.</small></dd>
-                  </div>
+                <!-- Language -->
+                <div class="course-general__item">
+                  <dt class="course-general__label">Taal</dt>
+                  <dd class="course-general__value">Nederlands</dd>
                 </div>
+                
+                <!-- Prerequisites -->
+                <div class="course-general__item">
+                  <dt class="course-general__label">Voorkennis</dt>
+                  <dd class="course-general__value">Niet verplicht</dd>
+                </div>
+                
+                <!-- Duration -->
+                <div class="course-general__item">
+                  <dt class="course-general__label">Duur</dt>
+                  <dd class="course-general__value">1 jaar</dd>
+                </div>
+                
+                <!-- Lessons -->
+                <div class="course-general__item">
+                  <dt class="course-general__label">Lesuren</dt>
+                  <dd class="course-general__value">
+                    Elke dag van 8u30 tot 17u
+                    <small>(Lessen starten om 9u)</small>
+                  </dd>
+                </div>
+                
+                <!-- Location -->
+                <div class="course-general__item">
+                  <dt class="course-general__label">Locatie</dt>
+                  <dd class="course-general__value">
+                    Campus Rouppeplein of Digital City Oudergem
+                    <small>Beide locaties zijn zeer goed bereikbaar met het openbaar vervoer.</small>
+                  </dd>
+                </div>
+              </dl>
 
-                <div class="alert alert--warning">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                    <line x1="12" y1="9" x2="12" y2="13"></line>
-                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                  </svg>
-                  <p>
-                    Heb je specifieke behoeften of noden om aan te sluiten bij de selecties of opleiding? Bijvoorbeeld omwille van een fysieke beperking. Laat het ons weten.
-                  </p>
-                </div>
+              <!-- Accessibility Note -->
+              <div class="course-general__note">
+                <strong>Toegankelijkheid:</strong> Heb je specifieke behoeften of noden om aan te sluiten bij de selecties of opleiding? Bijvoorbeeld omwille van een fysieke beperking. Laat het ons weten.
               </div>
 
-              <div class="benefits-card">
-                <h3>Voordelen</h3>
-                <ul class="benefits-list">
-                  <li>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                    </svg>
-                    <div>
-                      <strong>Vervoerskosten</strong>
-                      <p>Tijdens de opleiding worden je vervoerskosten volledig terugbetaald.</p>
-                    </div>
-                  </li>
-                  <li>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                    </svg>
-                    <div>
-                      <strong>Kinderopvang</strong>
-                      <p>De kosten voor kinder- of buitenschoolse opvang worden terugbetaald.</p>
-                    </div>
-                  </li>
-                  <li>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                    </svg>
-                    <div>
-                      <strong>Uitkeringen</strong>
-                      <p>Tijdens de opleiding blijf je wettelijk in orde met je werkloosheidsvergoeding en andere uitkeringen.</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
+            </div>
+          </div>
+        </section>
 
+        <!-- BENEFITS SECTION -->
+        <section class="section section--alt">
+          <div class="container">
+            <div class="course-benefits">
+              <h3 class="course-benefits__title">Voordelen</h3>
+              <ul class="course-benefits__list">
+                <li class="course-benefits__item">
+                  <div class="course-benefits__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                  </div>
+                  <div class="course-benefits__content">
+                    <div class="course-benefits__name">Vervoerskosten</div>
+                    <p class="course-benefits__description">Tijdens de opleiding worden je vervoerskosten volledig terugbetaald.</p>
+                  </div>
+                </li>
+                <li class="course-benefits__item">
+                  <div class="course-benefits__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                  </div>
+                  <div class="course-benefits__content">
+                    <div class="course-benefits__name">Kinderopvang</div>
+                    <p class="course-benefits__description">De kosten voor kinder- of buitenschoolse opvang worden terugbetaald.</p>
+                  </div>
+                </li>
+                <li class="course-benefits__item">
+                  <div class="course-benefits__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                  </div>
+                  <div class="course-benefits__content">
+                    <div class="course-benefits__name">Uitkeringen</div>
+                    <p class="course-benefits__description">Tijdens de opleiding blijf je wettelijk in orde met je werkloosheidsvergoeding en andere uitkeringen.</p>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </section>

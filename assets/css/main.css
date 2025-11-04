@@ -10737,3 +10737,259 @@ body.page--course-sysadmin .course-hero__image-wrapper::before {
 
 /* === END COURSE HERO === */
 
+/* =============================================================================
+   COURSE GENERAL INFORMATION — Clean Key-Value Layout
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   Container & Base Layout
+   ----------------------------------------------------------------------------- */
+
+body.page--course .course-general {
+  background: var(--color-bg-white, #ffffff);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  padding: clamp(28px, 5vw, 40px);
+  max-width: 1080px;
+  margin: 0 auto;
+  transition: box-shadow 0.25s ease;
+}
+
+body.page--course .course-general:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* -----------------------------------------------------------------------------
+   Title
+   ----------------------------------------------------------------------------- */
+
+body.page--course .course-general__title {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text, #0d2e30);
+  margin: 0 0 clamp(24px, 4vw, 32px) 0;
+  text-align: left;
+}
+
+/* -----------------------------------------------------------------------------
+   Description List (Key-Value Grid)
+   ----------------------------------------------------------------------------- */
+
+body.page--course .course-general__list {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  column-gap: 28px;
+  row-gap: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+body.page--course .course-general__item {
+  display: contents;
+}
+
+/* -----------------------------------------------------------------------------
+   Labels (Keys) — Eyebrow Style
+   ----------------------------------------------------------------------------- */
+
+body.page--course .course-general__label {
+  font-size: clamp(0.8125rem, 1.5vw, 0.875rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted, #5a7678);
+  margin: 0;
+  padding-top: 2px;
+  text-align: left;
+}
+
+/* -----------------------------------------------------------------------------
+   Values — Body Text with Wrapping
+   ----------------------------------------------------------------------------- */
+
+body.page--course .course-general__value {
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.6;
+  color: var(--color-text, #0d2e30);
+  margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+body.page--course .course-general__value small {
+  display: block;
+  font-size: clamp(13px, 1.5vw, 14px);
+  line-height: 1.5;
+  color: var(--color-text-muted, #5a7678);
+  margin-top: 6px;
+}
+
+/* -----------------------------------------------------------------------------
+   Price Badge
+   ----------------------------------------------------------------------------- */
+
+body.page--course .course-general__badge {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 14px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: rgba(39, 174, 96, 0.12);
+  color: #1e7e34;
+  border: 1px solid rgba(39, 174, 96, 0.2);
+  transition: background 0.22s ease, transform 0.22s ease;
+}
+
+body.page--course .course-general__badge:hover {
+  background: rgba(39, 174, 96, 0.18);
+  transform: translateY(-1px);
+}
+
+/* -----------------------------------------------------------------------------
+   Accessibility Note Panel
+   ----------------------------------------------------------------------------- */
+
+body.page--course .course-general__note {
+  margin-top: clamp(24px, 4vw, 32px);
+  padding: 14px 16px;
+  border-left: 4px solid var(--color-info, #3498db);
+  background: rgba(52, 152, 219, 0.06);
+  border-radius: 6px;
+  font-size: clamp(14px, 1.8vw, 15px);
+  line-height: 1.6;
+  color: var(--color-text, #0d2e30);
+}
+
+body.page--course .course-general__note strong {
+  font-weight: 700;
+  color: var(--color-text, #0d2e30);
+}
+
+/* -----------------------------------------------------------------------------
+   Responsive Behavior — Mobile Single Column
+   ----------------------------------------------------------------------------- */
+
+@media (max-width: 899px) {
+  body.page--course .course-general__list {
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+  }
+
+  body.page--course .course-general__item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  body.page--course .course-general__item:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  body.page--course .course-general__label {
+    padding-top: 0;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   Tablet Behavior (900px - 1199px)
+   ----------------------------------------------------------------------------- */
+
+@media (min-width: 900px) and (max-width: 1199px) {
+  body.page--course .course-general__list {
+    grid-template-columns: 140px 1fr;
+    column-gap: 24px;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   Accessibility & Performance
+   ----------------------------------------------------------------------------- */
+
+/* Focus states for any interactive elements */
+body.page--course .course-general a:focus-visible {
+  outline: 2px solid var(--color-primary, #0f828a);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  body.page--course .course-general,
+  body.page--course .course-general__badge {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  body.page--course .course-general {
+    border-width: 2px;
+  }
+
+  body.page--course .course-general__badge {
+    border-width: 2px;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   Per-Course Accent Colors (Optional Subtle Variations)
+   ----------------------------------------------------------------------------- */
+
+/* Python — Blue Accent */
+body.page--course-python .course-general__badge {
+  background: rgba(55, 118, 171, 0.12);
+  color: #2c5f8d;
+  border-color: rgba(55, 118, 171, 0.2);
+}
+
+body.page--course-python .course-general__note {
+  border-left-color: #3776ab;
+  background: rgba(55, 118, 171, 0.06);
+}
+
+/* Security — Red Accent */
+body.page--course-security .course-general__badge {
+  background: rgba(231, 76, 60, 0.12);
+  color: #a83a2a;
+  border-color: rgba(231, 76, 60, 0.2);
+}
+
+body.page--course-security .course-general__note {
+  border-left-color: #e74c3c;
+  background: rgba(231, 76, 60, 0.06);
+}
+
+/* Support — Green Accent */
+body.page--course-support .course-general__badge {
+  background: rgba(39, 174, 96, 0.12);
+  color: #1e7e34;
+  border-color: rgba(39, 174, 96, 0.2);
+}
+
+body.page--course-support .course-general__note {
+  border-left-color: #27ae60;
+  background: rgba(39, 174, 96, 0.06);
+}
+
+/* Sysadmin — Orange Accent */
+body.page--course-sysadmin .course-general__badge {
+  background: rgba(243, 156, 18, 0.12);
+  color: #9c6d0e;
+  border-color: rgba(243, 156, 18, 0.2);
+}
+
+body.page--course-sysadmin .course-general__note {
+  border-left-color: #f39c12;
+  background: rgba(243, 156, 18, 0.06);
+}
+
+/* === END COURSE GENERAL INFORMATION === */
+
