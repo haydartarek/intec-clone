@@ -66,34 +66,46 @@
 
       <main id="main-content" tabindex="-1">
         <!-- HERO SECTION -->
-        <section class="hero-section">
-          <div class="container">
-            <div>
-              <span data-i18n="sysadmin.hero.eyebrow">Opleiding</span>
-              <h1 data-i18n="sysadmin.hero.title">
+        <section class="course-hero">
+          <div class="course-hero__container">
+            <div class="course-hero__content">
+              <!-- 1. Eyebrow -->
+              <span class="course-hero__eyebrow" data-i18n="sysadmin.hero.eyebrow">Opleiding</span>
+              
+              <!-- 2. H1 Title -->
+              <h1 class="course-hero__title" data-i18n="sysadmin.hero.title">
                 Systeembeheerder
               </h1>
-              <p data-i18n="sysadmin.hero.subtitle">
+              
+              <!-- 3. Short Intro -->
+              <p class="course-hero__intro" data-i18n="sysadmin.hero.subtitle">
                 Word de spilfiguur die IT-infrastructuren stabiel, veilig en performant houdt.
               </p>
-              <div>
-                <a class="btn-primary btn-lg" href="inschrijven.html" data-i18n="sysadmin.hero.ctaPrimary">Plan je intake</a>
-                <a class="btn-outline btn-lg" href="#modules" data-i18n="sysadmin.hero.ctaSecondary">Bekijk programma</a>
+              
+              <!-- 4. CTAs -->
+              <div class="course-hero__actions">
+                <a class="course-hero__cta course-hero__cta--primary" href="inschrijven.html" data-i18n="sysadmin.hero.ctaPrimary">Plan je intake</a>
+                <a class="course-hero__cta course-hero__cta--secondary" href="#modules" data-i18n="sysadmin.hero.ctaSecondary">Bekijk programma</a>
               </div>
+              
+              <!-- 5. Meta Line -->
+              <p class="course-hero__meta" data-i18n="sysadmin.hero.description">
+                Beheer servers, netwerken en cloudomgevingen. Praktische labs met Windows Server, Linux, virtualisatie, automatisering en monitoring.
+              </p>
             </div>
-            <div>
-              <div>
+            
+            <!-- 6. Visual (Right) -->
+            <div class="course-hero__visual">
+              <div class="course-hero__image-wrapper">
                 <img
+                  class="course-hero__image"
                   src="assets/img/intec-brussel-contact.jpg"
-                  alt="Systeembeheerder opleiding"
+                  alt="Systeembeheerder — server beheer en infrastructuur automatisering"
                   decoding="async"
                   loading="eager"
                   width="560"
                   height="420"
                 />
-                <p data-i18n="sysadmin.hero.description">
-                  Beheer servers, netwerken en cloudomgevingen. Praktische labs met Windows Server, Linux, virtualisatie, automatisering en monitoring.
-                </p>
               </div>
             </div>
           </div>

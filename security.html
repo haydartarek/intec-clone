@@ -67,34 +67,46 @@
 
       <main id="main-content" tabindex="-1">
         <!-- HERO SECTION -->
-        <section class="hero-section">
-          <div class="container">
-            <div>
-              <span data-i18n="security.hero.eyebrow">Opleiding</span>
-              <h1 data-i18n="security.hero.title">
+        <section class="course-hero">
+          <div class="course-hero__container">
+            <div class="course-hero__content">
+              <!-- 1. Eyebrow -->
+              <span class="course-hero__eyebrow" data-i18n="security.hero.eyebrow">Opleiding</span>
+              
+              <!-- 2. H1 Title -->
+              <h1 class="course-hero__title" data-i18n="security.hero.title">
                 Cyber Security Engineer
               </h1>
-              <p data-i18n="security.hero.subtitle">
+              
+              <!-- 3. Short Intro -->
+              <p class="course-hero__intro" data-i18n="security.hero.subtitle">
                 Bescherm netwerken, servers en cloudomgevingen tegen bedreigingen en aanvallen. Word een sleutelspeler in IT-beveiliging.
               </p>
-              <div>
-                <a class="btn-primary btn-lg" href="inschrijven.html" data-i18n="security.hero.ctaPrimary">Plan je intake</a>
-                <a class="btn-outline btn-lg" href="#modules" data-i18n="security.hero.ctaSecondary">Bekijk programma</a>
+              
+              <!-- 4. CTAs -->
+              <div class="course-hero__actions">
+                <a class="course-hero__cta course-hero__cta--primary" href="inschrijven.html" data-i18n="security.hero.ctaPrimary">Plan je intake</a>
+                <a class="course-hero__cta course-hero__cta--secondary" href="#modules" data-i18n="security.hero.ctaSecondary">Bekijk programma</a>
               </div>
+              
+              <!-- 5. Meta Line -->
+              <p class="course-hero__meta" data-i18n="security.hero.description">
+                Leer ethical hacking, incident response en security operations. Praktijkgerichte training met Cisco-apparatuur en certificeringvoorbereiding.
+              </p>
             </div>
-            <div>
-              <div>
+            
+            <!-- 6. Visual (Right) -->
+            <div class="course-hero__visual">
+              <div class="course-hero__image-wrapper">
                 <img
+                  class="course-hero__image"
                   src="assets/img/secweb.jpg"
-                  alt="Cyber Security Engineer opleiding"
+                  alt="Cyber Security Engineer — ethical hacking en netwerkbeveiliging"
                   decoding="async"
                   loading="eager"
                   width="560"
                   height="420"
                 />
-                <p data-i18n="security.hero.description">
-                  Leer ethical hacking, incident response en security operations. Praktijkgerichte training met Cisco-apparatuur en certificeringvoorbereiding.
-                </p>
               </div>
             </div>
           </div>

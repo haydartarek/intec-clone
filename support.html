@@ -67,34 +67,46 @@
 
       <main id="main-content" tabindex="-1">
         <!-- HERO SECTION -->
-        <section class="hero-section">
-          <div class="container">
-            <div>
-              <span data-i18n="support.hero.eyebrow">Opleiding</span>
-              <h1 data-i18n="support.hero.title" data-i18n-allow-html>
-                  PC en Netwerktechnicus
-                </h1>
-              <p data-i18n="support.hero.subtitle">
+        <section class="course-hero">
+          <div class="course-hero__container">
+            <div class="course-hero__content">
+              <!-- 1. Eyebrow -->
+              <span class="course-hero__eyebrow" data-i18n="support.hero.eyebrow">Opleiding</span>
+              
+              <!-- 2. H1 Title -->
+              <h1 class="course-hero__title" data-i18n="support.hero.title" data-i18n-allow-html>
+                PC en Netwerktechnicus
+              </h1>
+              
+              <!-- 3. Short Intro -->
+              <p class="course-hero__intro" data-i18n="support.hero.subtitle">
                 Bouw je toekomst in ICT-support met een hands-on traject dat hardware, netwerken en klantgerichte service verenigt.
               </p>
-              <div>
-                <a class="btn-primary btn-lg" href="inschrijven.html" data-i18n="support.hero.ctaPrimary">Plan je intake</a>
-                <a class="btn-outline btn-lg" href="#modules" data-i18n="support.hero.ctaSecondary">Bekijk programma</a>
+              
+              <!-- 4. CTAs -->
+              <div class="course-hero__actions">
+                <a class="course-hero__cta course-hero__cta--primary" href="inschrijven.html" data-i18n="support.hero.ctaPrimary">Plan je intake</a>
+                <a class="course-hero__cta course-hero__cta--secondary" href="#modules" data-i18n="support.hero.ctaSecondary">Bekijk programma</a>
               </div>
+              
+              <!-- 5. Meta Line -->
+              <p class="course-hero__meta" data-i18n="support.hero.description">
+                70% praktijklabs, stage bij partnerbedrijven en intensieve coaching maken je het eerste aanspreekpunt voor elke werkplek.
+              </p>
             </div>
-            <div>
-              <div>
+            
+            <!-- 6. Visual (Right) -->
+            <div class="course-hero__visual">
+              <div class="course-hero__image-wrapper">
                 <img
+                  class="course-hero__image"
                   src="assets/img/secweb.jpg"
-                  alt="IT Support specialist"
+                  alt="IT Support Technicus — hardware, netwerken en klantenservice"
                   decoding="async"
                   loading="eager"
                   width="560"
                   height="420"
                 />
-                <p data-i18n="support.hero.description">
-                  70% praktijklabs, stage bij partnerbedrijven en intensieve coaching maken je het eerste aanspreekpunt voor elke werkplek.
-                </p>
               </div>
             </div>
           </div>
