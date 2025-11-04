@@ -200,65 +200,68 @@
           </div>
         </section>
 
-        <!-- START DATES & ENROLLMENT SECTION -->
+        <!-- START DATES & REQUIREMENTS SECTION -->
         <section class="section">
           <div class="container">
-            <div class="enrollment-section">
+            <div class="course-grid course-grid--2">
               
-              <div class="enrollment-info">
-                <h2 data-i18n="security.enrollment.title">Startdata</h2>
-                <ul class="date-list">
-                  <li class="date-item date-item--available" data-start-date="2025-11-24">
-                    <div class="date-text">24 november 2025</div>
-                    <div class="date-info">
-                      <span class="date-status" data-i18n="date.badge.available">Beschikbaar</span>
-                      <span class="date-countdown"><!-- JS fills this --></span>
+              <!-- Start Dates -->
+              <div class="course-dates">
+                <h2 class="course-dates__title" data-i18n="security.enrollment.title">Startdata</h2>
+                <ul class="course-dates__list">
+                  <li class="course-dates__item" data-start-date="2025-11-24">
+                    <div class="course-dates__date">24 november 2025</div>
+                    <div class="course-dates__info">
+                      <span class="course-dates__status course-dates__status--available" data-i18n="date.badge.available">Beschikbaar</span>
+                      <span class="course-dates__countdown"><!-- JS fills this --></span>
                     </div>
                   </li>
                 </ul>
                 
-                <div class="alert alert--info">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="16" x2="12" y2="12"></line>
-                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                  </svg>
-                  <p>
-                    <strong>Let op:</strong> Inschrijven voor een opleiding kan pas vanaf 6 maanden vóór de startdatum van de opleiding.
-                  </p>
+                <div class="course-dates__note">
+                  <strong>Let op:</strong> Inschrijven voor een opleiding kan pas vanaf 6 maanden vóór de startdatum van de opleiding.
                 </div>
 
-                <a href="inschrijven.html" class="btn-primary btn-lg btn-block" data-i18n="security.enrollment.cta">
+                <a href="inschrijven.html" class="btn btn-primary btn-block" style="margin-top: 24px; width: 100%;" data-i18n="security.enrollment.cta">
                   IK WIL DEZE OPLEIDING
                 </a>
               </div>
 
-              <div class="requirements-card">
-                <h3 data-i18n="security.requirements.title">Voorwaarden</h3>
-                <ul class="requirements-list">
-                  <li>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    <span data-i18n="security.requirements.item1">Je bent werkzoekend op de dag dat opleiding start</span>
+              <!-- Requirements -->
+              <div class="course-conditions">
+                <h3 class="course-conditions__title" data-i18n="security.requirements.title">Voorwaarden</h3>
+                <ul class="course-conditions__list">
+                  <li class="course-conditions__item">
+                    <div class="course-conditions__icon" aria-hidden="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <div class="course-conditions__text" data-i18n="security.requirements.item1">Je bent werkzoekend op de dag dat opleiding start</div>
                   </li>
-                  <li>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    <span data-i18n="security.requirements.item2">Jouw Nederlands taalniveau is minimum 2.4</span>
+                  <li class="course-conditions__item">
+                    <div class="course-conditions__icon" aria-hidden="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <div class="course-conditions__text" data-i18n="security.requirements.item2">Jouw Nederlands taalniveau is minimum 2.4</div>
                   </li>
-                  <li>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    <span data-i18n="security.requirements.item3">Je hebt een passie voor IT</span>
+                  <li class="course-conditions__item">
+                    <div class="course-conditions__icon" aria-hidden="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <div class="course-conditions__text" data-i18n="security.requirements.item3">Je hebt een passie voor IT</div>
                   </li>
-                  <li>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    <span data-i18n="security.requirements.item4">Je kan vlot met de computer werken</span>
+                  <li class="course-conditions__item">
+                    <div class="course-conditions__icon" aria-hidden="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <div class="course-conditions__text" data-i18n="security.requirements.item4">Je kan vlot met de computer werken</div>
                   </li>
                 </ul>
               </div>
