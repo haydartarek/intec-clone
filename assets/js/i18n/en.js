@@ -1060,6 +1060,7 @@ window.i18n.en = {
 
   // Security page — additional localized strings (translated from Dutch)
   "date.badge.available": "Available",
+  "date.badge.full": "Full",
 
   "security.benefits.title": "Benefits",
   "security.benefits.transport.title": "Travel expenses",
