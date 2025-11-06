@@ -1,1609 +1,1054 @@
-﻿// assets/js/main.js
-// Enhanced multilingual version with robust i18n handling
+// ============================================================================
+// assets/js/main.js
+// Enhanced multilingual core with safe i18n initialization, accessibility,
+// and smooth scrolling system (Stable 2025 Edition)
+// ============================================================================
 
-document.addEventListener("DOMContentLoaded", function () {
-  // =============================
-  // Language Management
-  // =============================
-  const defaultLanguage = "en";
-  const savedLanguage = localStorage.getItem("intec-language") || defaultLanguage;
-  let currentLanguage = savedLanguage;
-  let languageLoadAttempts = 0;
-  const MAX_LOAD_ATTEMPTS = 20; // 20 attempts × 50ms = 1 second max wait
-
-  // Debug: Check if i18n is loaded
-  console.log("🌍 Checking i18n availability...");
-  console.log("📦 window.i18n exists:", !!window.i18n);
-  console.log("📦 Dutch (nl) loaded:", !!window.i18n?.nl);
-  console.log("📦 English (en) loaded:", !!window.i18n?.en);
+document.addEventListener("DOMContentLoaded", () => {
+  // --------------------------------------------------------------------------
+  // LANGUAGE MANAGEMENT SYSTEM
+  // --------------------------------------------------------------------------
+  const DEFAULT_LANG = "en";
+  const MAX_LOAD_ATTEMPTS = 20;
+  const RETRY_DELAY = 50;
+  let currentLanguage = localStorage.getItem("intec-language") || DEFAULT_LANG;
+  let loadAttempts = 0;
 
   /**
-   * Load and apply language translations
-   * @param {string} lang - Language code (nl/en)
+   * Robust DevTools Detection
+   * Adds `devtools-open` to <body> for debugging hover lag or visual shifts.
    */
-  function loadLanguage(lang) {
-    // Check if i18n object and requested language are available
-    if (!window.i18n || !window.i18n[lang]) {
-      languageLoadAttempts++;
-      
-      if (languageLoadAttempts < MAX_LOAD_ATTEMPTS) {
-        console.warn(`⏳ Waiting for language '${lang}' to load... (attempt ${languageLoadAttempts})`);
-        setTimeout(() => loadLanguage(lang), 50);
-        return;
-      } else {
-        console.error(`❌ Language '${lang}' failed to load after ${MAX_LOAD_ATTEMPTS} attempts`);
-        console.error("💡 Check if i18n script files are loaded before main.js");
-        return;
+  (() => {
+    const body = document.body;
+    if (!body) return;
+
+    const THRESHOLD = 160;
+    let devtoolsOpen = false;
+
+    const detectDevTools = () => {
+      const widthDelta = Math.abs(window.outerWidth - window.innerWidth);
+      const heightDelta = Math.abs(window.outerHeight - window.innerHeight);
+      return widthDelta > THRESHOLD || heightDelta > THRESHOLD;
+    };
+
+    const update = () => {
+      const detected = detectDevTools();
+      if (detected !== devtoolsOpen) {
+        devtoolsOpen = detected;
+        body.classList.toggle("devtools-open", detected);
       }
+    };
+
+    const debouncedUpdate = () => window.requestAnimationFrame(update);
+
+    ["resize", "orientationchange"].forEach(evt =>
+      window.addEventListener(evt, debouncedUpdate, { passive: true })
+    );
+
+    window.addEventListener("keydown", e => {
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && ["C", "I", "J"].includes(e.key.toUpperCase()))
+      ) {
+        setTimeout(update, 400);
+      }
+    });
+
+    setInterval(update, 2000);
+    update();
+  })();
+
+  // --------------------------------------------------------------------------
+  // LANGUAGE LOADING & TRANSLATION
+  // --------------------------------------------------------------------------
+  function loadLanguage(lang) {
+    if (!window.i18n || !window.i18n[lang]) {
+      if (loadAttempts++ < MAX_LOAD_ATTEMPTS) {
+        console.warn(`⚙ Waiting for language '${lang}' to load... (${loadAttempts})`);
+        return setTimeout(() => loadLanguage(lang), RETRY_DELAY);
+      }
+      console.error(`❌ Failed to load '${lang}' after ${MAX_LOAD_ATTEMPTS} attempts.`);
+      return;
     }
 
-    // Reset attempt counter on success
-    languageLoadAttempts = 0;
-    
+    // Success
+    loadAttempts = 0;
     currentLanguage = lang;
     localStorage.setItem("intec-language", lang);
-    document.documentElement.setAttribute("lang", lang);
-    
-    console.log(`✅ Language loaded: ${lang}`);
-    
+    document.documentElement.lang = lang;
+    console.info(`🌐 Language applied: ${lang}`);
+
     applyTranslations();
     updateLanguageButtons();
-    
-    // Dispatch event for other scripts that might need to react
+
     window.dispatchEvent(new CustomEvent("languageChanged", { detail: { lang } }));
   }
 
-  /**
-   * Apply translations to all elements with data-i18n attributes
-   */
   function applyTranslations() {
     const dict = window.i18n?.[currentLanguage] || {};
-    let translatedCount = 0;
-    let missingKeys = [];
+    const missing = new Set();
+    let translated = 0;
 
-    // Translate text content
-    document.querySelectorAll("[data-i18n]").forEach((el) => {
-      const key = el.getAttribute("data-i18n");
-      const translation = dict[key];
-      
-      if (translation) {
-        // Check if HTML content is allowed
-        if (el.hasAttribute("data-i18n-allow-html")) {
-          el.innerHTML = translation;
+    const translate = (selector, attr, setAttr = false) => {
+      document.querySelectorAll(selector).forEach(el => {
+        const key = el.getAttribute(attr);
+        const text = dict[key];
+        if (text) {
+          setAttr
+            ? el.setAttribute(attr.replace("data-i18n-", ""), text)
+            : el[el.hasAttribute("data-i18n-allow-html") ? "innerHTML" : "textContent"] = text;
+          translated++;
         } else {
-          el.textContent = translation;
+          if (!setAttr && !el.hasAttribute("data-i18n-allow-html")) el.textContent = key;
+          if (setAttr) el.setAttribute(attr.replace("data-i18n-", ""), key);
+          missing.add(key);
         }
-        translatedCount++;
-      } else {
-        // Keep original key as fallback
-        if (!el.hasAttribute("data-i18n-allow-html")) {
-          el.textContent = key;
-        }
-        missingKeys.push(key);
-      }
-    });
+      });
+    };
 
-    // Translate placeholders
-    document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
-      const key = el.getAttribute("data-i18n-placeholder");
-      const translation = dict[key];
-      
-      if (translation) {
-        el.setAttribute("placeholder", translation);
-        translatedCount++;
-      } else {
-        el.setAttribute("placeholder", key);
-        missingKeys.push(`${key} (placeholder)`);
-      }
-    });
+    translate("[data-i18n]", "data-i18n");
+    translate("[data-i18n-placeholder]", "data-i18n-placeholder", true);
+    translate("[data-i18n-aria-label]", "data-i18n-aria-label", true);
 
-    // Translate aria-labels
-    document.querySelectorAll("[data-i18n-aria-label]").forEach((el) => {
-      const key = el.getAttribute("data-i18n-aria-label");
-      const translation = dict[key];
-      
-      if (translation) {
-        el.setAttribute("aria-label", translation);
-        translatedCount++;
-      } else {
-        el.setAttribute("aria-label", key);
-        missingKeys.push(`${key} (aria-label)`);
-      }
-    });
-
-    // Log translation results
-    console.log(`✅ Translated ${translatedCount} elements`);
-    if (missingKeys.length > 0) {
-      console.warn(`⚠️ Missing translation keys (${missingKeys.length}):`, [...new Set(missingKeys)]);
-    }
+    console.info(`✅ ${translated} elements translated`);
+    if (missing.size) console.warn("⚠ Missing translations:", [...missing]);
   }
 
-  /**
-   * Update language button states
-   */
   function updateLanguageButtons() {
-    document.querySelectorAll(".language-switch").forEach((switcher) => {
-      switcher.dataset.activeLang = currentLanguage;
-    });
-
-    document.querySelectorAll("[data-lang-select]").forEach((btn) => {
+    document.querySelectorAll("[data-lang-select]").forEach(btn => {
       const lang = btn.dataset.lang;
       const active = lang === currentLanguage;
-      
-      // Update visual state
       btn.classList.toggle("is-active", active);
-      
-      const switcher = btn.closest(".language-switch");
-      if (switcher) {
-        if (active) {
-          switcher.dataset.activeLang = lang;
-        } else if (!switcher.querySelector(".is-active")) {
-          delete switcher.dataset.activeLang;
-        }
-      }
-      
-      // Update ARIA attributes for accessibility
       btn.setAttribute("aria-pressed", active);
       btn.setAttribute("aria-current", active ? "true" : "false");
-      
-      // Log for debugging
-      if (active) {
-        console.log(`✅ Active language button: ${lang.toUpperCase()}`);
-      }
+
+      const switcher = btn.closest(".language-switch");
+      if (switcher) switcher.dataset.activeLang = active ? lang : "";
     });
   }
 
-  // Language switcher event listeners
-  document.querySelectorAll("[data-lang-select]").forEach((btn) => {
+  // Language Switchers
+  document.querySelectorAll("[data-lang-select]").forEach(btn => {
     btn.addEventListener("click", () => {
       const newLang = btn.dataset.lang;
-      console.log(`🔄 Switching to: ${newLang}`);
-      loadLanguage(newLang);
+      if (newLang !== currentLanguage) loadLanguage(newLang);
     });
   });
 
-  // Clear localStorage and reset to English if needed (for debugging)
-  window.resetLanguage = function() {
+  // Utility for resetting
+  window.resetLanguage = () => {
     localStorage.removeItem("intec-language");
-    loadLanguage("en");
-    console.log("🔄 Language reset to English");
+    loadLanguage(DEFAULT_LANG);
+    console.info("🔁 Language reset to English");
   };
 
-  // Load saved or default language on page load
+  // Initial language load
   loadLanguage(currentLanguage);
 
-  // =============================
-  // Smooth Scroll with Header Offset
-  // =============================
-  
-  /**
-   * Get dynamic header height for scroll offset
-   */
-  function getHeaderOffset() {
-    const header = document.querySelector(".site-header");
-    return header ? header.offsetHeight + 16 : 0;
-  }
+  // --------------------------------------------------------------------------
+  // SMOOTH SCROLL SYSTEM (header-aware)
+  // --------------------------------------------------------------------------
+  const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+  const getHeaderOffset = () => (document.querySelector(".site-header")?.offsetHeight || 0) + 16;
 
-  /**
-   * Easing function for smooth animations
-   */
-  function easeOutCubic(t) {
-    return 1 - Math.pow(1 - t, 3);
-  }
-
-  /**
-   * Smooth scroll to target Y position
-   */
   function smoothScrollTo(targetY) {
-    const start = window.pageYOffset;
-    const distance = targetY - start;
+    const startY = window.pageYOffset;
+    const distance = targetY - startY;
     const duration = 650;
     const startTime = performance.now();
 
-    const step = (now) => {
+    const step = now => {
       const progress = Math.min((now - startTime) / duration, 1);
       const eased = easeOutCubic(progress);
-      window.scrollTo(0, start + distance * eased);
+      window.scrollTo(0, startY + distance * eased);
       if (progress < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
   }
 
-
-function setupSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach((anchor) => {
-    anchor.addEventListener("click", (e) => {
-      const hash = anchor.getAttribute("href");
-      const target = document.querySelector(hash);
-      
-      if (target) {
+  function setupSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
+      anchor.addEventListener("click", e => {
+        const hash = anchor.getAttribute("href");
+        const target = document.querySelector(hash);
+        if (!target) return;
         e.preventDefault();
-        const offset = getHeaderOffset();
-        const targetY = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        const targetY = target.getBoundingClientRect().top + window.pageYOffset - getHeaderOffset();
         smoothScrollTo(targetY);
-        
-        // Update URL without page jump
         history.replaceState(null, "", hash);
-        
-        // Set focus for accessibility
         target.setAttribute("tabindex", "-1");
         target.focus({ preventScroll: true });
-      }
+      });
     });
-  });
-}
+  }
+  setupSmoothScroll();
+  // Expose for callers outside this DOMContentLoaded closure. Some
+  // initializers call setupSmoothScroll() from the global scope, so
+  // attach it to window to avoid ReferenceError when invoked later.
+  try {
+    window.setupSmoothScroll = setupSmoothScroll;
+  } catch (e) {
+    /* ignore */
+  }
 
-  // =============================
-  // Course Countdown Badges
-  // =============================
+  // --------------------------------------------------------------------------
+  // COURSE COUNTDOWN BADGES
+  // --------------------------------------------------------------------------
+  const DAY_MS = 86400000;
+  const CLASS = "course-date__countdown";
+  const STATES = [`${CLASS}--soon`, `${CLASS}--today`, `${CLASS}--past`];
 
-  const MS_PER_DAY = 24 * 60 * 60 * 1000;
-  const COURSE_COUNTDOWN_CLASS = "course-date__countdown";
-  const COURSE_COUNTDOWN_MODIFIERS = [
-    `${COURSE_COUNTDOWN_CLASS}--soon`,
-    `${COURSE_COUNTDOWN_CLASS}--today`,
-    `${COURSE_COUNTDOWN_CLASS}--past`
-  ];
-
-  const COURSE_COUNTDOWN_MESSAGES = {
+  const MESSAGES = {
     en: {
-      inMany(days) {
-        return `Starts in ${days} days`;
-      },
-      inOne() {
-        return "Starts in 1 day";
-      },
+      inMany: d => `Starts in ${d} days`,
+      inOne: () => "Starts in 1 day",
       today: "Starts today",
-      pastMany(days) {
-        return `Started ${days} days ago`;
-      },
-      pastOne() {
-        return "Started 1 day ago";
-      }
+      pastMany: d => `Started ${d} days ago`,
+      pastOne: () => "Started 1 day ago",
     },
     nl: {
-      inMany(days) {
-        return `Start over ${days} dagen`;
-      },
-      inOne() {
-        return "Start over 1 dag";
-      },
+      inMany: d => `Start over ${d} dagen`,
+      inOne: () => "Start over 1 dag",
       today: "Start vandaag",
-      pastMany(days) {
-        return `Gestart ${days} dagen geleden`;
-      },
-      pastOne() {
-        return "Gestart 1 dag geleden";
-      }
-    }
+      pastMany: d => `Gestart ${d} dagen geleden`,
+      pastOne: () => "Gestart 1 dag geleden",
+    },
   };
 
-  function getActiveLanguageCode() {
-    if (typeof currentLanguage === "string") {
-      return currentLanguage;
-    }
-    const docLang = document.documentElement.getAttribute("lang") || "en";
-    return docLang.slice(0, 2);
+  const getLang = () =>
+    typeof currentLanguage === "string"
+      ? currentLanguage
+      : document.documentElement.lang.slice(0, 2) || "en";
+
+  function formatCountdown(diff, lang) {
+    const msg = MESSAGES[lang] || MESSAGES.en;
+    if (diff > 0) return diff === 1 ? msg.inOne() : msg.inMany(diff);
+    if (diff === 0) return msg.today;
+    const past = Math.abs(diff);
+    return past === 1 ? msg.pastOne() : msg.pastMany(past);
   }
 
-  function formatCountdownMessage(diffDays, lang) {
-    const messages = COURSE_COUNTDOWN_MESSAGES[lang] || COURSE_COUNTDOWN_MESSAGES.en;
-    if (diffDays > 0) {
-      return diffDays === 1 ? messages.inOne() : messages.inMany(diffDays);
-    }
-    if (diffDays === 0) {
-      return messages.today;
-    }
-    const pastDays = Math.abs(diffDays);
-    return pastDays === 1 ? messages.pastOne() : messages.pastMany(pastDays);
-  }
-
-  function updateCourseCountdowns() {
-    const lang = getActiveLanguageCode();
+  function updateCountdowns() {
+    const lang = getLang();
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    document.querySelectorAll("[data-start-date]").forEach((item) => {
-      const isoDate = item.getAttribute("data-start-date");
-      if (!isoDate) {
-        return;
-      }
+    document.querySelectorAll("[data-start-date]").forEach(item => {
+      const dateStr = item.dataset.startDate;
+      if (!dateStr) return;
 
-      const targetDate = new Date(isoDate);
-      if (Number.isNaN(targetDate.getTime())) {
-        return;
-      }
+      const targetDate = new Date(dateStr);
+      if (isNaN(targetDate)) return;
 
       targetDate.setHours(0, 0, 0, 0);
-      const diffDays = Math.round((targetDate - today) / MS_PER_DAY);
-
-      const message = formatCountdownMessage(diffDays, lang);
-      if (!message) {
-        return;
-      }
+      const diff = Math.round((targetDate - today) / DAY_MS);
+      const message = formatCountdown(diff, lang);
+      if (!message) return;
 
       let badge = item.querySelector("[data-countdown]");
       if (!badge) {
         badge = document.createElement("span");
-        badge.setAttribute("data-countdown", "");
-        badge.setAttribute("aria-live", "polite");
-        badge.setAttribute("role", "status");
-        badge.classList.add(COURSE_COUNTDOWN_CLASS);
-        item.appendChild(document.createTextNode(" "));
-        item.appendChild(badge);
-      } else {
-        badge.classList.add(COURSE_COUNTDOWN_CLASS);
+        badge.dataset.countdown = "";
+        badge.className = CLASS;
+        badge.role = "status";
+        badge.ariaLive = "polite";
+        item.append(" ", badge);
       }
-
       badge.textContent = message;
-      COURSE_COUNTDOWN_MODIFIERS.forEach((cls) => badge.classList.remove(cls));
 
-      if (diffDays === 0) {
-        badge.classList.add(`${COURSE_COUNTDOWN_CLASS}--today`);
-      } else if (diffDays < 0) {
-        badge.classList.add(`${COURSE_COUNTDOWN_CLASS}--past`);
-      } else if (diffDays <= 30) {
-        badge.classList.add(`${COURSE_COUNTDOWN_CLASS}--soon`);
-      }
+      STATES.forEach(c => badge.classList.remove(c));
+      if (diff === 0) badge.classList.add(`${CLASS}--today`);
+      else if (diff < 0) badge.classList.add(`${CLASS}--past`);
+      else if (diff <= 30) badge.classList.add(`${CLASS}--soon`);
     });
   }
 
-  let courseCountdownTimer = null;
-
-  function startCourseCountdownTimer() {
-    updateCourseCountdowns();
-    if (courseCountdownTimer) {
-      clearInterval(courseCountdownTimer);
-    }
-    courseCountdownTimer = setInterval(updateCourseCountdowns, 60 * 60 * 1000);
+  let countdownTimer;
+  function startCountdown() {
+    updateCountdowns();
+    clearInterval(countdownTimer);
+    countdownTimer = setInterval(updateCountdowns, 3600000); // 1 hour
   }
 
-  window.addEventListener("languageChanged", () => {
-    updateCourseCountdowns();
-  });
+  startCountdown();
+  window.addEventListener("languageChanged", updateCountdowns);
+});
+// ============================================================================
+// Sticky Header, Mobile Nav, Lazy Images, and Scroll Animations
+// (Stable 2025 Professional Edition)
+// ============================================================================
 
-  // =============================
-  // Sticky Header with Hide/Show
-  // =============================
-  
-  function setupStickyHeader() {
-    const header = document.querySelector(".site-header");
-    if (!header) return;
-    
-    let lastY = window.scrollY;
-    let ticking = false;
+/* ---------------------------------------------------------------------------
+   STICKY HEADER WITH SMART HIDE/SHOW
+--------------------------------------------------------------------------- */
+function setupStickyHeader() {
+  const header = document.querySelector(".site-header");
+  if (!header) return;
 
-    window.addEventListener("scroll", () => {
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  const updateHeaderState = () => {
+    const y = window.scrollY;
+    header.classList.toggle("is-condensed", y > 40);
+    if (y > 120 && y > lastScrollY) header.classList.add("is-hidden");
+    else header.classList.remove("is-hidden");
+    lastScrollY = y;
+    ticking = false;
+  };
+
+  window.addEventListener(
+    "scroll",
+    () => {
       if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const y = window.scrollY;
-          
-          // Add condensed class after scrolling down
-          header.classList.toggle("is-condensed", y > 40);
-          
-          // Hide header when scrolling down, show when scrolling up
-          if (y > 120 && y > lastY) {
-            header.classList.add("is-hidden");
-          } else {
-            header.classList.remove("is-hidden");
-          }
-          
-          lastY = y;
-          ticking = false;
-        });
+        window.requestAnimationFrame(updateHeaderState);
         ticking = true;
       }
-    });
-  }
+    },
+    { passive: true }
+  );
+}
 
-  // =============================
-  // Mobile Navigation Toggle
-  // =============================
-  
-  function setupMobileNav() {
-    const toggleButtons = document.querySelectorAll("[data-nav-toggle]");
-    
-    toggleButtons.forEach((button) => {
-      const targetSelector = button.getAttribute("data-nav-toggle");
-      const targetNav = document.querySelector(targetSelector);
-      
-      if (!targetNav) return;
-      
-      button.addEventListener("click", () => {
-        const isExpanded = button.getAttribute("aria-expanded") === "true";
-        
-        // Toggle states
-        button.setAttribute("aria-expanded", !isExpanded);
-        targetNav.classList.toggle("is-open");
-        document.body.classList.toggle("nav-is-open");
-        
-        // Toggle icon if needed
-        button.classList.toggle("is-active");
-      });
-    });
-    
-    // Close nav when clicking outside
-    document.addEventListener("click", (e) => {
-      const nav = document.querySelector(".primary-nav");
-      const toggle = document.querySelector("[data-nav-toggle]");
-      
-      if (nav && toggle && 
-          !nav.contains(e.target) && 
-          !toggle.contains(e.target) &&
-          nav.classList.contains("is-open")) {
-        toggle.click();
-      }
-    });
-  }
+/* ---------------------------------------------------------------------------
+   MOBILE NAVIGATION TOGGLE
+--------------------------------------------------------------------------- */
+function setupMobileNav() {
+  const toggles = document.querySelectorAll("[data-nav-toggle]");
+  if (!toggles.length) return;
 
-  // =============================
-  // Lazy Loading Images
-  // =============================
-  
-  function optimizeLazyImages() {
-    document.querySelectorAll("img").forEach((img) => {
-      // Critical images load immediately
-      if (img.dataset.critical === "true") {
-        img.setAttribute("loading", "eager");
-        img.setAttribute("fetchpriority", "high");
-      } else if (!img.hasAttribute("loading")) {
-        // Non-critical images lazy load
-        img.setAttribute("loading", "lazy");
-      }
-      
-      // Async decoding for better performance
-      if (!img.hasAttribute("decoding")) {
-        img.setAttribute("decoding", "async");
-      }
+  toggles.forEach(btn => {
+    const target = document.querySelector(btn.dataset.navToggle);
+    if (!target) return;
+
+    btn.addEventListener("click", () => {
+      const expanded = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!expanded));
+      btn.classList.toggle("is-active");
+      target.classList.toggle("is-open");
+      document.body.classList.toggle("nav-is-open");
     });
-  }
+  });
 
-  // =============================
-  // Scroll Animations
-  // =============================
-  
-  const animationConfig = [
-    { selector: ".hero__content", animation: "slide-right" },
-    { selector: ".hero__visual", animation: "slide-left" },
-    { selector: ".hero-card", animation: "fade-up" },
-    { selector: ".section", animation: "fade-up" },
-    { selector: ".section-heading", animation: "fade-up" },
-    { selector: ".stats-item", animation: "fade-up" },
-    { selector: ".program-card", animation: "fade-up" },
-    { selector: ".course-card", animation: "fade-up" },
-    { selector: ".tip-card", animation: "fade-up" },
-    { selector: ".faq-item", animation: "fade-up" },
-    { selector: ".highlight-box", animation: "fade-up" },
-    { selector: ".logo-card", animation: "fade-up" },
-    { selector: ".cta-band", animation: "fade-up" },
-    { selector: ".timeline li", animation: "fade-up" },
-  ];
+  // Close when clicking outside
+  document.addEventListener("click", e => {
+    const nav = document.querySelector(".primary-nav");
+    const toggle = document.querySelector("[data-nav-toggle]");
+    if (
+      nav &&
+      toggle &&
+      nav.classList.contains("is-open") &&
+      !nav.contains(e.target) &&
+      !toggle.contains(e.target)
+    ) {
+      toggle.click();
+    }
+  });
+}
 
-  /**
-   * Add animation attributes to elements
-   */
-  function ensureAnimationAttributes() {
-    animationConfig.forEach(({ selector, animation }) => {
-      document.querySelectorAll(selector).forEach((el) => {
-        if (!el.dataset.animate) {
-          el.dataset.animate = animation;
+/* ---------------------------------------------------------------------------
+   LAZY IMAGE OPTIMIZATION
+--------------------------------------------------------------------------- */
+function optimizeLazyImages() {
+  document.querySelectorAll("img").forEach(img => {
+    const isCritical = img.dataset.critical === "true";
+    const alreadyLazy = img.hasAttribute("loading");
+
+    img.setAttribute("loading", isCritical ? "eager" : alreadyLazy ? img.loading : "lazy");
+    img.setAttribute("decoding", "async");
+
+    if (isCritical) img.setAttribute("fetchpriority", "high");
+  });
+}
+
+/* ---------------------------------------------------------------------------
+   SCROLL ANIMATION SYSTEM — IntersectionObserver API
+--------------------------------------------------------------------------- */
+const animationTargets = [
+  { selector: ".hero__content", animation: "slide-right" },
+  { selector: ".hero__visual", animation: "slide-left" },
+  { selector: ".hero-card, .section, .section-heading, .stats-item, .program-card, .course-card, .tip-card, .faq-item, .highlight-box, .logo-card, .cta-band, .timeline li", animation: "fade-up" },
+];
+
+function ensureAnimationAttributes() {
+  animationTargets.forEach(({ selector, animation }) => {
+    document.querySelectorAll(selector).forEach(el => {
+      if (!el.dataset.animate) el.dataset.animate = animation;
+    });
+  });
+}
+
+function setupScrollAnimations() {
+  ensureAnimationAttributes();
+
+  const animatedEls = document.querySelectorAll("[data-animate]");
+  if (!animatedEls.length) return;
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
         }
       });
-    });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+  );
+
+  animatedEls.forEach(el => observer.observe(el));
+  console.log(`🎬 Observing ${animatedEls.length} animated elements`);
+
+  // Secondary observer for elements using .fade-up directly
+  const fadeUpEls = document.querySelectorAll(".fade-up");
+  if (fadeUpEls.length) {
+    const fadeUpObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            fadeUpObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -80px 0px" }
+    );
+    fadeUpEls.forEach(el => fadeUpObserver.observe(el));
+    console.log(`🎞 Observing ${fadeUpEls.length} fade-up elements`);
   }
 
-  /**
-   * Setup intersection observer for scroll animations
-   */
-  function setupScrollAnimations() {
-    ensureAnimationAttributes();
-    
-    // Handle existing data-animate elements
-    const elements = document.querySelectorAll("[data-animate]");
-    if (elements.length > 0) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              // Unobserve after animation to improve performance
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { 
-          threshold: 0.15,
-          rootMargin: "0px 0px -50px 0px" // Trigger slightly before element enters viewport
-        }
-      );
-      
-      elements.forEach((el) => observer.observe(el));
-      console.log(`✅ Observing ${elements.length} elements for animations`);
-    }
-    
-    // Handle new fade-up elements for python.html and other enhanced pages
-    const fadeUpElements = document.querySelectorAll(".fade-up");
-    if (fadeUpElements.length > 0) {
-      const fadeUpObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              // Unobserve after animation to improve performance
-              fadeUpObserver.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.1,
-          rootMargin: "0px 0px -80px 0px"
-        }
-      );
-      
-      fadeUpElements.forEach((el) => fadeUpObserver.observe(el));
-      console.log(`✅ Observing ${fadeUpElements.length} fade-up elements`);
-    }
-    
-    // Setup floating CTA button visibility
-    const floatingCta = document.querySelector(".floating-cta");
-    if (floatingCta) {
-      let lastScrollY = 0;
-      let ticking = false;
-      
-      const updateFloatingCta = () => {
-        const scrollY = window.pageYOffset;
-        
-        // Show after scrolling 400px down
-        if (scrollY > 400) {
-          floatingCta.classList.add("is-visible");
-        } else {
-          floatingCta.classList.remove("is-visible");
-        }
-        
-        lastScrollY = scrollY;
-        ticking = false;
-      };
-      
-      window.addEventListener("scroll", () => {
+  // Floating CTA button (appears after 400px scroll)
+  const floatingCta = document.querySelector(".floating-cta");
+  if (floatingCta) {
+    let ticking = false;
+    const updateCta = () => {
+      floatingCta.classList.toggle("is-visible", window.scrollY > 400);
+      ticking = false;
+    };
+    window.addEventListener(
+      "scroll",
+      () => {
         if (!ticking) {
-          window.requestAnimationFrame(updateFloatingCta);
+          window.requestAnimationFrame(updateCta);
           ticking = true;
         }
-      });
-      
-      console.log("✅ Floating CTA button initialized");
-    }
-  }
-
-  // =============================
-  // Counter Animations
-  // =============================
-  
-  function setupCounters() {
-    const counters = document.querySelectorAll("[data-counter]");
-    if (counters.length === 0) return;
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !entry.target.classList.contains("counted")) {
-            startCounter(entry.target);
-            entry.target.classList.add("counted");
-            observer.unobserve(entry.target);
-          }
-        });
       },
-      { threshold: 0.5 }
+      { passive: true }
     );
-    
-    counters.forEach((el) => {
-      el.textContent = "0";
-      observer.observe(el);
-    });
+    console.log("💡 Floating CTA initialized");
   }
+}
 
-  /**
-   * Animate counter from 0 to target value
-   */
-  function startCounter(el) {
-    const target = parseFloat(el.dataset.target) || 0;
-    const duration = parseInt(el.dataset.duration) || 2000;
-    const decimals = (target % 1 !== 0) ? 1 : 0; // Check if target has decimals
-    const startTime = performance.now();
+/* ---------------------------------------------------------------------------
+   INITIALIZATION WRAPPER
+--------------------------------------------------------------------------- */
+function initPageEnhancements() {
+  optimizeLazyImages();
+  setupStickyHeader();
+  setupMobileNav();
+  setupScrollAnimations();
+  console.log("✅ UI Enhancements Initialized");
+}
 
-    function step(now) {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const value = target * easeOutCubic(progress);
-      
-      el.textContent = decimals ? value.toFixed(1) : Math.floor(value);
-      
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
-        // Ensure final value is exact
-        el.textContent = decimals ? target.toFixed(1) : target;
-      }
+// Initialize after DOM ready (with minimal blocking)
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initPageEnhancements);
+} else {
+  initPageEnhancements();
+}
+
+// ============================================================================
+// COUNTER ANIMATIONS + SMART FORM VALIDATION
+// (Stable, Accessible, and Performance-Optimized)
+// ============================================================================
+
+/* ---------------------------------------------------------------------------
+   COUNTER ANIMATIONS
+--------------------------------------------------------------------------- */
+function setupCounters() {
+  const counters = document.querySelectorAll("[data-counter]");
+  if (!counters.length) return;
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        const el = entry.target;
+        if (entry.isIntersecting && !el.classList.contains("counted")) {
+          startCounter(el);
+          el.classList.add("counted");
+          observer.unobserve(el);
+        }
+      });
+    },
+    { threshold: 0.45 }
+  );
+
+  counters.forEach(el => {
+    el.textContent = "0";
+    observer.observe(el);
+  });
+}
+
+function startCounter(el) {
+  const target = parseFloat(el.dataset.target) || 0;
+  const duration = parseInt(el.dataset.duration) || 1800;
+  const decimals = target % 1 !== 0;
+  const startTime = performance.now();
+
+  const animate = now => {
+    const progress = Math.min((now - startTime) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic inline
+    const value = target * eased;
+
+    el.textContent = decimals ? value.toFixed(1) : Math.floor(value);
+    if (progress < 1) requestAnimationFrame(animate);
+    else el.textContent = decimals ? target.toFixed(1) : target;
+  };
+  requestAnimationFrame(animate);
+}
+
+/* ---------------------------------------------------------------------------
+   UNIVERSAL FORM VALIDATION SYSTEM
+--------------------------------------------------------------------------- */
+function setupValidation(form) {
+  if (!form) return;
+
+  const dict = () => window.i18n?.[window.currentLanguage || "en"] || {};
+
+  const rules = {
+    "full-name": {
+      required: true,
+      minLength: 5,
+      maxLength: 25,
+      pattern: /^[A-Za-zÀ-ÿ' -]{2,}\s[A-Za-zÀ-ÿ' -]{2,}$/,
+      errorKey: "register.validation.fullName",
+      minErrorKey: "register.validation.fullNameMin",
+    },
+    gender: { required: true, errorKey: "register.validation.gender" },
+    email: {
+      required: true,
+      minLength: 6,
+      maxLength: 50,
+      pattern: /^[\\w.-]+@[a-zA-Z\\d.-]+\\.[a-zA-Z]{2,}$/,
+      errorKey: "register.validation.email",
+    },
+    phone: {
+      required: true,
+      pattern: /^0\\d{8,9}$/,
+      numbersOnly: true,
+      errorKey: "register.validation.phone",
+      numbersErrorKey: "register.validation.phoneNumbers",
+    },
+    "national-number": {
+      required: true,
+      exactLength: 11,
+      numbersOnly: true,
+      pattern: /^\\d{11}$/,
+      errorKey: "register.validation.national",
+    },
+    address: {
+      required: true,
+      minLength: 5,
+      maxLength: 40,
+      errorKey: "register.validation.address",
+    },
+    postcode: {
+      required: true,
+      exactLength: 4,
+      pattern: /^[1-9][0-9]{3}$/,
+      errorKey: "register.validation.postcode",
+    },
+    city: {
+      required: true,
+      minLength: 2,
+      maxLength: 30,
+      pattern: /^[A-Za-zÀ-ÿ' -]{2,30}$/,
+      errorKey: "register.validation.city",
+    },
+    course: { required: true, errorKey: "register.validation.course" },
+    message: {
+      required: false,
+      maxLength: 500,
+      errorKey: "register.validation.messageLength",
+    },
+  };
+
+  // --- Utilities ------------------------------------------------------------
+  const showError = (input, key) => {
+    input.classList.add("has-error");
+    const box = input.parentNode.querySelector(".form-error");
+    if (box) {
+      const text = dict()[key] || key;
+      box.textContent = text;
+      box.style.display = "block";
     }
-    requestAnimationFrame(step);
-  }
+  };
 
-  // =============================
-  // Form Validation
-  // =============================
-  
-  // =============================
-  // Form Validation with Smart Real-Time Logic
-  // =============================
-  
-  function setupValidation(form) {
-    if (!form) return;
-    
-    // Validation patterns and rules
-    const validationRules = {
-      'full-name': {
-        required: true,
-        minLength: 5,
-        maxLength: 25,
-        pattern: /^[A-Za-zÀ-ÿ' -]{2,}\s[A-Za-zÀ-ÿ' -]{2,}$/,
-        errorKey: 'register.validation.fullName',
-        minErrorKey: 'register.validation.fullNameMin'
-      },
-      'gender': {
-        required: true,
-        errorKey: 'register.validation.gender'
-      },
-      'email': {
-        required: true,
-        minLength: 6,
-        maxLength: 50,
-        pattern: /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/,
-        errorKey: 'register.validation.email'
-      },
-      'phone': {
-        required: true,
-        pattern: /^0\d{8,9}$/,
-        numbersOnly: true,
-        errorKey: 'register.validation.phone',
-        numbersErrorKey: 'register.validation.phoneNumbers'
-      },
-      'national-number': {
-        required: true,
-        exactLength: 11,
-        numbersOnly: true,
-        pattern: /^\d{11}$/,
-        errorKey: 'register.validation.national'
-      },
-      'address': {
-        required: true,
-        minLength: 5,
-        maxLength: 40,
-        errorKey: 'register.validation.address'
-      },
-      'postcode': {
-        required: true,
-        exactLength: 4,
-        pattern: /^[1-9][0-9]{3}$/,
-        errorKey: 'register.validation.postcode'
-      },
-      'city': {
-        required: true,
-        minLength: 2,
-        maxLength: 30,
-        pattern: /^[A-Za-zÀ-ÿ' -]{2,30}$/,
-        errorKey: 'register.validation.city'
-      },
-      'course': {
-        required: true,
-        errorKey: 'register.validation.course'
-      },
-      'message': {
-        required: false,
-        maxLength: 500,
-        errorKey: 'register.validation.messageLength'
-      }
-    };
+  const hideError = input => {
+    input.classList.remove("has-error");
+    const box = input.parentNode.querySelector(".form-error");
+    if (box) {
+      box.style.display = "none";
+      box.textContent = "";
+    }
+  };
 
-    // Add error message elements to all fields
-    form.querySelectorAll("input, select, textarea").forEach((input) => {
-      const existingError = input.parentNode.querySelector('.form-error');
-      if (!existingError) {
-        const errorMsg = document.createElement('div');
-        errorMsg.className = 'form-error';
-        input.parentNode.appendChild(errorMsg);
-      }
+  const validate = input => {
+    const name = input.name;
+    const value = input.value.trim();
+    const raw = input.value;
+    const r = rules[name];
+    if (!r) return { ok: true };
+
+    if (r.required && !value) return { ok: false, key: r.errorKey };
+    if (!r.required && !value) return { ok: true };
+    if (r.numbersOnly && !/^\\d+$/.test(value.replace(/[\\s.-]/g, "")))
+      return { ok: false, key: r.numbersErrorKey || r.errorKey };
+    if (r.minLength && raw.length < r.minLength)
+      return { ok: false, key: r.minErrorKey || r.errorKey };
+    if (r.exactLength && value.replace(/[\\s.-]/g, "").length !== r.exactLength)
+      return { ok: false, key: r.errorKey };
+    if (r.pattern && !r.pattern.test(value.replace(/[\\s.-]/g, "")))
+      return { ok: false, key: r.errorKey };
+    if (input.tagName === "SELECT" && (!value || value === ""))
+      return { ok: false, key: r.errorKey };
+    return { ok: true };
+  };
+
+  // --- Add error placeholders once -----------------------------------------
+  form.querySelectorAll("input, select, textarea").forEach(el => {
+    if (!el.parentNode.querySelector(".form-error")) {
+      const box = document.createElement("div");
+      box.className = "form-error";
+      el.parentNode.appendChild(box);
+    }
+  });
+
+  // --- Submit Handler -------------------------------------------------------
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    let valid = true;
+    let first = null;
+    form.querySelectorAll(".form-error").forEach(box => (box.style.display = "none"));
+
+    form.querySelectorAll("input, select, textarea").forEach(el => {
+      const name = el.name;
+      if (name === "message" && !el.value.trim() && !el.required) return;
+      const res = validate(el);
+      if (!res.ok) {
+        showError(el, res.key);
+        valid = false;
+        if (!first) first = el;
+      } else hideError(el);
     });
 
-    // Enforce max length on input
-    function enforceMaxLength(input, maxLength) {
-      if (input.value.length > maxLength) {
-        input.value = input.value.substring(0, maxLength);
-      }
-    }
-
-    // Validation function with smart error detection
-    function validateField(input, realTime = false) {
-      const value = input.value.trim();
-      const rawValue = input.value; // Keep spaces for length check
-      const name = input.name;
-      const rules = validationRules[name];
-      
-      if (!rules) return { isValid: true, errorKey: null };
-
-      let isValid = true;
-      let errorKey = null;
-
-      // Required check
-      if (rules.required && !value) {
-        isValid = false;
-        errorKey = rules.errorKey;
-        return { isValid, errorKey };
-      }
-
-      // Skip validation if field is optional and empty
-      if (!rules.required && !value) {
-        return { isValid: true, errorKey: null };
-      }
-
-      // Check for numbers only fields
-      if (rules.numbersOnly && value && !/^\d+$/.test(value.replace(/[\s.-]/g, ''))) {
-        isValid = false;
-        errorKey = rules.numbersErrorKey || rules.errorKey;
-        return { isValid, errorKey };
-      }
-
-      // Min length check
-      if (rules.minLength && rawValue.length < rules.minLength) {
-        isValid = false;
-        errorKey = rules.minErrorKey || rules.errorKey;
-        return { isValid, errorKey };
-      }
-
-      // Exact length check
-      if (rules.exactLength && value.replace(/[\s.-]/g, '').length !== rules.exactLength) {
-        isValid = false;
-        errorKey = rules.errorKey;
-        return { isValid, errorKey };
-      }
-
-      // Pattern validation
-      if (rules.pattern && value) {
-        const cleanValue = name === 'phone' || name === 'national-number' 
-          ? value.replace(/[\s.-]/g, '') 
-          : value;
-        
-        if (!rules.pattern.test(cleanValue)) {
-          isValid = false;
-          errorKey = rules.errorKey;
-          return { isValid, errorKey };
-        }
-      }
-
-      // Select field validation
-      if (input.tagName === 'SELECT' && (!value || value === '')) {
-        isValid = false;
-        errorKey = rules.errorKey;
-        return { isValid, errorKey };
-      }
-
-      return { isValid, errorKey };
-    }
-
-    // Show error message
-    function showError(input, errorKey) {
-      if (!errorKey) return;
-      
-      input.classList.add("has-error");
-      const errorMsg = input.parentNode.querySelector('.form-error');
-      if (errorMsg) {
-        errorMsg.setAttribute('data-i18n', errorKey);
-        const dict = window.i18n?.[currentLanguage] || {};
-        errorMsg.textContent = dict[errorKey] || errorKey;
-        errorMsg.style.display = 'block';
-      }
-    }
-
-    // Hide error message
-    function hideError(input) {
-      input.classList.remove("has-error");
-      const errorMsg = input.parentNode.querySelector('.form-error');
-      if (errorMsg) {
-        errorMsg.style.display = 'none';
-        errorMsg.textContent = '';
-      }
-    }
-
-    // Form submit handler
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      
-      let valid = true;
-      let firstError = null;
-
-      // Hide success message if visible
-      const successMsg = form.querySelector('.form-success');
-      if (successMsg) {
-        successMsg.classList.remove('is-visible');
-      }
-
-      // Clear all previous errors
-      form.querySelectorAll(".has-error").forEach((el) => {
-        el.classList.remove("has-error");
-      });
-      form.querySelectorAll(".form-error").forEach((el) => {
-        el.style.display = 'none';
-      });
-
-      // Validate all fields
-      const fieldsToValidate = form.querySelectorAll("input, select, textarea");
-      fieldsToValidate.forEach((input) => {
-        // Skip optional empty message field
-        if (input.name === 'message' && !input.value.trim() && !input.hasAttribute('required')) {
-          return;
-        }
-
-        const validation = validateField(input);
-        if (!validation.isValid) {
-          showError(input, validation.errorKey);
-          valid = false;
-          if (!firstError) firstError = input;
-        }
-      });
-
-      if (!valid) {
-        // Focus first error field
-        if (firstError) {
-          firstError.focus();
-          firstError.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-        
-        console.warn("⚠️ Form validation failed");
-      } else {
-        // Form is valid - show success message
-        console.log("✅ Form validated successfully");
-        
-        // Create or show success message
-        let successMsg = form.querySelector('.form-success');
-        if (!successMsg) {
-          successMsg = document.createElement('div');
-          successMsg.className = 'form-success';
-          successMsg.innerHTML = `
-            <div class="form-success__title" data-i18n="register.success.title">Bedankt voor uw voorinschrijving!</div>
-            <p class="form-success__message" data-i18n="register.success.message">U ontvangt binnen drie werkdagen een bevestiging per e-mail.</p>
-          `;
-          
-          // Insert after submit button
-          const submitBtn = form.querySelector('button[type="submit"]');
-          if (submitBtn) {
-            submitBtn.parentNode.insertBefore(successMsg, submitBtn.nextSibling);
-          } else {
-            form.appendChild(successMsg);
-          }
-        }
-        
-        // Translate success message
-        const dict = window.i18n?.[currentLanguage] || {};
-        const titleEl = successMsg.querySelector('[data-i18n="register.success.title"]');
-        const msgEl = successMsg.querySelector('[data-i18n="register.success.message"]');
-        
-        if (titleEl) titleEl.textContent = dict['register.success.title'] || titleEl.textContent;
-        if (msgEl) msgEl.textContent = dict['register.success.message'] || msgEl.textContent;
-        
-        // Show success message
-        successMsg.classList.add('is-visible');
-        
-        // Scroll to success message
-        successMsg.scrollIntoView({ behavior: "smooth", block: "center" });
-        
-        // Reset form after 5 seconds
-        setTimeout(() => {
-          form.reset();
-          successMsg.classList.remove('is-visible');
-        }, 5000);
-      }
-    });
-
-    // Real-time validation on input (auto-hide warnings)
-    form.querySelectorAll("input, select, textarea").forEach((input) => {
-      const name = input.name;
-      const rules = validationRules[name];
-      
-      // Max length enforcement
-      if (rules && rules.maxLength) {
-        input.addEventListener("input", () => {
-          enforceMaxLength(input, rules.maxLength);
-        });
-      }
-
-      // Real-time validation on input
-      input.addEventListener("input", () => {
-        const validation = validateField(input, true);
-        
-        if (validation.isValid) {
-          // Auto-hide warning when field becomes valid
-          hideError(input);
-        } else if (input.value.trim() || input.hasAttribute('required')) {
-          // Show error only if user started typing or field is required
-          showError(input, validation.errorKey);
-        }
-      });
-
-      // Validation on blur
-      input.addEventListener("blur", () => {
-        const validation = validateField(input, false);
-        
-        if (!validation.isValid && (input.value.trim() || input.hasAttribute('required'))) {
-          showError(input, validation.errorKey);
-        } else if (validation.isValid) {
-          hideError(input);
-        }
-      });
-
-      // For select fields - immediate validation on change
-      if (input.tagName === 'SELECT') {
-        input.addEventListener("change", () => {
-          const validation = validateField(input, true);
-          
-          if (validation.isValid) {
-            hideError(input);
-          } else {
-            showError(input, validation.errorKey);
-          }
-        });
-      }
-    });
-  }
-
-  // Setup validation for all forms
-  setupValidation(document.querySelector("#registration-form"));
-  setupValidation(document.querySelector("#contact-form"));
-  setupValidation(document.querySelector("#partner-login-form"));
-
-  // =============================
-  // 🎠 Partner Carousel - 60fps, Zero Jitter, Full A11y
-  // =============================
-  function initPartnerCarousel() {
-    const carousel = document.querySelector("[data-carousel='partners']");
-    if (!carousel || carousel.__carouselInit) return; // Guard: prevent double init
-    
-    carousel.__carouselInit = true; // Mark as initialized
-    
-    const track = carousel.querySelector("[data-partner-track]");
-    const dotsContainer = carousel.querySelector(".partner-carousel__dots");
-    const prevBtn = carousel.querySelector("[data-partner-prev]");
-    const nextBtn = carousel.querySelector("[data-partner-next]");
-    const originalSlides = Array.from(track?.querySelectorAll(".partner-carousel__slide") || []);
-    
-    if (!track || !originalSlides.length) {
-      console.warn("⚠️ Partner carousel: missing track or slides");
+    if (!valid) {
+      first?.focus();
+      first?.scrollIntoView({ behavior: "smooth", block: "center" });
+      console.warn("⚠ Form validation failed");
       return;
     }
 
-    // ═══════════════════════════════════════════
-    // STATE MACHINE: idle → animating → idle
-    // ═══════════════════════════════════════════
-    const STATE = {
-      IDLE: "idle",
-      ANIMATING: "animating",
-      DRAGGING: "dragging"
-    };
-    
-    let state = STATE.IDLE;
-    let currentIndex = 1; // Start after last clone
-    let stepX = 0;
-    let autoplayTimer = null;
-    let transitionEndTimer = null;
-    let resizeRAF = null;
-
-    // ═══════════════════════════════════════════
-    // CONFIG: All from :root or computed
-    // ═══════════════════════════════════════════
-    const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const styles = getComputedStyle(document.documentElement);
-    const TRANSITION_MS = REDUCED_MOTION ? 0 : 850;
-    const EASE = "cubic-bezier(0.33, 1, 0.68, 1)";
-    const AUTOPLAY_MS = REDUCED_MOTION ? 0 : 6500;
-    const MIN_SWIPE_PX = 50;
-    const SWIPE_THRESHOLD = 0.2; // 20% of slide width
-
-    // ═══════════════════════════════════════════
-    // CLONE SLIDES for infinite loop
-    // ═══════════════════════════════════════════
-    const firstClone = originalSlides[0].cloneNode(true);
-    const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true);
-    
-    firstClone.classList.add("is-clone");
-    firstClone.setAttribute("aria-hidden", "true");
-    lastClone.classList.add("is-clone");
-    lastClone.setAttribute("aria-hidden", "true");
-    
-    track.insertBefore(lastClone, originalSlides[0]);
-    track.appendChild(firstClone);
-    
-    const allSlides = Array.from(track.querySelectorAll(".partner-carousel__slide"));
-    const REAL_COUNT = originalSlides.length;
-
-    // ═══════════════════════════════════════════
-    // CORE: Compute slide width + gap
-    // ═══════════════════════════════════════════
-    function computeStepX() {
-      if (allSlides.length < 2) {
-        stepX = carousel.offsetWidth;
-        return;
-      }
-      const rectA = allSlides[0].getBoundingClientRect();
-      const rectB = allSlides[1].getBoundingClientRect();
-      stepX = Math.abs(rectB.left - rectA.left) || rectA.width;
+    // Success
+    console.log("✅ Form validated successfully");
+    let msg = form.querySelector(".form-success");
+    if (!msg) {
+      msg = document.createElement("div");
+      msg.className = "form-success";
+      msg.innerHTML = `
+        <div class="form-success__title" data-i18n="register.success.title">
+          Bedankt voor uw voorinschrijving!
+        </div>
+        <p class="form-success__message" data-i18n="register.success.message">
+          U ontvangt binnen drie werkdagen een bevestiging per e-mail.
+        </p>`;
+      const submit = form.querySelector('button[type="submit"]');
+      submit ? submit.insertAdjacentElement("afterend", msg) : form.appendChild(msg);
     }
 
-    // ═══════════════════════════════════════════
-    // TRANSFORM: Only on X axis (no Y jitter!)
-    // ═══════════════════════════════════════════
-    function setTransform(index, withTransition = true) {
-      const x = -index * stepX;
-      const apply = () => {
-        track.style.transition = withTransition && TRANSITION_MS > 0
-          ? `transform ${TRANSITION_MS}ms ${EASE}`
-          : "none";
-        track.style.transform = `translate3d(${x}px, 0, 0)`;
-        track.style.willChange = withTransition ? "transform" : "auto";
-      };
+    const d = dict();
+    msg.querySelector("[data-i18n='register.success.title']").textContent =
+      d["register.success.title"] || "Thank you!";
+    msg.querySelector("[data-i18n='register.success.message']").textContent =
+      d["register.success.message"] || "We will contact you soon.";
 
-      if (withTransition && TRANSITION_MS > 0) {
-        requestAnimationFrame(apply);
-      } else {
-        apply();
-      }
-    }
+    msg.classList.add("is-visible");
+    msg.scrollIntoView({ behavior: "smooth", block: "center" });
 
-    // ═══════════════════════════════════════════
-    // ARIA + DOTS: Update UI state
-    // ═══════════════════════════════════════════
-    function updateUI() {
-      const realIndex = currentIndex === 0 ? REAL_COUNT - 1 
-                      : currentIndex === REAL_COUNT + 1 ? 0 
-                      : currentIndex - 1;
+    setTimeout(() => {
+      form.reset();
+      msg.classList.remove("is-visible");
+    }, 5000);
+  });
 
-      // Update slides
-      allSlides.forEach((slide, i) => {
-        const isActive = i === currentIndex;
-        slide.classList.toggle("is-active", isActive);
-        slide.setAttribute("aria-hidden", isActive ? "false" : "true");
-      });
+  // --- Real-time validation -------------------------------------------------
+  form.querySelectorAll("input, select, textarea").forEach(el => {
+    const r = rules[el.name];
+    if (!r) return;
 
-      // Update dots
-      if (dotsContainer) {
-        const dots = dotsContainer.querySelectorAll("[data-partner-dot]");
-        dots.forEach((dot, i) => {
-          const isActive = i === realIndex;
-          dot.classList.toggle("is-active", isActive);
-          dot.setAttribute("aria-current", isActive ? "true" : "false");
-        });
-      }
-
-      // Update buttons (disable during animation, enable at bounds)
-      const isAnimating = state === STATE.ANIMATING;
-      if (prevBtn) {
-        prevBtn.disabled = isAnimating;
-        prevBtn.setAttribute("aria-disabled", isAnimating ? "true" : "false");
-      }
-      if (nextBtn) {
-        nextBtn.disabled = isAnimating;
-        nextBtn.setAttribute("aria-disabled", isAnimating ? "true" : "false");
-      }
-    }
-
-    // ═══════════════════════════════════════════
-    // SNAP: Jump to real slide after clone
-    // ═══════════════════════════════════════════
-    function snapToReal() {
-      if (currentIndex === 0) {
-        currentIndex = REAL_COUNT;
-        setTransform(currentIndex, false);
-        void track.offsetHeight; // Force reflow
-      } else if (currentIndex === REAL_COUNT + 1) {
-        currentIndex = 1;
-        setTransform(currentIndex, false);
-        void track.offsetHeight;
-      }
-    }
-
-    // ═══════════════════════════════════════════
-    // NAVIGATE: Go to specific index
-    // ═══════════════════════════════════════════
-    function goToIndex(newIndex) {
-      if (state === STATE.ANIMATING) return;
-      
-      state = STATE.ANIMATING;
-      currentIndex = newIndex;
-      setTransform(currentIndex, true);
-      updateUI();
-
-      // Fallback timer in case transitionend doesn't fire
-      clearTimeout(transitionEndTimer);
-      if (TRANSITION_MS > 0) {
-        transitionEndTimer = setTimeout(() => {
-          state = STATE.IDLE;
-          snapToReal();
-          updateUI();
-        }, TRANSITION_MS + 100);
-      } else {
-        state = STATE.IDLE;
-        snapToReal();
-        updateUI();
-      }
-    }
-
-    const next = () => goToIndex(currentIndex + 1);
-    const prev = () => goToIndex(currentIndex - 1);
-    const goTo = (realIdx) => goToIndex(realIdx + 1); // +1 for clone offset
-
-    // ═══════════════════════════════════════════
-    // AUTOPLAY: Chain-based timing
-    // ═══════════════════════════════════════════
-    function startAutoplay() {
-      if (AUTOPLAY_MS === 0 || REDUCED_MOTION) return;
-      clearTimeout(autoplayTimer);
-      autoplayTimer = setTimeout(() => {
-        next();
-        startAutoplay();
-      }, AUTOPLAY_MS);
-    }
-
-    function stopAutoplay() {
-      clearTimeout(autoplayTimer);
-    }
-
-    function resumeAutoplay() {
-      startAutoplay();
-    }
-
-    // ═══════════════════════════════════════════
-    // EVENTS: Buttons
-    // ═══════════════════════════════════════════
-    if (nextBtn) {
-      nextBtn.addEventListener("click", () => {
-        stopAutoplay();
-        next();
-        resumeAutoplay();
+    if (r.maxLength) {
+      el.addEventListener("input", () => {
+        if (el.value.length > r.maxLength)
+          el.value = el.value.slice(0, r.maxLength);
       });
     }
 
-    if (prevBtn) {
-      prevBtn.addEventListener("click", () => {
-        stopAutoplay();
-        prev();
-        resumeAutoplay();
+    el.addEventListener("input", () => {
+      const res = validate(el);
+      res.ok ? hideError(el) : showError(el, res.key);
+    });
+
+    el.addEventListener("blur", () => {
+      const res = validate(el);
+      res.ok ? hideError(el) : showError(el, res.key);
+    });
+
+    if (el.tagName === "SELECT") {
+      el.addEventListener("change", () => {
+        const res = validate(el);
+        res.ok ? hideError(el) : showError(el, res.key);
       });
     }
+  });
+}
 
-    // ═══════════════════════════════════════════
-    // EVENTS: Dots
-    // ═══════════════════════════════════════════
-    if (dotsContainer) {
-      dotsContainer.addEventListener("click", (e) => {
-        const dot = e.target.closest("[data-partner-dot]");
-        if (!dot) return;
-        
-        const idx = parseInt(dot.dataset.partnerDot, 10);
-        if (!isNaN(idx) && idx !== currentIndex - 1) {
-          stopAutoplay();
-          goTo(idx);
-          resumeAutoplay();
-        }
-      });
-    }
+// ---------------------------------------------------------------------------
+// INITIALIZATION
+// ---------------------------------------------------------------------------
+setupCounters();
+setupValidation(document.querySelector("#registration-form"));
+setupValidation(document.querySelector("#contact-form"));
+setupValidation(document.querySelector("#partner-login-form"));
 
-    // ═══════════════════════════════════════════
-    // EVENTS: Touch/Mouse Drag
-    // ═══════════════════════════════════════════
-    let dragStart = null;
-    let dragDelta = 0;
+  // =============================
+// Partner Carousel (Stable 2025 Edition)
+// =============================
+function initPartnerCarousel() {
+  const carousel = document.querySelector("[data-carousel='partners']");
+  if (!carousel || carousel.__carouselInit) return;
+  carousel.__carouselInit = true;
 
-    function handleDragStart(clientX) {
-      if (state === STATE.ANIMATING) return;
-      stopAutoplay();
-      state = STATE.DRAGGING;
-      dragStart = clientX;
-      dragDelta = 0;
+  const track = carousel.querySelector("[data-partner-track]");
+  if (!track) {
+    console.warn("⚠️ Partner carousel: missing track element.");
+    return;
+  }
+
+  // Remove any server-rendered clone slides to avoid double cloning.
+  track.querySelectorAll(".partner-carousel__slide.is-clone").forEach(clone => clone.remove());
+
+  const slides = Array.from(track.querySelectorAll(".partner-carousel__slide"));
+  if (!slides.length) {
+    console.warn("⚠️ Partner carousel: no slides found.");
+    return;
+  }
+
+  const dotsContainer = carousel.querySelector(".partner-carousel__dots");
+  const prevBtn = carousel.querySelector("[data-partner-prev]");
+  const nextBtn = carousel.querySelector("[data-partner-next]");
+
+  const STATE = { IDLE: 0, ANIMATING: 1, DRAGGING: 2 };
+  let state = STATE.IDLE;
+  let currentIndex = 1;
+  let stepX = 0;
+  let autoplayTimer = null;
+  let resizeRAF = null;
+
+  const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const TRANSITION = REDUCED ? 0 : 800;
+  const EASE = "cubic-bezier(0.33, 1, 0.68, 1)";
+  const AUTOPLAY = REDUCED ? 0 : 6000;
+  const SWIPE_THRESHOLD = 0.2;
+  const MIN_SWIPE = 50;
+
+  // Clone for infinite loop
+  const firstClone = slides[0].cloneNode(true);
+  const lastClone = slides[slides.length - 1].cloneNode(true);
+  [firstClone, lastClone].forEach(c => {
+    c.classList.add("is-clone");
+    c.setAttribute("aria-hidden", "true");
+  });
+  track.insertBefore(lastClone, slides[0]);
+  track.appendChild(firstClone);
+
+  const allSlides = Array.from(track.querySelectorAll(".partner-carousel__slide"));
+  const REAL_COUNT = slides.length;
+
+  function computeStep() {
+    const a = allSlides[0].getBoundingClientRect();
+    const b = allSlides[1].getBoundingClientRect();
+    stepX = Math.abs(b.left - a.left) || a.width;
+  }
+
+  function setTransform(index, transition = true) {
+    const x = -index * stepX;
+    track.style.transition = transition && TRANSITION > 0 ? `transform ${TRANSITION}ms ${EASE}` : "none";
+    track.style.transform = `translate3d(${x}px,0,0)`;
+    track.style.willChange = transition ? "transform" : "auto";
+  }
+
+  function snap() {
+    if (currentIndex === 0) {
+      currentIndex = REAL_COUNT;
+      setTransform(currentIndex, false);
+    } else if (currentIndex === REAL_COUNT + 1) {
+      currentIndex = 1;
       setTransform(currentIndex, false);
     }
+  }
 
-    function handleDragMove(clientX) {
-      if (state !== STATE.DRAGGING || dragStart === null) return;
-      dragDelta = clientX - dragStart;
-      const x = -currentIndex * stepX + dragDelta;
-      track.style.transform = `translate3d(${x}px, 0, 0)`;
-    }
+  function updateUI() {
+    const realIndex = currentIndex === 0 ? REAL_COUNT - 1 :
+                      currentIndex === REAL_COUNT + 1 ? 0 :
+                      currentIndex - 1;
 
-    function handleDragEnd() {
-      if (state !== STATE.DRAGGING) return;
-      state = STATE.IDLE;
-      
-      const threshold = Math.max(MIN_SWIPE_PX, stepX * SWIPE_THRESHOLD);
-      const shouldChange = Math.abs(dragDelta) > threshold;
-
-      if (shouldChange) {
-        if (dragDelta > 0) prev();
-        else next();
-      } else {
-        setTransform(currentIndex, true);
-      }
-
-      dragStart = null;
-      dragDelta = 0;
-      resumeAutoplay();
-    }
-
-    // Touch events (passive for performance)
-    carousel.addEventListener("touchstart", (e) => {
-      handleDragStart(e.touches[0].clientX);
-    }, { passive: true });
-
-    carousel.addEventListener("touchmove", (e) => {
-      handleDragMove(e.touches[0].clientX);
-    }, { passive: true });
-
-    carousel.addEventListener("touchend", handleDragEnd, { passive: true });
-
-    // Mouse events
-    carousel.addEventListener("mousedown", (e) => {
-      e.preventDefault();
-      handleDragStart(e.clientX);
-      
-      const handleMouseMove = (moveEvent) => {
-        handleDragMove(moveEvent.clientX);
-      };
-      
-      const handleMouseUp = () => {
-        handleDragEnd();
-        document.removeEventListener("mousemove", handleMouseMove);
-        document.removeEventListener("mouseup", handleMouseUp);
-      };
-      
-      document.addEventListener("mousemove", handleMouseMove);
-      document.addEventListener("mouseup", handleMouseUp);
+    allSlides.forEach((s, i) => {
+      const active = i === currentIndex;
+      s.classList.toggle("is-active", active);
+      s.setAttribute("aria-hidden", active ? "false" : "true");
     });
 
-    // ═══════════════════════════════════════════
-    // EVENTS: Keyboard (Accessibility)
-    // ═══════════════════════════════════════════
-    carousel.addEventListener("keydown", (e) => {
-      if (state === STATE.ANIMATING) return;
-      
-      switch (e.key) {
-        case "ArrowLeft":
-          e.preventDefault();
-          stopAutoplay();
-          prev();
-          resumeAutoplay();
-          break;
-        case "ArrowRight":
-          e.preventDefault();
-          stopAutoplay();
-          next();
-          resumeAutoplay();
-          break;
-        case "Home":
-          e.preventDefault();
-          stopAutoplay();
-          goTo(0);
-          resumeAutoplay();
-          break;
-        case "End":
-          e.preventDefault();
-          stopAutoplay();
-          goTo(REAL_COUNT - 1);
-          resumeAutoplay();
-          break;
-      }
+    dotsContainer?.querySelectorAll("[data-partner-dot]").forEach((dot, i) => {
+      const active = i === realIndex;
+      dot.classList.toggle("is-active", active);
+      dot.setAttribute("aria-current", active ? "true" : "false");
     });
+  }
 
-    // Make carousel focusable for keyboard
-    if (!carousel.hasAttribute("tabindex")) {
-      carousel.setAttribute("tabindex", "0");
-    }
-    carousel.setAttribute("role", "region");
-    carousel.setAttribute("aria-label", "Partner logos carousel");
+  function goTo(newIndex) {
+    if (state === STATE.ANIMATING) return;
+    state = STATE.ANIMATING;
+    currentIndex = newIndex;
+    setTransform(currentIndex, true);
+    updateUI();
 
-    // ═══════════════════════════════════════════
-    // EVENTS: TransitionEnd (clean state)
-    // ═══════════════════════════════════════════
-    track.addEventListener("transitionend", (e) => {
-      if (e.target !== track || e.propertyName !== "transform") return;
-      
-      clearTimeout(transitionEndTimer);
+    setTimeout(() => {
       state = STATE.IDLE;
-      snapToReal();
+      snap();
       updateUI();
-    });
+    }, TRANSITION + 50);
+  }
 
-    // ═══════════════════════════════════════════
-    // EVENTS: Visibility (pause when hidden)
-    // ═══════════════════════════════════════════
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) {
-        stopAutoplay();
-      } else {
-        resumeAutoplay();
-      }
-    });
+  const next = () => goTo(currentIndex + 1);
+  const prev = () => goTo(currentIndex - 1);
+  const goToDot = i => goTo(i + 1);
 
-    // Pause on hover
-    carousel.addEventListener("mouseenter", stopAutoplay);
-    carousel.addEventListener("mouseleave", resumeAutoplay);
+  function autoplay() {
+    if (AUTOPLAY === 0) return;
+    clearTimeout(autoplayTimer);
+    autoplayTimer = setTimeout(() => {
+      next();
+      autoplay();
+    }, AUTOPLAY);
+  }
 
-    // ═══════════════════════════════════════════
-    // EVENTS: Resize (debounced with RAF)
-    // ═══════════════════════════════════════════
-    function handleResize() {
-      if (resizeRAF) return; // Debounce with RAF
-      
-      resizeRAF = requestAnimationFrame(() => {
-        setTransform(currentIndex, false);
-        computeStepX();
-        setTransform(currentIndex, false);
-        void track.offsetHeight; // Force reflow
-        resizeRAF = null;
-      });
-    }
+  // Buttons
+  nextBtn?.addEventListener("click", () => { clearTimeout(autoplayTimer); next(); autoplay(); });
+  prevBtn?.addEventListener("click", () => { clearTimeout(autoplayTimer); prev(); autoplay(); });
 
-    if (window.ResizeObserver) {
-      const ro = new ResizeObserver(handleResize);
-      ro.observe(carousel);
-      ro.observe(track);
-    } else {
-      let resizeTimer;
-      window.addEventListener("resize", () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(handleResize, 150);
-      });
-    }
+  // Dots
+  dotsContainer?.addEventListener("click", e => {
+    const dot = e.target.closest("[data-partner-dot]");
+    if (!dot) return;
+    const i = parseInt(dot.dataset.partnerDot, 10);
+    if (!isNaN(i) && i !== currentIndex - 1) { clearTimeout(autoplayTimer); goToDot(i); autoplay(); }
+  });
 
-    // ═══════════════════════════════════════════
-    // INIT: Start the carousel
-    // ═══════════════════════════════════════════
-    computeStepX();
+  // Drag / Touch
+  let startX = null, deltaX = 0;
+  const DRAG_GUARD_SELECTOR = "[data-partner-prev], [data-partner-next], .partner-carousel__dot";
+  const onStart = x => {
+    if (state === STATE.ANIMATING) return;
+    state = STATE.DRAGGING; startX = x; deltaX = 0; clearTimeout(autoplayTimer);
     setTransform(currentIndex, false);
-    
-    requestAnimationFrame(() => {
-      updateUI();
-      if (!REDUCED_MOTION) startAutoplay();
+  };
+  const onMove = x => {
+    if (state !== STATE.DRAGGING || startX == null) return;
+    deltaX = x - startX;
+    track.style.transform = `translate3d(${-(currentIndex * stepX) + deltaX}px,0,0)`;
+  };
+  const onEnd = () => {
+    if (state !== STATE.DRAGGING) return;
+    const threshold = Math.max(MIN_SWIPE, stepX * SWIPE_THRESHOLD);
+    if (Math.abs(deltaX) > threshold) (deltaX > 0 ? prev() : next());
+    else setTransform(currentIndex, true);
+    startX = null; deltaX = 0; autoplay(); state = STATE.IDLE;
+  };
+
+  carousel.addEventListener("touchstart", e => {
+    if (e.target.closest(DRAG_GUARD_SELECTOR)) return;
+    onStart(e.touches[0].clientX);
+  }, { passive: true });
+  carousel.addEventListener("touchmove", e => onMove(e.touches[0].clientX), { passive: true });
+  carousel.addEventListener("touchend", onEnd);
+
+  carousel.addEventListener("mousedown", e => {
+    if (e.button !== 0) return;
+    if (e.target.closest(DRAG_GUARD_SELECTOR)) return;
+    e.preventDefault();
+    onStart(e.clientX);
+    const move = ev => onMove(ev.clientX);
+    const up = () => { onEnd(); document.removeEventListener("mousemove", move); document.removeEventListener("mouseup", up); };
+    document.addEventListener("mousemove", move);
+    document.addEventListener("mouseup", up);
+  });
+
+  // Keyboard navigation
+  carousel.setAttribute("tabindex", "0");
+  carousel.setAttribute("role", "region");
+  carousel.setAttribute("aria-label", "Partner logos carousel");
+  carousel.addEventListener("keydown", e => {
+    if (state === STATE.ANIMATING) return;
+    switch (e.key) {
+      case "ArrowLeft": prev(); break;
+      case "ArrowRight": next(); break;
+      case "Home": goToDot(0); break;
+      case "End": goToDot(REAL_COUNT - 1); break;
+    }
+    clearTimeout(autoplayTimer); autoplay();
+  });
+
+  // Visibility pause
+  document.addEventListener("visibilitychange", () => {
+    document.hidden ? clearTimeout(autoplayTimer) : autoplay();
+  });
+  carousel.addEventListener("mouseenter", () => clearTimeout(autoplayTimer));
+  carousel.addEventListener("mouseleave", autoplay);
+
+  // Resize handler
+  const onResize = () => {
+    if (resizeRAF) return;
+    resizeRAF = requestAnimationFrame(() => {
+      computeStep();
+      setTransform(currentIndex, false);
+      resizeRAF = null;
     });
+  };
+  window.addEventListener("resize", onResize);
 
-    console.log(`✅ Partner carousel initialized: ${REAL_COUNT} slides, stepX=${stepX}px, 60fps mode`);
-  }
+  // Init
+  computeStep();
+  setTransform(currentIndex, false);
+  updateUI();
+  if (!REDUCED) autoplay();
+  console.log(`✅ Partner carousel ready: ${REAL_COUNT} slides (${stepX}px each)`);
+}
 
-  // =============================
-  // Details/Accordion Enhancement
-  // =============================
-  
-  function enhanceAccordions() {
-    const details = document.querySelectorAll("details");
-    
-    details.forEach((detail) => {
-      const summary = detail.querySelector("summary");
-      if (!summary) return;
-      
-      summary.addEventListener("click", (e) => {
-        // Add smooth animation class
-        detail.classList.add("is-animating");
-        
-        setTimeout(() => {
-          detail.classList.remove("is-animating");
-        }, 300);
-      });
-    });
-  }
+// ====================================================
+// Registration Form Validation (Stable 2025 Edition)
+// ====================================================
+function initRegistrationForm() {
+  const form = document.querySelector('.contact-form--register');
+  if (!form) return;
 
-  // FAQ Accordion (for inschrijven.html)
-  // =====================================
-  
-  function initFAQAccordion() {
-    const faqButtons = document.querySelectorAll('.faq-question');
-    
-    faqButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const isExpanded = button.getAttribute('aria-expanded') === 'true';
-        const answerId = button.getAttribute('aria-controls');
-        const answer = document.getElementById(answerId);
-        
-        if (!answer) return;
-        
-        // Toggle current item
-        button.setAttribute('aria-expanded', !isExpanded);
-        
-        if (isExpanded) {
-          answer.classList.remove('is-open');
-        } else {
-          answer.classList.add('is-open');
-        }
-      });
-    });
-  }
+  // Dutch error messages
+  const errorMessages = {
+    'full-name': 'Vul je volledige naam in.',
+    'email': 'Vul een geldig e-mailadres in.',
+    'phone': 'Vul je telefoonnummer in.',
+    'national-number': 'Vul een geldig rijksregisternummer in.',
+    'postcode': 'Vul je postcode in.',
+    'city': 'Vul je gemeente of stad in.',
+    'address': 'Vul je adres in.',
+    'course': 'Kies een opleiding.',
+    'gender': 'Kies een geslacht.',
+    'default': 'Dit veld is verplicht.'
+  };
 
-  // Registration Form Validation (for inschrijven.html)
-  // ====================================================
-  
-  function initRegistrationForm() {
-    const form = document.querySelector('.contact-form--register');
-    if (!form) return;
-    
-    // Dutch validation messages
-    const errorMessages = {
-      'full-name': 'Vul je volledige naam in.',
-      'email': 'Vul een geldig e-mailadres in.',
-      'phone': 'Vul je telefoonnummer in.',
-      'national-number': 'Vul een geldig rijksregisternummer in.',
-      'postcode': 'Vul je postcode in.',
-      'city': 'Vul je gemeente of stad in.',
-      'address': 'Vul je adres in.',
-      'course': 'Kies een opleiding.',
-      'gender': 'Kies een geslacht.'
-    };
-    
-    // Validate single field
-    function validateField(field) {
-      const fieldName = field.getAttribute('name');
-      const errorElement = document.getElementById(`${fieldName}-error`);
-      
-      if (!errorElement) return true;
-      
-      let isValid = true;
-      let errorMessage = '';
-      
-      // Check if required field is empty
-      if (field.hasAttribute('required')) {
-        if (field.type === 'radio') {
-          const radioGroup = form.querySelectorAll(`input[name="${fieldName}"]`);
-          isValid = Array.from(radioGroup).some(radio => radio.checked);
-        } else if (field.tagName === 'SELECT') {
-          isValid = field.value !== '' && field.value !== null;
-        } else {
-          isValid = field.value.trim() !== '';
-        }
-        
-        if (!isValid) {
-          errorMessage = errorMessages[fieldName] || 'Dit veld is verplicht.';
-        }
-      }
-      
-      // Email validation
-      if (isValid && field.type === 'email' && field.value.trim() !== '') {
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        isValid = emailPattern.test(field.value);
-        if (!isValid) {
-          errorMessage = errorMessages['email'];
-        }
-      }
-      
-      // Update UI
-      if (!isValid) {
-        field.setAttribute('aria-invalid', 'true');
-        errorElement.textContent = errorMessage;
+  // Unified validator
+  function validateField(field) {
+    const name = field.getAttribute('name');
+    const errorEl = document.getElementById(`${name}-error`);
+    if (!errorEl) return true;
+
+    let valid = true;
+    let msg = '';
+
+    // Required validation
+    if (field.hasAttribute('required')) {
+      if (field.type === 'radio') {
+        const radios = form.querySelectorAll(`input[name="${name}"]`);
+        valid = Array.from(radios).some(r => r.checked);
+      } else if (field.tagName === 'SELECT') {
+        valid = field.value.trim() !== '';
       } else {
-        field.setAttribute('aria-invalid', 'false');
-        errorElement.textContent = '';
+        valid = field.value.trim() !== '';
       }
-      
-      return isValid;
+      if (!valid) msg = errorMessages[name] || errorMessages.default;
     }
-    
-    // Validate all fields
-    function validateForm() {
-      let isFormValid = true;
-      
-      // Validate text inputs
-      const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
-      inputs.forEach(input => {
-        if (!validateField(input)) {
-          isFormValid = false;
-        }
-      });
-      
-      // Validate radio groups
-      const radioGroups = form.querySelectorAll('.radio-pill-group[aria-required="true"]');
-      radioGroups.forEach(group => {
-        const firstRadio = group.querySelector('input[type="radio"]');
-        if (firstRadio && !validateField(firstRadio)) {
-          isFormValid = false;
-        }
-      });
-      
-      return isFormValid;
+
+    // Email pattern check
+    if (valid && field.type === 'email' && field.value.trim() !== '') {
+      const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      valid = pattern.test(field.value);
+      if (!valid) msg = errorMessages['email'];
     }
-    
-    // Add blur validation for inputs
-    const inputs = form.querySelectorAll('input, select, textarea');
-    inputs.forEach(input => {
-      input.addEventListener('blur', () => {
-        if (input.value.trim() !== '' || input.hasAttribute('aria-invalid')) {
-          validateField(input);
-        }
-      });
-      
-      // Clear error on input
-      input.addEventListener('input', () => {
-        const fieldName = input.getAttribute('name');
-        const errorElement = document.getElementById(`${fieldName}-error`);
-        if (errorElement && errorElement.textContent !== '') {
-          validateField(input);
-        }
-      });
+
+    // Update UI state
+    field.setAttribute('aria-invalid', valid ? 'false' : 'true');
+    field.classList.toggle('has-error', !valid);
+    field.classList.toggle('is-valid', valid);
+
+    if (errorEl) errorEl.textContent = valid ? '' : msg;
+
+    return valid;
+  }
+
+  // Validate entire form
+  function validateForm() {
+    let validForm = true;
+    const all = form.querySelectorAll('input[required], select[required], textarea[required]');
+    all.forEach(input => {
+      if (!validateField(input)) validForm = false;
     });
-    
-    // Add change validation for radio buttons
-    const radios = form.querySelectorAll('input[type="radio"]');
-    radios.forEach(radio => {
-      radio.addEventListener('change', () => {
-        validateField(radio);
-      });
+    return validForm;
+  }
+
+  // Attach listeners
+  const fields = form.querySelectorAll('input, select, textarea');
+
+  fields.forEach(f => {
+    f.addEventListener('blur', () => {
+      if (f.value.trim() !== '' || f.classList.contains('has-error')) {
+        validateField(f);
+      }
     });
-    
-    // Handle Enter key on last input field (Ctrl+Enter in textarea)
-    const lastInput = form.querySelector('textarea[name="message"]');
-    if (lastInput) {
-      lastInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && e.ctrlKey) {
-          e.preventDefault();
-          form.dispatchEvent(new Event('submit', { cancelable: true }));
-        }
-      });
-    }
-    
-    // Form submission
-    form.addEventListener('submit', (e) => {
+    f.addEventListener('input', () => {
+      const errEl = document.getElementById(`${f.name}-error`);
+      if (errEl && errEl.textContent !== '') validateField(f);
+    });
+  });
+
+  // Radio buttons revalidate on change
+  form.querySelectorAll('input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', () => validateField(radio));
+  });
+
+  // Ctrl + Enter submits the form
+  const msgField = form.querySelector('textarea[name="message"]');
+  if (msgField) {
+    msgField.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && e.ctrlKey) {
+        e.preventDefault();
+        form.requestSubmit();
+      }
+    });
+  }
+
+  // Handle form submission
+  form.addEventListener('submit', e => {
+    if (!validateForm()) {
       e.preventDefault();
-      e.stopPropagation();
-      
-      if (validateForm()) {
-        const submitButton = form.querySelector('.btn-submit');
-        submitButton.disabled = true;
-        submitButton.textContent = 'Bezig met verzenden...';
-        
-        // Simulate form submission (replace with actual API call)
-        setTimeout(() => {
-          alert('Bedankt voor je inschrijving! We nemen binnen 3 werkdagen contact met je op.');
-          form.reset();
-          submitButton.disabled = false;
-          submitButton.textContent = 'Verstuur inschrijving';
-          
-          // Clear all error messages
-          const errors = form.querySelectorAll('.form-error');
-          errors.forEach(error => error.textContent = '');
-          
-          // Clear aria-invalid attributes
-          const fields = form.querySelectorAll('[aria-invalid]');
-          fields.forEach(field => field.removeAttribute('aria-invalid'));
-        }, 1500);
-      } else {
-        // Find first error and scroll to it smoothly
-        const firstError = form.querySelector('.form-error:not(:empty)');
-        if (firstError) {
-          const fieldContainer = firstError.closest('.form-label');
-          if (fieldContainer) {
-            // Calculate offset to keep field visible with some padding
-            const rect = fieldContainer.getBoundingClientRect();
-            const offset = window.pageYOffset + rect.top - 100;
-            
-            window.scrollTo({ 
-              top: offset,
-              behavior: 'smooth' 
-            });
-            
-            // Focus the invalid field after scroll
-            setTimeout(() => {
-              const invalidField = fieldContainer.querySelector('.form-input[aria-invalid="true"], input[aria-invalid="true"]');
-              if (invalidField) {
-                invalidField.focus();
-              }
-            }, 500);
-          }
-        }
+      const firstError = form.querySelector('.has-error');
+      if (firstError) {
+        firstError.focus();
+        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
-    });
-    
-    console.log('✅ Registration form validation initialized');
-  }
+    }
+  });
+
+  console.log('✅ Registration form validation initialized successfully');
+}
+
 
   // =============================
   // Update Footer Year
@@ -1613,38 +1058,141 @@ function setupSmoothScroll() {
   
   function initIntakePrepAccordion() {
     const accordionItems = document.querySelectorAll('.page--inschrijven .accordion-item');
-    
+
+    console.debug('? initIntakePrepAccordion: found', accordionItems.length, 'items');
+
     if (accordionItems.length === 0) return;
     
-    accordionItems.forEach(item => {
+    accordionItems.forEach((item, idx) => {
       const header = item.querySelector('.accordion-header');
       const body = item.querySelector('.accordion-body');
-      
+
       if (!header || !body) return;
-      
-      header.addEventListener('click', () => {
+
+      // Ensure header is focusable and add debug logging
+      header.tabIndex = header.tabIndex || 0;
+
+      const closeBody = (elBody, elHeader) => {
+        elHeader.setAttribute('aria-expanded', 'false');
+        elBody.setAttribute('aria-hidden', 'true');
+        elBody.classList.remove('is-open');
+        elHeader.classList.remove('is-open');
+
+        // Prepare for collapse: ensure visible and measure current height
+        try { elBody.style.display = elBody.style.display || 'block'; } catch (e) {}
+        elBody.style.overflow = 'hidden';
+        const startH = elBody.scrollHeight || elBody.getBoundingClientRect().height || 0;
+        elBody.style.maxHeight = startH + 'px';
+        // force reflow
+        // eslint-disable-next-line no-unused-expressions
+        elBody.offsetHeight;
+
+        // Transition to 0 to collapse
+        requestAnimationFrame(() => {
+          elBody.style.opacity = '0';
+          elBody.style.maxHeight = '0';
+        });
+
+        const onEnd = (ev) => {
+          if (ev && ev.propertyName && ev.propertyName !== 'max-height' && ev.propertyName !== 'opacity') return;
+          elBody.removeEventListener('transitionend', onEnd);
+          try { elBody.style.display = 'none'; } catch (e) {}
+          elBody.style.maxHeight = '0';
+          elBody.style.overflow = '';
+        };
+        elBody.addEventListener('transitionend', onEnd);
+      };
+
+      const openBody = (elBody, elHeader) => {
+        // mark opened
+        elHeader.setAttribute('aria-expanded', 'true');
+        elBody.setAttribute('aria-hidden', 'false');
+        elBody.classList.add('is-open');
+        elHeader.classList.add('is-open');
+
+        // Make visible and prepare for animation
+        try { elBody.style.display = 'block'; } catch (e) {}
+        elBody.style.overflow = 'hidden';
+        elBody.style.opacity = '0';
+        elBody.style.maxHeight = '0';
+
+        // force reflow then expand to measured height
+        // eslint-disable-next-line no-unused-expressions
+        elBody.offsetHeight;
+
+        const measured = elBody.scrollHeight || (elBody.getBoundingClientRect && elBody.getBoundingClientRect().height) || 0;
+        console.debug(`? accordion open idx=${idx} measuredHeight=`, measured, 'computed before open:', window.getComputedStyle(elBody).display, window.getComputedStyle(elBody).maxHeight, window.getComputedStyle(elBody).opacity);
+
+        requestAnimationFrame(() => {
+          elBody.style.maxHeight = measured + 'px';
+          elBody.style.opacity = '1';
+        });
+
+        const onTransitionEnd = (ev) => {
+          if (ev && ev.propertyName && ev.propertyName !== 'max-height' && ev.propertyName !== 'opacity') return;
+          elBody.removeEventListener('transitionend', onTransitionEnd);
+          // clear maxHeight so content can grow naturally
+          if (elHeader.getAttribute('aria-expanded') === 'true') {
+            try { elBody.style.maxHeight = 'none'; } catch (e) {}
+            elBody.style.overflow = '';
+          }
+        };
+        elBody.addEventListener('transitionend', onTransitionEnd);
+      };
+
+      const toggle = (ev) => {
+        console.debug(`? accordion click idx=${idx}`, { header, ev });
         const isExpanded = header.getAttribute('aria-expanded') === 'true';
-        
-        // Toggle current item
-        header.setAttribute('aria-expanded', !isExpanded);
-        body.setAttribute('aria-hidden', isExpanded);
-        
-        // Smooth animation
-        if (!isExpanded) {
-          body.style.maxHeight = body.scrollHeight + 'px';
-        } else {
-          body.style.maxHeight = '0';
+
+        // Collapse others first
+        accordionItems.forEach(otherItem => {
+          if (otherItem === item) return;
+          const otherHeader = otherItem.querySelector('.accordion-header');
+          const otherBody = otherItem.querySelector('.accordion-body');
+          if (!otherHeader || !otherBody) return;
+          closeBody(otherBody, otherHeader);
+        });
+
+        // Toggle this one
+        if (isExpanded) closeBody(body, header);
+        else openBody(body, header);
+      };
+
+      // Attach to header and inner clickable regions (icon/text) in case clicks are intercepted
+      header.addEventListener('click', toggle);
+      const innerIcon = header.querySelector('.accordion-header__icon');
+      const innerText = header.querySelector('.accordion-header__text');
+      if (innerIcon) innerIcon.addEventListener('click', toggle);
+      if (innerText) innerText.addEventListener('click', toggle);
+
+      // Keyboard support: toggle on Enter or Space
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle(e);
         }
       });
-      
-      // Initialize first item as open
+
+      // Initialize starting open state
       if (header.getAttribute('aria-expanded') === 'true') {
-        body.style.maxHeight = body.scrollHeight + 'px';
+        // immediate open without animation
+        try { body.style.display = 'block'; } catch (e) {}
+        body.style.overflow = '';
+        body.style.maxHeight = 'none';
+        body.style.opacity = '1';
+        body.classList.add('is-open');
+        header.classList.add('is-open');
+      } else {
+        // ensure closed state
+        try { body.style.display = 'none'; } catch (e) {}
+        body.style.maxHeight = '0';
+        body.setAttribute('aria-hidden', 'true');
+        body.style.opacity = '0';
       }
     });
     
     if (window.INTEC?.debug) {
-      console.log(`✅ Intake prep accordion initialized (${accordionItems.length} items)`);
+      console.log(`? Intake prep accordion initialized (${accordionItems.length} items)`);
     }
   }
 
@@ -1661,30 +1209,37 @@ function setupSmoothScroll() {
   // Initialize All Features
   // =============================
   
-  console.log("🚀 Initializing INTEC Brussels website...");
+  console.log("?? Initializing INTEC Brussels website...");
   
   // Performance monitoring
   const initStart = performance.now();
   
   try {
-    optimizeLazyImages();
-    setupStickyHeader();
-    setupMobileNav();
-    setupSmoothScroll();
-    setupScrollAnimations();
-    setupCounters();
-    startCourseCountdownTimer();
+  optimizeLazyImages();
+  setupStickyHeader();
+  setupMobileNav();
+  setupSmoothScroll();
+  setupScrollAnimations();
+  setupCounters();
+  // Correct countdown starter: startCountdown is defined above. An incorrect
+  // call to startCourseCountdownTimer() caused a ReferenceError and prevented
+  // subsequent initializers (like initIntakePrepAccordion) from running.
+  startCountdown();
     initPartnerCarousel();
-    enhanceAccordions();
-    initFAQAccordion();
+    if (typeof enhanceAccordions === "function") {
+      enhanceAccordions();
+    }
+    if (typeof initFAQAccordion === "function") {
+      initFAQAccordion();
+    }
     initIntakePrepAccordion();
     initRegistrationForm();
     updateFooterYear();
     
     const initEnd = performance.now();
-    console.log(`✅ All features initialized in ${(initEnd - initStart).toFixed(2)}ms`);
+    console.log(`? All features initialized in ${(initEnd - initStart).toFixed(2)}ms`);
   } catch (error) {
-    console.error("❌ Initialization error:", error);
+    console.error("? Initialization error:", error);
   }
   
   // Announce page ready for screen readers
@@ -1696,7 +1251,6 @@ function setupSmoothScroll() {
     srOnly.textContent = "Page loaded successfully";
     document.body.appendChild(srOnly);
   }, 100);
-});
 
 // =============================
 // Service Worker Registration (Optional)
@@ -1707,10 +1261,10 @@ if ("serviceWorker" in navigator && window.location.protocol === "https:") {
     navigator.serviceWorker
       .register("/sw.js")
       .then((registration) => {
-        console.log("✅ Service Worker registered:", registration.scope);
+        console.log("? Service Worker registered:", registration.scope);
       })
       .catch((error) => {
-        console.log("ℹ️ Service Worker registration skipped:", error);
+        console.log("?? Service Worker registration skipped:", error);
       });
   });
 }
@@ -1794,19 +1348,14 @@ if (siteHeader) {
 // SECTION BACKGROUND ALTERNATION SYSTEM
 // ============================================================================
 
-/**
- * 🎨 نظام متقدم لتطبيق ألوان خلفية متناوبة على الأقسام
- * يدعم تخصيص الألوان والاستثناءات مع تحسين الأداء
- */
 (function initSectionBackgroundSystem() {
   'use strict';
   
-  // إعدادات النظام
   const CONFIG = {
-    // الـ selectors الأساسية - تحديث لتشمل جميع الأقسام
+    // ??? selectors ???????? - ????? ????? ???? ???????
     mainSelector: 'section, .section',
     
-    // الأقسام المستثناة من النظام
+    // ??????? ????????? ?? ??????
     excludeClasses: [
       'hero',
       'section--hero', 
@@ -1819,27 +1368,21 @@ if (siteHeader) {
       'opleidingen-hero'
     ],
     
-    // استخدام classes بدلاً من inline styles (أفضل للأداء)
     useClasses: true,
     
-    // الـ classes المستخدمة
-    evenClass: 'section--surface',  // للأقسام الزوجية
-    oddClass: 'section--alt',       // للأقسام الفردية
+    evenClass: 'section--surface',
+    oddClass: 'section--alt',
     
-    // Fallback inline styles (إذا لم نستخدم classes)
     evenBackground: 'var(--color-bg-surface)',
     oddBackground: 'var(--color-bg-section)',
     
-    // تمكين/تعطيل الانتقالات السلسة
     enableTransitions: true,
     
-    // تمكين/تعطيل الـ debug logging
     debug: false
   };
 
   /**
-   * التحقق من أن القسم مستثنى من النظام
-   * @param {Element} section - عنصر القسم
+   * @param {Element} section 
    * @returns {boolean}
    */
   function isExcludedSection(section) {
@@ -1849,15 +1392,13 @@ if (siteHeader) {
   }
 
   /**
-   * تطبيق الخلفية المناسبة على القسم
-   * @param {Element} section - عنصر القسم
-   * @param {number} visualIndex - الفهرس المرئي (بعد استثناء الأقسام الخاصة)
+   * @param {Element} section 
+   * @param {number} visualIndex
    */
   function applySectionBackground(section, visualIndex) {
-    // تخطي الأقسام المستثناة
     if (isExcludedSection(section)) {
       if (CONFIG.debug) {
-        console.log(`🚫 Skipping excluded section:`, section.className);
+        console.log(`?? Skipping excluded section:`, section.className);
       }
       return;
     }
@@ -1865,52 +1406,46 @@ if (siteHeader) {
     const isEven = visualIndex % 2 === 0;
     
     if (CONFIG.useClasses) {
-      // إزالة الـ classes القديمة أولاً
       section.classList.remove(CONFIG.evenClass, CONFIG.oddClass);
       
-      // إضافة الـ class المناسب
       const targetClass = isEven ? CONFIG.evenClass : CONFIG.oddClass;
       section.classList.add(targetClass);
       
       if (CONFIG.debug) {
-        console.log(`✅ Applied class "${targetClass}" to section ${visualIndex}`);
+        console.log(`? Applied class "${targetClass}" to section ${visualIndex}`);
       }
     } else {
-      // تطبيق inline style كـ fallback
+      // inline style ?? fallback
       const targetBackground = isEven ? CONFIG.evenBackground : CONFIG.oddBackground;
       section.style.background = targetBackground;
       
       if (CONFIG.debug) {
-        console.log(`✅ Applied background "${targetBackground}" to section ${visualIndex}`);
+        console.log(`? Applied background "${targetBackground}" to section ${visualIndex}`);
       }
     }
   }
 
-  /**
-   * تطبيق النظام على جميع الأقسام
-   */
   function applySectionBackgrounds() {
     const sections = document.querySelectorAll(CONFIG.mainSelector);
     
     if (sections.length === 0) {
       if (CONFIG.debug) {
-        console.warn('⚠️ No sections found with selector:', CONFIG.mainSelector);
+        console.warn('?? No sections found with selector:', CONFIG.mainSelector);
       }
       return;
     }
 
-    let visualIndex = 0; // العداد المرئي (بعد استثناء الأقسام الخاصة)
+    let visualIndex = 0;
     let processedCount = 0;
 
     sections.forEach((section, absoluteIndex) => {
       if (isExcludedSection(section)) {
         if (CONFIG.debug) {
-          console.log(`🚫 Section ${absoluteIndex} excluded:`, section.className);
+          console.log(`?? Section ${absoluteIndex} excluded:`, section.className);
         }
         return;
       }
 
-      // تطبيق الخلفية المناسبة
       applySectionBackground(section, visualIndex);
       
       visualIndex++;
@@ -1918,10 +1453,9 @@ if (siteHeader) {
     });
 
     if (CONFIG.debug) {
-      console.log(`✅ Section backgrounds applied: ${processedCount}/${sections.length} sections processed`);
+      console.log(`? Section backgrounds applied: ${processedCount}/${sections.length} sections processed`);
     }
 
-    // إرسال event مخصص لإشعار النظائم الأخرى
     window.dispatchEvent(new CustomEvent('sectionBackgroundsApplied', {
       detail: { 
         processedCount, 
@@ -1932,9 +1466,9 @@ if (siteHeader) {
   }
 
   /**
-   * Debounce function لتحسين الأداء
-   * @param {Function} func - الدالة المراد تأخيرها
-   * @param {number} wait - وقت التأخير بالميلي ثانية
+   * Debounce function 
+   * @param {Function} func 
+   * @param {number} wait - 
    * @returns {Function}
    */
   function debounce(func, wait = 100) {
@@ -1948,20 +1482,13 @@ if (siteHeader) {
       timeout = setTimeout(later, wait);
     };
   }
-
-  /**
-   * إعادة تطبيق النظام (مفيد عند تغيير المحتوى ديناميكياً)
-   */
   function refreshSectionBackgrounds() {
     if (CONFIG.debug) {
-      console.log('🔄 Refreshing section backgrounds...');
+      console.log('?? Refreshing section backgrounds...');
     }
     applySectionBackgrounds();
   }
 
-  /**
-   * تطبيق الانتقالات السلسة على الأقسام
-   */
   function enableSmoothTransitions() {
     if (!CONFIG.enableTransitions) return;
 
@@ -1976,20 +1503,15 @@ if (siteHeader) {
     document.head.appendChild(style);
 
     if (CONFIG.debug) {
-      console.log('✅ Smooth transitions enabled for section backgrounds');
+      console.log('? Smooth transitions enabled for section backgrounds');
     }
   }
 
-  /**
-   * مراقبة تغييرات DOM لإعادة تطبيق النظام تلقائياً
-   */
   function setupDOMObserver() {
-    // مراقبة إضافة/حذف الأقسام
     const observer = new MutationObserver(debounce((mutations) => {
       let shouldRefresh = false;
 
       mutations.forEach((mutation) => {
-        // التحقق من إضافة أو حذف عقد
         if (mutation.type === 'childList') {
           const addedSections = Array.from(mutation.addedNodes)
             .filter(node => node.nodeType === 1 && 
@@ -2004,7 +1526,6 @@ if (siteHeader) {
           }
         }
 
-        // التحقق من تغيير classes
         if (mutation.type === 'attributes' && 
             mutation.attributeName === 'class' && 
             mutation.target.matches('section, .section')) {
@@ -2014,13 +1535,12 @@ if (siteHeader) {
 
       if (shouldRefresh) {
         if (CONFIG.debug) {
-          console.log('🔍 DOM changes detected, refreshing section backgrounds...');
+          console.log('?? DOM changes detected, refreshing section backgrounds...');
         }
         refreshSectionBackgrounds();
       }
     }, 250));
 
-    // مراقبة body container لتشمل جميع الأقسام
     const bodyContainer = document.body;
     if (bodyContainer) {
       observer.observe(bodyContainer, {
@@ -2031,111 +1551,107 @@ if (siteHeader) {
       });
 
       if (CONFIG.debug) {
-        console.log('👁️ DOM observer setup for dynamic content changes (body-wide)');
+        console.log('??? DOM observer setup for dynamic content changes (body-wide)');
       }
     }
 
     return observer;
   }
 
-  /**
-   * إعداد event listeners للأحداث المهمة
-   */
   function setupEventListeners() {
-    // إعادة تطبيق عند تغيير حجم الشاشة (مع debounce)
     window.addEventListener('resize', debounce(refreshSectionBackgrounds, 250));
 
-    // إعادة تطبيق عند تغيير اللغة
+    // ????? ????? ??? ????? ?????
     window.addEventListener('languageChanged', refreshSectionBackgrounds);
 
-    // API عام للاستخدام الخارجي
+    // API ??? ????????? ???????
     window.INTEC_SectionBackgrounds = {
       refresh: refreshSectionBackgrounds,
       config: CONFIG,
       apply: applySectionBackgrounds
     };
 
-    // إضافة applyAlternatingSectionClasses كاسم مستعار
+    // ????? applyAlternatingSectionClasses ???? ??????
     window.applyAlternatingSectionClasses = refreshSectionBackgrounds;
     window.refreshBackgrounds = refreshSectionBackgrounds;
     
-    // دالة لتمكين debug mode
+    // ???? ?????? debug mode
     window.debugBackgroundSystem = function() {
       CONFIG.debug = true;
-      console.log('🐛 Debug mode enabled for Section Background System');
-      console.log('📊 Current Config:', CONFIG);
+      console.log('?? Debug mode enabled for Section Background System');
+      console.log('?? Current Config:', CONFIG);
       refreshSectionBackgrounds();
     };
 
     if (CONFIG.debug) {
-      console.log('🔧 Event listeners setup complete');
-      console.log('💡 Use window.INTEC_SectionBackgrounds.refresh() to manually refresh');
+      console.log('?? Event listeners setup complete');
+      console.log('?? Use window.INTEC_SectionBackgrounds.refresh() to manually refresh');
     }
   }
 
   /**
-   * تشغيل النظام الرئيسي
+   * ????? ?????? ???????
    */
   function initializeSystem() {
     const startTime = performance.now();
 
     try {
-      // تمكين الانتقالات السلسة
+      // ????? ?????????? ??????
       enableSmoothTransitions();
 
-      // تطبيق النظام للمرة الأولى
+      // ????? ?????? ????? ??????
       applySectionBackgrounds();
 
-      // إعداد مراقبة التغييرات
+      // ????? ?????? ?????????
       setupDOMObserver();
 
-      // إعداد event listeners
+      // ????? event listeners
       setupEventListeners();
 
       const endTime = performance.now();
       const initTime = (endTime - startTime).toFixed(2);
 
-      console.log(`🎨 Section Background System initialized successfully in ${initTime}ms`);
+      console.log(`?? Section Background System initialized successfully in ${initTime}ms`);
       
       if (CONFIG.debug) {
-        console.log('📊 System Config:', CONFIG);
+        console.log('?? System Config:', CONFIG);
       }
 
     } catch (error) {
-      console.error('❌ Section Background System initialization failed:', error);
+      console.error('? Section Background System initialization failed:', error);
     }
   }
 
-  // تشغيل النظام عند تحميل DOM أو فوراً إذا كان جاهزاً
+  // ????? ?????? ??? ????? DOM ?? ????? ??? ??? ??????
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeSystem);
   } else {
-    // DOM جاهز، تشغيل فوري
+    // DOM ????? ????? ????
     initializeSystem();
   }
 
-  // تشغيل إضافي عند تحميل النافذة (للتأكد من تحميل جميع الموارد)
+  // ????? ????? ??? ????? ??????? (?????? ?? ????? ???? ???????)
   window.addEventListener('load', refreshSectionBackgrounds);
 
 })();
 
 // ============================================================================
-// 🎨 ALTERNATING SECTION BACKGROUNDS SYSTEM
-// نظام الخلفيات المتناوبة التلقائي
+// ?? ALTERNATING SECTION BACKGROUNDS SYSTEM
+// ???? ???????? ????????? ????????
 // ============================================================================
 
 (function() {
   'use strict';
 
   /**
-   * ⚙️ إعدادات النظام
+   * ?? ??????? ??????
    */
   const CONFIG = {
-    // CSS classes للخلفيات المتناوبة
-    surfaceClass: 'section--surface',  // الأقسام الزوجية (فاتح)
-    altClass: 'section--alt',          // الأقسام الفردية (متناوب)
+    // CSS classes ???????? ?????????
+    surfaceClass: 'section--surface',  // ??????? ??????? (????)
+    altClass: 'section--alt',          // ??????? ??????? (??????)
     
-    // قائمة الأقسام المستثناة من النظام التلقائي
+    // ????? ??????? ????????? ?? ?????? ????????
     excludeSelectors: [
       '.hero',
       '.footer', 
@@ -2145,35 +1661,35 @@ if (siteHeader) {
       '.section--no-alternating'
     ],
     
-    // إعدادات المراقبة
-    observeChanges: false,       // تعطيل المراقبة لمنع الرجفة في DevTools
-    debounceDelay: 300,         // تأخير لتجنب الاستدعاءات المتكررة
+    // ??????? ????????
+    observeChanges: false,       // ????? ???????? ???? ?????? ?? DevTools
+    debounceDelay: 300,         // ????? ????? ??????????? ????????
     
-    // وضع التطوير
-    debug: true                // لعرض تفاصيل إضافية في console
+    // ??? ???????
+    debug: true                // ???? ?????? ?????? ?? console
   };
 
   /**
-   * 🎯 وظيفة تطبيق الخلفيات المتناوبة
+   * ?? ????? ????? ???????? ?????????
    */
   function applyAlternatingSectionClasses() {
-    // البحث عن جميع الأقسام في الصفحة
+    // ????? ?? ???? ??????? ?? ??????
     const sections = document.querySelectorAll('section, .section');
     
     if (sections.length === 0) {
       if (CONFIG.debug) {
-        console.log('🔍 No sections found for alternating backgrounds');
+        console.log('?? No sections found for alternating backgrounds');
       }
       return;
     }
 
-    // تصفية الأقسام المستثناة
+    // ????? ??????? ?????????
     const validSections = Array.from(sections).filter(section => {
-      // تحقق من الاستثناءات
+      // ???? ?? ???????????
       for (const excludeSelector of CONFIG.excludeSelectors) {
         if (section.matches(excludeSelector)) {
           if (CONFIG.debug) {
-            console.log(`⏭️ Excluding section: ${excludeSelector}`);
+            console.log(`?? Excluding section: ${excludeSelector}`);
           }
           return false;
         }
@@ -2182,15 +1698,15 @@ if (siteHeader) {
     });
 
     if (CONFIG.debug) {
-      console.log(`🎨 Processing ${validSections.length} sections for alternating backgrounds`);
+      console.log(`?? Processing ${validSections.length} sections for alternating backgrounds`);
     }
 
-    // إزالة الخلفيات القديمة أولاً
+    // ????? ???????? ??????? ?????
     validSections.forEach(section => {
       section.classList.remove(CONFIG.surfaceClass, CONFIG.altClass);
     });
 
-    // تطبيق الخلفيات المتناوبة
+    // ????? ???????? ?????????
     validSections.forEach((section, index) => {
       const isEven = index % 2 === 0;
       const className = isEven ? CONFIG.surfaceClass : CONFIG.altClass;
@@ -2198,17 +1714,17 @@ if (siteHeader) {
       section.classList.add(className);
       
       if (CONFIG.debug) {
-        console.log(`✅ Section ${index + 1}: Applied .${className}`);
+        console.log(`? Section ${index + 1}: Applied .${className}`);
       }
     });
 
     if (CONFIG.debug) {
-      console.log('🎨 Alternating section backgrounds applied successfully');
+      console.log('?? Alternating section backgrounds applied successfully');
     }
   }
 
   /**
-   * ⏱️ تطبيق Debounce لتحسين الأداء
+   * ?? ????? Debounce ?????? ??????
    */
   function debounce(func, wait) {
     let timeout;
@@ -2223,7 +1739,7 @@ if (siteHeader) {
   }
 
   /**
-   * 👁️ مراقب التغييرات في DOM
+   * ??? ????? ????????? ?? DOM
    */
   function setupDOMObserver() {
     if (!CONFIG.observeChanges) return null;
@@ -2233,16 +1749,16 @@ if (siteHeader) {
 
     const debouncedRefresh = debounce(() => {
       if (CONFIG.debug) {
-        console.log('🔄 DOM changes detected, refreshing section backgrounds...');
+        console.log('?? DOM changes detected, refreshing section backgrounds...');
       }
       applyAlternatingSectionClasses();
     }, CONFIG.debounceDelay);
 
     const observer = new MutationObserver((mutations) => {
-      // إيقاف مؤقت للمراقبة لتجنب الرجفة
+      // ????? ???? ???????? ????? ??????
       if (!isObserving) return;
       
-      // تجميد المراقبة لمدة 2 ثانية بعد أي تغيير
+      // ????? ???????? ???? 2 ????? ??? ?? ?????
       if (mutationTimeout) clearTimeout(mutationTimeout);
       isObserving = false;
       
@@ -2253,7 +1769,7 @@ if (siteHeader) {
       let shouldRefresh = false;
 
       mutations.forEach((mutation) => {
-        // فقط sections حقيقية
+        // ??? sections ??????
         if (mutation.type === 'childList') {
           for (const node of mutation.addedNodes) {
             if (node.nodeType === Node.ELEMENT_NODE && 
@@ -2271,7 +1787,7 @@ if (siteHeader) {
       }
     });
 
-    // مراقبة body container لتشمل جميع الأقسام
+    // ?????? body container ????? ???? ???????
     const bodyContainer = document.body;
     if (bodyContainer) {
       observer.observe(bodyContainer, {
@@ -2282,7 +1798,7 @@ if (siteHeader) {
       });
 
       if (CONFIG.debug) {
-        console.log('👁️ DOM observer setup for dynamic content changes');
+        console.log('??? DOM observer setup for dynamic content changes');
       }
     }
 
@@ -2290,37 +1806,37 @@ if (siteHeader) {
   }
 
   /**
-   * 🎛️ إعداد event listeners للأحداث المهمة
+   * ??? ????? event listeners ??????? ??????
    */
   function setupEventListeners() {
-    // إعادة تطبيق عند تغيير حجم الشاشة (مع debounce)
+    // ????? ????? ??? ????? ??? ?????? (?? debounce)
     const debouncedResize = debounce(applyAlternatingSectionClasses, 250);
     window.addEventListener('resize', debouncedResize);
 
-    // إعادة تطبيق عند تغيير اللغة
+    // ????? ????? ??? ????? ?????
     window.addEventListener('languageChanged', applyAlternatingSectionClasses);
 
     if (CONFIG.debug) {
-      console.log('🎛️ Event listeners setup complete');
+      console.log('??? Event listeners setup complete');
     }
   }
 
   /**
-   * 🚀 تهيئة النظام
+   * ?? ????? ??????
    */
   function initializeSystem() {
     if (CONFIG.debug) {
-      console.log('🚀 Initializing alternating section backgrounds system...');
+      console.log('?? Initializing alternating section backgrounds system...');
     }
 
-    // تطبيق فوري للخلفيات
+    // ????? ???? ????????
     applyAlternatingSectionClasses();
     
-    // إعداد المراقبة والاستجابة للأحداث
+    // ????? ???????? ?????????? ???????
     setupDOMObserver();
     setupEventListeners();
 
-    // API عام للاستخدام الخارجي
+    // API ??? ????????? ???????
     window.INTEC_SectionBackgrounds = {
       refresh: applyAlternatingSectionClasses,
       config: CONFIG,
@@ -2328,11 +1844,11 @@ if (siteHeader) {
     };
 
     if (CONFIG.debug) {
-      console.log('✅ Alternating section backgrounds system initialized');
+      console.log('? Alternating section backgrounds system initialized');
     }
   }
 
-  // تشغيل النظام عند تحميل الصفحة
+  // ????? ?????? ??? ????? ??????
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeSystem);
   } else {
@@ -2341,17 +1857,17 @@ if (siteHeader) {
 
 })();
 
-// PUBLIC API للاستخدام الخارجي
+// PUBLIC API ????????? ???????
 // ============================================================================
 
 /**
- * 🌐 API عام لإدارة خلفيات الأقسام
- * يمكن استخدامه من أي مكان في الموقع
+ * ?? API ??? ?????? ?????? ???????
+ * ???? ???????? ?? ?? ???? ?? ??????
  */
 window.INTEC = window.INTEC || {};
 window.INTEC.SectionBackgrounds = {
   /**
-   * إعادة تطبيق ألوان الخلفية المتناوبة
+   * ????? ????? ????? ??????? ?????????
    */
   refresh() {
     if (window.INTEC_SectionBackgrounds) {
@@ -2360,14 +1876,14 @@ window.INTEC.SectionBackgrounds = {
   },
 
   /**
-   * الحصول على إعدادات النظام
+   * ?????? ??? ??????? ??????
    */
   getConfig() {
     return window.INTEC_SectionBackgrounds?.config || null;
   },
 
   /**
-   * تطبيق النظام يدوياً
+   * ????? ?????? ??????
    */
   apply() {
     if (window.INTEC_SectionBackgrounds) {
@@ -2377,26 +1893,27 @@ window.INTEC.SectionBackgrounds = {
 };
 
 // ============================================================================
-// CONSOLE INFO للمطورين
+// CONSOLE INFO ????????
 // ============================================================================
 console.log(`
-🎨 INTEC Brussels - Section Background System
-═══════════════════════════════════════════════
+?? INTEC Brussels - Section Background System
+-----------------------------------------------
 
-✅ System Status: Active
-🔧 Mode: Automatic alternating backgrounds  
-📱 Responsive: Yes
-🎭 Transitions: Enabled
-🔍 Debug Mode: ${window.INTEC_SectionBackgrounds?.config?.debug ? 'ON' : 'OFF'}
+? System Status: Active
+?? Mode: Automatic alternating backgrounds  
+?? Responsive: Yes
+?? Transitions: Enabled
+?? Debug Mode: ${window.INTEC_SectionBackgrounds?.config?.debug ? 'ON' : 'OFF'}
 
-💡 Usage:
-   window.INTEC.SectionBackgrounds.refresh()  // إعادة تطبيق
-   window.INTEC.SectionBackgrounds.apply()    // تطبيق يدوي
-   window.INTEC.SectionBackgrounds.getConfig() // عرض الإعدادات
+?? Usage:
+   window.INTEC.SectionBackgrounds.refresh()  // ????? ?????
+   window.INTEC.SectionBackgrounds.apply()    // ????? ????
+   window.INTEC.SectionBackgrounds.getConfig() // ??? ?????????
 
-🎯 CSS Classes:
-   .section--surface  // للأقسام الزوجية (فاتح)
-   .section--alt      // للأقسام الفردية (داكن)
+?? CSS Classes:
+   .section--surface  // ??????? ??????? (????)
+   .section--alt      // ??????? ??????? (????)
 
-═══════════════════════════════════════════════
+-----------------------------------------------
 `);
+
