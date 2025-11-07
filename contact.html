@@ -22,6 +22,8 @@
   </head>
   <body class="main-content">
     <div class="page-shell">
+
+      <!-- Header -->
       <header class="site-header">
         <div class="container site-header__inner">
           <a class="brand" href="index.html" aria-label="INTEC Brussel">
@@ -53,40 +55,57 @@
         </div>
       </header>
 
-      <main id="main-content" tabindex="-1">
-        <!-- Hero Section -->
-                <section class="hero_section">
-          <div class="container">
-            <div>
-              <span data-i18n="contact.label">Contact</span>
-              <h1 data-i18n="contact.title">
-                  We helpen je graag verder
-                </h1>
-              <p data-i18n="contact.subtitle">
-                Neem contact op voor vragen over opleidingen, stages of samenwerkingen.
-              </p>
-              <div>
-                <a class="btn-primary btn-lg" href="#contact-form" data-i18n="contact.hero.ctaPrimary">Stuur ons een bericht</a>
-                <a class="btn-outline btn-lg" href="inschrijven.html" data-i18n="contact.hero.ctaSecondary">Schrijf je in</a>
-              </div>
-            </div>
-            <div>
-              <div>
-                <img
-                  src="assets/img/IntecBrussel.png"
-                  alt="Contact INTEC Brussel"
-                  decoding="async"
-                  loading="eager"
-                  width="560"
-                  height="420"
-                />
-                <p data-i18n="contact.hero.imageCaption">
-                  INTEC Brussel - Centraal gelegen nabij het Muntplein
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+     <main id="main-content" tabindex="-1">
+  <!-- Hero Section (Contact Page) -->
+  <section class="hero-section">
+    <div class="container">
+
+      <!-- Content Column -->
+      <div class="hero-section__content">
+        <span class="hero-section__eyebrow" data-i18n="contact.label">
+          Contact
+        </span>
+
+        <h1 class="hero-section__title" data-i18n="contact.title">
+          We helpen je graag verder
+        </h1>
+
+        <p class="hero-section__subtitle" data-i18n="contact.subtitle">
+          Neem contact op voor vragen over opleidingen, stages of samenwerkingen.
+        </p>
+
+        <div class="hero-section__actions">
+          <a class="btn-accent btn-lg" href="#contact-form" data-i18n="contact.hero.ctaPrimary">
+            Stuur ons een bericht
+          </a>
+          <a class="btn-outline btn-lg" href="inschrijven.html" data-i18n="contact.hero.ctaSecondary">
+            Schrijf je in
+          </a>
+        </div>
+      </div>
+
+      <!-- Visual Column -->
+      <div class="hero-section__visual">
+        <div class="hero-section__image-wrapper">
+          <img
+            src="assets/img/IntecBrussel.png"
+            alt="Contact INTEC Brussel"
+            class="hero-section__image"
+            decoding="async"
+            loading="eager"
+            width="560"
+            height="420"
+          />
+          <p class="hero-section__caption" data-i18n="contact.hero.imageCaption">
+            INTEC Brussel – Centraal gelegen nabij het Muntplein
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
 
         <!-- Contact Form Section -->
         <section class="why-choose-intec">

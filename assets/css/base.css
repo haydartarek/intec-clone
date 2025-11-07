@@ -357,21 +357,7 @@ textarea{
     scroll-behavior: auto !important;
   }
 }
-.card{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: var(--spacing-sm);
-  background-color: var(--color-bg-white, #ffffff);
-  border: 1px solid rgba(var(--color-primary-rgb, 15, 130, 138), 0.1);
-  border-radius: var(--card-border-radius);
-  padding: clamp(1.5rem, 2.5vw, var(--card-padding));
-  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.08));
-  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
-  height: 100%;
-  overflow: hidden;
-}
+
 .card::after{
   content: "";
   position: absolute;
@@ -696,100 +682,7 @@ textarea{
   font-size: 0.95rem;
   color: var(--color-text-muted, #4a6b6d);
 }
-/* =======================================
-   Grid Container Styles
-   ======================================= */
 
-/* =======================================
-   CTA Band
-   ======================================= */
-.cta-band{
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, rgba(var(--color-primary-rgb, 15, 130, 138), 0.08), rgba(var(--color-accent-rgb, 37, 189, 183), 0.12));
-  padding-block: clamp(var(--space-lg), 8vw, var(--space-2xl));
-  margin-block: var(--space-2xl);
-}
-.cta-band::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top right, rgba(var(--color-primary-rgb, 15, 130, 138), 0.18), transparent 55%);
-  pointer-events: none;
-  z-index: 0;
-}
-.cta-band__inner{
-  position: relative;
-  z-index: 1;
-  display: grid;
-  align-items: center;
-  justify-content: space-between;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-  gap: clamp(var(--space-lg), 4vw, var(--space-2xl));
-}
-.cta-band__content{
-  display: grid;
-  gap: var(--space-md);
-  color: var(--color-heading, #0a2628);
-}
-.cta-band__eyebrow{
-  font-size: 0.85rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--color-primary-dark, #0b5c61);
-}
-.cta-band h2{
-  margin: 0;
-  font-size: clamp(1.9rem, 3vw, 2.4rem);
-  line-height: 1.2;
-}
-.cta-band p{
-  margin: 0;
-  color: var(--color-text-muted, #4a6b6d);
-  font-size: clamp(1rem, 1.6vw, 1.1rem);
-}
-.cta-band__actions{
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-  justify-content: flex-end;
-}
-.cta-band__actions .button{
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.cta-band__actions .button svg{
-  width: 18px;
-  height: 18px;
-}
-.cta-band--minimal{
-  background: var(--color-bg-white, #ffffff);
-  border: 1px solid rgba(var(--color-primary-rgb, 15, 130, 138), 0.08);
-  box-shadow: 0 40px 60px rgba(15, 130, 138, 0.12);
-}
-.cta-band--highlight{
-  background: linear-gradient(135deg, var(--color-primary, #0f828a) 0%, var(--color-accent, #25bdb7) 100%);
-  color: var(--color-text-invert, #ffffff);
-}
-.cta-band--highlight .cta-band__content,
-.cta-band--highlight h2,
-.cta-band--highlight p,
-.cta-band--highlight .cta-band__eyebrow{
-  color: var(--color-text-invert, #ffffff);
-}
-.cta-band--highlight .cta-band__actions .button{
-  border-color: rgba(255, 255, 255, 0.6);
-}
-@media (max-width: 992px){.cta-band__inner{
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-.cta-band__actions{
-    justify-content: center;
-  }
-}
 /* =======================================
    Timeline Component
    ======================================= */

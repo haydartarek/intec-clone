@@ -7,14 +7,35 @@
 (function() {
   'use strict';
 
+  // Performance optimizations
+  if ('scheduler' in window && typeof scheduler.yield === 'function') {
+    window.__intecScheduler = true;
+  }
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    document.documentElement.classList.add('reduce-motion');
+  }
+
+  if (
+    (window.outerWidth - window.innerWidth > 200) ||
+    (window.outerHeight - window.innerHeight > 200)
+  ) {
+    document.documentElement.classList.add('devtools-open');
+  }
+
   // ==========================================================================
   // GLOBAL CONFIGURATION & STATE
   // ==========================================================================
   
   const INTEC = window.INTEC || {};
   
+  const LANGUAGE_STORAGE_KEY = 'intec-language';
+  const LANGUAGE_STORAGE_VERSION = 'intec-language-v2';
+  const LANGUAGE_MANUAL_FLAG = 'intec-language-manual';
+
   INTEC.config = {
-    defaultLanguage: 'en',
+    defaultLanguage: 'nl',
     maxLanguageLoadAttempts: 20,
     languageRetryDelay: 50,
     devToolsThreshold: 160,
@@ -22,6 +43,7 @@
     devToolsConfirmDelay: 600,
     devToolsPollInterval: 1200,
     devToolsResizeDebounce: 300,
+    monitorDevTools: true,
     scrollThrottleDelay: 16,
     resizeDebounceDelay: 250,
     countdownUpdateInterval: 3600000, // 1 hour
@@ -30,13 +52,38 @@
     debug: false
   };
 
+  const savedLanguage =
+    localStorage.getItem(LANGUAGE_STORAGE_VERSION) ||
+    localStorage.getItem(LANGUAGE_STORAGE_KEY);
+  let manualLanguageChoice = localStorage.getItem(LANGUAGE_MANUAL_FLAG) === 'true';
+  const htmlLanguage = document.documentElement.lang?.trim() || INTEC.config.defaultLanguage;
+
+  const initialLanguage =
+    (manualLanguageChoice && savedLanguage) ||
+    savedLanguage ||
+    htmlLanguage ||
+    INTEC.config.defaultLanguage;
+
   INTEC.state = {
-    currentLanguage: localStorage.getItem('intec-language') || INTEC.config.defaultLanguage,
+    currentLanguage: initialLanguage,
     languageLoadAttempts: 0,
     isInitialized: false,
     observers: [],
     timers: []
   };
+
+  const persistLanguage = (lang, manual = false) => {
+    if (!lang) return;
+    localStorage.setItem(LANGUAGE_STORAGE_VERSION, lang);
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
+    if (manual) {
+      localStorage.setItem(LANGUAGE_MANUAL_FLAG, 'true');
+    } else if (!manualLanguageChoice) {
+      localStorage.setItem(LANGUAGE_MANUAL_FLAG, 'false');
+    }
+  };
+
+  persistLanguage(initialLanguage);
 
   // ==========================================================================
   // UTILITY FUNCTIONS
@@ -129,23 +176,32 @@
   // DEVTOOLS DETECTION
   // ==========================================================================
 const DevToolsDetector = {
-  init() {
+  initialized: false,
+  currentState: null,
+
+  init(force = false) {
+    if ((!INTEC.config.monitorDevTools || this.initialized) && !force) return;
+
     const body = document.body;
     if (!body) return;
+
+    this.initialized = true;
+    this.currentState = null;
 
     const openThreshold = Number.isFinite(INTEC.config.devToolsThreshold)
       ? INTEC.config.devToolsThreshold
       : 160;
-    const hysteresis = Math.max(0, INTEC.config.devToolsHysteresis || 0);
+    const hysteresis = Math.max(0, INTEC.config.devToolsHysteresis || 80);
     const confirmDelay = Math.max(200, INTEC.config.devToolsConfirmDelay || 600);
     const pollInterval = Math.max(500, INTEC.config.devToolsPollInterval || 1200);
     const resizeDebounce = Math.max(150, INTEC.config.devToolsResizeDebounce || 300);
 
-    let devtoolsOpen = false;
+    let detectedState = false;
     let pendingState = false;
-    let pendingSince = performance.now();
-    let isUpdating = false;
+    let pendingSince = 0;
+    let isChecking = false;
     let pollTimer = null;
+    let resizeTimer = null;
 
     const detect = () => {
       const widthDelta = Math.abs((window.outerWidth || 0) - window.innerWidth);
@@ -153,61 +209,71 @@ const DevToolsDetector = {
       const delta = Math.max(widthDelta, heightDelta);
       const closeThreshold = Math.max(0, openThreshold - hysteresis);
 
-      return devtoolsOpen
+      return detectedState
         ? delta > closeThreshold
         : delta > openThreshold;
     };
 
-    const applyState = (state) => {
-      body.classList.toggle('devtools-open', state);
-    };
-
-    const evaluate = (force = false) => {
-      const detected = detect();
-
-      if (force) {
-        pendingState = detected;
-        devtoolsOpen = detected;
-        pendingSince = performance.now();
-        applyState(devtoolsOpen);
-        return;
-      }
-
-      if (detected !== pendingState) {
-        pendingState = detected;
-        pendingSince = performance.now();
-        return;
-      }
-
-      if (devtoolsOpen === pendingState) return;
-      if ((performance.now() - pendingSince) < confirmDelay) return;
-
-      devtoolsOpen = pendingState;
-      applyState(devtoolsOpen);
-    };
-
-    const update = (force = false) => {
-      if (isUpdating) return;
-      isUpdating = true;
-
+    const applyState = (newState) => {
+      if (this.currentState === newState) return;
+      this.currentState = newState;
       requestAnimationFrame(() => {
-        evaluate(force);
-        isUpdating = false;
+        body.classList.toggle('devtools-open', newState);
       });
     };
 
-    const debouncedUpdate = Utils.debounce(() => update(false), resizeDebounce);
-    window.addEventListener('resize', debouncedUpdate, { passive: true });
+    const evaluate = () => {
+      if (isChecking) return;
+      isChecking = true;
 
-    pollTimer = window.setInterval(() => update(false), pollInterval);
-    window.addEventListener('beforeunload', () => clearInterval(pollTimer), { once: true });
+      const nowDetected = detect();
+
+      if (nowDetected !== pendingState) {
+        pendingState = nowDetected;
+        pendingSince = performance.now();
+        isChecking = false;
+        return;
+      }
+
+      if (detectedState !== pendingState) {
+        const elapsed = performance.now() - pendingSince;
+        if (elapsed >= confirmDelay) {
+          detectedState = pendingState;
+          applyState(detectedState);
+        }
+      }
+
+      isChecking = false;
+    };
+
+    const onResize = () => {
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => evaluate(), resizeDebounce);
+    };
+
+    window.addEventListener('resize', onResize, { passive: true });
+
+    pollTimer = window.setInterval(() => {
+      if (!document.hidden) evaluate();
+    }, pollInterval);
 
     document.addEventListener('visibilitychange', () => {
-      if (!document.hidden) update(false);
+      if (!document.hidden) {
+        setTimeout(() => evaluate(), 100);
+      }
     });
 
-    update(true);
-    Utils.log('DevTools detector initialized (noise-resistant)', 'success');
+    window.addEventListener('beforeunload', () => {
+      clearInterval(pollTimer);
+      if (resizeTimer) clearTimeout(resizeTimer);
+    }, { once: true });
+
+    detectedState = detect();
+    pendingState = detectedState;
+    pendingSince = performance.now() - confirmDelay;
+    evaluate();
+
+    Utils.log('DevTools detector initialized (anti-flicker)', 'success');
   }
 };
 
@@ -237,7 +303,8 @@ const DevToolsDetector = {
 
       INTEC.state.languageLoadAttempts = 0;
       INTEC.state.currentLanguage = lang;
-      localStorage.setItem('intec-language', lang);
+      const manualChoice = localStorage.getItem(LANGUAGE_MANUAL_FLAG) === 'true';
+      persistLanguage(lang, manualChoice);
       document.documentElement.lang = lang;
 
       this.applyTranslations();
@@ -303,6 +370,7 @@ const DevToolsDetector = {
         btn.addEventListener('click', () => {
           const newLang = btn.dataset.lang;
           if (newLang !== INTEC.state.currentLanguage) {
+            localStorage.setItem(LANGUAGE_MANUAL_FLAG, 'true');
             this.loadLanguage(newLang);
           }
         });
@@ -521,17 +589,29 @@ const DevToolsDetector = {
       const animatedElements = Utils.$$('[data-animate]');
       
       if (animatedElements.length > 0) {
-        this.observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                this.observer.unobserve(entry.target);
-              }
+        const observerOptions = {
+          threshold: 0.15,
+          rootMargin: '0px 0px -60px 0px'
+        };
+
+        this.observer = new IntersectionObserver((entries) => {
+          const toAnimate = [];
+
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              toAnimate.push(entry.target);
+            }
+          });
+
+          if (toAnimate.length) {
+            requestAnimationFrame(() => {
+              toAnimate.forEach(target => {
+                target.classList.add('is-visible');
+                this.observer.unobserve(target);
+              });
             });
-          },
-          { threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
-        );
+          }
+        }, observerOptions);
 
         animatedElements.forEach(el => this.observer.observe(el));
         Utils.log(`Observing ${animatedElements.length} animated elements`, 'info');
@@ -541,17 +621,22 @@ const DevToolsDetector = {
       const fadeUpElements = Utils.$$('.fade-up');
       
       if (fadeUpElements.length > 0) {
-        this.fadeUpObserver = new IntersectionObserver(
-          (entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                this.fadeUpObserver.unobserve(entry.target);
-              }
+        this.fadeUpObserver = new IntersectionObserver((entries) => {
+          const visible = [];
+
+          entries.forEach(entry => {
+            if (entry.isIntersecting) visible.push(entry.target);
+          });
+
+          if (visible.length) {
+            requestAnimationFrame(() => {
+              visible.forEach(target => {
+                target.classList.add('is-visible');
+                this.fadeUpObserver.unobserve(target);
+              });
             });
-          },
-          { threshold: 0.1, rootMargin: '0px 0px -80px 0px' }
-        );
+          }
+        }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
 
         fadeUpElements.forEach(el => this.fadeUpObserver.observe(el));
         Utils.log(`Observing ${fadeUpElements.length} fade-up elements`, 'info');
@@ -1307,7 +1392,7 @@ const DevToolsDetector = {
           required: true,
           minLength: 5,
           maxLength: 25,
-          pattern: /^[A-Za-zÃ€-Ã¿' -]{2,}\s[A-Za-zÃ€-Ã¿' -]{2,}$/,
+          pattern: /^[\p{L}'’-]{2,}(?:\s+[\p{L}'’-]{2,})+$/u,
           errorKey: 'register.validation.fullName',
           minErrorKey: 'register.validation.fullNameMin'
         },
@@ -1352,7 +1437,7 @@ const DevToolsDetector = {
           required: true,
           minLength: 2,
           maxLength: 30,
-          pattern: /^[A-Za-zÃ€-Ã¿' -]{2,30}$/,
+          pattern: /^[\p{L}'’-]{2,30}(?:\s[\p{L}'’-]{2,30})?$/u,
           errorKey: 'register.validation.city'
         },
         'course': {
@@ -1612,44 +1697,48 @@ const DevToolsDetector = {
     }
   };
 
-  // ==========================================================================
-  // BACK TO TOP BUTTON
-  // ==========================================================================
+// ==========================================================================
+// BACK TO TOP BUTTON — Classic Global Version (to keep compatibility)
+// ==========================================================================
+window.BackToTop = (() => {
+  let button;
+  let scrollRAF = null;
 
-  const BackToTop = {
-    button: null,
-    scrollRAF: null,
-
-    init() {
-      this.button = Utils.$('#backToTopBtn');
-      if (!this.button) return;
-
-      const toggleButton = () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrollPercentage = (scrollTop / documentHeight) * 100;
-
-        this.button.classList.toggle('show', scrollPercentage > 60);
-      };
-
-      const throttledToggle = () => {
-        if (this.scrollRAF) return;
-        this.scrollRAF = requestAnimationFrame(() => {
-          toggleButton();
-          this.scrollRAF = null;
-        });
-      };
-
-      window.addEventListener('scroll', throttledToggle, { passive: true });
-
-      this.button.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-
-      toggleButton();
-      Utils.log('Back to top button initialized', 'success');
-    }
+  const toggleButton = () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    const viewportThreshold = document.documentElement.clientHeight * 0.4;
+    const shouldShow = scrollTop > viewportThreshold || scrollPercent > 20;
+    if (button) button.classList.toggle('show', shouldShow);
   };
+
+  const throttledScroll = () => {
+    if (scrollRAF) return;
+    scrollRAF = requestAnimationFrame(() => {
+      toggleButton();
+      scrollRAF = null;
+    });
+  };
+
+  const init = () => {
+    button = document.querySelector('#backToTopBtn');
+    if (!button) return console.warn('⚠️ BackToTop button not found');
+
+    window.addEventListener('scroll', throttledScroll, { passive: true });
+    button.addEventListener('click', e => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    toggleButton();
+    console.log('%c✔ BackToTop initialized', 'color:#0f828a');
+  };
+
+  return { init };
+})();
+
+// Safe initialization
 
   // ==========================================================================
   // SECTION BACKGROUND ALTERNATION SYSTEM
@@ -1704,13 +1793,24 @@ const DevToolsDetector = {
     },
 
     setupObserver() {
-      this.observer = new MutationObserver(Utils.debounce(() => {
-        this.apply();
-      }, 300));
+      const throttledApply = Utils.throttle(() => this.apply(), 500);
+
+      this.observer = new MutationObserver((mutations) => {
+        const relevant = mutations.some((mutation) => {
+          if (mutation.type === 'childList') return true;
+          if (mutation.type === 'attributes') {
+            const target = mutation.target;
+            return target && target.tagName === 'SECTION';
+          }
+          return false;
+        });
+
+        if (relevant) throttledApply();
+      });
 
       this.observer.observe(document.body, {
         childList: true,
-        subtree: true,
+        subtree: false,
         attributes: true,
         attributeFilter: ['class']
       });
@@ -1832,6 +1932,9 @@ const DevToolsDetector = {
     // Debug mode toggle
     enableDebug() {
       INTEC.config.debug = true;
+      INTEC.config.monitorDevTools = true;
+      DevToolsDetector.initialized = false;
+      DevToolsDetector.init(true);
       Utils.log('Debug mode enabled', 'info');
       console.log('INTEC Configuration:', INTEC.config);
       console.log('INTEC State:', INTEC.state);
@@ -1865,22 +1968,13 @@ const DevToolsDetector = {
   }
 
   // Console branding
-  console.log(`
-â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
-â•‘                                                               â•‘
-â•‘   ðŸŽ“ INTEC Brussels - Professional Website Core 2025         â•‘
-â•‘                                                               â•‘
-â•‘   âœ… Status: Active & Optimized                              â•‘
-â•‘   ðŸš€ Performance: Enhanced                                    â•‘
-â•‘   â™¿ Accessibility: WCAG 2.1 AA Compliant                    â•‘
-â•‘   ðŸŒ Multilingual: EN / NL                                   â•‘
-â•‘                                                               â•‘
-â•‘   ðŸ“˜ API: window.INTEC                                        â•‘
-â•‘   ðŸ› Debug: INTEC.enableDebug()                              â•‘
-â•‘   ðŸ“Š Status: INTEC.getStatus()                               â•‘
-â•‘                                                               â•‘
-â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-  `);
+  console.log([
+    '==============================================',
+    ' INTEC Brussels - Professional Website Core 2025',
+    ' Ready: window.INTEC | Debug: INTEC.enableDebug()',
+    ' Status: INTEC.getStatus()',
+    '=============================================='
+  ].join('\n'));
 
 })();
 

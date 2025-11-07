@@ -48,6 +48,7 @@ window.i18n.nl = {
   "nav.partners": "Toegang Partners",
   "nav.digipunt": "Digipunt",
   "nav.toggle": "Menu openen",
+  "nav.languageGroup": "Taalkeuze",
 
   // -----------------------------
   // GEMEENSCHAPPELIJKE LABELS (Common labels)
@@ -563,11 +564,20 @@ window.i18n.nl = {
   "contact.form.intro": "Vul het formulier in en we nemen zo snel mogelijk contact met je op.",
   "contact.form.name": "Naam",
   "contact.form.email": "E-mailadres",
+  "contact.form.phone": "Telefoonnummer (optioneel)",
+  "contact.form.subject": "Onderwerp",
+  "contact.form.subject.placeholder": "Selecteer een onderwerp",
+  "contact.form.subject.general": "Algemene vraag",
+  "contact.form.subject.training": "Vraag over opleiding",
+  "contact.form.subject.internship": "Stageaanvraag",
+  "contact.form.subject.partnership": "Samenwerking",
+  "contact.form.subject.press": "Pers & communicatie",
   "contact.form.message": "Bericht",
   "contact.form.submit": "Verstuur bericht",
   "contact.form.note": "We respecteren je privacy en gebruiken je gegevens enkel om contact met je op te nemen.",
   "contact.placeholders.name": "Jouw naam",
   "contact.placeholders.email": "naam@voorbeeld.be",
+  "contact.placeholders.phone": "+32 XXX XX XX XX",
   "contact.placeholders.message": "Hoe kunnen we je helpen?",
   
   // Contact Info Section
@@ -1236,5 +1246,36 @@ window.i18n.nl = {
   "team.cta.secondary": "Ontdek Opleidingen",
   "team.cta.trust1": "Gratis intake",
   "team.cta.trust2": "Binnen 2 minuten",
-  "team.cta.trust3": "Zonder verplichting"
+  "team.cta.trust3": "Zonder verplichting",
+
+  // -----------------------------
+  // VACATURES PAGINA
+  // -----------------------------
+  "vacancies.meta.title": "Vacatures bij INTEC Brussel | INTEC Brussel",
+  "vacancies.meta.description": "Ontdek de vacatures bij INTEC Brussel en solliciteer voor functies in coaching, administratie, IT-training en ondersteuning.",
+  "vacancies.label": "Carrières",
+  "vacancies.hero.title": "Werk mee aan digitale inclusie",
+  "vacancies.hero.subtitle": "Sluit je aan bij ons team van gepassioneerde professionals die talent ontwikkelen en begeleiden naar duurzame IT-carrières.",
+  "vacancies.hero.description": "We zoeken collega's in coaching, IT-training, administratie en ondersteuning die impact willen maken in het leven van onze cursisten.",
+  "vacancies.hero.ctaPrimary": "Bekijk vacatures",
+  "vacancies.hero.ctaSecondary": "Neem contact op",
+  "vacancies.benefits.label": "Voordelen",
+  "vacancies.benefits.title": "Waarom werken bij INTEC",
+  "vacancies.benefits.lead": "Bij INTEC Brussel werk je in een lerende organisatie waar professionele groei, samenwerking en maatschappelijke impact centraal staan.",
+  "vacancies.benefits.team.title": "Impactvolle teams",
+  "vacancies.benefits.team.text": "Werk samen met gepassioneerde professionals die elke dag het verschil maken in het leven van onze cursisten. Je collega's zijn experts in coaching, IT-training en begeleiding.",
+  "vacancies.benefits.growth.title": "Professionele ontwikkeling",
+  "vacancies.benefits.growth.text": "Ruimte voor opleiding, certificeringen en coaching. We investeren in jouw groei met trainingbudgetten, conferenties en interne kennisdeling.",
+  "vacancies.benefits.flexibility.title": "Hybride werken",
+  "vacancies.benefits.flexibility.text": "Flexibele werkplekken met een mix van on-site coaching en remote werk. Moderne faciliteiten in het centrum van Brussel, met goede bereikbaarheid per openbaar vervoer.",
+  "vacancies.benefits.impact.title": "Maatschappelijke impact",
+  "vacancies.benefits.impact.text": "Draag bij aan digitale inclusie en emancipatie door kwetsbare groepen naar duurzame IT-carrières te begeleiden. Zie elke dag het tastbare resultaat van jouw werk.",
+  "vacancies.section.title": "Onze openstaande vacatures",
+  "vacancies.section.lead": "Hier vind je een overzicht van alle actuele vacatures bij INTEC Brussel. Solliciteer online of neem contact op voor meer informatie.",
+  "vacancies.loading": "Vacatures worden geladen...",
+  "vacancies.cta.eyebrow": "Blijf op de hoogte",
+  "vacancies.cta.title": "Geen geschikte vacature gevonden?",
+  "vacancies.cta.body": "Volg ons op LinkedIn of stuur een spontane sollicitatie naar ons HR-team. We leren je graag kennen.",
+  "vacancies.cta.primary": "Mail ons je cv",
+  "vacancies.cta.secondary": "Volg ons op LinkedIn"
 };

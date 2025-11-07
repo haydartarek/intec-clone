@@ -52,24 +52,26 @@
 
       <main id="main-content" tabindex="-1">
         <!-- Hero Section -->
-                <section class="hero_section">
+        <section class="hero-section">
           <div class="container">
-            <div>
-              <span data-i18n="vacancies.label">Carri?res</span>
-              <h1 data-i18n="vacancies.hero.title">
-                  Werk mee aan digitale inclusie
-                </h1>
-              <p data-i18n="vacancies.hero.subtitle">
+            <div class="hero-section__content">
+              <span class="hero-section__eyebrow" data-i18n="vacancies.label">Carri?res</span>
+              <h1 class="hero-section__title" data-i18n="vacancies.hero.title">
+                Werk mee aan digitale inclusie
+              </h1>
+              <p class="hero-section__subtitle" data-i18n="vacancies.hero.subtitle">
                 Sluit je aan bij ons team van gepassioneerde professionals die talent ontwikkelen en begeleiden naar duurzame IT-carri?res.
               </p>
-              <div>
-                <a class="btn-primary btn-lg" href="#vacatures-grid" data-i18n="vacancies.hero.ctaPrimary">Bekijk vacatures</a>
+              <div class="hero-section__actions">
+                <a class="btn-accent btn-lg" href="#vacatures-grid" data-i18n="vacancies.hero.ctaPrimary">Bekijk vacatures</a>
                 <a class="btn-outline btn-lg" href="contact.html" data-i18n="vacancies.hero.ctaSecondary">Neem contact op</a>
               </div>
             </div>
-            <div>
-              <div>
+
+            <div class="hero-section__visual">
+              <div class="hero-section__image-wrapper">
                 <img
+                  class="hero-section__image"
                   src="assets/img/IntecBrussel.png"
                   alt="Vacatures bij INTEC"
                   decoding="async"
@@ -77,7 +79,7 @@
                   width="560"
                   height="420"
                 />
-                <p data-i18n="vacancies.hero.description">
+                <p class="hero-section__caption" data-i18n="vacancies.hero.description">
                   We zoeken collega's in coaching, IT-training, administratie en ondersteuning die impact willen maken in het leven van onze cursisten.
                 </p>
               </div>
@@ -512,32 +514,5 @@
         window.addEventListener("intecLanguageChanged", renderJobs);
       });
     </script>
-  
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
