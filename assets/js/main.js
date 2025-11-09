@@ -1387,6 +1387,8 @@ const DevToolsDetector = {
     },
 
     setupForm(form) {
+      form.setAttribute('novalidate', 'novalidate');
+
       const rules = {
         'full-name': {
           required: true,
@@ -1443,6 +1445,16 @@ const DevToolsDetector = {
         'course': {
           required: true,
           errorKey: 'register.validation.course'
+        },
+        'username': {
+          required: true,
+          minLength: 3,
+          maxLength: 50,
+          errorKey: 'register.validation.required'
+        },
+        'password': {
+          required: true,
+          errorKey: 'register.validation.required'
         },
         'message': {
           required: false,

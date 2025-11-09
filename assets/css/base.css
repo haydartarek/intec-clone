@@ -357,7 +357,21 @@ textarea{
     scroll-behavior: auto !important;
   }
 }
-
+.card{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  background-color: var(--color-bg-white, #ffffff);
+  border: 1px solid rgba(var(--color-primary-rgb, 15, 130, 138), 0.1);
+  border-radius: var(--card-border-radius);
+  padding: clamp(1.5rem, 2.5vw, var(--card-padding));
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.08));
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  height: 100%;
+  overflow: hidden;
+}
 .card::after{
   content: "";
   position: absolute;
@@ -683,9 +697,6 @@ textarea{
   color: var(--color-text-muted, #4a6b6d);
 }
 
-/* =======================================
-   Timeline Component
-   ======================================= */
 .timeline{
   list-style: none;
   margin: 0;

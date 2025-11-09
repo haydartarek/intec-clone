@@ -112,17 +112,6 @@ html.devtools-open * {
   text-transform: capitalize;
 }
 
-/* Hero Title Highlight */
-.hero-service__highlight {
-  position: relative;
-  color: #0f828a;
-  font-weight: 800;
-  background: linear-gradient(135deg, #0f828a 0%, #25bdb7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
-}
 
 /* Description Text */
 .hero-section__subtitle {
@@ -2301,13 +2290,7 @@ select.form-control:hover {
 }
 
 .tip-card p {
-  font-size: 1rem;
-  color: var(--color-text-muted, #4a6b6d);
-  line-height: var(--leading-relaxed, 1.65);
-  margin: 0;
-  text-align: left;
-  font-weight: 500;
-  font-size: 1.1rem;
+  text-align: left !important;
 }
 
 /* Divider between paragraphs */
@@ -2427,17 +2410,121 @@ select.form-control:hover {
 }
 
 /* ---------- Section Lead Text ---------- */
-.section-heading p,
 .section-heading .section-lead,
-.section-lead {
+ .cta-band__content, .cta-band__lead, 
+ .section-heading p, .cta-band p, .partners-callout p, 
+ .page--inschrijven p, .service-card__description p, 
+ .accordion-body p,.tip-card p,.login-card p, .digipunt-extra__content .section-lead {
   margin: 0;
   max-width: 750px;
   font-size: clamp(1rem, 1.5vw, 1.125rem);
   line-height: 1.7;
   color: var(--color-text-muted, #4a6b6d);
-  text-align: center;
   word-spacing: normal;
+  font-weight: 500;
 }
+
+.login-card {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* ===============================
+   Partner Login Form Styling
+   Match contact form look & feel
+   =============================== */
+#partner-login-form {
+  margin: 2rem auto;
+  padding: 2rem 2.5rem;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: box-shadow 0.3s ease;
+  width: 840px;
+}
+
+.partner-login-form:hover {
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.07);
+}
+
+/* Labels */
+.partner-login-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--color-text-strong, #0b2f32);
+}
+
+/* Inputs */
+#partner-login-form input[type="text"],
+#partner-login-form input[type="password"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--color-border, #d2e3e5);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--color-text, #0b2f32);
+  background: #f9fdfd;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover & focus effects */
+#partner-login-form input[type="text"]:focus,
+#partner-login-form input[type="password"]:focus {
+  border-color: var(--color-primary, #25bdb7);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-primary, #25bdb7) 25%, transparent);
+}
+
+/* Error message */
+#partner-login-form .form-error {
+  font-size: 0.85rem;
+  color: var(--color-danger, #c62828);
+  margin-top: 0.25rem;
+  min-height: 1em;
+}
+
+/* Submit button */
+#partner-login-form .button {
+  margin-top: 1rem;
+  background: var(--color-primary, #25bdb7);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.9rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  transition: background 0.2s ease, transform 0.2s ease;
+  align-self: flex-end;
+}
+
+#partner-login-form .button:hover {
+  background: color-mix(in oklab, var(--color-primary, #25bdb7) 80%, #0b2f32);
+  transform: translateY(-2px);
+}
+
+#partner-login-form .button:active {
+  transform: translateY(0);
+}
+
+/* Responsive tweak */
+@media (max-width: 600px) {
+  #partner-login-form {
+    padding: 1.5rem;
+    width: 90%;
+  }
+}
+
+
 
 /* ---------- Responsive Adjustments ---------- */
 @media (max-width: 768px) {
@@ -2454,8 +2541,6 @@ select.form-control:hover {
     font-size: 0.8rem;
   }
 }
-
-
 
 /* =======================================
    CTA STACK • Flexible Button Layout
@@ -4153,6 +4238,12 @@ textarea:valid:not(:placeholder-shown) {
   align-items: center;
   text-align: center;
 }
+.cta-band--highlight .cta-band__content {
+  text-align: center;
+  align-items: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
 
 /* ===== Register Variant (e.g. Enrollment CTA) ===== */
 .cta-band--register .cta-band__inner {
@@ -4162,14 +4253,6 @@ textarea:valid:not(:placeholder-shown) {
   gap: 0;
 }
 
-.cta-band--register .cta-band__content,
-.cta-band--register .cta-band__eyebrow,
-.cta-band--register h2,
-.cta-band--register p {
-  text-align: left !important;
-  direction: ltr !important;
-  margin-inline: 0 auto;
-}
 
 /* ===== Content ===== */
 .cta-band__content {
@@ -4177,7 +4260,6 @@ textarea:valid:not(:placeholder-shown) {
   display: flex;
   flex-direction: column;
   gap: clamp(1rem, 1.75vw, 1.25rem);
-  text-align: left;
   direction: ltr;
 }
 
@@ -4208,13 +4290,6 @@ textarea:valid:not(:placeholder-shown) {
   margin: 0;
 }
 
-.cta-band p {
-  color: #2b4446;
-  font-size: clamp(0.9375rem, 1.35vw, 1.0625rem);
-  line-height: 1.7;
-  max-width: 700px;
-  margin: 0;
-}
 
 
 /* ===== Actions ===== */
@@ -4370,11 +4445,7 @@ textarea:valid:not(:placeholder-shown) {
 }
 
 .partners-callout p {
-  font-size: var(--text-body);
-  line-height: var(--leading-relaxed);
-  color: var(--color-text);
-  margin: 0;
-  text-align: left;
+  text-align: left !important;
 }
 
 .partners-callout__actions {
@@ -5648,11 +5719,7 @@ textarea:valid:not(:placeholder-shown) {
   margin: 0;
   max-width: none;
 }
-.program-highlight__intro .section-label { align-self: start; margin-inline: 0; }
-.program-highlight__intro :is(p, .program-highlight__lead, .section-lead) {
-  text-align: left !important;
-  max-width: none;
-}
+
 
 .program-highlight__title {
   font-size: var(--text-h2);
@@ -6092,15 +6159,9 @@ textarea:valid:not(:placeholder-shown) {
 /* =======================================
    ALIGNMENT OVERRIDES
    ======================================= */
-.partners-section :is(.section-label, .section-heading, .section-title, .section-lead, p) {
-  text-align: center !important;
-}
+
 .partners-section .section-heading { justify-items: center !important; }
 
-.cta-band :is(.cta-band__eyebrow, h2, p, .cta-band__content) {
-  text-align: left !important;
-}
-.cta-band__inner { align-items: flex-start !important; }
 
 /* =======================================
    RESPONSIVE — HERO / TIMELINE / PROGRAM
@@ -6213,6 +6274,58 @@ h3 { font-weight: 600; }
 }
 
 /* =======================================
+   MEDIA / VIDEO FRAME
+   ======================================= */
+.media-frame {
+  width: min(100%, 960px);
+  margin: clamp(1.5rem, 4vw, 2.75rem) auto 0;
+  border-radius: var(--radius-xl, 28px);
+  overflow: hidden;
+  background: #020f12;
+  box-shadow: var(--shadow-card, 0 25px 55px rgba(7, 62, 66, 0.15));
+}
+
+.responsive-video {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background: #000;
+}
+
+.responsive-video video,
+.responsive-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+
+.video-fallback {
+  margin: 0;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.85);
+  text-align: center;
+}
+
+.video-fallback a {
+  color: var(--color-accent, #25bdb7);
+  text-decoration: underline;
+}
+
+.media-frame__caption {
+  margin: 0;
+  padding: 1rem 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-text-muted, #517173);
+  background: linear-gradient(90deg, rgba(15,130,138,0.08) 0%, rgba(15,130,138,0.02) 100%);
+  text-align: center;
+}
+
+/* =======================================
    SECTION TITLES WITH ICONS
    ======================================= */
 .section-title--with-icon {
@@ -6290,7 +6403,6 @@ h3 { font-weight: 600; }
     padding: .4rem 1rem;
   }
 }
-
 
 /* ============================================================================
    TEAM PAGE ENHANCEMENTS (wiezijnwe.html)
@@ -7490,12 +7602,21 @@ p { color: var(--color-text-muted); line-height: var(--leading-relaxed); }
   gap: 0.5rem;
 }
 
+.feature-card__list p {
+  text-align: left;
+  line-height: 1.8;
+  padding: 1rem 0.5rem;
+  font-size: 1.0rem;
+  font-weight: 500;
+}
+
 .feature-card__list li {
   position: relative;
   padding-left: 1.5rem;
   font-size: 0.98rem;
   color: #2b4446;
   line-height: 1.5;
+  text-align: left;
 }
 
 .feature-card__list li::before {
@@ -7523,10 +7644,224 @@ p { color: var(--color-text-muted); line-height: var(--leading-relaxed); }
   }
 }
 
+/* ====================================================
+   DIGIPUNT - Extra Section
+   ==================================================== */
+
+.digipunt-extra {
+  background: linear-gradient(135deg, #f9fffe 0%, #e7fdfc 100%);
+  padding: 4rem 0;
+  color: var(--color-text, #0b2f32);
+}
+
+.digipunt-extra__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.digipunt-extra__content {
+  max-width: 600px;
+}
+
+.digipunt-extra__content .section-label {
+  color: var(--color-primary, #25bdb7);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.digipunt-extra__content .section-title {
+  font-size: 2rem;
+  margin: 0.5rem 0 1rem;
+  color: var(--color-accent);
+  text-align: left;
+}
+
+.digipunt-extra__content .section-lead {
+  text-align: left;
+  width: 85%;
+  padding-bottom:2rem;
+}
+
+.digipunt-extra__content .btn-primary {
+  background: var(--color-primary, #25bdb7);
+  border: none;
+  border-radius: 8px;
+  padding: 0.9rem 1.8rem;
+  font-weight: 600;
+  color: #fff;
+  transition: background 0.3s ease;
+}
+
+.digipunt-extra__content .btn-primary:hover {
+  background: color-mix(in oklab, var(--color-primary, #25bdb7) 80%, #0b2f32);
+}
+
+.digipunt-extra__image img {
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  height: auto;
+}
+
+/* Responsive layout */
+@media (max-width: 992px) {
+  .digipunt-extra__wrapper {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .digipunt-extra__content {
+    margin: 0 auto;
+  }
+
+  .digipunt-extra__image {
+    margin-top: 2rem;
+  }
+}
+
+
+
+/* ================================================
+   DIGIPUNT - About Columns Section
+   Matches INTEC identity (clean, teal, minimal)
+   ================================================ */
+
+.about-columns {
+  padding: 4rem 0;
+  background: var(--color-surface, #f9fdfd);
+  color: var(--color-text, #0b2f32);
+}
+
+.about-columns__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+/* Each Card */
+.about-columns__card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  padding: 2rem 2rem 2.5rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.about-columns__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Accent Card (Middle One) */
+.about-columns__card--accent {
+  background: linear-gradient(135deg, #e8faf9 0%, #f6fffe 100%);
+  border: 1.5px solid var(--color-primary, #25bdb7);
+}
+
+/* Decorated Edge */
+.card--decorated {
+  position: relative;
+  overflow: hidden;
+}
+
+.card--decorated::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-top: 4px solid var(--color-primary, #25bdb7);
+  border-radius: 16px 16px 0 0;
+}
+
+/* Titles */
+.about-columns__card h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text-strong, #082e2f);
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+/* Paragraphs */
+.about-columns__card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text, #0b2f32);
+  margin-bottom: 1rem;
+}
+
+/* Pill List */
+.about-pill-list {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.about-pill-list li {
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--color-text, #0b2f32);
+  position: relative;
+  border-left: 3px solid var(--color-primary, #25bdb7);
+  transition: background 0.2s ease;
+}
+
+.about-pill-list li:hover {
+  background: color-mix(in oklab, var(--color-primary, #25bdb7) 10%, white);
+}
+
+/* Buttons (consistent with other pages) */
+.about-columns__card .btn-primary {
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-primary, #25bdb7);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  transition: background 0.3s ease, transform 0.2s ease;
+  width: 100%;
+}
+
+.about-columns__card .btn-primary:hover {
+  background: color-mix(in oklab, var(--color-primary, #25bdb7) 80%, #0b2f32);
+  transform: translateY(-2px);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .about-columns {
+    padding: 3rem 1.5rem;
+  }
+
+  .about-columns__card {
+    padding: 1.5rem;
+  }
+
+  .about-columns__card h2 {
+    font-size: 1.25rem;
+  }
+}
+
 /* =========================
    ACCORDION COMPONENT
    ========================= */
-.page--opleidingen .accordion-container {
+.accordion-container {
   max-width: 800px;
   margin: 0 auto;
   border-radius: var(--radius-lg);
@@ -7535,14 +7870,14 @@ p { color: var(--color-text-muted); line-height: var(--leading-relaxed); }
   box-shadow: 0 4px 12px var(--color-primary-08);
 }
 
-.page--opleidingen .accordion-item {
+.accordion-item {
   border-bottom: 1px solid var(--color-primary-10);
 }
-.page--opleidingen .accordion-item:last-child {
+.accordion-item:last-child {
   border-bottom: none;
 }
 
-.page--opleidingen .accordion-trigger {
+.accordion-trigger {
   width: 100%;
   border: none;
   padding: 1.5rem 2rem;
@@ -7557,34 +7892,34 @@ p { color: var(--color-text-muted); line-height: var(--leading-relaxed); }
   transition: all var(--transition-base);
   background: transparent;
 }
-.page--opleidingen .accordion-trigger:focus-visible {
+.accordion-trigger:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
 }
 
-.page--opleidingen .accordion-icon {
+.accordion-icon {
   width: 20px;
   height: 20px;
   color: var(--color-primary);
   transition: transform var(--transition-base);
 }
-.page--opleidingen .accordion-trigger[aria-expanded="true"] .accordion-icon {
+.accordion-trigger[aria-expanded="true"] .accordion-icon {
   transform: rotate(180deg);
 }
 
-.page--opleidingen .accordion-panel {
+.accordion-panel {
   overflow: hidden;
   transition: max-height var(--transition-base), opacity var(--transition-base);
 }
-.page--opleidingen .accordion-panel[aria-hidden="true"] {
+.accordion-panel[aria-hidden="true"] {
   max-height: 0;
   opacity: 0;
 }
-.page--opleidingen .accordion-panel[aria-hidden="false"] {
+.accordion-panel[aria-hidden="false"] {
   max-height: 300px;
   opacity: 1;
 }
-.page--opleidingen .accordion-content {
+.accordion-content {
   padding: 0 2rem 1.5rem;
   line-height: var(--leading-relaxed);
   color: var(--color-text);
@@ -8102,29 +8437,6 @@ p { color: var(--color-text-muted); line-height: var(--leading-relaxed); }
   color: #0d2e30;
   margin: 0;
 }
-.feature-card__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-.feature-card__list li {
-  font-size: 0.938rem;
-  line-height: 1.6;
-  color: #2d5456;
-  padding-left: 1.5rem;
-  position: relative;
-}
-.feature-card__list li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: #0f828a;
-  font-weight: 700;
-}
-
 
 /* =======================================
    ENROLLMENT CTA SECTION
@@ -8830,9 +9142,6 @@ p { color: var(--color-text-muted); line-height: var(--leading-relaxed); }
   color: #1a1a1a !important;
 }
 
-.page--inschrijven .section-lead {
-  color: var(--color-text);
-}
 
 
 .page--inschrijven {
@@ -9088,12 +9397,7 @@ body.page--inschrijven {
 }
 
 .page--inschrijven .accordion-body p {
-  margin: 0;
-  font-size: clamp(0.9375rem,1.4vw,1rem);
-  line-height: 1.6;
-  color: rgba(74,74,74,0.9);
-  text-align: left;
-  font-weight: 600;
+  text-align: left !important;
 }
 
 /* RIGHT COLUMN: Service Cards + CTA */
@@ -9155,18 +9459,8 @@ body.page--inschrijven {
   color: #1a1a1a; 
 }
 
-.page--inschrijven .service-card__description {
-  margin: 0;
-  font-size: clamp(0.875rem,1.3vw,0.9375rem);
-  line-height: 1.5;
-  color: rgba(74,74,74,0.85);
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  display: -webkit-box;
-  text-overflow: ellipsis;
-  text-align: left;
+.page--inschrijven .service-card__description  {
+  text-align: left !important;
 }
 
 /* CTA BOX */
