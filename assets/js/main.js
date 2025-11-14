@@ -488,46 +488,195 @@ const DevToolsDetector = {
   // MOBILE NAVIGATION
   // ==========================================================================
 
-  const MobileNav = {
-    init() {
-      this.setupToggle();
-      this.setupOutsideClick();
-      Utils.log('Mobile navigation initialized', 'success');
-    },
+// ==========================================================================
+// MOBILE NAVIGATION - ENHANCED VERSION
+// ==========================================================================
 
-    setupToggle() {
-      const toggle = Utils.$('[data-nav-toggle], .nav-toggle');
-      const nav = Utils.$('.primary-nav, .nav-links');
+const MobileNav = {
+  toggle: null,
+  nav: null,
+  navList: null,
+  isOpen: false,
+
+  init() {
+    this.toggle = Utils.$('[data-nav-toggle], .nav-toggle');
+    this.nav = Utils.$('.primary-nav');
+    this.navList = Utils.$('.nav-links');
+    
+    if (!this.toggle || !this.nav || !this.navList) {
+      console.warn('⚠️ Mobile nav elements missing');
+      return;
+    }
+
+    this.setupToggle();
+    this.setupOutsideClick();
+    this.setupEscapeKey();
+    this.setupLinkClicks();
+    this.syncActions();
+    this.setupResizeHandler();
+
+    Utils.log('Mobile navigation initialized', 'success');
+  },
+
+  setupToggle() {
+    this.toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      this.toggleMenu();
+    });
+  },
+
+  toggleMenu() {
+    this.isOpen = !this.isOpen;
+    
+    // Update ARIA attributes
+    this.toggle.setAttribute('aria-expanded', String(this.isOpen));
+    
+    // Toggle classes
+    this.toggle.classList.toggle('is-active', this.isOpen);
+    this.nav.classList.toggle('is-open', this.isOpen);
+    this.navList.classList.toggle('is-open', this.isOpen);
+    document.body.classList.toggle('nav-is-open', this.isOpen);
+
+    // Trap focus inside menu when open
+    if (this.isOpen) {
+      this.trapFocus();
+    } else {
+      this.releaseFocus();
+    }
+
+    Utils.log(`Menu ${this.isOpen ? 'opened' : 'closed'}`, 'info');
+  },
+
+  closeMenu() {
+    if (!this.isOpen) return;
+    
+    this.isOpen = false;
+    this.toggle.setAttribute('aria-expanded', 'false');
+    this.toggle.classList.remove('is-active');
+    this.nav.classList.remove('is-open');
+    this.navList.classList.remove('is-open');
+    document.body.classList.remove('nav-is-open');
+    
+    this.releaseFocus();
+  },
+
+  setupOutsideClick() {
+    document.addEventListener('click', (e) => {
+      if (!this.isOpen) return;
       
-      if (!toggle || !nav) return;
+      const isClickInsideNav = this.nav.contains(e.target);
+      const isClickOnToggle = this.toggle.contains(e.target);
+      
+      if (!isClickInsideNav && !isClickOnToggle) {
+        this.closeMenu();
+      }
+    });
+  },
 
-      toggle.addEventListener('click', () => {
-        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-        const newState = !isExpanded;
-        
-        toggle.setAttribute('aria-expanded', String(newState));
-        toggle.classList.toggle('is-active', newState);
-        nav.classList.toggle('is-open', newState);
-        document.body.classList.toggle('nav-is-open', newState);
-      });
-    },
+  setupEscapeKey() {
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.isOpen) {
+        this.closeMenu();
+        this.toggle.focus();
+      }
+    });
+  },
 
-    setupOutsideClick() {
-      document.addEventListener('click', (e) => {
-        const nav = Utils.$('.primary-nav, .nav-links');
-        const toggle = Utils.$('[data-nav-toggle], .nav-toggle');
-        
-        if (!nav || !toggle) return;
-        
-        if (nav.classList.contains('is-open') &&
-            !nav.contains(e.target) &&
-            !toggle.contains(e.target) &&
-            !e.target.closest('.site-header__inner')) {
-          toggle.click();
+  setupLinkClicks() {
+    Utils.$$('a', this.navList).forEach(link => {
+      link.addEventListener('click', () => {
+        // Close menu when link is clicked on mobile
+        if (window.innerWidth <= 1024) {
+          setTimeout(() => this.closeMenu(), 300);
         }
       });
+    });
+  },
+
+  trapFocus() {
+    const focusableElements = Utils.$$(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      this.nav
+    );
+    
+    if (focusableElements.length === 0) return;
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    this.focusTrapHandler = (e) => {
+      if (e.key !== 'Tab') return;
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', this.focusTrapHandler);
+    firstElement.focus();
+  },
+
+  releaseFocus() {
+    if (this.focusTrapHandler) {
+      document.removeEventListener('keydown', this.focusTrapHandler);
+      this.focusTrapHandler = null;
     }
-  };
+  },
+
+  syncActions() {
+    const actions = Utils.$('.site-header__actions');
+    const headerInner = Utils.$('.site-header__inner');
+
+    if (!actions || !headerInner || !this.nav) return;
+
+    if (!this.actionsPlaceholder) {
+      this.actionsPlaceholder = document.createComment('site-header__actions-placeholder');
+      headerInner.insertBefore(this.actionsPlaceholder, actions);
+    }
+
+    const relocate = () => {
+      const isMobile = window.innerWidth <= 1024;
+
+      if (isMobile) {
+        if (!this.nav.contains(actions)) {
+          this.nav.appendChild(actions);
+        }
+      } else if (!headerInner.contains(actions)) {
+        headerInner.insertBefore(actions, this.actionsPlaceholder.nextSibling);
+        this.closeMenu();
+      }
+    };
+
+    relocate();
+
+    const debouncedRelocate = Utils.debounce(relocate, 150);
+    window.addEventListener('resize', debouncedRelocate);
+  },
+
+  setupResizeHandler() {
+    let resizeTimer;
+    
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      
+      resizeTimer = setTimeout(() => {
+        // Close menu if resizing to desktop
+        if (window.innerWidth > 1024 && this.isOpen) {
+          this.closeMenu();
+        }
+      }, 250);
+    });
+  }
+};
 
   // ==========================================================================
   // LAZY IMAGE OPTIMIZATION
