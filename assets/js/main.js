@@ -1858,49 +1858,6 @@ const MobileNav = {
     }
   };
 
-// ==========================================================================
-// BACK TO TOP BUTTON — Classic Global Version (to keep compatibility)
-// ==========================================================================
-window.BackToTop = (() => {
-  let button;
-  let scrollRAF = null;
-
-  const toggleButton = () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    const viewportThreshold = document.documentElement.clientHeight * 0.4;
-    const shouldShow = scrollTop > viewportThreshold || scrollPercent > 20;
-    if (button) button.classList.toggle('show', shouldShow);
-  };
-
-  const throttledScroll = () => {
-    if (scrollRAF) return;
-    scrollRAF = requestAnimationFrame(() => {
-      toggleButton();
-      scrollRAF = null;
-    });
-  };
-
-  const init = () => {
-    button = document.querySelector('#backToTopBtn');
-    if (!button) return console.warn('⚠️ BackToTop button not found');
-
-    window.addEventListener('scroll', throttledScroll, { passive: true });
-    button.addEventListener('click', e => {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    toggleButton();
-    console.log('%c✔ BackToTop initialized', 'color:#0f828a');
-  };
-
-  return { init };
-})();
-
-// Safe initialization
-
   // ==========================================================================
   // SECTION BACKGROUND ALTERNATION SYSTEM
   // ==========================================================================
@@ -2044,7 +2001,6 @@ window.BackToTop = (() => {
       PartnerCarousel.init();
       AccordionSystem.init();
       FormValidation.init();
-      BackToTop.init();
       SectionBackgrounds.init();
       FooterYear.init();
       ServiceWorker.init();
@@ -2129,13 +2085,15 @@ window.BackToTop = (() => {
   }
 
   // Console branding
-  console.log([
-    '==============================================',
-    ' INTEC Brussels - Professional Website Core 2025',
-    ' Ready: window.INTEC | Debug: INTEC.enableDebug()',
-    ' Status: INTEC.getStatus()',
-    '=============================================='
-  ].join('\n'));
+console.log([
+  "==============================================",
+  " INTEC Brussels - Professional Website Core 2025",
+  " Ready: window.INTEC | Debug: INTEC.enableDebug()",
+  " Status:",
+  INTEC.getStatus(),
+  "=============================================="
+].join("\n"));
+
 
 })();
 

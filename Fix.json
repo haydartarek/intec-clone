@@ -1,10 +1,136 @@
-﻿{
-    "reports":  [
-                    {
-                        "detail":  "تمت إعادة تهيئة Fix.json إلى الصيغة القياسية {\"reports\": []}. الرجاء استخدام append-fix.ps1 حصراً لإضافة تقارير لاحقاً (Append-only).",
-                        "title":  "Schema reset: migrate Fix.json to append-only format",
-                        "timestamp":  "2025-11-04T08:19:21.622612+00:00",
-                        "id":  "f7dc8eb7-c516-4e58-9b62-bc165e9b8880"
-                    }
-                ]
-}
+﻿Feature: Deep i18n consistency check and repair for INTEC Clone project
+
+  # Role & mindset
+  As a senior full-stack engineer and software tester with 15+ years of experience
+  I want you to behave like:
+    - An i18n/l10n specialist (Dutch <-> English)
+    - A QA engineer focused on data consistency and edge cases
+    - A careful refactoring engineer who never breaks working code structure
+
+  # Project context
+  Background:
+    Given the INTEC Clone project is located under:
+      - C:\Users\heyde\Desktop\websites\intec-clone\
+    And the language files are:
+      - C:\Users\heyde\Desktop\websites\intec-clone\assets\js\i18n\en.js
+      - C:\Users\heyde\Desktop\websites\intec-clone\assets\js\i18n\nl.js
+    And the HTML pages that must be fully covered by translation are:
+      - C:\Users\heyde\Desktop\websites\intec-clone\index.html
+      - C:\Users\heyde\Desktop\websites\intec-clone\digipunt.html
+      - C:\Users\heyde\Desktop\websites\intec-clone\cvdb\index.html
+      - C:\Users\heyde\Desktop\websites\intec-clone\inschrijven.html
+      - C:\Users\heyde\Desktop\websites\intec-clone\opleidingen.html
+      - C:\Users\heyde\Desktop\websites\intec-clone\overons.html
+      - C:\Users\heyde\Desktop\websites\intec-clone\python.html
+      - C:\Users\heyde\Desktop\websites\intec-clone\security.html
+      - C:\Users\heyde\Desktop\websites\intec-clone\support.html
+      - C:\Users\heyde\Desktop\websites\intec-clone\vacatures.html
+      - C:\Users\heyde\Desktop\websites\intec-clone\wiezijnwe.html
+      - C:\Users\heyde\Desktop\websites\intec-clone\systeembeheerder.html
+      - C:\Users\heyde\Desktop\websites\intec-clone\contact.html
+
+  # Global rules (VERY STRICT)
+  Rule: Respect existing working structure
+    - Do not change any HTML structure, IDs, classes, or JS logic
+    - Do not rename existing i18n keys that are already used in HTML/JS
+    - Only:
+      - Fix text values
+      - Add missing keys
+      - Remove clearly unused/duplicate keys
+    - Keep code style, formatting, and indentation consistent with existing files
+
+  Rule: Encoding and strange characters
+    - All files must be treated as UTF-8 (no BOM if possible)
+    - Detect and fix all strange characters such as:
+      - Replacement characters (�)
+      - Sequences of question marks instead of proper letters (e.g. "????")
+      - Broken diacritics or punctuation
+    - Preserve correct Dutch characters (é, è, ë, ï, 's, etc.) and English punctuation
+    - After fixing, the text must be human-readable, natural, and clean
+
+  Rule: Language quality
+    - Dutch (nl) must follow natural, modern INTEC website style
+    - English (en) must be clear, professional, and natural for an educational website
+    - Avoid literal machine translation if it sounds weird
+    - Fix obvious grammar, spelling, and capitalization issues in both languages
+
+  Scenario: Build a complete translation inventory
+    Given you load en.js and nl.js as key-value dictionaries
+    And you parse all the HTML pages listed above
+    When you scan for:
+      - data-i18n or similar attributes
+      - any JS usages of i18n keys
+      - hard-coded visible text in Dutch or English inside HTML
+    Then you must:
+      - Produce an internal mapping of:
+        - key -> nl value
+        - key -> en value
+        - where it is used (file + approx location)
+      - Detect:
+        - keys used in HTML but missing in en.js or nl.js
+        - keys defined in en.js/nl.js but never used anywhere
+        - keys where nl and en texts clearly do not match in meaning
+
+  Scenario: Fix missing and inconsistent translations
+    Given the mapping of keys and usages
+    When a key is used in HTML but:
+      - Missing in nl.js or en.js
+      Or the translation is clearly wrong or incomplete
+    Then:
+      - Treat Dutch as the primary source when Dutch text exists
+      - Generate a high-quality English translation for the corresponding key
+      - When only English exists, generate a natural Dutch translation
+      - Ensure both nl and en values express the same meaning and tone
+      - Add the missing keys to en.js and/or nl.js in the correct section
+      - Avoid duplicates: reuse existing keys when meaning is identical
+
+  Scenario: Remove dead or duplicate keys safely
+    Given the list of all keys that are not referenced in any HTML or JS
+    When a key is clearly unused
+    Then:
+      - Mark it as a dead key
+      - Remove it from en.js and nl.js
+      - But only if you are sure it is not part of a pattern or future use
+    And when two or more keys contain identical or near-identical text:
+      - Prefer one canonical key
+      - Keep the others only if they serve a clearly different context
+      - Do NOT perform aggressive merging that could break context
+
+  Scenario: Normalize and repair weird symbols
+    Given all translation values in en.js and nl.js
+    When you detect:
+      - Garbled sequences
+      - Question marks or replacement characters inside words
+      - HTML entities that are broken or unnecessary
+    Then:
+      - Replace them with the correct characters
+      - Ensure quotes and apostrophes are consistent (e.g. use ’ or ' but not mixed randomly)
+      - Ensure there are no unintended double spaces or broken line breaks
+
+  Scenario: Synchronize HTML with i18n system
+    Given the cleaned and updated en.js and nl.js
+    When you review each of the HTML files
+    Then:
+      - Ensure all visible textual content that should be translatable is backed by i18n keys
+      - Replace remaining hard-coded Dutch/English text with i18n usage where appropriate
+      - Do NOT change layout, components, or JavaScript behavior
+      - Keep accessibility attributes (aria-label, title, alt) meaningful and correctly translated
+
+  Scenario: Final consistency and integrity check
+    Given all changes to en.js, nl.js, and the HTML files
+    When you perform a final validation
+    Then:
+      - Ensure there are no missing keys at runtime (no undefined translation lookups)
+      - Ensure both languages load without JS errors
+      - Ensure no strange characters remain visible on any page
+      - Summarize in a short report (in comments or separate text) the changes:
+        - Number of keys added, updated, removed
+        - Main categories of fixes (missing translations, encoding, wording)
+      - Confirm that you respected the "do not break working structure" rule
+
+  # Style & discipline
+  Rule: Work as a strict professional
+    - Be conservative: prefer safe fixes over risky refactors
+    - Be explicit and deterministic in how you map texts to keys
+    - Never introduce experimental features or redesign UI in this task
+    - Focus 100% on translation consistency, data cleanliness, and encoding correctness

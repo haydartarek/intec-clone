@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
@@ -6,8 +6,9 @@
     <meta
       name="description"
       content="Contacteer INTEC Brussel voor informatie over opleidingen, persaanvragen of stage- en werkplekleren. Vind onze openingsuren, contactpersonen en locatie."
+      data-i18n-content="contact.meta.description"
     />
-    <title>Contact | INTEC Brussel</title>
+    <title data-i18n="contact.meta.title">Contact | INTEC Brussel</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -285,10 +286,10 @@
               <article class="benefit-card fade-up" data-delay="1">
                 <h3 class="benefit-card__title" data-i18n="contact.hours.title">Openingstijden</h3>
                 <ul class="benefit-card__list">
-                  <li><strong>Maandag - Vrijdag:</strong> 9:00 - 16:00</li>
-                  <li><strong>Telefonisch:</strong> 9:00 - 12:00, 13:00 - 16:00</li>
-                  <li><strong>Weekend:</strong> Gesloten</li>
-                  <li><strong>Feestdagen:</strong> Gesloten</li>
+                  <li data-i18n="contact.hours.weekdays" data-i18n-allow-html><strong>Maandag - Vrijdag:</strong> 9:00 - 16:00</li>
+                  <li data-i18n="contact.hours.phone" data-i18n-allow-html><strong>Telefonisch:</strong> 9:00 - 12:00, 13:00 - 16:00</li>
+                  <li data-i18n="contact.hours.weekend" data-i18n-allow-html><strong>Weekend:</strong> Gesloten</li>
+                  <li data-i18n="contact.hours.holidays" data-i18n-allow-html><strong>Feestdagen:</strong> Gesloten</li>
                 </ul>
                 <p class="benefit-card__note" data-i18n="contact.hours.note">
                   Voor een persoonlijk gesprek raden we aan om vooraf een afspraak te maken.
@@ -296,16 +297,16 @@
               </article>
               <article class="benefit-card fade-up" data-delay="2">
                 <h3 class="benefit-card__title" data-i18n="contact.location.title">Locatie</h3>
-                <p class="benefit-card__text">
+                <p class="benefit-card__text" data-i18n="contact.location.address" data-i18n-allow-html>
                   <strong>INTEC Brussel</strong><br />
                   Rouppeplein 16<br />
                   1000 Brussel
                 </p>
-                <p class="benefit-card__text" data-i18n="contact.location.transport">
+                <p class="benefit-card__text" data-i18n="contact.location.transport" data-i18n-allow-html>
                   <strong>Bereikbaarheid:</strong><br />
-                  ? Metro: lijnen 1 & 5 (De Brouck?re)<br />
-                  ? Tram: lijnen 3 & 4 (Anneessens)<br />
-                  ? Station: 5 min wandelen vanaf Brussel-Centraal
+                  Metro: lijnen 1 &amp; 5 (halte De Brouckère)<br />
+                  Tram: lijnen 3 &amp; 4 (halte Anneessens)<br />
+                  Station: 5 min wandelen vanaf Brussel-Centraal
                 </p>
                 <a
                   class="btn-outline"
@@ -327,10 +328,10 @@
                   Je bent welkom tijdens onze openingstijden voor een rondleiding, informatiegesprek of om je in te schrijven.
                 </p>
                 <ul class="benefit-card__list">
-                  <li>Bekijk onze leslokalen en faciliteiten</li>
-                  <li>Ontmoet onze coaches en instructeurs</li>
-                  <li>Stel al je vragen persoonlijk</li>
-                  <li>Schrijf je direct in voor een opleiding</li>
+                  <li data-i18n="contact.visit.list.facilities">Bekijk onze leslokalen en faciliteiten</li>
+                  <li data-i18n="contact.visit.list.coaches">Ontmoet onze coaches en instructeurs</li>
+                  <li data-i18n="contact.visit.list.questions">Stel al je vragen persoonlijk</li>
+                  <li data-i18n="contact.visit.list.register">Schrijf je direct in voor een opleiding</li>
                 </ul>
               </article>
             </div>
@@ -356,12 +357,12 @@
 
     <!-- Contact Card -->
     <div class="contact-info">
-      <h3>CONTACT ONS</h3>
-      <p><strong>Adres:</strong><br>Rouppeplein 16<br>1000 Brussel, België</p>
-      <p><strong>Telefoon:</strong><br><a href="tel:+3224112907">02 / 411 29 07</a></p>
-      <p><strong>E-mail:</strong><br><a href="mailto:info@intecbrussel.be">info@intecbrussel.be</a></p>
+      <h3 data-i18n="contact.map.title">CONTACTEER ONS</h3>
+      <p data-i18n="contact.map.address" data-i18n-allow-html><strong>Adres:</strong><br>Rouppeplein 16<br>1000 Brussel, België</p>
+      <p data-i18n="contact.map.phone" data-i18n-allow-html><strong>Telefoon:</strong><br><a href="tel:+3224112907">+32 2 411 29 07</a></p>
+      <p data-i18n="contact.map.email" data-i18n-allow-html><strong>E-mail:</strong><br><a href="mailto:info@intecbrussel.be">info@intecbrussel.be</a></p>
       <div class="social-links">
-        <p>Volg ons:</p>
+        <p data-i18n="contact.map.follow">Volg ons:</p>
         <a href="https://www.facebook.com/intecbrussel" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
         <a href="https://www.instagram.com/intecbrussel" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
         <a href="https://www.linkedin.com/company/intec-brussel" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -520,3 +521,4 @@
     <script src="assets/js/main.js" defer></script>
 </body>
 </html>
+
