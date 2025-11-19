@@ -1,0 +1,369 @@
+{
+  "generatedAt": "2025-11-18T22:49:36.015Z",
+  "pagesScanned": 14,
+  "summary": {
+    "brokenLinks": 0,
+    "missingAnchors": 0,
+    "uncheckedExternalLinks": 65
+  },
+  "pages": [
+    {
+      "path": "contact.html",
+      "brokenLinks": [],
+      "missingAnchors": [],
+      "externalLinks": [
+        {
+          "href": "https://maps.google.com/?q=INTEC+Brussel",
+          "label": "Route plannen"
+        },
+        {
+          "href": "https://www.facebook.com/intecbrussel",
+          "label": ""
+        },
+        {
+          "href": "https://www.instagram.com/intecbrussel",
+          "label": ""
+        },
+        {
+          "href": "https://www.linkedin.com/company/intec-brussel",
+          "label": ""
+        },
+        {
+          "href": "https://twitter.com/intecbrussel",
+          "label": ""
+        },
+        {
+          "href": "https://www.facebook.com/intecbrussel.be",
+          "label": ""
+        },
+        {
+          "href": "https://github.com/intecbrussel",
+          "label": ""
+        },
+        {
+          "href": "https://www.linkedin.com/groups/3973164/",
+          "label": ""
+        },
+        {
+          "href": "https://x.com/INTEC_BRUSSEL",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "path": "cvdb/index.html",
+      "brokenLinks": [],
+      "missingAnchors": [],
+      "externalLinks": [
+        {
+          "href": "https://www.facebook.com/intecbrussel.be",
+          "label": ""
+        },
+        {
+          "href": "https://github.com/intecbrussel",
+          "label": ""
+        },
+        {
+          "href": "https://www.linkedin.com/groups/3973164/",
+          "label": ""
+        },
+        {
+          "href": "https://x.com/INTEC_BRUSSEL",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "path": "digipunt.html",
+      "brokenLinks": [],
+      "missingAnchors": [],
+      "externalLinks": [
+        {
+          "href": "https://video.squarespace-cdn.com/content/v1/657d69b302c36f780a7ca48e/503a6160-f834-4d98-9c66-fde520bcd3b6/1920x1080.mp4",
+          "label": "Download de video"
+        },
+        {
+          "href": "https://samenin.brussels/diginew",
+          "label": "Meer info"
+        },
+        {
+          "href": "https://www.facebook.com/intecbrussel.be",
+          "label": ""
+        },
+        {
+          "href": "https://github.com/intecbrussel",
+          "label": ""
+        },
+        {
+          "href": "https://www.linkedin.com/groups/3973164/",
+          "label": ""
+        },
+        {
+          "href": "https://x.com/INTEC_BRUSSEL",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "path": "index.html",
+      "brokenLinks": [],
+      "missingAnchors": [],
+      "externalLinks": [
+        {
+          "href": "https://inoptecplus.be/",
+          "label": "Neem contact op"
+        },
+        {
+          "href": "https://www.facebook.com/intecbrussel.be",
+          "label": ""
+        },
+        {
+          "href": "https://github.com/intecbrussel",
+          "label": ""
+        },
+        {
+          "href": "https://www.linkedin.com/groups/3973164/",
+          "label": ""
+        },
+        {
+          "href": "https://x.com/INTEC_BRUSSEL",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "path": "inschrijven.html",
+      "brokenLinks": [],
+      "missingAnchors": [],
+      "externalLinks": [
+        {
+          "href": "https://www.facebook.com/intecbrussel.be",
+          "label": ""
+        },
+        {
+          "href": "https://github.com/intecbrussel",
+          "label": ""
+        },
+        {
+          "href": "https://www.linkedin.com/groups/3973164/",
+          "label": ""
+        },
+        {
+          "href": "https://x.com/INTEC_BRUSSEL",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "path": "opleidingen.html",
+      "brokenLinks": [],
+      "missingAnchors": [],
+      "externalLinks": [
+        {
+          "href": "https://www.facebook.com/intecbrussel.be",
+          "label": ""
+        },
+        {
+          "href": "https://github.com/intecbrussel",
+          "label": ""
+        },
+        {
+          "href": "https://www.linkedin.com/groups/3973164/",
+          "label": ""
+        },
+        {
+          "href": "https://x.com/INTEC_BRUSSEL",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "path": "overons.html",
+      "brokenLinks": [],
+      "missingAnchors": [],
+      "externalLinks": [
+        {
+          "href": "https://www.facebook.com/intecbrussel.be",
+          "label": ""
+        },
+        {
+          "href": "https://github.com/intecbrussel",
+          "label": ""
+        },
+        {
+          "href": "https://www.linkedin.com/groups/3973164/",
+          "label": ""
+        },
+        {
+          "href": "https://x.com/INTEC_BRUSSEL",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "path": "privacy.html",
+      "brokenLinks": [],
+      "missingAnchors": [],
+      "externalLinks": [
+        {
+          "href": "https://www.facebook.com/intecbrussel.be",
+          "label": ""
+        },
+        {
+          "href": "https://github.com/intecbrussel",
+          "label": ""
+        },
+        {
+          "href": "https://www.linkedin.com/groups/3973164/",
+          "label": ""
+        },
+        {
+          "href": "https://x.com/INTEC_BRUSSEL",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "path": "python.html",
+      "brokenLinks": [],
+      "missingAnchors": [],
+      "externalLinks": [
+        {
+          "href": "https://www.facebook.com/intecbrussel.be",
+          "label": ""
+        },
+        {
+          "href": "https://github.com/intecbrussel",
+          "label": ""
+        },
+        {
+          "href": "https://www.linkedin.com/groups/3973164/",
+          "label": ""
+        },
+        {
+          "href": "https://x.com/INTEC_BRUSSEL",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "path": "security.html",
+      "brokenLinks": [],
+      "missingAnchors": [],
+      "externalLinks": [
+        {
+          "href": "https://www.facebook.com/intecbrussel.be",
+          "label": ""
+        },
+        {
+          "href": "https://github.com/intecbrussel",
+          "label": ""
+        },
+        {
+          "href": "https://www.linkedin.com/groups/3973164/",
+          "label": ""
+        },
+        {
+          "href": "https://x.com/INTEC_BRUSSEL",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "path": "support.html",
+      "brokenLinks": [],
+      "missingAnchors": [],
+      "externalLinks": [
+        {
+          "href": "https://www.facebook.com/intecbrussel.be",
+          "label": ""
+        },
+        {
+          "href": "https://github.com/intecbrussel",
+          "label": ""
+        },
+        {
+          "href": "https://www.linkedin.com/groups/3973164/",
+          "label": ""
+        },
+        {
+          "href": "https://x.com/INTEC_BRUSSEL",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "path": "systeembeheerder.html",
+      "brokenLinks": [],
+      "missingAnchors": [],
+      "externalLinks": [
+        {
+          "href": "https://www.facebook.com/intecbrussel.be",
+          "label": ""
+        },
+        {
+          "href": "https://github.com/intecbrussel",
+          "label": ""
+        },
+        {
+          "href": "https://www.linkedin.com/groups/3973164/",
+          "label": ""
+        },
+        {
+          "href": "https://x.com/INTEC_BRUSSEL",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "path": "vacatures.html",
+      "brokenLinks": [],
+      "missingAnchors": [],
+      "externalLinks": [
+        {
+          "href": "https://www.linkedin.com/groups/3973164/",
+          "label": "Volg ons op LinkedIn"
+        },
+        {
+          "href": "https://www.facebook.com/intecbrussel.be",
+          "label": ""
+        },
+        {
+          "href": "https://github.com/intecbrussel",
+          "label": ""
+        },
+        {
+          "href": "https://www.linkedin.com/groups/3973164/",
+          "label": ""
+        },
+        {
+          "href": "https://x.com/INTEC_BRUSSEL",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "path": "wiezijnwe.html",
+      "brokenLinks": [],
+      "missingAnchors": [],
+      "externalLinks": [
+        {
+          "href": "https://www.facebook.com/intecbrussel.be",
+          "label": ""
+        },
+        {
+          "href": "https://github.com/intecbrussel",
+          "label": ""
+        },
+        {
+          "href": "https://www.linkedin.com/groups/3973164/",
+          "label": ""
+        },
+        {
+          "href": "https://x.com/INTEC_BRUSSEL",
+          "label": ""
+        }
+      ]
+    }
+  ]
+}

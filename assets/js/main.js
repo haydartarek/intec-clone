@@ -4,7 +4,7 @@
 // Fully refactored with all fixes applied
 // ============================================================================
 
-(function() {
+(function () {
   'use strict';
 
   // Performance optimizations
@@ -27,9 +27,9 @@
   // ==========================================================================
   // GLOBAL CONFIGURATION & STATE
   // ==========================================================================
-  
+
   const INTEC = window.INTEC || {};
-  
+
   const LANGUAGE_STORAGE_KEY = 'intec-language';
   const LANGUAGE_STORAGE_VERSION = 'intec-language-v2';
   const LANGUAGE_MANUAL_FLAG = 'intec-language-manual';
@@ -52,6 +52,108 @@
     debug: false
   };
 
+  // ========================================================================
+  // DESIGN TOKEN BRIDGE (Phase 4)
+  // Exposes CSS custom properties + generated manifest to JavaScript modules.
+  // ========================================================================
+
+  INTEC.tokens = (() => {
+    const cache = new Map();
+    let manifest = { tokens: {} };
+    let manifestPromise = null;
+
+    const scriptCandidates = () => {
+      if (document.currentScript) return [document.currentScript];
+      return Array.from(document.getElementsByTagName('script'));
+    };
+
+    const manifestUrl = (() => {
+      const scripts = scriptCandidates();
+      for (let i = scripts.length - 1; i >= 0; i -= 1) {
+        const src = scripts[i]?.getAttribute('src');
+        if (!src || !src.includes('assets/js/main.js')) continue;
+        try {
+          const scriptUrl = new URL(src, window.location.href);
+          return new URL('../data/design-tokens.json', scriptUrl).toString();
+        } catch (error) {
+          /* noop – fall through to default */
+        }
+      }
+      return 'data/design-tokens.json';
+    })();
+
+    const ensureCssVar = (name) => {
+      if (!name) return '';
+      return name.startsWith('--') ? name : `--${name}`;
+    };
+
+    const manifestKey = (name) => ensureCssVar(name).replace(/^--/, '');
+
+    const readFromCss = (name) => {
+      const normalized = ensureCssVar(name);
+      if (!normalized) return '';
+      if (cache.has(normalized)) return cache.get(normalized);
+      const value = getComputedStyle(document.documentElement)
+        .getPropertyValue(normalized)
+        .trim();
+      if (value) cache.set(normalized, value);
+      return value;
+    };
+
+    const loadManifest = () => {
+      if (manifestPromise || typeof fetch !== 'function') {
+        if (!manifestPromise) manifestPromise = Promise.resolve(manifest);
+        return manifestPromise;
+      }
+
+      manifestPromise = fetch(manifestUrl, { cache: 'no-store' })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Failed to load design tokens (${response.status})`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          manifest = data || { tokens: {} };
+          return manifest;
+        })
+        .catch((error) => {
+          console.warn('[INTEC.tokens] Manifest load failed:', error.message);
+          manifest = manifest || { tokens: {} };
+          return manifest;
+        });
+
+      return manifestPromise;
+    };
+
+    const get = (name, options = {}) => readFromCss(name) || options.fallback || '';
+
+    const raw = (name) => {
+      const key = manifestKey(name);
+      return manifest.tokens?.[key];
+    };
+
+    const all = () => ({ ...(manifest.tokens || {}) });
+
+    const refresh = () => {
+      cache.clear();
+      manifestPromise = null;
+      return loadManifest();
+    };
+
+    // Kick off manifest fetch in the background so downstream code can await it.
+    loadManifest();
+
+    return {
+      get,
+      raw,
+      all,
+      ready: loadManifest,
+      refresh,
+      manifestUrl
+    };
+  })();
+
   const savedLanguage =
     localStorage.getItem(LANGUAGE_STORAGE_VERSION) ||
     localStorage.getItem(LANGUAGE_STORAGE_KEY);
@@ -71,6 +173,89 @@
     observers: [],
     timers: []
   };
+
+  // Lazy loader for optional language bundles so we only fetch what we need.
+  const LanguageLoader = (() => {
+    const getMainScript = () => {
+      if (document.currentScript) return document.currentScript;
+      const candidates = Array.from(document.querySelectorAll('script[src]'));
+      return candidates.find((script) => (script.getAttribute('src') || '').includes('assets/js/main.js')) || null;
+    };
+
+    const scriptElement = getMainScript();
+    const scriptBase = (() => {
+      try {
+        if (scriptElement) {
+          const scriptUrl = new URL(scriptElement.getAttribute('src'), window.location.href);
+          const normalized = scriptUrl.href.split('?')[0];
+          return normalized.slice(0, normalized.lastIndexOf('/') + 1);
+        }
+      } catch (error) {
+        /* noop */
+      }
+
+      try {
+        return new URL('assets/js/', window.location.href).href;
+      } catch (error) {
+        return 'assets/js/';
+      }
+    })();
+
+    const pendingLoads = new Map();
+
+    const resolveUrl = (relativePath) => {
+      try {
+        return new URL(relativePath, scriptBase).toString();
+      } catch (error) {
+        return relativePath;
+      }
+    };
+
+    const loadScript = (url) => new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = url;
+      script.async = true;
+      script.defer = true;
+
+      try {
+        const target = new URL(url, window.location.href);
+        if (target.origin !== window.location.origin) {
+          script.crossOrigin = 'anonymous';
+        }
+      } catch (error) {
+        /* ignore URL parsing issues */
+      }
+
+      script.onload = () => resolve(url);
+      script.onerror = () => reject(new Error(`Failed to load ${url}`));
+      document.head.appendChild(script);
+    });
+
+    const ensureLanguage = (lang) => {
+      if (!lang) return Promise.resolve();
+      if (window.i18n?.[lang]) return Promise.resolve(window.i18n[lang]);
+      if (pendingLoads.has(lang)) return pendingLoads.get(lang);
+
+      const scriptUrl = resolveUrl(`i18n/${lang}.js`);
+      const loadPromise = loadScript(scriptUrl)
+        .then(() => {
+          if (!window.i18n?.[lang]) {
+            throw new Error(`Language bundle '${lang}' did not register`);
+          }
+          return window.i18n[lang];
+        })
+        .finally(() => {
+          pendingLoads.delete(lang);
+        });
+
+      pendingLoads.set(lang, loadPromise);
+      return loadPromise;
+    };
+
+    return {
+      ensureLanguage
+    };
+  })();
 
   const persistLanguage = (lang, manual = false) => {
     if (!lang) return;
@@ -110,7 +295,7 @@
      */
     throttle(func, limit = 16) {
       let inThrottle;
-      return function(...args) {
+      return function (...args) {
         if (!inThrottle) {
           func.apply(this, args);
           inThrottle = true;
@@ -175,107 +360,107 @@
   // ==========================================================================
   // DEVTOOLS DETECTION
   // ==========================================================================
-const DevToolsDetector = {
-  initialized: false,
-  currentState: null,
+  const DevToolsDetector = {
+    initialized: false,
+    currentState: null,
 
-  init(force = false) {
-    if ((!INTEC.config.monitorDevTools || this.initialized) && !force) return;
+    init(force = false) {
+      if ((!INTEC.config.monitorDevTools || this.initialized) && !force) return;
 
-    const body = document.body;
-    if (!body) return;
+      const body = document.body;
+      if (!body) return;
 
-    this.initialized = true;
-    this.currentState = null;
+      this.initialized = true;
+      this.currentState = null;
 
-    const openThreshold = Number.isFinite(INTEC.config.devToolsThreshold)
-      ? INTEC.config.devToolsThreshold
-      : 160;
-    const hysteresis = Math.max(0, INTEC.config.devToolsHysteresis || 80);
-    const confirmDelay = Math.max(200, INTEC.config.devToolsConfirmDelay || 600);
-    const pollInterval = Math.max(500, INTEC.config.devToolsPollInterval || 1200);
-    const resizeDebounce = Math.max(150, INTEC.config.devToolsResizeDebounce || 300);
+      const openThreshold = Number.isFinite(INTEC.config.devToolsThreshold)
+        ? INTEC.config.devToolsThreshold
+        : 160;
+      const hysteresis = Math.max(0, INTEC.config.devToolsHysteresis || 80);
+      const confirmDelay = Math.max(200, INTEC.config.devToolsConfirmDelay || 600);
+      const pollInterval = Math.max(500, INTEC.config.devToolsPollInterval || 1200);
+      const resizeDebounce = Math.max(150, INTEC.config.devToolsResizeDebounce || 300);
 
-    let detectedState = false;
-    let pendingState = false;
-    let pendingSince = 0;
-    let isChecking = false;
-    let pollTimer = null;
-    let resizeTimer = null;
+      let detectedState = false;
+      let pendingState = false;
+      let pendingSince = 0;
+      let isChecking = false;
+      let pollTimer = null;
+      let resizeTimer = null;
 
-    const detect = () => {
-      const widthDelta = Math.abs((window.outerWidth || 0) - window.innerWidth);
-      const heightDelta = Math.abs((window.outerHeight || 0) - window.innerHeight);
-      const delta = Math.max(widthDelta, heightDelta);
-      const closeThreshold = Math.max(0, openThreshold - hysteresis);
+      const detect = () => {
+        const widthDelta = Math.abs((window.outerWidth || 0) - window.innerWidth);
+        const heightDelta = Math.abs((window.outerHeight || 0) - window.innerHeight);
+        const delta = Math.max(widthDelta, heightDelta);
+        const closeThreshold = Math.max(0, openThreshold - hysteresis);
 
-      return detectedState
-        ? delta > closeThreshold
-        : delta > openThreshold;
-    };
+        return detectedState
+          ? delta > closeThreshold
+          : delta > openThreshold;
+      };
 
-    const applyState = (newState) => {
-      if (this.currentState === newState) return;
-      this.currentState = newState;
-      requestAnimationFrame(() => {
-        body.classList.toggle('devtools-open', newState);
-      });
-    };
+      const applyState = (newState) => {
+        if (this.currentState === newState) return;
+        this.currentState = newState;
+        requestAnimationFrame(() => {
+          body.classList.toggle('devtools-open', newState);
+        });
+      };
 
-    const evaluate = () => {
-      if (isChecking) return;
-      isChecking = true;
+      const evaluate = () => {
+        if (isChecking) return;
+        isChecking = true;
 
-      const nowDetected = detect();
+        const nowDetected = detect();
 
-      if (nowDetected !== pendingState) {
-        pendingState = nowDetected;
-        pendingSince = performance.now();
-        isChecking = false;
-        return;
-      }
-
-      if (detectedState !== pendingState) {
-        const elapsed = performance.now() - pendingSince;
-        if (elapsed >= confirmDelay) {
-          detectedState = pendingState;
-          applyState(detectedState);
+        if (nowDetected !== pendingState) {
+          pendingState = nowDetected;
+          pendingSince = performance.now();
+          isChecking = false;
+          return;
         }
-      }
 
-      isChecking = false;
-    };
+        if (detectedState !== pendingState) {
+          const elapsed = performance.now() - pendingSince;
+          if (elapsed >= confirmDelay) {
+            detectedState = pendingState;
+            applyState(detectedState);
+          }
+        }
 
-    const onResize = () => {
-      if (resizeTimer) clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => evaluate(), resizeDebounce);
-    };
+        isChecking = false;
+      };
 
-    window.addEventListener('resize', onResize, { passive: true });
+      const onResize = () => {
+        if (resizeTimer) clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => evaluate(), resizeDebounce);
+      };
 
-    pollTimer = window.setInterval(() => {
-      if (!document.hidden) evaluate();
-    }, pollInterval);
+      window.addEventListener('resize', onResize, { passive: true });
 
-    document.addEventListener('visibilitychange', () => {
-      if (!document.hidden) {
-        setTimeout(() => evaluate(), 100);
-      }
-    });
+      pollTimer = window.setInterval(() => {
+        if (!document.hidden) evaluate();
+      }, pollInterval);
 
-    window.addEventListener('beforeunload', () => {
-      clearInterval(pollTimer);
-      if (resizeTimer) clearTimeout(resizeTimer);
-    }, { once: true });
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+          setTimeout(() => evaluate(), 100);
+        }
+      });
 
-    detectedState = detect();
-    pendingState = detectedState;
-    pendingSince = performance.now() - confirmDelay;
-    evaluate();
+      window.addEventListener('beforeunload', () => {
+        clearInterval(pollTimer);
+        if (resizeTimer) clearTimeout(resizeTimer);
+      }, { once: true });
 
-    Utils.log('DevTools detector initialized (anti-flicker)', 'success');
-  }
-};
+      detectedState = detect();
+      pendingState = detectedState;
+      pendingSince = performance.now() - confirmDelay;
+      evaluate();
+
+      Utils.log('DevTools detector initialized (anti-flicker)', 'success');
+    }
+  };
 
   // ==========================================================================
   // LANGUAGE MANAGEMENT SYSTEM
@@ -291,27 +476,40 @@ const DevToolsDetector = {
     },
 
     loadLanguage(lang) {
-      if (!window.i18n || !window.i18n[lang]) {
-        if (INTEC.state.languageLoadAttempts++ < INTEC.config.maxLanguageLoadAttempts) {
-          Utils.log(`Waiting for language '${lang}' (attempt ${INTEC.state.languageLoadAttempts})`, 'warning');
-          setTimeout(() => this.loadLanguage(lang), INTEC.config.languageRetryDelay);
-          return;
-        }
-        Utils.log(`Failed to load language '${lang}' after max attempts`, 'error');
-        return;
+      if (!lang) return Promise.resolve();
+
+      const applyLanguage = () => {
+        INTEC.state.languageLoadAttempts = 0;
+        INTEC.state.currentLanguage = lang;
+        const manualChoice = localStorage.getItem(LANGUAGE_MANUAL_FLAG) === 'true';
+        persistLanguage(lang, manualChoice);
+        document.documentElement.lang = lang;
+
+        this.applyTranslations();
+        this.updateLanguageButtons();
+
+        window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
+        Utils.log(`Language loaded: ${lang}`, 'success');
+        return lang;
+      };
+
+      if (window.i18n?.[lang]) {
+        return Promise.resolve(applyLanguage());
       }
 
-      INTEC.state.languageLoadAttempts = 0;
-      INTEC.state.currentLanguage = lang;
-      const manualChoice = localStorage.getItem(LANGUAGE_MANUAL_FLAG) === 'true';
-      persistLanguage(lang, manualChoice);
-      document.documentElement.lang = lang;
-
-      this.applyTranslations();
-      this.updateLanguageButtons();
-
-      window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
-      Utils.log(`Language loaded: ${lang}`, 'success');
+      return LanguageLoader.ensureLanguage(lang)
+        .then(() => applyLanguage())
+        .catch((error) => {
+          Utils.log(`Language bundle error for '${lang}': ${error.message || error}`, 'error');
+          if (INTEC.state.languageLoadAttempts < INTEC.config.maxLanguageLoadAttempts) {
+            INTEC.state.languageLoadAttempts += 1;
+            return new Promise((resolve) => {
+              setTimeout(() => resolve(this.loadLanguage(lang)), INTEC.config.languageRetryDelay);
+            });
+          }
+          Utils.log(`Failed to load language '${lang}' after max attempts`, 'error');
+          return null;
+        });
     },
 
     applyTranslations() {
@@ -323,7 +521,7 @@ const DevToolsDetector = {
         Utils.$$(selector).forEach(el => {
           const key = el.getAttribute(attr);
           const text = dict[key];
-          
+
           if (text) {
             if (setAttr) {
               el.setAttribute(attr.replace('data-i18n-', ''), text);
@@ -355,13 +553,19 @@ const DevToolsDetector = {
       Utils.$$('[data-lang-select]').forEach(btn => {
         const lang = btn.dataset.lang;
         const active = lang === INTEC.state.currentLanguage;
-        
+
         btn.classList.toggle('is-active', active);
         btn.setAttribute('aria-pressed', String(active));
         btn.setAttribute('aria-current', active ? 'true' : 'false');
 
         const switcher = btn.closest('.language-switch');
-        if (switcher) switcher.dataset.activeLang = active ? lang : '';
+        if (!switcher) return;
+
+        if (active) {
+          switcher.dataset.activeLang = lang;
+        } else if (!switcher.querySelector('[data-lang-select].is-active')) {
+          switcher.dataset.activeLang = '';
+        }
       });
     },
 
@@ -403,9 +607,9 @@ const DevToolsDetector = {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
         const eased = Utils.easeOutCubic(progress);
-        
+
         window.scrollTo(0, startY + distance * eased);
-        
+
         if (progress < 1) {
           requestAnimationFrame(step);
         }
@@ -419,17 +623,17 @@ const DevToolsDetector = {
         anchor.addEventListener('click', (e) => {
           const hash = anchor.getAttribute('href');
           const target = Utils.$(hash);
-          
+
           if (!target) return;
-          
+
           e.preventDefault();
-          
-          const targetY = target.getBoundingClientRect().top + 
-                         window.pageYOffset - 
-                         Utils.getHeaderOffset();
-          
+
+          const targetY = target.getBoundingClientRect().top +
+            window.pageYOffset -
+            Utils.getHeaderOffset();
+
           this.scrollTo(targetY);
-          
+
           history.replaceState(null, '', hash);
           target.setAttribute('tabindex', '-1');
           target.focus({ preventScroll: true });
@@ -464,9 +668,9 @@ const DevToolsDetector = {
 
     update() {
       const currentScrollY = window.scrollY;
-      
+
       this.header.classList.toggle('is-condensed', currentScrollY > 40);
-      
+
       if (currentScrollY > 120 && currentScrollY > this.lastScrollY) {
         this.header.classList.add('is-hidden');
       } else {
@@ -478,7 +682,7 @@ const DevToolsDetector = {
       } else {
         this.header.classList.remove('scrolled');
       }
-      
+
       this.lastScrollY = currentScrollY;
       this.ticking = false;
     }
@@ -488,195 +692,195 @@ const DevToolsDetector = {
   // MOBILE NAVIGATION
   // ==========================================================================
 
-// ==========================================================================
-// MOBILE NAVIGATION - ENHANCED VERSION
-// ==========================================================================
+  // ==========================================================================
+  // MOBILE NAVIGATION - ENHANCED VERSION
+  // ==========================================================================
 
-const MobileNav = {
-  toggle: null,
-  nav: null,
-  navList: null,
-  isOpen: false,
+  const MobileNav = {
+    toggle: null,
+    nav: null,
+    navList: null,
+    isOpen: false,
 
-  init() {
-    this.toggle = Utils.$('[data-nav-toggle], .nav-toggle');
-    this.nav = Utils.$('.primary-nav');
-    this.navList = Utils.$('.nav-links');
-    
-    if (!this.toggle || !this.nav || !this.navList) {
-      console.warn('⚠️ Mobile nav elements missing');
-      return;
-    }
+    init() {
+      this.toggle = Utils.$('[data-nav-toggle], .nav-toggle');
+      this.nav = Utils.$('.primary-nav');
+      this.navList = Utils.$('.nav-links');
 
-    this.setupToggle();
-    this.setupOutsideClick();
-    this.setupEscapeKey();
-    this.setupLinkClicks();
-    this.syncActions();
-    this.setupResizeHandler();
-
-    Utils.log('Mobile navigation initialized', 'success');
-  },
-
-  setupToggle() {
-    this.toggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      this.toggleMenu();
-    });
-  },
-
-  toggleMenu() {
-    this.isOpen = !this.isOpen;
-    
-    // Update ARIA attributes
-    this.toggle.setAttribute('aria-expanded', String(this.isOpen));
-    
-    // Toggle classes
-    this.toggle.classList.toggle('is-active', this.isOpen);
-    this.nav.classList.toggle('is-open', this.isOpen);
-    this.navList.classList.toggle('is-open', this.isOpen);
-    document.body.classList.toggle('nav-is-open', this.isOpen);
-
-    // Trap focus inside menu when open
-    if (this.isOpen) {
-      this.trapFocus();
-    } else {
-      this.releaseFocus();
-    }
-
-    Utils.log(`Menu ${this.isOpen ? 'opened' : 'closed'}`, 'info');
-  },
-
-  closeMenu() {
-    if (!this.isOpen) return;
-    
-    this.isOpen = false;
-    this.toggle.setAttribute('aria-expanded', 'false');
-    this.toggle.classList.remove('is-active');
-    this.nav.classList.remove('is-open');
-    this.navList.classList.remove('is-open');
-    document.body.classList.remove('nav-is-open');
-    
-    this.releaseFocus();
-  },
-
-  setupOutsideClick() {
-    document.addEventListener('click', (e) => {
-      if (!this.isOpen) return;
-      
-      const isClickInsideNav = this.nav.contains(e.target);
-      const isClickOnToggle = this.toggle.contains(e.target);
-      
-      if (!isClickInsideNav && !isClickOnToggle) {
-        this.closeMenu();
+      if (!this.toggle || !this.nav || !this.navList) {
+        console.warn('⚠️ Mobile nav elements missing');
+        return;
       }
-    });
-  },
 
-  setupEscapeKey() {
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && this.isOpen) {
-        this.closeMenu();
-        this.toggle.focus();
-      }
-    });
-  },
+      this.setupToggle();
+      this.setupOutsideClick();
+      this.setupEscapeKey();
+      this.setupLinkClicks();
+      this.syncActions();
+      this.setupResizeHandler();
 
-  setupLinkClicks() {
-    Utils.$$('a', this.navList).forEach(link => {
-      link.addEventListener('click', () => {
-        // Close menu when link is clicked on mobile
-        if (window.innerWidth <= 1024) {
-          setTimeout(() => this.closeMenu(), 300);
-        }
+      Utils.log('Mobile navigation initialized', 'success');
+    },
+
+    setupToggle() {
+      this.toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.toggleMenu();
       });
-    });
-  },
+    },
 
-  trapFocus() {
-    const focusableElements = Utils.$$(
-      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
-      this.nav
-    );
-    
-    if (focusableElements.length === 0) return;
+    toggleMenu() {
+      this.isOpen = !this.isOpen;
 
-    const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
+      // Update ARIA attributes
+      this.toggle.setAttribute('aria-expanded', String(this.isOpen));
 
-    this.focusTrapHandler = (e) => {
-      if (e.key !== 'Tab') return;
+      // Toggle classes
+      this.toggle.classList.toggle('is-active', this.isOpen);
+      this.nav.classList.toggle('is-open', this.isOpen);
+      this.navList.classList.toggle('is-open', this.isOpen);
+      document.body.classList.toggle('nav-is-open', this.isOpen);
 
-      if (e.shiftKey) {
-        if (document.activeElement === firstElement) {
-          e.preventDefault();
-          lastElement.focus();
-        }
+      // Trap focus inside menu when open
+      if (this.isOpen) {
+        this.trapFocus();
       } else {
-        if (document.activeElement === lastElement) {
-          e.preventDefault();
-          firstElement.focus();
-        }
+        this.releaseFocus();
       }
-    };
 
-    document.addEventListener('keydown', this.focusTrapHandler);
-    firstElement.focus();
-  },
+      Utils.log(`Menu ${this.isOpen ? 'opened' : 'closed'}`, 'info');
+    },
 
-  releaseFocus() {
-    if (this.focusTrapHandler) {
-      document.removeEventListener('keydown', this.focusTrapHandler);
-      this.focusTrapHandler = null;
-    }
-  },
+    closeMenu() {
+      if (!this.isOpen) return;
 
-  syncActions() {
-    const actions = Utils.$('.site-header__actions');
-    const headerInner = Utils.$('.site-header__inner');
+      this.isOpen = false;
+      this.toggle.setAttribute('aria-expanded', 'false');
+      this.toggle.classList.remove('is-active');
+      this.nav.classList.remove('is-open');
+      this.navList.classList.remove('is-open');
+      document.body.classList.remove('nav-is-open');
 
-    if (!actions || !headerInner || !this.nav) return;
+      this.releaseFocus();
+    },
 
-    if (!this.actionsPlaceholder) {
-      this.actionsPlaceholder = document.createComment('site-header__actions-placeholder');
-      headerInner.insertBefore(this.actionsPlaceholder, actions);
-    }
+    setupOutsideClick() {
+      document.addEventListener('click', (e) => {
+        if (!this.isOpen) return;
 
-    const relocate = () => {
-      const isMobile = window.innerWidth <= 1024;
+        const isClickInsideNav = this.nav.contains(e.target);
+        const isClickOnToggle = this.toggle.contains(e.target);
 
-      if (isMobile) {
-        if (!this.nav.contains(actions)) {
-          this.nav.appendChild(actions);
-        }
-      } else if (!headerInner.contains(actions)) {
-        headerInner.insertBefore(actions, this.actionsPlaceholder.nextSibling);
-        this.closeMenu();
-      }
-    };
-
-    relocate();
-
-    const debouncedRelocate = Utils.debounce(relocate, 150);
-    window.addEventListener('resize', debouncedRelocate);
-  },
-
-  setupResizeHandler() {
-    let resizeTimer;
-    
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      
-      resizeTimer = setTimeout(() => {
-        // Close menu if resizing to desktop
-        if (window.innerWidth > 1024 && this.isOpen) {
+        if (!isClickInsideNav && !isClickOnToggle) {
           this.closeMenu();
         }
-      }, 250);
-    });
-  }
-};
+      });
+    },
+
+    setupEscapeKey() {
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && this.isOpen) {
+          this.closeMenu();
+          this.toggle.focus();
+        }
+      });
+    },
+
+    setupLinkClicks() {
+      Utils.$$('a', this.navList).forEach(link => {
+        link.addEventListener('click', () => {
+          // Close menu when link is clicked on mobile
+          if (window.innerWidth <= 1024) {
+            setTimeout(() => this.closeMenu(), 300);
+          }
+        });
+      });
+    },
+
+    trapFocus() {
+      const focusableElements = Utils.$$(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        this.nav
+      );
+
+      if (focusableElements.length === 0) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      this.focusTrapHandler = (e) => {
+        if (e.key !== 'Tab') return;
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+          }
+        }
+      };
+
+      document.addEventListener('keydown', this.focusTrapHandler);
+      firstElement.focus();
+    },
+
+    releaseFocus() {
+      if (this.focusTrapHandler) {
+        document.removeEventListener('keydown', this.focusTrapHandler);
+        this.focusTrapHandler = null;
+      }
+    },
+
+    syncActions() {
+      const actions = Utils.$('.site-header__actions');
+      const headerInner = Utils.$('.site-header__inner');
+
+      if (!actions || !headerInner || !this.nav) return;
+
+      if (!this.actionsPlaceholder) {
+        this.actionsPlaceholder = document.createComment('site-header__actions-placeholder');
+        headerInner.insertBefore(this.actionsPlaceholder, actions);
+      }
+
+      const relocate = () => {
+        const isMobile = window.innerWidth <= 1024;
+
+        if (isMobile) {
+          if (!this.nav.contains(actions)) {
+            this.nav.appendChild(actions);
+          }
+        } else if (!headerInner.contains(actions)) {
+          headerInner.insertBefore(actions, this.actionsPlaceholder.nextSibling);
+          this.closeMenu();
+        }
+      };
+
+      relocate();
+
+      const debouncedRelocate = Utils.debounce(relocate, 150);
+      window.addEventListener('resize', debouncedRelocate);
+    },
+
+    setupResizeHandler() {
+      let resizeTimer;
+
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+
+        resizeTimer = setTimeout(() => {
+          // Close menu if resizing to desktop
+          if (window.innerWidth > 1024 && this.isOpen) {
+            this.closeMenu();
+          }
+        }, 250);
+      });
+    }
+  };
 
   // ==========================================================================
   // LAZY IMAGE OPTIMIZATION
@@ -719,9 +923,9 @@ const MobileNav = {
       const animationTargets = [
         { selector: '.hero__content', animation: 'slide-right' },
         { selector: '.hero__visual', animation: 'slide-left' },
-        { 
-          selector: '.hero-card, .section, .section-heading, .stats-item, .program-card, .course-card, .tip-card, .faq-item, .highlight-box, .logo-card, .cta-band, .timeline li', 
-          animation: 'fade-up' 
+        {
+          selector: '.hero-card, .section, .section-heading, .stats-item, .program-card, .course-card, .tip-card, .faq-item, .highlight-box, .logo-card, .cta-band, .timeline li',
+          animation: 'fade-up'
         }
       ];
 
@@ -736,7 +940,7 @@ const MobileNav = {
 
     setupIntersectionObserver() {
       const animatedElements = Utils.$$('[data-animate]');
-      
+
       if (animatedElements.length > 0) {
         const observerOptions = {
           threshold: 0.15,
@@ -768,7 +972,7 @@ const MobileNav = {
 
       // Fade-up observer
       const fadeUpElements = Utils.$$('.fade-up');
-      
+
       if (fadeUpElements.length > 0) {
         this.fadeUpObserver = new IntersectionObserver((entries) => {
           const visible = [];
@@ -908,7 +1112,7 @@ const MobileNav = {
 
         targetDate.setHours(0, 0, 0, 0);
         const diffDays = Math.round((targetDate - today) / 86400000);
-        
+
         let message;
         if (diffDays > 0) {
           message = diffDays === 1 ? messages.inOne() : messages.inMany(diffDays);
@@ -976,7 +1180,7 @@ const MobileNav = {
 
       this.carousel.__carouselInit = true;
       this.track = Utils.$('[data-partner-track]', this.carousel);
-      
+
       if (!this.track) {
         Utils.log('Partner carousel: missing track element', 'error');
         return;
@@ -986,7 +1190,7 @@ const MobileNav = {
       Utils.$$('.partner-carousel__slide.is-clone', this.track).forEach(clone => clone.remove());
 
       this.slides = Utils.$$('.partner-carousel__slide', this.track);
-      
+
       if (this.slides.length === 0) {
         Utils.log('Partner carousel: no slides found', 'error');
         return;
@@ -1005,7 +1209,7 @@ const MobileNav = {
       this.computeStep();
       this.setTransform(this.currentIndex, false);
       this.updateUI();
-      
+
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         this.startAutoplay();
       }
@@ -1016,7 +1220,7 @@ const MobileNav = {
     setupClones() {
       const firstClone = this.slides[0].cloneNode(true);
       const lastClone = this.slides[this.slides.length - 1].cloneNode(true);
-      
+
       [firstClone, lastClone].forEach(clone => {
         clone.classList.add('is-clone');
         clone.setAttribute('aria-hidden', 'true');
@@ -1038,8 +1242,8 @@ const MobileNav = {
     setTransform(index, transition = true) {
       const x = -index * this.stepX;
       const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 800;
-      
-      this.track.style.transition = transition && duration > 0 ? 
+
+      this.track.style.transition = transition && duration > 0 ?
         `transform ${duration}ms cubic-bezier(0.33, 1, 0.68, 1)` : 'none';
       this.track.style.transform = `translate3d(${x}px, 0, 0)`;
       this.track.style.willChange = transition ? 'transform' : 'auto';
@@ -1057,8 +1261,8 @@ const MobileNav = {
 
     updateUI() {
       const realIndex = this.currentIndex === 0 ? this.slides.length - 1 :
-                        this.currentIndex === this.slides.length + 1 ? 0 :
-                        this.currentIndex - 1;
+        this.currentIndex === this.slides.length + 1 ? 0 :
+          this.currentIndex - 1;
 
       this.allSlides.forEach((slide, i) => {
         const isActive = i === this.currentIndex;
@@ -1077,7 +1281,7 @@ const MobileNav = {
 
     goTo(newIndex) {
       if (this.state === 'animating') return;
-      
+
       this.state = 'animating';
       this.currentIndex = newIndex;
       this.setTransform(this.currentIndex, true);
@@ -1103,9 +1307,9 @@ const MobileNav = {
     },
 
     startAutoplay() {
-      const autoplayDelay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 
+      const autoplayDelay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ?
         0 : INTEC.config.carouselAutoplayDelay;
-      
+
       if (autoplayDelay === 0) return;
 
       this.stopAutoplay();
@@ -1177,9 +1381,9 @@ const MobileNav = {
 
       const onEnd = () => {
         if (this.state !== 'dragging') return;
-        
+
         const threshold = Math.max(minSwipe, this.stepX * swipeThreshold);
-        
+
         if (Math.abs(this.deltaX) > threshold) {
           this.deltaX > 0 ? this.prev() : this.next();
         } else {
@@ -1208,7 +1412,7 @@ const MobileNav = {
       this.carousel.addEventListener('mousedown', (e) => {
         if (e.button !== 0) return;
         if (e.target.closest(guardSelector)) return;
-        
+
         e.preventDefault();
         onStart(e.clientX);
 
@@ -1272,7 +1476,7 @@ const MobileNav = {
     setupResize() {
       const onResize = () => {
         if (this.resizeRAF) return;
-        
+
         this.resizeRAF = requestAnimationFrame(() => {
           this.computeStep();
           this.setTransform(this.currentIndex, false);
@@ -1313,7 +1517,7 @@ const MobileNav = {
         // Ensure proper ARIA attributes
         const questionId = question.id || `faq-q-${Math.random().toString(36).substr(2, 9)}`;
         const answerId = answer.id || `faq-a-${Math.random().toString(36).substr(2, 9)}`;
-        
+
         question.id = questionId;
         answer.id = answerId;
         question.setAttribute('aria-controls', answerId);
@@ -1321,7 +1525,7 @@ const MobileNav = {
 
         const toggle = () => {
           const isExpanded = question.getAttribute('aria-expanded') === 'true';
-          
+
           // Close all other items
           faqItems.forEach((otherItem) => {
             if (otherItem !== item) {
@@ -1378,7 +1582,7 @@ const MobileNav = {
         // Ensure proper IDs for accessibility
         const headerId = header.id || `accordion-header-${index}`;
         const bodyId = body.id || `accordion-body-${index}`;
-        
+
         header.id = headerId;
         body.id = bodyId;
         header.setAttribute('aria-controls', bodyId);
@@ -1408,10 +1612,10 @@ const MobileNav = {
 
         // Attach event listeners
         header.addEventListener('click', toggle);
-        
+
         const icon = Utils.$('.accordion-header__icon', header);
         const text = Utils.$('.accordion-header__text', header);
-        
+
         if (icon) icon.addEventListener('click', (e) => { e.stopPropagation(); toggle(); });
         if (text) text.addEventListener('click', (e) => { e.stopPropagation(); toggle(); });
 
@@ -1466,7 +1670,7 @@ const MobileNav = {
       const onTransitionEnd = (e) => {
         if (e.propertyName !== 'max-height' && e.propertyName !== 'opacity') return;
         body.removeEventListener('transitionend', onTransitionEnd);
-        
+
         if (header.getAttribute('aria-expanded') === 'true') {
           body.style.maxHeight = 'none';
           body.style.overflow = '';
@@ -1634,9 +1838,9 @@ const MobileNav = {
         input.classList.add('has-error');
         input.classList.remove('is-valid');
         input.setAttribute('aria-invalid', 'true');
-        
+
         const errorBox = getErrorBox(input, true);
-        
+
         if (errorBox) {
           const text = getDict()[key] || key;
           errorBox.textContent = text;
@@ -1648,9 +1852,9 @@ const MobileNav = {
         input.classList.remove('has-error');
         input.classList.add('is-valid');
         input.setAttribute('aria-invalid', 'false');
-        
+
         const errorBox = getErrorBox(input);
-        
+
         if (errorBox) {
           errorBox.style.display = 'none';
           errorBox.textContent = '';
@@ -1779,7 +1983,7 @@ const MobileNav = {
       // Form submit handler
       form.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         let isValid = true;
         let firstInvalidField = null;
 
@@ -1812,7 +2016,7 @@ const MobileNav = {
 
         // Success handling
         Utils.log('Form validated successfully', 'success');
-        
+
         let successMsg = Utils.$('.form-success', form);
         if (!successMsg) {
           successMsg = document.createElement('div');
@@ -1836,7 +2040,7 @@ const MobileNav = {
         const dict = getDict();
         const titleEl = Utils.$('[data-i18n="register.success.title"]', successMsg);
         const messageEl = Utils.$('[data-i18n="register.success.message"]', successMsg);
-        
+
         if (titleEl) {
           titleEl.textContent = dict['register.success.title'] || 'Thank you!';
         }
@@ -1857,6 +2061,170 @@ const MobileNav = {
       this.forms.push(form);
     }
   };
+
+  // ==========================================================================
+  // NEWSLETTER EMAIL VALIDATION
+  // ==========================================================================
+
+  const NewsletterValidation = (() => {
+    const EMAIL_PATTERN = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.[A-Za-z0-9-]{1,63})+$/;
+    const translations = {
+      nl: {
+        required: 'Voer uw e-mailadres in.',
+        invalid: 'Gebruik een geldig e-mailadres, bijvoorbeeld naam@domein.be.'
+      },
+      en: {
+        required: 'Please enter your email address.',
+        invalid: 'Use a valid email address, for example name@domain.com.'
+      }
+    };
+
+    const getLocale = () => {
+      const lang = (INTEC?.state?.currentLanguage || document.documentElement.lang || 'nl').toLowerCase();
+      return lang.startsWith('en') ? 'en' : 'nl';
+    };
+
+    const getMessage = (type) => {
+      const locale = getLocale();
+      return translations[locale]?.[type] || translations.nl[type];
+    };
+
+    const isValidStructure = (email) => {
+      if (!email || typeof email !== 'string') return false;
+      const trimmed = email.trim();
+      if (!trimmed || /\s/.test(trimmed)) return false;
+      if (trimmed.includes('..')) return false;
+      const atParts = trimmed.split('@');
+      if (atParts.length !== 2) return false;
+      const [local, domain] = atParts;
+      if (!local || !domain || local.endsWith('.') || domain.endsWith('.')) return false;
+      if (!EMAIL_PATTERN.test(trimmed)) return false;
+      if (!domain.includes('.')) return false;
+
+      const labels = domain.split('.');
+      if (labels.length < 2) return false;
+
+      const tld = labels[labels.length - 1];
+      if (tld.length < 2 || /[^A-Za-z]/.test(tld)) return false;
+
+      return labels.every((label) => (
+        !!label &&
+        !label.startsWith('-') &&
+        !label.endsWith('-') &&
+        /^[A-Za-z0-9-]{1,63}$/.test(label)
+      ));
+    };
+
+    const validateEmail = (value) => {
+      if (!value || !value.trim()) {
+        return { ok: false, message: getMessage('required') };
+      }
+
+      if (!isValidStructure(value)) {
+        return { ok: false, message: getMessage('invalid') };
+      }
+
+      return { ok: true };
+    };
+
+    const ensureErrorElement = (form, input) => {
+      let error = form.querySelector('.newsletter-error');
+      if (!error) {
+        error = document.createElement('p');
+        error.className = 'newsletter-error form-error';
+        error.hidden = true;
+        input.insertAdjacentElement('afterend', error);
+      } else {
+        error.classList.add('newsletter-error');
+        if (!error.classList.contains('form-error')) {
+          error.classList.add('form-error');
+        }
+        error.hidden = true;
+      }
+
+      if (!error.id) {
+        error.id = `newsletter-error-${Math.random().toString(36).slice(2, 9)}`;
+      }
+
+      error.setAttribute('role', 'alert');
+      error.setAttribute('aria-live', 'polite');
+
+      return error;
+    };
+
+    const attachValidation = (form) => {
+      const emailInput = form.querySelector('input[type="email"], .newsletter-input');
+      if (!emailInput) return;
+
+      form.setAttribute('novalidate', 'novalidate');
+
+      const errorEl = ensureErrorElement(form, emailInput);
+
+      const showError = (message) => {
+        errorEl.textContent = message;
+        errorEl.hidden = false;
+        emailInput.classList.add('has-error');
+        emailInput.setAttribute('aria-invalid', 'true');
+        emailInput.setAttribute('aria-describedby', errorEl.id);
+      };
+
+      const hideError = () => {
+        errorEl.textContent = '';
+        errorEl.hidden = true;
+        emailInput.classList.remove('has-error');
+        emailInput.removeAttribute('aria-invalid');
+        emailInput.removeAttribute('aria-describedby');
+      };
+
+      const runValidation = () => {
+        const { ok, message } = validateEmail(emailInput.value);
+        if (!ok) {
+          showError(message);
+          return false;
+        }
+        hideError();
+        return true;
+      };
+
+      emailInput.addEventListener('input', () => {
+        if (errorEl.hidden) {
+          return;
+        }
+        runValidation();
+      });
+
+      emailInput.addEventListener('blur', () => {
+        if (!emailInput.value) {
+          hideError();
+          return;
+        }
+        runValidation();
+      });
+
+      form.addEventListener('submit', (event) => {
+        if (!runValidation()) {
+          event.preventDefault();
+          emailInput.focus();
+        }
+      });
+
+      window.addEventListener('languageChanged', () => {
+        if (errorEl.hidden) return;
+        const { message } = validateEmail(emailInput.value);
+        if (message) {
+          errorEl.textContent = message;
+        }
+      });
+    };
+
+    const init = () => {
+      const forms = document.querySelectorAll('.newsletter-form');
+      if (!forms.length) return;
+      forms.forEach(attachValidation);
+    };
+
+    return { init };
+  })();
 
   // ==========================================================================
   // SECTION BACKGROUND ALTERNATION SYSTEM
@@ -2002,6 +2370,7 @@ const MobileNav = {
       AccordionSystem.init();
       FormValidation.init();
       SectionBackgrounds.init();
+      NewsletterValidation.init();
       FooterYear.init();
       ServiceWorker.init();
 
@@ -2040,12 +2409,13 @@ const MobileNav = {
     AccordionSystem,
     FormValidation,
     SectionBackgrounds,
-    
+    NewsletterValidation,
+
     // Legacy support
     resetLanguage: () => LanguageManager.reset(),
     setupSmoothScroll: () => SmoothScroll.init(),
     refreshBackgrounds: () => SectionBackgrounds.refresh(),
-    
+
     // Debug mode toggle
     enableDebug() {
       INTEC.config.debug = true;
@@ -2085,14 +2455,14 @@ const MobileNav = {
   }
 
   // Console branding
-console.log([
-  "==============================================",
-  " INTEC Brussels - Professional Website Core 2025",
-  " Ready: window.INTEC | Debug: INTEC.enableDebug()",
-  " Status:",
-  INTEC.getStatus(),
-  "=============================================="
-].join("\n"));
+  console.log([
+    "==============================================",
+    " INTEC Brussels - Professional Website Core 2025",
+    " Ready: window.INTEC | Debug: INTEC.enableDebug()",
+    " Status:",
+    INTEC.getStatus(),
+    "=============================================="
+  ].join("\n"));
 
 
 })();

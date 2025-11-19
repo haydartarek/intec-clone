@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /assets/js/i18n/*backup*
+Disallow: /scripts/
+Disallow: /tmp/
+
+Sitemap: https://www.intecbrussel.be/sitemap.xml

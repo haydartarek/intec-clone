@@ -10,9 +10,9 @@ window.i18n.en = {
 
   // -----------------------------
 
-  "digipunt.meta.title": "Digipoint | INTEC Brussels",
+  "digipunt.meta.title": "Digipunt INTEC Brussels | Free digital support",
 
-  "digipunt.meta.description": "Digipoint INTEC Brussels helps everyone who seeks digital support. Discover our free workshops, coaching and opening hours at Muntpunt.",
+  "digipunt.meta.description": "Request personal guidance at INTEC Brussels' Digipunt in Muntpunt for administration, online services and essential digital skills.",
 
   "digipunt.title": "DIGIPOINT INTEC",
 
@@ -98,9 +98,11 @@ window.i18n.en = {
 
   // -----------------------------
 
-  "home.meta.title": "INTEC Brussels | Recognized VDAB IT Training",
+  "home.meta.title": "INTEC Brussels | VDAB-accredited IT training and talent coaching",
+  "register.meta.title": "Apply at INTEC Brussels | Intake and pre-registration",
+  "register.meta.description": "Follow the intake process step by step, learn which documents you need, and schedule your meeting for a VDAB-accredited programme at INTEC Brussels.",
 
-  "home.meta.description": "Discover INTEC Brussels’ official VDAB-certified programs in networking, system administration, cybersecurity, and Python that guide talent toward sustainable IT careers.",
+  "home.meta.description": "INTEC Brussels guides jobseekers toward sustainable IT roles through VDAB-accredited programs in networking, support, cybersecurity, and Python with language and job coaching.",
 
 
 
@@ -123,6 +125,7 @@ window.i18n.en = {
   "nav.partners": "Partner Access",
 
   "nav.digipunt": "Digipoint",
+  "course.highlights.title": "Key strengths of the programme",
 
   "nav.toggle": "Open menu",
 
@@ -202,7 +205,7 @@ window.i18n.en = {
 
   "program.extra.subtitle": "Discover what makes this course unique and what career opportunities you'll have after completion.",
 
-  
+
 
   // What makes this course unique?
 
@@ -226,7 +229,7 @@ window.i18n.en = {
 
   "program.unique.description": "As a PC and Network Technician, you'll not only learn to install and maintain technical systems, but also how to support users and explain complex problems in an understandable way.",
 
-  
+
 
   // Career opportunities
 
@@ -308,7 +311,7 @@ window.i18n.en = {
 
   "opleidingen.hero.cta2": "View programs",
 
-  
+
 
   // Overview Section
 
@@ -320,7 +323,7 @@ window.i18n.en = {
 
   "opleidingen.overview.eyebrow": "Program overview",
 
-  
+
 
   "opleidingen.why.title": "Why these programs?",
 
@@ -332,7 +335,7 @@ window.i18n.en = {
 
   "opleidingen.why.reason4": "Preparation for jobs in infrastructure, network management and security",
 
-  
+
 
   // Course cards
 
@@ -346,7 +349,7 @@ window.i18n.en = {
 
   "opleidingen.pc.cta": "More info",
 
-  
+
 
   "opleidingen.python.title": "Network Administrator with Python",
 
@@ -356,7 +359,7 @@ window.i18n.en = {
 
   "opleidingen.python.cta": "More info",
 
-  
+
 
   "opleidingen.sysadmin.title": "System Administrator",
 
@@ -368,7 +371,7 @@ window.i18n.en = {
 
   "opleidingen.sysadmin.cta": "More info",
 
-  
+
 
   "opleidingen.security.title": "Cybersecurity Engineer",
 
@@ -460,19 +463,19 @@ window.i18n.en = {
 
   "opleidingen.benefits.description": "Our training programs combine practical experience with personal guidance to make you successful in the IT sector.",
 
-  
+
 
   "opleidingen.benefits.practice.title": "Practical approach",
 
   "opleidingen.benefits.practice.body": "Learn by doing in our modern campus labs with current equipment and software from the field.",
 
-  
+
 
   "opleidingen.benefits.guidance.title": "Personal guidance",
 
   "opleidingen.benefits.guidance.body": "Small groups, individual coaching and language support ensure you succeed at every step.",
 
-  
+
 
   "opleidingen.benefits.internship.title": "Internship and work experience",
 
@@ -647,6 +650,31 @@ window.i18n.en = {
   "home.partnerCallout.learn": "Learn more",
 
 
+  // FAQ section
+
+  "home.faq.label": "FAQ",
+
+  "home.faq.title": "Frequently asked questions",
+
+  "home.faq.lead": "Find quick answers about admissions, financial support, and internships across our training tracks.",
+
+  "home.faq.items.0.question": "What are the admission requirements?",
+
+  "home.faq.items.0.answer": "Motivation and basic Dutch are sufficient. During the intake coaches review your starting level and determine the best intake moment.",
+
+  "home.faq.items.1.question": "Do I receive financial support?",
+
+  "home.faq.items.1.answer": "VDAB-funded programs are free for job seekers. We reimburse transport, childcare, and provide a monthly allowance coordinated with VDAB.",
+
+  "home.faq.items.2.question": "How does the internship matching work?",
+
+  "home.faq.items.2.answer": "After lab sprints we connect you with employers from our partner network. Career coaches guide interview prep and follow up during evaluations.",
+
+  "home.faq.items.3.question": "Is flexible participation possible?",
+
+  "home.faq.items.3.answer": "Tracks are full time, yet we explore blended learning, language coaching, and staggered start dates to keep your journey manageable.",
+
+
 
   // Final CTA
 
@@ -729,6 +757,10 @@ window.i18n.en = {
   "register.formNote": "Fill out the form and receive a confirmation within three working days with your proposed info session and assessment. We store your data confidentially per GDPR guidelines.",
 
   "register.formPrivacy": "Your data is processed in line with GDPR guidelines. We store your information confidentially and use it only for the intake procedure.",
+
+  "register.gender.male": "Male",
+  "register.gender.female": "Female",
+  "register.gender.preferNot": "Prefer not to say",
 
   "register.fields.fullName": "Full name",
 
@@ -988,6 +1020,10 @@ window.i18n.en = {
 
   // -----------------------------
 
+  "about.meta.title": "About INTEC Brussels | Mission, values and partners",
+
+  "about.meta.description": "Discover how INTEC Brussels combines digital inclusion, language support and sustainable employment with a strong network of employers and coaches.",
+
   "about.label": "About INTEC",
 
   "about.hero.eyebrow": "About INTEC",
@@ -1058,6 +1094,10 @@ window.i18n.en = {
 
   "about.values.card4Body": "We support alumni up to a year after graduation and promote lasting employment.",
 
+  "about.extra.label": "Work & Grow",
+
+  "about.extra.title": "Help build the future",
+
   "about.workTitle": "💼 Working at INTEC Brussels?",
 
   "about.workIntro": "Join a diverse and dedicated team helping people progress through training and coaching. We work interdisciplinary and focus strongly on equal opportunities and lifelong learning.",
@@ -1108,9 +1148,9 @@ window.i18n.en = {
 
   // -----------------------------
 
-  "contact.meta.title": "Contact | INTEC Brussels",
+  "contact.meta.title": "Contact INTEC Brussels | Reach campus and team",
 
-  "contact.meta.description": "Contact INTEC Brussels for information about courses, press inquiries, internships, or workplace learning. Find our opening hours, key contacts, and location details.",
+  "contact.meta.description": "Find the address, opening hours, phone and email of INTEC Brussels or immediately schedule a conversation about our VDAB-accredited IT programmes.",
 
   "contact.label": "Contact",
 
@@ -1119,6 +1159,10 @@ window.i18n.en = {
   "contact.subtitle": "Contact us for questions about courses, internships, or collaborations.",
 
   "contact.intro": "Have questions about our courses, want to collaborate, or plan a company visit? Send us a message via the form or contact one of our team members directly.",
+  "contact.email.general": "info@intecbrussel.be",
+  "contact.phone.primary": "02/411 29 07",
+  "contact.email.stage": "stage@intecbrussel.be",
+  "contact.email.press": "pr@intecbrussel.be",
 
   "contact.hero.ctaPrimary": "Send us a message",
 
@@ -1130,7 +1174,7 @@ window.i18n.en = {
 
   "contact.hero.secondary": "Visit Digipoint",
 
-  
+
 
   // Contact Form Section
 
@@ -1174,7 +1218,7 @@ window.i18n.en = {
 
   "contact.placeholders.message": "How can we assist you?",
 
-  
+
 
   // Contact Info Section
 
@@ -1188,7 +1232,7 @@ window.i18n.en = {
 
   "contact.peopleIntro": "Contact the right person for your question. We're ready to help with courses, internships, or communication.",
 
-  
+
 
   // Contact Cards
 
@@ -1196,19 +1240,19 @@ window.i18n.en = {
 
   "contact.cards.general.text": "For questions about courses, registrations, or general information, you can reach us via email or phone during opening hours.",
 
-  
+
 
   "contact.cards.internship.title": "Internships & workplace learning",
 
   "contact.cards.internship.text": "Want to offer an internship or looking for a motivated IT professional in training? Our internship team connects talents with companies for valuable practical experience.",
 
-  
+
 
   "contact.cards.press.title": "Press & communication",
 
   "contact.cards.press.text": "Are you a journalist, researcher, or partner? Contact our communications department for press releases, interviews, or collaboration opportunities.",
 
-  
+
 
   "contact.cards.digipunt.title": "Digipoint & support",
 
@@ -1216,7 +1260,7 @@ window.i18n.en = {
 
   "contact.cards.digipunt.cta": "Visit Digipoint",
 
-  
+
 
   // Visit Section
 
@@ -1234,7 +1278,7 @@ window.i18n.en = {
 
   "contact.visit.list.register": "Enroll directly in a course",
 
-  
+
 
   // Opening Hours
 
@@ -1250,7 +1294,7 @@ window.i18n.en = {
 
   "contact.hours.note": "We are closed during school holidays and public holidays. Contact us for deviating opening hours.",
 
-  
+
 
   // Location
 
@@ -1262,7 +1306,7 @@ window.i18n.en = {
 
   "contact.location.transport": "<strong>Directions:</strong><br />Metro: lines 1 &amp; 5 (De Brouck\u00e8re stop)<br />Tram: lines 3 &amp; 4 (Anneessens stop)<br />Station: A 5-minute walk from Brussels-Central",
 
-  
+
 
   // CTA Section
 
@@ -1282,7 +1326,7 @@ window.i18n.en = {
 
   "contact.cta.trust3": "No obligations",
 
-  
+
 
   "contact.general.title": "General info",
 
@@ -1348,6 +1392,10 @@ window.i18n.en = {
   // Partner Login Page Translations
 
   // -----------------------------
+
+  "partners.meta.title": "Partner login | INTEC Brussels partner portal",
+
+  "partners.meta.description": "Sign in to INTEC Brussels' secure partner portal to track candidates, share CVs and manage intake appointments.",
 
   "partners.label": "Partner access",
 
@@ -1490,6 +1538,7 @@ window.i18n.en = {
   "footer.emailPlaceholder": "Your email",
 
   "footer.subscribe": "SUBSCRIBE",
+  "footer.brand": "INTEC Brussels.",
 
   "footer.allRights": "All rights reserved.",
 
@@ -1519,9 +1568,9 @@ window.i18n.en = {
 
   // -----------------------------
 
-  "team.meta.title": "Who We Are | INTEC Brussels",
+  "team.meta.title": "Who we are | INTEC Brussels teams and board",
 
-  "team.meta.description": "Discover who we are at INTEC Brussels: meet the teams behind our courses, learn about our partners and collaborations with employers, and explore the strength of our network.",
+  "team.meta.description": "Meet the board, coaches and support teams powering INTEC Brussels programmes and partnerships.",
 
   "team.label": "Who We Are",
 
@@ -1543,7 +1592,7 @@ window.i18n.en = {
 
   "team.nav.values": "Values",
 
-  "team.nav.team": "Our Team", 
+  "team.nav.team": "Our Team",
 
   "team.nav.diversity": "Diversity",
 
@@ -1584,6 +1633,35 @@ window.i18n.en = {
   "team.board.cedric": "Cédric van Garsse",
 
   "team.board.cedric.role": "Board Member",
+
+  // Shared team member names (used in highlights, profiles, coordinators)
+  "team.members.sana": "Sana B.",
+  "team.members.erwin": "Erwin S.",
+  "team.members.omar": "Omar M.",
+  "team.members.sango": "Sango C.",
+  "team.members.noor": "Noor W.",
+  "team.members.fadwa": "Fadwa E.",
+  "team.members.aynur": "Aynur D.",
+  "team.members.teodora": "Teodora M.",
+  "team.members.manal": "Manal E.",
+  "team.members.hanae": "Hanae Z.",
+  "team.members.denys": "Denys L.",
+  "team.members.hilal": "Hilal D.",
+  "team.members.sean": "Sean D.L.",
+  "team.members.lawrence": "Lawrence B.",
+  "team.members.ziba": "Ziba H.",
+  "team.members.sona": "Sona G.",
+  "team.members.enock": "Enock M.A.",
+  "team.members.tijl": "Tijl S.",
+  "team.members.sander": "Sander D.G.",
+  "team.members.thomas": "Thomas T.",
+  "team.members.yewondwossen": "Yewondwossen S.",
+  "team.members.aboubacar": "Aboubacar D.",
+  "team.members.janan": "Janan J.",
+  "team.members.tetiana": "Tetiana Y.",
+  "team.members.sabrina": "Sabrina C.",
+  "team.members.sajid": "Sajid Y.",
+  "team.members.ruud": "Ruud Marks",
 
   "team.values.label": "Our Culture",
 
@@ -1663,7 +1741,7 @@ window.i18n.en = {
 
   "team.structure.metrics.coaches": "Coaches",
 
-  "team.structure.metrics.nationalities": "Nationalities", 
+  "team.structure.metrics.nationalities": "Nationalities",
 
   "team.structure.metrics.commitment": "Commitment",
 
@@ -1723,7 +1801,7 @@ window.i18n.en = {
 
   "team.leadership.label": "Our Teams",
 
-  "team.leadership.title": "Meet Our Teams", 
+  "team.leadership.title": "Meet Our Teams",
 
   "team.leadership.lead": "The dedicated groups who make INTEC Brussel run smoothly every day.",
 
@@ -1807,7 +1885,7 @@ window.i18n.en = {
 
   "team.cta.trust3": "No obligations"
 
-,
+  ,
 
 
 
@@ -1880,6 +1958,8 @@ window.i18n.en = {
   "support.modules.label": "Program",
 
   "support.modules.title": "Modules & areas of expertise",
+
+  "support.modules.heading": "Technical program",
 
   "support.modules.lead": "The training combines hardware, networks, operating systems, and service management for a complete IT support foundation.",
 
@@ -2115,6 +2195,44 @@ window.i18n.en = {
 
   "python.hero.stats.aria": "Key figures for the Network Administrator with Python course",
 
+  // Intro & highlights
+
+  "python.intro.lead": "Looking for a career in IT? Want to be part of a growing and innovative sector? Our <strong>Network Administrator with Python</strong> program gives you the complete mix of skills and support to launch a successful IT career.",
+
+  "python.features.card1.title": "Technical coaching",
+
+  "python.features.card1.text": "At INTEC Brussels you develop the in-depth knowledge and skills that are essential for a network administrator. The curriculum covers networking, Python programming, virtualization, operating systems, and ITIL. Practice-based projects prepare you for real work environments.",
+
+  "python.features.card2.title": "Job search support",
+
+  "python.features.card2.text": "We offer more than technical training. You receive intensive guidance in finding work: CV coaching, interview simulations, and access to our employer network increase your chances of a strong job match.",
+
+  "python.features.card3.title": "Language support",
+
+  "python.features.card3.text": "Good communication is essential in IT. During the program you receive tailored language coaching so you master both technical jargon and customer communication.",
+
+  // Start dates & requirements
+
+  "python.dates.title": "Start dates",
+
+  "python.dates.item1.date": "2 February 2026",
+
+  "python.dates.item1.status": "Available",
+
+  "python.dates.note": "<strong>Note:</strong> You can only register for a course starting 6 months before the start date.",
+
+  "python.dates.cta": "I WANT THIS COURSE",
+
+  "python.requirements.title": "Requirements",
+
+  "python.requirements.item1": "You are a registered job seeker on the day the course starts",
+
+  "python.requirements.item2": "Your Dutch language level is at least 2.1",
+
+  "python.requirements.item3": "You have a passion for IT",
+
+  "python.requirements.item4": "You are comfortable working with a computer",
+
   "python.overview.label": "What you'll learn",
 
   "python.overview.title": "Automate networks from A to Z",
@@ -2143,7 +2261,9 @@ window.i18n.en = {
 
   "python.modules.title": "Modules & specializations",
 
-  "python.modules.lead": "You combine network fundamentals with automation and security. Each module ends with a lab case that tests your skills.",
+  "python.modules.heading": "Technical program",
+
+  "python.modules.lead": "The technical program of our Network Administrator with Python course offers a complete curriculum so you can grow into a professional network administrator with advanced programming skills. Thanks to our hands-on approach you are ready to enter the IT job market right away.",
 
   "python.modules.networkTitle": "Enterprise networking",
 
@@ -2160,6 +2280,70 @@ window.i18n.en = {
   "python.modules.securityTitle": "Security automation",
 
   "python.modules.securityBody": "Zero Trust, policy automation, and compliance checks with tooling.",
+
+  // Detailed modules
+
+  "python.modules.item1.title": "Foundations of hardware and networking",
+
+  "python.modules.item1.description": "The first modules focus on the fundamentals of network hardware and architecture. You learn about components such as routers, switches, and servers and get to know IP addressing and network topologies.",
+
+  "python.modules.item1.topic1": "<strong>Network components and troubleshooting:</strong> Identify and configure network equipment and learn troubleshooting for common network issues.",
+
+  "python.modules.item1.topic2": "<strong>Network protocols:</strong> Learn about essential protocols such as TCP/IP, DNS, and DHCP and how to configure them inside enterprise environments.",
+
+  "python.modules.item2.title": "Python programming for network management",
+
+  "python.modules.item2.description": "The training combines network administration with Python programming, giving you a head start in network automation.",
+
+  "python.modules.item2.topic1": "<strong>Python essentials:</strong> Thorough training in Python, from core concepts to advanced programming modules.",
+
+  "python.modules.item2.topic2": "<strong>Network automation:</strong> Automate network configurations with Python, including REST APIs and infrastructure management.",
+
+  "python.modules.item3.title": "Security and network management",
+
+  "python.modules.item3.description": "A key focus is network security, teaching learners to protect networks against threats.",
+
+  "python.modules.item3.topic1": "<strong>Network security:</strong> Configure firewalls and VPNs to counter threats such as malware and IP attacks.",
+
+  "python.modules.item3.topic2": "<strong>Incident response and monitoring:</strong> Monitor network traffic and quickly identify threats.",
+
+  "python.modules.item4.title": "ITIL and helpdesk skills",
+
+  "python.modules.item4.description": "A good ICT support professional is both technically skilled and strong in customer service. This module covers the ITIL principles you need to resolve customer issues efficiently.",
+
+  "python.modules.item4.topic1": "<strong>Helpdesk and customer service:</strong> Learn how to talk to customers professionally, analyze their problems, and document solutions.",
+
+  "python.modules.item4.topic2": "<strong>ITIL principles:</strong> Manage incidents, problems, and changes according to ITIL standards.",
+
+  "python.modules.item5.title": "Virtualization and cloud technologies",
+
+  "python.modules.item5.description": "This module covers virtualization and cloud technologies such as Microsoft Hyper-V and Docker.",
+
+  "python.modules.item5.topic1": "<strong>Virtualization:</strong> Work with virtual machines and networks using tools like Oracle VirtualBox and Hyper-V.",
+
+  "python.modules.item5.topic2": "<strong>Cloud management:</strong> Learn how to set up and manage cloud environments such as Microsoft Azure.",
+
+  "python.modules.item6.title": "ITIL and helpdesk skills",
+
+  "python.modules.item6.description": "Beyond technical knowledge you also learn to work in a customer-oriented way according to ITIL principles.",
+
+  "python.modules.item6.topic1": "<strong>ITIL:</strong> Incident and problem management based on the ITIL4 framework, including using helpdesk software and ticketing systems.",
+
+  "python.modules.item7.title": "Advanced Windows and Linux server administration",
+
+  "python.modules.item7.description": "This module delivers advanced knowledge of both Windows and Linux server management, including DNS, DHCP, and Active Directory configurations.",
+
+  "python.modules.item7.topic1": "<strong>Windows Server:</strong> Manage Windows servers and virtualization.",
+
+  "python.modules.item7.topic2": "<strong>Linux server management:</strong> Install and manage Linux servers, including user management and network services.",
+
+  "python.modules.item8.title": "Certification and specialization",
+
+  "python.modules.item8.description": "During the program you can prepare for internationally recognized certifications such as Cisco CCNA, CompTIA Network+, and PCEP.",
+
+  "python.modules.item9.title": "Practice-oriented projects and simulations",
+
+  "python.modules.item9.description": "Realistic projects prepare you for your future role by simulating network management problems and team assignments.",
 
   "python.journey.label": "Trajectory",
 
@@ -2202,6 +2386,52 @@ window.i18n.en = {
   "python.cta.trust2": "Within 2 minutes",
 
   "python.cta.trust3": "No obligations",
+
+  // General info & benefits
+
+  "python.general.priceLabel": "Price",
+
+  "python.general.priceValue": "Free",
+
+  "python.general.languageLabel": "Language",
+
+  "python.general.languageValue": "Dutch",
+
+  "python.general.prereqLabel": "Prerequisites",
+
+  "python.general.prereqValue": "Not required",
+
+  "python.general.durationLabel": "Course duration",
+
+  "python.general.durationValue": "1 year",
+
+  "python.general.scheduleLabel": "Schedule",
+
+  "python.general.scheduleValue": "Every day from 8:30 to 17:00",
+
+  "python.general.scheduleNote": "(Classes start at 9:00)",
+
+  "python.general.locationLabel": "Location",
+
+  "python.general.locationValue": "Campus Rouppeplein",
+
+  "python.general.locationNote": "This location is easily reachable by public transport.",
+
+  "python.general.note": "<strong>Accessibility:</strong> Do you have specific needs or requirements to join the selection or course? For example due to a physical limitation. Let us know.",
+
+  "python.benefits.title": "Benefits",
+
+  "python.benefits.item1.title": "Transport reimbursement",
+
+  "python.benefits.item1.body": "During the course your transport costs are fully reimbursed.",
+
+  "python.benefits.item2.title": "Childcare",
+
+  "python.benefits.item2.body": "Costs for child or after-school care are reimbursed.",
+
+  "python.benefits.item3.title": "Allowances",
+
+  "python.benefits.item3.body": "You remain fully compliant with unemployment benefits and other allowances throughout the course.",
 
 
 
@@ -2321,6 +2551,12 @@ window.i18n.en = {
 
   "security.features.card3.text": "Good communication is essential in IT, which is why we offer targeted language support during the program (when needed). Our language coaches help you improve your Dutch so you master technical vocabulary and customer-facing communication. Whether you need to raise your language level or a final push, our coaches provide personal guidance.",
 
+  "security.dates.item1.date": "24 November 2025",
+
+  "security.dates.item1.status": "Available",
+
+  "security.dates.note": "<strong>Note:</strong> Registration opens 6 months before the start date.",
+
 
 
   "security.info.title": "General information about this course",
@@ -2348,6 +2584,8 @@ window.i18n.en = {
   "security.info.location.label": "Location",
 
   "security.info.location.value": "Campus Rouppeplein<br><small>Very accessible by public transport.</small>",
+
+  "security.info.accessibilityLabel": "Accessibility:",
 
   "security.info.accessibility": "Do you have specific needs or requirements to participate in the selection or the program? For example due to a physical disability. Let us know.",
 
@@ -2511,6 +2749,44 @@ window.i18n.en = {
 
   "sysadmin.hero.stats.aria": "Key figures for the System Administrator course",
 
+  "sysadmin.intro.lead": "Want to start a career in the IT sector and work with networks, servers, and cloud environments? The <strong>System Administrator</strong> course at INTEC Brussels gives you the practical skills to install, manage, and secure infrastructures to professional standards.",
+
+  "sysadmin.features.card1.title": "Technical expertise",
+
+  "sysadmin.features.card1.text": "At INTEC Brussels you build in-depth technical knowledge and skills that every system administrator needs. You receive training in hardware, networking, virtualization, and operating systems such as Windows and Linux. Thanks to practice-oriented projects you're ready for the IT job market.",
+
+  "sysadmin.features.card2.title": "Job-search guidance",
+
+  "sysadmin.features.card2.text": "Alongside the technical training we provide intensive coaching to help you find work. Get support with your CV, interview training, and simulations. Through our network of companies we increase your chances of a successful job match and continue supporting you after graduation.",
+
+  "sysadmin.features.card3.title": "Language support",
+
+  "sysadmin.features.card3.text": "Communication is essential in the IT sector. During the course we offer targeted language support so you master both technical jargon and customer-facing communication. Our language coaches guide you personally throughout the program.",
+
+  "sysadmin.dates.title": "Start dates",
+
+  "sysadmin.dates.item1.date": "February 23, 2026",
+
+  "sysadmin.dates.item1.status": "Available",
+
+  "sysadmin.dates.item2.date": "May 18, 2026",
+
+  "sysadmin.dates.item2.status": "Available",
+
+  "sysadmin.dates.note": "<strong>Note:</strong> You can only register for a course starting six months before the start date.",
+
+  "sysadmin.dates.cta": "I want this course",
+
+  "sysadmin.requirements.title": "Requirements",
+
+  "sysadmin.requirements.item1": "You are registered as a job seeker on the day the course starts",
+
+  "sysadmin.requirements.item2": "Your Dutch language level is at least 2.1",
+
+  "sysadmin.requirements.item3": "You have a passion for IT",
+
+  "sysadmin.requirements.item4": "You can work fluently with a computer",
+
   "sysadmin.overview.label": "What you'll learn",
 
   "sysadmin.overview.title": "Manage IT infrastructure from A to Z",
@@ -2532,6 +2808,8 @@ window.i18n.en = {
   "sysadmin.modules.title": "Modules & specializations",
 
   "sysadmin.modules.lead": "You progress from basic server management to advanced automation and cloud integration. Each module includes practical labs.",
+
+  "sysadmin.modules.heading": "Technical program",
 
   "sysadmin.journey.label": "Trajectory",
 
@@ -2813,9 +3091,9 @@ window.i18n.en = {
 
   // -----------------------------
 
-  "vacancies.meta.title": "Careers at INTEC Brussels | INTEC Brussels",
+  "vacancies.meta.title": "Jobs at INTEC Brussels | Work on digital inclusion",
 
-  "vacancies.meta.description": "Discover the vacancies at INTEC Brussels and apply for roles in coaching, administration, IT training, and support.",
+  "vacancies.meta.description": "Explore openings in coaching, IT instruction and support and help build digital inclusion at INTEC Brussels.",
 
   "vacancies.label": "Careers",
 
@@ -2918,6 +3196,104 @@ window.i18n.en = {
   "sysadmin.modules.cloud": "Cloud & Automation",
 
   "sysadmin.modules.cloudBody": "Provisioning and monitoring in Azure and AWS. Automate tasks with PowerShell, Bash, and Infrastructure as Code (Terraform/ARM).",
+
+  "sysadmin.modules.item1.title": "Hardware and Networking Fundamentals",
+
+  "sysadmin.modules.item1.description": "The first modules lay the groundwork for hardware and network management. You learn about components such as CPUs, motherboards, storage devices, and network topologies while exploring IP addressing and protocols.",
+
+  "sysadmin.modules.item1.topic1": "<strong>Network components and troubleshooting:</strong> Configure and analyze network equipment and resolve common issues.",
+
+  "sysadmin.modules.item1.topic2": "<strong>Network protocols:</strong> Understand protocols like TCP/IP, DNS, and DHCP within corporate networks.",
+
+  "sysadmin.modules.item2.title": "Virtualization and Cloud Technologies",
+
+  "sysadmin.modules.item2.description": "Virtualization is an essential part of the program. You learn to work with virtual machines and cloud solutions.",
+
+  "sysadmin.modules.item2.topic1": "<strong>Virtualization:</strong> Set up and manage virtual machines with Oracle VirtualBox and Microsoft Hyper-V.",
+
+  "sysadmin.modules.item2.topic2": "<strong>Cloud management:</strong> Fundamentals of cloud platforms such as Microsoft Azure and Nextcloud.",
+
+  "sysadmin.modules.item3.title": "Windows and Linux Server Management",
+
+  "sysadmin.modules.item3.description": "Learn to configure, manage, and secure servers within both Windows and Linux environments.",
+
+  "sysadmin.modules.item3.topic1": "<strong>Windows Server:</strong> Configure Active Directory, DHCP, and DNS services.",
+
+  "sysadmin.modules.item3.topic2": "<strong>Linux server management:</strong> Installation, user management, and network configuration within Linux systems.",
+
+  "sysadmin.modules.item4.title": "Security and Network Management",
+
+  "sysadmin.modules.item4.description": "In this module you learn how to protect systems and networks against threats and attacks.",
+
+  "sysadmin.modules.item4.topic1": "<strong>Network security:</strong> Configure firewalls, VPNs, and security policies.",
+
+  "sysadmin.modules.item4.topic2": "<strong>Incident response and monitoring:</strong> Analyze network traffic, detect threats, and report findings.",
+
+  "sysadmin.modules.item5.title": "ITIL and Helpdesk Skills",
+
+  "sysadmin.modules.item5.description": "Beyond technical knowledge you develop customer-facing skills and learn to work with ITIL principles.",
+
+  "sysadmin.modules.item5.topic1": "<strong>ITIL framework:</strong> Incident and problem management within modern IT environments.",
+
+  "sysadmin.modules.item5.topic2": "<strong>Helpdesk software:</strong> Use ticketing systems for efficient customer support.",
+
+  "sysadmin.modules.item6.title": "Certification and Specialization",
+
+  "sysadmin.modules.item6.description": "Throughout the course we prepare you for recognized certifications that strengthen your professional profile.",
+
+  "sysadmin.modules.item6.topic1": "<strong>Cisco CCNA:</strong> Fundamentals of networking and routing concepts.",
+
+  "sysadmin.modules.item6.topic2": "<strong>CompTIA Network+:</strong> Internationally recognized validation of your networking and system knowledge.",
+
+  "sysadmin.modules.item7.title": "Practice-based projects and simulations",
+
+  "sysadmin.modules.item7.description": "You finish the course with realistic projects where you apply everything you've learned.",
+
+  "sysadmin.modules.item7.topic1": "<strong>Team projects:</strong> Work together on network management and system projects.",
+
+  "sysadmin.modules.item7.topic2": "<strong>Simulations:</strong> Exercises based on real IT scenarios and troubleshooting.",
+
+  "sysadmin.info.title": "General information about this course",
+
+  "sysadmin.info.price.label": "Price",
+
+  "sysadmin.info.price.value": "Free",
+
+  "sysadmin.info.language.label": "Language",
+
+  "sysadmin.info.language.value": "Dutch",
+
+  "sysadmin.info.prerequisites.label": "Prerequisites",
+
+  "sysadmin.info.prerequisites.value": "Not required",
+
+  "sysadmin.info.duration.label": "Course duration",
+
+  "sysadmin.info.duration.value": "1 year",
+
+  "sysadmin.info.hours.label": "Class hours",
+
+  "sysadmin.info.hours.value": "Every day from 8:30 a.m. to 5 p.m.<br><small>(Lessons start at 9 a.m.)</small>",
+
+  "sysadmin.info.location.label": "Location",
+
+  "sysadmin.info.location.value": "Campus Rouppeplein or Digital City Auderghem<br><small>Both sites are very easy to reach by public transport.</small>",
+
+  "sysadmin.info.note": "<strong>Accessibility:</strong> Do you need specific accommodations to join the selection or course? For example due to a physical disability. Let us know.",
+
+  "sysadmin.benefits.title": "Benefits",
+
+  "sysadmin.benefits.item1.title": "Transport costs",
+
+  "sysadmin.benefits.item1.body": "During the course your transport costs are fully reimbursed.",
+
+  "sysadmin.benefits.item2.title": "Childcare",
+
+  "sysadmin.benefits.item2.body": "The costs for child or after-school care are reimbursed.",
+
+  "sysadmin.benefits.item3.title": "Allowances",
+
+  "sysadmin.benefits.item3.body": "During the course you remain compliant with your unemployment benefits and other allowances.",
 
 
   "team.board.department": "Board of Directors",

@@ -1,508 +1,646 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- SEO Meta -->
-    <meta
-      name="description"
-      content="Volg de opleiding Systeembeheerder bij INTEC Brussel. Leer servers, netwerken en besturingssystemen installeren, beheren en beveiligen voor een succesvolle carrière in de IT-sector."
-    />
-    <meta
-      name="keywords"
-      content="Systeembeheerder, IT opleiding, INTEC Brussel, netwerkbeheer, Windows Server, Linux, virtualisatie, cloud, ITIL, helpdesk, systeembeheer"
-    />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Beheer Windows- en Linux-servers, virtualisatie en cloudplatformen in het VDAB-traject Systeembeheerder met praktijklabs en jobcoaching.">
+  <meta name="keywords"
+    content="Systeembeheerder, IT opleiding, INTEC Brussel, netwerkbeheer, Windows Server, Linux, virtualisatie, cloud, ITIL, helpdesk, systeembeheer">
+  <link rel="canonical" href="https://www.intecbrussel.be/systeembeheerder.html">
+  <title>Systeembeheerder opleiding | INTEC Brussel</title>
+  <meta property="og:locale" content="nl_BE">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="INTEC Brussel">
+  <meta property="og:title" content="Systeembeheerder opleiding | INTEC Brussel">
+  <meta property="og:description"
+    content="Beheer Windows- en Linux-servers, virtualisatie en cloudplatformen in het VDAB-traject Systeembeheerder met praktijklabs en jobcoaching.">
+  <meta property="og:url" content="https://www.intecbrussel.be/systeembeheerder.html">
+  <meta property="og:image" content="https://www.intecbrussel.be/assets/img/og/og-default.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Systeembeheerder opleiding | INTEC Brussel">
+  <meta name="twitter:description"
+    content="Beheer Windows- en Linux-servers, virtualisatie en cloudplatformen in het VDAB-traject Systeembeheerder met praktijklabs en jobcoaching.">
+  <meta name="twitter:image" content="https://www.intecbrussel.be/assets/img/og/og-default.jpg">
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <link rel="preload" href="assets/css/base.css" as="style" fetchpriority="high">
+  <link rel="preload" href="assets/css/main.css" as="style">
+  <link rel="preload" href="assets/js/main.js" as="script">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.intecbrussel.be/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Opleidingen",
+          "item": "https://www.intecbrussel.be/opleidingen.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Systeembeheerder",
+          "item": "https://www.intecbrussel.be/systeembeheerder.html"
+        }
+      ]
+    }
+  </script>
+</head>
 
-    <title>Systeembeheerder | INTEC Brussel</title>
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+<body class="page--course page--program page--program-sysadmin page--course-sysadmin">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/base.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-  </head>
-
-  <body class="page--course page--program page--program-support page--course-support">
-    <div class="page-shell">
-      <!-- HEADER / NAVBAR -->
-      <header class="site-header">
-        <div class="container site-header__inner">
-          <a class="brand" href="index.html" aria-label="INTEC Brussel">
-            <img
-              src="assets/img/logo+intec+brusselZWART1.png"
-              alt="INTEC Brussel logo"/>
-          </a>
-
-          <button
-            class="nav-toggle"
-            type="button"
-            aria-controls="primary-navigation"
-            aria-expanded="false"
-            data-nav-toggle="#primary-navigation"
-          >
-            <span class="sr-only" data-i18n="nav.toggle">Open menu</span>
-            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-              <path
-                d="M4 6h16M4 12h16M4 18h16"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              ></path>
-            </svg>
-          </button>
-
-          <nav class="primary-nav" aria-label="Hoofdmenu">
-            <ul class="nav-links" id="primary-navigation" role="list">
-              <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-              <li><a href="opleidingen.html" data-i18n="nav.training">Courses</a></li>
-              <li><a href="inschrijven.html" data-i18n="nav.register">Register</a></li>
-              <li><a href="overons.html" data-i18n="nav.about">About us</a></li>
-              <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
-              <li><a href="cvdb/index.html" data-i18n="nav.partners">Partner Access</a></li>
-            </ul>
-          </nav>
-
-          <div class="site-header__actions">
-            <div
-              class="language-switch"
-              role="group"
-              aria-label="nav.languageGroup"
-              data-i18n-aria-label="nav.languageGroup"
-              data-active-lang="nl"
-            >
-              <button
-                type="button"
-                data-lang-select
-                data-lang="nl"
-                class="is-active"
-                aria-pressed="true"
-                aria-current="true"
-              >
-                NL
-              </button>
-              <button
-                type="button"
-                data-lang-select
-                data-lang="en"
-                aria-pressed="false"
-                aria-current="false"
-              >
-                EN
-              </button>
-            </div>
-            <a class="btn-accent btn-sm" href="digipunt.html" data-i18n="nav.digipunt">Digipoint</a>
-          </div>
-        </div>
-      </header>
-    </div>
-  </body>
-</html>
-
-
-    <!-- MAIN CONTENT -->
-<main id="main-content" tabindex="-1">
-  <!-- HERO SECTION -->
-  <section class="course-hero">
-    <div class="course-hero__container">
-      <div class="course-hero__content">
-        <span class="course-hero__eyebrow" data-i18n="sysadmin.hero.eyebrow">Opleiding</span>
-        <h1 class="course-hero__title" data-i18n="sysadmin.hero.title">Systeembeheerder</h1>
-        <p class="course-hero__intro" data-i18n="sysadmin.hero.subtitle">
-          Ben je op zoek naar een carrière in de IT-sector? Wil je deel uitmaken van een groeiende en innovatieve sector?
-          Onze <strong>Systeembeheerder-opleiding</strong> biedt je een compleet pakket van vaardigheden en ondersteuning
-          om een succesvolle start te maken in de IT-wereld.
-        </p>
-        <div class="course-hero__actions">
-          <a class="course-hero__cta course-hero__cta--primary" href="inschrijven.html"
-             data-i18n="sysadmin.hero.ctaPrimary">Plan je intake</a>
-          <a class="course-hero__cta course-hero__cta--secondary" href="#modules"
-             data-i18n="sysadmin.hero.ctaSecondary">Bekijk programma</a>
-        </div>
-        <p class="course-hero__meta" data-i18n="sysadmin.hero.description">
-          Tijdens de opleiding leer je servers en netwerken installeren, beheren en beveiligen.
-          Je krijgt training in hardware, virtualisatie, Windows- en Linux-systemen en ITIL-principes.
-          Met praktijkgerichte projecten bereiden we je voor op de uitdagingen van het echte werk.
-        </p>
-      </div>
-      <div class="course-hero__visual">
-        <div class="course-hero__image-wrapper">
-          <img class="course-hero__image"
-               src="assets/img/sysadmin.webp"
-               alt="Illustratie van systeem- en netwerkbeheer"
-               decoding="async" loading="eager"
-               width="560" height="420" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INTRO SECTION -->
-  <section class="section">
-    <div class="container">
-      <div class="section-intro">
-        <p class="text-lead">
-          Wil je een carrière starten in de IT-sector en werken met netwerken, servers en cloudomgevingen?
-          De opleiding <strong>Systeembeheerder</strong> bij INTEC Brussel geeft je de praktische vaardigheden om 
-          infrastructuren te installeren, beheren en beveiligen volgens professionele standaarden.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- TRAINING FEATURES SECTION -->
-  <section class="section section--alt">
-    <div class="container">
-      <div class="course-highlights">
-
-        <!-- Feature 1 -->
-        <article class="course-card">
-          <div class="course-card__icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-              <line x1="8" y1="21" x2="16" y2="21"></line>
-              <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
-          </div>
-          <h3 class="course-card__title">Technische Ondersteuning</h3>
-          <div class="course-card__text">
-            <p>
-              Bij INTEC BRUSSEL ontwikkel je diepgaande technische kennis en vaardigheden die essentieel zijn voor een 
-              systeembeheerder. Je krijgt opleiding in hardware, netwerken, virtualisatie en besturingssystemen zoals 
-              Windows en Linux. Dankzij praktijkgerichte projecten ben je klaar voor de IT-arbeidsmarkt.
-            </p>
-          </div>
-        </article>
-
-        <!-- Feature 2 -->
-        <article class="course-card">
-          <div class="course-card__icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="8.5" cy="7" r="4"></circle>
-              <polyline points="17 11 19 13 23 9"></polyline>
-            </svg>
-          </div>
-          <h3 class="course-card__title">Ondersteuning bij Werkzoektocht</h3>
-          <div class="course-card__text">
-            <p>
-              Naast de technische training bieden we intensieve begeleiding bij het vinden van werk. Je krijgt hulp bij 
-              CV-opmaak, sollicitatietraining en simulaties. Via ons netwerk van bedrijven vergroten we je kansen op een 
-              succesvolle jobmatch en blijven we je ondersteunen na de opleiding.
-            </p>
-          </div>
-        </article>
-
-        <!-- Feature 3 -->
-        <article class="course-card">
-          <div class="course-card__icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 
-                       15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
-          </div>
-          <h3 class="course-card__title">Taalondersteuning</h3>
-          <div class="course-card__text">
-            <p>
-              Communicatie is essentieel in de IT-sector. Daarom bieden we tijdens de opleiding gerichte 
-              taalondersteuning, zodat je zowel technisch vakjargon als klantgerichte communicatie vlot beheerst.
-              Onze taalcoaches begeleiden je persoonlijk tijdens de opleiding.
-            </p>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-
-<!-- START DATES & REQUIREMENTS SECTION -->
-<section class="section">
-  <div class="container">
-    <div class="course-grid course-grid--2">
-
-      <!-- Start Dates -->
-      <div class="course-dates">
-        <h2 class="course-dates__title">Startdata</h2>
-        <ul class="course-dates__list">
-          <li class="course-dates__item" data-start-date="2026-02-23">
-            <div class="course-dates__date">23 februari 2026</div>
-            <div class="course-dates__info">
-              <span class="course-dates__status course-dates__status--available">Beschikbaar</span>
-              <span class="course-dates__countdown"><!-- JS fills this --></span>
-            </div>
-          </li>
-          <li class="course-dates__item" data-start-date="2026-05-18">
-            <div class="course-dates__date">18 mei 2026</div>
-            <div class="course-dates__info">
-              <span class="course-dates__status course-dates__status--available">Beschikbaar</span>
-              <span class="course-dates__countdown"><!-- JS fills this --></span>
-            </div>
-          </li>
-        </ul>
-
-        <div class="course-dates__note">
-          <strong>Let op:</strong> Inschrijven voor een opleiding kan pas vanaf 6 maanden vóór de startdatum van de opleiding.
-        </div>
-
-        <a href="inschrijven.html" class="btn btn-primary btn-block" style="margin-top: 24px;">
-          IK WIL DEZE OPLEIDING
+  <div class="page-shell">
+    <!-- HEADER / NAVBAR -->
+    <div class="site-header" role="banner">
+      <div class="container site-header__inner">
+        <a class="brand" href="index.html" aria-label="INTEC Brussel">
+          <img src="assets/img/infraweb2.jpg" alt="INTEC Brussel logo" width="180" height="50" loading="eager"
+            fetchpriority="high" data-critical="true" decoding="async">
         </a>
-      </div>
 
-      <!-- Requirements -->
-      <div class="course-conditions">
-        <h3 class="course-conditions__title">Voorwaarden</h3>
-        <ul class="course-conditions__list">
-          <li class="course-conditions__item">
-            <div class="course-conditions__icon" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
+        <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false"
+          data-nav-toggle="#primary-navigation">
+          <span class="sr-only" data-i18n="nav.toggle">Open menu</span>
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+          </svg>
+        </button>
+
+        <nav class="primary-nav" aria-label="Hoofdmenu">
+          <ul class="nav-links" id="primary-navigation" role="list">
+            <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+            <li><a href="opleidingen.html" data-i18n="nav.training">Courses</a></li>
+            <li><a href="inschrijven.html" data-i18n="nav.register">Register</a></li>
+            <li><a href="overons.html" data-i18n="nav.about">About us</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="cvdb/index.html" data-i18n="nav.partners">Partner Access</a></li>
+          </ul>
+        </nav>
+
+        <div class="site-header__actions">
+          <div class="language-switch" role="group" aria-label="nav.languageGroup"
+            data-i18n-aria-label="nav.languageGroup" data-active-lang="nl">
+            <button type="button" data-lang-select="" data-lang="nl" class="is-active" aria-pressed="true"
+              aria-current="true">
+              NL
+            </button>
+            <button type="button" data-lang-select="" data-lang="en" aria-pressed="false" aria-current="false">
+              EN
+            </button>
+          </div>
+          <a class="btn btn--accent btn--sm" href="digipunt.html" data-i18n="nav.digipunt">Digipoint</a>
+        </div>
+      </div>
+    </div>
+    <!-- MAIN CONTENT -->
+    <main id="main-content" tabindex="-1">
+      <!-- HERO SECTION -->
+      <section class="section section--hero course-hero">
+        <div class="course-hero__container container">
+          <div class="course-hero__content">
+            <span class="course-hero__eyebrow" data-i18n="sysadmin.hero.eyebrow">Opleiding</span>
+            <h1 class="course-hero__title" data-i18n="sysadmin.hero.title">Systeembeheerder</h1>
+            <p class="course-hero__intro" data-i18n="sysadmin.hero.subtitle" data-i18n-allow-html="">
+              Ben je op zoek naar een carriÃ¨re in de IT-sector? Wil je deel uitmaken van een groeiende en innovatieve
+              sector?
+              Onze <strong>Systeembeheerder-opleiding</strong> biedt je een compleet pakket van vaardigheden en
+              ondersteuning
+              om een succesvolle start te maken in de IT-wereld.
+            </p>
+            <div class="course-hero__actions">
+              <a class="btn btn--primary btn--lg course-hero__cta" href="inschrijven.html"
+                data-i18n="sysadmin.hero.ctaPrimary">Plan je intake</a>
+              <a class="btn btn--outline btn--lg course-hero__cta" href="#modules"
+                data-i18n="sysadmin.hero.ctaSecondary">Bekijk programma</a>
             </div>
-            <div class="course-conditions__text">Je bent werkzoekend op de dag dat de opleiding start</div>
-          </li>
-          <li class="course-conditions__item">
-            <div class="course-conditions__icon" aria-hidden="true"><svg …></svg></div>
-            <div class="course-conditions__text">Jouw Nederlands taalniveau is minimum 2.1</div>
-          </li>
-          <li class="course-conditions__item">
-            <div class="course-conditions__icon" aria-hidden="true"><svg …></svg></div>
-            <div class="course-conditions__text">Je hebt een passie voor IT</div>
-          </li>
-          <li class="course-conditions__item">
-            <div class="course-conditions__icon" aria-hidden="true"><svg …></svg></div>
-            <div class="course-conditions__text">Je kan vlot met de computer werken</div>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- PROGRAM MODULES SECTION -->
-<section class="section section--alt" id="modules">
-  <div class="container">
-
-    <!-- Section Header -->
-    <div class="section-header">
-      <h2>Technisch Programma</h2>
-      <p class="text-muted">
-        Het technische programma van onze <strong>Systeembeheerder-opleiding</strong> biedt een volledig curriculum
-        waarmee je jezelf ontwikkelt tot een professionele IT-specialist. Je leert hardware, netwerken, servers,
-        virtualisatie en beveiliging beheren binnen moderne IT-omgevingen.
-      </p>
-    </div>
-
-    <!-- Modules Grid -->
-    <div class="modules-grid">
-      
-      <!-- Module 1 -->
-      <article class="course-module">
-        <div class="course-module__header">
-          <span class="course-module__number">01</span>
-          <h3 class="course-module__title">Basiskennis van Hardware en Netwerken</h3>
+            <p class="course-hero__meta" data-i18n="sysadmin.hero.description">
+              Tijdens de opleiding leer je servers en netwerken installeren, beheren en beveiligen.
+              Je krijgt training in hardware, virtualisatie, Windows- en Linux-systemen en ITIL-principes.
+              Met praktijkgerichte projecten bereiden we je voor op de uitdagingen van het echte werk.
+            </p>
+          </div>
+          <div class="course-hero__visual">
+            <div class="course-hero__image-wrapper">
+              <img class="course-hero__image" src="assets/img/sysadmin.webp"
+                alt="Systeembeheerder â€” serverbeheer en infrastructuur automatisering" data-critical="true"
+                decoding="async" loading="eager" fetchpriority="high" width="560" height="420">
+            </div>
+          </div>
         </div>
-        <div class="course-module__content">
-          <p class="course-module__description">
-            De eerste modules leggen de basis voor hardware en netwerkbeheer. Je leert over componenten zoals CPU’s,
-            moederborden, opslagapparaten en netwerktopologieën. Ook maak je kennis met IP-adressering en protocollen.
-          </p>
-          <ul class="course-module__topics">
-            <li><strong>Netwerkcomponenten en Troubleshooting:</strong> Configureren en analyseren van netwerkapparatuur en oplossen van veelvoorkomende problemen.</li>
-            <li><strong>Netwerkprotocollen:</strong> Inzicht in protocollen zoals TCP/IP, DNS en DHCP binnen bedrijfsnetwerken.</li>
-          </ul>
+      </section>
+
+      <!-- INTRO SECTION -->
+      <section class="section section--surface">
+        <div class="container">
+          <div class="section-intro">
+            <p class="text-lead" data-i18n="sysadmin.intro.lead" data-i18n-allow-html="">
+              Wil je een carriÃ¨re starten in de IT-sector en werken met netwerken, servers en cloudomgevingen?
+              De opleiding <strong>Systeembeheerder</strong> bij INTEC Brussel geeft je de praktische vaardigheden om
+              infrastructuren te installeren, beheren en beveiligen volgens professionele standaarden.
+            </p>
+          </div>
         </div>
-      </article>
+      </section>
 
-      <!-- Module 2 -->
-      <article class="course-module">
-        <div class="course-module__header">
-          <span class="course-module__number">02</span>
-          <h3 class="course-module__title">Virtualisatie en Cloudtechnologieën</h3>
+      <!-- TRAINING FEATURES SECTION -->
+      <section class="section section--alt">
+        <div class="container">
+          <h2 class="sr-only" data-i18n="course.highlights.title">Belangrijkste troeven van de opleiding</h2>
+          <div class="course-highlights component-grid">
+
+            <!-- Feature 1 -->
+            <article class="course-card component-card">
+              <div class="course-card__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </div>
+              <h3 class="course-card__title" data-i18n="sysadmin.features.card1.title">Technische Ondersteuning</h3>
+              <div class="course-card__text">
+                <p data-i18n="sysadmin.features.card1.text">
+                  Bij INTEC BRUSSEL ontwikkel je diepgaande technische kennis en vaardigheden die essentieel zijn voor
+                  een
+                  systeembeheerder. Je krijgt opleiding in hardware, netwerken, virtualisatie en besturingssystemen
+                  zoals
+                  Windows en Linux. Dankzij praktijkgerichte projecten ben je klaar voor de IT-arbeidsmarkt.
+                </p>
+              </div>
+            </article>
+
+            <!-- Feature 2 -->
+            <article class="course-card component-card">
+              <div class="course-card__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="8.5" cy="7" r="4"></circle>
+                  <polyline points="17 11 19 13 23 9"></polyline>
+                </svg>
+              </div>
+              <h3 class="course-card__title" data-i18n="sysadmin.features.card2.title">Ondersteuning bij Werkzoektocht
+              </h3>
+              <div class="course-card__text">
+                <p data-i18n="sysadmin.features.card2.text">
+                  Naast de technische training bieden we intensieve begeleiding bij het vinden van werk. Je krijgt hulp
+                  bij
+                  CV-opmaak, sollicitatietraining en simulaties. Via ons netwerk van bedrijven vergroten we je kansen op
+                  een
+                  succesvolle jobmatch en blijven we je ondersteunen na de opleiding.
+                </p>
+              </div>
+            </article>
+
+            <!-- Feature 3 -->
+            <article class="course-card component-card">
+              <div class="course-card__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 
+                       15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+              </div>
+              <h3 class="course-card__title" data-i18n="sysadmin.features.card3.title">Taalondersteuning</h3>
+              <div class="course-card__text">
+                <p data-i18n="sysadmin.features.card3.text">
+                  Communicatie is essentieel in de IT-sector. Daarom bieden we tijdens de opleiding gerichte
+                  taalondersteuning, zodat je zowel technisch vakjargon als klantgerichte communicatie vlot beheerst.
+                  Onze taalcoaches begeleiden je persoonlijk tijdens de opleiding.
+                </p>
+              </div>
+            </article>
+
+          </div>
         </div>
-        <div class="course-module__content">
-          <p class="course-module__description">
-            Virtualisatie is een essentieel onderdeel van het programma. Je leert werken met virtuele machines en cloudoplossingen.
-          </p>
-          <ul class="course-module__topics">
-            <li><strong>Virtualisatie:</strong> Opzetten en beheren van virtuele machines met Oracle VirtualBox en Microsoft Hyper-V.</li>
-            <li><strong>Cloudbeheer:</strong> Basisprincipes van cloudplatforms zoals Microsoft Azure en Nextcloud.</li>
-          </ul>
+      </section>
+
+
+      <!-- START DATES & REQUIREMENTS SECTION -->
+      <section class="section section--surface">
+        <div class="container">
+          <div class="course-grid course-grid--2 component-grid">
+
+            <!-- Start Dates -->
+            <div class="course-dates component-card">
+              <h2 class="course-dates__title" data-i18n="sysadmin.dates.title">Startdata</h2>
+              <ul class="course-dates__list">
+                <li class="course-dates__item" data-start-date="2026-02-23">
+                  <div class="course-dates__date" data-i18n="sysadmin.dates.item1.date">23 februari 2026</div>
+                  <div class="course-dates__info">
+                    <span class="course-dates__status course-dates__status--available"
+                      data-i18n="sysadmin.dates.item1.status">Beschikbaar</span>
+                    <span class="course-dates__countdown"><!-- JS fills this --></span>
+                  </div>
+                </li>
+                <li class="course-dates__item" data-start-date="2026-05-18">
+                  <div class="course-dates__date" data-i18n="sysadmin.dates.item2.date">18 mei 2026</div>
+                  <div class="course-dates__info">
+                    <span class="course-dates__status course-dates__status--available"
+                      data-i18n="sysadmin.dates.item2.status">Beschikbaar</span>
+                    <span class="course-dates__countdown"><!-- JS fills this --></span>
+                  </div>
+                </li>
+              </ul>
+
+              <div class="course-dates__note" data-i18n="sysadmin.dates.note" data-i18n-allow-html="">
+                <strong>Let op:</strong> Inschrijven voor een opleiding kan pas vanaf 6 maanden vÃ³Ã³r de startdatum van
+                de opleiding.
+              </div>
+
+              <a href="inschrijven.html" class="btn btn--primary btn--block course-dates__cta"
+                data-i18n="sysadmin.dates.cta">
+                IK WIL DEZE OPLEIDING
+              </a>
+            </div>
+
+            <!-- Requirements -->
+            <div class="course-conditions component-card">
+              <h3 class="course-conditions__title" data-i18n="sysadmin.requirements.title">Voorwaarden</h3>
+              <ul class="course-conditions__list">
+                <li class="course-conditions__item">
+                  <div class="course-conditions__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <div class="course-conditions__text" data-i18n="sysadmin.requirements.item1">Je bent werkzoekend op de
+                    dag dat de opleiding start</div>
+                </li>
+                <li class="course-conditions__item">
+                  <div class="course-conditions__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <div class="course-conditions__text" data-i18n="sysadmin.requirements.item2">Jouw Nederlands
+                    taalniveau is minimum 2.1</div>
+                </li>
+                <li class="course-conditions__item">
+                  <div class="course-conditions__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <div class="course-conditions__text" data-i18n="sysadmin.requirements.item3">Je hebt een passie voor
+                    IT</div>
+                </li>
+                <li class="course-conditions__item">
+                  <div class="course-conditions__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <div class="course-conditions__text" data-i18n="sysadmin.requirements.item4">Je kan vlot met de
+                    computer werken</div>
+                </li>
+              </ul>
+            </div>
+
+          </div>
         </div>
-      </article>
+      </section>
 
-      <!-- Module 3 -->
-      <article class="course-module">
-        <div class="course-module__header">
-          <span class="course-module__number">03</span>
-          <h3 class="course-module__title">Windows en Linux Serverbeheer</h3>
+      <!-- PROGRAM MODULES SECTION -->
+      <section class="section section--alt" id="modules">
+        <div class="container">
+
+          <!-- Section Header -->
+          <div class="section-header">
+            <h2 data-i18n="sysadmin.modules.heading">Technisch Programma</h2>
+            <p class="text-muted" data-i18n="sysadmin.modules.lead" data-i18n-allow-html="">
+              Het technische programma van onze <strong>Systeembeheerder-opleiding</strong> biedt een volledig
+              curriculum
+              waarmee je jezelf ontwikkelt tot een professionele IT-specialist. Je leert hardware, netwerken, servers,
+              virtualisatie en beveiliging beheren binnen moderne IT-omgevingen.
+            </p>
+          </div>
+
+          <!-- Modules Grid -->
+          <div class="modules-grid component-grid">
+
+            <!-- Module 1 -->
+            <article class="course-module component-card">
+              <div class="course-module__header">
+                <span class="course-module__number">01</span>
+                <h3 class="course-module__title" data-i18n="sysadmin.modules.item1.title">Basiskennis van Hardware en
+                  Netwerken</h3>
+              </div>
+              <div class="course-module__content">
+                <p class="course-module__description" data-i18n="sysadmin.modules.item1.description">
+                  De eerste modules leggen de basis voor hardware en netwerkbeheer. Je leert over componenten zoals
+                  CPUâ€™s,
+                  moederborden, opslagapparaten en netwerktopologieÃ«n. Ook maak je kennis met IP-adressering en
+                  protocollen.
+                </p>
+                <ul class="course-module__topics">
+                  <li data-i18n="sysadmin.modules.item1.topic1" data-i18n-allow-html=""><strong>Netwerkcomponenten en
+                      Troubleshooting:</strong> Configureren en analyseren van netwerkapparatuur en oplossen van
+                    veelvoorkomende problemen.</li>
+                  <li data-i18n="sysadmin.modules.item1.topic2" data-i18n-allow-html="">
+                    <strong>Netwerkprotocollen:</strong> Inzicht in protocollen zoals TCP/IP, DNS en DHCP binnen
+                    bedrijfsnetwerken.
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Module 2 -->
+            <article class="course-module component-card">
+              <div class="course-module__header">
+                <span class="course-module__number">02</span>
+                <h3 class="course-module__title" data-i18n="sysadmin.modules.item2.title">Virtualisatie en
+                  CloudtechnologieÃ«n</h3>
+              </div>
+              <div class="course-module__content">
+                <p class="course-module__description" data-i18n="sysadmin.modules.item2.description">
+                  Virtualisatie is een essentieel onderdeel van het programma. Je leert werken met virtuele machines en
+                  cloudoplossingen.
+                </p>
+                <ul class="course-module__topics">
+                  <li data-i18n="sysadmin.modules.item2.topic1" data-i18n-allow-html=""><strong>Virtualisatie:</strong>
+                    Opzetten en beheren van virtuele machines met Oracle VirtualBox en Microsoft Hyper-V.</li>
+                  <li data-i18n="sysadmin.modules.item2.topic2" data-i18n-allow-html=""><strong>Cloudbeheer:</strong>
+                    Basisprincipes van cloudplatforms zoals Microsoft Azure en Nextcloud.</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Module 3 -->
+            <article class="course-module component-card">
+              <div class="course-module__header">
+                <span class="course-module__number">03</span>
+                <h3 class="course-module__title" data-i18n="sysadmin.modules.item3.title">Windows en Linux Serverbeheer
+                </h3>
+              </div>
+              <div class="course-module__content">
+                <p class="course-module__description" data-i18n="sysadmin.modules.item3.description">
+                  Leer servers configureren, beheren en beveiligen binnen zowel Windows- als Linux-omgevingen.
+                </p>
+                <ul class="course-module__topics">
+                  <li data-i18n="sysadmin.modules.item3.topic1" data-i18n-allow-html=""><strong>Windows Server:</strong>
+                    Configuratie van Active Directory, DHCP en DNS-diensten.</li>
+                  <li data-i18n="sysadmin.modules.item3.topic2" data-i18n-allow-html=""><strong>Linux
+                      Serverbeheer:</strong> Installatie, gebruikersbeheer en netwerkconfiguratie binnen Linux-systemen.
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Module 4 -->
+            <article class="course-module component-card">
+              <div class="course-module__header">
+                <span class="course-module__number">04</span>
+                <h3 class="course-module__title" data-i18n="sysadmin.modules.item4.title">Beveiliging en Netwerkbeheer
+                </h3>
+              </div>
+              <div class="course-module__content">
+                <p class="course-module__description" data-i18n="sysadmin.modules.item4.description">
+                  In deze module leer je hoe je systemen en netwerken beschermt tegen bedreigingen en aanvallen.
+                </p>
+                <ul class="course-module__topics">
+                  <li data-i18n="sysadmin.modules.item4.topic1" data-i18n-allow-html="">
+                    <strong>Netwerkbeveiliging:</strong> Configuratie van firewalls, VPNâ€™s en beveiligingsbeleid.
+                  </li>
+                  <li data-i18n="sysadmin.modules.item4.topic2" data-i18n-allow-html=""><strong>Incident Response en
+                      Monitoring:</strong> Netwerkverkeer analyseren, bedreigingen detecteren en rapporteren.</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Module 5 -->
+            <article class="course-module component-card">
+              <div class="course-module__header">
+                <span class="course-module__number">05</span>
+                <h3 class="course-module__title" data-i18n="sysadmin.modules.item5.title">ITIL en Helpdeskvaardigheden
+                </h3>
+              </div>
+              <div class="course-module__content">
+                <p class="course-module__description" data-i18n="sysadmin.modules.item5.description">
+                  Naast technische kennis ontwikkel je ook klantgerichte vaardigheden en leer je werken volgens
+                  ITIL-principes.
+                </p>
+                <ul class="course-module__topics">
+                  <li data-i18n="sysadmin.modules.item5.topic1" data-i18n-allow-html=""><strong>ITIL Framework:</strong>
+                    Incident- en probleembeheer binnen moderne IT-omgevingen.</li>
+                  <li data-i18n="sysadmin.modules.item5.topic2" data-i18n-allow-html="">
+                    <strong>Helpdesksoftware:</strong>
+                    Gebruik van ticketingsystemen voor efficiÃ«nte klantenondersteuning.
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Module 6 -->
+            <article class="course-module component-card">
+              <div class="course-module__header">
+                <span class="course-module__number">06</span>
+                <h3 class="course-module__title" data-i18n="sysadmin.modules.item6.title">Certificering en Specialisatie
+                </h3>
+              </div>
+              <div class="course-module__content">
+                <p class="course-module__description" data-i18n="sysadmin.modules.item6.description">
+                  Tijdens de opleiding bereiden we je voor op erkende certificeringen die je professionele profiel
+                  versterken.
+                </p>
+                <ul class="course-module__topics">
+                  <li data-i18n="sysadmin.modules.item6.topic1" data-i18n-allow-html=""><strong>Cisco CCNA:</strong>
+                    Basis
+                    van netwerken en routing-concepten.</li>
+                  <li data-i18n="sysadmin.modules.item6.topic2" data-i18n-allow-html=""><strong>CompTIA
+                      Network+:</strong>
+                    Internationaal erkende validatie van je netwerk- en systeemkennis.</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Module 7 -->
+            <article class="course-module component-card">
+              <div class="course-module__header">
+                <span class="course-module__number">07</span>
+                <h3 class="course-module__title" data-i18n="sysadmin.modules.item7.title">Praktijkgerichte Projecten en
+                  Simulaties</h3>
+              </div>
+              <div class="course-module__content">
+                <p class="course-module__description" data-i18n="sysadmin.modules.item7.description">
+                  Je sluit de opleiding af met realistische projecten waarin je alles toepast wat je geleerd hebt.
+                </p>
+                <ul class="course-module__topics">
+                  <li data-i18n="sysadmin.modules.item7.topic1" data-i18n-allow-html=""><strong>Teamprojecten:</strong>
+                    Samenwerken aan netwerkbeheer- en systeemprojecten.</li>
+                  <li data-i18n="sysadmin.modules.item7.topic2" data-i18n-allow-html=""><strong>Simulaties:</strong>
+                    Oefeningen gebaseerd op echte IT-scenarioâ€™s en probleemoplossing.</li>
+                </ul>
+              </div>
+            </article>
+
+          </div>
         </div>
-        <div class="course-module__content">
-          <p class="course-module__description">
-            Leer servers configureren, beheren en beveiligen binnen zowel Windows- als Linux-omgevingen.
-          </p>
-          <ul class="course-module__topics">
-            <li><strong>Windows Server:</strong> Configuratie van Active Directory, DHCP en DNS-diensten.</li>
-            <li><strong>Linux Serverbeheer:</strong> Installatie, gebruikersbeheer en netwerkconfiguratie binnen Linux-systemen.</li>
-          </ul>
+      </section>
+
+
+      <!-- GENERAL INFO SECTION -->
+      <section class="section section--surface" id="algemene-informatie">
+        <div class="container">
+          <div class="course-general">
+
+            <!-- Section Title -->
+            <h2 class="course-general__title" data-i18n="sysadmin.info.title">Algemene informatie over deze opleiding
+            </h2>
+
+            <!-- Info List -->
+            <dl class="course-general__list">
+
+              <!-- Price -->
+              <div class="course-general__item component-card">
+                <dt class="course-general__label" data-i18n="sysadmin.info.price.label">Prijs</dt>
+                <dd class="course-general__value">
+                  <span class="course-general__badge" data-i18n="sysadmin.info.price.value">Gratis</span>
+                </dd>
+              </div>
+
+              <!-- Language -->
+              <div class="course-general__item component-card">
+                <dt class="course-general__label" data-i18n="sysadmin.info.language.label">Taal</dt>
+                <dd class="course-general__value" data-i18n="sysadmin.info.language.value">Nederlands</dd>
+              </div>
+
+              <!-- Prerequisites -->
+              <div class="course-general__item component-card">
+                <dt class="course-general__label" data-i18n="sysadmin.info.prerequisites.label">Voorkennis</dt>
+                <dd class="course-general__value" data-i18n="sysadmin.info.prerequisites.value">Niet verplicht</dd>
+              </div>
+
+              <!-- Duration -->
+              <div class="course-general__item component-card">
+                <dt class="course-general__label" data-i18n="sysadmin.info.duration.label">Duur opleidingen</dt>
+                <dd class="course-general__value" data-i18n="sysadmin.info.duration.value">1 jaar</dd>
+              </div>
+
+              <!-- Lessons -->
+              <div class="course-general__item component-card">
+                <dt class="course-general__label" data-i18n="sysadmin.info.hours.label">Lesuren</dt>
+                <dd class="course-general__value" data-i18n="sysadmin.info.hours.value" data-i18n-allow-html="">
+                  Elke dag van 8u30 tot 17u
+                  <small>(Lessen starten om 9u)</small>
+                </dd>
+              </div>
+
+              <!-- Location -->
+              <div class="course-general__item component-card">
+                <dt class="course-general__label" data-i18n="sysadmin.info.location.label">Locatie</dt>
+                <dd class="course-general__value" data-i18n="sysadmin.info.location.value" data-i18n-allow-html="">
+                  Campus Rouppeplein of Digital City Oudergem
+                  <small>Beide locaties zijn zeer goed bereikbaar met het openbaar vervoer.</small>
+                </dd>
+              </div>
+            </dl>
+
+            <!-- Accessibility Note -->
+            <div class="course-general__note" data-i18n="sysadmin.info.note" data-i18n-allow-html="">
+              <strong>Toegankelijkheid:</strong>
+              Heb je specifieke behoeften of noden om aan te sluiten bij de selecties of opleiding?
+              Bijvoorbeeld omwille van een fysieke beperking. Laat het ons weten.
+            </div>
+
+          </div>
         </div>
-      </article>
+      </section>
 
-      <!-- Module 4 -->
-      <article class="course-module">
-        <div class="course-module__header">
-          <span class="course-module__number">04</span>
-          <h3 class="course-module__title">Beveiliging en Netwerkbeheer</h3>
+
+      <!-- BENEFITS SECTION -->
+      <section class="section section--alt" id="voordelen">
+        <div class="container">
+          <div class="course-benefits">
+
+            <!-- Section Title -->
+            <h2 class="course-benefits__title" data-i18n="sysadmin.benefits.title">Voordelen</h2>
+
+            <!-- Benefits List -->
+            <ul class="course-benefits__list component-grid">
+
+              <!-- Benefit 1 -->
+              <li class="course-benefits__item component-card">
+                <div class="course-benefits__icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                </div>
+                <div class="course-benefits__content">
+                  <div class="course-benefits__name" data-i18n="sysadmin.benefits.item1.title">Vervoerskosten</div>
+                  <p class="course-benefits__description" data-i18n="sysadmin.benefits.item1.body">
+                    Tijdens de opleiding worden je vervoerskosten volledig terugbetaald.
+                  </p>
+                </div>
+              </li>
+
+              <!-- Benefit 2 -->
+              <li class="course-benefits__item component-card">
+                <div class="course-benefits__icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                </div>
+                <div class="course-benefits__content">
+                  <div class="course-benefits__name" data-i18n="sysadmin.benefits.item2.title">Kinderopvang</div>
+                  <p class="course-benefits__description" data-i18n="sysadmin.benefits.item2.body">
+                    De kosten voor kinder- of buitenschoolse opvang worden terugbetaald.
+                  </p>
+                </div>
+              </li>
+
+              <!-- Benefit 3 -->
+              <li class="course-benefits__item component-card">
+                <div class="course-benefits__icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                </div>
+                <div class="course-benefits__content">
+                  <div class="course-benefits__name" data-i18n="sysadmin.benefits.item3.title">Uitkeringen</div>
+                  <p class="course-benefits__description" data-i18n="sysadmin.benefits.item3.body">
+                    Tijdens de opleiding blijf je wettelijk in orde met je werkloosheidsvergoeding en andere
+                    uitkeringen.
+                  </p>
+                </div>
+              </li>
+
+            </ul>
+          </div>
         </div>
-        <div class="course-module__content">
-          <p class="course-module__description">
-            In deze module leer je hoe je systemen en netwerken beschermt tegen bedreigingen en aanvallen.
-          </p>
-          <ul class="course-module__topics">
-            <li><strong>Netwerkbeveiliging:</strong> Configuratie van firewalls, VPN’s en beveiligingsbeleid.</li>
-            <li><strong>Incident Response en Monitoring:</strong> Netwerkverkeer analyseren, bedreigingen detecteren en rapporteren.</li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- Module 5 -->
-      <article class="course-module">
-        <div class="course-module__header">
-          <span class="course-module__number">05</span>
-          <h3 class="course-module__title">ITIL en Helpdeskvaardigheden</h3>
-        </div>
-        <div class="course-module__content">
-          <p class="course-module__description">
-            Naast technische kennis ontwikkel je ook klantgerichte vaardigheden en leer je werken volgens ITIL-principes.
-          </p>
-          <ul class="course-module__topics">
-            <li><strong>ITIL Framework:</strong> Incident- en probleembeheer binnen moderne IT-omgevingen.</li>
-            <li><strong>Helpdesksoftware:</strong> Gebruik van ticketingsystemen voor efficiënte klantenondersteuning.</li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- Module 6 -->
-      <article class="course-module">
-        <div class="course-module__header">
-          <span class="course-module__number">06</span>
-          <h3 class="course-module__title">Certificering en Specialisatie</h3>
-        </div>
-        <div class="course-module__content">
-          <p class="course-module__description">
-            Tijdens de opleiding bereiden we je voor op erkende certificeringen die je professionele profiel versterken.
-          </p>
-          <ul class="course-module__topics">
-            <li><strong>Cisco CCNA:</strong> Basis van netwerken en routing-concepten.</li>
-            <li><strong>CompTIA Network+:</strong> Internationaal erkende validatie van je netwerk- en systeemkennis.</li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- Module 7 -->
-      <article class="course-module">
-        <div class="course-module__header">
-          <span class="course-module__number">07</span>
-          <h3 class="course-module__title">Praktijkgerichte Projecten en Simulaties</h3>
-        </div>
-        <div class="course-module__content">
-          <p class="course-module__description">
-            Je sluit de opleiding af met realistische projecten waarin je alles toepast wat je geleerd hebt.
-          </p>
-          <ul class="course-module__topics">
-            <li><strong>Teamprojecten:</strong> Samenwerken aan netwerkbeheer- en systeemprojecten.</li>
-            <li><strong>Simulaties:</strong> Oefeningen gebaseerd op echte IT-scenario’s en probleemoplossing.</li>
-          </ul>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
+      </section>
 
 
-<!-- GENERAL INFO SECTION -->
-<section class="section section--alt" id="algemene-informatie">
-  <div class="container">
-    <div class="course-general">
-
-      <!-- Section Title -->
-      <h2 class="course-general__title">Algemene informatie over deze opleiding</h2>
-
-      <!-- Info List -->
-      <dl class="course-general__list">
-
-        <!-- Price -->
-        <div class="course-general__item">
-          <dt class="course-general__label">Prijs</dt>
-          <dd class="course-general__value">
-            <span class="course-general__badge">Gratis</span>
-          </dd>
-        </div>
-
-        <!-- Language -->
-        <div class="course-general__item">
-          <dt class="course-general__label">Taal</dt>
-          <dd class="course-general__value">Nederlands</dd>
-        </div>
-
-        <!-- Prerequisites -->
-        <div class="course-general__item">
-          <dt class="course-general__label">Voorkennis</dt>
-          <dd class="course-general__value">Niet verplicht</dd>
-        </div>
-
-        <!-- Duration -->
-        <div class="course-general__item">
-          <dt class="course-general__label">Duur opleidingen</dt>
-          <dd class="course-general__value">1 jaar</dd>
-        </div>
-
-        <!-- Lessons -->
-        <div class="course-general__item">
-          <dt class="course-general__label">Lesuren</dt>
-          <dd class="course-general__value">
-            Elke dag van 8u30 tot 17u
-            <small>(Lessen starten om 9u)</small>
-          </dd>
-        </div>
-
-        <!-- Location -->
-        <div class="course-general__item">
-          <dt class="course-general__label">Locatie</dt>
-          <dd class="course-general__value">
-            Campus Rouppeplein of Digital City Oudergem
-            <small>Beide locaties zijn zeer goed bereikbaar met het openbaar vervoer.</small>
-          </dd>
-        </div>
-      </dl>
-
-      <!-- Accessibility Note -->
-      <div class="course-general__note">
-        <strong>Toegankelijkheid:</strong>
-        Heb je specifieke behoeften of noden om aan te sluiten bij de selecties of opleiding?
-        Bijvoorbeeld omwille van een fysieke beperking. Laat het ons weten.
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-       <!-- Footer -->
+      <!-- Footer -->
       <footer class="site-footer">
         <div class="container">
           <div class="footer-grid">
             <!-- Column 1: About INTEC -->
             <div class="footer-column">
-              <h3 class="footer-heading" data-i18n="footer.aboutTitle">Over INTEC</h3>
+              <p class="footer-heading" data-i18n="footer.aboutTitle" role="heading" aria-level="3">Over INTEC</p>
               <ul class="footer-links">
                 <li><a href="overons.html" data-i18n="footer.aboutUs">Wie zijn we</a></li>
                 <li><a href="wiezijnwe.html" data-i18n="footer.ourTeam">Ons Team</a></li>
@@ -514,7 +652,7 @@
 
             <!-- Column 2: Opleidingen -->
             <div class="footer-column">
-              <h3 class="footer-heading" data-i18n="footer.coursesTitle">Opleidingen</h3>
+              <p class="footer-heading" data-i18n="footer.coursesTitle" role="heading" aria-level="3">Opleidingen</p>
               <ul class="footer-links">
                 <li><a href="python.html" data-i18n="footer.python">Python Developer</a></li>
                 <li><a href="security.html" data-i18n="footer.security">Cybersecurity</a></li>
@@ -526,11 +664,12 @@
 
             <!-- Column 3: Quick Links -->
             <div class="footer-column">
-              <h3 class="footer-heading" data-i18n="footer.quickLinksTitle">Snelle Links</h3>
+              <p class="footer-heading" data-i18n="footer.quickLinksTitle" role="heading" aria-level="3">Snelle Links
+              </p>
               <ul class="footer-links">
                 <li><a href="inschrijven.html" data-i18n="footer.register">Inschrijven</a></li>
                 <li><a href="index.html#faq" data-i18n="footer.faq">FAQ</a></li>
-                <li><a href="#" data-i18n="footer.privacy">Privacy Policy</a></li>
+                <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
                 <li><a href="#" data-i18n="footer.terms">Voorwaarden</a></li>
                 <li><a href="#" data-i18n="footer.accessibility">Toegankelijkheid</a></li>
               </ul>
@@ -538,45 +677,48 @@
 
             <!-- Column 4: Newsletter -->
             <div class="footer-column footer-newsletter">
-              <h3 class="footer-heading" data-i18n="footer.newsletterTitle">Nieuwsbrief</h3>
+              <p class="footer-heading" data-i18n="footer.newsletterTitle" role="heading" aria-level="3">Nieuwsbrief</p>
               <p class="newsletter-description" data-i18n="footer.newsletterDesc">
                 Blijf op de hoogte van nieuws, updates, en exclusieve aanbiedingen.
               </p>
               <form class="newsletter-form" action="#" method="post">
-                <input 
-                  type="email" 
-                  id="newsletter-email"
-                  name="email"
-                  class="newsletter-input" 
-                  placeholder="Uw email" 
-                  data-i18n-placeholder="footer.emailPlaceholder"
-                  autocomplete="email"
-                  required
-                  aria-label="Email address"
-                />
+                <input type="email" id="newsletter-email" name="email" class="newsletter-input" placeholder="Uw email"
+                  data-i18n-placeholder="footer.emailPlaceholder" autocomplete="email" required=""
+                  aria-label="Email address">
                 <button type="submit" class="newsletter-button" data-i18n="footer.subscribe">
                   SUBSCRIBE
                 </button>
               </form>
               <div class="footer-social">
-                <a href="https://www.facebook.com/intecbrussel.be" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <a href="https://www.facebook.com/intecbrussel.be" target="_blank" rel="noopener noreferrer"
+                  aria-label="Facebook">
                   <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    <path
+                      d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z">
+                    </path>
                   </svg>
                 </a>
                 <a href="https://github.com/intecbrussel" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                   <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    <path
+                      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                    </path>
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/groups/3973164/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/groups/3973164/" target="_blank" rel="noopener noreferrer"
+                  aria-label="LinkedIn">
                   <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    <path
+                      d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z">
+                    </path>
                   </svg>
                 </a>
-                <a href="https://x.com/INTEC_BRUSSEL" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                <a href="https://x.com/INTEC_BRUSSEL" target="_blank" rel="noopener noreferrer"
+                  aria-label="X (Twitter)">
                   <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    <path
+                      d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                    </path>
                   </svg>
                 </a>
               </div>
@@ -585,8 +727,8 @@
 
           <!-- Footer Bottom -->
           <div class="footer-bottom">
-            <p class="footer-copyright">
-              &copy; <span id="footer-year">2025</span> INTEC Brussel. 
+            <p class="footercopyright">
+              Â© <span id="footer-year">2025</span> <span data-i18n="footer.brand">INTEC Brussel.</span>
               <span data-i18n="footer.allRights">Alle rechten voorbehouden.</span>
             </p>
             <p class="footer-accreditation" data-i18n="footer.accreditation">
@@ -596,48 +738,58 @@
         </div>
       </footer>
 
+    </main>
+  </div>
 
-<script>
-  // Auto-update footer year
-  const yearSpan = document.getElementById('footer-year');
-  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-</script>
 
-<script>
-  // Countdown system (unchanged)
-  (function() {
-    const dateItems = document.querySelectorAll('.date-item[data-start-date]');
-    const currentLang = document.documentElement.lang || 'nl';
-    const i18n = window.i18n?.[currentLang] || window.i18n?.nl || {};
-    const t = (key, fallback) => i18n[key] || fallback;
-    dateItems.forEach(item => {
-      const startDateStr = item.getAttribute('data-start-date');
-      const countdownSpan = item.querySelector('.date-countdown');
-      if (!startDateStr || !countdownSpan) return;
-      const startDate = new Date(startDateStr);
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      startDate.setHours(0, 0, 0, 0);
-      const diffTime = startDate - today;
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      if (diffDays > 0) {
-        const dayText = diffDays === 1 ? t('date.countdown.day', 'dag') : t('date.countdown.days', 'dagen');
-        countdownSpan.textContent = `${t('date.countdown.starts', 'Begint over')} ${diffDays} ${dayText}`;
-        if (diffDays <= 30) countdownSpan.classList.add('soon');
-      } else if (diffDays === 0) {
-        countdownSpan.textContent = t('date.countdown.today', 'Begint vandaag!');
-        countdownSpan.classList.add('soon');
-      } else {
-        const absDays = Math.abs(diffDays);
-        const dayText = absDays === 1 ? t('date.countdown.day', 'dag') : t('date.countdown.days', 'dagen');
-        countdownSpan.textContent = `${t('date.countdown.started', 'Begonnen')} ${absDays} ${dayText} ${t('date.countdown.ago', 'geleden')}`;
-        countdownSpan.classList.add('started');
-      }
+  <script>
+    // Auto-update footer year
+    const yearSpan = document.getElementById('footer-year');
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+    // Countdown system (waits for DOM + i18n dictionaries)
+    window.addEventListener('DOMContentLoaded', () => {
+      const dateItems = document.querySelectorAll('.course-dates__item[data-start-date]');
+      const dictionaries = window.i18n || {};
+      const currentLang = document.documentElement.lang || 'nl';
+      const activeDictionary = dictionaries[currentLang] || dictionaries.nl || {};
+      const t = (key, fallback) => activeDictionary[key] || fallback;
+
+      dateItems.forEach(item => {
+        const startDateStr = item.getAttribute('data-start-date');
+        const countdownSpan = item.querySelector('.course-dates__countdown');
+        if (!startDateStr || !countdownSpan) return;
+
+        const startDate = new Date(startDateStr);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        startDate.setHours(0, 0, 0, 0);
+
+        const diffTime = startDate - today;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays > 0) {
+          const dayText = diffDays === 1 ? t('date.countdown.day', 'dag') : t('date.countdown.days', 'dagen');
+          countdownSpan.textContent = `${t('date.countdown.starts', 'Begint over')} ${diffDays} ${dayText}`;
+          if (diffDays <= 30) countdownSpan.classList.add('soon');
+        } else if (diffDays === 0) {
+          countdownSpan.textContent = t('date.countdown.today', 'Begint vandaag!');
+          countdownSpan.classList.add('soon');
+        } else {
+          const absDays = Math.abs(diffDays);
+          const dayText = absDays === 1 ? t('date.countdown.day', 'dag') : t('date.countdown.days', 'dagen');
+          countdownSpan.textContent = `${t('date.countdown.started', 'Begonnen')} ${absDays} ${dayText} ${t('date.countdown.ago', 'geleden')}`;
+          countdownSpan.classList.add('started');
+        }
+      });
     });
-  })();
-</script>
-    <script src="assets/js/i18n/nl.js" defer></script>
-    <script src="assets/js/i18n/en.js" defer></script>
-    <script src="assets/js/main.js" defer></script>
+  </script>
+  <script src="assets/js/i18n/nl.js" defer=""></script>
+  <script src="assets/js/main.js" defer=""></script>
+
+
 </body>
+
 </html>

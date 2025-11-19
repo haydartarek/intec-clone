@@ -1,439 +1,395 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="" data-i18n-content="digipunt.meta.description" />
-    <title data-i18n="digipunt.meta.title">Digipunt | INTEC Brussel</title>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Vraag persoonlijke begeleiding in het Digipunt van INTEC Brussel voor administratie, online diensten en basisdigitale vaardigheden in Muntpunt."
+    data-i18n-content="digipunt.meta.description">
+  <link rel="canonical" href="https://www.intecbrussel.be/digipunt.html">
+  <title data-i18n="digipunt.meta.title">Digipunt INTEC Brussel | Gratis digitale hulp</title>
+  <meta property="og:locale" content="nl_BE">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="INTEC Brussel">
+  <meta property="og:title" content="Digipunt INTEC Brussel | Gratis digitale hulp">
+  <meta property="og:description"
+    content="Vraag persoonlijke begeleiding in het Digipunt van INTEC Brussel voor administratie, online diensten en basisdigitale vaardigheden in Muntpunt.">
+  <meta property="og:url" content="https://www.intecbrussel.be/digipunt.html">
+  <meta property="og:image" content="https://www.intecbrussel.be/assets/img/og/og-default.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Digipunt INTEC Brussel | Gratis digitale hulp">
+  <meta name="twitter:description"
+    content="Vraag persoonlijke begeleiding in het Digipunt van INTEC Brussel voor administratie, online diensten en basisdigitale vaardigheden in Muntpunt.">
+  <meta name="twitter:image" content="https://www.intecbrussel.be/assets/img/og/og-default.jpg">
+  <link rel="preconnect" href="https://video.squarespace-cdn.com" crossorigin>
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <link rel="preload" href="assets/css/base.css" as="style" fetchpriority="high">
+  <link rel="preload" href="assets/css/main.css" as="style">
+  <link rel="preload" href="assets/js/main.js" as="script">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/base.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-  </head>
+<body class="page--digipunt">
 
-  <body class="page--digipunt">
-    <div class="page-shell">
-      <!-- ========================= HEADER ========================= -->
-      <header class="site-header">
-        <div class="container site-header__inner">
-          <a class="brand" href="index.html" aria-label="INTEC Brussel">
-            <img
-              src="assets/img/logo+intec+brusselZWART1.png"
-              alt="INTEC Brussel logo"
-              data-critical="true"
-              decoding="async"
-              loading="eager"
-              fetchpriority="high"
-            />
-          </a>
-
-          <button
-            class="nav-toggle"
-            type="button"
-            aria-controls="primary-navigation"
-            aria-expanded="false"
-            data-nav-toggle="#primary-navigation"
-          >
-            <span class="sr-only" data-i18n="nav.toggle">Open menu</span>
-            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-              <path
-                d="M4 6h16M4 12h16M4 18h16"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              ></path>
-            </svg>
-          </button>
-
-          <nav class="primary-nav" aria-label="Hoofdmenu">
-            <ul class="nav-links" id="primary-navigation" role="list">
-              <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-              <li><a href="opleidingen.html" data-i18n="nav.training">Courses</a></li>
-              <li><a href="inschrijven.html" data-i18n="nav.register">Register</a></li>
-              <li><a href="overons.html" data-i18n="nav.about">About us</a></li>
-              <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
-              <li><a href="cvdb/index.html" data-i18n="nav.partners">Partner Access</a></li>
-            </ul>
-          </nav>
-
-          <div class="site-header__actions">
-            <div
-              class="language-switch"
-              role="group"
-              aria-label="nav.languageGroup"
-              data-i18n-aria-label="nav.languageGroup"
-              data-active-lang="en"
-            >
-              <button type="button" data-lang-select data-lang="nl" aria-pressed="false">NL</button>
-              <button
-                type="button"
-                data-lang-select
-                data-lang="en"
-                class="is-active"
-                aria-pressed="true"
-              >
-                EN
-              </button>
-            </div>
-            <a class="btn-accent btn-sm" href="digipunt.html" aria-current="page" data-i18n="nav.digipunt">
-              Digipoint
-            </a>
-          </div>
-        </div>
-      </header>
-
-      <!-- ========================= MAIN ========================= -->
-      <main id="main-content" tabindex="-1">
-
-        <!-- HERO SECTION -->
-        <section class="hero-section">
-          <div class="container">
-            <div class="hero-section__content">
-              <span class="hero-section__eyebrow" data-i18n="digipunt.hero.metaTitle">Locatie</span>
-              <h1 class="hero-section__title" data-i18n="digipunt.title">DIGIPUNT INTEC</h1>
-              <p class="hero-section__subtitle" data-i18n="digipunt.subtitle">
-                Heb je soms het gevoel dat de digitale wereld net iets te snel gaat? Of wil je gewoon handiger worden met je smartphone, tablet of computer? Dan is het digipunt INTEC in de Muntpunt bibliotheek de plaats waar je terecht kan!
-              </p>
-              <div class="hero-section__actions">
-                <a class="btn-accent btn-lg" href="contact.html" data-i18n="digipunt.hero.ctaPrimary">Bezoek ons</a>
-                <a class="btn-outline btn-lg" href="opleidingen.html" data-i18n="digipunt.hero.ctaSecondary">Bekijk opleidingen</a>
-              </div>
-            </div>
-
-            <div class="hero-section__visual">
-              <div class="hero-section__image-wrapper">
-                <img
-                  class="hero-section__image"
-                  src="assets/img/IntecBrussel.png"
-                  alt="Digipunt services"
-                  decoding="async"
-                  loading="eager"
-                  width="560"
-                  height="420"
-                />
-                <p class="hero-section__caption" data-i18n="digipunt.description">
-                  Onze digicoach staat er klaar om je te helpen met al je digitale vragen.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- VIDEO SECTION -->
-        <section class="section section--surface section--video" data-animate="fade-up">
-          <div class="container">
-            <div class="section-heading">
-              <span class="section-label" data-i18n="digipunt.video.label">Digipunt in beeld</span>
-              <h2 class="section-title" data-i18n="digipunt.video.title">Digipunt in actie</h2>
-              <p class="section-lead" data-i18n="digipunt.video.lead">
-                Krijg een indruk van de sfeer in Muntpunt en ontdek hoe onze digicoaches Brusselaars persoonlijk begeleiden.
-              </p>
-            </div>
-            <figure class="media-frame" role="group" aria-label="Digipunt video">
-              <div class="responsive-video">
-                <video
-                  controls
-                  playsinline
-                  preload="metadata"
-                  poster="assets/img/IntecBrussel.png"
-                  aria-label="Digipunt video">
-                  <source src="https://video.squarespace-cdn.com/content/v1/657d69b302c36f780a7ca48e/503a6160-f834-4d98-9c66-fde520bcd3b6/1920x1080.mp4" type="video/mp4" />
-                  <p class="video-fallback">
-                    <span data-i18n="digipunt.video.fallback">Je browser ondersteunt geen video.</span>
-                    <a
-                      href="https://video.squarespace-cdn.com/content/v1/657d69b302c36f780a7ca48e/503a6160-f834-4d98-9c66-fde520bcd3b6/1920x1080.mp4"
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      data-i18n="digipunt.video.download">Download de video</a>
-                  </p>
-                </video>
-              </div>
-              <figcaption class="media-frame__caption" data-i18n="digipunt.video.caption">
-                Aftermovie van Digipunt in Muntpunt.
-              </figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <!-- ABOUT COLUMNS -->
-        <section class="section section--surface about-columns">
-          <div class="container">
-            <div class="section-heading">
-              <span class="section-label" data-i18n="digipunt.about.label">Digipunt INTEC</span>
-              <h2 class="section-title" data-i18n="digipunt.about.title">Wat kan je er doen? Heel veel!</h2>
-            </div>
-            <div class="about-columns__grid">
-              <article class="about-columns__card card card--strong">
-                <h2 data-i18n="digipunt.what.title">Wat kan je er doen?</h2>
-                <p data-i18n="digipunt.what.intro">
-                  Bij het digipunt INTEC kan je bijvoorbeeld terecht voor vragen over:
-                </p>
-                <ul class="about-pill-list">
-                  <li data-i18n="digipunt.what.list1">Je telefoon en tablet: apps, instellingen, …</li>
-                  <li data-i18n="digipunt.what.list2">Je laptop: basisgebruik, bestanden, internet, …</li>
-                  <li data-i18n="digipunt.what.list3">Online zaken: afspraken maken, bankieren, online shoppen, …</li>
-                  <li data-i18n="digipunt.what.list4">Veiligheid online: hoe herken je phishing, hoe je accounts beschermen, …</li>
-                </ul>
-              </article>
-
-              <article class="about-columns__card about-columns__card--accent card card--strong card--decorated">
-                <h2 data-i18n="digipunt.where.title">Waar en wanneer?</h2>
-                <p data-i18n="digipunt.where.address" data-i18n-allow-html="true">
-                  Muntpunt - Digipunt INTEC (3de verdieping)<br />
-                  Munt 6,<br />
-                  1000 Brussel
-                </p>
-                <p data-i18n="digipunt.where.intro">
-                  Heb je een digitale vraag, wil je meedoen aan een workshop of ben je geïnteresseerd in persoonlijke begeleiding? Kom dan zeker eens langs bij het digipunt INTEC in de Muntpunt bibliotheek.
-                </p>
-                <ul class="about-pill-list">
-                  <li data-i18n="digipunt.where.hours1">Dinsdag: 14u - 18u</li>
-                  <li data-i18n="digipunt.where.hours2">Woensdag: 14u - 17u</li>
-                  <li data-i18n="digipunt.where.hours4">Donderdag: 14u - 17u</li>
-                  <li data-i18n="digipunt.where.hours3">Vrijdag: 14u - 17u</li>
-                </ul>
-              </article>
-
-              <article class="about-columns__card card card--strong">
-                <h2 data-i18n="digipunt.contact.title">Contact</h2>
-                <p>
-                  <span data-i18n="digipunt.contact.email">digipunt@intecbrussel.be</span><br />
-                  <span data-i18n="digipunt.contact.phone">+32 474 93 17 46</span>
-                </p>
-                <p data-i18n="digipunt.contact.info">
-                  Wil je meer weten of een groepssessie aanvragen? Stuur ons een mail of bel en we bekijken samen de
-                  mogelijkheden.
-                </p>
-                <a
-                  class="btn-primary"
-                  href="https://samenin.brussels/diginew"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  data-i18n="digipunt.more"
-                >
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                  </svg>
-                  Meer info
-                </a>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <!-- EXTRA INFO SECTION -->
-<section class="section section--highlight digipunt-extra" data-animate="fade-up">
-  <div class="container">
-    <div class="digipunt-extra__wrapper">
-      <div class="digipunt-extra__content">
-        <h2 class="section-title" data-i18n="digipunt.extra.title">
-          En er is meer!
-        </h2>
-        <p class="section-lead" data-i18n="digipunt.extra.text">
-          Regelmatig worden er gratis workshops georganiseerd over verschillende digitale thema’s. 
-          Daarnaast biedt de digicoach begeleidingstrajecten op maat aan. 
-          Samen met jou kijkt de digicoach naar wat je precies wilt leren en stelt een persoonlijk plan op. 
-          En het mooiste is: het is helemaal gratis! 
-          Voor de begeleidingstrajecten op maat kan je best even ter plaatse informeren naar de mogelijkheden.
-        </p>
-        <a href="contact.html" class="btn-primary btn-lg" data-i18n="digipunt.extra.cta">
-          Neem contact op
+  <div class="page-shell">
+    <!-- ========================= HEADER ========================= -->
+    <div class="site-header" role="banner">
+      <div class="container site-header__inner">
+        <a class="brand" href="index.html" aria-label="INTEC Brussel">
+          <img src="assets/img/logo+intec+brusselZWART1.png" alt="INTEC Brussel logo" data-critical="true" decoding="async" loading="eager" fetchpriority="high" width="180" height="50">
         </a>
-      </div>
-      <div class="digipunt-extra__image">
-        <img
-          src="assets/img/IntecBrussel.png"
-          alt="Digipunt workshops en begeleiding"
-          decoding="async"
-          loading="lazy"
-          width="600"
-          height="400"
-        />
-      </div>
-    </div>
-  </div>
-</section>
 
+        <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false"
+          data-nav-toggle="#primary-navigation">
+          <span class="sr-only" data-i18n="nav.toggle">Open menu</span>
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+          </svg>
+        </button>
 
-        <!-- CTA SECTION -->
-        <section class="enrollment-cta">
-          <div class="container">
-            <div class="enrollment-cta__wrapper">
-              <div class="enrollment-cta__content">
-                <span class="enrollment-cta__eyebrow" data-i18n="about.cta.eyebrow">Samen bouwen</span>
-                <h2 class="enrollment-cta__title" data-i18n="about.cta.title">Wil je mee het verschil maken voor talent in Brussel?</h2>
-                <p class="enrollment-cta__body" data-i18n="about.cta.body">
-                  Neem contact op en ontdek hoe we kunnen samenwerken rond trajecten, stages of coaching.
-                </p>
-              </div>
+        <nav class="primary-nav" aria-label="Hoofdmenu">
+          <ul class="nav-links" id="primary-navigation" role="list">
+            <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+            <li><a href="opleidingen.html" data-i18n="nav.training">Courses</a></li>
+            <li><a href="inschrijven.html" data-i18n="nav.register">Register</a></li>
+            <li><a href="overons.html" data-i18n="nav.about">About us</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="cvdb/index.html" data-i18n="nav.partners">Partner Access</a></li>
+          </ul>
+        </nav>
 
-              <div class="enrollment-cta__actions">
-                <a class="btn btn--primary btn--lg enrollment-cta__btn" href="contact.html" data-i18n="about.cta.primary">
-                  <svg
-                    class="btn__icon"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                  </svg>
-                  <span>Contacteer ons team</span>
-                </a>
-
-                <a class="btn btn--outline btn--lg enrollment-cta__btn" href="opleidingen.html" data-i18n="about.cta.secondary">
-                  <svg
-                    class="btn__icon"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                  </svg>
-                  <span>Ontdek opleidingen</span>
-                </a>
-              </div>
-
-              <div class="enrollment-cta__trust">
-                <span class="enrollment-cta__trust-item" data-i18n="about.cta.trust1">Gratis intake</span>
-                <span class="enrollment-cta__trust-item" data-i18n="about.cta.trust2">Binnen 2 minuten</span>
-                <span class="enrollment-cta__trust-item" data-i18n="about.cta.trust3">Zonder verplichting</span>
-              </div>
-            </div>
+        <div class="site-header__actions">
+          <div class="language-switch" role="group" aria-label="nav.languageGroup"
+            data-i18n-aria-label="nav.languageGroup" data-active-lang="nl">
+            <button type="button" data-lang-select="" data-lang="nl" class="is-active" aria-pressed="true"
+              aria-current="true">NL</button>
+            <button type="button" data-lang-select="" data-lang="en" aria-pressed="false"
+              aria-current="false">EN</button>
           </div>
-        </section>
-      </main>
+          <a class="btn btn--accent btn--sm" href="digipunt.html" aria-current="page" data-i18n="nav.digipunt">
+            Digipoint
+          </a>
+        </div>
+      </div>
     </div>
-      <!-- Footer -->
-      <footer class="site-footer">
+
+    <!-- ========================= MAIN ========================= -->
+    <main id="main-content" tabindex="-1">
+
+      <!-- HERO SECTION -->
+      <section class="section section--hero hero-section">
         <div class="container">
-          <div class="footer-grid">
-            <!-- Column 1: About INTEC -->
-            <div class="footer-column">
-              <h3 class="footer-heading" data-i18n="footer.aboutTitle">Over INTEC</h3>
-              <ul class="footer-links">
-                <li><a href="overons.html" data-i18n="footer.aboutUs">Wie zijn we</a></li>
-                <li><a href="wiezijnwe.html" data-i18n="footer.ourTeam">Ons Team</a></li>
-                <li><a href="digipunt.html" data-i18n="footer.digipunt">Digipunt</a></li>
-                <li><a href="vacatures.html" data-i18n="footer.careers">Vacatures</a></li>
-                <li><a href="contact.html" data-i18n="footer.contact">Contact</a></li>
-              </ul>
-            </div>
-
-            <!-- Column 2: Opleidingen -->
-            <div class="footer-column">
-              <h3 class="footer-heading" data-i18n="footer.coursesTitle">Opleidingen</h3>
-              <ul class="footer-links">
-                <li><a href="python.html" data-i18n="footer.python">Python Developer</a></li>
-                <li><a href="security.html" data-i18n="footer.security">Cybersecurity</a></li>
-                <li><a href="systeembeheerder.html" data-i18n="footer.sysadmin">Systeembeheerder</a></li>
-                <li><a href="support.html" data-i18n="footer.support">IT Support</a></li>
-                <li><a href="opleidingen.html" data-i18n="footer.allCourses">Alle opleidingen</a></li>
-              </ul>
-            </div>
-
-            <!-- Column 3: Quick Links -->
-            <div class="footer-column">
-              <h3 class="footer-heading" data-i18n="footer.quickLinksTitle">Snelle Links</h3>
-              <ul class="footer-links">
-                <li><a href="inschrijven.html" data-i18n="footer.register">Inschrijven</a></li>
-                <li><a href="index.html#faq" data-i18n="footer.faq">FAQ</a></li>
-                <li><a href="#" data-i18n="footer.privacy">Privacy Policy</a></li>
-                <li><a href="#" data-i18n="footer.terms">Voorwaarden</a></li>
-                <li><a href="#" data-i18n="footer.accessibility">Toegankelijkheid</a></li>
-              </ul>
-            </div>
-
-            <!-- Column 4: Newsletter -->
-            <div class="footer-column footer-newsletter">
-              <h3 class="footer-heading" data-i18n="footer.newsletterTitle">Nieuwsbrief</h3>
-              <p class="newsletter-description" data-i18n="footer.newsletterDesc">
-                Blijf op de hoogte van nieuws, updates, en exclusieve aanbiedingen.
-              </p>
-              <form class="newsletter-form" action="#" method="post">
-                <input 
-                  type="email" 
-                  id="newsletter-email"
-                  name="email"
-                  class="newsletter-input" 
-                  placeholder="Uw email" 
-                  data-i18n-placeholder="footer.emailPlaceholder"
-                  autocomplete="email"
-                  required
-                  aria-label="Email address"
-                />
-                <button type="submit" class="newsletter-button" data-i18n="footer.subscribe">
-                  SUBSCRIBE
-                </button>
-              </form>
-              <div class="footer-social">
-                <a href="https://www.facebook.com/intecbrussel.be" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                  </svg>
-                </a>
-                <a href="https://github.com/intecbrussel" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                  </svg>
-                </a>
-                <a href="https://www.linkedin.com/groups/3973164/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                  </svg>
-                </a>
-                <a href="https://x.com/INTEC_BRUSSEL" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                  </svg>
-                </a>
-              </div>
+          <div class="hero-section__content">
+            <span class="hero-section__eyebrow" data-i18n="digipunt.hero.metaTitle">Locatie</span>
+            <h1 class="hero-section__title" data-i18n="digipunt.title">DIGIPUNT INTEC</h1>
+            <p class="hero-section__subtitle" data-i18n="digipunt.subtitle">
+              Heb je soms het gevoel dat de digitale wereld net iets te snel gaat? Of wil je gewoon handiger worden met
+              je smartphone, tablet of computer? Dan is het digipunt INTEC in de Muntpunt bibliotheek de plaats waar je
+              terecht kan!
+            </p>
+            <div class="hero-section__actions">
+              <a class="btn btn--accent btn--lg" href="contact.html" data-i18n="digipunt.hero.ctaPrimary">Bezoek ons</a>
+              <a class="btn btn--outline btn--lg" href="opleidingen.html" data-i18n="digipunt.hero.ctaSecondary">Bekijk
+                opleidingen</a>
             </div>
           </div>
 
-          <!-- Footer Bottom -->
-          <div class="footer-bottom">
-            <p class="footer-copyright">
-              &copy; <span id="footer-year">2025</span> INTEC Brussel. 
-              <span data-i18n="footer.allRights">Alle rechten voorbehouden.</span>
-            </p>
-            <p class="footer-accreditation" data-i18n="footer.accreditation">
-              Erkend door VDAB, Actiris en ESF.
-            </p>
+          <div class="hero-section__visual">
+            <div class="hero-section__image-wrapper">
+              <img class="hero-section__image" src="assets/img/IntecBrussel.png" alt="Digipunt services"
+                data-critical="true" decoding="async" loading="eager" fetchpriority="high" width="560" height="420">
+              <p class="hero-section__caption" data-i18n="digipunt.description">
+                Onze digicoach staat er klaar om je te helpen met al je digitale vragen.
+              </p>
+            </div>
           </div>
         </div>
-      </footer> 
-    </div>
-    <script src="assets/js/i18n/nl.js" defer></script>
-    <script src="assets/js/i18n/en.js" defer></script>
-    <script src="assets/js/main.js" defer></script>
-  </body>
+      </section>
+
+      <!-- VIDEO SECTION -->
+      <section class="section section--surface digipunt-video" data-animate="fade-up">
+        <div class="container">
+          <div class="section-heading">
+            <span class="section-label" data-i18n="digipunt.video.label">Digipunt in beeld</span>
+            <h2 class="section-title" data-i18n="digipunt.video.title">Digipunt in actie</h2>
+            <p class="section-lead" data-i18n="digipunt.video.lead">
+              Krijg een indruk van de sfeer in Muntpunt en ontdek hoe onze digicoaches Brusselaars persoonlijk
+              begeleiden.
+            </p>
+          </div>
+          <figure class="media-frame" role="group" aria-label="Digipunt video">
+            <div class="responsive-video">
+              <video controls="" playsinline="" preload="none" poster="assets/img/IntecBrussel.png"
+                aria-label="Digipunt video">
+                <source
+                  src="https://video.squarespace-cdn.com/content/v1/657d69b302c36f780a7ca48e/503a6160-f834-4d98-9c66-fde520bcd3b6/1920x1080.mp4"
+                  type="video/mp4">
+                <p class="video-fallback">
+                  <span data-i18n="digipunt.video.fallback">Je browser ondersteunt geen video.</span>
+                  <a href="https://video.squarespace-cdn.com/content/v1/657d69b302c36f780a7ca48e/503a6160-f834-4d98-9c66-fde520bcd3b6/1920x1080.mp4"
+                    target="_blank" rel="noreferrer noopener" data-i18n="digipunt.video.download">Download de video</a>
+                </p>
+              </video>
+            </div>
+            <figcaption class="media-frame__caption" data-i18n="digipunt.video.caption">
+              Aftermovie van Digipunt in Muntpunt.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ABOUT COLUMNS -->
+      <section class="section section--alt about-columns">
+        <div class="container">
+          <div class="section-heading">
+            <span class="section-label" data-i18n="digipunt.about.label">Digipunt INTEC</span>
+            <h2 class="section-title" data-i18n="digipunt.about.title">Wat kan je er doen? Heel veel!</h2>
+          </div>
+          <div class="about-columns__grid component-grid">
+            <article class="about-columns__card card card--strong component-card">
+              <h2 data-i18n="digipunt.what.title">Wat kan je er doen?</h2>
+              <p data-i18n="digipunt.what.intro">
+                Bij het digipunt INTEC kan je bijvoorbeeld terecht voor vragen over:
+              </p>
+              <ul class="about-pill-list">
+                <li data-i18n="digipunt.what.list1">Je telefoon en tablet: apps, instellingen, â€¦</li>
+                <li data-i18n="digipunt.what.list2">Je laptop: basisgebruik, bestanden, internet, â€¦</li>
+                <li data-i18n="digipunt.what.list3">Online zaken: afspraken maken, bankieren, online shoppen, â€¦</li>
+                <li data-i18n="digipunt.what.list4">Veiligheid online: hoe herken je phishing, hoe je accounts
+                  beschermen, â€¦</li>
+              </ul>
+            </article>
+
+            <article
+              class="about-columns__card about-columns__card--accent card card--strong card--decorated component-card">
+              <h2 data-i18n="digipunt.where.title">Waar en wanneer?</h2>
+              <p data-i18n="digipunt.where.address" data-i18n-allow-html="true">
+                Muntpunt - Digipunt INTEC (3de verdieping)<br>
+                Munt 6,<br>
+                1000 Brussel
+              </p>
+              <p data-i18n="digipunt.where.intro">
+                Heb je een digitale vraag, wil je meedoen aan een workshop of ben je geÃ¯nteresseerd in persoonlijke
+                begeleiding? Kom dan zeker eens langs bij het digipunt INTEC in de Muntpunt bibliotheek.
+              </p>
+              <ul class="about-pill-list">
+                <li data-i18n="digipunt.where.hours1">Dinsdag: 14u - 18u</li>
+                <li data-i18n="digipunt.where.hours2">Woensdag: 14u - 17u</li>
+                <li data-i18n="digipunt.where.hours4">Donderdag: 14u - 17u</li>
+                <li data-i18n="digipunt.where.hours3">Vrijdag: 14u - 17u</li>
+              </ul>
+            </article>
+
+            <article class="about-columns__card card card--strong component-card">
+              <h2 data-i18n="digipunt.contact.title">Contact</h2>
+              <p>
+                <span data-i18n="digipunt.contact.email">digipunt@intecbrussel.be</span><br>
+                <span data-i18n="digipunt.contact.phone">+32 474 93 17 46</span>
+              </p>
+              <p data-i18n="digipunt.contact.info">
+                Wil je meer weten of een groepssessie aanvragen? Stuur ons een mail of bel en we bekijken samen de
+                mogelijkheden.
+              </p>
+              <a class="btn btn--primary" href="https://samenin.brussels/diginew" target="_blank"
+                rel="noreferrer noopener" data-i18n="digipunt.more">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+                Meer info
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXTRA INFO SECTION -->
+      <section class="section section--surface digipunt-extra" data-animate="fade-up">
+        <div class="container">
+          <div class="digipunt-extra__wrapper component-banner">
+            <div class="digipunt-extra__content">
+              <h2 class="section-title" data-i18n="digipunt.extra.title">
+                En er is meer!
+              </h2>
+              <p class="section-lead" data-i18n="digipunt.extra.text">
+                Regelmatig worden er gratis workshops georganiseerd over verschillende digitale themaâ€™s.
+                Daarnaast biedt de digicoach begeleidingstrajecten op maat aan.
+                Samen met jou kijkt de digicoach naar wat je precies wilt leren en stelt een persoonlijk plan op.
+                En het mooiste is: het is helemaal gratis!
+                Voor de begeleidingstrajecten op maat kan je best even ter plaatse informeren naar de mogelijkheden.
+              </p>
+              <a href="contact.html" class="btn btn--primary btn--lg" data-i18n="digipunt.extra.cta">
+                Neem contact op
+              </a>
+            </div>
+            <div class="digipunt-extra__image">
+              <img src="assets/img/IntecBrussel.png" alt="Digipunt workshops en begeleiding" decoding="async"
+                loading="lazy" width="600" height="400">
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- CTA SECTION -->
+      <section class="section section--cta enrollment-cta">
+        <div class="container">
+          <div class="enrollment-cta__wrapper component-banner">
+            <div class="enrollment-cta__content">
+              <span class="enrollment-cta__eyebrow" data-i18n="about.cta.eyebrow">Samen bouwen</span>
+              <h2 class="enrollment-cta__title" data-i18n="about.cta.title">Wil je mee het verschil maken voor talent in
+                Brussel?</h2>
+              <p class="enrollment-cta__body" data-i18n="about.cta.body">
+                Neem contact op en ontdek hoe we kunnen samenwerken rond trajecten, stages of coaching.
+              </p>
+            </div>
+
+            <div class="enrollment-cta__actions">
+              <a class="btn btn--primary btn--lg enrollment-cta__btn" href="contact.html" data-i18n="about.cta.primary">
+                <svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>Contacteer ons team</span>
+              </a>
+
+              <a class="btn btn--outline btn--lg enrollment-cta__btn" href="opleidingen.html"
+                data-i18n="about.cta.secondary">
+                <svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+                <span>Ontdek opleidingen</span>
+              </a>
+            </div>
+
+            <div class="enrollment-cta__trust">
+              <span class="enrollment-cta__trust-item" data-i18n="about.cta.trust1">Gratis intake</span>
+              <span class="enrollment-cta__trust-item" data-i18n="about.cta.trust2">Binnen 2 minuten</span>
+              <span class="enrollment-cta__trust-item" data-i18n="about.cta.trust3">Zonder verplichting</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <!-- Column 1: About INTEC -->
+          <div class="footer-column">
+            <p class="footer-heading" data-i18n="footer.aboutTitle" role="heading" aria-level="3">Over INTEC</p>
+            <ul class="footer-links">
+              <li><a href="overons.html" data-i18n="footer.aboutUs">Wie zijn we</a></li>
+              <li><a href="wiezijnwe.html" data-i18n="footer.ourTeam">Ons Team</a></li>
+              <li><a href="digipunt.html" data-i18n="footer.digipunt">Digipunt</a></li>
+              <li><a href="vacatures.html" data-i18n="footer.careers">Vacatures</a></li>
+              <li><a href="contact.html" data-i18n="footer.contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 2: Opleidingen -->
+          <div class="footer-column">
+            <p class="footer-heading" data-i18n="footer.coursesTitle" role="heading" aria-level="3">Opleidingen</p>
+            <ul class="footer-links">
+              <li><a href="python.html" data-i18n="footer.python">Python Developer</a></li>
+              <li><a href="security.html" data-i18n="footer.security">Cybersecurity</a></li>
+              <li><a href="systeembeheerder.html" data-i18n="footer.sysadmin">Systeembeheerder</a></li>
+              <li><a href="support.html" data-i18n="footer.support">IT Support</a></li>
+              <li><a href="opleidingen.html" data-i18n="footer.allCourses">Alle opleidingen</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Quick Links -->
+          <div class="footer-column">
+            <p class="footer-heading" data-i18n="footer.quickLinksTitle" role="heading" aria-level="3">Snelle Links</p>
+            <ul class="footer-links">
+              <li><a href="inschrijven.html" data-i18n="footer.register">Inschrijven</a></li>
+              <li><a href="index.html#faq" data-i18n="footer.faq">FAQ</a></li>
+              <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+              <li><a href="#" data-i18n="footer.terms">Voorwaarden</a></li>
+              <li><a href="#" data-i18n="footer.accessibility">Toegankelijkheid</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Newsletter -->
+          <div class="footer-column footer-newsletter">
+            <p class="footer-heading" data-i18n="footer.newsletterTitle" role="heading" aria-level="3">Nieuwsbrief</p>
+            <p class="newsletter-description" data-i18n="footer.newsletterDesc">
+              Blijf op de hoogte van nieuws, updates, en exclusieve aanbiedingen.
+            </p>
+            <form class="newsletter-form" action="#" method="post">
+              <input type="email" id="newsletter-email" name="email" class="newsletter-input" placeholder="Uw email"
+                data-i18n-placeholder="footer.emailPlaceholder" autocomplete="email" required=""
+                aria-label="Email address">
+              <button type="submit" class="newsletter-button" data-i18n="footer.subscribe">
+                SUBSCRIBE
+              </button>
+            </form>
+            <div class="footer-social">
+              <a href="https://www.facebook.com/intecbrussel.be" target="_blank" rel="noopener noreferrer"
+                aria-label="Facebook">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z">
+                  </path>
+                </svg>
+              </a>
+              <a href="https://github.com/intecbrussel" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                  </path>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/groups/3973164/" target="_blank" rel="noopener noreferrer"
+                aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z">
+                  </path>
+                </svg>
+              </a>
+              <a href="https://x.com/INTEC_BRUSSEL" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                  </path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            Â© <span id="footer-year">2025</span> <span data-i18n="footer.brand">INTEC Brussel.</span>
+            <span data-i18n="footer.allRights">Alle rechten voorbehouden.</span>
+          </p>
+          <p class="footer-accreditation" data-i18n="footer.accreditation">
+            Erkend door VDAB, Actiris en ESF.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const yearSpan = document.getElementById('footer-year');
+      if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+    </script>
+    <script src="assets/js/i18n/nl.js" defer=""></script>
+    <script src="assets/js/main.js" defer=""></script>
+
+
+  </div>
+</body>
+
 </html>

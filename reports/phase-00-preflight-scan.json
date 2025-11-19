@@ -1,0 +1,123 @@
+{
+  "summary": {
+    "html_files": 13,
+    "css_files": 2,
+    "js_files": 40
+  },
+  "html": {
+    "issues": [
+      {
+        "file": "contact.html",
+        "issues": [
+          "Syntax error: Tag svg invalid, line 39, column 77 (<string>, line 39)"
+        ]
+      },
+      {
+        "file": "cvdb\\index.html",
+        "issues": [
+          "Syntax error: Tag svg invalid, line 30, column 77 (<string>, line 30)"
+        ]
+      },
+      {
+        "file": "digipunt.html",
+        "issues": [
+          "Syntax error: Tag svg invalid, line 32, column 77 (<string>, line 32)"
+        ]
+      },
+      {
+        "file": "index.html",
+        "issues": [
+          "Syntax error: Tag svg invalid, line 31, column 77 (<string>, line 31)"
+        ]
+      },
+      {
+        "file": "inschrijven.html",
+        "issues": [
+          "Syntax error: Tag svg invalid, line 30, column 77 (<string>, line 30)"
+        ]
+      },
+      {
+        "file": "opleidingen.html",
+        "issues": [
+          "Syntax error: Tag svg invalid, line 85, column 77 (<string>, line 85)"
+        ]
+      },
+      {
+        "file": "overons.html",
+        "issues": [
+          "Syntax error: Tag svg invalid, line 31, column 77 (<string>, line 31)"
+        ]
+      },
+      {
+        "file": "python.html",
+        "issues": [
+          "Syntax error: Tag svg invalid, line 33, column 77 (<string>, line 33)"
+        ]
+      },
+      {
+        "file": "security.html",
+        "issues": [
+          "Syntax error: Tag svg invalid, line 33, column 77 (<string>, line 33)"
+        ]
+      },
+      {
+        "file": "support.html",
+        "issues": [
+          "Syntax error: Tag svg invalid, line 41, column 77 (<string>, line 41)"
+        ]
+      },
+      {
+        "file": "systeembeheerder.html",
+        "issues": [
+          "Syntax error: Tag svg invalid, line 34, column 77 (<string>, line 34)"
+        ]
+      },
+      {
+        "file": "vacatures.html",
+        "issues": [
+          "Syntax error: Tag svg invalid, line 32, column 77 (<string>, line 32)"
+        ]
+      },
+      {
+        "file": "wiezijnwe.html",
+        "issues": [
+          "Syntax error: Tag svg invalid, line 31, column 77 (<string>, line 31)"
+        ]
+      }
+    ],
+    "aria_issues": [],
+    "duplicate_ids": []
+  },
+  "css": {
+    "issues": []
+  },
+  "javascript": {
+    "missing_scripts": [],
+    "syntax_issues": []
+  },
+  "i18n": {
+    "status": "ok",
+    "locales": [
+      "en",
+      "nl"
+    ],
+    "totals": {
+      "en": 1366,
+      "nl": 1366
+    },
+    "differences": {
+      "missingInNl": [],
+      "missingInEn": []
+    }
+  },
+  "assets": {
+    "missing": [
+      {
+        "file": "systeembeheerder.html",
+        "tag": "img",
+        "attribute": "src",
+        "value": "assets/img/sysadmin.webp"
+      }
+    ]
+  }
+}
