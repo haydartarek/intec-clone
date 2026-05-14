@@ -474,6 +474,7 @@ window.i18n.nl = {
   "home.courses.pc.date2": "Aanvullende instroom: 13 januari 2026",
 
   "home.courses.pc.cta": "Meer info",
+  "home.courses.pc.aria": "Startdata PC en Netwerktechnicus",
 
   "home.courses.python.title": "Netwerkbeheerder met Python",
 
@@ -483,6 +484,7 @@ window.i18n.nl = {
   "home.courses.python.date1": "Startdatum: 18 november 2025",
 
   "home.courses.python.cta": "Meer info",
+  "home.courses.python.aria": "Startdata Netwerkbeheerder met Python",
 
   "home.courses.systems.title": "Systeembeheerder",
 
@@ -494,6 +496,7 @@ window.i18n.nl = {
   "home.courses.systems.date2": "Instroom taaltraject: 10 februari 2026",
 
   "home.courses.systems.cta": "Meer info",
+  "home.courses.systems.aria": "Startdata Systeembeheerder",
 
   "home.courses.cyber.title": "Cyber Security Engineer",
 
@@ -503,6 +506,7 @@ window.i18n.nl = {
   "home.courses.cyber.date1": "Startdatum: 3 maart 2026",
 
   "home.courses.cyber.cta": "Meer info",
+  "home.courses.cyber.aria": "Startdata Cyber Security Engineer",
 
   // Stats bar
 

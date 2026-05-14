@@ -2627,10 +2627,6 @@ h3 {
     line-height: 1.55;
   }
 
-  .tip-card::before {
-    display: none !important;
-  }
-
   /* ===== BUTTONS ===== */
   .btn--about {
     width: 100%;

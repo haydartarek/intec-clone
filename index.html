@@ -153,7 +153,7 @@
       </section>
 
 
-      <section class="section section--surface" id="opleidingen">
+      <section class="section section--surface programs-showcase" id="opleidingen">
         <div class="container">
           <div class="section-heading">
             <span class="section-label" data-i18n="home.courses.label">Opleidingen</span>
@@ -163,19 +163,27 @@
               Je leert in kleine groepen, met digicoaches en taalondersteuning binnen handbereik.
             </p>
           </div>
-          <div class="course-grid component-grid">
-            <article class="course-card component-card">
-              <h3 data-i18n="home.courses.pc.title">PC en Netwerktechnicus</h3>
-              <p data-i18n="home.courses.pc.body">
+          <div class="programs-showcase__grid component-grid">
+            <article class="program-card component-card fade-up" data-delay="1" data-animate="fade-up">
+              <div class="program-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21" stroke-linecap="round"></line>
+                  <line x1="12" y1="17" x2="12" y2="21" stroke-linecap="round"></line>
+                </svg>
+              </div>
+              <h3 class="program-card__title" data-i18n="home.courses.pc.title">PC en Netwerktechnicus</h3>
+              <p class="program-card__description" data-i18n="home.courses.pc.body">
                 Bouw expertise op in hardware-installaties, serverbeheer en het oplossen van netwerkstoringen voor
                 kmo's en grotere organisaties.
               </p>
-              <ul class="course-card__dates">
+              <ul class="program-card__meta" data-i18n-aria-label="home.courses.pc.aria"
+                aria-label="Startdata PC en Netwerktechnicus">
                 <li data-start-date="2025-10-07" data-i18n="home.courses.pc.date1">Startdata: 7 oktober 2025</li>
-                <li data-start-date="2026-01-13" data-i18n="home.courses.pc.date2">Aanvullende instroom: 13 januari 2026
-                </li>
+                <li data-start-date="2026-01-13" data-i18n="home.courses.pc.date2">Aanvullende instroom: 13 januari
+                  2026</li>
               </ul>
-              <a class="btn btn--soft course-card__cta" href="support.html" data-i18n="home.courses.pc.cta">
+              <a class="program-card__link" href="support.html" data-i18n="home.courses.pc.cta">
                 Meer info
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"
@@ -183,16 +191,26 @@
                 </svg>
               </a>
             </article>
-            <article class="course-card component-card">
-              <h3 data-i18n="home.courses.python.title">Netwerkbeheerder met Python</h3>
-              <p data-i18n="home.courses.python.body">
+
+            <article class="program-card component-card fade-up" data-delay="2" data-animate="fade-up">
+              <div class="program-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2,17 12,22 22,17" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                  <polyline points="2,12 12,17 22,12" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                </svg>
+              </div>
+              <h3 class="program-card__title" data-i18n="home.courses.python.title">Netwerkbeheerder met Python</h3>
+              <p class="program-card__description" data-i18n="home.courses.python.body">
                 Combineer netwerkarchitectuur, automatisering en Python-scripting om infrastructuren te monitoren en
                 te beheren met maximale efficiëntie.
               </p>
-              <ul class="course-card__dates">
-                <li data-start-date="2025-11-18" data-i18n="home.courses.python.date1">Startdatum: 18 november 2025</li>
+              <ul class="program-card__meta" data-i18n-aria-label="home.courses.python.aria"
+                aria-label="Startdata Netwerkbeheerder met Python">
+                <li data-start-date="2025-11-18" data-i18n="home.courses.python.date1">Startdatum: 18 november 2025
+                </li>
               </ul>
-              <a class="btn btn--soft course-card__cta" href="python.html" data-i18n="home.courses.python.cta">
+              <a class="program-card__link" href="python.html" data-i18n="home.courses.python.cta">
                 Meer info
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"
@@ -200,20 +218,28 @@
                 </svg>
               </a>
             </article>
-            <article class="course-card component-card">
-              <h3 data-i18n="home.courses.systems.title">Systeembeheerder</h3>
-              <p data-i18n="home.courses.systems.body">
+
+            <article class="program-card component-card fade-up" data-delay="3" data-animate="fade-up">
+              <div class="program-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <rect x="2" y="6" width="20" height="8" rx="1"></rect>
+                  <path d="m6 2 2 2-2 2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <path d="m18 2-2 2 2 2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </div>
+              <h3 class="program-card__title" data-i18n="home.courses.systems.title">Systeembeheerder</h3>
+              <p class="program-card__description" data-i18n="home.courses.systems.body">
                 Leer Windows- en Linux-servers beheren, virtualisatieplatformen uitrollen en cloudresources veilig
                 configureren.
               </p>
-              <ul class="course-card__dates">
-                <li data-start-date="2025-10-14" data-i18n="home.courses.systems.date1">Startdata: 14 oktober 2025</li>
+              <ul class="program-card__meta" data-i18n-aria-label="home.courses.systems.aria"
+                aria-label="Startdata Systeembeheerder">
+                <li data-start-date="2025-10-14" data-i18n="home.courses.systems.date1">Startdata: 14 oktober 2025
+                </li>
                 <li data-start-date="2026-02-10" data-i18n="home.courses.systems.date2">Instroom taaltraject: 10
-                  februari
-                  2026</li>
+                  februari 2026</li>
               </ul>
-              <a class="btn btn--soft course-card__cta" href="systeembeheerder.html"
-                data-i18n="home.courses.systems.cta">
+              <a class="program-card__link" href="systeembeheerder.html" data-i18n="home.courses.systems.cta">
                 Meer info
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"
@@ -221,16 +247,24 @@
                 </svg>
               </a>
             </article>
-            <article class="course-card component-card">
-              <h3 data-i18n="home.courses.cyber.title">Cyber Security Engineer</h3>
-              <p data-i18n="home.courses.cyber.body">
+
+            <article class="program-card component-card fade-up" data-delay="4" data-animate="fade-up">
+              <div class="program-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+                </svg>
+              </div>
+              <h3 class="program-card__title" data-i18n="home.courses.cyber.title">Cyber Security Engineer</h3>
+              <p class="program-card__description" data-i18n="home.courses.cyber.body">
                 Beveilig netwerken, voer ethische hacks uit en interpreteer digitale sporen om cyberaanvallen te
                 voorkomen en incidenten te beperken.
               </p>
-              <ul class="course-card__dates">
+              <ul class="program-card__meta" data-i18n-aria-label="home.courses.cyber.aria"
+                aria-label="Startdata Cyber Security Engineer">
                 <li data-start-date="2026-03-03" data-i18n="home.courses.cyber.date1">Startdatum: 3 maart 2026</li>
               </ul>
-              <a class="btn btn--soft course-card__cta" href="security.html" data-i18n="home.courses.cyber.cta">
+              <a class="program-card__link" href="security.html" data-i18n="home.courses.cyber.cta">
                 Meer info
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"

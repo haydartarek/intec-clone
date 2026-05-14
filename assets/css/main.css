@@ -1693,26 +1693,18 @@ select.form-control:hover {
   min-height: 320px;
 }
 
-/* Accent bar top */
-.tip-card::before {
+/* Shared accent bar top for tips and benefits */
+.tip-card::before,
+.benefit-card::before {
   content: "";
   position: absolute;
-  top: clamp(0.55rem, 0.9vw, 0.72rem);
-  left: clamp(1rem, 2vw, 1.35rem);
-  right: clamp(1rem, 2vw, 1.35rem);
+  top: 0;
+  left: 5px;
+  right: 5px;
   height: 4px;
-  border-radius: 999px;
+  border-radius: 4px 4px 0 0;
   background: var(--gradient-primary);
-  opacity: 0.88;
-  box-shadow: 0 2px 8px rgba(var(--color-primary-rgb), 0.22);
-  transform: scaleX(0.94);
-  transform-origin: left center;
-  transition:
-    transform var(--transition-base),
-    opacity var(--transition-base),
-    filter var(--transition-base),
-    background var(--transition-base);
-  pointer-events: none;
+  transition: background 0.4s ease;
 }
 
 /* Hover animation */
@@ -1722,11 +1714,9 @@ select.form-control:hover {
   box-shadow: var(--shadow-card-hover, 0 8px 22px rgba(15, 130, 138, 0.18));
 }
 
-.tip-card:hover::before {
+.tip-card:hover::before,
+.benefit-card:hover::before {
   background: var(--gradient-primary-reverse);
-  opacity: 1;
-  transform: scaleX(1);
-  filter: saturate(1.08);
 }
 
 /* ---------- Typography ---------- */
@@ -2003,18 +1993,6 @@ select.form-control:hover {
   min-height: 340px;
 }
 
-.benefit-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--gradient-primary);
-  border-radius: 4px 4px 0 0;
-  transition: background 0.4s ease;
-}
-
 .benefit-card:hover {
   transform: translateY(-6px);
   border-color: rgba(15, 130, 138, 0.25);
@@ -2024,10 +2002,6 @@ select.form-control:hover {
     var(--color-white) 0%,
     var(--color-mint-250) 100%
   );
-}
-
-.benefit-card:hover::before {
-  background: var(--gradient-primary-reverse);
 }
 
 .benefit-card__title {

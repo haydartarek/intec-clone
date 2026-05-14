@@ -535,6 +535,7 @@ window.i18n.en = {
   "home.courses.pc.date2": "Additional intake: January 13, 2026",
 
   "home.courses.pc.cta": "More info",
+  "home.courses.pc.aria": "Start dates PC and Network Technician",
 
   "home.courses.python.title": "Network Administrator with Python",
 
@@ -544,6 +545,7 @@ window.i18n.en = {
   "home.courses.python.date1": "Start date: November 18, 2025",
 
   "home.courses.python.cta": "More info",
+  "home.courses.python.aria": "Start dates Network Administrator with Python",
 
   "home.courses.systems.title": "System Administrator",
 
@@ -555,6 +557,7 @@ window.i18n.en = {
   "home.courses.systems.date2": "Language prep track: February 10, 2026",
 
   "home.courses.systems.cta": "More info",
+  "home.courses.systems.aria": "Start dates System Administrator",
 
   "home.courses.cyber.title": "Cyber Security Engineer",
 
@@ -564,6 +567,7 @@ window.i18n.en = {
   "home.courses.cyber.date1": "Start date: March 3, 2026",
 
   "home.courses.cyber.cta": "More info",
+  "home.courses.cyber.aria": "Start dates Cyber Security Engineer",
 
   // Stats bar
 
