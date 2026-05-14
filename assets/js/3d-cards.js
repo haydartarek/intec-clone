@@ -76,5 +76,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  console.log('✨ 3D Tilt effect initialized for', cards.length, 'cards');
 });
