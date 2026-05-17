@@ -3828,6 +3828,7 @@ window.i18n.en = {
   "terms.hero.title": "Terms and conditions",
   "terms.hero.subtitle":
     "These terms explain participation, communication and responsibilities at INTEC Brussels.",
+  "terms.hero.ctaPrimary": "Read the terms",
   "terms.updatedLabel": "Last updated: May 14, 2026",
   "terms.section1.title": "1. Scope",
   "terms.section1.body":

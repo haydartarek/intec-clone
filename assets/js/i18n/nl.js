@@ -3526,6 +3526,7 @@ window.i18n.nl = {
   "terms.hero.title": "Algemene voorwaarden",
   "terms.hero.subtitle":
     "Deze voorwaarden beschrijven hoe deelname, communicatie en verantwoordelijkheden bij INTEC Brussel verlopen.",
+  "terms.hero.ctaPrimary": "Lees de voorwaarden",
   "terms.updatedLabel": "Laatst bijgewerkt: 14 mei 2026",
   "terms.section1.title": "1. Toepassingsgebied",
   "terms.section1.body":

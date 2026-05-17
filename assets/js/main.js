@@ -1,4 +1,4 @@
-﻿// ============================================================================
+// ============================================================================
 // assets/js/main.js
 // INTEC Brussels - Professional JavaScript Core (2025 Edition)
 // Fully refactored with all fixes applied
@@ -52,7 +52,7 @@
     devToolsConfirmDelay: 600,
     devToolsPollInterval: 1200,
     devToolsResizeDebounce: 300,
-    monitorDevTools: true,
+    monitorDevTools: false,
     scrollThrottleDelay: 16,
     resizeDebounceDelay: 250,
     countdownUpdateInterval: 3600000, // 1 hour
@@ -83,7 +83,7 @@
         if (!src || !src.includes("assets/js/main.js")) continue;
         try {
           const scriptUrl = new URL(src, window.location.href);
-          return new URL("../../data/design-tokens.json", scriptUrl).toString();
+          return new URL("/data/design-tokens.json", scriptUrl).toString();
         } catch (error) {
           /* noop – fall through to default */
         }
@@ -2965,7 +2965,7 @@
     const startTime = performance.now();
 
     try {
-      // Initialize all systems in correct order
+      // Initialize critical systems first for faster first render.
       DevToolsDetector.init();
       LanguageManager.init();
       LazyImages.init();
@@ -2973,17 +2973,29 @@
       MobileNav.init();
       SmoothScroll.init();
       ScrollAnimations.init();
-      CounterAnimations.init();
-      CourseCountdown.init();
-      PartnerCarousel.init();
       AccordionSystem.init();
       FormValidation.init();
-      SectionBackgrounds.init();
-      NewsletterValidation.init();
-      VacanciesModule.init();
-      ProgramCardsLayout.init();
       FooterYear.init();
       ServiceWorker.init();
+
+      // Defer non-critical modules to reduce main-thread work during LCP window.
+      const initDeferredModules = () => {
+        CounterAnimations.init();
+        CourseCountdown.init();
+        PartnerCarousel.init();
+        SectionBackgrounds.init();
+        NewsletterValidation.init();
+        VacanciesModule.init();
+        ProgramCardsLayout.init();
+      };
+
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(() => initDeferredModules(), {
+          timeout: 1200,
+        });
+      } else {
+        setTimeout(initDeferredModules, 180);
+      }
 
       INTEC.state.isInitialized = true;
 

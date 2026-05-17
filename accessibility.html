@@ -48,14 +48,7 @@
       content="https://www.intecbrussel.be/assets/img/logo+intec+brusselZWART1.png"
     />
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-    <link
-      rel="preload"
-      href="assets/css/base.css"
-      as="style"
-      fetchpriority="high"
-    />
-    <link rel="preload" href="assets/css/main.css" as="style" />
-<link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
   </head>
 
@@ -70,7 +63,6 @@
               data-critical="true"
               decoding="async"
               loading="eager"
-              fetchpriority="high"
               width="180"
               height="50"
             />
@@ -172,7 +164,7 @@
                 INTEC Brussel werkt continu aan een website die bruikbaar is
                 voor alle bezoekers, met of zonder beperking.
               </p>
-              <div class="hero-section__actions">
+              <div class="hero-section__actions accessibility-hero__actions">
                 <a
                   class="btn btn--accent btn--lg"
                   href="#accessibility-practices"
@@ -190,15 +182,9 @@
               </div>
             </div>
             <div class="hero-section__visual">
-              <div class="hero-section__image-wrapper component-card">
-                <p
-                  class="hero-section__caption"
-                  data-i18n="accessibility.commitment.body"
-                >
-                  We verbeteren onze website op basis van WCAG-principes rond
-                  waarneembaarheid, bedienbaarheid, begrijpelijkheid en
-                  robuustheid.
-                </p>
+              <div
+                class="hero-section__image-wrapper component-card accessibility-hero__panel"
+              >
                 <ul
                   class="accessibility-overview__list accessibility-hero__list"
                 >
@@ -222,54 +208,80 @@
           class="section section--surface accessibility-overview"
           id="accessibility-practices"
         >
-          <div class="container component-grid accessibility-overview__grid">
-            <article
-              class="component-card accessibility-overview__card accessibility-overview__card--commitment"
-            >
-              <h2 data-i18n="accessibility.commitment.title">Onze inzet</h2>
-              <p data-i18n="accessibility.commitment.body">
-                We verbeteren onze website op basis van WCAG-principes rond
-                waarneembaarheid, bedienbaarheid, begrijpelijkheid en
-                robuustheid.
-              </p>
-            </article>
-
-            <article
-              class="component-card accessibility-overview__card accessibility-overview__card--features"
-            >
-              <h2 data-i18n="accessibility.features.title">Wat we toepassen</h2>
-              <ul class="feature-list accessibility-overview__list">
-                <li data-i18n="accessibility.features.item1">
-                  Semantische structuur met duidelijke koppen en landmarks.
-                </li>
-                <li data-i18n="accessibility.features.item2">
-                  Toetsenbordvriendelijke navigatie en zichtbare focusstijlen.
-                </li>
-                <li data-i18n="accessibility.features.item3">
-                  Responsieve layout en voldoende kleurcontrast in componenten.
-                </li>
-                <li data-i18n="accessibility.features.item4">
-                  Doorlopende kwaliteitscontrole en regressietests bij updates.
-                </li>
-              </ul>
-            </article>
-
-            <article
-              class="component-card accessibility-overview__card accessibility-overview__card--feedback"
-              id="accessibility-feedback"
-            >
-              <h2 data-i18n="accessibility.feedback.title">Probleem melden</h2>
-              <p data-i18n="accessibility.feedback.body">
-                Ondervind je een toegankelijkheidsprobleem? Laat het ons weten,
-                dan onderzoeken en verbeteren we dit zo snel mogelijk.
-              </p>
-              <a
-                class="btn btn--primary accessibility-overview__cta"
-                href="contact.html"
-                data-i18n="accessibility.feedback.cta"
-                >Meld toegankelijkheidsprobleem</a
+          <div class="container">
+            <div class="section-heading">
+              <span class="section-label" data-i18n="accessibility.hero.eyebrow"
+                >Toegankelijkheid</span
               >
-            </article>
+              <h2
+                class="section-title"
+                data-i18n="accessibility.features.title"
+              >
+                Wat we toepassen
+              </h2>
+            </div>
+
+            <div class="component-grid accessibility-overview__grid">
+              <article
+                class="component-card accessibility-overview__card accessibility-overview__card--commitment"
+              >
+                <h2 data-i18n="accessibility.commitment.title">Onze inzet</h2>
+                <p data-i18n="accessibility.commitment.body">
+                  We verbeteren onze website op basis van WCAG-principes rond
+                  waarneembaarheid, bedienbaarheid, begrijpelijkheid en
+                  robuustheid.
+                </p>
+              </article>
+
+              <article
+                class="component-card accessibility-overview__card accessibility-overview__card--features"
+              >
+                <h2 data-i18n="accessibility.features.title">
+                  Wat we toepassen
+                </h2>
+                <ul class="feature-list accessibility-overview__list">
+                  <li data-i18n="accessibility.features.item1">
+                    Semantische structuur met duidelijke koppen en landmarks.
+                  </li>
+                  <li data-i18n="accessibility.features.item2">
+                    Toetsenbordvriendelijke navigatie en zichtbare focusstijlen.
+                  </li>
+                  <li data-i18n="accessibility.features.item3">
+                    Responsieve layout en voldoende kleurcontrast in
+                    componenten.
+                  </li>
+                  <li data-i18n="accessibility.features.item4">
+                    Doorlopende kwaliteitscontrole en regressietests bij
+                    updates.
+                  </li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="section section--alt accessibility-feedback"
+          id="accessibility-feedback"
+        >
+          <div class="container">
+            <div class="component-grid accessibility-feedback__grid">
+              <article class="component-card accessibility-feedback__card">
+                <h2 data-i18n="accessibility.feedback.title">
+                  Probleem melden
+                </h2>
+                <p data-i18n="accessibility.feedback.body">
+                  Ondervind je een toegankelijkheidsprobleem? Laat het ons
+                  weten, dan onderzoeken en verbeteren we dit zo snel mogelijk.
+                </p>
+                <a
+                  class="btn btn--primary accessibility-overview__cta"
+                  href="contact.html"
+                  data-i18n="accessibility.feedback.cta"
+                  >Meld toegankelijkheidsprobleem</a
+                >
+              </article>
+            </div>
           </div>
         </section>
       </main>
@@ -475,11 +487,8 @@
           </div>
         </div>
       </footer>
-    <script src="assets/js/i18n/nl.js" defer=""></script>
-    <script src="assets/js/i18n/en.js" defer=""></script>
-    <script src="assets/js/main.js" defer=""></script>
+      <script src="assets/js/i18n/nl.js" defer=""></script>
+      <script src="assets/js/main.js" defer=""></script>
     </div>
   </body>
 </html>
-
-

@@ -44,11 +44,12 @@
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <link
       rel="preload"
-      href="assets/css/base.css"
-      as="style"
+      href="assets/img/intec_brussel (3).jpg"
+      as="image"
+      type="image/jpeg"
       fetchpriority="high"
     />
-    <link rel="preload" href="assets/css/main.css" as="style" /><link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <script type="application/ld+json">
       {
@@ -100,7 +101,7 @@
               data-critical="true"
               decoding="async"
               loading="eager"
-              fetchpriority="high"
+             
               width="180"
               height="50"
             />
@@ -225,10 +226,10 @@
             <div class="hero-section__visual">
               <div class="hero-section__image-wrapper">
                 <img
-                  src="assets/img/intec_brussel (3).png"
+                  src="assets/img/intec_brussel (3).jpg"
                   class="hero-section__image"
                   data-critical="true"
-                  decoding="async"
+                  decoding="sync"
                   alt="Cursisten aan het werk in het opleidingscentrum van INTEC Brussel"
                   loading="eager"
                   fetchpriority="high"
@@ -1405,8 +1406,7 @@
           new Date().getFullYear();
       </script>
     <script src="assets/js/i18n/nl.js" defer=""></script>
-    <script src="assets/js/i18n/en.js" defer=""></script>
-    <script src="assets/js/main.js" defer=""></script>
+<script src="assets/js/main.js" defer=""></script>
     </div>
   </body>
 </html>

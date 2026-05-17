@@ -7366,7 +7366,11 @@ body.devtools-open .values-section * {
 --------------------------------------- */
 .timeline--four {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(var(--size-r-150), 3vw, calc(var(--size-r-125) + var(--size-r-100)));
+  gap: clamp(
+    var(--size-r-150),
+    3vw,
+    calc(var(--size-r-125) + var(--size-r-100))
+  );
 }
 
 .timeline--four .timeline__content::before {
@@ -7409,8 +7413,8 @@ body.devtools-open .values-section * {
   min-width: 0;
   min-height: var(--about-timeline-card-min-height);
   height: 100%;
-  padding:
-    var(--about-timeline-card-padding-top) var(--about-timeline-card-padding-inline)
+  padding: var(--about-timeline-card-padding-top)
+    var(--about-timeline-card-padding-inline)
     var(--about-timeline-card-padding-inline);
   gap: var(--space-sm);
 }
@@ -7456,8 +7460,8 @@ body.devtools-open .values-section * {
   }
 
   .page--overons .timeline--four .timeline__content {
-    padding:
-      var(--about-timeline-card-padding-top) var(--about-timeline-card-padding-inline)
+    padding: var(--about-timeline-card-padding-top)
+      var(--about-timeline-card-padding-inline)
       var(--about-timeline-card-padding-inline);
     min-height: auto;
   }
@@ -8185,7 +8189,9 @@ body.devtools-open .values-section * {
   margin-top: 0.7rem;
 }
 
-.page--accessibility .accessibility-hero .hero-section__image-wrapper {
+.page--terms .terms-hero .hero-section__image-wrapper,
+.page--accessibility .accessibility-hero .hero-section__image-wrapper,
+.page--privacy .privacy-hero .hero-section__image-wrapper {
   display: grid;
   align-content: center;
   justify-items: start;
@@ -8194,9 +8200,90 @@ body.devtools-open .values-section * {
   padding: clamp(var(--size-r-100), 2vw, 1.2rem);
 }
 
-.page--accessibility .accessibility-hero .hero-section__caption {
+.page--terms .terms-hero__actions {
+  margin-top: clamp(var(--size-r-050), 1.6vw, var(--size-r-100));
+}
+
+.page--terms .terms-hero__updated {
   margin: 0;
-  text-align: left !important;
+  font-size: var(--size-r-090);
+  color: var(--color-text-muted);
+}
+
+.page--terms .terms-hero__panel {
+  inline-size: min(100%, 560px);
+}
+
+.page--terms .terms-hero__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.62rem;
+  inline-size: 100%;
+}
+
+.page--terms .terms-hero__list li {
+  line-height: 1.5;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.page--terms .terms-hero__list li + li {
+  padding-top: 0.35rem;
+  border-top: var(--size-px-1) dashed var(--color-primary-12);
+}
+
+.page--terms .terms-overview__grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  align-items: stretch;
+}
+
+.page--terms .terms-overview .container {
+  display: grid;
+  gap: clamp(var(--size-r-125), 2.2vw, var(--size-r-175));
+}
+
+.page--terms .terms-overview__card {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.72rem, 1.55vw, 1rem);
+  padding: clamp(1.2rem, 2.25vw, 1.55rem);
+}
+
+.page--terms .terms-overview__card :where(h2) {
+  margin: 0;
+  font-size: clamp(1.2rem, 1.08rem + 0.4vw, 1.45rem);
+}
+
+.page--terms .terms-overview__card :where(p) {
+  margin: 0;
+  line-height: 1.64;
+}
+
+.page--terms .terms-overview__card--contact {
+  grid-column: 1 / -1;
+}
+
+.page--terms .terms-overview__cta {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.page--accessibility .accessibility-hero__actions {
+  margin-top: clamp(var(--size-r-050), 1.6vw, var(--size-r-100));
+}
+
+.page--accessibility .accessibility-hero__actions > :where(.btn, a) {
+  min-inline-size: clamp(230px, 24vw, 320px);
+  max-inline-size: 100%;
+  white-space: normal;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.page--accessibility .accessibility-hero__panel {
+  inline-size: min(100%, 560px);
 }
 
 .page--accessibility .accessibility-hero__list {
@@ -8206,6 +8293,7 @@ body.devtools-open .values-section * {
 .page--accessibility .accessibility-overview__grid {
   gap: clamp(var(--size-r-100), 2.2vw, 1.45rem);
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  align-items: stretch;
 }
 
 .page--accessibility .accessibility-overview__card {
@@ -8254,11 +8342,25 @@ body.devtools-open .values-section * {
   box-shadow: 0 0 0 var(--size-px-2) var(--color-primary-12);
 }
 
-.page--accessibility .accessibility-overview__card--feedback,
-.page--accessibility
-  .accessibility-overview__card--feedback
-  :where(h2, p, ul, ol, li, a, strong, span) {
-  text-align: left !important;
+.page--accessibility .accessibility-feedback__grid {
+  grid-template-columns: minmax(0, 1fr);
+  max-inline-size: 760px;
+  margin-inline: auto;
+}
+
+.page--accessibility .accessibility-feedback__card {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.7rem, 1.7vw, var(--size-r-095));
+  padding: clamp(1.2rem, 2.3vw, 1.6rem);
+}
+
+.page--accessibility .accessibility-feedback__card :where(h2, p) {
+  margin: 0;
+}
+
+.page--accessibility .accessibility-feedback__card :where(p) {
+  line-height: 1.62;
 }
 
 .page--accessibility .accessibility-overview__cta {
@@ -8328,7 +8430,19 @@ body.devtools-open .values-section * {
 }
 
 @media (max-width: 768px) {
+  .page--terms .terms-overview__card--contact {
+    grid-column: auto;
+  }
+
   .page--accessibility .accessibility-overview__card {
+    padding: clamp(1.05rem, 4.2vw, 1.3rem);
+  }
+
+  .page--accessibility .accessibility-feedback__card {
+    padding: clamp(1.05rem, 4.2vw, 1.3rem);
+  }
+
+  .page--terms .terms-overview__card {
     padding: clamp(1.05rem, 4.2vw, 1.3rem);
   }
 
@@ -8337,22 +8451,29 @@ body.devtools-open .values-section * {
       rgba(var(--color-primary-rgb), 0.09);
   }
 
-  .page--accessibility .accessibility-hero .hero-section__image-wrapper {
-    justify-items: center;
-    text-align: center;
-  }
-
-  .page--accessibility .accessibility-hero .hero-section__caption {
-    text-align: center !important;
-  }
-
+  .page--terms .terms-hero .hero-section__image-wrapper,
+  .page--accessibility .accessibility-hero .hero-section__image-wrapper,
   .page--privacy .privacy-hero .hero-section__image-wrapper {
     justify-items: center;
     text-align: center;
   }
 
+  .page--terms .terms-hero .hero-section__content,
+  .page--accessibility .accessibility-hero .hero-section__content {
+    order: 0 !important;
+  }
+
+  .page--terms .terms-hero .hero-section__visual,
+  .page--accessibility .accessibility-hero .hero-section__visual {
+    order: 1 !important;
+  }
+
+  .page--terms .terms-hero__list li {
+    text-align: left;
+  }
+
   .page--privacy .hero-section__caption {
-    text-align: center !important;
+    text-align: center;
   }
 }
 
