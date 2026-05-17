@@ -36,6 +36,13 @@
   const LANGUAGE_STORAGE_VERSION = "intec-language-v2";
   const LANGUAGE_MANUAL_FLAG = "intec-language-manual";
 
+  const normalizeLanguage = (lang) =>
+    String(lang || "")
+      .toLowerCase()
+      .startsWith("en")
+      ? "en"
+      : "nl";
+
   INTEC.config = {
     defaultLanguage: "nl",
     maxLanguageLoadAttempts: 20,
@@ -76,12 +83,12 @@
         if (!src || !src.includes("assets/js/main.js")) continue;
         try {
           const scriptUrl = new URL(src, window.location.href);
-          return new URL("../data/design-tokens.json", scriptUrl).toString();
+          return new URL("../../data/design-tokens.json", scriptUrl).toString();
         } catch (error) {
           /* noop – fall through to default */
         }
       }
-      return "data/design-tokens.json";
+      return "/data/design-tokens.json";
     })();
 
     const ensureCssVar = (name) => {
@@ -167,11 +174,12 @@
   const htmlLanguage =
     document.documentElement.lang?.trim() || INTEC.config.defaultLanguage;
 
-  const initialLanguage =
+  const initialLanguage = normalizeLanguage(
     (manualLanguageChoice && savedLanguage) ||
-    savedLanguage ||
-    htmlLanguage ||
-    INTEC.config.defaultLanguage;
+      savedLanguage ||
+      htmlLanguage ||
+      INTEC.config.defaultLanguage,
+  );
 
   INTEC.state = {
     currentLanguage: initialLanguage,
@@ -283,6 +291,36 @@
     }
   };
 
+  const setLanguageReady = (isReady) => {
+    document.documentElement.setAttribute(
+      "data-language-ready",
+      isReady ? "true" : "false",
+    );
+  };
+
+  const applyLanguageUiState = (lang) => {
+    const normalizedLang = normalizeLanguage(lang);
+
+    document.documentElement.lang = normalizedLang;
+    document.documentElement.setAttribute("data-language", normalizedLang);
+
+    document.querySelectorAll("[data-lang-select]").forEach((btn) => {
+      const active = normalizeLanguage(btn.dataset.lang) === normalizedLang;
+      btn.classList.toggle("is-active", active);
+      btn.setAttribute("aria-pressed", String(active));
+      btn.setAttribute("aria-current", active ? "true" : "false");
+    });
+
+    document.querySelectorAll(".language-switch").forEach((switcher) => {
+      const hasMatchingButton = !!switcher.querySelector(
+        `[data-lang-select][data-lang="${normalizedLang}"]`,
+      );
+      switcher.dataset.activeLang = hasMatchingButton ? normalizedLang : "";
+    });
+  };
+
+  setLanguageReady(false);
+  applyLanguageUiState(initialLanguage);
   persistLanguage(initialLanguage);
 
   // ==========================================================================
@@ -509,24 +547,28 @@
     translations: {},
 
     init() {
-      this.loadLanguage(INTEC.state.currentLanguage);
       this.setupLanguageSwitchers();
+      this.loadLanguage(INTEC.state.currentLanguage);
       Utils.log("Language manager initialized", "success");
     },
 
     loadLanguage(lang) {
       if (!lang) return Promise.resolve();
+      const normalizedLang = normalizeLanguage(lang);
+
+      setLanguageReady(false);
+      applyLanguageUiState(normalizedLang);
 
       const applyLanguage = () => {
         INTEC.state.languageLoadAttempts = 0;
-        INTEC.state.currentLanguage = lang;
+        INTEC.state.currentLanguage = normalizedLang;
         const manualChoice =
           localStorage.getItem(LANGUAGE_MANUAL_FLAG) === "true";
-        persistLanguage(lang, manualChoice);
-        document.documentElement.lang = lang;
+        persistLanguage(INTEC.state.currentLanguage, manualChoice);
+        applyLanguageUiState(INTEC.state.currentLanguage);
 
         this.applyTranslations();
-        this.updateLanguageButtons();
+        setLanguageReady(true);
 
         window.dispatchEvent(
           new CustomEvent("languageChanged", { detail: { lang } }),
@@ -562,6 +604,8 @@
             `Failed to load language '${lang}' after max attempts`,
             "error",
           );
+          // Prevent a permanent hidden state when a language bundle fails.
+          setLanguageReady(true);
           return null;
         });
     },
@@ -611,26 +655,6 @@
         );
     },
 
-    updateLanguageButtons() {
-      Utils.$$("[data-lang-select]").forEach((btn) => {
-        const lang = btn.dataset.lang;
-        const active = lang === INTEC.state.currentLanguage;
-
-        btn.classList.toggle("is-active", active);
-        btn.setAttribute("aria-pressed", String(active));
-        btn.setAttribute("aria-current", active ? "true" : "false");
-
-        const switcher = btn.closest(".language-switch");
-        if (!switcher) return;
-
-        if (active) {
-          switcher.dataset.activeLang = lang;
-        } else if (!switcher.querySelector("[data-lang-select].is-active")) {
-          switcher.dataset.activeLang = "";
-        }
-      });
-    },
-
     setupLanguageSwitchers() {
       Utils.$$("[data-lang-select]").forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -644,7 +668,9 @@
     },
 
     reset() {
-      localStorage.removeItem("intec-language");
+      localStorage.removeItem(LANGUAGE_STORAGE_VERSION);
+      localStorage.removeItem(LANGUAGE_STORAGE_KEY);
+      localStorage.removeItem(LANGUAGE_MANUAL_FLAG);
       this.loadLanguage(INTEC.config.defaultLanguage);
       Utils.log("Language reset to default", "info");
     },
@@ -734,14 +760,6 @@
     update() {
       const currentScrollY = window.scrollY;
 
-      this.header.classList.toggle("is-condensed", currentScrollY > 40);
-
-      if (currentScrollY > 120 && currentScrollY > this.lastScrollY) {
-        this.header.classList.add("is-hidden");
-      } else {
-        this.header.classList.remove("is-hidden");
-      }
-
       if (currentScrollY > 60) {
         this.header.classList.add("scrolled");
       } else {
@@ -777,6 +795,14 @@
         Utils.log("Mobile nav elements missing", "warning");
         return;
       }
+
+      // Normalize stale navigation state on load (e.g. history restore/cached states).
+      this.isOpen = false;
+      this.toggle.setAttribute("aria-expanded", "false");
+      this.toggle.classList.remove("is-active");
+      this.nav.classList.remove("is-open");
+      this.navList.classList.remove("is-open");
+      document.body.classList.remove("nav-is-open");
 
       this.setupToggle();
       this.setupCloseButton();
@@ -846,8 +872,6 @@
     },
 
     closeMenu() {
-      if (!this.isOpen) return;
-
       this.isOpen = false;
       this.toggle.setAttribute("aria-expanded", "false");
       this.toggle.classList.remove("is-active");
@@ -2089,7 +2113,11 @@
           return { ok: true };
         }
 
-        const isRequired = input.required || (!!rule && rule.required);
+        const isContactPhoneOptional =
+          form.id === "contact-form" && name === "phone" && !input.required;
+        const isRequired = isContactPhoneOptional
+          ? false
+          : input.required || (!!rule && rule.required);
 
         // Required check
         if (isRequired) {
@@ -2509,6 +2537,10 @@
     setPlaceholderState(placeholder, state) {
       if (!placeholder) return;
       placeholder.setAttribute("data-state", state);
+      placeholder.setAttribute(
+        "aria-busy",
+        state === "loading" ? "true" : "false",
+      );
     },
 
     getPageElements() {
@@ -2694,50 +2726,69 @@
   };
 
   // ==========================================================================
-  // PROGRAM CARD DESCRIPTION HEIGHT BALANCING
+  // PROGRAM CARD CONTENT HEIGHT BALANCING
   // ==========================================================================
 
   const ProgramCardsLayout = {
     initialized: false,
 
-    collectRows(grid) {
+    collectCards(grid) {
       const cards = Utils.$$(".program-card", grid);
       if (cards.length < 2) return [];
 
-      const rows = [];
-      cards.forEach((card) => {
-        const description = Utils.$(".program-card__description", card);
-        if (!description) return;
+      return cards.map((card) => ({
+        title: Utils.$(".program-card__title", card),
+        description: Utils.$(".program-card__description", card),
+        meta: Utils.$(".program-card__meta", card),
+      }));
+    },
 
-        description.style.minHeight = "";
-        const top = Math.round(card.getBoundingClientRect().top);
-
-        const existingRow = rows.find((row) => Math.abs(row.top - top) <= 2);
-        if (existingRow) {
-          existingRow.items.push(description);
-        } else {
-          rows.push({ top, items: [description] });
-        }
+    resetHeights(cards) {
+      cards.forEach(({ title, description, meta }) => {
+        [title, description, meta].forEach((element) => {
+          if (element) {
+            element.style.minHeight = "";
+          }
+        });
       });
+    },
 
-      return rows;
+    measureTallest(cards, key) {
+      return cards.reduce((maxHeight, card) => {
+        const element = card[key];
+        if (!element) return maxHeight;
+        return Math.max(
+          maxHeight,
+          Math.ceil(element.getBoundingClientRect().height),
+        );
+      }, 0);
     },
 
     applyToGrid(grid) {
-      const rows = this.collectRows(grid);
-      if (!rows.length) return;
+      const cards = this.collectCards(grid);
+      if (!cards.length) return;
 
-      rows.forEach((row) => {
-        let tallest = 0;
-        row.items.forEach((item) => {
-          const height = item.getBoundingClientRect().height;
-          if (height > tallest) tallest = height;
-        });
+      this.resetHeights(cards);
 
-        const balancedHeight = Math.ceil(tallest);
-        row.items.forEach((item) => {
-          item.style.minHeight = `${balancedHeight}px`;
-        });
+      // Keep mobile cards naturally compact; equalization is only needed in multi-column layouts.
+      if (window.matchMedia("(max-width: 768px)").matches) return;
+
+      const tallestTitle = this.measureTallest(cards, "title");
+      const tallestDescription = this.measureTallest(cards, "description");
+      const tallestMeta = this.measureTallest(cards, "meta");
+
+      cards.forEach(({ title, description, meta }) => {
+        if (title && tallestTitle > 0) {
+          title.style.minHeight = `${tallestTitle}px`;
+        }
+
+        if (description && tallestDescription > 0) {
+          description.style.minHeight = `${tallestDescription}px`;
+        }
+
+        if (meta && tallestMeta > 0) {
+          meta.style.minHeight = `${tallestMeta}px`;
+        }
       });
     },
 
@@ -3014,5 +3065,4 @@
   } else {
     initialize();
   }
-
 })();

@@ -1,4 +1,4 @@
-﻿// assets/js/i18n/en.js
+// assets/js/i18n/en.js
 
 window.i18n = window.i18n || {};
 
@@ -943,13 +943,13 @@ window.i18n.en = {
   "register.confirmation.title": "What happens after your registration?",
 
   "register.confirmation.step1":
-    "📧 Within 24 hours, you'll receive an email confirmation with an invitation to the next info session and workshop.",
+    "Within 24 hours, you'll receive an email confirmation with an invitation to the next info session and workshop.",
 
   "register.confirmation.step2":
-    "📋 After the intake tests, we'll schedule a personal motivation interview. Together, we'll create your customized training plan.",
+    "After the intake tests, we'll schedule a personal motivation interview. Together, we'll create your customized training plan.",
 
   "register.confirmation.step3":
-    "🔄 Start date not ideal? No problem. We're happy to explore alternatives or guide you to Digipoint for extra preparation.",
+    "Start date not ideal? No problem. We're happy to explore alternatives or guide you to Digipoint for extra preparation.",
 
   "register.contact.title": "Have questions about the process?",
 
@@ -1602,7 +1602,7 @@ window.i18n.en = {
     "INTEC Brussels<br>Gaucheretstraat 89-91<br>1030 Brussels",
 
   "privacy.contact.complaint":
-    "Not satisfied with our response? Contact the Belgian Data Protection Authority via www.gegevensbeschermingsautoriteit.be.",
+    "Not satisfied with our response? Contact the Belgian Data Protection Authority via <a href='https://www.gegevensbeschermingsautoriteit.be' target='_blank' rel='noopener noreferrer'>www.gegevensbeschermingsautoriteit.be</a>.",
 
   // -----------------------------
 
@@ -3821,36 +3821,48 @@ window.i18n.en = {
   "team.leadership.label": "Leadership & Coordination",
 
   "team.leadership.title": "Making a difference together",
-
-  "a11y.skipToMain": "Skip to main content",
   "terms.meta.title": "Terms and conditions | INTEC Brussels",
-  "terms.meta.description": "Read the terms and conditions for participating in training and services at INTEC Brussels.",
+  "terms.meta.description":
+    "Read the terms and conditions for participating in training and services at INTEC Brussels.",
   "terms.hero.eyebrow": "Legal",
   "terms.hero.title": "Terms and conditions",
-  "terms.hero.subtitle": "These terms explain participation, communication and responsibilities at INTEC Brussels.",
+  "terms.hero.subtitle":
+    "These terms explain participation, communication and responsibilities at INTEC Brussels.",
   "terms.updatedLabel": "Last updated: May 14, 2026",
   "terms.section1.title": "1. Scope",
-  "terms.section1.body": "These terms apply to all training programs, coaching tracks and support services offered by INTEC Brussels.",
+  "terms.section1.body":
+    "These terms apply to all training programs, coaching tracks and support services offered by INTEC Brussels.",
   "terms.section2.title": "2. Registration and participation",
-  "terms.section2.body": "Registration is completed through the official intake process. Participation is personal and may depend on partner conditions such as VDAB or Actiris.",
+  "terms.section2.body":
+    "Registration is completed through the official intake process. Participation is personal and may depend on partner conditions such as VDAB or Actiris.",
   "terms.section3.title": "3. Conduct and respect",
-  "terms.section3.body": "Participants are expected to treat fellow learners, coaches, infrastructure and digital systems respectfully. Misuse may lead to guidance measures or termination.",
+  "terms.section3.body":
+    "Participants are expected to treat fellow learners, coaches, infrastructure and digital systems respectfully. Misuse may lead to guidance measures or termination.",
   "terms.section4.title": "4. Liability and contact",
-  "terms.section4.body": "INTEC Brussels strives to provide accurate and up-to-date information, but reserves the right to adjust content or scheduling when operationally required. Contact our team with any questions.",
+  "terms.section4.body":
+    "INTEC Brussels strives to provide accurate and up-to-date information, but reserves the right to adjust content or scheduling when operationally required. Contact our team with any questions.",
   "terms.contactCta": "Contact us",
   "accessibility.meta.title": "Accessibility statement | INTEC Brussels",
-  "accessibility.meta.description": "Read how INTEC Brussels improves digital accessibility and how to report accessibility issues.",
+  "accessibility.meta.description":
+    "Read how INTEC Brussels improves digital accessibility and how to report accessibility issues.",
   "accessibility.hero.eyebrow": "Accessibility",
   "accessibility.hero.title": "Accessibility statement",
-  "accessibility.hero.subtitle": "INTEC Brussels continuously works on a website that is usable for all visitors, with or without disabilities.",
+  "accessibility.hero.subtitle":
+    "INTEC Brussels continuously works on a website that is usable for all visitors, with or without disabilities.",
   "accessibility.commitment.title": "Our commitment",
-  "accessibility.commitment.body": "We improve our website according to WCAG principles for perceivability, operability, understandability and robustness.",
+  "accessibility.commitment.body":
+    "We improve our website according to WCAG principles for perceivability, operability, understandability and robustness.",
   "accessibility.features.title": "What we implement",
-  "accessibility.features.item1": "Semantic structure with clear headings and landmarks.",
-  "accessibility.features.item2": "Keyboard-friendly navigation and visible focus styles.",
-  "accessibility.features.item3": "Responsive layout and sufficient color contrast in components.",
-  "accessibility.features.item4": "Continuous quality checks and regression testing for updates.",
+  "accessibility.features.item1":
+    "Semantic structure with clear headings and landmarks.",
+  "accessibility.features.item2":
+    "Keyboard-friendly navigation and visible focus styles.",
+  "accessibility.features.item3":
+    "Responsive layout and sufficient color contrast in components.",
+  "accessibility.features.item4":
+    "Continuous quality checks and regression testing for updates.",
   "accessibility.feedback.title": "Report an issue",
-  "accessibility.feedback.body": "If you experience an accessibility issue, let us know and we will investigate and improve it as quickly as possible.",
+  "accessibility.feedback.body":
+    "If you experience an accessibility issue, let us know and we will investigate and improve it as quickly as possible.",
   "accessibility.feedback.cta": "Report accessibility issue",
 };

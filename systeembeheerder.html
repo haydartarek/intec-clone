@@ -1,5 +1,5 @@
-﻿<!doctype html>
-<html lang="nl">
+<!doctype html>
+<html lang="nl" data-language-ready="false">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -57,9 +57,7 @@
       as="style"
       fetchpriority="high"
     />
-    <link rel="preload" href="assets/css/main.css" as="style" />
-    <link rel="preload" href="assets/js/main.js" as="script" />
-    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="preload" href="assets/css/main.css" as="style" /><link rel="stylesheet" href="assets/css/base.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <script type="application/ld+json">
       {
@@ -92,15 +90,13 @@
   <body
     class="page--course page--program page--program-sysadmin page--course-sysadmin"
   >
-    
-  <a class="skip-link" href="#main-content" data-i18n="a11y.skipToMain">Ga naar hoofdinhoud</a>
-<div class="page-shell">
+    <div class="page-shell">
       <!-- HEADER / NAVBAR -->
       <div class="site-header" role="banner">
         <div class="container site-header__inner">
           <a class="brand" href="index.html" aria-label="INTEC Brussel">
             <img
-              src="assets/img/infraweb2.jpg"
+              src="assets/img/logo+intec+brusselZWART1.png"
               alt="INTEC Brussel logo"
               width="180"
               height="50"
@@ -133,7 +129,7 @@
             <ul class="nav-links" id="primary-navigation" role="list">
               <li><a href="index.html" data-i18n="nav.home">Home</a></li>
               <li>
-                <a href="opleidingen.html" aria-current="page" data-i18n="nav.training">Courses</a>
+                <a href="opleidingen.html" data-i18n="nav.training">Courses</a>
               </li>
               <li>
                 <a href="inschrijven.html" data-i18n="nav.register">Register</a>
@@ -1239,9 +1235,15 @@
                       >Privacy Policy</a
                     >
                   </li>
-                  <li><a href="terms.html" data-i18n="footer.terms">Voorwaarden</a></li>
                   <li>
-                    <a href="accessibility.html" data-i18n="footer.accessibility"
+                    <a href="terms.html" data-i18n="footer.terms"
+                      >Voorwaarden</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="accessibility.html"
+                      data-i18n="footer.accessibility"
                       >Toegankelijkheid</a
                     >
                   </li>
@@ -1355,11 +1357,10 @@
         </footer>
       </main>
     </div>
-
-    
-
-    
     <script src="assets/js/i18n/nl.js" defer=""></script>
+    <script src="assets/js/i18n/en.js" defer=""></script>
     <script src="assets/js/main.js" defer=""></script>
   </body>
 </html>
+
+

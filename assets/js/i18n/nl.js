@@ -1576,7 +1576,7 @@ window.i18n.nl = {
     "INTEC Brussel<br>Gaucheretstraat 89-91<br>1030 Brussel",
 
   "privacy.contact.complaint":
-    "Ontevreden over ons antwoord? Contacteer de Gegevensbeschermingsautoriteit via www.gegevensbeschermingsautoriteit.be.",
+    "Ontevreden over ons antwoord? Contacteer de Gegevensbeschermingsautoriteit via <a href='https://www.gegevensbeschermingsautoriteit.be' target='_blank' rel='noopener noreferrer'>www.gegevensbeschermingsautoriteit.be</a>.",
 
   // -----------------------------
 
@@ -3519,36 +3519,48 @@ window.i18n.nl = {
   "team.leadership.label": "Leiding & Coordinatie",
 
   "team.leadership.title": "Samen het verschil maken",
-
-  "a11y.skipToMain": "Ga naar hoofdinhoud",
   "terms.meta.title": "Algemene voorwaarden | INTEC Brussel",
-  "terms.meta.description": "Lees de algemene voorwaarden voor deelname aan opleidingen en diensten van INTEC Brussel.",
+  "terms.meta.description":
+    "Lees de algemene voorwaarden voor deelname aan opleidingen en diensten van INTEC Brussel.",
   "terms.hero.eyebrow": "Juridisch",
   "terms.hero.title": "Algemene voorwaarden",
-  "terms.hero.subtitle": "Deze voorwaarden beschrijven hoe deelname, communicatie en verantwoordelijkheden bij INTEC Brussel verlopen.",
+  "terms.hero.subtitle":
+    "Deze voorwaarden beschrijven hoe deelname, communicatie en verantwoordelijkheden bij INTEC Brussel verlopen.",
   "terms.updatedLabel": "Laatst bijgewerkt: 14 mei 2026",
   "terms.section1.title": "1. Toepassingsgebied",
-  "terms.section1.body": "Deze voorwaarden zijn van toepassing op alle opleidingen, coachingtrajecten en ondersteunende diensten die door INTEC Brussel worden aangeboden.",
+  "terms.section1.body":
+    "Deze voorwaarden zijn van toepassing op alle opleidingen, coachingtrajecten en ondersteunende diensten die door INTEC Brussel worden aangeboden.",
   "terms.section2.title": "2. Inschrijving en deelname",
-  "terms.section2.body": "Inschrijving gebeurt via het officiële intakeproces. Deelname is persoonlijk en kan afhankelijk zijn van voorwaarden van partners zoals VDAB of Actiris.",
+  "terms.section2.body":
+    "Inschrijving gebeurt via het officiële intakeproces. Deelname is persoonlijk en kan afhankelijk zijn van voorwaarden van partners zoals VDAB of Actiris.",
   "terms.section3.title": "3. Gedrag en respect",
-  "terms.section3.body": "Van deelnemers wordt verwacht dat zij respectvol omgaan met medecursisten, coaches, infrastructuur en digitale systemen. Misbruik kan leiden tot begeleidingsmaatregelen of stopzetting.",
+  "terms.section3.body":
+    "Van deelnemers wordt verwacht dat zij respectvol omgaan met medecursisten, coaches, infrastructuur en digitale systemen. Misbruik kan leiden tot begeleidingsmaatregelen of stopzetting.",
   "terms.section4.title": "4. Aansprakelijkheid en contact",
-  "terms.section4.body": "INTEC Brussel zet zich in voor correcte en actuele informatie, maar behoudt het recht om inhoud of planning te wijzigen indien operationeel nodig. Voor vragen neem je contact op met ons team.",
+  "terms.section4.body":
+    "INTEC Brussel zet zich in voor correcte en actuele informatie, maar behoudt het recht om inhoud of planning te wijzigen indien operationeel nodig. Voor vragen neem je contact op met ons team.",
   "terms.contactCta": "Neem contact op",
   "accessibility.meta.title": "Toegankelijkheidsverklaring | INTEC Brussel",
-  "accessibility.meta.description": "Lees hoe INTEC Brussel werkt aan digitale toegankelijkheid en hoe je toegankelijkheidsproblemen kunt melden.",
+  "accessibility.meta.description":
+    "Lees hoe INTEC Brussel werkt aan digitale toegankelijkheid en hoe je toegankelijkheidsproblemen kunt melden.",
   "accessibility.hero.eyebrow": "Toegankelijkheid",
   "accessibility.hero.title": "Toegankelijkheidsverklaring",
-  "accessibility.hero.subtitle": "INTEC Brussel werkt continu aan een website die bruikbaar is voor alle bezoekers, met of zonder beperking.",
+  "accessibility.hero.subtitle":
+    "INTEC Brussel werkt continu aan een website die bruikbaar is voor alle bezoekers, met of zonder beperking.",
   "accessibility.commitment.title": "Onze inzet",
-  "accessibility.commitment.body": "We verbeteren onze website op basis van WCAG-principes rond waarneembaarheid, bedienbaarheid, begrijpelijkheid en robuustheid.",
+  "accessibility.commitment.body":
+    "We verbeteren onze website op basis van WCAG-principes rond waarneembaarheid, bedienbaarheid, begrijpelijkheid en robuustheid.",
   "accessibility.features.title": "Wat we toepassen",
-  "accessibility.features.item1": "Semantische structuur met duidelijke koppen en landmarks.",
-  "accessibility.features.item2": "Toetsenbordvriendelijke navigatie en zichtbare focusstijlen.",
-  "accessibility.features.item3": "Responsieve layout en voldoende kleurcontrast in componenten.",
-  "accessibility.features.item4": "Doorlopende kwaliteitscontrole en regressietests bij updates.",
+  "accessibility.features.item1":
+    "Semantische structuur met duidelijke koppen en landmarks.",
+  "accessibility.features.item2":
+    "Toetsenbordvriendelijke navigatie en zichtbare focusstijlen.",
+  "accessibility.features.item3":
+    "Responsieve layout en voldoende kleurcontrast in componenten.",
+  "accessibility.features.item4":
+    "Doorlopende kwaliteitscontrole en regressietests bij updates.",
   "accessibility.feedback.title": "Probleem melden",
-  "accessibility.feedback.body": "Ondervind je een toegankelijkheidsprobleem? Laat het ons weten, dan onderzoeken en verbeteren we dit zo snel mogelijk.",
+  "accessibility.feedback.body":
+    "Ondervind je een toegankelijkheidsprobleem? Laat het ons weten, dan onderzoeken en verbeteren we dit zo snel mogelijk.",
   "accessibility.feedback.cta": "Meld toegankelijkheidsprobleem",
 };
