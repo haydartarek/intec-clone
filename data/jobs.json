@@ -1,1 +1,206 @@
-﻿[]
+[
+  {
+    "team": "Coaching",
+    "title": "IT Support Coach",
+    "description": "Begeleid cursisten tijdens hun IT Support traject en help hen met praktijkopdrachten, soft skills en sollicitatievoorbereiding.",
+    "overview": "Als IT Support Coach begeleid je cursisten van intake tot uitstroom. Je volgt niet alleen technische progressie op, maar helpt ook met leerplanning, feedbackmomenten en professionele communicatie op de werkvloer. Je werkt nauw samen met instructeurs, jobcoaches en partners om elke cursist stap voor stap klaar te maken voor een duurzame start in IT-support.",
+    "impact": "Je impact is direct zichtbaar: cursisten groeien in zelfvertrouwen, leren klantgericht handelen en bouwen een realistisch portfolio op. Dankzij jouw begeleiding vertrekken ze met heldere doelen, een professioneel CV en de juiste attitude om in supportteams te functioneren.",
+    "responsibilities": [
+      "Begeleiden van dagelijkse praktijksessies en opvolgen van individuele leerdoelen.",
+      "Vertalen van technische opdrachten naar haalbare stappen per cursist.",
+      "Organiseren van feedbackgesprekken met duidelijke actiepunten en deadlines.",
+      "Ondersteunen van sollicitatievoorbereiding, mock-interviews en communicatievaardigheden.",
+      "Afstemmen met instructeurs over leerinhoud, evaluaties en remediëringstrajecten.",
+      "Signaleren van drempels en snel schakelen naar passende coaching of extra support."
+    ],
+    "profile": [
+      "Ervaring in IT support, service desk of technische coaching.",
+      "Sterke communicatie in het Nederlands; extra talen zijn een plus.",
+      "Coachende mindset met geduld, structuur en oplossingsgericht denken.",
+      "Comfortabel met ticketing, troubleshooting en klantgerichte workflows.",
+      "Je kan prioriteiten stellen in een dynamische leeromgeving.",
+      "Affiniteit met digitale inclusie en maatschappelijke impact."
+    ],
+    "offer": [
+      "Een betekenisvolle rol in een missiegedreven opleidingsorganisatie.",
+      "Ruimte om workshops, coachingformats en evaluatie-aanpakken mee vorm te geven.",
+      "Samenwerking met een multidisciplinair team van trainers en jobcoaches.",
+      "Professionele ontwikkeling via interne kennisdeling en externe training.",
+      "Hybride werkafspraken waar pedagogisch en operationeel haalbaar.",
+      "Een omgeving waar autonomie, initiatief en teamwerk centraal staan."
+    ],
+    "location": "Brussel (Centrum)",
+    "posted": "2026-05-15",
+    "applyUrl": "https://mail.google.com/mail/?view=cm&fs=1&to=info@intecbrussel.be&su=Sollicitatie%20IT%20Support%20Coach"
+  },
+  {
+    "team": "Instructeurs",
+    "title": "Python Instructor",
+    "description": "Geef praktijkgerichte lessen Python, API-ontwikkeling en testing. Je werkt met kleine groepen en concrete projecten.",
+    "overview": "Als Python Instructor geef je les op basis van realistische use-cases en projectwerk. Je begeleidt cursisten in programmeerlogica, version control, API-ontwerp en testgedreven werken. Je combineert didactiek met praktijkervaring zodat deelnemers niet enkel code schrijven, maar ook leren samenwerken volgens professionele ontwikkelstandaarden.",
+    "impact": "Je zorgt ervoor dat deelnemers niet blijven hangen in theorie. Ze bouwen concrete applicaties, documenteren hun keuzes en leren code reviewen. Door jouw aanpak gaan cursisten met een sterk portfolio en een heldere technische basis de arbeidsmarkt op.",
+    "responsibilities": [
+      "Voorbereiden en geven van interactieve lessen rond Python en software fundamentals.",
+      "Ontwerpen van hands-on opdrachten met focus op API's, debugging en testing.",
+      "Begeleiden van code reviews en stimuleren van clean code-principes.",
+      "Opvolgen van voortgang en differentiëren voor verschillende leerprofielen.",
+      "Samenwerken met het team om leerinhoud actueel en arbeidsmarktgericht te houden.",
+      "Mee evalueren van eindprojecten met aandacht voor kwaliteit en presentatie."
+    ],
+    "profile": [
+      "Aantoonbare ervaring met Python in professionele of educatieve context.",
+      "Kennis van API-ontwikkeling, testing en Git-workflows.",
+      "Didactisch sterk en in staat complexe concepten helder uit te leggen.",
+      "Ervaring met begeleiden van junior profielen of starters is een plus.",
+      "Je werkt gestructureerd en documenteert lesmateriaal zorgvuldig.",
+      "Passie voor inclusief leren en talentontwikkeling in Brussel."
+    ],
+    "offer": [
+      "Een lesomgeving met kleine groepen en veel ruimte voor interactie.",
+      "Kans om curriculum mee te verbeteren op basis van praktijknoden.",
+      "Ondersteuning van een team dat pedagogiek en techniek combineert.",
+      "Toegang tot opleiding, certificering en interne kenniscommunities.",
+      "Projectmatig werken met zichtbare impact op cursisten en partners.",
+      "Een warme organisatiecultuur met duidelijke kwaliteitsstandaarden."
+    ],
+    "location": "Brussel + Hybride",
+    "posted": "2026-05-13",
+    "applyUrl": "https://mail.google.com/mail/?view=cm&fs=1&to=info@intecbrussel.be&su=Sollicitatie%20Python%20Instructor"
+  },
+  {
+    "team": "Security",
+    "title": "Cybersecurity Trainer",
+    "description": "Ontwikkel en geef modules rond netwerkbeveiliging, SOC-basis en secure operations voor startende IT-profielen.",
+    "overview": "In deze rol ontwikkel en verzorg je cybersecurity modules met een sterke praktijkcomponent. Je bouwt lessen op rond netwerkbeveiliging, incidentherkenning, hardening en operationele security in kleine teams. Je werkt met concrete scenario's zodat cursisten leren denken zoals een security-professional in een echte omgeving.",
+    "impact": "Je levert directe impact op de weerbaarheid van toekomstige IT-profielen. Cursisten leren risico's begrijpen, beslissingen onderbouwen en security als continu proces benaderen. Daardoor verhogen hun kansen op instapfuncties in SOC, IT-operations en security support.",
+    "responsibilities": [
+      "Ontwikkelen van actuele lesmodules rond basisbeveiliging en SOC-principes.",
+      "Geven van labs over monitoring, loganalyse en incidentresponse-basics.",
+      "Begeleiden van security-oefeningen met focus op procedure en samenwerking.",
+      "Evalueren van technische opdrachten en verbeteren van leerpaden.",
+      "Afstemmen met collega-instructeurs over overlap met netwerk- en cloudmodules.",
+      "Vertalen van security-best practices naar begrijpbare workflows voor starters."
+    ],
+    "profile": [
+      "Ervaring in cybersecurity, security operations of netwerkbeveiliging.",
+      "Kennis van logging, monitoring en baseline hardening-principes.",
+      "Didactische vaardigheden om security helder en praktisch te maken.",
+      "Je communiceert duidelijk over risico's, prioriteiten en mitigaties.",
+      "Je blijft actief op de hoogte van evoluties in threat-landschap.",
+      "Je combineert technische diepgang met een coachende houding."
+    ],
+    "offer": [
+      "Een rol met inhoudelijke autonomie en ruimte voor innovatie in lesmateriaal.",
+      "Samenwerking met trainers uit meerdere technische domeinen.",
+      "Ondersteuning voor verdere certificering en kennisuitwisseling.",
+      "Een missiegedreven context waar security-kennis maatschappelijke impact maakt.",
+      "Mogelijkheid om labs en evaluatiestructuren mee te professionaliseren.",
+      "Een professioneel team met korte lijnen en gedeelde kwaliteitscultuur."
+    ],
+    "location": "Brussel (Campus)",
+    "posted": "2026-05-12",
+    "applyUrl": "https://mail.google.com/mail/?view=cm&fs=1&to=info@intecbrussel.be&su=Sollicitatie%20Cybersecurity%20Trainer"
+  },
+  {
+    "team": "Infra",
+    "title": "Systeembeheerder",
+    "description": "Beheer werkplekken, accounts en basisinfrastructuur van de campus. Je ondersteunt trainers en interne teams technisch.",
+    "overview": "Als Systeembeheerder zorg je voor een stabiele en veilige leer- en werkomgeving. Je beheert toestellen, toegangen, netwerken en basisservices zodat opleidingen en interne processen zonder onderbreking blijven draaien. Je werkt zowel preventief als reactief en hebt een cruciale rol in de dagelijkse continuïteit.",
+    "impact": "Jouw werk maakt het verschil tussen vertraging en vlotte operationele flow. Door snelle interventies, duidelijke documentatie en slimme automatisering kunnen trainers en cursisten zich focussen op leren en presteren.",
+    "responsibilities": [
+      "Beheer van werkplekken, gebruikersaccounts, toestellen en toegangsrechten.",
+      "Onderhouden van basisinfrastructuur, netwerkcomponenten en back-up routines.",
+      "Oplossen van technische incidenten voor interne teams en lesomgevingen.",
+      "Monitoren van performantie en proactief aanpakken van terugkerende problemen.",
+      "Documenteren van procedures, changes en standaardconfiguraties.",
+      "Ondersteunen van technische onboarding voor nieuwe medewerkers en trainers."
+    ],
+    "profile": [
+      "Ervaring met systeembeheer in Windows- en/of gemengde omgevingen.",
+      "Praktische kennis van netwerken, identity/access en endpointbeheer.",
+      "Sterke troubleshooting skills en een rustige aanpak onder tijdsdruk.",
+      "Je werkt nauwkeurig en houdt documentatie structureel up-to-date.",
+      "Communicatief sterk naar zowel technische als niet-technische collega's.",
+      "Affiniteit met onderwijs- of opleidingscontext is een pluspunt."
+    ],
+    "offer": [
+      "Een sleutelrol in een organisatie met duidelijke maatschappelijke opdracht.",
+      "Afwisselend werk tussen support, beheer en verbeterprojecten.",
+      "Samenwerking met een betrokken team dat kwaliteit centraal stelt.",
+      "Ruimte om processen te verbeteren en automatisering uit te bouwen.",
+      "Ondersteuning voor professionele groei en technische verdieping.",
+      "Een werkklimaat met vertrouwen, verantwoordelijkheid en impact."
+    ],
+    "location": "Brussel",
+    "posted": "2026-05-10",
+    "applyUrl": "https://mail.google.com/mail/?view=cm&fs=1&to=info@intecbrussel.be&su=Sollicitatie%20Systeembeheerder"
+  },
+  {
+    "team": "Talent",
+    "title": "Jobcoach Digitale Inclusie",
+    "description": "Begeleid kandidaten naar duurzame tewerkstelling met focus op CV, interviewtraining en matching met partnerbedrijven.",
+    "overview": "Als Jobcoach Digitale Inclusie begeleid je kandidaten van opleiding naar werk met een persoonlijke en resultaatgerichte aanpak. Je vertaalt talenten naar concrete jobkansen, ondersteunt sollicitaties en onderhoudt actief contact met werkgevers. Je werkt brugvormend tussen cursist, opleidingsteam en partnerbedrijven.",
+    "impact": "Je impact is zowel sociaal als economisch: mensen krijgen nieuwe kansen op duurzame jobs, bedrijven vinden gemotiveerd talent en de lokale digitale inclusie groeit. Jouw begeleiding zet trajecten om in echte doorstroom.",
+    "responsibilities": [
+      "Opstellen van persoonlijke tewerkstellingsplannen met duidelijke mijlpalen.",
+      "Coachen rond CV, motivatiebrief, interviewvaardigheden en professioneel gedrag.",
+      "Actief matchen van kandidaten met vacatures bij partnerbedrijven.",
+      "Opvolgen van sollicitatieprocessen en feedback vertalen naar acties.",
+      "Onderhouden van sterke relaties met werkgevers en sectorpartners.",
+      "Rapporteren over uitstroom, plaatsingen en duurzame tewerkstelling."
+    ],
+    "profile": [
+      "Ervaring in jobcoaching, talentbegeleiding of arbeidsbemiddeling.",
+      "Sterke coachingsvaardigheden met focus op empowerment en structuur.",
+      "Kennis van arbeidsmarktlogica en employer expectations in IT-context.",
+      "Je bouwt vlot relaties op met kandidaten en externe stakeholders.",
+      "Je communiceert helder, empathisch en doelgericht.",
+      "Je bent data- en resultaatbewust zonder de menselijke context te verliezen."
+    ],
+    "offer": [
+      "Een impactvolle rol in een organisatie die inclusie concreet maakt.",
+      "Ruimte om coachingmethodes en employer-partnerships te versterken.",
+      "Samenwerking met opleiders, coaches en operationele teams.",
+      "Kansen om netwerken uit te bouwen in het Brusselse IT-ecosysteem.",
+      "Professionele ondersteuning en continue kennisdeling binnen het team.",
+      "Werk met betekenis, zichtbare resultaten en duurzame maatschappelijke waarde."
+    ],
+    "location": "Brussel + On-site partners",
+    "posted": "2026-05-08",
+    "applyUrl": "https://mail.google.com/mail/?view=cm&fs=1&to=info@intecbrussel.be&su=Sollicitatie%20Jobcoach%20Digitale%20Inclusie"
+  },
+  {
+    "team": "Administratie",
+    "title": "Intake & Admissions Officer",
+    "description": "Coordineer intakegesprekken, opvolging van kandidaten en administratieve doorstroom van voorinschrijving tot start.",
+    "overview": "Als Intake & Admissions Officer bewaak je de volledige instroomflow: van eerste contact tot start in het traject. Je combineert empathische kandidaatbegeleiding met strakke administratieve opvolging. Je zorgt dat processen helder zijn, dossiers volledig zijn en communicatie transparant verloopt voor alle betrokkenen.",
+    "impact": "Jouw werk bepaalt de kwaliteit van de startervaring voor kandidaten. Door correcte opvolging en duidelijke communicatie verhoog je vertrouwen, verlaag je uitval en zorg je voor een professionele instroom die het hele opleidingstraject ten goede komt.",
+    "responsibilities": [
+      "Plannen en coördineren van intakegesprekken met kandidaten en teams.",
+      "Opvolgen van dossiers, documenten en administratieve deadlines.",
+      "Beantwoorden van vragen over trajecten, voorwaarden en planning.",
+      "Afstemmen met coaching, instructie en operationele planning.",
+      "Signaleren van knelpunten in instroom en voorstellen van procesverbeteringen.",
+      "Borgen van consistente kandidaatcommunicatie in elke fase van de flow."
+    ],
+    "profile": [
+      "Ervaring in administratie, intake, admissions of klantenopvolging.",
+      "Sterk organisatorisch vermogen en oog voor detail.",
+      "Vlotte schriftelijke en mondelinge communicatie.",
+      "Je behoudt overzicht bij meerdere parallelle dossiers.",
+      "Je werkt nauwkeurig met systemen, formulieren en opvolgtools.",
+      "Je bent servicegericht en professioneel in elke kandidaatinteractie."
+    ],
+    "offer": [
+      "Een centrale rol in de kandidaatervaring van INTEC Brussel.",
+      "Duidelijke processen met ruimte voor kwaliteitsverbetering.",
+      "Samenwerking met een geëngageerd en multidisciplinair team.",
+      "Werkcontext met directe zichtbaarheid van jouw impact.",
+      "Mogelijkheden tot groei in operationele coördinatie en procesbeheer.",
+      "Een organisatiecultuur die respect, betrouwbaarheid en samenwerking waardeert."
+    ],
+    "location": "Brussel (On-site)",
+    "posted": "2026-05-06",
+    "applyUrl": "https://mail.google.com/mail/?view=cm&fs=1&to=info@intecbrussel.be&su=Sollicitatie%20Intake%20and%20Admissions%20Officer"
+  }
+]

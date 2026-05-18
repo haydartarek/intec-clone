@@ -69,7 +69,6 @@
               data-critical="true"
               decoding="async"
               loading="eager"
-             
               width="180"
               height="50"
             />
@@ -183,7 +182,7 @@
                 </a>
                 <a
                   class="btn btn--outline btn--lg"
-                  href="inschrijven.html"
+                  href="inschrijven.html#full-name"
                   data-i18n="contact.hero.ctaSecondary"
                 >
                   Schrijf je in
@@ -220,7 +219,7 @@
         <section class="section section--surface why-choose-intec">
           <div class="container">
             <div class="section-heading">
-              <span class="section-label" data-i18n="contact.form.label"
+              <span class="hero-section__eyebrow" data-i18n="contact.form.label"
                 >Stuur een bericht</span
               >
               <h2 class="section-title" data-i18n="contact.form.title">
@@ -242,6 +241,7 @@
                     <span data-i18n="contact.form.name">Naam *</span>
                     <input
                       type="text"
+                      id="name"
                       name="name"
                       class="form-input"
                       required=""
@@ -393,7 +393,7 @@
         <section class="section section--alt contact-direct">
           <div class="container">
             <div class="section-heading">
-              <span class="section-label" data-i18n="contact.info.label"
+              <span class="hero-section__eyebrow" data-i18n="contact.info.label"
                 >Bereikbaarheid</span
               >
               <h2 class="section-title" data-i18n="contact.info.title">
@@ -443,7 +443,9 @@
                 <ul class="card__meta">
                   <li>
                     <a
-                      href="mailto:info@intecbrussel.be"
+                      href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=info@intecbrussel.be"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       data-i18n="contact.email.general"
                       >info@intecbrussel.be</a
                     >
@@ -499,7 +501,9 @@
                 <ul class="card__meta">
                   <li>
                     <a
-                      href="mailto:stage@intecbrussel.be"
+                      href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=stage@intecbrussel.be"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       data-i18n="contact.email.stage"
                       >stage@intecbrussel.be</a
                     >
@@ -550,7 +554,9 @@
                 <ul class="card__meta">
                   <li>
                     <a
-                      href="mailto:pr@intecbrussel.be"
+                      href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=pr@intecbrussel.be"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       data-i18n="contact.email.press"
                       >pr@intecbrussel.be</a
                     >
@@ -638,7 +644,7 @@
         <section class="section section--surface why-choose-intec">
           <div class="container">
             <div class="section-heading">
-              <span class="section-label" data-i18n="contact.visit.label"
+              <span class="hero-section__eyebrow" data-i18n="contact.visit.label"
                 >Bezoek ons</span
               >
               <h2 class="section-title" data-i18n="contact.visit.title">
@@ -795,7 +801,9 @@
               </p>
               <p data-i18n="contact.map.email" data-i18n-allow-html="">
                 <strong>E-mail:</strong><br /><a
-                  href="mailto:info@intecbrussel.be"
+                  href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=info@intecbrussel.be"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   >info@intecbrussel.be</a
                 >
               </p>
@@ -830,7 +838,7 @@
             <div class="enrollment-cta__wrapper component-banner">
               <div class="enrollment-cta__content">
                 <span
-                  class="enrollment-cta__eyebrow"
+                  class="hero-section__eyebrow"
                   data-i18n="contact.cta.eyebrow"
                   >Klaar om te starten?</span
                 >
@@ -845,7 +853,7 @@
               <div class="enrollment-cta__actions">
                 <a
                   class="btn btn--primary btn--lg enrollment-cta__btn"
-                  href="inschrijven.html"
+                  href="inschrijven.html#full-name"
                   data-i18n="contact.cta.primary"
                 >
                   <svg
@@ -1041,7 +1049,7 @@
                 Blijf op de hoogte van nieuws, updates, en exclusieve
                 aanbiedingen.
               </p>
-              <form class="newsletter-form" action="#" method="post">
+              <form class="newsletter-form" action="" method="get">
                 <input
                   type="email"
                   id="newsletter-email"
@@ -1129,16 +1137,8 @@
           </div>
         </div>
       </footer>
-      <!-- Footer Year Update -->
-      <script>
-        document.getElementById("footer-year").textContent =
-          new Date().getFullYear();
-      </script>
-    <script src="assets/js/i18n/nl.js" defer=""></script>
-<script src="assets/js/main.js" defer=""></script>
+      <script src="assets/js/i18n/nl.js" defer=""></script>
+      <script src="assets/js/main.js" defer=""></script>
     </div>
   </body>
 </html>
-
-
-

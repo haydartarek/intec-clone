@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Automatiseer netwerken met Python, monitoring en DevOps labs binnen dit VDAB-erkend traject met taalcoaching, stage en jobmatching."
+      content="Volg de VDAB-erkende opleiding Netwerkbeheerder met Python in Brussel en leer netwerken automatiseren, API's bouwen en praktijkgericht werken."
+      data-i18n-content="python.meta.description"
     />
     <meta
       name="keywords"
@@ -88,7 +89,6 @@
               data-critical="true"
               decoding="async"
               loading="eager"
-             
               width="180"
               height="50"
             />
@@ -175,7 +175,9 @@
         <section class="section section--hero course-hero">
           <div class="course-hero__container container">
             <div class="course-hero__content">
-              <span class="course-hero__eyebrow" data-i18n="python.hero.eyebrow"
+              <span
+                class="hero-section__eyebrow"
+                data-i18n="python.hero.eyebrow"
                 >Opleiding</span
               >
               <h1 class="course-hero__title" data-i18n="python.hero.title">
@@ -1201,7 +1203,9 @@
                     >Privacy Policy</a
                   >
                 </li>
-                <li><a href="terms.html" data-i18n="footer.terms">Voorwaarden</a></li>
+                <li>
+                  <a href="terms.html" data-i18n="footer.terms">Voorwaarden</a>
+                </li>
                 <li>
                   <a href="accessibility.html" data-i18n="footer.accessibility"
                     >Toegankelijkheid</a
@@ -1226,7 +1230,7 @@
                 Blijf op de hoogte van nieuws, updates, en exclusieve
                 aanbiedingen.
               </p>
-              <form class="newsletter-form" action="#" method="post">
+              <form class="newsletter-form" action="" method="get">
                 <input
                   type="email"
                   id="newsletter-email"
@@ -1314,116 +1318,8 @@
           </div>
         </div>
       </footer>
-      <script>
-        // Auto-update footer year
-        const yearSpan = document.getElementById("footer-year");
-        if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-      </script>
-
-      <script>
-        (() => {
-          const COUNTDOWN_SELECTOR = ".course-dates__item[data-start-date]";
-          const COUNTDOWN_TARGET = ".course-dates__countdown";
-          const SOON_THRESHOLD = 30;
-          const MS_IN_DAY = 86400000;
-          const UPDATE_INTERVAL =
-            window.INTEC?.config?.countdownUpdateInterval || 3600000;
-          let timerId = null;
-
-          const getDictionary = () => {
-            const dictionaries = window.i18n || {};
-            const lang =
-              window.INTEC?.state?.currentLanguage ||
-              document.documentElement.lang ||
-              "nl";
-            return dictionaries[lang] || dictionaries.nl || {};
-          };
-
-          const formatMessage = (diffDays, translate) => {
-            if (diffDays > 0) {
-              const unitKey =
-                diffDays === 1 ? "date.countdown.day" : "date.countdown.days";
-              const unit = translate(unitKey, diffDays === 1 ? "dag" : "dagen");
-              return `${translate("date.countdown.starts", "Begint over")} ${diffDays} ${unit}`;
-            }
-
-            if (diffDays === 0) {
-              return translate("date.countdown.today", "Begint vandaag!");
-            }
-
-            const absDays = Math.abs(diffDays);
-            const unitKey =
-              absDays === 1 ? "date.countdown.day" : "date.countdown.days";
-            const unit = translate(unitKey, absDays === 1 ? "dag" : "dagen");
-            return `${translate("date.countdown.started", "Begonnen")} ${absDays} ${unit} ${translate("date.countdown.ago", "geleden")}`;
-          };
-
-          const updateCountdowns = () => {
-            const items = document.querySelectorAll(COUNTDOWN_SELECTOR);
-            if (!items.length) return;
-
-            const dictionary = getDictionary();
-            const translate = (key, fallback) => dictionary[key] || fallback;
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-
-            items.forEach((item) => {
-              const countdownSpan = item.querySelector(COUNTDOWN_TARGET);
-              const startDateStr = item.getAttribute("data-start-date");
-              if (!countdownSpan || !startDateStr) return;
-
-              const startDate = new Date(startDateStr);
-              if (Number.isNaN(startDate.getTime())) return;
-
-              startDate.setHours(0, 0, 0, 0);
-              const diffDays = Math.ceil(
-                (startDate.getTime() - today.getTime()) / MS_IN_DAY,
-              );
-              const message = formatMessage(diffDays, translate);
-
-              countdownSpan.textContent = message;
-              countdownSpan.setAttribute("aria-live", "polite");
-              countdownSpan.setAttribute("role", "status");
-              countdownSpan.classList.remove("soon", "started");
-
-              if (diffDays === 0) {
-                countdownSpan.classList.add("soon");
-              } else if (diffDays < 0) {
-                countdownSpan.classList.add("started");
-              } else if (diffDays <= SOON_THRESHOLD) {
-                countdownSpan.classList.add("soon");
-              }
-            });
-          };
-
-          const scheduleUpdates = () => {
-            if (timerId) {
-              clearInterval(timerId);
-            }
-            timerId = window.setInterval(updateCountdowns, UPDATE_INTERVAL);
-          };
-
-          const init = () => {
-            updateCountdowns();
-            scheduleUpdates();
-            window.addEventListener("languageChanged", updateCountdowns);
-            document.addEventListener("visibilitychange", () => {
-              if (!document.hidden) updateCountdowns();
-            });
-          };
-
-          if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", init, { once: true });
-          } else {
-            init();
-          }
-        })();
-      </script>
-    <script src="assets/js/i18n/nl.js" defer=""></script>
-<script src="assets/js/main.js" defer=""></script>
+      <script src="assets/js/i18n/nl.js" defer=""></script>
+      <script src="assets/js/main.js" defer=""></script>
     </div>
   </body>
 </html>
-
-
-

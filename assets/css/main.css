@@ -1915,6 +1915,7 @@ html[data-language-ready="false"] [data-i18n] {
   max-width: 90%;
   margin: auto;
   font-size: var(--size-r-090);
+  text-align: center !important;
 }
 
 .stats-item--text {
@@ -2536,7 +2537,7 @@ textarea:valid:not(:placeholder-shown) {
   gap: var(--space-md);
 }
 
-.collaboration-cta__eyebrow {
+.collaboration-cta__content .hero-section__eyebrow {
   width: fit-content;
 }
 
@@ -3107,6 +3108,412 @@ textarea:valid:not(:placeholder-shown) {
   align-items: baseline;
 }
 
+.page--vacatures #vacatures-grid {
+  align-items: stretch;
+}
+
+.page--vacatures #vacatures-grid .card--vacature {
+  --vacature-accent: var(--color-primary);
+  min-height: var(--vacature-card-min-height);
+  gap: var(--space-md);
+  border-color: color-mix(
+    in oklab,
+    var(--vacature-accent) var(--vacature-accent-mix-border),
+    transparent
+  );
+  background: linear-gradient(
+    var(--vacature-gradient-angle),
+    var(--color-bg-white) 0%,
+    color-mix(
+        in oklab,
+        var(--vacature-accent) var(--vacature-accent-mix-surface),
+        var(--color-mint-100)
+      )
+      100%
+  );
+  box-shadow: var(--shadow-card);
+}
+
+.page--vacatures #vacatures-grid .card--vacature::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--vacature-card-strip-height);
+  border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;
+  background: linear-gradient(
+    var(--vacature-strip-gradient-angle),
+    color-mix(
+      in oklab,
+      var(--vacature-accent) var(--vacature-accent-mix-strip-strong),
+      var(--color-heading) var(--vacature-accent-heading-strong-balance)
+    ),
+    color-mix(
+      in oklab,
+      var(--vacature-accent) var(--vacature-accent-mix-strip-mid),
+      var(--color-accent) var(--vacature-accent-heading-balance)
+    )
+  );
+}
+
+.page--vacatures #vacatures-grid .card--vacature[data-team-key="security"] {
+  --vacature-accent: var(--color-program-security);
+}
+
+.page--vacatures #vacatures-grid .card--vacature[data-team-key="instructors"] {
+  --vacature-accent: var(--color-program-python);
+}
+
+.page--vacatures #vacatures-grid .card--vacature[data-team-key="infra"] {
+  --vacature-accent: var(--color-info);
+}
+
+.page--vacatures #vacatures-grid .card--vacature[data-team-key="admin"] {
+  --vacature-accent: var(--color-warning);
+}
+
+.page--vacatures #vacatures-grid .card--vacature[data-team-key="talent"] {
+  --vacature-accent: var(--color-accent);
+}
+
+.page--vacatures #vacatures-grid .card--vacature .card__header {
+  align-items: center;
+  gap: var(--space-md);
+  min-height: 0;
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom-color: color-mix(
+    in oklab,
+    var(--vacature-accent) var(--vacature-accent-mix-divider),
+    transparent
+  );
+}
+
+.page--vacatures #vacatures-grid .card--vacature .card__icon {
+  width: var(--vacature-card-icon-size);
+  height: var(--vacature-card-icon-size);
+  border-radius: var(--radius-md);
+  background: color-mix(
+    in oklab,
+    var(--vacature-accent) var(--vacature-accent-mix-soft),
+    var(--color-white)
+  );
+  color: color-mix(
+    in oklab,
+    var(--vacature-accent) var(--vacature-accent-mix-strip-strong),
+    var(--color-heading) var(--vacature-accent-heading-strong-balance)
+  );
+  box-shadow: inset 0 0 0 var(--size-px-1)
+    color-mix(
+      in oklab,
+      var(--vacature-accent) var(--vacature-accent-mix-outline-soft),
+      transparent
+    );
+}
+
+.page--vacatures #vacatures-grid .card--vacature .card__icon svg {
+  width: var(--vacature-card-icon-glyph-size);
+  height: var(--vacature-card-icon-glyph-size);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--size-px-2);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.page--vacatures #vacatures-grid .card--vacature .card__badge {
+  color: color-mix(
+    in oklab,
+    var(--vacature-accent) var(--vacature-accent-mix-title),
+    var(--color-heading) var(--vacature-accent-heading-balance)
+  );
+  background: color-mix(
+    in oklab,
+    var(--vacature-accent) var(--vacature-accent-mix-soft),
+    var(--color-white)
+  );
+  box-shadow: inset 0 0 0 var(--size-px-1)
+    color-mix(
+      in oklab,
+      var(--vacature-accent) var(--vacature-accent-mix-outline),
+      transparent
+    );
+}
+
+.page--vacatures #vacatures-grid .card--vacature .card__title {
+  color: var(--color-text-strong);
+}
+
+.page--vacatures #vacatures-grid .card--vacature .card__text {
+  text-align: left;
+  color: var(--color-text-alt);
+}
+
+.page--vacatures #vacatures-grid .card--vacature .card__meta {
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--vacature-card-meta-gap);
+  width: 100%;
+  margin-top: var(--space-xs);
+  padding-top: var(--space-sm);
+  border-top: var(--size-px-1) dashed
+    color-mix(
+      in oklab,
+      var(--vacature-accent) var(--vacature-accent-mix-meta),
+      transparent
+    );
+}
+
+.page--vacatures #vacatures-grid .card--vacature .card__meta li {
+  align-items: flex-start;
+  gap: var(--space-xs);
+}
+
+.page--vacatures #vacatures-grid .card--vacature .card__meta strong {
+  color: color-mix(
+    in oklab,
+    var(--vacature-accent) var(--vacature-accent-mix-strong),
+    var(--color-heading) var(--vacature-accent-heading-balance)
+  );
+}
+
+.page--vacatures #vacatures-grid .card--vacature .card__footer {
+  border-top-color: color-mix(
+    in oklab,
+    var(--vacature-accent) var(--vacature-accent-mix-footer),
+    transparent
+  );
+}
+
+.page--vacatures #vacatures-grid .card--vacature .card__cta {
+  width: 100%;
+  justify-content: center;
+}
+
+.page--vacature-detail .vacature-detail-page .container {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.page--vacature-detail #vacature-detail-content {
+  --vacature-accent: var(--color-primary);
+  gap: var(--space-lg);
+  border-color: color-mix(
+    in oklab,
+    var(--vacature-accent) var(--vacature-accent-mix-border),
+    transparent
+  );
+  background: linear-gradient(
+    var(--vacature-detail-gradient-angle),
+    var(--color-bg-white) 0%,
+    color-mix(
+        in oklab,
+        var(--vacature-accent) var(--vacature-accent-mix-surface),
+        var(--color-mint-100)
+      )
+      100%
+  );
+  box-shadow: var(--shadow-card-hover);
+}
+
+.page--vacature-detail #vacature-detail-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--vacature-card-strip-height);
+  border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;
+  background: linear-gradient(
+    var(--vacature-strip-gradient-angle),
+    color-mix(
+      in oklab,
+      var(--vacature-accent) var(--vacature-accent-mix-strip-strong),
+      var(--color-heading) var(--vacature-accent-heading-strong-balance)
+    ),
+    color-mix(
+      in oklab,
+      var(--vacature-accent) var(--vacature-accent-mix-strip-mid),
+      var(--color-accent) var(--vacature-accent-heading-balance)
+    )
+  );
+}
+
+.page--vacature-detail #vacature-detail-content[data-team-key="security"] {
+  --vacature-accent: var(--color-program-security);
+}
+
+.page--vacature-detail #vacature-detail-content[data-team-key="instructors"] {
+  --vacature-accent: var(--color-program-python);
+}
+
+.page--vacature-detail #vacature-detail-content[data-team-key="infra"] {
+  --vacature-accent: var(--color-info);
+}
+
+.page--vacature-detail #vacature-detail-content[data-team-key="admin"] {
+  --vacature-accent: var(--color-warning);
+}
+
+.page--vacature-detail #vacature-detail-content[data-team-key="talent"] {
+  --vacature-accent: var(--color-accent);
+}
+
+.page--vacature-detail #vacature-detail-content .card__header {
+  min-height: 0;
+  margin-bottom: 0;
+  padding-bottom: var(--space-md);
+  border-bottom-color: color-mix(
+    in oklab,
+    var(--vacature-accent) var(--vacature-accent-mix-divider),
+    transparent
+  );
+}
+
+.page--vacature-detail #vacature-detail-content .card__header > div {
+  width: 100%;
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.page--vacature-detail #vacature-detail-content .card__badge {
+  color: color-mix(
+    in oklab,
+    var(--vacature-accent) var(--vacature-accent-mix-title),
+    var(--color-heading) var(--vacature-accent-heading-balance)
+  );
+  background: color-mix(
+    in oklab,
+    var(--vacature-accent) var(--vacature-accent-mix-soft),
+    var(--color-white)
+  );
+  box-shadow: inset 0 0 0 var(--size-px-1)
+    color-mix(
+      in oklab,
+      var(--vacature-accent) var(--vacature-accent-mix-outline),
+      transparent
+    );
+}
+
+.page--vacature-detail #vacature-detail-content .card__title {
+  color: var(--color-text-strong);
+}
+
+.page--vacature-detail #vacature-detail-content .card__body {
+  gap: var(--space-md);
+}
+
+.page--vacature-detail #vacature-detail-description {
+  text-align: left;
+  color: var(--color-text-alt);
+}
+
+.page--vacature-detail #vacature-detail-meta {
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--vacature-card-meta-gap);
+  padding-top: var(--space-sm);
+  border-top: var(--size-px-1) dashed
+    color-mix(
+      in oklab,
+      var(--vacature-accent) var(--vacature-accent-mix-meta),
+      transparent
+    );
+}
+
+.page--vacature-detail #vacature-detail-meta li {
+  align-items: flex-start;
+  gap: var(--space-xs);
+}
+
+.page--vacature-detail #vacature-detail-meta strong {
+  color: color-mix(
+    in oklab,
+    var(--vacature-accent) var(--vacature-accent-mix-strong),
+    var(--color-heading) var(--vacature-accent-heading-balance)
+  );
+}
+
+.page--vacature-detail #vacature-detail-content .card__footer {
+  border-top-color: color-mix(
+    in oklab,
+    var(--vacature-accent) var(--vacature-accent-mix-footer),
+    transparent
+  );
+}
+
+.page--vacature-detail #vacature-detail-content .card__cta {
+  width: 100%;
+  justify-content: center;
+}
+
+.page--vacature-detail .vacature-detail-sections {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.page--vacature-detail .vacature-detail-section {
+  display: grid;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border: var(--size-px-1) solid
+    color-mix(
+      in oklab,
+      var(--vacature-accent) var(--vacature-accent-mix-divider),
+      transparent
+    );
+  background: color-mix(
+    in oklab,
+    var(--vacature-accent) var(--vacature-accent-mix-section-bg),
+    var(--color-bg-white)
+  );
+}
+
+.page--vacature-detail .vacature-detail-section__title {
+  margin: 0;
+  color: var(--color-text-strong);
+  font-size: var(--text-body-lg);
+}
+
+.page--vacature-detail .vacature-detail-section__text {
+  margin: 0;
+  text-align: left;
+  color: var(--color-text-alt);
+}
+
+.page--vacature-detail .vacature-detail-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.page--vacature-detail .vacature-detail-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  color: var(--color-text);
+  line-height: var(--leading-relaxed);
+}
+
+.page--vacature-detail .vacature-detail-list li::before {
+  content: "";
+  inline-size: var(--size-px-6);
+  block-size: var(--size-px-6);
+  border-radius: var(--radius-pill);
+  background: color-mix(
+    in oklab,
+    var(--vacature-accent) var(--vacature-accent-mix-bullet),
+    transparent
+  );
+  margin-top: var(--size-px-8);
+  flex: 0 0 auto;
+}
+
 /* ============================================
    ANIMATIONS + RESPONSIVE + UTILITIES (Kept)
    ============================================ */
@@ -3228,7 +3635,6 @@ textarea:valid:not(:placeholder-shown) {
 }
 
 .program-highlight__intro {
-  text-align: left;
   justify-items: start;
   margin: 0;
   max-width: none;
@@ -4591,6 +4997,9 @@ p {
   .page--wiezijnwe .team-highlight__content p {
     text-align: center;
   }
+  .stats-item__description {
+    text-align: center !important;
+  }
 }
 
 /* =======================================
@@ -4812,7 +5221,7 @@ p {
    ======================================= */
 .page--inschrijven .register-next-steps {
   --register-steps-gap: clamp(var(--size-r-125), 2.5vw, var(--size-r-200));
-  --register-step-marker-size: var(--size-px-24);
+  --register-step-marker-size: var(--register-number-marker-size);
   --register-step-marker-offset: var(--size-r-100);
 
   align-items: stretch;
@@ -5261,6 +5670,24 @@ p {
   transform: translateY(0);
 }
 
+.newsletter-button.is-loading {
+  pointer-events: none;
+  opacity: 0.8;
+  position: relative;
+  color: transparent;
+}
+
+.newsletter-button.is-loading::after {
+  content: "";
+  position: absolute;
+  width: var(--size-px-16);
+  height: var(--size-px-16);
+  border: var(--size-px-2) solid rgba(255, 255, 255, 0.35);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
 .newsletter-form .form-error {
   display: block;
   min-height: 1.1rem;
@@ -5268,6 +5695,30 @@ p {
   font-size: 0.82rem;
   color: rgba(255, 236, 236, 0.96);
   text-shadow: none;
+}
+
+.newsletter-status {
+  display: block;
+  min-height: 1.1rem;
+  margin-top: 0.2rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.newsletter-status[data-state="info"] {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.newsletter-status[data-state="success"] {
+  color: #b8ffde;
+}
+
+.newsletter-status[data-state="warning"] {
+  color: #ffe8b3;
+}
+
+.newsletter-status[data-state="error"] {
+  color: rgba(255, 219, 219, 0.98);
 }
 
 .footer-social {
@@ -6075,7 +6526,7 @@ body.page--inschrijven {
   justify-items: flex-start;
 }
 
-.page--inschrijven .register-enrollment-cta__content .enrollment-cta__eyebrow,
+.page--inschrijven .register-enrollment-cta__content .hero-section__eyebrow,
 .page--inschrijven .register-enrollment-cta__content .enrollment-cta__title,
 .page--inschrijven .register-enrollment-cta__content .enrollment-cta__body {
   margin: 0;
@@ -6286,8 +6737,11 @@ body.page--course .course-hero::before {
   color: var(--color-text-strong);
 }
 
-.course-hero__eyebrow {
-  display: inline-block;
+.course-hero__content .hero-section__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   padding: var(--size-px-6) var(--size-px-14);
   background: var(--color-accent-10);
   border: var(--size-px-1) solid var(--color-accent-20);
@@ -6476,6 +6930,11 @@ body.page--course .course-hero::before {
 .course-dates__status--available {
   background: rgba(39, 174, 96, 0.15);
   color: var(--color-success-forest);
+}
+
+.course-dates__status--waiting {
+  background: rgba(var(--color-warning-rgb), 0.18);
+  color: var(--color-warning);
 }
 
 .course-dates__status--full {
@@ -7506,7 +7965,7 @@ body.devtools-open .values-section * {
 --------------------------------------- */
 .page--inschrijven .register-timeline {
   --register-timeline-gap: clamp(var(--size-r-100), 2.2vw, var(--size-r-150));
-  --register-timeline-marker-size: var(--size-px-24);
+  --register-timeline-marker-size: var(--register-number-marker-size);
   --register-timeline-marker-offset: clamp(
     var(--size-r-090),
     1.5vw,
@@ -7663,22 +8122,6 @@ body.devtools-open .values-section * {
   text-align: left;
   gap: clamp(var(--size-r-095), 2vw, 1.4rem);
   min-height: clamp(320px, 45vh, 430px);
-}
-
-:where(.hero-section__eyebrow, .course-hero__eyebrow) {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  margin: 0;
-  padding: 0.4rem var(--size-r-095);
-  border-radius: var(--radius-pill);
-  border: var(--size-px-1) solid var(--color-primary-20);
-  background: var(--color-primary-12);
-  color: var(--color-primary-dark, var(--color-primary));
-  font-size: var(--text-label);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 :where(.hero-section__title, .course-hero__title) {
@@ -7842,8 +8285,9 @@ body.devtools-open .values-section * {
     padding: 0 !important;
   }
 
-  :where(.hero-section__eyebrow, .course-hero__eyebrow) {
+  :where(.hero-section__eyebrow) {
     margin-inline: auto;
+    align-self: center;
   }
 
   :where(.hero-section__title, .course-hero__title),
@@ -7981,7 +8425,6 @@ body.devtools-open .values-section * {
   margin-inline: 0 !important;
 }
 
-:where(.hero-section__eyebrow, .course-hero__eyebrow),
 :where(.hero-section__caption, .course-hero__meta) {
   text-align: left !important;
   margin-inline: 0 !important;
@@ -8112,8 +8555,7 @@ body.devtools-open .values-section * {
   --hero-eyebrow-fixed-height: 38px;
 }
 
-:where(.hero-section, .course-hero)
-  :where(.hero-section__eyebrow, .course-hero__eyebrow) {
+:where(.hero-section, .course-hero) .hero-section__eyebrow {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center;
@@ -8731,13 +9173,6 @@ body.devtools-open .values-section * {
   justify-content: center;
   text-align: center;
   min-inline-size: clamp(170px, 16vw, 220px);
-}
-
-.course-hero__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 }
 
 @media (max-width: 1100px) {

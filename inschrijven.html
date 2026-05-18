@@ -60,7 +60,6 @@
               data-critical="true"
               decoding="async"
               loading="eager"
-             
               width="180"
               height="50"
             />
@@ -206,7 +205,7 @@
         >
           <div class="container">
             <div class="section-heading">
-              <span class="section-label" data-i18n="register.form.label"
+              <span class="hero-section__eyebrow" data-i18n="register.form.label"
                 >Voorinschrijving</span
               >
               <h2 class="section-title" data-i18n="register.form.title">
@@ -230,6 +229,7 @@
                     >
                     <input
                       type="text"
+                      id="full-name"
                       name="full-name"
                       class="form-input"
                       required=""
@@ -515,7 +515,7 @@
         <section class="section section--alt" id="intake-proces">
           <div class="container">
             <div class="section-heading">
-              <span class="section-label" data-i18n="register.timeline.label"
+              <span class="hero-section__eyebrow" data-i18n="register.timeline.label"
                 >Intakeproces</span
               >
               <h2 class="section-title" data-i18n="register.timeline.title">
@@ -607,7 +607,7 @@
         <section class="section section--surface">
           <div class="container">
             <div class="section-heading">
-              <span class="section-label" data-i18n="register.tips.label"
+              <span class="hero-section__eyebrow" data-i18n="register.tips.label"
                 >Voorbereiding</span
               >
               <h2 class="section-title" data-i18n="register.tips.title">
@@ -820,7 +820,7 @@
         <section class="section section--alt">
           <div class="container">
             <div class="section-heading">
-              <span class="section-label" data-i18n="register.label"
+              <span class="hero-section__eyebrow" data-i18n="register.label"
                 >Inschrijven</span
               >
               <h2 class="section-title" data-i18n="register.confirmation.title">
@@ -861,7 +861,9 @@
                 <div class="contact-cta__details">
                   <a
                     class="contact-cta__link"
-                    href="mailto:inschrijvingen@intecbrussel.be"
+                    href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=inschrijvingen@intecbrussel.be"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     data-i18n="register.contact.email"
                   >
                     <svg
@@ -914,7 +916,7 @@
                 <div class="contact-cta__actions register-next-steps__actions">
                   <a
                     class="btn btn--primary"
-                    href="contact.html"
+                    href="contact.html#name"
                     data-i18n="register.contact.cta"
                     >Neem contact op</a
                   >
@@ -933,7 +935,7 @@
         <section class="section section--surface" id="veelgestelde-vragen">
           <div class="container">
             <div class="section-heading">
-              <span class="section-label" data-i18n="register.faq.label"
+              <span class="hero-section__eyebrow" data-i18n="register.faq.label"
                 >Voor je intake</span
               >
               <h2 class="section-title" data-i18n="register.faq.title">
@@ -1321,7 +1323,7 @@
                 class="enrollment-cta__content register-enrollment-cta__content"
               >
                 <span
-                  class="enrollment-cta__eyebrow"
+                  class="hero-section__eyebrow"
                   data-i18n="register.cta.eyebrow"
                   >Klaar om te starten?</span
                 >
@@ -1541,7 +1543,7 @@
                 Blijf op de hoogte van nieuws, updates, en exclusieve
                 aanbiedingen.
               </p>
-              <form class="newsletter-form" action="#" method="post">
+              <form class="newsletter-form" action="" method="get">
                 <input
                   type="email"
                   id="newsletter-email"
@@ -1630,14 +1632,7 @@
       </footer>
     </div>
 
-    <script>
-      const yearSpan = document.getElementById("footer-year");
-      if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-    </script>
     <script src="assets/js/i18n/nl.js" defer=""></script>
-<script src="assets/js/main.js" defer=""></script>
+    <script src="assets/js/main.js" defer=""></script>
   </body>
 </html>
-
-
-

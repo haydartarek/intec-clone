@@ -77,6 +77,33 @@
   --size-r-250: 2.5rem;
   --size-r-300: 3rem;
 
+  --register-number-marker-size: var(--size-px-24);
+
+  --vacature-card-min-height: 19rem;
+  --vacature-card-strip-height: var(--size-px-4);
+  --vacature-card-icon-size: 3.15rem;
+  --vacature-card-icon-glyph-size: var(--size-px-24);
+  --vacature-card-meta-gap: var(--space-xs);
+  --vacature-gradient-angle: 165deg;
+  --vacature-detail-gradient-angle: 160deg;
+  --vacature-strip-gradient-angle: 90deg;
+  --vacature-accent-mix-surface: 8%;
+  --vacature-accent-mix-border: 24%;
+  --vacature-accent-mix-strip-strong: 82%;
+  --vacature-accent-mix-strip-mid: 64%;
+  --vacature-accent-mix-divider: 20%;
+  --vacature-accent-mix-soft: 14%;
+  --vacature-accent-mix-outline: 24%;
+  --vacature-accent-mix-outline-soft: 18%;
+  --vacature-accent-mix-title: 78%;
+  --vacature-accent-mix-strong: 72%;
+  --vacature-accent-mix-meta: 26%;
+  --vacature-accent-mix-footer: 16%;
+  --vacature-accent-mix-section-bg: 6%;
+  --vacature-accent-mix-bullet: 60%;
+  --vacature-accent-heading-balance: 22%;
+  --vacature-accent-heading-strong-balance: 18%;
+
   --color-primary-02: rgba(var(--color-primary-rgb), 0.02);
   --color-primary-05: rgba(var(--color-primary-rgb), 0.05);
   --color-primary-06: rgba(var(--color-primary-rgb), 0.06);
@@ -831,93 +858,35 @@ main > section + section {
 }
 
 /* =======================================
-SECTION LABELS
+SECTION EYEBROWS
 ======================================= */
-.section-label,
-.partners-callout__eyebrow,
-.collaboration-cta__eyebrow .enrollment-cta__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  padding: var(--size-r-050) var(--size-r-125);
-  border-radius: var(--radius-pill);
-  font-weight: 600;
-  font-size: clamp(0.8rem, 1.5vw, 0.875rem);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow:
-    inset 0 0 0 1.5px var(--color-primary-25),
-    0 var(--size-px-2) var(--size-px-8) var(--color-primary-08);
+.hero-section__eyebrow {
   backdrop-filter: blur(var(--size-px-12));
   -webkit-backdrop-filter: blur(var(--size-px-12));
-  transition: all 0.3s ease;
+  transition: var(--transition-base);
   will-change: transform, box-shadow;
-  border: var(--size-px-1) solid var(--color-primary-20);
-  border-color: color-mix(in srgb, var(--color-accent) 20%, transparent);
-  background-color: color-mix(in srgb, var(--color-bg-white) 60%, transparent);
+  border: var(--size-px-1) solid
+    color-mix(in srgb, var(--color-accent) 20%, transparent);
 }
 
-.section-label:hover,
-.partners-callout__eyebrow:hover,
-.collaboration-cta__eyebrow:hover,
-.enrollment-cta__eyebrow:hover {
+.hero-section__eyebrow:hover {
   transform: translateY(-1px);
   box-shadow: 0 var(--size-px-4) var(--size-px-12) var(--color-primary-15);
 }
 
-.section-label--solid,
-.partners-callout__eyebrow,
-.collaboration-cta__eyebrow,
-.enrollment-cta__eyebrow {
-  letter-spacing: 0.12em;
-  padding: 0.6rem 1.6rem;
-  box-shadow: inset 0 0 0 var(--size-px-1) var(--color-primary-soft);
-  transition: var(--transition-base);
-  will-change: transform, box-shadow;
-}
-
-.section-label--solid:hover,
-.partners-callout__eyebrow:hover,
-.collaboration-cta__eyebrow:hover,
-.enrollment-cta__eyebrow:hover {
-  transform: translateY(var(--size-px-neg-2));
-  box-shadow: inset 0 0 0 var(--size-px-2) var(--color-primary);
-}
-
-.team-highlight__content .section-label,
-.partners-callout__eyebrow,
-.collaboration-cta__eyebrow,
-.enrollment-cta__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--size-r-050);
-  padding: var(--size-r-050) var(--size-r-125);
-  border-radius: var(--radius-pill);
+:where(
+    .team-highlight__content,
+    .digipunt-extra__content,
+    .page--inschrijven,
+    .partners-callout__content,
+    .collaboration-cta__content,
+    .enrollment-cta__content
+  )
+  .hero-section__eyebrow {
   background: var(--color-primary-08);
-  color: var(--color-primary);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.digipunt-extra__content .section-label,
-.partners-callout__eyebrow,
-.collaboration-cta__eyebrow,
-.enrollment-cta__eyebrow {
   color: var(--color-primary, var(--color-accent));
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.05em;
-}
-
-.page--inschrijven .section-label,
-.partners-callout__eyebrow,
-.collaboration-cta__eyebrow,
-.enrollment-cta__eyebrow {
-  color: var(--color-primary);
-  font-weight: 600;
 }
 
 /* =======================================
@@ -1219,7 +1188,7 @@ SECTION LABELS
   .about-card,
   .partners-carousel,
   .partners-grid,
-  .section-label,
+  .hero-section__eyebrow,
   .value-card__icon
 ) {
   transition: var(--transition-base);
@@ -2693,7 +2662,7 @@ h3 {
     width: 60px;
   }
 
-  .section-label {
+  .hero-section__eyebrow {
     padding: 0.4rem var(--size-r-100);
     font-size: 0.8rem;
   }
@@ -3442,9 +3411,7 @@ h3 {
     margin-top: 0 !important;
   }
 
-  .course-hero__eyebrow {
-    display: inline-block !important;
-    margin-bottom: 0.35rem !important;
+  .course-hero__content .hero-section__eyebrow {
     font-size: 0.8rem !important;
     margin: var(--size-r-100) auto !important;
   }
@@ -3618,7 +3585,7 @@ h3 {
     text-align: center;
   }
 
-  .partners-callout__eyebrow {
+  .partners-callout__content .hero-section__eyebrow {
     font-size: 0.85rem;
     padding: 0.35rem var(--size-r-075);
     border-radius: var(--size-px-20);
@@ -3666,9 +3633,8 @@ h3 {
     max-width: 100% !important;
   }
 
-  .collaboration-cta__eyebrow {
+  .collaboration-cta__content .hero-section__eyebrow {
     font-size: var(--size-r-090) !important;
-    margin-bottom: var(--size-r-050) !important;
     display: inline-block !important;
     margin: auto !important;
   }
@@ -4011,8 +3977,8 @@ h3 {
     padding: var(--size-r-200) 0;
   }
 
-  .enrollment-cta__eyebrow,
-  .partners-callout__eyebrow {
+  .enrollment-cta__content .hero-section__eyebrow,
+  .partners-callout__content .hero-section__eyebrow {
     font-size: var(--size-r-075);
     padding: 0.4rem var(--size-r-100);
     margin: auto;

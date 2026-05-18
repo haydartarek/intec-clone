@@ -960,7 +960,7 @@ window.i18n.en = {
   "register.contact.hours": "Monday to Friday, 09:00 - 12:00 and 13:00 - 16:00",
 
   "register.contact.body":
-    "Contact our career coaches at <a href='mailto:inschrijvingen@intecbrussel.be'>inschrijvingen@intecbrussel.be</a> or call 02/411 29 07 (Monday to Friday, 9:00 - 12:00 and 13:00 - 16:00).",
+    "Contact our career coaches at <a href='https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=inschrijvingen@intecbrussel.be' target='_blank' rel='noopener noreferrer'>inschrijvingen@intecbrussel.be</a> or call 02/411 29 07 (Monday to Friday, 9:00 - 12:00 and 13:00 - 16:00).",
 
   "register.contact.cta": "Get in touch",
 
@@ -1215,14 +1215,29 @@ window.i18n.en = {
   "opleidingen.meta.title":
     "Courses at INTEC Brussels | Network, Security and Python",
 
+  "opleidingen.meta.description":
+    "Compare VDAB-accredited IT courses in Brussels: Python networking, Cyber Security, System Administration and IT Support with labs, internship and job coaching.",
+
   "python.meta.title":
     "Network Administrator with Python course | INTEC Brussels",
 
+  "python.meta.description":
+    "Join the VDAB-accredited Network Administrator with Python course in Brussels and learn network automation, APIs and practical DevOps-ready workflows.",
+
   "security.meta.title": "Cyber Security Engineer course | INTEC Brussels",
+
+  "security.meta.description":
+    "Train as a Cyber Security Engineer in Brussels with hands-on labs in pentesting, SOC fundamentals, incident response and cloud security.",
 
   "support.meta.title": "PC & Network Technician course | INTEC Brussels",
 
+  "support.meta.description":
+    "Become a PC & Network Technician in Brussels through VDAB-accredited IT training with hardware, helpdesk, networking, internship and career guidance.",
+
   "sysadmin.meta.title": "System Administrator course | INTEC Brussels",
+
+  "sysadmin.meta.description":
+    "Build system administration skills in Brussels with Windows, Linux, virtualization and cloud in a VDAB-accredited course with practical labs.",
 
   "contact.label": "Contact",
 
@@ -1462,7 +1477,7 @@ window.i18n.en = {
     '<strong>Phone:</strong><br /><a href="tel:+3224112907">+32 2 411 29 07</a>',
 
   "contact.map.email":
-    '<strong>Email:</strong><br /><a href="mailto:info@intecbrussel.be">info@intecbrussel.be</a>',
+    '<strong>Email:</strong><br /><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=info@intecbrussel.be" target="_blank" rel="noopener noreferrer">info@intecbrussel.be</a>',
 
   "contact.map.follow": "Follow us:",
 
@@ -1651,64 +1666,6 @@ window.i18n.en = {
 
   "python.program.module4": "Security & automation ops",
 
-  "python.cta.title": "Make a difference with Networks & Python",
-
-  "python.cta.body":
-    "Book your intake and discover how this training prepares you for roles such as network engineer or cloud operations specialist.",
-
-  // -----------------------------
-
-  // SYSTEEMBEHEERDER PAGE
-
-  // -----------------------------
-
-  // Highlights
-
-  "sysadmin.overview.label": "What you learn",
-
-  "sysadmin.overview.title": "Comprehensive management of servers and cloud",
-
-  "sysadmin.overview.text1":
-    "Install, configure and maintain Windows and Linux servers, network services and backups. Automate routine tasks using PowerShell and Bash.",
-
-  "sysadmin.overview.text2":
-    "Combine hands-on labs with cybersecurity insight and cloud administration. Work on projects simulating real production scenarios.",
-
-  // -----------------------------
-
-  // SECURITY PAGE
-
-  // -----------------------------
-
-  "security.hero.title": "Cybersecurity Specialist",
-
-  "security.cta.title": "Take your first step into cybersecurity",
-
-  "security.cta.body":
-    "Become an expert in digital safety with practical, hands-on training.",
-
-  // -----------------------------
-
-  // SUPPORT PAGE
-
-  // -----------------------------
-
-  "support.hero.title": "IT Support Specialist",
-
-  "support.hero.lead":
-    "Help users, solve technical problems, and master IT service management.",
-
-  "support.cta.title": "Start your career in IT Support",
-
-  "support.cta.body":
-    "Become the bridge between technology and people through practical training.",
-
-  // -----------------------------
-
-  // FOOTER
-
-  // -----------------------------
-
   "footer.aboutTitle": "About INTEC",
 
   "footer.aboutUs": "Who We Are",
@@ -1792,10 +1749,6 @@ window.i18n.en = {
   "team.hero.title": "Board of Directors & Team",
 
   "team.hero.subtitle": "Meet the people behind INTEC Brussels.",
-
-  "team.hero.ctaPrimary": "Meet the Team",
-
-  "team.hero.ctaSecondary": "Get in Touch",
 
   "team.hero.imageCaption": "Our team is dedicated to your success every day",
 
@@ -2035,10 +1988,6 @@ window.i18n.en = {
 
   "team.join.secondary": "Discover Our Courses",
 
-  "team.leadership.label": "Our Teams",
-
-  "team.leadership.title": "Meet Our Teams",
-
   "team.leadership.lead":
     "The dedicated groups who make INTEC Brussel run smoothly every day.",
 
@@ -2184,94 +2133,13 @@ window.i18n.en = {
   "support.hero.stats.aria":
     "Key figures for the PC and Network Technician course",
 
-  "support.overview.label": "What you'll learn",
-
-  "support.overview.title": "A broad foundation in IT support",
-
-  "support.overview.text1":
-    "This training teaches you to build and maintain computers, configure networks, and help users. You develop both technical and communication skills.",
-
-  "support.overview.text2":
-    "Work in hands-on labs with hardware, operating systems, network equipment, and security tools. Learn to use ticketing systems and professionally support end users.",
-
-  "support.overview.feature1Title": "Hands-on labs",
-
-  "support.overview.list1":
-    "70% hands-on labs focused on hardware, networks, and security",
-
-  "support.overview.feature2Title": "Internship",
-
-  "support.overview.list2":
-    "Internship at a partner company or social-profit organization",
-
-  "support.overview.feature3Title": "Coaching",
-
-  "support.overview.list3":
-    "Guidance from digital coaches and language support",
-
-  "support.overview.feature4Title": "Soft skills",
-
-  "support.overview.list4":
-    "Soft skills: customer communication, teamwork, and planning",
-
-  "support.modules.label": "Program",
-
-  "support.modules.title": "Modules & areas of expertise",
-
   "support.modules.heading": "Technical program",
-
-  "support.modules.lead":
-    "The training combines hardware, networks, operating systems, and service management for a complete IT support foundation.",
-
-  "support.modules.deviceTitle": "Workplace & hardware",
-
-  "support.modules.deviceBody":
-    "Learn to build, upgrade, and repair computers. Install peripherals and solve hardware problems. Manage workplaces and inventory.",
-
-  "support.modules.networkTitle": "Networks & cloud",
-
-  "support.modules.networkBody":
-    "Configure routers, switches, and WiFi. Learn IP addressing, troubleshooting, and basic cloud services like managing Microsoft 365.",
-
-  "support.modules.osTitle": "Operating systems",
-
-  "support.modules.osBody":
-    "Install and configure Windows, Linux, and macOS. Manage user accounts, permissions, and software deployment with group policy.",
-
-  "support.modules.securityTitle": "Security & service",
-
-  "support.modules.securityBody":
-    "Implement basic security: antivirus, firewalls, and backups. Learn to use ticketing systems and professionally help customers (ITIL principles).",
-
-  "support.journey.label": "Trajectory",
-
-  "support.journey.title": "From intake to first job",
-
-  "support.journey.step1Title": "Intake & fundamentals",
-
-  "support.journey.step1Body":
-    "Learn basic IT concepts: hardware components, networks, operating systems, and troubleshooting methods. Start from scratch with practical labs.",
 
   "support.journey.duration1": "4-week onboarding",
 
-  "support.journey.step2Title": "Deep dive labs",
-
-  "support.journey.step2Body":
-    "Build computers, configure networks, and manage user accounts. Practice troubleshooting scenarios and work with ticketing systems.",
-
   "support.journey.duration2": "20-week practical labs",
 
-  "support.journey.step3Title": "Internship & certification",
-
-  "support.journey.step3Body":
-    "Do an internship at a helpdesk, IT department, or social-profit organization. Apply your skills in a real work environment with guidance.",
-
   "support.journey.duration3": "8-week internship + certifications",
-
-  "support.journey.step4Title": "Job coaching",
-
-  "support.journey.step4Body":
-    "Get support with your applications, CV, and interview preparation. We help you make the transition to your first IT job.",
 
   "support.journey.duration4": "Up to 12 months follow-up",
 
@@ -2522,7 +2390,7 @@ window.i18n.en = {
 
   "python.dates.item1.date": "2 February 2026",
 
-  "python.dates.item1.status": "Available",
+  "python.dates.item1.status": "AVAILABLE",
 
   "python.dates.note":
     "<strong>Note:</strong> You can only register for a course starting 6 months before the start date.",
@@ -2540,66 +2408,7 @@ window.i18n.en = {
 
   "python.requirements.item4": "You are comfortable working with a computer",
 
-  "python.overview.label": "What you'll learn",
-
-  "python.overview.title": "Automate networks from A to Z",
-
-  "python.overview.text1":
-    "This training combines enterprise networking (Cisco) with Python scripting and cloud automation. You learn to design, manage, and automate infrastructures through code.",
-
-  "python.overview.text2":
-    "Work on hands-on labs around routing, switching, VLANs, firewalls, and APIs. Automate configurations and monitoring with tools like Ansible, Netmiko, and observability platforms.",
-
-  "python.overview.feature1Title": "Network automation",
-
-  "python.overview.list2":
-    "Python scripting for automation, API integrations, and monitoring",
-
-  "python.overview.feature2Title": "Cloud integration",
-
-  "python.overview.list3":
-    "Manage cloud infrastructures with AWS, Azure, and Infrastructure as Code",
-
-  "python.overview.feature3Title": "DevOps and CI/CD",
-
-  "python.overview.listDevops":
-    "DevOps principles: version control, CI/CD, and containerization with Docker",
-
-  "python.overview.feature4Title": "Network security",
-
-  "python.overview.list4":
-    "Internship at a company with infrastructure or network projects",
-
-  "python.modules.label": "Program",
-
-  "python.modules.title": "Modules & specializations",
-
   "python.modules.heading": "Technical program",
-
-  "python.modules.lead":
-    "The technical program of our Network Administrator with Python course offers a complete curriculum so you can grow into a professional network administrator with advanced programming skills. Thanks to our hands-on approach you are ready to enter the IT job market right away.",
-
-  "python.modules.networkTitle": "Enterprise networking",
-
-  "python.modules.networkBody":
-    "Routing & switching, VLANs, QoS, and wireless design. Implementation according to Cisco and open standards.",
-
-  "python.modules.pythonTitle": "Python & automation",
-
-  "python.modules.pythonBody":
-    "Python fundamentals, object-oriented programming, APIs, Ansible, and scripting for configuration management.",
-
-  "python.modules.cloudTitle": "Cloud & observability",
-
-  "python.modules.cloudBody":
-    "Infrastructure as Code with Terraform, Azure/AWS basics, and monitoring with Grafana and Prometheus.",
-
-  "python.modules.securityTitle": "Security automation",
-
-  "python.modules.securityBody":
-    "Zero Trust, policy automation, and compliance checks with tooling.",
-
-  // Detailed modules
 
   "python.modules.item1.title": "Foundations of hardware and networking",
 
@@ -2685,38 +2494,6 @@ window.i18n.en = {
 
   "python.modules.item9.description":
     "Realistic projects prepare you for your future role by simulating network management problems and team assignments.",
-
-  "python.journey.label": "Trajectory",
-
-  "python.journey.title": "From intake to network engineer",
-
-  "python.journey.step1Title": "Fundamentals & intake",
-
-  "python.journey.step1Body":
-    "Screening and introduction to networking basics and Python. Start with hands-on exercises.",
-
-  "python.journey.duration1": "4-week fundamentals & onboarding",
-
-  "python.journey.step2Title": "Network design",
-
-  "python.journey.step2Body":
-    "Configure routers, switches, and firewalls. Learn network protocols and troubleshooting.",
-
-  "python.journey.duration2": "18-week advanced labs",
-
-  "python.journey.step3Title": "Automation & cloud",
-
-  "python.journey.step3Body":
-    "Automate network configurations with Python and Ansible. Work with cloud platforms.",
-
-  "python.journey.duration3": "10-week automation sprints",
-
-  "python.journey.step4Title": "Internship & certification",
-
-  "python.journey.step4Body":
-    "Gain hands-on experience at a partner company and prepare for certifications like CCNA or AWS.",
-
-  "python.journey.duration4": "8-week internship + certification coaching",
 
   "python.cta.title": "Make a difference with networks & Python",
 
@@ -2804,60 +2581,13 @@ window.i18n.en = {
 
   "security.hero.ctaSecondary": "View program",
 
-  "security.overview.feature4Title": "Incident response",
+  "date.badge.available": "AVAILABLE",
 
-  "security.overview.list4":
-    "Internship at a company with cybersecurity or SOC operations",
+  "date.badge.full": "FULL",
 
-  "security.modules.label": "Program",
+  "date.badge.waiting": "WAITING",
 
-  "security.modules.title": "Modules & specializations",
-
-  "security.modules.lead":
-    "You progress from security fundamentals to advanced defensive and offensive techniques. Each module contains practical labs and real-world scenarios.",
-
-  "security.modules.governanceTitle": "Governance & compliance",
-
-  "security.modules.governanceBody":
-    "Risk management frameworks, GDPR, ISO standards, and security audits.",
-
-  "security.journey.label": "Trajectory",
-
-  "security.journey.title": "From beginner to security specialist",
-
-  "security.journey.step1Title": "Fundamentals & intake",
-
-  "security.journey.step1Body":
-    "Screening and introduction to basic security concepts and threat landscape.",
-
-  "security.journey.duration1": "4-week fundamentals",
-
-  "security.journey.step2Title": "Offensive techniques",
-
-  "security.journey.step2Body":
-    "Learn penetration testing, reconnaissance, and how attackers exploit vulnerabilities.",
-
-  "security.journey.duration2": "18-week SOC & detection labs",
-
-  "security.journey.step3Title": "Defensive strategies",
-
-  "security.journey.step3Body":
-    "Implement security controls, monitor threats, and respond to incidents.",
-
-  "security.journey.duration3": "10-week red team & IR projects",
-
-  "security.journey.step4Title": "Internship & certification",
-
-  "security.journey.step4Body":
-    "Gain hands-on experience in a SOC or security team and prepare for certifications like CEH or Security+.",
-
-  "security.journey.duration4": "8-week internship + exam coaching",
-
-  // Security page — additional localized strings (translated from Dutch)
-
-  "date.badge.available": "Available",
-
-  "date.badge.full": "Full",
+  "date.badge.waiting.ar": "انتظار",
 
   "date.countdown.starts": "Starts in",
 
@@ -2909,7 +2639,7 @@ window.i18n.en = {
 
   "security.dates.item1.date": "24 November 2025",
 
-  "security.dates.item1.status": "Available",
+  "security.dates.item1.status": "AVAILABLE",
 
   "security.dates.note":
     "<strong>Note:</strong> Registration opens 6 months before the start date.",
@@ -3144,11 +2874,11 @@ window.i18n.en = {
 
   "sysadmin.dates.item1.date": "February 23, 2026",
 
-  "sysadmin.dates.item1.status": "Available",
+  "sysadmin.dates.item1.status": "AVAILABLE",
 
   "sysadmin.dates.item2.date": "May 18, 2026",
 
-  "sysadmin.dates.item2.status": "Available",
+  "sysadmin.dates.item2.status": "AVAILABLE",
 
   "sysadmin.dates.note":
     "<strong>Note:</strong> You can only register for a course starting six months before the start date.",
@@ -3165,24 +2895,6 @@ window.i18n.en = {
   "sysadmin.requirements.item3": "You have a passion for IT",
 
   "sysadmin.requirements.item4": "You can work fluently with a computer",
-
-  "sysadmin.overview.label": "What you'll learn",
-
-  "sysadmin.overview.title": "Manage IT infrastructure from A to Z",
-
-  "sysadmin.overview.text1":
-    "This training teaches you to set up, manage, and automate IT systems. You work with Windows Server, Linux, virtualization, and cloud platforms.",
-
-  "sysadmin.overview.text2":
-    "Build skills through hands-on labs: user management, scripting, backups, monitoring, and troubleshooting. Learn industry best practices.",
-
-  "sysadmin.highlight.feature1Title": "Windows Server",
-
-  "sysadmin.highlight.feature2Title": "Linux administration",
-
-  "sysadmin.highlight.feature3Title": "Virtualization & cloud",
-
-  "sysadmin.highlight.feature4Title": "Automation & monitoring",
 
   "sysadmin.modules.label": "Program",
 
@@ -3498,10 +3210,11 @@ window.i18n.en = {
 
   // -----------------------------
 
-  "vacancies.meta.title": "Jobs at INTEC Brussels | Work on digital inclusion",
+  "vacancies.meta.title":
+    "IT jobs in Brussels at INTEC | Digital inclusion careers",
 
   "vacancies.meta.description":
-    "Explore openings in coaching, IT instruction and support and help build digital inclusion at INTEC Brussels.",
+    "Explore IT jobs in Brussels at INTEC across coaching, instruction, support and operations. Apply and help drive digital inclusion.",
 
   "vacancies.label": "Careers",
 
@@ -3550,6 +3263,52 @@ window.i18n.en = {
     "Browse all current vacancies at INTEC Brussels. Apply online or contact us for more information.",
 
   "vacancies.loading": "Vacancies are loading...",
+
+  "vacancies.card.view": "View details",
+
+  "vacancies.card.details": "View details",
+
+  "vacancies.card.apply": "Apply via email",
+
+  "vacancies.card.location": "Location",
+
+  "vacancies.card.posted": "Posted on",
+
+  "vacancies.card.postedUnknown": "Date unknown",
+
+  "vacancy.detail.meta.title": "IT job details in Brussels | INTEC",
+
+  "vacancy.detail.meta.description":
+    "Read this IT job description in Brussels, review responsibilities and profile, and apply directly by email to INTEC.",
+
+  "vacancy.detail.eyebrow": "Vacancy",
+
+  "vacancy.detail.title": "Read all details for this role",
+
+  "vacancy.detail.sectionLead":
+    "Review the vacancy details carefully and then apply via email.",
+
+  "vacancy.detail.back": "Back to vacancies",
+
+  "vacancy.detail.loading": "Vacancy is loading...",
+
+  "vacancy.detail.notFound":
+    "This vacancy could not be found. Go back to the vacancy overview and choose again.",
+
+  "vacancy.detail.error":
+    "The vacancy could not be loaded. Please try again later.",
+
+  "vacancy.detail.apply": "Apply via email",
+
+  "vacancy.detail.section.overview": "About the role",
+
+  "vacancy.detail.section.impact": "Impact",
+
+  "vacancy.detail.section.responsibilities": "What you will do",
+
+  "vacancy.detail.section.profile": "Your profile",
+
+  "vacancy.detail.section.offer": "What we offer",
 
   "vacancies.empty":
     "There are currently no open vacancies. Check back soon or follow us on LinkedIn for updates.",

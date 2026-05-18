@@ -50,9 +50,45 @@
   </url>
   <url>
     <loc>https://www.intecbrussel.be/vacatures.html</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.intecbrussel.be/vacature.html?job=it-support-coach-coaching</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.intecbrussel.be/vacature.html?job=python-instructor-instructeurs</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.intecbrussel.be/vacature.html?job=cybersecurity-trainer-security</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.intecbrussel.be/vacature.html?job=systeembeheerder-infra</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.intecbrussel.be/vacature.html?job=jobcoach-digitale-inclusie-talent</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.intecbrussel.be/vacature.html?job=intake-admissions-officer-administratie</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.intecbrussel.be/contact.html</loc>

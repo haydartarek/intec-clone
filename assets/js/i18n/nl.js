@@ -612,29 +612,6 @@ window.i18n.nl = {
 
   // Final CTA
 
-  "about.cta.eyebrow": "Samen bouwen",
-
-  "about.cta.title": "Wil je mee het verschil maken voor talent in Brussel?",
-
-  "about.cta.body":
-    "Neem contact op en ontdek hoe we kunnen samenwerken rond trajecten, stages of coaching.",
-
-  "about.cta.primary": "Contacteer ons team",
-
-  "about.cta.secondary": "Ontdek opleidingen",
-
-  "about.cta.trust1": "Gratis intake",
-
-  "about.cta.trust2": "Binnen 2 minuten",
-
-  "about.cta.trust3": "Zonder verplichting",
-
-  // -----------------------------
-
-  // Register Page (New Keys)
-
-  "register.label": "Inschrijven",
-
   "register.label": "Inschrijven",
 
   "register.meta.title":
@@ -911,7 +888,7 @@ window.i18n.nl = {
     "Maandag tot vrijdag, 9:00 - 12:00 en 13:00 - 16:00",
 
   "register.contact.body":
-    "Contacteer onze trajectcoaches via <a href='mailto:inschrijvingen@intecbrussel.be'>inschrijvingen@intecbrussel.be</a> of bel 02/411 29 07 (maandag tot vrijdag, 9:00 - 12:00 en 13:00 - 16:00).",
+    "Contacteer onze trajectcoaches via <a href='https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=inschrijvingen@intecbrussel.be' target='_blank' rel='noopener noreferrer'>inschrijvingen@intecbrussel.be</a> of bel 02/411 29 07 (maandag tot vrijdag, 9:00 - 12:00 en 13:00 - 16:00).",
 
   "register.contact.cta": "Neem contact op",
 
@@ -1185,13 +1162,28 @@ window.i18n.nl = {
   "opleidingen.meta.title":
     "Opleidingen bij INTEC Brussel | Netwerk, Security en Python",
 
+  "opleidingen.meta.description":
+    "Ontdek VDAB-erkende IT-opleidingen in Brussel: Python, Cyber Security, Systeembeheer en IT Support met praktijklabs, stage en jobcoaching.",
+
   "python.meta.title": "Netwerkbeheerder met Python opleiding | INTEC Brussel",
+
+  "python.meta.description":
+    "Volg de VDAB-erkende opleiding Netwerkbeheerder met Python in Brussel en leer netwerken automatiseren, API's bouwen en praktijkgericht werken.",
 
   "security.meta.title": "Cyber Security Engineer opleiding | INTEC Brussel",
 
+  "security.meta.description":
+    "Start met de Cyber Security Engineer opleiding in Brussel en leer pentesting, SOC-basics, incident response en cloudbeveiliging met praktijkgerichte labs.",
+
   "support.meta.title": "PC & Netwerktechnicus opleiding | INTEC Brussel",
 
+  "support.meta.description":
+    "Word PC & Netwerktechnicus in Brussel via een VDAB-erkend traject met hardware, helpdesk, netwerken, stage en begeleiding naar werk.",
+
   "sysadmin.meta.title": "Systeembeheerder opleiding | INTEC Brussel",
+
+  "sysadmin.meta.description":
+    "Leer systeembeheer in Brussel met Windows, Linux, virtualisatie en cloud in een VDAB-erkende IT-opleiding met praktijklabs en jobcoaching.",
 
   "contact.label": "Contact",
 
@@ -1369,7 +1361,7 @@ window.i18n.nl = {
     '<strong>Telefoon:</strong><br /><a href="tel:+3224112907">+32 2 411 29 07</a>',
 
   "contact.map.email":
-    '<strong>E-mail:</strong><br /><a href="mailto:info@intecbrussel.be">info@intecbrussel.be</a>',
+    '<strong>E-mail:</strong><br /><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=info@intecbrussel.be" target="_blank" rel="noopener noreferrer">info@intecbrussel.be</a>',
 
   "contact.map.follow": "Volg ons:",
 
@@ -1615,22 +1607,8 @@ window.i18n.nl = {
 
   // -----------------------------
 
-  "python.hero.eyebrow": "Opleiding",
-
-  "python.hero.title": "Netwerkbeheerder met Python",
-
-  "python.hero.subtitle":
-    "Leer bedrijfsnetwerken ontwerpen en beheren terwijl je workflows automatiseert met Python.",
-
-  "python.hero.description":
-    "Werk met Cisco- en cloudlabs, versiebeheer en API-automation om infrastructuur sneller en veiliger uit te rollen.",
-
   "python.hero.lead":
     "Leer bedrijfsnetwerken ontwerpen en beheren terwijl je workflows automatiseert met Python.",
-
-  "python.hero.ctaPrimary": "Plan je intake",
-
-  "python.hero.ctaSecondary": "Bekijk programma",
 
   "python.hero.caption":
     "Gecombineerde opleiding met Cisco-netwerken, Python-scripting en cloud automation. Praktijkervaring in onze labs en met echte infrastructuur.",
@@ -1682,7 +1660,7 @@ window.i18n.nl = {
 
   "python.dates.item1.date": "2 februari 2026",
 
-  "python.dates.item1.status": "Beschikbaar",
+  "python.dates.item1.status": "BESCHIKBAAR",
 
   "python.dates.note":
     "<strong>Let op:</strong> Inschrijven voor een opleiding kan pas vanaf 6 maanden vóór de startdatum.",
@@ -2025,11 +2003,11 @@ window.i18n.nl = {
 
   "sysadmin.dates.item1.date": "23 februari 2026",
 
-  "sysadmin.dates.item1.status": "Beschikbaar",
+  "sysadmin.dates.item1.status": "BESCHIKBAAR",
 
   "sysadmin.dates.item2.date": "18 mei 2026",
 
-  "sysadmin.dates.item2.status": "Beschikbaar",
+  "sysadmin.dates.item2.status": "BESCHIKBAAR",
 
   "sysadmin.dates.note":
     "<strong>Let op:</strong> Inschrijven voor een opleiding kan pas vanaf 6 maanden vóór de startdatum van de opleiding.",
@@ -2295,7 +2273,7 @@ window.i18n.nl = {
   // Enrollment
 
   "security.dates.item1.date": "24 november 2025",
-  "security.dates.item1.status": "Beschikbaar",
+  "security.dates.item1.status": "BESCHIKBAAR",
   "security.dates.note":
     "<strong>Let op:</strong> Inschrijven voor een opleiding kan pas vanaf 6 maanden vóór de startdatum van de opleiding.",
 
@@ -2317,8 +2295,6 @@ window.i18n.nl = {
   "security.requirements.item4": "Je kan vlot met de computer werken",
 
   // Modules
-
-  "security.modules.title": "Technisch Programma",
 
   "security.modules.intro":
     "Het technische programma van onze Cyber Security Engineer opleiding biedt een diepgaand curriculum waarmee je je ontwikkelt tot een specialist in IT-beveiliging. Met onze praktijkgerichte aanpak leer je niet alleen systemen op te zetten en te beheren, maar ook te beschermen tegen digitale dreigingen. Zo ben je na de opleiding klaar om een sleutelrol te spelen in de cybersecuritysector.",
@@ -2892,9 +2868,13 @@ window.i18n.nl = {
 
   // -----------------------------
 
-  "date.badge.full": "Volzet",
+  "date.badge.full": "VOLZET",
 
-  "date.badge.available": "Beschikbaar",
+  "date.badge.available": "BESCHIKBAAR",
+
+  "date.badge.waiting": "WAITING",
+
+  "date.badge.waiting.ar": "انتظار",
 
   "date.countdown.starts": "Begint over",
 
@@ -3018,10 +2998,6 @@ window.i18n.nl = {
   "team.hero.title": "Raad van Bestuur & Team",
 
   "team.hero.subtitle": "Meet the people behind INTEC Brussels.",
-
-  "team.hero.ctaPrimary": "Meet the Team",
-
-  "team.hero.ctaSecondary": "Get in Touch",
 
   "team.hero.imageCaption": "Ons team zet zich elke dag in voor jouw succes",
 
@@ -3165,17 +3141,6 @@ window.i18n.nl = {
   "team.structure.lead":
     "Vier pijlers, één doel — elke leerling empoweren door toegewijde teamwork, deskundige begeleiding en betrouwbare ondersteuning.",
 
-  "team.structure.admin.subtitle":
-    "Onze systemen stabiel houden en operaties soepel laten verlopen.",
-
-  "team.structure.coaching.subtitle":
-    "Studenten empoweren door mentorschap en empathie.",
-
-  "team.structure.instructors.subtitle":
-    "Kennis omzetten in echte vooruitgang.",
-
-  "team.structure.it.subtitle": "Bruggen bouwen tussen mensen en technologie.",
-
   "team.structure.metrics.coaches": "Coaches",
 
   "team.structure.metrics.nationalities": "Nationaliteiten",
@@ -3267,10 +3232,6 @@ window.i18n.nl = {
   "team.join.primary": "Word Lid van het Team",
 
   "team.join.secondary": "Ontdek Onze Cursussen",
-
-  "team.leadership.label": "Onze Teams",
-
-  "team.leadership.title": "Ontmoet Onze Teams",
 
   "team.leadership.lead":
     "De toegewijde groepen die INTEC Brussel elke dag soepel laten verlopen.",
@@ -3377,10 +3338,10 @@ window.i18n.nl = {
   // -----------------------------
 
   "vacancies.meta.title":
-    "Vacatures bij INTEC Brussel | Werk aan digitale inclusie",
+    "IT vacatures in Brussel bij INTEC | Digitale inclusie jobs",
 
   "vacancies.meta.description":
-    "Ontdek openstaande functies in coaching, IT-training en ondersteuning en bouw mee aan digitale inclusie bij INTEC Brussel.",
+    "Bekijk IT vacatures in Brussel bij INTEC: coaching, instructie, support en administratie. Solliciteer en werk mee aan digitale inclusie.",
 
   "vacancies.label": "Carrières",
 
@@ -3429,6 +3390,52 @@ window.i18n.nl = {
     "Hier vind je een overzicht van alle actuele vacatures bij INTEC Brussel. Solliciteer online of neem contact op voor meer informatie.",
 
   "vacancies.loading": "Vacatures worden geladen...",
+
+  "vacancies.card.view": "Bekijk details",
+
+  "vacancies.card.details": "Bekijk details",
+
+  "vacancies.card.apply": "Solliciteer via e-mail",
+
+  "vacancies.card.location": "Locatie",
+
+  "vacancies.card.posted": "Gepost op",
+
+  "vacancies.card.postedUnknown": "Datum onbekend",
+
+  "vacancy.detail.meta.title": "IT vacature details | INTEC Brussel",
+
+  "vacancy.detail.meta.description":
+    "Lees deze IT vacature in Brussel, bekijk taken en profiel, en solliciteer rechtstreeks via e-mail bij INTEC Brussel.",
+
+  "vacancy.detail.eyebrow": "Vacature",
+
+  "vacancy.detail.title": "Bekijk alle details van deze functie",
+
+  "vacancy.detail.sectionLead":
+    "Lees de vacature zorgvuldig en solliciteer daarna rechtstreeks via e-mail.",
+
+  "vacancy.detail.back": "Terug naar vacatures",
+
+  "vacancy.detail.loading": "Vacature wordt geladen...",
+
+  "vacancy.detail.notFound":
+    "Deze vacature werd niet gevonden. Bekijk het overzicht van vacatures en kies opnieuw.",
+
+  "vacancy.detail.error":
+    "De vacature kon niet geladen worden. Probeer het later opnieuw.",
+
+  "vacancy.detail.apply": "Solliciteer via e-mail",
+
+  "vacancy.detail.section.overview": "Over de functie",
+
+  "vacancy.detail.section.impact": "Impact",
+
+  "vacancy.detail.section.responsibilities": "Wat ga je doen",
+
+  "vacancy.detail.section.profile": "Jouw profiel",
+
+  "vacancy.detail.section.offer": "Wat bieden wij",
 
   "vacancies.empty":
     "Er zijn momenteel geen openstaande vacatures. Kom binnenkort terug of volg ons op LinkedIn voor updates.",

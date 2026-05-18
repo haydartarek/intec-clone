@@ -32,6 +32,14 @@
 
   const INTEC = window.INTEC || {};
 
+  // Newsletter fallback config for static hosting environments.
+  // Meta tags or window.INTEC_* values still override these defaults.
+  const NEWSLETTER_SUPABASE_URL_FALLBACK =
+    "https://cdupvdbgvjluexrodaho.supabase.co";
+  const NEWSLETTER_SUPABASE_ANON_KEY_FALLBACK =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNkdXB2ZGJndmpsdWV4cm9kYWhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyMjU4MjEsImV4cCI6MjA4ODgwMTgyMX0.CpAS3hPIjXXgAdnuqBxjfqi0x_h3yTXpPgKqeqUHZMQ";
+  const NEWSLETTER_SUPABASE_TABLE_FALLBACK = "newsletter_subscribers";
+
   const LANGUAGE_STORAGE_KEY = "intec-language";
   const LANGUAGE_STORAGE_VERSION = "intec-language-v2";
   const LANGUAGE_MANUAL_FLAG = "intec-language-manual";
@@ -58,6 +66,13 @@
     countdownUpdateInterval: 3600000, // 1 hour
     carouselAutoplayDelay: 6000,
     carouselTransitionDuration: 800,
+    newsletterSupabaseUrl:
+      window.INTEC_SUPABASE_URL || NEWSLETTER_SUPABASE_URL_FALLBACK,
+    newsletterSupabaseAnonKey:
+      window.INTEC_SUPABASE_ANON_KEY || NEWSLETTER_SUPABASE_ANON_KEY_FALLBACK,
+    newsletterSupabaseTable:
+      window.INTEC_SUPABASE_TABLE || NEWSLETTER_SUPABASE_TABLE_FALLBACK,
+    newsletterSubmitTimeout: 10000,
     debug: false,
   };
 
@@ -83,12 +98,15 @@
         if (!src || !src.includes("assets/js/main.js")) continue;
         try {
           const scriptUrl = new URL(src, window.location.href);
-          return new URL("/data/design-tokens.json", scriptUrl).toString();
+          return new URL("../../data/design-tokens.json", scriptUrl).toString();
         } catch (error) {
           /* noop – fall through to default */
         }
       }
-      return "/data/design-tokens.json";
+      return new URL(
+        "data/design-tokens.json",
+        window.location.href,
+      ).toString();
     })();
 
     const ensureCssVar = (name) => {
@@ -644,8 +662,10 @@
       };
 
       translate("[data-i18n]", "data-i18n");
+      translate("[data-i18n-content]", "data-i18n-content", true);
       translate("[data-i18n-placeholder]", "data-i18n-placeholder", true);
       translate("[data-i18n-aria-label]", "data-i18n-aria-label", true);
+      this.syncSeoMeta();
 
       Utils.log(`Translated ${translated} elements`, "success");
       if (missing.size)
@@ -653,6 +673,26 @@
           `Missing translations: ${[...missing].join(", ")}`,
           "warning",
         );
+    },
+
+    syncSeoMeta() {
+      const title = String(document.title || "").trim();
+      const description = String(
+        Utils.$('meta[name="description"]')?.getAttribute("content") || "",
+      ).trim();
+
+      const setMetaContent = (selector, value) => {
+        if (!value) return;
+        const node = Utils.$(selector);
+        if (node) {
+          node.setAttribute("content", value);
+        }
+      };
+
+      setMetaContent('meta[property="og:title"]', title);
+      setMetaContent('meta[name="twitter:title"]', title);
+      setMetaContent('meta[property="og:description"]', description);
+      setMetaContent('meta[name="twitter:description"]', description);
     },
 
     setupLanguageSwitchers() {
@@ -732,6 +772,157 @@
   };
 
   // ==========================================================================
+  // HASH TARGET FIELD FOCUS
+  // ==========================================================================
+
+  const HashTargetFocus = {
+    init() {
+      const focusFieldFromHash = () => {
+        const hash = window.location.hash;
+        if (!hash || hash.length < 2) return;
+
+        let targetId = hash.slice(1);
+        try {
+          targetId = decodeURIComponent(targetId);
+        } catch (error) {
+          return;
+        }
+
+        const target = document.getElementById(targetId);
+        if (!target) return;
+
+        const isFocusableField = target.matches(
+          "input, textarea, select, button, [contenteditable='true'], [tabindex]",
+        );
+        if (!isFocusableField) return;
+
+        requestAnimationFrame(() => {
+          try {
+            target.focus({ preventScroll: true });
+          } catch (error) {
+            target.focus();
+          }
+        });
+      };
+
+      setTimeout(focusFieldFromHash, 0);
+      window.addEventListener("hashchange", focusFieldFromHash);
+      window.addEventListener("languageChanged", () => {
+        setTimeout(focusFieldFromHash, 0);
+      });
+    },
+  };
+
+  // ==========================================================================
+  // MAILTO TO WEBMAIL
+  // ==========================================================================
+
+  const MailtoLinks = {
+    init() {
+      this.applyAll(document);
+
+      window.addEventListener("languageChanged", () => this.applyAll(document));
+      window.addEventListener("intecLanguageChanged", () =>
+        this.applyAll(document),
+      );
+
+      const observer = new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+          if (mutation.type !== "childList" || !mutation.addedNodes.length) {
+            continue;
+          }
+
+          for (const addedNode of mutation.addedNodes) {
+            if (!(addedNode instanceof Element)) continue;
+            this.applyAll(addedNode);
+          }
+        }
+      });
+
+      observer.observe(document.body, { childList: true, subtree: true });
+      Utils.log("Mailto links upgraded to webmail", "success");
+    },
+
+    extractEmail(href) {
+      const raw = String(href || "").replace(/^mailto:/i, "");
+      const value = raw.split("?")[0];
+      if (!value) return "";
+
+      try {
+        return decodeURIComponent(value).trim();
+      } catch (error) {
+        return value.trim();
+      }
+    },
+
+    extractMailtoParams(href) {
+      const raw = String(href || "");
+      const queryIndex = raw.indexOf("?");
+      if (queryIndex < 0) {
+        return new URLSearchParams();
+      }
+      return new URLSearchParams(raw.slice(queryIndex + 1));
+    },
+
+    buildWebmailUrl(href, emailOverride = "") {
+      const email = String(emailOverride || this.extractEmail(href)).trim();
+      if (!email) return "";
+
+      const params = this.extractMailtoParams(href);
+      const webmailParams = new URLSearchParams({
+        view: "cm",
+        fs: "1",
+        to: email,
+      });
+
+      const subject = params.get("subject") || params.get("su");
+      const body = params.get("body");
+      const cc = params.get("cc");
+      const bcc = params.get("bcc");
+
+      if (subject) webmailParams.set("su", subject);
+      if (body) webmailParams.set("body", body);
+      if (cc) webmailParams.set("cc", cc);
+      if (bcc) webmailParams.set("bcc", bcc);
+
+      return `https://mail.google.com/mail/?${webmailParams.toString()}`;
+    },
+
+    applyAnchor(anchor) {
+      if (!(anchor instanceof HTMLAnchorElement)) return;
+
+      const sourceHref = String(
+        anchor.getAttribute("data-mailto-original") ||
+          anchor.getAttribute("href") ||
+          "",
+      ).trim();
+
+      if (!sourceHref.toLowerCase().startsWith("mailto:")) return;
+
+      const webmailUrl = this.buildWebmailUrl(sourceHref);
+      if (!webmailUrl) return;
+
+      anchor.setAttribute("data-mailto-original", sourceHref);
+      anchor.setAttribute("href", webmailUrl);
+      anchor.setAttribute("target", "_blank");
+      anchor.setAttribute("rel", "noopener noreferrer");
+    },
+
+    applyAll(root) {
+      if (!(root instanceof Element) && root !== document) return;
+
+      if (root instanceof HTMLAnchorElement) {
+        this.applyAnchor(root);
+      }
+
+      const links = root.querySelectorAll(
+        'a[href^="mailto:"], a[data-mailto-original]',
+      );
+      links.forEach((link) => this.applyAnchor(link));
+    },
+  };
+
+  // ==========================================================================
   // STICKY HEADER
   // ==========================================================================
 
@@ -798,8 +989,6 @@
 
       // Normalize stale navigation state on load (e.g. history restore/cached states).
       this.isOpen = false;
-      this.toggle.setAttribute("aria-expanded", "false");
-      this.toggle.classList.remove("is-active");
       this.nav.classList.remove("is-open");
       this.navList.classList.remove("is-open");
       document.body.classList.remove("nav-is-open");
@@ -1233,6 +1422,71 @@
       },
     },
 
+    t(key, fallback = "") {
+      return (
+        window.i18n?.[INTEC.state.currentLanguage]?.[key] ||
+        window.i18n?.en?.[key] ||
+        fallback
+      );
+    },
+
+    normalizeStatusLabel(label) {
+      return String(label || "")
+        .trim()
+        .toLocaleUpperCase();
+    },
+
+    isMarkedAsFull(statusEl) {
+      if (!statusEl) return false;
+
+      if (statusEl.dataset.capacityState) {
+        return statusEl.dataset.capacityState === "full";
+      }
+
+      const explicitCapacity = (
+        statusEl.dataset.capacity ||
+        statusEl.closest("[data-capacity]")?.dataset.capacity ||
+        ""
+      ).toLowerCase();
+
+      const key = (statusEl.getAttribute("data-i18n") || "").toLowerCase();
+      const className = statusEl.className.toLowerCase();
+      const text = (statusEl.textContent || "").trim().toLowerCase();
+
+      const isFull =
+        explicitCapacity === "full" ||
+        key === "date.badge.full" ||
+        className.includes("course-dates__status--full") ||
+        /\b(full|volzet|vol)\b/.test(text);
+
+      statusEl.dataset.capacityState = isFull ? "full" : "open";
+      return isFull;
+    },
+
+    updateStatus(item, diffDays) {
+      const statusEl = item.querySelector(".course-dates__status");
+      if (!statusEl) return;
+
+      const isFull = this.isMarkedAsFull(statusEl);
+      const shouldWait = isFull || diffDays <= 0;
+      const key = shouldWait ? "date.badge.waiting" : "date.badge.available";
+      const fallback = shouldWait ? "WAITING" : "AVAILABLE";
+      const label = this.normalizeStatusLabel(this.t(key, fallback));
+
+      statusEl.dataset.i18n = key;
+      statusEl.textContent = label;
+      statusEl.classList.remove(
+        "course-dates__status--available",
+        "course-dates__status--full",
+        "course-dates__status--waiting",
+      );
+      statusEl.classList.add(
+        shouldWait
+          ? "course-dates__status--waiting"
+          : "course-dates__status--available",
+      );
+    },
+
     init() {
       this.update();
       this.timer = setInterval(
@@ -1270,6 +1524,8 @@
           message =
             pastDays === 1 ? messages.pastOne() : messages.pastMany(pastDays);
         }
+
+        this.updateStatus(item, diffDays);
 
         let badge =
           item.querySelector("[data-countdown]") ||
@@ -2363,10 +2619,24 @@
       nl: {
         required: "Voer uw e-mailadres in.",
         invalid: "Gebruik een geldig e-mailadres, bijvoorbeeld naam@domein.be.",
+        submitting: "Bezig met verzenden...",
+        success: "Bedankt! Je bent ingeschreven op de nieuwsbrief.",
+        duplicate: "Dit e-mailadres is al ingeschreven.",
+        unavailable:
+          "Nieuwsbrief is tijdelijk niet beschikbaar. Probeer later opnieuw.",
+        failed:
+          "Inschrijving mislukt. Controleer je verbinding en probeer opnieuw.",
       },
       en: {
         required: "Please enter your email address.",
         invalid: "Use a valid email address, for example name@domain.com.",
+        submitting: "Submitting...",
+        success: "Thank you! You are now subscribed to the newsletter.",
+        duplicate: "This email address is already subscribed.",
+        unavailable:
+          "Newsletter is temporarily unavailable. Please try again later.",
+        failed:
+          "Subscription failed. Please check your connection and try again.",
       },
     };
 
@@ -2383,6 +2653,40 @@
       const locale = getLocale();
       return translations[locale]?.[type] || translations.nl[type];
     };
+
+    const readMeta = (name) => {
+      const node = document.querySelector(`meta[name="${name}"]`);
+      return String(node?.getAttribute("content") || "").trim();
+    };
+
+    const sanitizeValue = (value) => String(value || "").trim();
+
+    const resolveConfig = () => {
+      const url =
+        sanitizeValue(readMeta("intec-supabase-url")) ||
+        sanitizeValue(INTEC.config.newsletterSupabaseUrl);
+      const anonKey =
+        sanitizeValue(readMeta("intec-supabase-anon-key")) ||
+        sanitizeValue(INTEC.config.newsletterSupabaseAnonKey);
+      const table =
+        sanitizeValue(readMeta("intec-supabase-table")) ||
+        sanitizeValue(INTEC.config.newsletterSupabaseTable) ||
+        "newsletter_subscribers";
+
+      return {
+        url: url.replace(/\/+$/, ""),
+        anonKey,
+        table,
+        timeoutMs: Number(INTEC.config.newsletterSubmitTimeout) || 10000,
+      };
+    };
+
+    const getEndpoint = (config) => {
+      if (!config.url || !config.anonKey || !config.table) return "";
+      return `${config.url}/rest/v1/${encodeURIComponent(config.table)}`;
+    };
+
+    const isJwtLike = (value) => /^eyJ[A-Za-z0-9_-]+\./.test(value);
 
     const isValidStructure = (email) => {
       if (!email || typeof email !== "string") return false;
@@ -2424,6 +2728,126 @@
       return { ok: true };
     };
 
+    const createStatusElement = (form, anchorNode) => {
+      let status = form.querySelector(".newsletter-status");
+      if (!status) {
+        status = document.createElement("p");
+        status.className = "newsletter-status";
+        status.hidden = true;
+        (anchorNode || form).insertAdjacentElement("afterend", status);
+      }
+      status.setAttribute("aria-live", "polite");
+      status.setAttribute("role", "status");
+      return status;
+    };
+
+    const setStatus = (statusEl, state, text, messageKey = "") => {
+      if (!statusEl) return;
+      if (!text) {
+        statusEl.textContent = "";
+        statusEl.hidden = true;
+        statusEl.removeAttribute("data-state");
+        statusEl.removeAttribute("data-message-key");
+        return;
+      }
+      statusEl.hidden = false;
+      statusEl.textContent = text;
+      statusEl.setAttribute("data-state", state);
+      if (messageKey) {
+        statusEl.setAttribute("data-message-key", messageKey);
+      } else {
+        statusEl.removeAttribute("data-message-key");
+      }
+    };
+
+    const toggleSubmitting = (form, isLoading) => {
+      const submitBtn =
+        form.querySelector(".newsletter-button") ||
+        form.querySelector('button[type="submit"]');
+
+      if (!submitBtn) return;
+
+      submitBtn.classList.toggle("is-loading", isLoading);
+      submitBtn.disabled = isLoading;
+      submitBtn.setAttribute("aria-busy", String(isLoading));
+
+      if (!submitBtn.dataset.originalLabel) {
+        submitBtn.dataset.originalLabel = submitBtn.textContent.trim();
+      }
+
+      submitBtn.textContent = isLoading
+        ? getMessage("submitting")
+        : submitBtn.dataset.originalLabel;
+    };
+
+    const submitToSupabase = async (email) => {
+      const config = resolveConfig();
+      const endpoint = getEndpoint(config);
+      if (!endpoint) {
+        return { ok: false, reason: "unavailable" };
+      }
+
+      const payload = {
+        email,
+        source_page: window.location.pathname,
+        language: getLocale(),
+        subscribed_at: new Date().toISOString(),
+      };
+
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(
+        () => controller.abort(),
+        config.timeoutMs,
+      );
+
+      try {
+        const headers = {
+          apikey: config.anonKey,
+          "Content-Type": "application/json",
+          Prefer: "return=minimal",
+        };
+
+        if (isJwtLike(config.anonKey)) {
+          headers.Authorization = `Bearer ${config.anonKey}`;
+        }
+
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers,
+          body: JSON.stringify(payload),
+          signal: controller.signal,
+        });
+
+        if (response.ok) {
+          return { ok: true };
+        }
+
+        if (response.status === 409) {
+          return { ok: false, reason: "duplicate" };
+        }
+
+        let body = null;
+        try {
+          body = await response.json();
+        } catch (error) {
+          /* noop */
+        }
+
+        const duplicateByBody = String(body?.message || body?.hint || "")
+          .toLowerCase()
+          .includes("duplicate");
+        if (duplicateByBody) {
+          return { ok: false, reason: "duplicate" };
+        }
+
+        return { ok: false, reason: "failed" };
+      } catch (error) {
+        return { ok: false, reason: "failed" };
+      } finally {
+        clearTimeout(timeoutId);
+      }
+    };
+
     const ensureErrorElement = (form, input) => {
       let error = form.querySelector(".newsletter-error");
       if (!error) {
@@ -2458,8 +2882,11 @@
       form.setAttribute("novalidate", "novalidate");
 
       const errorEl = ensureErrorElement(form, emailInput);
+      const statusEl = createStatusElement(form, errorEl);
+      let inFlight = false;
 
       const showError = (message) => {
+        setStatus(statusEl, "", "");
         errorEl.textContent = message;
         errorEl.hidden = false;
         emailInput.classList.add("has-error");
@@ -2501,17 +2928,72 @@
       });
 
       form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (inFlight) return;
+
         if (!runValidation()) {
-          event.preventDefault();
           emailInput.focus();
+          return;
         }
+
+        const normalizedEmail = String(emailInput.value || "")
+          .trim()
+          .toLowerCase();
+        inFlight = true;
+        toggleSubmitting(form, true);
+        setStatus(statusEl, "info", getMessage("submitting"), "submitting");
+
+        submitToSupabase(normalizedEmail)
+          .then((result) => {
+            if (result.ok) {
+              form.reset();
+              hideError();
+              setStatus(statusEl, "success", getMessage("success"), "success");
+              return;
+            }
+
+            if (result.reason === "duplicate") {
+              setStatus(
+                statusEl,
+                "warning",
+                getMessage("duplicate"),
+                "duplicate",
+              );
+              return;
+            }
+
+            if (result.reason === "unavailable") {
+              setStatus(
+                statusEl,
+                "error",
+                getMessage("unavailable"),
+                "unavailable",
+              );
+              return;
+            }
+
+            setStatus(statusEl, "error", getMessage("failed"), "failed");
+          })
+          .finally(() => {
+            inFlight = false;
+            toggleSubmitting(form, false);
+          });
       });
 
       window.addEventListener("languageChanged", () => {
-        if (errorEl.hidden) return;
-        const { message } = validateEmail(emailInput.value);
-        if (message) {
-          errorEl.textContent = message;
+        if (!errorEl.hidden) {
+          const { message } = validateEmail(emailInput.value);
+          if (message) {
+            errorEl.textContent = message;
+          }
+        }
+
+        if (!statusEl.hidden) {
+          const messageKey = statusEl.getAttribute("data-message-key");
+          if (messageKey) {
+            statusEl.textContent = getMessage(messageKey);
+          }
         }
       });
     };
@@ -2519,7 +3001,13 @@
     const init = () => {
       const forms = document.querySelectorAll(".newsletter-form");
       if (!forms.length) return;
-      forms.forEach(attachValidation);
+      forms.forEach((form) => {
+        // Prevent static hosts from returning 405 if submit happens before
+        // handlers are attached (or if another script fails early).
+        form.setAttribute("method", "get");
+        form.setAttribute("action", "");
+        attachValidation(form);
+      });
     };
 
     return { init };
@@ -2589,9 +3077,170 @@
       }
     },
 
+    escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, (char) => {
+        const map = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        };
+        return map[char] || char;
+      });
+    },
+
     createMetaItem(labelKey, fallback, value) {
       if (!value) return "";
-      return `<li><strong>${this.t(labelKey, fallback)}:</strong> <span>${value}</span></li>`;
+      return `<li><strong>${this.t(labelKey, fallback)}:</strong> <span>${this.escapeHtml(value)}</span></li>`;
+    },
+
+    resolveTeamKey(job) {
+      const source =
+        `${job.team || ""} ${job.title || ""} ${job.description || ""}`.toLowerCase();
+
+      if (/(security|cyber|soc|pentest|incident)/.test(source)) {
+        return "security";
+      }
+
+      if (/(instruct|trainer|docent|teacher|python|opleiding)/.test(source)) {
+        return "instructors";
+      }
+
+      if (/(infra|systeem|system|network|devops|cloud)/.test(source)) {
+        return "infra";
+      }
+
+      if (/(administr|intake|admission|office|backoffice)/.test(source)) {
+        return "admin";
+      }
+
+      if (/(talent|jobcoach|coaching|coach|begeleiding)/.test(source)) {
+        return "talent";
+      }
+
+      return "general";
+    },
+
+    getTeamIconSvg(teamKey) {
+      const icons = {
+        security:
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6l7-3"></path><path d="M9 12l2 2 4-4"></path></svg>',
+        instructors:
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h6v18H6a2 2 0 0 0-2 2V5z"></path><path d="M20 5a2 2 0 0 0-2-2h-6v18h6a2 2 0 0 1 2 2V5z"></path></svg>',
+        infra:
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="2"></rect><rect x="3" y="14" width="18" height="6" rx="2"></rect><path d="M7 7h.01"></path><path d="M7 17h.01"></path></svg>',
+        admin:
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="12" height="17" rx="2"></rect><path d="M9 4.5h6a1 1 0 0 0 1-1v-.7a.8.8 0 0 0-.8-.8H8.8a.8.8 0 0 0-.8.8v.7a1 1 0 0 0 1 1z"></path><path d="M9 10h6"></path><path d="M9 14h6"></path><path d="M9 18h4"></path></svg>',
+        talent:
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7"></circle><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3"></path><path d="M12 19v3"></path><path d="M2 12h3"></path><path d="M19 12h3"></path></svg>',
+        general:
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 13h18"></path></svg>',
+      };
+
+      return icons[teamKey] || icons.general;
+    },
+
+    normalizeSlug(value) {
+      return String(value || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+    },
+
+    getJobSlug(job, index = 0) {
+      const explicitSlug = this.normalizeSlug(job.slug || job.id || "");
+      if (explicitSlug) return explicitSlug;
+
+      const composedSlug = this.normalizeSlug(
+        `${job.title || ""}-${job.team || ""}`,
+      );
+      if (composedSlug) return composedSlug;
+
+      return `vacature-${index + 1}`;
+    },
+
+    buildDefaultApplyUrl(job) {
+      const title = String(job?.title || "Vacature").trim();
+      const fallbackMailto = `mailto:info@intecbrussel.be?subject=${encodeURIComponent(`Sollicitatie ${title}`)}`;
+      return MailtoLinks.buildWebmailUrl(fallbackMailto) || fallbackMailto;
+    },
+
+    buildDetailsUrl(job, index = 0) {
+      const configuredDetailsUrl = String(job?.detailsUrl || "").trim();
+      if (configuredDetailsUrl) return configuredDetailsUrl;
+
+      const slug = this.getJobSlug(job, index);
+      return `vacature.html?job=${encodeURIComponent(slug)}`;
+    },
+
+    updateStructuredData(schema) {
+      const id = "intec-vacancies-itemlist";
+      let node = document.getElementById(id);
+
+      if (!schema) {
+        if (node) node.remove();
+        return;
+      }
+
+      if (!node) {
+        node = document.createElement("script");
+        node.id = id;
+        node.type = "application/ld+json";
+        document.head.appendChild(node);
+      }
+
+      node.textContent = JSON.stringify(schema);
+    },
+
+    buildAbsoluteUrl(value) {
+      try {
+        return new URL(value, window.location.origin).toString();
+      } catch (error) {
+        return "";
+      }
+    },
+
+    syncStructuredData() {
+      if (this.hasLoadError || !this.jobs.length) {
+        this.updateStructuredData(null);
+        return;
+      }
+
+      const itemListElement = this.jobs
+        .map((job, index) => {
+          const url = this.buildAbsoluteUrl(this.buildDetailsUrl(job, index));
+          if (!url) return null;
+
+          return {
+            "@type": "ListItem",
+            position: index + 1,
+            name: String(job?.title || `Vacature ${index + 1}`).trim(),
+            url,
+          };
+        })
+        .filter(Boolean);
+
+      if (!itemListElement.length) {
+        this.updateStructuredData(null);
+        return;
+      }
+
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: this.t("vacancies.meta.title", "Vacatures bij INTEC Brussel"),
+        description: this.t(
+          "vacancies.meta.description",
+          "Ontdek openstaande vacatures bij INTEC Brussel.",
+        ),
+        numberOfItems: itemListElement.length,
+        itemListElement,
+      };
+
+      this.updateStructuredData(schema);
     },
 
     render() {
@@ -2608,6 +3257,7 @@
           this.getFallback("errorMessage"),
         );
         grid.innerHTML = "";
+        this.syncStructuredData();
         return;
       }
 
@@ -2619,6 +3269,7 @@
           this.getFallback("emptyMessage"),
         );
         grid.innerHTML = "";
+        this.syncStructuredData();
         return;
       }
 
@@ -2626,12 +3277,14 @@
       this.setPlaceholderState(placeholder, "ready");
 
       const cards = this.jobs.map((job, index) => {
+        const teamKey = this.resolveTeamKey(job);
+        const iconSvg = this.getTeamIconSvg(teamKey);
         const badge = job.team
-          ? `<span class="card__badge">${job.team}</span>`
+          ? `<span class="card__badge">${this.escapeHtml(job.team)}</span>`
           : "";
 
         const description = job.description
-          ? `<p class="card__text">${job.description}</p>`
+          ? `<p class="card__text">${this.escapeHtml(job.description)}</p>`
           : "";
 
         const meta = [
@@ -2649,23 +3302,25 @@
           .filter(Boolean)
           .join("");
 
-        const applyUrl = (job.applyUrl || "").trim();
-        const href = applyUrl || "mailto:hr@intecbrussel.be";
-        const targetAttrs = applyUrl.startsWith("http")
+        const detailsUrl = this.buildDetailsUrl(job, index);
+        const safeHref = this.escapeHtml(detailsUrl);
+        const isHttpLink = /^https?:/i.test(detailsUrl);
+        const targetAttrs = isHttpLink
           ? ' target="_blank" rel="noreferrer noopener"'
           : "";
+        const ctaText = this.t(
+          "vacancies.card.details",
+          this.getFallback("buttonLabel"),
+        );
+        const ctaAriaLabel = job.title ? `${ctaText}: ${job.title}` : ctaText;
 
         return `
-          <article class="card card--feature fade-up" data-delay="${(index % 3) + 1}">
+          <article class="card card--feature card--vacature fade-up" data-delay="${(index % 3) + 1}" data-team-key="${teamKey}">
             <div class="card__header align-start">
-              <span class="card__icon" aria-hidden="true">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M20 7h-9M14 17H5M20 12H10M14 7l-5-5M9 17l-5 5"></path>
-                </svg>
-              </span>
+              <span class="card__icon" aria-hidden="true">${iconSvg}</span>
               <div>
                 ${badge}
-                <h3 class="card__title">${job.title || ""}</h3>
+                <h3 class="card__title">${this.escapeHtml(job.title || "")}</h3>
               </div>
             </div>
             <div class="card__body">
@@ -2673,16 +3328,14 @@
               ${meta ? `<ul class="card__meta">${meta}</ul>` : ""}
             </div>
             <div class="card__footer card__footer--start">
-              <a class="btn btn--primary card__cta" href="${href}"${targetAttrs}>${this.t(
-                "vacancies.card.button",
-                this.getFallback("buttonLabel"),
-              )}</a>
+              <a class="btn btn--primary card__cta" href="${safeHref}" aria-label="${this.escapeHtml(ctaAriaLabel)}"${targetAttrs}>${this.escapeHtml(ctaText)}</a>
             </div>
           </article>
         `;
       });
 
       grid.innerHTML = cards.join("");
+      this.syncStructuredData();
     },
 
     async loadJobs() {
@@ -2722,6 +3375,474 @@
       window.addEventListener("languageChanged", () => this.render());
       window.addEventListener("intecLanguageChanged", () => this.render());
       Utils.log("Vacancies module initialized", "success");
+    },
+  };
+
+  const VacancyDetailModule = {
+    initialized: false,
+    jobs: [],
+    hasLoadError: false,
+    redirected: false,
+
+    setPlaceholderState(placeholder, state) {
+      if (!placeholder) return;
+      placeholder.setAttribute("data-state", state);
+      placeholder.setAttribute(
+        "aria-busy",
+        state === "loading" ? "true" : "false",
+      );
+    },
+
+    getPageElements() {
+      const placeholder = Utils.$("#vacature-detail-placeholder");
+      const content = Utils.$("#vacature-detail-content");
+      const team = Utils.$("#vacature-detail-team");
+      const title = Utils.$("#vacature-detail-title");
+      const description = Utils.$("#vacature-detail-description");
+      const meta = Utils.$("#vacature-detail-meta");
+      const sections = Utils.$("#vacature-detail-sections");
+      const applyButton = Utils.$("#vacature-detail-apply");
+
+      if (
+        !placeholder ||
+        !content ||
+        !team ||
+        !title ||
+        !description ||
+        !meta ||
+        !sections ||
+        !applyButton
+      ) {
+        return null;
+      }
+
+      return {
+        placeholder,
+        content,
+        team,
+        title,
+        description,
+        meta,
+        sections,
+        applyButton,
+      };
+    },
+
+    getLanguage() {
+      return (
+        INTEC.state.currentLanguage ||
+        document.documentElement.getAttribute("data-language") ||
+        document.documentElement.lang ||
+        "nl"
+      );
+    },
+
+    t(key, fallback) {
+      return window.i18n?.[this.getLanguage()]?.[key] || fallback || "";
+    },
+
+    getFallback(key) {
+      const nodes = this.getPageElements();
+      if (!nodes) return "";
+      return nodes.placeholder.dataset[key] || "";
+    },
+
+    formatDate(value) {
+      if (!value) {
+        return this.t(
+          "vacancies.card.postedUnknown",
+          this.getFallback("postedUnknown"),
+        );
+      }
+
+      try {
+        const lang = this.getLanguage().toLowerCase().startsWith("en")
+          ? "en-GB"
+          : "nl-BE";
+        return new Intl.DateTimeFormat(lang, { dateStyle: "long" }).format(
+          new Date(value),
+        );
+      } catch (error) {
+        return value;
+      }
+    },
+
+    getRequestedSlug() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        return String(params.get("job") || "")
+          .trim()
+          .toLowerCase();
+      } catch (error) {
+        return "";
+      }
+    },
+
+    findJobBySlug(slug) {
+      if (!slug) return null;
+
+      for (let index = 0; index < this.jobs.length; index += 1) {
+        const job = this.jobs[index];
+        if (VacanciesModule.getJobSlug(job, index) === slug) {
+          return { job, index };
+        }
+      }
+
+      return null;
+    },
+
+    normalizeText(value) {
+      return String(value || "").trim();
+    },
+
+    normalizeList(value) {
+      if (!Array.isArray(value)) return [];
+      return value.map((item) => this.normalizeText(item)).filter(Boolean);
+    },
+
+    renderSection(title, bodyHtml) {
+      return `
+        <section class="vacature-detail-section">
+          <h3 class="vacature-detail-section__title">${VacanciesModule.escapeHtml(title)}</h3>
+          ${bodyHtml}
+        </section>
+      `;
+    },
+
+    renderTextSection(titleKey, fallbackTitle, value) {
+      const text = this.normalizeText(value);
+      if (!text) return "";
+      const title = this.t(titleKey, fallbackTitle);
+      const body = `<p class="vacature-detail-section__text">${VacanciesModule.escapeHtml(text)}</p>`;
+      return this.renderSection(title, body);
+    },
+
+    renderListSection(titleKey, fallbackTitle, listValue) {
+      const items = this.normalizeList(listValue);
+      if (!items.length) return "";
+
+      const title = this.t(titleKey, fallbackTitle);
+      const listItems = items
+        .map((item) => `<li>${VacanciesModule.escapeHtml(item)}</li>`)
+        .join("");
+      const body = `<ul class="vacature-detail-list">${listItems}</ul>`;
+      return this.renderSection(title, body);
+    },
+
+    renderDetailSections(job, targetNode) {
+      const sections = [
+        this.renderTextSection(
+          "vacancy.detail.section.overview",
+          "Over de functie",
+          job.overview,
+        ),
+        this.renderTextSection(
+          "vacancy.detail.section.impact",
+          "Impact",
+          job.impact,
+        ),
+        this.renderListSection(
+          "vacancy.detail.section.responsibilities",
+          "Wat ga je doen",
+          job.responsibilities,
+        ),
+        this.renderListSection(
+          "vacancy.detail.section.profile",
+          "Jouw profiel",
+          job.profile,
+        ),
+        this.renderListSection(
+          "vacancy.detail.section.offer",
+          "Wat bieden wij",
+          job.offer,
+        ),
+      ].filter(Boolean);
+
+      if (!sections.length) {
+        targetNode.hidden = true;
+        targetNode.innerHTML = "";
+        return;
+      }
+
+      targetNode.hidden = false;
+      targetNode.innerHTML = sections.join("");
+    },
+
+    redirectToVacancies() {
+      if (this.redirected) return;
+      this.redirected = true;
+      window.location.replace("vacatures.html");
+    },
+
+    getCanonicalUrl(job, index = 0) {
+      const canonicalUrl = new URL("vacature.html", window.location.origin);
+      if (job) {
+        const slug = VacanciesModule.getJobSlug(job, index);
+        if (slug) {
+          canonicalUrl.searchParams.set("job", slug);
+        }
+      }
+      return canonicalUrl.toString();
+    },
+
+    updateStructuredData(job, index = 0) {
+      const id = "intec-vacancy-jobposting";
+      let node = document.getElementById(id);
+
+      if (!job) {
+        if (node) node.remove();
+        return;
+      }
+
+      const description = [
+        String(job.description || "").trim(),
+        String(job.overview || "").trim(),
+      ]
+        .filter(Boolean)
+        .join("\n\n");
+
+      const locationText =
+        String(job.location || "Brussel").trim() || "Brussel";
+
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "JobPosting",
+        title: String(job.title || "Vacature").trim(),
+        description,
+        datePosted: String(job.posted || "").trim() || undefined,
+        url: this.getCanonicalUrl(job, index),
+        hiringOrganization: {
+          "@type": "Organization",
+          name: "INTEC Brussel",
+          sameAs: "https://www.intecbrussel.be/",
+        },
+        jobLocation: {
+          "@type": "Place",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: locationText,
+            addressCountry: "BE",
+          },
+        },
+      };
+
+      if (!schema.description) {
+        delete schema.description;
+      }
+      if (!schema.datePosted) {
+        delete schema.datePosted;
+      }
+
+      if (!node) {
+        node = document.createElement("script");
+        node.id = id;
+        node.type = "application/ld+json";
+        document.head.appendChild(node);
+      }
+
+      node.textContent = JSON.stringify(schema);
+    },
+
+    setPageMeta(job, index = 0) {
+      const defaultTitle = this.t(
+        "vacancy.detail.meta.title",
+        "Vacature details | INTEC Brussel",
+      );
+      const title = String(job?.title || "").trim();
+      document.title = title ? `${title} | INTEC Brussel` : defaultTitle;
+
+      const defaultDescription = this.t(
+        "vacancy.detail.meta.description",
+        "Lees de vacaturedetails en solliciteer via e-mail.",
+      );
+      const description =
+        String(job?.description || "").trim() || defaultDescription;
+
+      const canonicalUrl = this.getCanonicalUrl(job, index);
+
+      const setMetaContent = (selector, value) => {
+        const node = Utils.$(selector);
+        if (node) node.setAttribute("content", value);
+      };
+
+      setMetaContent('meta[name="description"]', description);
+      setMetaContent('meta[property="og:title"]', document.title);
+      setMetaContent('meta[property="og:description"]', description);
+      setMetaContent('meta[property="og:url"]', canonicalUrl);
+      setMetaContent('meta[name="twitter:title"]', document.title);
+      setMetaContent('meta[name="twitter:description"]', description);
+
+      const canonicalNode = Utils.$('link[rel="canonical"]');
+      if (canonicalNode) {
+        canonicalNode.setAttribute("href", canonicalUrl);
+      }
+    },
+
+    render() {
+      const nodes = this.getPageElements();
+      if (!nodes) return;
+
+      const {
+        placeholder,
+        content,
+        team,
+        title,
+        description,
+        meta,
+        sections,
+        applyButton,
+      } = nodes;
+
+      if (this.hasLoadError) {
+        content.hidden = true;
+        placeholder.hidden = false;
+        this.setPlaceholderState(placeholder, "error");
+        placeholder.textContent = this.t(
+          "vacancy.detail.error",
+          this.getFallback("errorMessage"),
+        );
+        this.setPageMeta(null);
+        this.updateStructuredData(null);
+        return;
+      }
+
+      if (!this.jobs.length) {
+        this.redirectToVacancies();
+        return;
+      }
+
+      const requestedSlug = this.getRequestedSlug();
+      if (!requestedSlug) {
+        this.redirectToVacancies();
+        return;
+      }
+
+      const result = this.findJobBySlug(requestedSlug);
+
+      if (!result) {
+        this.redirectToVacancies();
+        return;
+      }
+
+      const { job, index } = result;
+      const teamKey = VacanciesModule.resolveTeamKey(job);
+      const teamText = String(
+        job.team || this.getFallback("teamLabel") || "",
+      ).trim();
+      const titleText = String(job.title || "").trim();
+      const descriptionText = String(job.description || "").trim();
+      const applyText = this.t(
+        "vacancy.detail.apply",
+        this.getFallback("applyLabel"),
+      );
+
+      team.hidden = !teamText;
+      team.textContent = teamText;
+      title.textContent = titleText;
+      description.hidden = !descriptionText;
+      description.textContent = descriptionText;
+
+      const locationLabel = this.t(
+        "vacancies.card.location",
+        this.getFallback("locationLabel"),
+      );
+      const postedLabel = this.t(
+        "vacancies.card.posted",
+        this.getFallback("postedLabel"),
+      );
+      const formattedDate = this.formatDate(job.posted);
+
+      const metaItems = [
+        job.location
+          ? `<li><strong>${VacanciesModule.escapeHtml(locationLabel)}:</strong> <span>${VacanciesModule.escapeHtml(job.location)}</span></li>`
+          : "",
+        formattedDate
+          ? `<li><strong>${VacanciesModule.escapeHtml(postedLabel)}:</strong> <span>${VacanciesModule.escapeHtml(formattedDate)}</span></li>`
+          : "",
+      ]
+        .filter(Boolean)
+        .join("");
+
+      meta.innerHTML = metaItems;
+      this.renderDetailSections(job, sections);
+
+      const configuredApplyUrl = String(job.applyUrl || "").trim();
+      let applyHref = "";
+
+      if (configuredApplyUrl) {
+        applyHref = configuredApplyUrl.toLowerCase().startsWith("mailto:")
+          ? MailtoLinks.buildWebmailUrl(configuredApplyUrl) ||
+            configuredApplyUrl
+          : configuredApplyUrl;
+      } else {
+        applyHref = VacanciesModule.buildDefaultApplyUrl(job);
+      }
+
+      applyButton.setAttribute("href", applyHref);
+      if (/^https?:/i.test(applyHref)) {
+        applyButton.setAttribute("target", "_blank");
+        applyButton.setAttribute("rel", "noopener noreferrer");
+      } else {
+        applyButton.removeAttribute("target");
+        applyButton.removeAttribute("rel");
+      }
+      applyButton.textContent = applyText;
+      applyButton.setAttribute(
+        "aria-label",
+        titleText ? `${applyText}: ${titleText}` : applyText,
+      );
+
+      content.setAttribute("data-team-key", teamKey);
+      content.setAttribute(
+        "data-job-slug",
+        VacanciesModule.getJobSlug(job, index),
+      );
+
+      placeholder.hidden = true;
+      this.setPlaceholderState(placeholder, "ready");
+      content.hidden = false;
+      this.setPageMeta(job, index);
+      this.updateStructuredData(job, index);
+    },
+
+    async loadJobs() {
+      const nodes = this.getPageElements();
+      if (!nodes) return;
+
+      nodes.placeholder.hidden = false;
+      this.setPlaceholderState(nodes.placeholder, "loading");
+      nodes.placeholder.textContent = this.t(
+        "vacancy.detail.loading",
+        this.getFallback("loadingMessage"),
+      );
+
+      try {
+        const response = await fetch("data/jobs.json", { cache: "no-cache" });
+        if (!response.ok) {
+          throw new Error(`Failed to load jobs (${response.status})`);
+        }
+
+        const data = await response.json();
+        this.jobs = Array.isArray(data) ? data : [];
+        this.hasLoadError = false;
+      } catch (error) {
+        this.jobs = [];
+        this.hasLoadError = true;
+        Utils.log(`Vacancy detail load error: ${error.message}`, "warning");
+      }
+
+      this.render();
+    },
+
+    init() {
+      if (this.initialized) return;
+      if (!this.getPageElements()) return;
+
+      this.initialized = true;
+      this.loadJobs();
+      window.addEventListener("languageChanged", () => this.render());
+      window.addEventListener("intecLanguageChanged", () => this.render());
+      Utils.log("Vacancy detail module initialized", "success");
     },
   };
 
@@ -2972,9 +4093,12 @@
       StickyHeader.init();
       MobileNav.init();
       SmoothScroll.init();
+      HashTargetFocus.init();
+      MailtoLinks.init();
       ScrollAnimations.init();
       AccordionSystem.init();
       FormValidation.init();
+      NewsletterValidation.init();
       FooterYear.init();
       ServiceWorker.init();
 
@@ -2984,8 +4108,8 @@
         CourseCountdown.init();
         PartnerCarousel.init();
         SectionBackgrounds.init();
-        NewsletterValidation.init();
         VacanciesModule.init();
+        VacancyDetailModule.init();
         ProgramCardsLayout.init();
       };
 
@@ -3027,12 +4151,14 @@
     Utils,
     LanguageManager,
     SmoothScroll,
+    MailtoLinks,
     PartnerCarousel,
     AccordionSystem,
     FormValidation,
     SectionBackgrounds,
     NewsletterValidation,
     VacanciesModule,
+    VacancyDetailModule,
     ProgramCardsLayout,
 
     // Legacy support
