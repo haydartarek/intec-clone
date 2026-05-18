@@ -8738,6 +8738,12 @@ body.devtools-open .values-section * {
   align-items: stretch;
 }
 
+.page--accessibility .accessibility-overview .container,
+.page--accessibility .accessibility-feedback .container {
+  display: grid;
+  gap: clamp(var(--size-r-125), 2.2vw, var(--size-r-175));
+}
+
 .page--accessibility .accessibility-overview__card {
   display: flex;
   flex-direction: column;
@@ -8746,7 +8752,7 @@ body.devtools-open .values-section * {
   border-radius: var(--radius-xl, 26px);
 }
 
-.page--accessibility .accessibility-overview__card :where(h2) {
+.page--accessibility .accessibility-overview__card :where(h2, h3) {
   margin: 0;
   font-size: clamp(1.2rem, 1.08rem + 0.4vw, 1.45rem);
   letter-spacing: -0.01em;
@@ -8797,7 +8803,7 @@ body.devtools-open .values-section * {
   padding: clamp(1.2rem, 2.3vw, 1.6rem);
 }
 
-.page--accessibility .accessibility-feedback__card :where(h2, p) {
+.page--accessibility .accessibility-feedback__card :where(h2, h3, p) {
   margin: 0;
 }
 

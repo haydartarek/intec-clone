@@ -2615,6 +2615,30 @@
   const NewsletterValidation = (() => {
     const EMAIL_PATTERN =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.[A-Za-z0-9-]{1,63})+$/;
+    const LAST_NEWSLETTER_EMAIL_KEY = "intec-newsletter-last-email";
+
+    const getLastSubscribedEmail = () => {
+      try {
+        return String(window.localStorage.getItem(LAST_NEWSLETTER_EMAIL_KEY) || "")
+          .trim()
+          .toLowerCase();
+      } catch (error) {
+        return "";
+      }
+    };
+
+    const setLastSubscribedEmail = (email) => {
+      if (!email) return;
+      try {
+        window.localStorage.setItem(
+          LAST_NEWSLETTER_EMAIL_KEY,
+          String(email).trim().toLowerCase(),
+        );
+      } catch (error) {
+        /* noop */
+      }
+    };
+
     const translations = {
       nl: {
         required: "Voer uw e-mailadres in.",
@@ -2940,6 +2964,17 @@
         const normalizedEmail = String(emailInput.value || "")
           .trim()
           .toLowerCase();
+
+        if (getLastSubscribedEmail() === normalizedEmail) {
+          setStatus(
+            statusEl,
+            "warning",
+            getMessage("duplicate"),
+            "duplicate",
+          );
+          return;
+        }
+
         inFlight = true;
         toggleSubmitting(form, true);
         setStatus(statusEl, "info", getMessage("submitting"), "submitting");
@@ -2949,11 +2984,13 @@
             if (result.ok) {
               form.reset();
               hideError();
+              setLastSubscribedEmail(normalizedEmail);
               setStatus(statusEl, "success", getMessage("success"), "success");
               return;
             }
 
             if (result.reason === "duplicate") {
+              setLastSubscribedEmail(normalizedEmail);
               setStatus(
                 statusEl,
                 "warning",
@@ -4051,6 +4088,25 @@
   // ==========================================================================
 
   const ServiceWorker = {
+    resolveRegistrationUrl() {
+      const scripts = Array.from(document.getElementsByTagName("script"));
+      for (let i = scripts.length - 1; i >= 0; i -= 1) {
+        const src = scripts[i]?.getAttribute("src");
+        if (!src || !src.includes("assets/js/main.js")) continue;
+        try {
+          return new URL("../../sw.js", new URL(src, window.location.href));
+        } catch (error) {
+          /* noop */
+        }
+      }
+
+      try {
+        return new URL("sw.js", window.location.href);
+      } catch (error) {
+        return new URL("/sw.js", window.location.origin);
+      }
+    },
+
     init() {
       if (
         !("serviceWorker" in navigator) ||
@@ -4060,8 +4116,9 @@
       }
 
       window.addEventListener("load", () => {
+        const swUrl = this.resolveRegistrationUrl();
         navigator.serviceWorker
-          .register("/sw.js")
+          .register(swUrl)
           .then((registration) => {
             Utils.log(
               `Service Worker registered: ${registration.scope}`,
