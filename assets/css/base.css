@@ -2986,7 +2986,8 @@ h3 {
   }
 
   .footer-copyright,
-  .footer-accreditation {
+  .footer-accreditation,
+  .footer-developer {
     flex-basis: 100%;
   }
 
@@ -3809,7 +3810,8 @@ h3 {
   }
 
   .footer-copyright,
-  .footer-accreditation {
+  .footer-accreditation,
+  .footer-developer {
     font-size: 0.8125rem;
     line-height: 1.4;
   }
