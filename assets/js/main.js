@@ -39,6 +39,7 @@
   const NEWSLETTER_SUPABASE_ANON_KEY_FALLBACK =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNkdXB2ZGJndmpsdWV4cm9kYWhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyMjU4MjEsImV4cCI6MjA4ODgwMTgyMX0.CpAS3hPIjXXgAdnuqBxjfqi0x_h3yTXpPgKqeqUHZMQ";
   const NEWSLETTER_SUPABASE_TABLE_FALLBACK = "newsletter_subscribers";
+  const NEWSLETTER_SUPABASE_RPC_FALLBACK = "subscribe_newsletter";
 
   const LANGUAGE_STORAGE_KEY = "intec-language";
   const LANGUAGE_STORAGE_VERSION = "intec-language-v2";
@@ -72,6 +73,8 @@
       window.INTEC_SUPABASE_ANON_KEY || NEWSLETTER_SUPABASE_ANON_KEY_FALLBACK,
     newsletterSupabaseTable:
       window.INTEC_SUPABASE_TABLE || NEWSLETTER_SUPABASE_TABLE_FALLBACK,
+    newsletterSupabaseRpc:
+      window.INTEC_SUPABASE_RPC || NEWSLETTER_SUPABASE_RPC_FALLBACK,
     newsletterSubmitTimeout: 10000,
     debug: false,
   };
@@ -2616,23 +2619,74 @@
     const EMAIL_PATTERN =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.[A-Za-z0-9-]{1,63})+$/;
     const LAST_NEWSLETTER_EMAIL_KEY = "intec-newsletter-last-email";
+    const NEWSLETTER_EMAIL_CACHE_KEY = "intec-newsletter-email-cache-v1";
+    const NEWSLETTER_EMAIL_CACHE_LIMIT = 50;
 
-    const getLastSubscribedEmail = () => {
+    const normalizeEmail = (email) => String(email || "").trim().toLowerCase();
+
+    const readCachedEmails = () => {
+      const cache = new Set();
       try {
-        return String(window.localStorage.getItem(LAST_NEWSLETTER_EMAIL_KEY) || "")
-          .trim()
-          .toLowerCase();
+        const raw = window.localStorage.getItem(NEWSLETTER_EMAIL_CACHE_KEY);
+        const parsed = raw ? JSON.parse(raw) : [];
+        if (Array.isArray(parsed)) {
+          parsed.forEach((email) => {
+            const normalized = normalizeEmail(email);
+            if (normalized) {
+              cache.add(normalized);
+            }
+          });
+        }
+
+        const legacyLast = normalizeEmail(
+          window.localStorage.getItem(LAST_NEWSLETTER_EMAIL_KEY),
+        );
+        if (legacyLast) {
+          cache.add(legacyLast);
+        }
       } catch (error) {
-        return "";
+        /* noop */
+      }
+
+      return cache;
+    };
+
+    const persistCachedEmails = (emailsSet) => {
+      try {
+        const emails = Array.from(emailsSet).slice(-NEWSLETTER_EMAIL_CACHE_LIMIT);
+        window.localStorage.setItem(
+          NEWSLETTER_EMAIL_CACHE_KEY,
+          JSON.stringify(emails),
+        );
+        if (emails.length > 0) {
+          window.localStorage.setItem(
+            LAST_NEWSLETTER_EMAIL_KEY,
+            emails[emails.length - 1],
+          );
+        }
+      } catch (error) {
+        /* noop */
       }
     };
 
-    const setLastSubscribedEmail = (email) => {
-      if (!email) return;
+    const isKnownSubscribedEmail = (email) => {
+      const normalized = normalizeEmail(email);
+      if (!normalized) return false;
+      const cache = readCachedEmails();
+      return cache.has(normalized);
+    };
+
+    const rememberSubscribedEmail = (email) => {
+      const normalized = normalizeEmail(email);
+      if (!normalized) return;
+      const cache = readCachedEmails();
+      if (cache.has(normalized)) return;
+      cache.add(normalized);
+      persistCachedEmails(cache);
       try {
         window.localStorage.setItem(
           LAST_NEWSLETTER_EMAIL_KEY,
-          String(email).trim().toLowerCase(),
+          normalized,
         );
       } catch (error) {
         /* noop */
@@ -2696,11 +2750,16 @@
         sanitizeValue(readMeta("intec-supabase-table")) ||
         sanitizeValue(INTEC.config.newsletterSupabaseTable) ||
         "newsletter_subscribers";
+      const rpc =
+        sanitizeValue(readMeta("intec-supabase-rpc")) ||
+        sanitizeValue(INTEC.config.newsletterSupabaseRpc) ||
+        "";
 
       return {
         url: url.replace(/\/+$/, ""),
         anonKey,
         table,
+        rpc,
         timeoutMs: Number(INTEC.config.newsletterSubmitTimeout) || 10000,
       };
     };
@@ -2708,6 +2767,11 @@
     const getEndpoint = (config) => {
       if (!config.url || !config.anonKey || !config.table) return "";
       return `${config.url}/rest/v1/${encodeURIComponent(config.table)}`;
+    };
+
+    const getRpcEndpoint = (config) => {
+      if (!config.url || !config.anonKey || !config.rpc) return "";
+      return `${config.url}/rest/v1/rpc/${encodeURIComponent(config.rpc)}`;
     };
 
     const isJwtLike = (value) => /^eyJ[A-Za-z0-9_-]+\./.test(value);
@@ -2804,11 +2868,159 @@
         : submitBtn.dataset.originalLabel;
     };
 
+    const buildSupabaseHeaders = (config, withJsonBody = false) => {
+      const headers = {
+        apikey: config.anonKey,
+      };
+
+      if (withJsonBody) {
+        headers["Content-Type"] = "application/json";
+      }
+
+      if (isJwtLike(config.anonKey)) {
+        headers.Authorization = `Bearer ${config.anonKey}`;
+      }
+
+      return headers;
+    };
+
+    const checkDuplicateSubscription = async (endpoint, config, email) => {
+      const queryUrl = new URL(endpoint);
+      queryUrl.searchParams.set("select", "email");
+      queryUrl.searchParams.set("email", `eq.${email}`);
+      queryUrl.searchParams.set("limit", "1");
+
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(
+        () => controller.abort(),
+        config.timeoutMs,
+      );
+
+      try {
+        const response = await fetch(queryUrl.toString(), {
+          method: "GET",
+          headers: buildSupabaseHeaders(config, false),
+          cache: "no-store",
+          signal: controller.signal,
+        });
+
+        if (!response.ok) {
+          return { ok: false, duplicate: false };
+        }
+
+        const rows = await response.json();
+        const duplicate = Array.isArray(rows) && rows.length > 0;
+        return { ok: true, duplicate };
+      } catch (error) {
+        return { ok: false, duplicate: false };
+      } finally {
+        clearTimeout(timeoutId);
+      }
+    };
+
+    const parseRpcStatus = (payload) => {
+      if (!payload) return "";
+      if (Array.isArray(payload)) {
+        return parseRpcStatus(payload[0]);
+      }
+
+      if (typeof payload === "string") {
+        return payload.trim().toLowerCase();
+      }
+
+      if (typeof payload === "object") {
+        return String(
+          payload.status || payload.result || payload.state || "",
+        ).toLowerCase();
+      }
+
+      return "";
+    };
+
+    const submitViaRpc = async (rpcEndpoint, config, email) => {
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(
+        () => controller.abort(),
+        config.timeoutMs,
+      );
+
+      const payload = {
+        p_email: email,
+        p_source_page: window.location.pathname,
+        p_language: getLocale(),
+        p_subscribed_at: new Date().toISOString(),
+      };
+
+      try {
+        const response = await fetch(rpcEndpoint, {
+          method: "POST",
+          headers: buildSupabaseHeaders(config, true),
+          body: JSON.stringify(payload),
+          signal: controller.signal,
+        });
+
+        if (!response.ok) {
+          if (response.status === 404 || response.status === 405) {
+            return { ok: false, reason: "rpc-unavailable" };
+          }
+
+          return { ok: false, reason: "failed" };
+        }
+
+        let body = null;
+        try {
+          body = await response.json();
+        } catch (error) {
+          /* noop */
+        }
+
+        const status = parseRpcStatus(body);
+        if (status === "duplicate") {
+          return { ok: false, reason: "duplicate" };
+        }
+
+        if (status === "invalid") {
+          return { ok: false, reason: "failed" };
+        }
+
+        return { ok: true };
+      } catch (error) {
+        return { ok: false, reason: "failed" };
+      } finally {
+        clearTimeout(timeoutId);
+      }
+    };
+
     const submitToSupabase = async (email) => {
       const config = resolveConfig();
       const endpoint = getEndpoint(config);
+      const rpcEndpoint = getRpcEndpoint(config);
+      if (!endpoint && !rpcEndpoint) {
+        return { ok: false, reason: "unavailable" };
+      }
+
+      if (rpcEndpoint) {
+        const rpcResult = await submitViaRpc(rpcEndpoint, config, email);
+        if (rpcResult.ok || rpcResult.reason === "duplicate") {
+          return rpcResult;
+        }
+
+        if (rpcResult.reason !== "rpc-unavailable") {
+          return rpcResult;
+        }
+      }
+
       if (!endpoint) {
         return { ok: false, reason: "unavailable" };
+      }
+
+      const duplicateCheck = await checkDuplicateSubscription(
+        endpoint,
+        config,
+        email,
+      );
+      if (duplicateCheck.ok && duplicateCheck.duplicate) {
+        return { ok: false, reason: "duplicate" };
       }
 
       const payload = {
@@ -2825,15 +3037,8 @@
       );
 
       try {
-        const headers = {
-          apikey: config.anonKey,
-          "Content-Type": "application/json",
-          Prefer: "return=minimal",
-        };
-
-        if (isJwtLike(config.anonKey)) {
-          headers.Authorization = `Bearer ${config.anonKey}`;
-        }
+        const headers = buildSupabaseHeaders(config, true);
+        headers.Prefer = "return=minimal";
 
         const response = await fetch(endpoint, {
           method: "POST",
@@ -2965,7 +3170,7 @@
           .trim()
           .toLowerCase();
 
-        if (getLastSubscribedEmail() === normalizedEmail) {
+        if (isKnownSubscribedEmail(normalizedEmail)) {
           setStatus(
             statusEl,
             "warning",
@@ -2984,13 +3189,13 @@
             if (result.ok) {
               form.reset();
               hideError();
-              setLastSubscribedEmail(normalizedEmail);
+              rememberSubscribedEmail(normalizedEmail);
               setStatus(statusEl, "success", getMessage("success"), "success");
               return;
             }
 
             if (result.reason === "duplicate") {
-              setLastSubscribedEmail(normalizedEmail);
+              rememberSubscribedEmail(normalizedEmail);
               setStatus(
                 statusEl,
                 "warning",
