@@ -40,6 +40,9 @@
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNkdXB2ZGJndmpsdWV4cm9kYWhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyMjU4MjEsImV4cCI6MjA4ODgwMTgyMX0.CpAS3hPIjXXgAdnuqBxjfqi0x_h3yTXpPgKqeqUHZMQ";
   const NEWSLETTER_SUPABASE_TABLE_FALLBACK = "newsletter_subscribers";
   const NEWSLETTER_SUPABASE_RPC_FALLBACK = "subscribe_newsletter";
+  const REGISTRATION_SUPABASE_RPC_FALLBACK = "submit_intake_registration";
+  const CONTACT_SUPABASE_RPC_FALLBACK = "submit_contact_message";
+  const CONTACT_INBOX_EMAIL_FALLBACK = "heydertarek2000@gmail.com";
 
   const LANGUAGE_STORAGE_KEY = "intec-language";
   const LANGUAGE_STORAGE_VERSION = "intec-language-v2";
@@ -76,6 +79,32 @@
     newsletterSupabaseRpc:
       window.INTEC_SUPABASE_RPC || NEWSLETTER_SUPABASE_RPC_FALLBACK,
     newsletterSubmitTimeout: 10000,
+    registrationSupabaseUrl:
+      window.INTEC_REGISTRATION_SUPABASE_URL ||
+      window.INTEC_SUPABASE_URL ||
+      NEWSLETTER_SUPABASE_URL_FALLBACK,
+    registrationSupabaseAnonKey:
+      window.INTEC_REGISTRATION_SUPABASE_ANON_KEY ||
+      window.INTEC_SUPABASE_ANON_KEY ||
+      NEWSLETTER_SUPABASE_ANON_KEY_FALLBACK,
+    registrationSupabaseRpc:
+      window.INTEC_REGISTRATION_SUPABASE_RPC ||
+      REGISTRATION_SUPABASE_RPC_FALLBACK,
+    registrationSubmitTimeout: 12000,
+    contactSupabaseUrl:
+      window.INTEC_CONTACT_SUPABASE_URL ||
+      window.INTEC_SUPABASE_URL ||
+      NEWSLETTER_SUPABASE_URL_FALLBACK,
+    contactSupabaseAnonKey:
+      window.INTEC_CONTACT_SUPABASE_ANON_KEY ||
+      window.INTEC_SUPABASE_ANON_KEY ||
+      NEWSLETTER_SUPABASE_ANON_KEY_FALLBACK,
+    contactSupabaseRpc:
+      window.INTEC_CONTACT_SUPABASE_RPC || CONTACT_SUPABASE_RPC_FALLBACK,
+    contactInboxEmail:
+      window.INTEC_CONTACT_INBOX_EMAIL || CONTACT_INBOX_EMAIL_FALLBACK,
+    contactSubmitTimeout: 12000,
+    contactOpenWebmailDraft: true,
     debug: false,
   };
 
@@ -2358,6 +2387,7 @@
         const value = input.value.trim();
         const raw = input.value;
         const rule = rules[name];
+        const compactValue = value.replace(/[\s.-]/g, "");
 
         if (!rule) {
           if (
@@ -2406,7 +2436,7 @@
         if (!isRequired && !value) return { ok: true };
 
         // Numbers only check
-        if (rule.numbersOnly && !/^\d+$/.test(value.replace(/[\s.-]/g, ""))) {
+        if (rule.numbersOnly && !/^\d+$/.test(compactValue)) {
           return {
             ok: false,
             key:
@@ -2428,21 +2458,24 @@
         }
 
         // Exact length check
-        if (
-          rule.exactLength &&
-          value.replace(/[\s.-]/g, "").length !== rule.exactLength
-        ) {
-          return {
-            ok: false,
-            key:
-              rule.errorKey ||
-              `Please enter exactly ${rule.exactLength} characters.`,
-          };
+        if (rule.exactLength) {
+          const lengthTarget = rule.numbersOnly ? compactValue : value;
+          if (lengthTarget.length !== rule.exactLength) {
+            return {
+              ok: false,
+              key:
+                rule.errorKey ||
+                `Please enter exactly ${rule.exactLength} characters.`,
+            };
+          }
         }
 
         // Pattern check
-        if (rule.pattern && !rule.pattern.test(value.replace(/[\s.-]/g, ""))) {
-          return { ok: false, key: rule.errorKey || "Invalid format." };
+        if (rule.pattern) {
+          const patternTarget = rule.numbersOnly ? compactValue : value;
+          if (!rule.pattern.test(patternTarget)) {
+            return { ok: false, key: rule.errorKey || "Invalid format." };
+          }
         }
 
         return { ok: true };
@@ -2503,6 +2536,475 @@
         }
       });
 
+      const isContactMessageForm = form.id === "contact-form";
+      const isRegistrationForm =
+        form.classList.contains("contact-form--register") && !isContactMessageForm;
+      let remoteSubmitInFlight = false;
+
+      if (isRegistrationForm || isContactMessageForm) {
+        form.setAttribute("method", "get");
+        form.setAttribute("action", "");
+      }
+
+      const readMeta = (name) => {
+        const node = document.querySelector(`meta[name="${name}"]`);
+        return String(node?.getAttribute("content") || "").trim();
+      };
+
+      const sanitize = (value) => String(value || "").trim();
+
+      const submitCopyPrefix = isContactMessageForm
+        ? "contact.submitStatus"
+        : "register.submitStatus";
+
+      const getSubmitCopy = (key, fallback) =>
+        getDict()[`${submitCopyPrefix}.${key}`] || fallback;
+
+      const submitFallbacks = isContactMessageForm
+        ? {
+            submitting: "Bezig met verzenden...",
+            duplicate:
+              "Dit bericht lijkt al recent verzonden. Controleer je inbox.",
+            unavailable:
+              "Contactformulier is tijdelijk niet beschikbaar. Probeer later opnieuw.",
+            invalid:
+              "Niet alle velden zijn geldig. Controleer je gegevens en probeer opnieuw.",
+            failed:
+              "Verzenden mislukt. Controleer je verbinding en probeer opnieuw.",
+          }
+        : {
+            submitting: "Bezig met verzenden...",
+            duplicate:
+              "Deze aanvraag lijkt al recent verzonden. Controleer je e-mail.",
+            unavailable:
+              "Inschrijven is tijdelijk niet beschikbaar. Probeer later opnieuw.",
+            invalid:
+              "Niet alle velden zijn geldig. Controleer je gegevens en probeer opnieuw.",
+            failed:
+              "Inschrijving mislukt. Controleer je verbinding en probeer opnieuw.",
+          };
+
+      const ensureSubmitStatusBox = () => {
+        let statusBox = Utils.$(".form-submit-status", form);
+        if (!statusBox) {
+          statusBox = document.createElement("p");
+          statusBox.className = "form-submit-status form-error";
+          statusBox.hidden = true;
+          statusBox.setAttribute("role", "status");
+          statusBox.setAttribute("aria-live", "polite");
+          const actions = Utils.$(".form-actions", form);
+          if (actions) {
+            actions.insertAdjacentElement("afterbegin", statusBox);
+          } else {
+            form.prepend(statusBox);
+          }
+        }
+        return statusBox;
+      };
+
+      const setSubmitStatus = (state, text, key = "") => {
+        const statusBox = ensureSubmitStatusBox();
+        if (!text) {
+          statusBox.hidden = true;
+          statusBox.style.display = "none";
+          statusBox.textContent = "";
+          statusBox.removeAttribute("data-state");
+          statusBox.removeAttribute("data-message-key");
+          return;
+        }
+
+        statusBox.hidden = false;
+        statusBox.style.display = "block";
+        statusBox.textContent = text;
+        statusBox.setAttribute("data-state", state);
+        if (key) {
+          statusBox.setAttribute("data-message-key", key);
+        } else {
+          statusBox.removeAttribute("data-message-key");
+        }
+      };
+
+      const setSubmitButtonLoading = (isLoading) => {
+        const submitBtn = Utils.$('button[type="submit"]', form);
+        if (!submitBtn) return;
+
+        if (!submitBtn.dataset.originalLabel) {
+          submitBtn.dataset.originalLabel = submitBtn.textContent.trim();
+        }
+
+        submitBtn.disabled = isLoading;
+        submitBtn.setAttribute("aria-busy", String(isLoading));
+        submitBtn.textContent = isLoading
+          ? getSubmitCopy("submitting", "Bezig met verzenden...")
+          : submitBtn.dataset.originalLabel;
+      };
+
+      const ensureSuccessMessage = () => {
+        let successMsg = Utils.$(".form-success", form);
+        if (!successMsg) {
+          const titleKey = isContactMessageForm
+            ? "contact.success.title"
+            : "register.success.title";
+          const messageKey = isContactMessageForm
+            ? "contact.success.message"
+            : "register.success.message";
+          const defaultTitle = isContactMessageForm
+            ? "Bedankt voor je bericht!"
+            : "Bedankt voor uw voorinschrijving!";
+          const defaultMessage = isContactMessageForm
+            ? "We antwoorden zo snel mogelijk via e-mail."
+            : "U ontvangt binnen drie werkdagen een bevestiging per e-mail.";
+
+          successMsg = document.createElement("div");
+          successMsg.className = "form-success";
+          successMsg.innerHTML = `
+            <div class="form-success__title" data-i18n="${titleKey}">
+              ${defaultTitle}
+            </div>
+            <p class="form-success__message" data-i18n="${messageKey}">
+              ${defaultMessage}
+            </p>
+          `;
+          const submitBtn = Utils.$('button[type="submit"]', form);
+          if (submitBtn) {
+            submitBtn.insertAdjacentElement("afterend", successMsg);
+          } else {
+            form.appendChild(successMsg);
+          }
+        }
+        return successMsg;
+      };
+
+      const showSuccessMessage = () => {
+        const successMsg = ensureSuccessMessage();
+        const dict = getDict();
+        const titleKey = isContactMessageForm
+          ? "contact.success.title"
+          : "register.success.title";
+        const messageKey = isContactMessageForm
+          ? "contact.success.message"
+          : "register.success.message";
+        const fallbackTitle = isContactMessageForm
+          ? "Thank you for your message!"
+          : "Thank you!";
+        const fallbackMessage = isContactMessageForm
+          ? "We will reply as soon as possible by email."
+          : "We will contact you soon.";
+        const titleEl = Utils.$(
+          `[data-i18n="${titleKey}"]`,
+          successMsg,
+        );
+        const messageEl = Utils.$(
+          `[data-i18n="${messageKey}"]`,
+          successMsg,
+        );
+
+        if (titleEl) {
+          titleEl.textContent = dict[titleKey] || fallbackTitle;
+        }
+        if (messageEl) {
+          messageEl.textContent = dict[messageKey] || fallbackMessage;
+        }
+
+        successMsg.classList.add("is-visible");
+        successMsg.scrollIntoView({ behavior: "smooth", block: "center" });
+
+        setTimeout(() => {
+          form.reset();
+          successMsg.classList.remove("is-visible");
+          Utils.$$(".is-valid", form).forEach((field) =>
+            field.classList.remove("is-valid"),
+          );
+        }, 5000);
+      };
+
+      const resolveRegistrationConfig = () => {
+        const url =
+          sanitize(readMeta("intec-registration-supabase-url")) ||
+          sanitize(INTEC.config.registrationSupabaseUrl);
+        const anonKey =
+          sanitize(readMeta("intec-registration-supabase-anon-key")) ||
+          sanitize(INTEC.config.registrationSupabaseAnonKey);
+        const rpc =
+          sanitize(readMeta("intec-registration-supabase-rpc")) ||
+          sanitize(INTEC.config.registrationSupabaseRpc) ||
+          "submit_intake_registration";
+
+        return {
+          url: url.replace(/\/+$/, ""),
+          anonKey,
+          rpc,
+          timeoutMs: Number(INTEC.config.registrationSubmitTimeout) || 12000,
+        };
+      };
+
+      const getRegistrationRpcEndpoint = (config) => {
+        if (!config.url || !config.anonKey || !config.rpc) return "";
+        return `${config.url}/rest/v1/rpc/${encodeURIComponent(config.rpc)}`;
+      };
+
+      const buildSupabaseHeaders = (config) => {
+        const headers = {
+          apikey: config.anonKey,
+          "Content-Type": "application/json",
+        };
+
+        if (/^eyJ[A-Za-z0-9_-]+\./.test(config.anonKey)) {
+          headers.Authorization = `Bearer ${config.anonKey}`;
+        }
+
+        return headers;
+      };
+
+      const getInputValue = (name) =>
+        String(Utils.$(`[name="${name}"]`, form)?.value || "").trim();
+
+      const getRadioValue = (name) =>
+        String(Utils.$(`input[name="${name}"]:checked`, form)?.value || "").trim();
+
+      const buildRegistrationPayload = () => ({
+        p_full_name: getInputValue("full-name"),
+        p_gender: getRadioValue("gender"),
+        p_email: getInputValue("email"),
+        p_phone: getInputValue("phone"),
+        p_national_number: getInputValue("national-number"),
+        p_address: getInputValue("address"),
+        p_postcode: getInputValue("postcode"),
+        p_city: getInputValue("city"),
+        p_course: getInputValue("course"),
+        p_message: getInputValue("message"),
+        p_source_page: window.location.pathname,
+        p_language:
+          INTEC.state.currentLanguage ||
+          document.documentElement.getAttribute("data-language") ||
+          document.documentElement.lang ||
+          "nl",
+        p_submitted_at: new Date().toISOString(),
+      });
+
+      const parseSubmissionStatus = (payload) => {
+        if (!payload) return "";
+        if (Array.isArray(payload)) {
+          return parseSubmissionStatus(payload[0]);
+        }
+        if (typeof payload === "string") {
+          return payload.trim().toLowerCase();
+        }
+        if (typeof payload === "object") {
+          return String(payload.status || payload.result || "").toLowerCase();
+        }
+        return "";
+      };
+
+      const submitRegistration = async () => {
+        const config = resolveRegistrationConfig();
+        const endpoint = getRegistrationRpcEndpoint(config);
+
+        if (!endpoint) {
+          return { ok: false, reason: "unavailable" };
+        }
+
+        const controller = new AbortController();
+        const timeoutId = window.setTimeout(
+          () => controller.abort(),
+          config.timeoutMs,
+        );
+
+        try {
+          const response = await fetch(endpoint, {
+            method: "POST",
+            headers: buildSupabaseHeaders(config),
+            body: JSON.stringify(buildRegistrationPayload()),
+            signal: controller.signal,
+          });
+
+          let body = null;
+          try {
+            body = await response.json();
+          } catch (error) {
+            /* noop */
+          }
+
+          if (!response.ok) {
+            if (response.status === 404 || response.status === 405) {
+              return { ok: false, reason: "unavailable" };
+            }
+            return { ok: false, reason: "failed" };
+          }
+
+          const status = parseSubmissionStatus(body);
+          if (status === "duplicate") {
+            return { ok: false, reason: "duplicate" };
+          }
+          if (status === "invalid") {
+            return {
+              ok: false,
+              reason: "invalid",
+              field: String(body?.field || "").trim(),
+            };
+          }
+          if (status === "created" || status === "ok" || status === "success") {
+            return { ok: true };
+          }
+
+          return { ok: false, reason: "failed" };
+        } catch (error) {
+          return { ok: false, reason: "failed" };
+        } finally {
+          clearTimeout(timeoutId);
+        }
+      };
+
+      const resolveContactConfig = () => {
+        const url =
+          sanitize(readMeta("intec-contact-supabase-url")) ||
+          sanitize(INTEC.config.contactSupabaseUrl);
+        const anonKey =
+          sanitize(readMeta("intec-contact-supabase-anon-key")) ||
+          sanitize(INTEC.config.contactSupabaseAnonKey);
+        const rpc =
+          sanitize(readMeta("intec-contact-supabase-rpc")) ||
+          sanitize(INTEC.config.contactSupabaseRpc) ||
+          "submit_contact_message";
+        const inboxEmail =
+          sanitize(readMeta("intec-contact-inbox-email")) ||
+          sanitize(INTEC.config.contactInboxEmail);
+
+        return {
+          url: url.replace(/\/+$/, ""),
+          anonKey,
+          rpc,
+          inboxEmail,
+          timeoutMs: Number(INTEC.config.contactSubmitTimeout) || 12000,
+          openWebmailDraft: !!INTEC.config.contactOpenWebmailDraft,
+        };
+      };
+
+      const getContactRpcEndpoint = (config) => {
+        if (!config.url || !config.anonKey || !config.rpc) return "";
+        return `${config.url}/rest/v1/rpc/${encodeURIComponent(config.rpc)}`;
+      };
+
+      const buildContactPayload = () => ({
+        p_name: getInputValue("name"),
+        p_email: getInputValue("email"),
+        p_phone: getInputValue("phone"),
+        p_subject: getInputValue("subject"),
+        p_message: getInputValue("message"),
+        p_source_page: window.location.pathname,
+        p_language:
+          INTEC.state.currentLanguage ||
+          document.documentElement.getAttribute("data-language") ||
+          document.documentElement.lang ||
+          "nl",
+        p_submitted_at: new Date().toISOString(),
+      });
+
+      const buildContactWebmailUrl = (config, payload) => {
+        if (!config.inboxEmail) return "";
+
+        const subjectLabels = {
+          general: getDict()["contact.form.subject.general"] || "General question",
+          training:
+            getDict()["contact.form.subject.training"] || "Question about training",
+          internship:
+            getDict()["contact.form.subject.internship"] || "Internship request",
+          partnership:
+            getDict()["contact.form.subject.partnership"] || "Partnership",
+          press: getDict()["contact.form.subject.press"] || "Press",
+        };
+
+        const readableSubject =
+          subjectLabels[payload.p_subject] || payload.p_subject || "Contact";
+        const mailSubject = `[INTEC Contact] ${readableSubject} - ${payload.p_name}`;
+        const body = [
+          `Name: ${payload.p_name}`,
+          `Email: ${payload.p_email}`,
+          `Phone: ${payload.p_phone || "-"}`,
+          `Subject: ${readableSubject}`,
+          "",
+          "Message:",
+          payload.p_message,
+          "",
+          `Source page: ${payload.p_source_page}`,
+          `Language: ${payload.p_language}`,
+        ].join("\n");
+
+        const composeUrl =
+          `https://mail.google.com/mail/?view=cm&fs=1&tf=1` +
+          `&to=${encodeURIComponent(config.inboxEmail)}` +
+          `&su=${encodeURIComponent(mailSubject)}` +
+          `&body=${encodeURIComponent(body)}`;
+
+        return composeUrl;
+      };
+
+      const submitContactMessage = async (payload) => {
+        const config = resolveContactConfig();
+        const endpoint = getContactRpcEndpoint(config);
+
+        if (!endpoint) {
+          return { ok: false, reason: "unavailable" };
+        }
+
+        const controller = new AbortController();
+        const timeoutId = window.setTimeout(
+          () => controller.abort(),
+          config.timeoutMs,
+        );
+
+        try {
+          const response = await fetch(endpoint, {
+            method: "POST",
+            headers: buildSupabaseHeaders(config),
+            body: JSON.stringify(payload),
+            signal: controller.signal,
+          });
+
+          let body = null;
+          try {
+            body = await response.json();
+          } catch (error) {
+            /* noop */
+          }
+
+          if (!response.ok) {
+            if (response.status === 404 || response.status === 405) {
+              return { ok: false, reason: "unavailable" };
+            }
+            return { ok: false, reason: "failed" };
+          }
+
+          const status = parseSubmissionStatus(body);
+          if (status === "duplicate") {
+            return { ok: false, reason: "duplicate" };
+          }
+
+          if (status === "invalid") {
+            return {
+              ok: false,
+              reason: "invalid",
+              field: String(body?.field || "").trim(),
+            };
+          }
+
+          if (status === "created" || status === "ok" || status === "success") {
+            const webmailUrl = buildContactWebmailUrl(config, payload);
+            return {
+              ok: true,
+              webmailUrl,
+              openWebmailDraft: config.openWebmailDraft,
+            };
+          }
+
+          return { ok: false, reason: "failed" };
+        } catch (error) {
+          return { ok: false, reason: "failed" };
+        } finally {
+          clearTimeout(timeoutId);
+        }
+      };
+
       // Ctrl+Enter submit for textarea
       const messageField = Utils.$('textarea[name="message"]', form);
       if (messageField) {
@@ -2515,8 +3017,10 @@
       }
 
       // Form submit handler
-      form.addEventListener("submit", (e) => {
+      form.addEventListener("submit", async (e) => {
         e.preventDefault();
+
+        if (remoteSubmitInFlight) return;
 
         let isValid = true;
         let firstInvalidField = null;
@@ -2525,6 +3029,9 @@
         Utils.$$(".form-error", form).forEach(
           (box) => (box.style.display = "none"),
         );
+        if (isRegistrationForm || isContactMessageForm) {
+          setSubmitStatus("", "");
+        }
 
         // Validate all fields
         Utils.$$("input, select, textarea", form).forEach((field) => {
@@ -2557,55 +3064,106 @@
         // Success handling
         Utils.log("Form validated successfully", "success");
 
-        let successMsg = Utils.$(".form-success", form);
-        if (!successMsg) {
-          successMsg = document.createElement("div");
-          successMsg.className = "form-success";
-          successMsg.innerHTML = `
-            <div class="form-success__title" data-i18n="register.success.title">
-              Bedankt voor uw voorinschrijving!
-            </div>
-            <p class="form-success__message" data-i18n="register.success.message">
-              U ontvangt binnen drie werkdagen een bevestiging per e-mail.
-            </p>
-          `;
-          const submitBtn = Utils.$('button[type="submit"]', form);
-          if (submitBtn) {
-            submitBtn.insertAdjacentElement("afterend", successMsg);
+        if (!isRegistrationForm && !isContactMessageForm) {
+          showSuccessMessage();
+          return;
+        }
+
+        remoteSubmitInFlight = true;
+        setSubmitButtonLoading(true);
+        setSubmitStatus(
+          "info",
+          getSubmitCopy("submitting", submitFallbacks.submitting),
+          "submitting",
+        );
+
+        try {
+          let result = null;
+          let composeWindow = null;
+          if (isContactMessageForm) {
+            const contactPayload = buildContactPayload();
+            const contactConfig = resolveContactConfig();
+            if (contactConfig.openWebmailDraft && contactConfig.inboxEmail) {
+              composeWindow = window.open("about:blank", "_blank");
+              if (composeWindow) {
+                composeWindow.opener = null;
+              }
+            }
+
+            result = await submitContactMessage(contactPayload);
+
+            if (result?.ok && result.webmailUrl && composeWindow) {
+              composeWindow.location.replace(result.webmailUrl);
+            } else if (composeWindow) {
+              composeWindow.close();
+            }
           } else {
-            form.appendChild(successMsg);
+            result = await submitRegistration();
           }
-        }
 
-        const dict = getDict();
-        const titleEl = Utils.$(
-          '[data-i18n="register.success.title"]',
-          successMsg,
-        );
-        const messageEl = Utils.$(
-          '[data-i18n="register.success.message"]',
-          successMsg,
-        );
+          if (result.ok) {
+            setSubmitStatus("", "");
+            showSuccessMessage();
+          } else if (result.reason === "duplicate") {
+            setSubmitStatus(
+              "warning",
+              getSubmitCopy("duplicate", submitFallbacks.duplicate),
+              "duplicate",
+            );
+          } else if (result.reason === "unavailable") {
+            setSubmitStatus(
+              "error",
+              getSubmitCopy("unavailable", submitFallbacks.unavailable),
+              "unavailable",
+            );
+          } else if (result.reason === "invalid") {
+            const fieldName = String(result.field || "");
+            const field = fieldName
+              ? Utils.$(`[name="${fieldName}"]`, form)
+              : null;
 
-        if (titleEl) {
-          titleEl.textContent = dict["register.success.title"] || "Thank you!";
-        }
-        if (messageEl) {
-          messageEl.textContent =
-            dict["register.success.message"] || "We will contact you soon.";
-        }
+            if (field && rules[fieldName]?.errorKey) {
+              showError(field, rules[fieldName].errorKey);
+              field.focus();
+            }
 
-        successMsg.classList.add("is-visible");
-        successMsg.scrollIntoView({ behavior: "smooth", block: "center" });
-
-        setTimeout(() => {
-          form.reset();
-          successMsg.classList.remove("is-visible");
-          Utils.$$(".is-valid", form).forEach((field) =>
-            field.classList.remove("is-valid"),
+            setSubmitStatus(
+              "error",
+              getSubmitCopy("invalid", submitFallbacks.invalid),
+              "invalid",
+            );
+          } else {
+            setSubmitStatus(
+              "error",
+              getSubmitCopy("failed", submitFallbacks.failed),
+              "failed",
+            );
+          }
+        } catch (error) {
+          setSubmitStatus(
+            "error",
+            getSubmitCopy("failed", submitFallbacks.failed),
+            "failed",
           );
-        }, 5000);
+        } finally {
+          remoteSubmitInFlight = false;
+          setSubmitButtonLoading(false);
+        }
       });
+
+      if (isRegistrationForm || isContactMessageForm) {
+        window.addEventListener("languageChanged", () => {
+          const statusBox = Utils.$(".form-submit-status", form);
+          if (!statusBox || statusBox.hidden) return;
+
+          const key = statusBox.getAttribute("data-message-key");
+          if (!key) return;
+
+          const fallback = submitFallbacks[key] || statusBox.textContent;
+          const state = statusBox.getAttribute("data-state") || "info";
+          setSubmitStatus(state, getSubmitCopy(key, fallback), key);
+        });
+      }
 
       this.forms.push(form);
     },

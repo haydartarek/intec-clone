@@ -1,0 +1,24 @@
+{
+  "name": "intec_brussel_project",
+  "version": "1.0.0",
+  "description": "Production-ready multilingual static website for INTEC Brussel, focused on training programs, registration flow, vacancies, contact, legal compliance pages, and partner access.",
+  "main": "sw.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haydartarek/intec-clone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/haydartarek/intec-clone/issues"
+  },
+  "homepage": "https://github.com/haydartarek/intec-clone#readme",
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  }
+}

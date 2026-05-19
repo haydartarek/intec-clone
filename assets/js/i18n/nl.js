@@ -741,6 +741,20 @@ window.i18n.nl = {
   "register.success.message":
     "U ontvangt binnen drie werkdagen een bevestiging per e-mail.",
 
+  "register.submitStatus.submitting": "Bezig met verzenden...",
+
+  "register.submitStatus.duplicate":
+    "Deze aanvraag lijkt al recent verzonden. Controleer je e-mail.",
+
+  "register.submitStatus.unavailable":
+    "Inschrijven is tijdelijk niet beschikbaar. Probeer later opnieuw.",
+
+  "register.submitStatus.invalid":
+    "Niet alle velden zijn geldig. Controleer je gegevens en probeer opnieuw.",
+
+  "register.submitStatus.failed":
+    "Inschrijving mislukt. Controleer je verbinding en probeer opnieuw.",
+
   "register.options.choose": "Maak een keuze",
 
   "register.options.male": "M",
@@ -1241,6 +1255,25 @@ window.i18n.nl = {
 
   "contact.form.note":
     "We respecteren je privacy en gebruiken je gegevens enkel om contact met je op te nemen.",
+
+  "contact.success.title": "Bedankt voor je bericht!",
+
+  "contact.success.message":
+    "Je bericht is ontvangen. We antwoorden zo snel mogelijk via e-mail.",
+
+  "contact.submitStatus.submitting": "Bezig met verzenden...",
+
+  "contact.submitStatus.duplicate":
+    "Dit bericht lijkt al recent verzonden. Controleer je inbox.",
+
+  "contact.submitStatus.unavailable":
+    "Contactformulier is tijdelijk niet beschikbaar. Probeer later opnieuw.",
+
+  "contact.submitStatus.invalid":
+    "Niet alle velden zijn geldig. Controleer je gegevens en probeer opnieuw.",
+
+  "contact.submitStatus.failed":
+    "Verzenden mislukt. Controleer je verbinding en probeer opnieuw.",
 
   "contact.placeholders.name": "Jouw naam",
 

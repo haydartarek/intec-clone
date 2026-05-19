@@ -820,6 +820,20 @@ window.i18n.en = {
   "register.success.message":
     "You will receive a confirmation email within three working days.",
 
+  "register.submitStatus.submitting": "Submitting...",
+
+  "register.submitStatus.duplicate":
+    "This request appears to have been submitted recently. Please check your email.",
+
+  "register.submitStatus.unavailable":
+    "Registration is temporarily unavailable. Please try again later.",
+
+  "register.submitStatus.invalid":
+    "Some fields are invalid. Please review your details and try again.",
+
+  "register.submitStatus.failed":
+    "Registration failed. Please check your connection and try again.",
+
   "register.options.choose": "Choose an option",
 
   "register.options.male": "M",
@@ -1299,6 +1313,25 @@ window.i18n.en = {
 
   "contact.form.note":
     "We respect your privacy and only use your information to contact you.",
+
+  "contact.success.title": "Thank you for your message!",
+
+  "contact.success.message":
+    "Your message has been received. We will reply by email as soon as possible.",
+
+  "contact.submitStatus.submitting": "Submitting...",
+
+  "contact.submitStatus.duplicate":
+    "This message appears to have been sent recently. Please check your inbox.",
+
+  "contact.submitStatus.unavailable":
+    "Contact form is temporarily unavailable. Please try again later.",
+
+  "contact.submitStatus.invalid":
+    "Some fields are invalid. Please review your details and try again.",
+
+  "contact.submitStatus.failed":
+    "Sending failed. Please check your connection and try again.",
 
   "contact.placeholders.name": "Your name",
 
